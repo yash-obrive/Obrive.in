@@ -27,6 +27,12 @@ class ProfileService {
       throw err;
     }
 
+    // 1. Safely handle the phone number conversion if provided in data
+    let formattedPhoneNumber = existing.phone_number;
+    if (data.phoneNumber !== undefined && data.phoneNumber !== null) {
+      formattedPhoneNumber = String(data.phoneNumber); 
+    }
+
     return prisma.users.update({
       where: { id: userId },
       data: {
@@ -34,7 +40,7 @@ class ProfileService {
         email: data.email ?? existing.email,
         department: data.department ?? existing.department,
         job_title: data.jobTitle ?? existing.job_title,
-        phone_number: data.phoneNumber ?? existing.phone_number,
+        phone_number: formattedPhoneNumber,
         join_date: data.joinDate ? new Date(data.joinDate) : existing.join_date,
         biography: data.biography ?? existing.biography,
       },
