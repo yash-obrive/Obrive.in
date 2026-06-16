@@ -6,4 +6,5 @@ dist
 .env.local
 .env.*.local
 
-backend/src/modules/AUDIO_ROOM/livekit/infrastructure/livekit.yaml
+
+src/modules/AUDIO_ROOM/livekit/infrastructure/livekit.yaml
