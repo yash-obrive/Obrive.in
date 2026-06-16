@@ -9,5 +9,5 @@ keys:
   devkey: supersecretlivekitkey5641257952
 
 logging:
-  level: info
+  level: info 
  
