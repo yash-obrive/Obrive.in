@@ -1,17 +1,15 @@
 const { prisma } = require("../../../../prisma");
 
 const createRoomConfigService =
-  async (payload, userId) => {
-    const {
-      roomConfig,
-      roleAssignments,
-      joinPermissions,
-      notifications,
-      invites,
-    } = payload;
+  async (payload, userId) => { 
+    
+    // payload comes from the request body, userId comes from the authenticated user 
+    //payload data from the request body was created in the frontend and sent to the backend. It contains all the necessary information to create a room configuration, including room details, role assignments, join permissions, notifications, and invites.
+
+    const { roomConfig, roleAssignments, joinPermissions, notifications, invites,} = payload;
 
     return await prisma.$transaction(
-      async (tx) => {
+      async (tx) => { // tx is generally used to represent a transaction object that allows you to perform multiple database operations as a single unit of work. In this case, it is used to ensure that all the database operations related to creating a room configuration are executed atomically, meaning either all of them succeed or none of them are applied.
         const creator =
           await tx.users.findUnique({
             where: {
@@ -29,11 +27,7 @@ const createRoomConfigService =
           );
         }
 
-        const creatorRoomRole =
-          creator.role?.toLowerCase() ===
-          "supervisor"
-            ? "moderator"
-            : "host";
+        const creatorRoomRole = creator.role?.toLowerCase() === "supervisor" ? "moderator" : "host"; 
 
         // ==================================
         // CREATE ROOM CONFIG
@@ -109,31 +103,13 @@ const createRoomConfigService =
             assignedRoomRole: creatorRoomRole,
             userId: userId,
           },
-          ...(roleAssignments?.map(
-            (
-              role
-            ) => ({
-              roomConfigId:
-                createdRoom.id,
+          ...(roleAssignments?.map( ( role ) => ({
 
-              assignmentType:
-                role.assignmentType,
-
-              crmRole:
-role.assignmentType ===
-"crm-role"
-  ? role.crmRole
-  : null,
-
-              assignedRoomRole:
-                role.assignedRoomRole,
-
-              userId:
-                role.userId
-                  ? Number(
-                      role.userId
-                    )
-                        : null,
+              roomConfigId: createdRoom.id,
+              assignmentType: role.assignmentType,
+              crmRole: role.assignmentType === "crm-role" ? role.crmRole : null,
+              assignedRoomRole: role.assignedRoomRole,
+              userId: role.userId ? Number(role.userId) : null,
             })
           ) || [])
         ];

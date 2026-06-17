@@ -11,7 +11,7 @@ interface RoomHeaderProps {
 
 const RoomHeader = ({ title, description, participantCount = 0 }: RoomHeaderProps) => {
   return (
-    <div className="w-full bg-white px-4 py-2 shadow-xs border-b border-black/[0.03]">
+    <div className="w-full bg-[#ffffff] px-4 py-2 shadow-xs border-b border-black/[0.03]">
       <div className="flex items-center justify-between gap-3">
         
         {/* Left Side Content - Compact & Inline */}

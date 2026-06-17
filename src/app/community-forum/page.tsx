@@ -111,7 +111,7 @@ useEffect(() => {
 
 
   return (
-    <div className="font-sans text-gray-950 min-h-screen relative w-full">
+    <div className="text-gray-950 min-h-screen relative w-full">
 
 
 <div className="fixed inset-0 z-10 pointer-events-none">

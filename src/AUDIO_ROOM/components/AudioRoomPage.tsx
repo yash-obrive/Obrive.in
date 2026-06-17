@@ -352,7 +352,7 @@ const AudioRoomPage = () => {
   // ==========================
 
   return (
-<div className="relative h-screen w-full overflow-hidden bg-[#f6f0e7] text-slate-900 antialiased selection:bg-[#076d47]/10 flex flex-col">
+<div className="relative h-screen w-full overflow-hidden bg-[#c3ead3] text-slate-900 antialiased selection:bg-[#076d47]/10 flex flex-col">
   
   {/* Fixed Sticky Header */}
   <header className="shrink-0 border-b border-black/[0.04] bg-white/80 backdrop-blur-md z-20">
