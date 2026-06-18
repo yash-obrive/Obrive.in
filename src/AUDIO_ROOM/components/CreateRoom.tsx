@@ -92,7 +92,7 @@ const CreateRoom = () => {
     Host: ["Admin", "Moderator", "HR", "other"],
     Moderator: ["Admin", "Moderator", "HR", "other"],
     Speakers: ["Admin", "Moderator", "HR", "other"],
-    Joinees: ["Admin", "Moderator", "HR", "Employee", "Client", "Guests"],
+    Joinees: ["Admin", "Moderator", "HR", "Employee", "Client", "Users", "Guests"],
   }), []);
 
   // ======================================================

@@ -1,3 +1,4 @@
+// backend/src/modules/AUDIO_ROOM/roomRolePolicy.js
 const ROOM_ROLES = {
   ADMIN: "admin",
   HOST: "host",
@@ -21,6 +22,32 @@ const MODERATOR_ROOM_ROLES = [
 
 const normalizeRole = (role) => String(role || "").trim().toLowerCase();
 
+const normalizeCrmRole = (role) => {
+  const normalizedRole = normalizeRole(role);
+
+  const aliases = {
+    client: "clients",
+    clients: "clients",
+    moderator: "supervisor",
+    supervisor: "supervisor",
+    user: "users",
+    users: "users",
+  };
+
+  return aliases[normalizedRole] || normalizedRole;
+};
+
+const crmRoleMatches = (leftRole, rightRole) => {
+  const left = normalizeCrmRole(leftRole);
+  const right = normalizeCrmRole(rightRole);
+
+  if (left === right) {
+    return true;
+  }
+
+  return normalizeRole(leftRole) === normalizeRole(rightRole);
+};
+
 const canPublishAudio = (roomRole) =>
   SPEAKING_ROOM_ROLES.includes(normalizeRole(roomRole));
 
@@ -35,7 +62,6 @@ const getCreatorRoomRole = (creatorCrmRole) =>
     : ROOM_ROLES.HOST;
 
 const findAssignedRoomRole = ({ room, userId, crmRole }) => {
-  const normalizedCrmRole = normalizeRole(crmRole);
   const assignments = room?.roleAssignments || [];
 
   const specificUserAssignment = assignments.find(
@@ -51,7 +77,7 @@ const findAssignedRoomRole = ({ room, userId, crmRole }) => {
   const crmRoleAssignment = assignments.find(
     (assignment) =>
       assignment.assignmentType === "crm-role" &&
-      normalizeRole(assignment.crmRole) === normalizedCrmRole
+      crmRoleMatches(assignment.crmRole, crmRole)
   );
 
   return crmRoleAssignment
@@ -60,12 +86,10 @@ const findAssignedRoomRole = ({ room, userId, crmRole }) => {
 };
 
 const hasJoinPermission = ({ room, crmRole }) => {
-  const normalizedCrmRole = normalizeRole(crmRole);
-
   return (room?.joinPermissions || []).some(
     (permission) =>
       permission.permissionType === "crm-role" &&
-      normalizeRole(permission.crmRole) === normalizedCrmRole
+      crmRoleMatches(permission.crmRole, crmRole)
   );
 };
 
@@ -143,11 +167,13 @@ module.exports = {
   allowsGuestJoin,
   canModerate,
   canPublishAudio,
+  crmRoleMatches,
   findAssignedRoomRole,
   getCreatorRoomRole,
   hasJoinPermission,
   isAdminCrmRole,
   normalizeRole,
+  normalizeCrmRole,
   persistSpecificUserRoomRole,
   resolveConfiguredRoomRole,
 };
