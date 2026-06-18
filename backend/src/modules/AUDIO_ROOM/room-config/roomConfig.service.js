@@ -95,16 +95,8 @@ const createRoomConfigService =
         // ROLE ASSIGNMENTS
         // ==================================
 
-        // Auto-add creator with their creator role
-        const allRoleAssignments = [
-          {
-            roomConfigId: createdRoom.id,
-            assignmentType: "specific-user",
-            crmRole: null,
-            assignedRoomRole: creatorRoomRole,
-            userId: userId,
-          },
-          ...(roleAssignments?.map( ( role ) => ({
+        const normalizedRoleAssignments =
+          roleAssignments?.map( ( role ) => ({
 
               roomConfigId: createdRoom.id,
               assignmentType: role.assignmentType,
@@ -112,7 +104,52 @@ const createRoomConfigService =
               assignedRoomRole: role.assignedRoomRole,
               userId: role.userId ? Number(role.userId) : null,
             })
-          ) || [])
+          ) || [];
+
+        const creatorHasExplicitAssignment =
+          normalizedRoleAssignments.some(
+            (role) =>
+              role.assignmentType === "specific-user" &&
+              Number(role.userId) === Number(userId)
+          );
+
+        const creatorExplicitAssignment =
+          normalizedRoleAssignments.find(
+            (role) =>
+              role.assignmentType === "specific-user" &&
+              Number(role.userId) === Number(userId)
+          );
+
+        if (creatorExplicitAssignment) {
+          await tx.room_participants.updateMany(
+            {
+              where: {
+                roomId: createdRoom.id,
+                userId: Number(userId),
+                leftAt: null,
+              },
+              data: {
+                roomRole: creatorExplicitAssignment.assignedRoomRole,
+              },
+            }
+          );
+        }
+
+        const allRoleAssignments = [
+          ...normalizedRoleAssignments,
+          ...(
+            creatorHasExplicitAssignment
+              ? []
+              : [
+                  {
+                    roomConfigId: createdRoom.id,
+                    assignmentType: "specific-user",
+                    crmRole: null,
+                    assignedRoomRole: creatorRoomRole,
+                    userId: userId,
+                  },
+                ]
+          ),
         ];
 
         if (allRoleAssignments.length) {

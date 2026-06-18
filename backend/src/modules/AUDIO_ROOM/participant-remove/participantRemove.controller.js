@@ -13,7 +13,10 @@ const removeParticipantController =
     try {
       const result =
         await removeParticipantService(
-          req.body
+          {
+            ...req.body,
+            actorUserId: req.user.id,
+          }
         );
 
       return res

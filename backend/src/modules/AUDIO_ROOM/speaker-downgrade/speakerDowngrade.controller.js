@@ -13,7 +13,10 @@ const downgradeToListenerController =
     try {
       const result =
         await downgradeToListenerService(
-          req.body
+          {
+            ...req.body,
+            actorUserId: req.user.id,
+          }
         );
 
       return res

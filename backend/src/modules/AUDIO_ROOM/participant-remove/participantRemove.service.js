@@ -2,6 +2,7 @@ const { prisma } =
   require("../../../../prisma");
 const { RoomServiceClient } = require("livekit-server-sdk");
 const { normalizeRole } = require("../roomRolePolicy");
+const { canModerateTarget } = require("../audioRoomAuthz");
 
 const livekitHost = process.env.LIVEKIT_URL || "http://localhost:7880";
 const roomService = new RoomServiceClient(
@@ -15,7 +16,12 @@ const removeParticipantService =
     const {
       roomId,
       userId,
+      actorUserId,
     } = payload;
+
+    if (actorUserId && !(await canModerateTarget(roomId, actorUserId, userId))) {
+      throw new Error("You cannot moderate this participant");
+    }
 
     // ==========================
     // VALIDATE PARTICIPANT

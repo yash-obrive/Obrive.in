@@ -2,6 +2,7 @@ const {
   getRoomDetailsService,
 } = require("../../modules/AUDIO_ROOM/room-details/roomDetails.service");
 const {
+  canModerateTarget,
   canModerateRoom,
 } = require("../../modules/AUDIO_ROOM/audioRoomAuthz");
 const {
@@ -44,10 +45,18 @@ exports.registerModerationHandler = (io, socket) => {
         return;
       }
 
+      if (!(await canModerateTarget(roomId, socket.user?.id, userId))) {
+        socket.emit("audio_room_error", {
+          message: "You cannot moderate this participant",
+        });
+        return;
+      }
+
       await muteUnmuteService({
         roomId,
         userId,
         isMuted: true,
+        actorUserId: socket.user?.id,
       });
 
       console.log(
@@ -89,10 +98,18 @@ exports.registerModerationHandler = (io, socket) => {
         return;
       }
 
+      if (!(await canModerateTarget(roomId, socket.user?.id, userId))) {
+        socket.emit("audio_room_error", {
+          message: "You cannot moderate this participant",
+        });
+        return;
+      }
+
       await muteUnmuteService({
         roomId,
         userId,
         isMuted: false,
+        actorUserId: socket.user?.id,
       });
 
       console.log(
@@ -134,9 +151,17 @@ exports.registerModerationHandler = (io, socket) => {
         return;
       }
 
+      if (!(await canModerateTarget(roomId, socket.user?.id, userId))) {
+        socket.emit("audio_room_error", {
+          message: "You cannot moderate this participant",
+        });
+        return;
+      }
+
       await downgradeToListenerService({
         roomId,
         userId,
+        actorUserId: socket.user?.id,
       });
 
       console.log(
@@ -178,9 +203,17 @@ exports.registerModerationHandler = (io, socket) => {
         return;
       }
 
+      if (!(await canModerateTarget(roomId, socket.user?.id, userId))) {
+        socket.emit("audio_room_error", {
+          message: "You cannot moderate this participant",
+        });
+        return;
+      }
+
       await removeParticipantService({
         roomId,
         userId,
+        actorUserId: socket.user?.id,
       });
 
       console.log(

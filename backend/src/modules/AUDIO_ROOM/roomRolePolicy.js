@@ -76,14 +76,6 @@ const allowsGuestJoin = (room) =>
   );
 
 const resolveConfiguredRoomRole = ({ room, user }) => {
-  if (isAdminCrmRole(user?.role)) {
-    return ROOM_ROLES.ADMIN;
-  }
-
-  if (Number(room?.createdBy) === Number(user?.id)) {
-    return getCreatorRoomRole(user?.role);
-  }
-
   const assignedRole = findAssignedRoomRole({
     room,
     userId: user?.id,
@@ -94,11 +86,54 @@ const resolveConfiguredRoomRole = ({ room, user }) => {
     return assignedRole;
   }
 
+  if (isAdminCrmRole(user?.role)) {
+    return ROOM_ROLES.ADMIN;
+  }
+
+  if (Number(room?.createdBy) === Number(user?.id)) {
+    return getCreatorRoomRole(user?.role);
+  }
+
   if (hasJoinPermission({ room, crmRole: user?.role }) || allowsGuestJoin(room)) {
     return ROOM_ROLES.LISTENER;
   }
 
   return null;
+};
+
+const persistSpecificUserRoomRole = async ({
+  tx,
+  roomId,
+  userId,
+  roomRole,
+}) => {
+  const client = tx;
+
+  const updated = await client.room_role_assignments.updateMany({
+    where: {
+      roomConfigId: Number(roomId),
+      assignmentType: "specific-user",
+      userId: Number(userId),
+    },
+    data: {
+      assignedRoomRole: normalizeRole(roomRole),
+      crmRole: null,
+    },
+  });
+
+  if (updated.count > 0) {
+    return;
+  }
+
+  await client.room_role_assignments.create({
+    data: {
+      roomConfigId: Number(roomId),
+      assignmentType: "specific-user",
+      crmRole: null,
+      assignedRoomRole: normalizeRole(roomRole),
+      userId: Number(userId),
+    },
+  });
 };
 
 module.exports = {
@@ -113,5 +148,6 @@ module.exports = {
   hasJoinPermission,
   isAdminCrmRole,
   normalizeRole,
+  persistSpecificUserRoomRole,
   resolveConfiguredRoomRole,
 };

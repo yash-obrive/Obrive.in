@@ -1,6 +1,7 @@
 const { prisma } = require("../../../../prisma");
 const { RoomServiceClient } = require("livekit-server-sdk");
-const { normalizeRole } = require("../roomRolePolicy");
+const { normalizeRole, persistSpecificUserRoomRole } = require("../roomRolePolicy");
+const { canModerateTarget } = require("../audioRoomAuthz");
 
 const livekitHost = process.env.LIVEKIT_URL || "http://localhost:7880";
 const roomService = new RoomServiceClient(
@@ -10,7 +11,11 @@ const roomService = new RoomServiceClient(
 );
 
 const downgradeToListenerService = async (payload) => {
-  const { roomId, userId } = payload;
+  const { roomId, userId, actorUserId } = payload;
+
+  if (actorUserId && !(await canModerateTarget(roomId, actorUserId, userId))) {
+    throw new Error("You cannot moderate this participant");
+  }
 
   // ==========================
   // VALIDATE PARTICIPANT
@@ -31,21 +36,32 @@ const downgradeToListenerService = async (payload) => {
   // VERIFY NOT HOST
   // ==========================
   const currentRole = normalizeRole(participant.roomRole);
-  if (currentRole === "host" || currentRole === "admin") {
-    throw new Error("Cannot downgrade host or admin");
+  if (currentRole === "admin") {
+    throw new Error("Cannot downgrade admin");
   }
 
   // ==========================
   // UPDATE ROLE TO LISTENER
   // ==========================
-  const updated = await prisma.room_participants.update({
-    where: {
-      id: participant.id,
-    },
-    data: {
+  const updated = await prisma.$transaction(async (tx) => {
+    const updatedParticipant = await tx.room_participants.update({
+      where: {
+        id: participant.id,
+      },
+      data: {
+        roomRole: "listener",
+        isMuted: true,
+      },
+    });
+
+    await persistSpecificUserRoomRole({
+      tx,
+      roomId,
+      userId,
       roomRole: "listener",
-      isMuted: true,
-    },
+    });
+
+    return updatedParticipant;
   });
 
   // ================================================

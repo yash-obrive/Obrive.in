@@ -3,6 +3,7 @@ const { getIO } = require("../../../socket");
 const { getPendingHandRequestsService } = require("../room-hand-requests/roomHandRequests.service");
 const { getRoomDetailsService } = require("../room-details/roomDetails.service");
 const { RoomServiceClient } = require("livekit-server-sdk");
+const { persistSpecificUserRoomRole } = require("../roomRolePolicy");
 
 const livekitHost = process.env.LIVEKIT_URL || "http://localhost:7880";
 const roomService = new RoomServiceClient(
@@ -65,6 +66,13 @@ const handleHandRequestActionService = async (payload) => {
           isMuted: true,       // Approved speakers start muted to protect overall room levels
           isSpeaking: false,
         },
+      });
+
+      await persistSpecificUserRoomRole({
+        tx,
+        roomId,
+        userId: request.userId,
+        roomRole: "speaker",
       });
     }
 

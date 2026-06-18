@@ -3,24 +3,17 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { apiFetch } from "@/lib/api";
+ 
+const inputClass = "w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-[9px] text-slate-700 outline-none transition-all placeholder:text-slate-400 focus:border-slate-400 focus:ring-1 focus:ring-slate-400/10";
 
-// ======================================================
-// FIXED: HIGH SPEED SOLID FLAT DESIGN UI UTILITIES (No Blur/Overhead)
-// ======================================================
-const inputClass =
-  "w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-[9px] text-slate-700 outline-none transition-all placeholder:text-slate-400 focus:border-slate-400 focus:ring-1 focus:ring-slate-400/10";
-
-const sectionClass =
-  "rounded-lg border border-slate-200 bg-white px-5 py-5 shadow-sm transition-all";
+const sectionClass = "rounded-lg border border-slate-200 bg-white px-5 py-5 shadow-sm transition-all";
 
 const formatLocalDateTime = (date: Date) => {
   const pad = (value: number) => String(value).padStart(2, "0");
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
 };
 
-// ======================================================
-// TYPES
-// ======================================================
+
 type RoomRole = "host" | "moderator" | "speaker" | "listener";
 type RoleKey = "Host" | "Moderator" | "Speakers" | "Joinees";
 

@@ -1,5 +1,6 @@
 const { prisma } =
   require("../../../../prisma");
+const { resolveConfiguredRoomRole } = require("../roomRolePolicy");
 
 const getRoomDetailsService =
   async (
@@ -35,12 +36,54 @@ const getRoomDetailsService =
       );
     }
 
+    const now = new Date();
+    const startTime = room.startTime ? new Date(room.startTime) : null;
+    const isFutureScheduledRoom =
+      room.roomStatus === "scheduled" && (!startTime || startTime > now);
+
+    if (room.roomStatus !== "live" && isFutureScheduledRoom) {
+      const error = new Error("Room is not available yet");
+      error.status = 403;
+      throw error;
+    }
+
+    if (room.roomStatus !== "live" && room.roomStatus !== "scheduled") {
+      const error = new Error("Room is not available");
+      error.status = room.roomStatus === "ended" ? 410 : 403;
+      throw error;
+    }
+
+    const currentUser =
+      await prisma.users.findUnique(
+        {
+          where: {
+            id: Number(userId),
+          },
+          select: {
+            id: true,
+            role: true,
+          },
+        }
+      );
+
+    if (!currentUser) {
+      const error = new Error("User not found");
+      error.status = 404;
+      throw error;
+    }
+
     // ==========================
     // FIND CURRENT USER ROLE
     // ==========================
 
     let myRole =
       "listener";
+
+    const configuredCurrentUserRole =
+      resolveConfiguredRoomRole({
+        room,
+        user: currentUser,
+      });
 
     const specificUserRole =
       room.roleAssignments.find(
@@ -131,7 +174,17 @@ if (
   currentParticipant
 ) {
   myRole =
+    configuredCurrentUserRole ||
     currentParticipant.roomRole;
+}
+else {
+  if (!configuredCurrentUserRole) {
+    const error = new Error("You are not allowed to join this room");
+    error.status = 403;
+    throw error;
+  }
+
+  myRole = configuredCurrentUserRole;
 }
 
 // ==========================
@@ -157,6 +210,13 @@ if (
         const user =
           participant.user;
 
+        const effectiveRoomRole =
+          resolveConfiguredRoomRole({
+            room,
+            user,
+          }) ||
+          participant.roomRole;
+
         const formattedUser =
           {
             id: user.id,
@@ -168,7 +228,7 @@ if (
               user.userid,
 
             role:
-              participant.roomRole,
+              effectiveRoomRole,
 
             isMuted:
               participant.isMuted,
@@ -178,9 +238,9 @@ if (
           };
 
         if (
-          participant.roomRole ===
+          effectiveRoomRole ===
             "host" ||
-          participant.roomRole ===
+          effectiveRoomRole ===
             "speaker"
         ) {
           participants.hostAndSpeakers.push(
@@ -189,9 +249,9 @@ if (
         }
 
         else if (
-          participant.roomRole ===
+          effectiveRoomRole ===
             "moderator" ||
-          participant.roomRole ===
+          effectiveRoomRole ===
             "admin"
         ) {
           participants.moderators.push(

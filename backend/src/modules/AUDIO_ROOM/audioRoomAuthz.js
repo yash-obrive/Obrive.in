@@ -1,9 +1,9 @@
 const { prisma } = require("../../../prisma");
 const {
   MODERATOR_ROOM_ROLES,
-  getCreatorRoomRole,
   isAdminCrmRole,
   normalizeRole,
+  resolveConfiguredRoomRole,
 } = require("./roomRolePolicy");
 
 const getActiveParticipant = async (roomId, userId) =>
@@ -23,6 +23,8 @@ const getActorRoomRole = async (roomId, userId) => {
     select: {
       id: true,
       createdBy: true,
+      roleAssignments: true,
+      joinPermissions: true,
       creator: {
         select: {
           role: true,
@@ -37,25 +39,31 @@ const getActorRoomRole = async (roomId, userId) => {
     throw error;
   }
 
-  if (Number(room.createdBy) === Number(userId)) {
-    return getCreatorRoomRole(room.creator?.role);
-  }
-
-  const participant = await getActiveParticipant(roomId, userId);
-  if (participant?.roomRole) {
-    return participant.roomRole;
-  }
-
   const user = await prisma.users.findUnique({
     where: {
       id: Number(userId),
     },
     select: {
+      id: true,
       role: true,
     },
   });
 
-  return isAdminCrmRole(user?.role) ? "admin" : null;
+  if (isAdminCrmRole(user?.role)) {
+    return "admin";
+  }
+
+  const configuredRole = resolveConfiguredRoomRole({
+    room,
+    user,
+  });
+
+  if (configuredRole) {
+    return configuredRole;
+  }
+
+  const participant = await getActiveParticipant(roomId, userId);
+  return participant?.roomRole || null;
 };
 
 const requireRoomRoles =
@@ -92,8 +100,45 @@ const canModerateRoom = async (roomId, userId) => {
   return MODERATOR_ROOM_ROLES.includes(normalizeRole(role));
 };
 
+const canModerateTarget = async (roomId, actorUserId, targetUserId) => {
+  const room = await prisma.room_configs.findUnique({
+    where: {
+      id: Number(roomId),
+    },
+    select: {
+      createdBy: true,
+    },
+  });
+
+  if (!room) {
+    return false;
+  }
+
+  const actorRole = normalizeRole(await getActorRoomRole(roomId, actorUserId));
+  const targetRole = normalizeRole(await getActorRoomRole(roomId, targetUserId));
+
+  if (actorRole === "admin") {
+    return true;
+  }
+
+  if (!MODERATOR_ROOM_ROLES.includes(actorRole)) {
+    return false;
+  }
+
+  if (targetRole === "admin") {
+    return false;
+  }
+
+  if (targetRole === "host") {
+    return Number(room.createdBy) === Number(actorUserId);
+  }
+
+  return true;
+};
+
 module.exports = {
   MODERATOR_ROOM_ROLES,
+  canModerateTarget,
   canModerateRoom,
   getActiveParticipant,
   getActorRoomRole,

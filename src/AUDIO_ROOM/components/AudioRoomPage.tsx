@@ -147,15 +147,20 @@ const AudioRoomPage = () => {
 
       const response = await apiFetch(`/audio-room/room-details/${roomId}`);
       const data = await response.json();
-      const roomStatus = data?.data?.room?.status || data?.room?.status;
+      const roomStatus =
+        data?.data?.room?.roomStatus ||
+        data?.data?.room?.status ||
+        data?.room?.roomStatus ||
+        data?.room?.status;
 
-      if (roomStatus === "ended") {
+      if (response.status === 410 || roomStatus === "ended") {
         router.replace("/audio-room/room-ends");
         return;
       }
 
       if (!response.ok) {
-        throw new Error(data.message);
+        router.replace("/community-forum/rooms");
+        return;
       }
 
       setRoomData(data.data);
@@ -176,9 +181,21 @@ const AudioRoomPage = () => {
       });
 
       const data = await response.json();
+
+      if (response.status === 410) {
+        router.replace("/audio-room/room-ends");
+        return null;
+      }
+
+      if (!response.ok) {
+        router.replace("/community-forum/rooms");
+        return null;
+      }
+
       return data.data;
     } catch (error) {
       console.error("[App Fetch] Server authentication handshake rejected.");
+      router.replace("/community-forum/rooms");
     }
   };
 

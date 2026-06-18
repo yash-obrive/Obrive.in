@@ -32,7 +32,7 @@ const assertRoomAccess = async (roomId, userId) => {
 
   if (room.roomStatus !== "live" && room.roomStatus !== "scheduled") {
     const error = new Error("Room is not available");
-    error.status = 403;
+    error.status = room.roomStatus === "ended" ? 410 : 403;
     throw error;
   }
 
@@ -53,11 +53,16 @@ const assertRoomAccess = async (roomId, userId) => {
     throw error;
   }
 
-  // =================================================================
-  // LEVEL 1 PRIORITY: Live Room Actions (Promotions, Demotions, States)
-  // =================================================================
-  // Always look up current situational participant status rows first.
-  // This allows promotions and demotions to bypass static CRM profiles.
+  const configuredRoomRole = resolveConfiguredRoomRole({ room, user });
+
+  if (configuredRoomRole) {
+    return {
+      room,
+      user,
+      roomRole: configuredRoomRole,
+    };
+  }
+
   const participant = await prisma.room_participants.findFirst({
     where: {
       roomId: Number(roomId),
@@ -71,16 +76,6 @@ const assertRoomAccess = async (roomId, userId) => {
       room,
       user,
       roomRole: participant.roomRole,
-    };
-  }
-
-  const configuredRoomRole = resolveConfiguredRoomRole({ room, user });
-
-  if (configuredRoomRole) {
-    return {
-      room,
-      user,
-      roomRole: configuredRoomRole,
     };
   }
 

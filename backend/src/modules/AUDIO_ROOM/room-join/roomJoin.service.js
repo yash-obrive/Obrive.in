@@ -45,14 +45,18 @@ const joinRoomService = async (payload) => {
     room.roomStatus !== "live" &&
     isFutureScheduledRoom
   ) {
-    throw new Error("Room is not available yet");
+    const error = new Error("Room is not available yet");
+    error.status = 403;
+    throw error;
   }
 
   if (
     room.roomStatus !== "live" &&
     room.roomStatus !== "scheduled"
   ) {
-    throw new Error("Room is not available");
+    const error = new Error("Room is not available");
+    error.status = room.roomStatus === "ended" ? 410 : 403;
+    throw error;
   }
 
   // ==================================
@@ -225,9 +229,11 @@ async function addParticipant(roomRole) {
   // ACCESS DENIED
   // ==================================
 
-  throw new Error(
+  const error = new Error(
     "You are not allowed to join this room"
   );
+  error.status = 403;
+  throw error;
 };
 
 module.exports = {

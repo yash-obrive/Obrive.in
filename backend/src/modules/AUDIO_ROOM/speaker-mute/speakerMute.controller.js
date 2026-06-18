@@ -13,7 +13,10 @@ const muteUnmuteController =
     try {
       const result =
         await muteUnmuteService(
-          req.body
+          {
+            ...req.body,
+            actorUserId: req.user.id,
+          }
         );
 
       return res
