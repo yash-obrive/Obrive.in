@@ -4,13 +4,15 @@ import { useEffect, useState, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import RoomHeader from "./RoomHeader";
 import ParticipantSection from "./ParticipantSection";
-// import ChatPanel from "./ChatPanel";
 import BottomControls from "./BottomControls";
 import RaisedHandsPanel from "./RaisedHandsPanel";
 import { apiFetch } from "@/lib/api";
 import livekitService from "@/AUDIO_ROOM/livekit/services/livekit.service";
 import { useSocket } from "@/context/SocketContext";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
+
+// Native Event Hooks to manage background track engines smoothly
+import { RoomEvent } from "livekit-client";
 
 const AudioRoomPage = () => {
   const [isChatOpen, setIsChatOpen] = useState(true);
@@ -33,7 +35,6 @@ const AudioRoomPage = () => {
   }, [currentUserId]);
 
   useEffect(() => {
-
     if (!userLoading && (userError || !currentUserId)) {
       router.replace("/employee-login");
     }
@@ -64,9 +65,9 @@ const AudioRoomPage = () => {
     hasJoinedRoom.current = true;
   };
 
-  // ==========================
+  // ==========================================
   // CONNECT LIVEKIT
-  // ==========================
+  // ==========================================
 
   const requestLiveKitToken = async (roomRole?: string) => {
     const response = await apiFetch("/audio-room/livekit/token", {
@@ -111,19 +112,34 @@ const AudioRoomPage = () => {
         throw new Error("LiveKit token unavailable");
       }
 
-      await livekitService.connect({
+      const connectedRoom = await livekitService.connect({
         token: token,
         roomId: String(roomId),
       });
-      console.log("✅ LiveKit room connected");
+      
+      // Safe Log: Confirms successful entry without dumping token hash keys
+      console.log("[LiveKit Engine] Audio streaming pipeline linked successfully.");
+
+      // ========================================================
+      // BIND NATIVE PERMISSION HANDSHAKE LISTENERS
+      // ========================================================
+      if (connectedRoom) {
+        connectedRoom.on(RoomEvent.ParticipantPermissionsChanged, async (_previousPermissions: any, participant: any) => {
+          if (!participant?.isLocal) return;
+
+          const canPublish = Boolean(connectedRoom.localParticipant.permissions?.canPublish);
+          console.log(`[LiveKit Engine] Permissions altered. canPublish: ${canPublish}`);
+
+          if (!canPublish) {
+            await livekitService.disableMicrophone();
+            console.log("[LiveKit Engine] Local audio stream track terminated by server.");
+          }
+        });
+      }
     } catch (error) {
-      console.error("❌ LiveKit connection failed:", error);
+      console.error("[LiveKit Error] Realtime connection fallback triggered.");
     }
   };
-
-  // ==========================
-  // FETCH ROOM DETAILS
-  // ==========================
 
   const fetchRoomDetails = async () => {
     try {
@@ -144,15 +160,11 @@ const AudioRoomPage = () => {
 
       setRoomData(data.data);
     } catch (error) {
-      console.error("Room details error:", error);
+      console.error("[App Fetch] Error parsing current view bounds.");
     } finally {
       setLoading(false);
     }
   };
-
-  // ==========================
-  // JOIN ROOM
-  // ==========================
 
   const joinRoom = async () => {
     try {
@@ -164,16 +176,15 @@ const AudioRoomPage = () => {
       });
 
       const data = await response.json();
-      console.log("Joined room:", data);
       return data.data;
     } catch (error) {
-      console.error("Join room error:", error);
+      console.error("[App Fetch] Server authentication handshake rejected.");
     }
   };
 
-  // ==========================
+  // ==========================================
   // SOCKET LISTENERS
-  // ==========================
+  // ==========================================
 
   useEffect(() => {
     if (!socket) return;
@@ -202,7 +213,7 @@ const AudioRoomPage = () => {
     };
 
     socket.on("speaker_muted", async (data) => {
-      console.log("Speaker muted:", data.userId);
+      console.log("[Socket Sync] Target track execution command: Force Mute");
       updateParticipantMuteState(Number(data.userId), true);
 
       if (Number(data.userId) === currentUserIdRef.current) {
@@ -211,21 +222,34 @@ const AudioRoomPage = () => {
     });
 
     socket.on("speaker_unmuted", async (data) => {
-      console.log("Speaker unmuted:", data.userId);
+      console.log("[Socket Sync] Target track execution command: Clear Mute");
       updateParticipantMuteState(Number(data.userId), false);
 
       if (Number(data.userId) === currentUserIdRef.current) {
-        await livekitService.enableMicrophone();
+        const mediaReady = await livekitService.enableMicrophone();
+
+        if (!mediaReady) {
+          updateParticipantMuteState(Number(data.userId), true);
+          socket.emit("audio_mic_toggle", {
+            roomId: Number(roomId),
+            isMuted: true,
+          });
+        }
       }
     });
 
-    socket.on("role_changed", (data) => {
-      console.log("Role changed for user:", data.userId);
-      fetchRoomDetails();
+    socket.on("role_changed", async (data) => {
+      console.log("[Socket Sync] Workspace role state matrix shifted.");
+      await fetchRoomDetails();
     });
 
     socket.on("participant_removed", (data) => {
-      console.log("Participant removed:", data.userId);
+      console.log("[Socket Sync] User connection disconnected from cluster.");
+      if (Number(data.userId) === currentUserIdRef.current) {
+        livekitService.disconnect();
+        router.replace("/community-forum/rooms");
+        return;
+      }
       fetchRoomDetails();
     });
 
@@ -237,9 +261,9 @@ const AudioRoomPage = () => {
     };
   }, [socket]);
 
-  // ==========================
+  // ==========================================
   // INITIALIZE ROOM
-  // ==========================
+  // ==========================================
 
   useEffect(() => {
     const initializeRoom = async () => {
@@ -260,7 +284,7 @@ const AudioRoomPage = () => {
         joinSocketRoom();
         await fetchRoomDetails();
       } catch (error) {
-        console.error("Room initialization failed:", error);
+        console.error("[Lifecycle] Initialization error handled.");
       } finally {
         setLoading(false);
       }
@@ -282,9 +306,9 @@ const AudioRoomPage = () => {
     };
   }, [currentUserId, roomId, socket, userLoading]);
 
-  // ==========================
+  // ==========================================
   // REALTIME PARTICIPANTS
-  // ==========================
+  // ==========================================
 
   useEffect(() => {
     if (!socket) return;
@@ -292,7 +316,7 @@ const AudioRoomPage = () => {
     const handleParticipantUpdate = (payload?: any) => {
       if (payload?.roomId && Number(payload.roomId) !== Number(roomId)) return;
 
-      console.log("Realtime participant update");
+      console.log("[Socket Sync] Room roster layouts updated.");
 
       if (payload?.participants) {
         const participantGroups = [
@@ -323,10 +347,6 @@ const AudioRoomPage = () => {
     };
   }, [socket, roomId, currentUserId]);
 
-  // ==========================
-  // LOADING & ERROR SCREENS
-  // ==========================
-
   if (loading || userLoading) {
     return (
       <div className="flex h-screen w-full flex-col items-center justify-center bg-[#f6f0e7] px-4 text-center">
@@ -342,109 +362,83 @@ const AudioRoomPage = () => {
     return (
       <div className="flex h-screen w-full flex-col items-center justify-center bg-[#f6f0e7] px-4 text-center">
         <h3 className="text-sm font-bold uppercase tracking-widest text-slate-800">Unable to Load Room</h3>
-        <p className="mt-1 text-[10px] text-slate-500">{userError || "Please sign in again to access this area."}</p>
+        <p className="mt-1 text-[10px] text-slate-500">Access verification failed.</p>
       </div>
     );
   }
 
-  // ==========================
-  // MAIN APPLICATION LAYOUT (NO GLOBAL SCROLL)
-  // ==========================
-
   return (
-<div className="relative h-screen w-full overflow-hidden bg-[#c3ead3] text-slate-900 antialiased selection:bg-[#076d47]/10 flex flex-col">
-  
-  {/* Fixed Sticky Header */}
-  <header className="shrink-0 border-b border-black/[0.04] bg-white/80 backdrop-blur-md z-20">
-    <RoomHeader
-      title={roomTitle}
-      description={roomDescription}
-      participantCount={participantGroups.length}
-    />
-  </header>
+    <div className="relative h-screen w-full overflow-hidden bg-[#c3ead3] text-slate-900 antialiased selection:bg-[#076d47]/10 flex flex-col">
+      <header className="shrink-0 border-b border-black/[0.04] bg-white/80 backdrop-blur-md z-20">
+        <RoomHeader
+          title={roomTitle}
+          description={roomDescription}
+          participantCount={participantGroups.length}
+        />
+      </header>
 
-  {/* Action / Floating Warning Row System */}
-  <div className="shrink-0 z-10">
-    <RaisedHandsPanel roomId={Number(roomId)} role={currentUserRole} />
-  </div>
-
-  {/* Central Viewport Core (Strict Height Containment) */}
-  <main className="flex-1 min-h-0 flex overflow-hidden relative">
-    
-    {/* Dynamic Inner Scrolling Container for Grid Boards */}
-    {/* FIXED: On desktop (md:), we disable the main container scroll and use a flex column that takes exactly 100% height */}
-    <div className="flex-1 h-full overflow-y-auto md:overflow-hidden px-4 py-4 sm:px-6 md:px-8">
-      <div className="mx-auto max-w-5xl h-full flex flex-col gap-4 pb-4 md:pb-0">
-        
-        {/* Speakers Block */}
-        {/* FIXED: Using flex-1 to distribute height beautifully on desktop, custom-scrollbar removed if handled inside ParticipantSection */}
-        <div className="flex-1 min-h-[120px] rounded-xl border border-black/[0.04] bg-white/60 p-4 shadow-sm backdrop-blur-sm flex flex-col overflow-hidden">
-          <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
-            <ParticipantSection
-              title="Host & Speakers"
-              participants={roomData?.participants?.hostAndSpeakers || []}
-              roomId={Number(roomId)}
-              currentUserId={currentUserId}
-              canModerate={canModerate}
-            />
-          </div>
-        </div>
-
-        {/* Moderators Block */}
-        {/* FIXED: flex-1 takes equal share, content scrolls gracefully inside if it overflows */}
-        <div className="flex-1 min-h-[120px] rounded-xl border border-black/[0.04] bg-white/60 p-4 shadow-sm backdrop-blur-sm flex flex-col overflow-hidden">
-          <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
-            <ParticipantSection
-              title="Moderators"
-              participants={roomData?.participants?.moderators || []}
-              roomId={Number(roomId)}
-              currentUserId={currentUserId}
-              canModerate={canModerate}
-            />
-          </div>
-        </div>
-
-        {/* Listeners Block */}
-        {/* FIXED: flex-[1.5] gives the listeners block slightly more weight on desktop screens */}
-        <div className="flex-[1.5] min-h-[120px] rounded-xl border border-black/[0.04] bg-white/60 p-4 shadow-sm backdrop-blur-sm flex flex-col overflow-hidden">
-          <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
-            <ParticipantSection
-              title="Listeners"
-              participants={roomData?.participants?.listeners || []}
-              roomId={Number(roomId)}
-              currentUserId={currentUserId}
-              canModerate={canModerate}
-            />
-          </div>
-        </div>
-
+      <div className="shrink-0 z-10">
+        <RaisedHandsPanel roomId={Number(roomId)} role={currentUserRole} />
       </div>
+
+      <main className="flex-1 min-h-0 flex overflow-hidden relative">
+        <div className="flex-1 h-full overflow-y-auto md:overflow-hidden px-4 py-4 sm:px-6 md:px-8">
+          <div className="mx-auto max-w-5xl h-full flex flex-col gap-4 pb-4 md:pb-0">
+            
+            <div className="flex-1 min-h-[120px] rounded-xl border border-black/[0.04] bg-white/60 p-4 shadow-sm backdrop-blur-sm flex flex-col overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
+                <ParticipantSection
+                  title="Host & Speakers"
+                  participants={roomData?.participants?.hostAndSpeakers || []}
+                  roomId={Number(roomId)}
+                  currentUserId={currentUserId}
+                  canModerate={canModerate}
+                />
+              </div>
+            </div>
+
+            <div className="flex-1 min-h-[120px] rounded-xl border border-black/[0.04] bg-white/60 p-4 shadow-sm backdrop-blur-sm flex flex-col overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
+                <ParticipantSection
+                  title="Moderators"
+                  participants={roomData?.participants?.moderators || []}
+                  roomId={Number(roomId)}
+                  currentUserId={currentUserId}
+                  canModerate={canModerate}
+                />
+              </div>
+            </div>
+
+            <div className="flex-[1.5] min-h-[120px] rounded-xl border border-black/[0.04] bg-white/60 p-4 shadow-sm backdrop-blur-sm flex flex-col overflow-hidden">
+              <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
+                <ParticipantSection
+                  title="Listeners"
+                  participants={roomData?.participants?.listeners || []}
+                  roomId={Number(roomId)}
+                  currentUserId={currentUserId}
+                  canModerate={canModerate}
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </main>
+
+      <footer className="shrink-0 border-t border-black/[0.04] bg-white/90 backdrop-blur-md px-2 py-1 sm:px-6 z-20">
+        <div className="mx-auto max-w-5xl">
+          <BottomControls
+            userId={currentUserId}
+            roomId={Number(roomId)}
+            role={currentUserRole}
+            participants={participantGroups}
+            isChatOpen={isChatOpen}
+            setIsChatOpen={setIsChatOpen}
+            isMuted={currentParticipant?.isMuted ?? true}
+          />
+        </div>
+      </footer>
     </div>
-
-    {/* Desktop Side Dock Chat Integration Layer */}
-    {/* {isChatOpen && (
-      <div className="hidden lg:block w-[340px] h-full shrink-0 border-l border-black/[0.04] bg-white/50 backdrop-blur-md overflow-y-auto z-10">
-        <ChatPanel isChatOpen={isChatOpen} setIsChatOpen={setIsChatOpen} />
-      </div>
-    )} */}
-  </main>
-
-  {/* Pinned Control Utility Deck */}
-  <footer className="shrink-0 border-t border-black/[0.04] bg-white/90 backdrop-blur-md px-2 py-1 sm:px-6 z-20">
-    <div className="mx-auto max-w-5xl">
-      <BottomControls
-        userId={currentUserId}
-        roomId={Number(roomId)}
-        role={currentUserRole}
-        participants={participantGroups}
-        isChatOpen={isChatOpen}
-        setIsChatOpen={setIsChatOpen}
-        isMuted={currentParticipant?.isMuted ?? true}
-      />
-    </div>
-  </footer>
-
-</div>
   );
 };
 

@@ -1,10 +1,18 @@
-const { prisma } = require("../../../prisma");
 const {
   getRoomDetailsService,
 } = require("../../modules/AUDIO_ROOM/room-details/roomDetails.service");
 const {
   canModerateRoom,
 } = require("../../modules/AUDIO_ROOM/audioRoomAuthz");
+const {
+  muteUnmuteService,
+} = require("../../modules/AUDIO_ROOM/speaker-mute/speakerMute.service");
+const {
+  downgradeToListenerService,
+} = require("../../modules/AUDIO_ROOM/speaker-downgrade/speakerDowngrade.service");
+const {
+  removeParticipantService,
+} = require("../../modules/AUDIO_ROOM/participant-remove/participantRemove.service");
 
 exports.registerModerationHandler = (io, socket) => {
   const emitParticipantUpdate = async (roomId, userId) => {
@@ -36,16 +44,10 @@ exports.registerModerationHandler = (io, socket) => {
         return;
       }
 
-      await prisma.room_participants.updateMany({
-        where: {
-          roomId: Number(roomId),
-          userId: Number(userId),
-          leftAt: null,
-        },
-        data: {
-          isMuted: true,
-          isSpeaking: false,
-        },
+      await muteUnmuteService({
+        roomId,
+        userId,
+        isMuted: true,
       });
 
       console.log(
@@ -87,16 +89,10 @@ exports.registerModerationHandler = (io, socket) => {
         return;
       }
 
-      await prisma.room_participants.updateMany({
-        where: {
-          roomId: Number(roomId),
-          userId: Number(userId),
-          leftAt: null,
-        },
-        data: {
-          isMuted: false,
-          isSpeaking: true,
-        },
+      await muteUnmuteService({
+        roomId,
+        userId,
+        isMuted: false,
       });
 
       console.log(
@@ -138,17 +134,9 @@ exports.registerModerationHandler = (io, socket) => {
         return;
       }
 
-      await prisma.room_participants.updateMany({
-        where: {
-          roomId: Number(roomId),
-          userId: Number(userId),
-          leftAt: null,
-        },
-        data: {
-          roomRole: "listener",
-          isMuted: true,
-          isSpeaking: false,
-        },
+      await downgradeToListenerService({
+        roomId,
+        userId,
       });
 
       console.log(
@@ -159,6 +147,7 @@ exports.registerModerationHandler = (io, socket) => {
         "role_changed",
         {
           userId: Number(userId),
+          roomId: Number(roomId),
           newRole: "listener",
         }
       );
@@ -189,15 +178,9 @@ exports.registerModerationHandler = (io, socket) => {
         return;
       }
 
-      await prisma.room_participants.updateMany({
-        where: {
-          roomId: Number(roomId),
-          userId: Number(userId),
-          leftAt: null,
-        },
-        data: {
-          leftAt: new Date(),
-        },
+      await removeParticipantService({
+        roomId,
+        userId,
       });
 
       console.log(
@@ -208,6 +191,7 @@ exports.registerModerationHandler = (io, socket) => {
         "participant_removed",
         {
           userId: Number(userId),
+          roomId: Number(roomId),
         }
       );
 

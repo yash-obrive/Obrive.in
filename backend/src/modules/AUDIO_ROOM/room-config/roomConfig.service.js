@@ -1,4 +1,5 @@
 const { prisma } = require("../../../../prisma");
+const { getCreatorRoomRole } = require("../roomRolePolicy");
 
 const createRoomConfigService =
   async (payload, userId) => { 
@@ -27,7 +28,7 @@ const createRoomConfigService =
           );
         }
 
-        const creatorRoomRole = creator.role?.toLowerCase() === "supervisor" ? "moderator" : "host"; 
+        const creatorRoomRole = getCreatorRoomRole(creator.role);
 
         // ==================================
         // CREATE ROOM CONFIG

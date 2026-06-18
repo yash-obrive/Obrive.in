@@ -1,5 +1,14 @@
 const { prisma } =
   require("../../../../prisma");
+const { RoomServiceClient } = require("livekit-server-sdk");
+const { normalizeRole } = require("../roomRolePolicy");
+
+const livekitHost = process.env.LIVEKIT_URL || "http://localhost:7880";
+const roomService = new RoomServiceClient(
+  livekitHost,
+  process.env.LIVEKIT_API_KEY,
+  process.env.LIVEKIT_API_SECRET
+);
 
 const removeParticipantService =
   async (payload) => {
@@ -33,6 +42,12 @@ const removeParticipantService =
       );
     }
 
+    if (normalizeRole(participant.roomRole) === "admin") {
+      throw new Error(
+        "Cannot remove admin from room"
+      );
+    }
+
     // ==========================
     // REMOVE FROM ROOM
     // ==========================
@@ -49,6 +64,17 @@ const removeParticipantService =
           },
         }
       );
+
+    try {
+      await roomService.removeParticipant(
+        roomId.toString(),
+        userId.toString()
+      );
+    } catch (lkError) {
+      console.error(
+        `[LiveKit Error] Failed to remove participant from media room: ${lkError.message}`
+      );
+    }
 
     return {
       success: true,

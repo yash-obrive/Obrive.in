@@ -190,7 +190,9 @@ if (
 
         else if (
           participant.roomRole ===
-          "moderator"
+            "moderator" ||
+          participant.roomRole ===
+            "admin"
         ) {
           participants.moderators.push(
             formattedUser

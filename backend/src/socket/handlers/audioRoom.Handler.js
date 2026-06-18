@@ -36,6 +36,18 @@ exports.registerAudioRoomHandler =
         );
       };
 
+    const hasOtherActiveSocketInRoom =
+      (
+        roomId,
+        userId
+      ) =>
+        Array.from(io.sockets.sockets.values()).some(
+          (connectedSocket) =>
+            connectedSocket.id !== socket.id &&
+            Number(connectedSocket.user?.id) === Number(userId) &&
+            Number(connectedSocket.currentRoomId) === Number(roomId)
+        );
+
     // ==========================
     // JOIN AUDIO ROOM
     // ==========================
@@ -182,6 +194,7 @@ exports.registerAudioRoomHandler =
 
               roomRole: {
                 in: [
+                  "admin",
                   "host",
                   "moderator",
                   "speaker",
@@ -333,6 +346,15 @@ exports.registerAudioRoomHandler =
         if (
           !roomId
         ) return;
+
+        if (
+          hasOtherActiveSocketInRoom(
+            roomId,
+            socket.user.id
+          )
+        ) {
+          return;
+        }
 
         await prisma.room_participants.updateMany(
           {

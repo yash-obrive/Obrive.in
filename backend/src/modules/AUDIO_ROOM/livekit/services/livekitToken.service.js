@@ -1,5 +1,6 @@
 const { prisma } = require("../../../../../prisma");
 const { createLiveKitToken } = require("../token/create-token");
+const { resolveConfiguredRoomRole } = require("../../roomRolePolicy");
 
 const assertRoomAccess = async (roomId, userId) => {
   const room = await prisma.room_configs.findUnique({
@@ -52,30 +53,11 @@ const assertRoomAccess = async (roomId, userId) => {
     throw error;
   }
 
-  if (Number(room.createdBy) === Number(userId)) {
-    return {
-      room,
-      user,
-      roomRole: "host",
-    };
-  }
-
-  if (user.role?.toLowerCase() === "admin") {
-    return {
-      room,
-      user,
-      roomRole: "moderator",
-    };
-  }
-
-  if (user.role?.toLowerCase() === "supervisor") {
-    return {
-      room,
-      user,
-      roomRole: "moderator",
-    };
-  }
-
+  // =================================================================
+  // LEVEL 1 PRIORITY: Live Room Actions (Promotions, Demotions, States)
+  // =================================================================
+  // Always look up current situational participant status rows first.
+  // This allows promotions and demotions to bypass static CRM profiles.
   const participant = await prisma.room_participants.findFirst({
     where: {
       roomId: Number(roomId),
@@ -92,46 +74,13 @@ const assertRoomAccess = async (roomId, userId) => {
     };
   }
 
-  const assignedRole = room.roleAssignments.find(
-    (assignment) =>
-      (assignment.assignmentType === "specific-user" &&
-        Number(assignment.userId) === Number(userId)) ||
-      (assignment.assignmentType === "crm-role" &&
-        assignment.crmRole?.toLowerCase() === user.role?.toLowerCase())
-  );
+  const configuredRoomRole = resolveConfiguredRoomRole({ room, user });
 
-  if (assignedRole) {
+  if (configuredRoomRole) {
     return {
       room,
       user,
-      roomRole: assignedRole.assignedRoomRole,
-    };
-  }
-
-  const hasRoleAccess = room.joinPermissions.find(
-    (permission) =>
-      permission.permissionType === "crm-role" &&
-      permission.crmRole?.toLowerCase() === user.role?.toLowerCase()
-  );
-
-  if (hasRoleAccess) {
-    return {
-      room,
-      user,
-      roomRole: "listener",
-    };
-  }
-
-  if (
-    room.allowGuestUsers &&
-    room.joinPermissions.some(
-      (permission) => permission.permissionType === "guest"
-    )
-  ) {
-    return {
-      room,
-      user,
-      roomRole: "listener",
+      roomRole: configuredRoomRole,
     };
   }
 

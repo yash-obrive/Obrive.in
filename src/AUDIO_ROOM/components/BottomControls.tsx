@@ -28,7 +28,7 @@ interface BottomControlsProps {
     role: string;
     isMuted?: boolean;
   }[];
-  role: "admin" | "host" | "moderator" | "speaker" | "listener";
+  role: string; // Dynamic casing protection
   isChatOpen?: boolean;
   isMicEnabled?: boolean;
   isMuted?: boolean;
@@ -37,7 +37,7 @@ interface BottomControlsProps {
 
 const BottomControls = ({ 
   roomId,
-  role,
+  role = "listener",
   userId,
   participants = [],
   isChatOpen = false,
@@ -49,8 +49,10 @@ const BottomControls = ({
   const [showModerationMenu, setShowModerationMenu] = useState(false);
   const [micActive, setMicActive] = useState(isMicEnabled || !isMuted);
 
-  const canSpeak = role !== "listener";
-  const isModerator = role === "moderator" || role === "host" || role === "admin";
+  // MATCH DATABASE CONVENTIONS: Uniform lowercase evaluation rules
+  const normalizedRole = role?.toLowerCase();
+  const canSpeak = ["host", "moderator", "speaker", "admin"].includes(normalizedRole);
+  const isModerator = ["host", "moderator", "admin"].includes(normalizedRole);
 
   const moderationParticipants = participants.filter((participant) => {
     const participantRole = participant.role?.toLowerCase();
@@ -66,11 +68,18 @@ const BottomControls = ({
 
     try {
       const nextMuted = micActive;
+      let mediaReady = true;
 
       if (!micActive) {
-        await livekitService.enableMicrophone();
+        mediaReady = await livekitService.enableMicrophone();
+        if (!mediaReady) {
+          console.error("[Media Device] Microphone publish was blocked or failed.");
+          return;
+        }
+        console.log("[Media Device] Hardware capture request: Microphone Active");
       } else {
         await livekitService.disableMicrophone();
+        console.log("[Media Device] Hardware capture request: Microphone Inactive");
       }
 
       setMicActive(!nextMuted);
@@ -80,14 +89,17 @@ const BottomControls = ({
         userId,
         isMuted: nextMuted,
       });
+      
+      console.log(`[Socket Broadcast] Dispatched local mute modification state. Next Muted: ${nextMuted}`);
     } catch (error) {
-      console.error("Mic toggle failed:", error);
+      console.error("[Media Device] Hardware switch matrix error encountered.");
     }
   };
 
   const handleEndRoom = async () => {
     try {
-      const response = await apiFetch("/audio-room//end-room", {
+      // FIXED: Cleared double forward slash from path declaration
+      const response = await apiFetch("/audio-room/end-room", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ roomId, userId }),
@@ -96,16 +108,12 @@ const BottomControls = ({
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || "Failed to end room");
 
+      console.log("[Room Action] Destruction token approved. Tearing down space.");
       window.location.href = "/audio-room/room-ends";
     } catch (error) {
-      console.error("End Room Error:", error);
+      console.error("[Room Action] Could not dispatch end-session request.");
     }
-          // window.location.href = "/audio-room/room-ends";
   };
-
-
-
-  // app.use( "/api/audio-room", require( "./src/modules/AUDIO_ROOM/room-end/roomEnd.routes"));
 
   const handleLeaveRoom = async () => {
     try {
@@ -118,9 +126,10 @@ const BottomControls = ({
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || "Failed to leave room");
 
+      console.log("[Room Action] Safely disconnected from tracking loops.");
       window.location.href = "/community-forum/rooms";
     } catch (error) {
-      console.error("Leave Room Error:", error);
+      console.error("[Room Action] Error executing graceful departure sequence.");
     }
   };
 
@@ -134,33 +143,38 @@ const BottomControls = ({
 
       const data = await response.json();
       if (!response.ok) throw new Error(data.message);
-      console.log("✋ Hand Raised:", data);
+      
+      console.log("[Socket Broadcast] Hand elevation request successfully stacked onto database.");
     } catch (error) {
-      console.error("Raise Hand Error:", error);
+      console.error("[Socket Broadcast] Denied hand elevation insertion.");
     }
   };
 
   const handleMuteSpeaker = (speakerId: number) => {
     if (!socket) return;
     socket.emit("mute_speaker", { roomId: Number(roomId), userId: speakerId });
+    console.log("[Moderation] Emitted enforce hard mute target command.");
     setShowModerationMenu(false);
   };
 
   const handleUnmuteSpeaker = (speakerId: number) => {
     if (!socket) return;
     socket.emit("unmute_speaker", { roomId: Number(roomId), userId: speakerId });
+    console.log("[Moderation] Emitted clear mute restriction target command.");
     setShowModerationMenu(false);
   };
 
   const handleDowngradeSpeaker = (speakerId: number) => {
     if (!socket) return;
     socket.emit("downgrade_to_listener", { roomId: Number(roomId), userId: speakerId });
+    console.log("[Moderation] Emitted strip speaker token target command.");
     setShowModerationMenu(false);
   };
 
   const handleRemoveParticipant = (participantId: number) => {
     if (!socket) return;
     socket.emit("remove_participant", { roomId: Number(roomId), userId: participantId });
+    console.log("[Moderation] Emitted forceful extraction target command.");
     setShowModerationMenu(false);
   };
 
@@ -170,11 +184,11 @@ const BottomControls = ({
         
         {/* Left Side: Secondary actions */}
         <div className="flex items-center gap-1.5 shrink-0">
-          <button className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-800 transition active:scale-95 shadow-xs">
+          {/* <button className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-800 transition active:scale-95 shadow-xs">
             <Smile size={18} />
-          </button>
+          </button> */}
 
-          {role === "listener" && (
+          {normalizedRole === "listener" && (
             <button onClick={handleRaiseHand} className="flex h-9 w-9 items-center justify-center rounded-lg border border-amber-200 bg-amber-50 text-amber-700 hover:bg-amber-100 transition active:scale-95 shadow-xs">
               <Hand size={18} />
             </button>
@@ -229,7 +243,6 @@ const BottomControls = ({
         </div>
 
         {/* Center: Primary Call Controls */}
-        {/* FIXED: Changed flex layout constraints to keep these side-by-side on mobile without squishing */}
         <div className="flex items-center gap-1.5 sm:gap-3 flex-1 justify-center sm:flex-initial">
           {canSpeak && (
             <button 
@@ -254,11 +267,11 @@ const BottomControls = ({
 
         {/* Right Side: Interface adjustments */}
         <div className="flex items-center gap-1.5 shrink-0">
-          <button onClick={() => setIsChatOpen?.(!isChatOpen)} className={`flex h-9 w-9 items-center justify-center rounded-lg border transition active:scale-95 shadow-xs ${isChatOpen ? "border-[#076d47]/30 bg-[#076d47]/5 text-[#076d47]" : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"}`}>
+          {/* <button onClick={() => setIsChatOpen?.(!isChatOpen)} className={`flex h-9 w-9 items-center justify-center rounded-lg border transition active:scale-95 shadow-xs ${isChatOpen ? "border-[#076d47]/30 bg-[#076d47]/5 text-[#076d47]" : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"}`}>
             <MessageCircle size={18} />
-          </button>
+          </button> */}
 
-          {role === "host" && (
+          {normalizedRole === "host" && (
             <button onClick={handleEndRoom} className="flex h-9 w-9 items-center justify-center rounded-lg border border-red-200 bg-white text-red-600 hover:bg-red-50 transition active:scale-95 shadow-xs" title="End Session">
               <Square size={14} className="fill-red-600" />
             </button>

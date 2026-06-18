@@ -1,8 +1,10 @@
 const { prisma } = require("../../../prisma");
-
-const MODERATOR_ROOM_ROLES = ["host", "moderator", "admin"];
-
-const normalizeRole = (role) => String(role || "").toLowerCase();
+const {
+  MODERATOR_ROOM_ROLES,
+  getCreatorRoomRole,
+  isAdminCrmRole,
+  normalizeRole,
+} = require("./roomRolePolicy");
 
 const getActiveParticipant = async (roomId, userId) =>
   prisma.room_participants.findFirst({
@@ -21,6 +23,11 @@ const getActorRoomRole = async (roomId, userId) => {
     select: {
       id: true,
       createdBy: true,
+      creator: {
+        select: {
+          role: true,
+        },
+      },
     },
   });
 
@@ -31,11 +38,24 @@ const getActorRoomRole = async (roomId, userId) => {
   }
 
   if (Number(room.createdBy) === Number(userId)) {
-    return "host";
+    return getCreatorRoomRole(room.creator?.role);
   }
 
   const participant = await getActiveParticipant(roomId, userId);
-  return participant?.roomRole || null;
+  if (participant?.roomRole) {
+    return participant.roomRole;
+  }
+
+  const user = await prisma.users.findUnique({
+    where: {
+      id: Number(userId),
+    },
+    select: {
+      role: true,
+    },
+  });
+
+  return isAdminCrmRole(user?.role) ? "admin" : null;
 };
 
 const requireRoomRoles =

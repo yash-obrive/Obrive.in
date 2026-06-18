@@ -2,6 +2,7 @@ const { prisma } = require("../../../../prisma");
 const { getRoomDetailsService,} = require("../room-details/roomDetails.service");
 const { getIO,} = require( "../../../socket");
 const { createLiveKitToken,} = require("../livekit/token/create-token");
+const { canPublishAudio, resolveConfiguredRoomRole } = require("../roomRolePolicy");
 
 const joinRoomService = async (payload) => {
   const {
@@ -71,116 +72,11 @@ const joinRoomService = async (payload) => {
     );
   }
 
-  const isRoomCreator =
-    Number(room.createdBy) ===
-    Number(user.id);
-
-  const isAdminUser =
-    user.role?.toLowerCase() ===
-    "admin";
-
-  const isSupervisorUser =
-    user.role?.toLowerCase() ===
-    "supervisor";
-
   console.log(
     "JOIN USER:",
     user.id,
     user.role
   );
-
-  if (isRoomCreator) {
-    await addParticipant(
-      "host"
-    );
-
-    const livekitToken =
-      await createLiveKitToken({
-        roomName:
-          room.id.toString(),
-
-        participantId:
-          user.id.toString(),
-
-        participantName:
-          user.name ||
-          user.username ||
-          `user-${user.id}`,
-
-        role:
-          "host",
-      });
-
-    return {
-      allowed: true,
-      roomRole:
-        "host",
-      room,
-      livekitToken,
-    };
-  }
-
-  if (isAdminUser) {
-    await addParticipant(
-      "moderator"
-    );
-
-    const livekitToken =
-      await createLiveKitToken({
-        roomName:
-          room.id.toString(),
-
-        participantId:
-          user.id.toString(),
-
-        participantName:
-          user.name ||
-          user.username ||
-          `user-${user.id}`,
-
-        role:
-          "moderator",
-      });
-
-    return {
-      allowed: true,
-      roomRole:
-        "moderator",
-      room,
-      livekitToken,
-    };
-  }
-
-  if (isSupervisorUser) {
-    await addParticipant(
-      "moderator"
-    );
-
-    const livekitToken =
-      await createLiveKitToken({
-        roomName:
-          room.id.toString(),
-
-        participantId:
-          user.id.toString(),
-
-        participantName:
-          user.name ||
-          user.username ||
-          `user-${user.id}`,
-
-        role:
-          "moderator",
-      });
-
-    return {
-      allowed: true,
-      roomRole:
-        "moderator",
-      room,
-      livekitToken,
-    };
-  }
 
 // ==================================
 // ADD PARTICIPANT
@@ -237,9 +133,19 @@ async function addParticipant(roomRole) {
           );
         }
 
-        if (
-          primaryParticipant
-        ) {
+        if (primaryParticipant) {
+          await tx.room_participants.update({
+            where: {
+              id: primaryParticipant.id,
+            },
+
+            data: {
+              roomRole,
+              isMuted: primaryParticipant.isMuted ?? true,
+              isSpeaking:
+                canPublishAudio(roomRole) && !primaryParticipant.isMuted,
+            },
+          });
           return;
         }
 
@@ -285,156 +191,35 @@ async function addParticipant(roomRole) {
 }
 
 
-  // ==================================
-  // CHECK ROLE ASSIGNMENTS
-  // ==================================
+  const roomRole = resolveConfiguredRoomRole({ room, user });
 
-  const assignedRole =
-    room.roleAssignments.find(
-      (role) =>
-        (
-          role.assignmentType ===
-            "specific-user" &&
-          role.userId ===
-            Number(userId)
-        ) ||
-        (
-          role.assignmentType ===
-            "crm-role" &&
-          role.crmRole?.toLowerCase() ===
-            user.role?.toLowerCase()
-        )
-    );
+  if (roomRole) {
+    await addParticipant(roomRole);
 
-if (assignedRole) {
-  await addParticipant(
-    assignedRole.assignedRoomRole
-  );
+    const livekitToken =
+      await createLiveKitToken({
+        roomName:
+          room.id.toString(),
 
-  const livekitToken =
-    await createLiveKitToken({
-      roomName:
-        room.id.toString(),
+        participantId:
+          user.id.toString(),
 
-      participantId:
-        user.id.toString(),
+        participantName:
+          user.name ||
+          user.username ||
+          `user-${user.id}`,
 
-      participantName:
-        user.name ||
-        user.username ||
-        `user-${user.id}`,
+        role:
+          roomRole,
+      });
 
-      role:
-        assignedRole.assignedRoomRole,
-    });
-
-  return {
-    allowed: true,
-    roomRole:
-      assignedRole.assignedRoomRole,
-    room,
-    livekitToken,
-  };
-}
-
-  // ==================================
-  // CHECK CRM ROLE ACCESS
-  // ==================================
-
-  const hasRoleAccess =
-    room.joinPermissions.find(
-      (permission) =>
-        permission.permissionType ===
-          "crm-role" &&
-        permission.crmRole?.toLowerCase() ===
-          user.role?.toLowerCase()
-    );
-
-    console.log(
-      "ROOM PERMISSIONS:",
-      room.joinPermissions
-    );
-
-    console.log(
-      "USER ROLE:",
-      user.role
-    );
-
-if (hasRoleAccess) {
-  await addParticipant(
-    "listener"
-  );
-
-  const livekitToken =
-    await createLiveKitToken({
-      roomName:
-        room.id.toString(),
-
-      participantId:
-        user.id.toString(),
-
-      participantName:
-        user.name ||
-        user.username ||
-        `user-${user.id}`,
-
-      role:
-        "listener",
-    });
-
-  return {
-    allowed: true,
-    roomRole:
-      "listener",
-    room,
-    livekitToken,
-  };
-}
-
-  // ==================================
-  // CHECK GUEST ACCESS
-  // ==================================
-
-const guestAllowed =
-  room.joinPermissions.find(
-    (permission) =>
-      permission.permissionType ===
-      "guest"
-  );
-
-if (
-  guestAllowed &&
-  room.allowGuestUsers
-) {
-  await addParticipant(
-    "listener"
-  );
-
-  const livekitToken =
-    await createLiveKitToken({
-      roomName:
-        room.id.toString(),
-
-      participantId:
-        user.id.toString(),
-
-      participantName:
-        user.name ||
-        user.username ||
-        `user-${user.id}`,
-
-      role:
-        "listener",
-    });
-
-  return {
-    allowed: true,
-    roomRole:
-      "listener",
-    room,
-    livekitToken,
-  };
-}
+    return {
+      allowed: true,
+      roomRole,
+      room,
+      livekitToken,
+    };
+  }
 
   // ==================================
   // ACCESS DENIED
