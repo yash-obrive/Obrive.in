@@ -366,18 +366,18 @@ const AudioRoomPage = () => {
 
   if (loading || userLoading) {
     return (
-      <div className="flex h-screen w-full flex-col items-center justify-center bg-[#f6f0e7] px-4 text-center">
+      <div className="flex h-screen w-full flex-col items-center justify-center bg-gradient px-4 text-center">
         <div className="relative flex items-center justify-center">
-          <div className="h-10 w-10 animate-spin rounded-full border-2 border-black/5 border-t-[#076d47]" />
+          <div className="h-10 w-10 animate-spin  border-black/5 border-t-[#076d47]" />
         </div>
-        <h3 className="mt-4 text-[10px] font-semibold uppercase tracking-widest text-slate-700">Connecting Space</h3>
+        <h3 className="mt-4 text-[10px] font-semibold uppercase tracking-widest ">Connecting Space</h3>
       </div>
     );
   }
 
   if (userError || !currentUserId) {
     return (
-      <div className="flex h-screen w-full flex-col items-center justify-center bg-[#f6f0e7] px-4 text-center">
+      <div className="flex h-screen w-full flex-col items-center justify-center bg-gradient px-4 text-center">
         <h3 className="text-sm font-bold uppercase tracking-widest text-slate-800">Unable to Load Room</h3>
         <p className="mt-1 text-[10px] text-slate-500">Access verification failed.</p>
       </div>
@@ -385,7 +385,7 @@ const AudioRoomPage = () => {
   }
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-[#c3ead3] text-slate-900 antialiased selection:bg-[#076d47]/10 flex flex-col">
+    <div className="relative h-screen w-full overflow-hidden bg-gradient text-slate-900 antialiased selection:bg-[#076d47]/10 flex flex-col">
       <header className="shrink-0 border-b border-black/[0.04] bg-white/80 backdrop-blur-md z-20">
         <RoomHeader
           title={roomTitle}

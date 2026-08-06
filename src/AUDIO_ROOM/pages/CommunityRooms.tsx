@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { apiFetch } from "@/lib/api";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
+import FONTS from "@/assets/fonts";
 
 export default function CommunityRooms() { 
   const { me, loading: userLoading } = useCurrentUser();
@@ -80,15 +81,15 @@ export default function CommunityRooms() {
 
   if (loading || userLoading) {
     return (
-      <div className="min-h-screen bg-[#c3ead3] px-4 py-10 sm:px-8 lg:px-12 col-span-3">
-        <div className="mx-auto flex max-w-6xl items-center justify-center rounded-4xl  bg-[#c3ead3] px-6 py-20 ">
+      <div className="min-h-screen bg-gradient px-4 py-10 sm:px-8 lg:px-12 col-span-3 bg-gradient">
+        <div className="mx-auto flex max-w-6xl items-center justify-center rounded-4xl  bg-gradient px-6 py-20 ">
           <div className="text-center">
             <div className="mx-auto mb-4 h-14 w-14 animate-pulse rounded-full border border-black/10 bg-black/5" />
             <div className="text-lg font-semibold tracking-tight text-slate-900">
-              Finding live rooms
+              Getting live rooms
             </div>
             <div className="mt-2 text-sm text-slate-500">
-              Loading rooms that match your role...
+              Loading rooms ...
             </div>
           </div>
         </div>
@@ -97,14 +98,14 @@ export default function CommunityRooms() {
   }
 
   return (
-    <div className="min-h-screen bg-[#c3ead3] text-slate-950">
-      <div className="relative overflow-hidden border-b border-black/5 bg-[#c3ead3]">
+    <div className="min-h-screen bg-gradient text-slate-950">
+      <div className="relative overflow-hidden border-b border-none">
         <div className="absolute inset-0 opacity-40 [background:radial-gradient(circle_at_top_left,rgba(7,109,71,0.18),transparent_30%),radial-gradient(circle_at_top_right,rgba(0,0,0,0.06),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(7,109,71,0.12),transparent_28%)]" />
         <div className="relative mx-auto max-w-6xl px-4 py-10 sm:px-8 sm:py-14 lg:px-12">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#074139] shadow-sm backdrop-blur">
-                Live Conversations
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-7 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#074139] shadow-sm backdrop-blur">
+                Conversations, new ideas, trends, community live discussions and more. <span className="ml-2 text-slate-400">join now</span>
               </div>
               <h1 className="text-4xl font-black tracking-tight sm:text-4xl lg:text-5xl">
                 Step into the room.
@@ -128,20 +129,8 @@ export default function CommunityRooms() {
           </div>
 
           <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="w-full max-w-xl rounded-full border border-black/10 bg-white/85 px-5 py-3 shadow-sm backdrop-blur">
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(event) => setSearchTerm(event.target.value)}
-                placeholder="Search rooms by name or topic"
-                className="w-full bg-transparent text-sm outline-none placeholder:text-slate-400"
-              />
-            </div>
-            <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-              <span className="rounded-full border border-black/10 bg-white/70 px-4 py-2">Curated for you</span>
-              <span className="rounded-full border border-black/10 bg-white/70 px-4 py-2">Live only</span>
-              <span className="rounded-full border border-black/10 bg-white/70 px-4 py-2">Tap to join</span>
-            </div>
+
+
           </div>
 
           {error && (
@@ -165,7 +154,7 @@ export default function CommunityRooms() {
             <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-slate-600">
               {searchTerm.trim()
                 ? "Try a different search term or clear the filter to see every room you can join."
-                : "There are currently no live rooms available for your role."}
+                : "There are currently no live rooms available"}
             </p>
           </div>
         ) : (
@@ -184,56 +173,75 @@ export default function CommunityRooms() {
               return (
                 <div 
                   key={room.id} 
-                  className="group flex flex-col justify-between rounded-xl border border-black/[0.08] bg-white/90 p-5 shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-black/[0.15]"
+                  className="h-[220px] group bg-gradient flex flex-col justify-between rounded-xl border border-black/[0.08] bg-white/90 p-5 shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-black/[0.15]"
                 >
+{/* w-full sm:w-[450px] md:w-[550px] lg:w-[580px] py-6 sm:py-6 px-6 sm:px-10 lg:px-8 min-h-[320px] rounded-2xl bg-gradient cursor-default */}
                   <div>
                     {/* Upper Metadata Row */}
-                    <div className="flex items-start gap-3.5">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#074139] text-sm font-bold text-white shadow-sm">
-                        {initials || "R"}
-                      </div>
 
-                      <div className="min-w-0 flex-1">
-                        <h3 className="text-base font-bold tracking-tight text-slate-900 group-hover:text-[#074139] transition-colors line-clamp-1">
-                          {label}
-                        </h3>
-                        
+
+
+                  <div className="flex items-end gap-2 leading-none"> 
+                    {/* The Avatar Indicator Box */}
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-[#074139] text-[9px] font-bold text-white shadow-sm">
+                      {initials || "R"}
+                    </div>
+
+                    {/* Label Wrapper - Forced to match structural bottom */}
+                    <div className="min-w-0 flex items-end h-8">
+                      <h3 className="text-base text-bold text-[15px] sm:text-[15px] md:text-[15px] lg:text-[15px] mb-1 font-medium tracking-tight transition-colors line-clamp-1 translate-y-[2px]">
+                        {label}
+                      </h3>
+                    </div>
+                  </div>
+                                              
                         {room.roomDescription ? (
-                          <p className="mt-1.5 text-xs leading-relaxed text-slate-500 line-clamp-2">
+                          <p className={`${FONTS.microgrammaBold.className} text-[20px] mt-4 sm:text-2xl md:text-2xl lg:text-2xl text-secondary line-clamp-3`}>
                             {room.roomDescription}
                           </p>
                         ) : (
-                          <p className="mt-1.5 text-xs italic text-slate-400">
-                            No layout logging details provided for this active broadcast space.
+                          <p className="mt-1.5 text-[14px] italic text-slate-400">
+                            join to explore ideas with others.
                           </p>
                         )}
-                      </div>
-                    </div>
 
-                    {/* Badge System Logs */}
-                    <div className="mt-4 flex flex-wrap gap-1.5 items-center">
-                      <span className="rounded-md border border-black/[0.06] bg-slate-50/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                        Room #{room.id}
-                      </span>
-                      {room.roomType && (
-                        <span className="rounded-md border border-black/[0.06] bg-slate-50/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                          {room.roomType}
-                        </span>
-                      )}
-                    </div>
                   </div>
 
                   {/* Operational Action Footer Layer */}
                   <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                      Access: <span className={allowed ? "text-[#074139]" : "text-slate-500"}>{allowed ? "Open" : "Restricted"}</span>
+
+                      <span className={allowed ? "text-[#074139]" : "text-slate-500"}>
+                        {allowed ? "Open" : "Restricted"}
+                      </span>
+                    {/* Badge System Logs */}
+                    {/* <div className="mt-4 flex flex-wrap gap-1.5 items-center"> */}
+
+                      {/* <span className="rounded-md border border-black/[0.06] bg-slate-50/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                        Room #{room.id}
+                      </span>
+
+                      <span className="rounded-md border border-black/[0.06] bg-slate-50/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                        Room #{room.hostId}
+                      </span>
+
+                      {room.roomType && (
+                        <span className="rounded-md border border-black/[0.06] bg-slate-50/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                          {room.roomType}
+                        </span>
+
+                        
+                      )} */}
+                      
+                    {/* </div> */}
+
                     </div>
 
                     {allowed ? (
                       <Link href={`/audio-room/room/${room.id}`} className="shrink-0">
                         <Button
                           size="sm"
-                          className="rounded-lg bg-[#074139] px-4 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#055c3c] active:scale-98"
+                          className="rounded-sm cursor-pointer bg-[#074139] px-4 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#055c3c] active:scale-98"
                         >
                           Join Room
                         </Button>
@@ -243,7 +251,7 @@ export default function CommunityRooms() {
                         size="sm"
                         variant="outline"
                         disabled
-                        className="rounded-lg border-slate-200 bg-slate-50 px-4 text-xs font-semibold text-slate-400 cursor-not-allowed"
+                        className="rounded-sm border-slate-200 bg-slate-50 px-4 text-xs font-semibold text-slate-400 cursor-not-allowed"
                       >
                         Unavailable
                       </Button>

@@ -6,6 +6,10 @@ import { API_BASE_URL } from "@/lib/api";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import obriveLogo from "../../assets/images/logos/obrive-logo.svg";
 import Image from "next/image";
+import FONTS from "@/assets/fonts";
+
+
+
 
 const CommunityPage = () => {
   const router = useRouter();
@@ -212,7 +216,6 @@ useEffect(() => {
                   router.push("/community-forum/rooms");
                   return;
                 }
-
                 if (userLoading) {
                   // still resolving; show dialog to allow login
                   setShowLoginDialog(true);
@@ -225,89 +228,89 @@ useEffect(() => {
               get started
             </button>
         </div>
+        {/* // login dialog box ------------------------------------------------------------------------- */}
+                {showLoginDialog ? (
+                  <div className="pointer-events-auto fixed inset-0 z-60 flex items-center justify-center bg-black/55 px-4 py-6 backdrop-blur-sm">
+                    <div className="w-full max-w-110 rounded-[20px] border border-black/10 bg-white p-8 text-left shadow-[0_30px_80px_rgba(0,0,0,0.22)]">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <div className="inline-flex rounded-full border border-[#074139]/15 bg-[#074139]/10 px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-[#074139]">
+                            Login required
+                          </div>
+                          <h2 className="mt-4 text-[18px] font-black tracking-tight text-gray-950">
+                            Sign in to continue
+                          </h2>
+                          <p className=" text-xs font-medium leading-6 text-gray-600">
+                            Enter your email and password to continue 
+                          </p>
+                        </div>
 
-        {showLoginDialog ? (
-          <div className="pointer-events-auto fixed inset-0 z-60 flex items-center justify-center bg-black/55 px-4 py-6 backdrop-blur-sm">
-            <div className="w-full max-w-md rounded-[28px] border border-black/10 bg-white p-6 text-left shadow-[0_30px_80px_rgba(0,0,0,0.22)]">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <div className="inline-flex rounded-full border border-[#074139]/15 bg-[#074139]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#074139]">
-                    Login required
-                  </div>
-                  <h2 className="mt-4 text-2xl font-black tracking-tight text-gray-950">
-                    Sign in to continue
-                  </h2>
-                  <p className="mt-2 text-sm font-medium leading-6 text-gray-600">
-                    Enter your email and password to 
-                  </p>
-                </div>
+                        <button
+                          type="button"
+                          aria-label="Close login dialog"
+                          onClick={() => setShowLoginDialog(false)}
+                          className="rounded-full border border-black/10 px-3 py-1 text-sm font-semibold  cursor-pointer  text-gray-600 transition hover:bg-gray-100 hover:text-gray-950"
+                        >
+                          ×
+                        </button>
+                      </div>
 
-                <button
-                  type="button"
-                  aria-label="Close login dialog"
-                  onClick={() => setShowLoginDialog(false)}
-                  className="rounded-full border border-black/10 px-3 py-1 text-sm font-semibold text-gray-600 transition hover:bg-gray-100 hover:text-gray-950"
-                >
-                  ×
-                </button>
-              </div>
+                      <div className="mt-6 space-y-4">
+                        <label className="block">
+                          <span className="mb-1 block text-[12px] font-semibold text-gray-700">Email</span>
+                          <input
+                            type="email"
+                            value={email}
+                            onChange={(event) => setEmail(event.target.value)}
+                            placeholder="Enter your email"
+                            className="w-full rounded-[14px] text-[12px] border border-black/10 bg-white px-4 py-2.5 text-sm text-gray-950 outline-none transition focus:border-[#074139]"
+                          />
+                        </label>
 
-              <div className="mt-6 space-y-4">
-                <label className="block">
-                  <span className="mb-2 block text-sm font-semibold text-gray-700">Email</span>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
-                    placeholder="Enter your email"
-                    className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-gray-950 outline-none transition focus:border-[#074139]"
-                  />
-                </label>
+                        <label className="block">
+                          <span className="mb-1 block text-[12px] font-semibold text-gray-700">Password</span>
+                          <input
+                            type="password"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                            onKeyDown={(event) => {
+                              if (event.key === "Enter") {
+                                handleLogin();
+                              }
+                            }}
+                            placeholder="Enter your password"
+                            className="w-full rounded-2xl text-[14px] border border-black/10 bg-white px-4 py-2.5 text-sm text-gray-950 outline-none transition focus:border-[#074139]"
+                          />
+                        </label>
 
-                <label className="block">
-                  <span className="mb-2 block text-sm font-semibold text-gray-700">Password</span>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    onKeyDown={(event) => {
-                      if (event.key === "Enter") {
-                        handleLogin();
-                      }
-                    }}
-                    placeholder="Enter your password"
-                    className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-sm text-gray-950 outline-none transition focus:border-[#074139]"
-                  />
-                </label>
+                        {error ? (
+                          <div className="rounded-[8px] border border-red-200 bg-red-50 px-4 py-2 text-[10px] text-red-700">
+                            {error}
+                          </div>
+                        ) : null}
 
-                {error ? (
-                  <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                    {error}
+                        <div className="flex items-center gap-3 pt-1">
+                          <button
+                            type="button"
+                            onClick={handleLogin}
+                            disabled={submitting}
+                            className="inline-flex flex-1 items-center justify-center rounded-full bg-[#074139] px-5 py-3  text-[11px]  cursor-pointer font-bold text-white transition hover:bg-[#055c3c] disabled:cursor-not-allowed disabled:opacity-70"
+                          >
+                            {submitting ? "Logging in..." : "Login and continue"}
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => setShowLoginDialog(false)}
+                            className="rounded-full border border-black/10 px-5 py-3  text-[11px] cursor-pointer  font-semibold text-gray-700 transition hover:bg-gray-100"
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ) : null}
-
-                <div className="flex items-center gap-3 pt-1">
-                  <button
-                    type="button"
-                    onClick={handleLogin}
-                    disabled={submitting}
-                    className="inline-flex flex-1 items-center justify-center rounded-full bg-[#074139] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#055c3c] disabled:cursor-not-allowed disabled:opacity-70"
-                  >
-                    {submitting ? "Logging in..." : "Login and continue"}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setShowLoginDialog(false)}
-                    className="rounded-full border border-black/10 px-5 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-100"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        ) : null}
         
       </div>
 

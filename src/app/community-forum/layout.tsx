@@ -1,5 +1,13 @@
 import { ReactNode } from "react";
 import { Michroma } from "next/font/google";
+// import localFont from "next/font/local";
+
+// const microgrammaBold = localFont({
+//   src: "./local/microgramma-bold.otf",
+//   display: "swap",
+//   weight: "800",
+//   variable: "--font-microgramma-bold",
+// });
 
 const michroma = Michroma({
   subsets: ["latin"],
@@ -17,7 +25,7 @@ export default function CommunityLayout({
 }: CommunityLayoutProps) {
   return (
     <section
-      className={`${michroma.className} min-h-screen bg-[#effbf0] text-slate-950`}
+      className={`${michroma.className}  min-h-screen `}
     >
       {children}
     </section>

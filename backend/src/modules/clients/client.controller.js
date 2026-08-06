@@ -20,15 +20,13 @@ exports.login = async (req, res, next) => {
 };
 
 // ========== DASHBOARD CONTROLLER (NEW) ==========
-exports.getDashboard = async (req, res, next) => {
+exports.getDashboard = async (req, res, next) => { //here next means next middleware function which in this case is error handling middleware provided by express and default error handler of express will be used if next is not called with an error. wherever next is called with an error it will be passed to the error handling middleware and it will handle the error and send the response to the client.
   try {
     const clientId = req.user.clientId;
     
     // Get profile
     const profile = await profileService.getProfile(clientId);
-    
-    // Note: Project functionality not yet implemented
-    // Once you add it to your Prisma schema, you can add it here
+
     
     successResponse(res, { profile }, 'Dashboard data retrieved');
   } catch (err) {
@@ -52,10 +50,7 @@ exports.updateProfile = async (req, res, next) => {
     const clientId = req.user.clientId;
     const { name, dateOfBirth } = req.body;
     
-    const updatedProfile = await profileService.updateProfile(clientId, {
-      name,
-      dateOfBirth
-    });
+    const updatedProfile = await profileService.updateProfile(clientId, { name, dateOfBirth});
     
     successResponse(res, updatedProfile, 'Profile updated successfully');
   } catch (err) {
@@ -63,7 +58,7 @@ exports.updateProfile = async (req, res, next) => {
   }
 };
 
-// ========== EXISTING CONTROLLERS ==========
+
 exports.getMyProfile = async (req, res, next) => {
   try { 
     const data = await service.getMyProfile(req.user.id);

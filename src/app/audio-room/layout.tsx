@@ -67,11 +67,9 @@ export default function AudioRoomLayout({
 
   if (loading) {
     return (
-      <div
-        className={`${michroma.className} min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(7,109,71,0.08),transparent_28%),radial-gradient(circle_at_top_right,rgba(15,23,42,0.06),transparent_24%),linear-gradient(180deg,#f8fafc_0%,#f1f5f9_100%)] text-slate-950`}
-      >
-        <div className="flex min-h-screen items-center justify-center px-4">
-          <div className="rounded-[28px] border border-black/10 bg-white/90 px-8 py-10 shadow-[0_30px_80px_rgba(0,0,0,0.08)] backdrop-blur">
+      <div className={`${michroma.className} bg-gradient text-slate-950`} >
+        <div className="flex min-h-screen items-center justify-center">
+          <div className=" px-8 py-10  ">
             <div className="text-lg font-semibold tracking-tight">
               Loading room...
             </div>

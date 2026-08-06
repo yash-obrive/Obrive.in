@@ -98,6 +98,7 @@ export const MOBILE_NAV_STRUCTURE = [
       { title: "OBpark FAQ", href: "/faq/obpark-faq" },
       { title: "Change Log", href: "/support/change-log" },
       { title: "Legal", href: "/legal" },
+      { title: "Certifications", href: "/certifications" },
     ],
   },
 ] as const;
