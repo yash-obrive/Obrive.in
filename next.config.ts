@@ -15,8 +15,8 @@ const nextConfig: NextConfig = {
 
   pageExtensions: ["ts", "tsx", "mdx"],
 
-  // Standalone output for Docker optimization
-  output: "standalone",
+  // Standalone output for Docker optimization (disabled on Windows to avoid symlink EPERM errors unless NEXT_STANDALONE is set)
+  output: (process.platform === "win32" && !process.env.NEXT_STANDALONE) ? undefined : "standalone",
 
   // Target modern browsers to eliminate legacy polyfills
   experimental: {
