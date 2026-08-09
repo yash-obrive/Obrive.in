@@ -7,7 +7,6 @@ const { successResponse, errorResponse } = require('../../utils/apiResponse');
 exports.login = async (req, res, next) => {
   try {
     const { clientId } = req.body;
-    git 
     if (!clientId) {
       return errorResponse(res, 'Client ID is required', 400);
     }

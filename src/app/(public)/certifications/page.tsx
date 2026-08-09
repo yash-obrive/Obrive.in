@@ -130,19 +130,19 @@ const isoSliderData = {
         {
             setId: "set-1",
             images: [
-                { id: "iso-9001", url: "/certificates/hs1 (1).png", alt: "ISO 9001 Quality Management" },
-                { id: "iso-45001", url: "/certificates/hs1 (2).png", alt: "ISO 45001 Health & Safety" },
-                { id: "iso-27001-v1", url: "/certificates/hs1 (3).png", alt: "ISO 27001 Security Management" },
-                { id: "iso-27001-v2", url: "/certificates/hs1 (4).png", alt: "ISO 27001 Certified" },
+                { id: "iso-9001", url: "/certificates/hs1(1).png", alt: "ISO 9001 Quality Management" },
+                { id: "iso-45001", url: "/certificates/hs1(2).png", alt: "ISO 45001 Health & Safety" },
+                { id: "iso-27001-v1", url: "/certificates/hs1(3).png", alt: "ISO 27001 Security Management" },
+                { id: "iso-27001-v2", url: "/certificates/hs1(4).png", alt: "ISO 27001 Certified" },
             ],
         },
         {
             setId: "set-2",
             images: [
-                { id: "iso-9001-dup", url: "/certificates/hs2 (1).png", alt: "ISO 9001 Quality Management" },
-                { id: "iso-45001-dup", url: "/certificates/hs2 (2).png", alt: "ISO 45001 Health & Safety" },
-                { id: "iso-27001-v1-dup", url: "/certificates/hs2 (3).png", alt: "ISO 27001 Security Management" },
-                { id: "iso-27001-v2-dup", url: "/certificates/hs2 (4).png", alt: "ISO 27001 Certified" },
+                { id: "iso-9001-dup", url: "/certificates/hs2(1).png", alt: "ISO 9001 Quality Management" },
+                { id: "iso-45001-dup", url: "/certificates/hs2(2).png", alt: "ISO 45001 Health & Safety" },
+                { id: "iso-27001-v1-dup", url: "/certificates/hs2(3).png", alt: "ISO 27001 Security Management" },
+                { id: "iso-27001-v2-dup", url: "/certificates/hs2(4).png", alt: "ISO 27001 Certified" },
             ],
         },
     ],
