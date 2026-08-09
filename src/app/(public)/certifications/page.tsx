@@ -209,7 +209,7 @@ export default function CertificationsPage() {
                         {pageHeader.title}
                     </h1>
                     <div className={`${FONTS.microgrammaBold.className}  text-[#074139] flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px]  font-semibold mt-2`}>
-                        <span className="flex items-center gap-1.5 font-semibold">
+                        <span className="flex items-center gap-1.5 font-semibold text-primary/70">
                             <CircleUser className="h-4 w-4" />
                             {pageHeader.author}
                         </span>
@@ -340,11 +340,11 @@ export default function CertificationsPage() {
                                     className="w-full shrink-0 flex justify-center"
                                 >
                                     <div className="flex rounded-xl bg-white p-4">
-                                        <div className={`flex ${isoSliderData.gap || "gap-4"}`}>
+                                        <div className={`flex gap-8`}>
                                             {tile.images.map((img, imgIndex) => (
                                                 <div
                                                     key={img.id || imgIndex}
-                                                    className="relative w-24 sm:w-32 h-24 sm:h-32 shrink-0"
+                                                    className="relative w-30  h-30  shrink-0"
                                                 >
                                                     <Image
                                                         src={img.url}
