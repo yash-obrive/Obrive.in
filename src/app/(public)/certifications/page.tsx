@@ -209,7 +209,7 @@ export default function CertificationsPage() {
                         {pageHeader.title}
                     </h1>
                     <div className={`${FONTS.microgrammaBold.className}  text-[#074139] flex flex-wrap items-center gap-x-6 gap-y-2 text-[10px]  font-semibold mt-2`}>
-                        <span className="flex items-center gap-1.5 font-semibold text-primary/70">
+                        <span className="flex items-center gap-1.5 font-semibold">
                             <CircleUser className="h-4 w-4" />
                             {pageHeader.author}
                         </span>
