@@ -122,6 +122,7 @@ model users {
   phone_number        String?               @db.VarChar(25)
   date_of_birth       DateTime?             @db.Date
   bio                 String?
+  avatar_url          String?               @db.Text
   events              events[]
   login_logs          login_logs[]
   leave_requests      leave_requests[]
