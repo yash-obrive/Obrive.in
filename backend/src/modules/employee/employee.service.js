@@ -106,3 +106,27 @@ exports.getMyLogs = async (userId) => {
     take:    50,
   });
 };
+
+// ── Record GPS Location Ping ──────────────────────────────────
+exports.recordLocation = async (userId, data) => {
+  const user = await prisma.users.findUnique({
+    where: { id: userId },
+    select: { is_location_tracking_enabled: true },
+  });
+
+  if (!user || !user.is_location_tracking_enabled) {
+    return { recorded: false, message: 'Location tracking disabled for this employee' };
+  }
+
+  const location = await prisma.employee_locations.create({
+    data: {
+      userId,
+      latitude: data.latitude,
+      longitude: data.longitude,
+      accuracy: data.accuracy || null,
+      source: data.source || 'work_timer_30m',
+    },
+  });
+
+  return { recorded: true, location };
+};

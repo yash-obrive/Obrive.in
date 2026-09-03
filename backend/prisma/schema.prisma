@@ -132,10 +132,12 @@ model users {
   tasks_created       tasks[]               @relation("TaskCreatedBy")
   projects_led        projects[]            @relation("ProjectLeader")
   work_sessions       work_sessions[]
-  leaves              leaves[]
-  approved_leaves     leaves[]              @relation("LeaveApprovedBy")
-  room_configs        room_configs[]
-  handRaises          room_hand_raises[]
+  leaves                       leaves[]
+  approved_leaves              leaves[]              @relation("LeaveApprovedBy")
+  room_configs                 room_configs[]
+  handRaises                   room_hand_raises[]
+  is_location_tracking_enabled Boolean              @default(false)
+  employee_locations           employee_locations[]
 
   // Chat relations
   created_conversations conversations[]             @relation("CreatedConversations")
@@ -671,4 +673,18 @@ model CommunitySavedPost {
   @@unique([user_id, postId])
 
   @@map("community_saved_posts")
+}
+
+model employee_locations {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  latitude   Float
+  longitude  Float
+  accuracy   Float?
+  source     String?  @default("work_timer_30m")
+  recordedAt DateTime @default(now())
+  user       users    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, recordedAt])
+  @@map("employee_locations")
 }

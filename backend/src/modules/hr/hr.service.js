@@ -127,6 +127,82 @@ class HRService {
       LIMIT 20
     `;
   }
+
+  // Toggle employee location tracking
+  async toggleEmployeeLocationTracking(employeeId, enabled) {
+    const user = await prisma.users.findUnique({
+      where: { id: employeeId },
+    });
+    if (!user || user.role !== 'employee') {
+      const err = new Error('Employee not found');
+      err.status = 404;
+      throw err;
+    }
+
+    const updated = await prisma.users.update({
+      where: { id: employeeId },
+      data: { is_location_tracking_enabled: Boolean(enabled) },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        is_location_tracking_enabled: true,
+      },
+    });
+    return updated;
+  }
+
+  // Get employee locations overview (with 30-day auto-purge)
+  async getEmployeesLocationOverview() {
+    // 30-day auto purge routine
+    await prisma.$executeRaw`
+      DELETE FROM employee_locations 
+      WHERE "recordedAt" < NOW() - INTERVAL '30 days'
+    `;
+
+    const employees = await prisma.$queryRaw`
+      SELECT 
+        u.id, 
+        u.userid, 
+        u.email, 
+        u.name, 
+        u.department, 
+        u.job_title, 
+        u.status, 
+        u.avatar_url,
+        u.is_location_tracking_enabled,
+        loc.latitude,
+        loc.longitude,
+        loc.accuracy,
+        loc.source,
+        loc."recordedAt" as last_ping_at
+      FROM users u
+      LEFT JOIN LATERAL (
+        SELECT latitude, longitude, accuracy, source, "recordedAt"
+        FROM employee_locations
+        WHERE "userId" = u.id
+        ORDER BY "recordedAt" DESC
+        LIMIT 1
+      ) loc ON true
+      WHERE u.role = 'employee'
+      ORDER BY u.name ASC
+    `;
+
+    return employees;
+  }
+
+  // Get employee location history
+  async getEmployeeLocationHistory(employeeId, days = 7) {
+    const safeDays = Math.min(Math.max(Number(days) || 7, 1), 30);
+    return await prisma.$queryRaw`
+      SELECT id, latitude, longitude, accuracy, source, "recordedAt"
+      FROM employee_locations
+      WHERE "userId" = ${employeeId}
+        AND "recordedAt" >= NOW() - (${safeDays} || ' days')::INTERVAL
+      ORDER BY "recordedAt" DESC
+      LIMIT 100
+    `;
+  }
 }
 
 module.exports = new HRService();
