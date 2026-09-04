@@ -43,9 +43,12 @@ export async function generateMetadata({
   const pageDescription =
     resource.metadata.seoDescription || resource.metadata.quote;
 
+  const fullTitle = pageTitle.includes("Obrive")
+    ? pageTitle
+    : `${pageTitle} | Obrive`;
 
   return {
-    title: `${pageTitle} | Obrive`,
+    title: fullTitle,
     description: pageDescription,
     keywords: resource.metadata.seoKeywords,
     authors: [{ name: resource.metadata.author }],
@@ -111,99 +114,114 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
     notFound();
   }
 
-  // Generate Article schema for case studies - No duplicate GTM since it's in root layout
-  const getArticleSchema = () => {
-    const heroImage = CASE_STUDIES_IMAGES[resource.metadata.heroImage];
-    const imageUrl = heroImage?.src.startsWith("http")
-      ? heroImage.src
-      : `https://obrive.com${heroImage?.src || "/images/default-hero.png"}`;
+  const heroImage = CASE_STUDIES_IMAGES[resource.metadata.heroImage];
+  const imageUrl = heroImage?.src.startsWith("http")
+    ? heroImage.src
+    : `https://obrive.com${heroImage?.src || "/images/default-hero.png"}`;
 
-    const baseSchema = {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "@id": `https://obrive.com/resources/${slug}`,
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": `https://obrive.com/resources/${slug}`,
-        url: `https://obrive.com/resources/${slug}`,
-      },
-      datePublished: resource.metadata.date,
-      author: resource.metadata.author,
-      publisher: {
-        "@type": "Organization",
-        name: "Obrive",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-logo.fb3eb1d9.svg&w=256&q=75",
-        },
-      },
-    };
+  const pageTitle = resource.metadata.seoTitle || resource.metadata.title;
+  const pageDescription =
+    resource.metadata.seoDescription || resource.metadata.quote;
 
-    // Only generate schema for the 4 specific case studies
-    const caseStudySchemas = {
-      "bringing-onboarding-to-life": {
-        name: "Bringing Onboarding to Life with Immersive Spatial Computing",
-        headline: "What used to take weeks now happens in days. Trainees recall protocols more reliably, and trainers stay in control from anywhere. What Obrive delivered isn't just technology it's transformation.",
-        description: "From weeks to days: Learn how one company revolutionized onboarding with virtual reality and spatial computing. Measurable results from immersive training.",
-      },
-      "spatial-flow": {
-        name: "Case Study",
-        headline: "See how spatial computing replaced outdated field training methods with immersive 3D workflows. Real results: faster learning, fewer errors, seamless operations.",
-        description: "See how spatial computing replaced outdated field training methods with immersive 3D workflows. Real results: faster learning, fewer errors, seamless operations.",
-      },
-      "ar-onboarding": {
-        name: "AR Onboarding Success: How Augmented Reality Broke Training Barriers",
-        headline: "Breaking Onboarding Barriers with Augmented Reality A First - Person Success Story In Their Own Words",
-        description: "Discover how AR technology eliminated onboarding challenges and accelerated employee training. A real case study in augmented reality workplace transformation.",
-      },
-      "client-immersive-onboarding": {
-        name: "Immersive Onboarding Case Study: Training That Feels Real",
-        headline: "Immersive Onboarding That Feels Like Reality - Through the eyes of the client",
-        description: "Learn how immersive 3D onboarding created realistic training experiences without real-world risks. See the results: better engagement and retention rates.",
-      },
-    };
-
-    const schemaData = caseStudySchemas[slug as keyof typeof caseStudySchemas];
-    if (!schemaData) return null;
-
-    return {
-      ...baseSchema,
-      name: schemaData.name,
-      headline: schemaData.headline,
-      description: schemaData.description,
-      image: imageUrl,
-    };
+  // Specific case study metadata overrides if applicable
+  const caseStudySchemas: Record<string, { name: string; headline: string; description: string }> = {
+    "bringing-onboarding-to-life": {
+      name: "Bringing Onboarding to Life with Immersive Spatial Computing",
+      headline: "What used to take weeks now happens in days. Trainees recall protocols more reliably, and trainers stay in control from anywhere. What Obrive delivered isn't just technology it's transformation.",
+      description: "From weeks to days: Learn how one company revolutionized onboarding with virtual reality and spatial computing. Measurable results from immersive training.",
+    },
+    "spatial-flow": {
+      name: "Case Study",
+      headline: "See how spatial computing replaced outdated field training methods with immersive 3D workflows. Real results: faster learning, fewer errors, seamless operations.",
+      description: "See how spatial computing replaced outdated field training methods with immersive 3D workflows. Real results: faster learning, fewer errors, seamless operations.",
+    },
+    "ar-onboarding": {
+      name: "AR Onboarding Success: How Augmented Reality Broke Training Barriers",
+      headline: "Breaking Onboarding Barriers with Augmented Reality A First - Person Success Story In Their Own Words",
+      description: "Discover how AR technology eliminated onboarding challenges and accelerated employee training. A real case study in augmented reality workplace transformation.",
+    },
+    "client-immersive-onboarding": {
+      name: "Immersive Onboarding Case Study: Training That Feels Real",
+      headline: "Immersive Onboarding That Feels Like Reality - Through the eyes of the client",
+      description: "Learn how immersive 3D onboarding created realistic training experiences without real-world risks. See the results: better engagement and retention rates.",
+    },
   };
 
-  const articleSchema = getArticleSchema();
+  const isCaseStudy = resource.metadata.postType !== "BLOG" && slug in caseStudySchemas;
+  const csOverride = caseStudySchemas[slug];
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": isCaseStudy ? "Article" : "BlogPosting",
+    "@id": `https://obrive.com/resources/${slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://obrive.com/resources/${slug}`,
+      url: `https://obrive.com/resources/${slug}`,
+    },
+    name: csOverride ? csOverride.name : resource.metadata.title,
+    headline: csOverride ? csOverride.headline : pageTitle,
+    description: csOverride ? csOverride.description : pageDescription,
+    image: imageUrl,
+    datePublished: resource.metadata.date,
+    author: {
+      "@type": "Person",
+      name: resource.metadata.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Obrive",
+      url: "https://obrive.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-logo.fb3eb1d9.svg&w=256&q=75",
+      },
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://obrive.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Resources",
+        item: "https://obrive.com/resources",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: resource.metadata.title,
+        item: `https://obrive.com/resources/${slug}`,
+      },
+    ],
+  };
 
   return (
     <>
-      {/* GTM Script for all blogs and case studies */}
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-C8Z8CTCLRT"
-        strategy="afterInteractive"
+      {/* Structured Data: Article/BlogPosting */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
       />
-      <Script id="gtag-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-C8Z8CTCLRT');
-        `}
-      </Script>
-      
-      {/* Article Schema Markup for case studies */}
-      {articleSchema && (
-        <Script
-          id={`${slug}-article-schema`}
-          type="application/ld+json"
-          strategy="afterInteractive"
-        >
-          {JSON.stringify(articleSchema)}
-        </Script>
-      )}
+
+      {/* Structured Data: Breadcrumbs */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+
       <ResourceTemplate metadata={resource.metadata} slug={slug}>
         <MDXRemote
           source={resource.content}

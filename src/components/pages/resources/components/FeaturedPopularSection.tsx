@@ -28,14 +28,14 @@ const FeaturedPopularSection = ({
               <div className="w-full lg:flex-1">
                 <div className="flex items-center gap-3 pl-8 mb-4">
                   <TwoDotIcons />
-                  <h3 className="uppercase text-sm">Featured</h3>
+                  <h2 className="uppercase text-sm font-medium">Featured</h2>
                 </div>
                 <FeaturedCard />
               </div>
               <div className="w-full lg:max-w-lg xl:max-w-xl">
                 <div className="flex items-center gap-3 mb-4 pl-8">
                   <TwoDotIcons />
-                  <h3 className="uppercase text-sm">Popular</h3>
+                  <h2 className="uppercase text-sm font-medium">Popular</h2>
                 </div>
                 <div className="flex flex-col gap-6 lg:gap-8">
                   {PopularCardContent.map((item) => (

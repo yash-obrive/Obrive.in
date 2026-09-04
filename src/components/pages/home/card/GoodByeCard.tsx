@@ -75,7 +75,7 @@ const GoodByeCard = () => {
       <div className="bg-gradient overflow-hidden relative flex flex-col max-sm:-space-y-10 justify-between w-full sm:min-w-[1238px] rounded-xl min-h-[250px] sm:min-h-[300px] md:min-h-[361px]">
         <div className="flex px-4 sm:px-10 py-6 sm:py-6 flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
           <h2 className="text-xl sm:text-2xl">
-            Say Goodbye to Traditional Experiences
+            Why Choose Obrive for AR, VR & Spatial Computing
           </h2>
 
           <div className="max-sm:hidden">
