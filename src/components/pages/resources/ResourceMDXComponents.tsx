@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import FONTS from "@/assets/fonts";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import ResourceChallengeSection from "./sections/ResourceChallengeSection";
@@ -120,6 +121,14 @@ export const createResourceMDXComponents = (metadata: any) => ({
   TheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
   
   // Custom components
+  Link,
+  a: (props: any) => {
+    const isInternal = props.href?.startsWith("/") || props.href?.startsWith("#");
+    if (isInternal) {
+      return <Link {...props} />;
+    }
+    return <a target="_blank" rel="noopener noreferrer" {...props} />;
+  },
   ButtonLink,
   StyledText,
 });
@@ -158,6 +167,14 @@ export default {
       </div>
     </div>
   ),
+  Link,
+  a: (props: any) => {
+    const isInternal = props.href?.startsWith("/") || props.href?.startsWith("#");
+    if (isInternal) {
+      return <Link {...props} />;
+    }
+    return <a target="_blank" rel="noopener noreferrer" {...props} />;
+  },
   // Provide StyledText for default mapping
   StyledText,
 };

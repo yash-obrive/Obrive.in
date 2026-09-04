@@ -19,9 +19,9 @@ const ResourcesFilter = ({
     <section className="border-y border-secondary/20 my-4 sm:my-6 lg:my-8 py-4 sm:py-6 lg:py-8">
       <FullWidthSection backgroundColor="none">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
-          <h4 className="text-secondary text-xs sm:text-sm uppercase font-medium whitespace-nowrap">
-            Filter:
-          </h4>
+          <h2 className="text-secondary text-xs sm:text-sm uppercase font-medium whitespace-nowrap">
+            Browse by Topic:
+          </h2>
           <div className="flex flex-wrap gap-2 sm:gap-3">
             {filters.map((filter) => (
               <Button
