@@ -223,6 +223,8 @@ export function ProductTemplate({
                 title={`Elevate Your Operations with ${hero.title}`}
                 description={`Discover how leading organizations are optimizing processes, increasing efficiency, and delivering exceptional experiences with ${hero.title}`}
                 variant="small"
+                buttonText={`${hero.title} FAQ`}
+                buttonLink={link || `/faq/${hero.title.toLowerCase()}-faq`}
               />
             </FramerFadeIn>
           </div>
