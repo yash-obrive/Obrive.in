@@ -84,11 +84,9 @@ const GoodByeCard = () => {
               size={"lg"}
               className="uppercase z-10 text-xs cursor-pointer"
               iconSize={16}
-              href="https://calendly.com/obrive-inc/talk-to-ob-experts"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/faq/ob-services-faq"
             >
-              Talk to Expert
+              SERVICES FAQ
             </AnimatedButton>
           </div>
         </div>
@@ -111,11 +109,9 @@ const GoodByeCard = () => {
               size={"lg"}
               className="uppercase text-xs cursor-pointer"
               iconSize={16}
-              href="https://calendly.com/obrive-inc/talk-to-ob-experts"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/faq/ob-services-faq"
             >
-              Talk to Expert
+              SERVICES FAQ
             </AnimatedButton>
           </div>
           <div className="sm:hidden w-full px-4 mt-4">

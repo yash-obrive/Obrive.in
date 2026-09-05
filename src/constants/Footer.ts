@@ -72,6 +72,4 @@ export const PRIMARY_FOOTER_CARD = {
   title: "Automate Your Immersive Workflow",
   description:
     "Simplify the creation and deployment of Augmented Reality, Virtual Reality, Mixed Reality, 3D design, and Spatial Computing projects through automated asset integration, real-time rendering, and seamless collaboration—all designed to bring your vision to life faster and smarter.",
-  buttonText: "SERVICES FAQ",
-  buttonLink: "/faq/ob-services-faq",
 } as const;
