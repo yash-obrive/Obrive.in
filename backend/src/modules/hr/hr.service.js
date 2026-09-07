@@ -171,12 +171,28 @@ class HRService {
         u.status, 
         u.avatar_url,
         u.is_location_tracking_enabled,
+        ws.status as session_status,
         loc.latitude,
         loc.longitude,
         loc.accuracy,
         loc.source,
-        loc."recordedAt" as last_ping_at
+        loc."recordedAt" as last_ping_at,
+        CASE 
+          WHEN (
+            (ws.status = 'active' AND loc."recordedAt" >= NOW() - INTERVAL '45 minutes')
+            OR loc."recordedAt" >= NOW() - INTERVAL '30 minutes'
+          ) AND u.is_location_tracking_enabled = true
+          THEN true 
+          ELSE false 
+        END as is_live
       FROM users u
+      LEFT JOIN LATERAL (
+        SELECT status, "startedAt", "lastHeartbeat"
+        FROM work_sessions
+        WHERE "userId" = u.id AND status = 'active'
+        ORDER BY created_at DESC
+        LIMIT 1
+      ) ws ON true
       LEFT JOIN LATERAL (
         SELECT latitude, longitude, accuracy, source, "recordedAt"
         FROM employee_locations

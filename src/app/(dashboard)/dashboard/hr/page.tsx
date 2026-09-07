@@ -33,8 +33,25 @@ import Messenger from '@/components/chat/Messenger';
 import SkeletonLoading from '@/components/SkelitonLoading';
 import { useDashboardData } from '../useDashboardData';
 import { apiFetch } from '@/lib/api';
-import type { TrackedEmployee } from './components/EmployeeLocationMap';
+import { isEmployeeLive, type TrackedEmployee } from './components/EmployeeLocationMap';
 import LocationHistoryModal from './components/LocationHistoryModal';
+
+function formatPingTimestamp(dateStr?: string | null): string {
+  if (!dateStr) return 'No pings yet';
+  const pingDate = new Date(dateStr);
+  const now = new Date();
+  const isToday =
+    pingDate.getDate() === now.getDate() &&
+    pingDate.getMonth() === now.getMonth() &&
+    pingDate.getFullYear() === now.getFullYear();
+
+  const timeStr = pingDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  if (isToday) {
+    return `Today at ${timeStr}`;
+  }
+  const dateStrFormatted = pingDate.toLocaleDateString([], { month: 'short', day: 'numeric' });
+  return `${dateStrFormatted} at ${timeStr}`;
+}
 
 // Dynamically import Leaflet Map with SSR disabled
 const EmployeeLocationMap = nextDynamic(
@@ -49,8 +66,6 @@ const EmployeeLocationMap = nextDynamic(
     ),
   }
 );
-
-export const dynamic = 'force-dynamic';
 
 export default function HRDashboard() {
   const { workloadMembers, projects, events, activities, user, loading: dashboardLoading, error: dashboardError, refetch } = useDashboardData('hr');
@@ -312,9 +327,19 @@ export default function HRDashboard() {
             {/* Map Widget */}
             <div className="rounded-2xl bg-white p-4 shadow-sm border border-slate-100 space-y-3">
               <div className="flex items-center justify-between">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">Live Employee Pins</h3>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">Live Employee Pins</h3>
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    LIVE NOW
+                  </span>
+                </div>
                 <span className="text-xs text-slate-400">
-                  {trackedEmployees.filter((e) => e.latitude != null).length} employees online with GPS
+                  {trackedEmployees.filter((e) => e.latitude != null && isEmployeeLive(e)).length}{' '}
+                  {trackedEmployees.filter((e) => e.latitude != null && isEmployeeLive(e)).length === 1
+                    ? 'employee'
+                    : 'employees'}{' '}
+                  currently live with GPS
                 </span>
               </div>
 
@@ -438,26 +463,37 @@ export default function HRDashboard() {
                               </div>
                             </td>
 
-                            {/* Latest Coordinates */}
+                            {/* Latest Coordinates & Live Status */}
                             <td className="py-3">
                               {emp.latitude != null && emp.longitude != null ? (
-                                <div>
-                                  <div className="flex items-center gap-1 font-mono text-[11px] text-slate-700">
-                                    <MapPin className="h-3 w-3 text-[#073933]" />
-                                    {emp.latitude.toFixed(4)}, {emp.longitude.toFixed(4)}
+                                <div className="space-y-0.5">
+                                  <div className="flex items-center gap-1.5 font-mono text-[11px] text-slate-700">
+                                    <MapPin
+                                      className={`h-3 w-3 ${
+                                        isEmployeeLive(emp) ? 'text-emerald-600' : 'text-slate-400'
+                                      }`}
+                                    />
+                                    <span>
+                                      {emp.latitude.toFixed(4)}, {emp.longitude.toFixed(4)}
+                                    </span>
+                                    {isEmployeeLive(emp) ? (
+                                      <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full text-[9px] font-extrabold bg-emerald-100 text-emerald-800">
+                                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                        LIVE
+                                      </span>
+                                    ) : (
+                                      <span className="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-slate-100 text-slate-500">
+                                        Offline
+                                      </span>
+                                    )}
                                   </div>
                                   <div className="flex items-center gap-1 text-[10px] text-slate-400">
                                     <Clock className="h-2.5 w-2.5" />
-                                    {emp.last_ping_at
-                                      ? new Date(emp.last_ping_at).toLocaleTimeString([], {
-                                          hour: '2-digit',
-                                          minute: '2-digit',
-                                        })
-                                      : 'Recent'}
+                                    <span>{formatPingTimestamp(emp.last_ping_at)}</span>
                                   </div>
                                 </div>
                               ) : (
-                                <span className="text-[11px] text-slate-400 italic">No pings</span>
+                                <span className="text-[11px] text-slate-400 italic">No pings recorded</span>
                               )}
                             </td>
 

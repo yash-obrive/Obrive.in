@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import L from 'leaflet';
+import React, { useEffect, useRef, useState } from 'react';
+import type * as LeafletType from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 export interface TrackedEmployee {
@@ -19,6 +19,22 @@ export interface TrackedEmployee {
   accuracy?: number | null;
   source?: string | null;
   last_ping_at?: string | null;
+  is_live?: boolean;
+  session_status?: string | null;
+}
+
+// Helper to determine if an employee is currently live
+export function isEmployeeLive(emp: TrackedEmployee): boolean {
+  if (emp.is_live !== undefined && emp.is_live !== null) {
+    return Boolean(emp.is_live);
+  }
+  if (!emp.is_location_tracking_enabled || !emp.last_ping_at || emp.latitude == null || emp.longitude == null) {
+    return false;
+  }
+  const pingTime = new Date(emp.last_ping_at).getTime();
+  const now = Date.now();
+  const diffMinutes = (now - pingTime) / (1000 * 60);
+  return diffMinutes >= 0 && diffMinutes <= 45;
 }
 
 interface MapProps {
@@ -77,30 +93,67 @@ export default function EmployeeLocationMap({
   onSelectEmployee,
 }: MapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<L.Map | null>(null);
-  const markersLayerRef = useRef<L.LayerGroup | null>(null);
+  const mapInstanceRef = useRef<LeafletType.Map | null>(null);
+  const markersLayerRef = useRef<LeafletType.LayerGroup | null>(null);
+  const leafletRef = useRef<typeof LeafletType | null>(null);
+  const [isMapReady, setIsMapReady] = useState(false);
 
-  // Initialize Map
+  // Initialize Map dynamically on client
   useEffect(() => {
-    if (!mapContainerRef.current || mapInstanceRef.current) return;
+    if (typeof window === 'undefined' || !mapContainerRef.current) return;
 
-    const map = L.map(mapContainerRef.current, {
-      zoomControl: true,
-      scrollWheelZoom: true,
-    }).setView([20.5937, 78.9629], 5);
+    let isMounted = true;
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(map);
+    async function init() {
+      try {
+        const leafletModule = await import('leaflet');
+        const Leaflet = (leafletModule.default || leafletModule) as unknown as typeof LeafletType;
+        leafletRef.current = Leaflet;
 
-    const markersGroup = L.layerGroup().addTo(map);
-    markersLayerRef.current = markersGroup;
-    mapInstanceRef.current = map;
+        if (!isMounted || !mapContainerRef.current) return;
+
+        // Clean up any stale leaflet container metadata (Fast Refresh / Strict Mode safety)
+        if ((mapContainerRef.current as any)._leaflet_id) {
+          delete (mapContainerRef.current as any)._leaflet_id;
+        }
+
+        if (mapInstanceRef.current) {
+          mapInstanceRef.current.remove();
+          mapInstanceRef.current = null;
+        }
+
+        const map = Leaflet.map(mapContainerRef.current, {
+          zoomControl: true,
+          scrollWheelZoom: true,
+        }).setView([20.5937, 78.9629], 5);
+
+        Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        }).addTo(map);
+
+        const markersGroup = Leaflet.layerGroup().addTo(map);
+        markersLayerRef.current = markersGroup;
+        mapInstanceRef.current = map;
+        setIsMapReady(true);
+      } catch (err) {
+        console.error('Error loading Leaflet map:', err);
+      }
+    }
+
+    init();
 
     return () => {
-      map.remove();
-      mapInstanceRef.current = null;
+      isMounted = false;
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+      if (mapContainerRef.current && (mapContainerRef.current as any)._leaflet_id) {
+        delete (mapContainerRef.current as any)._leaflet_id;
+      }
+      markersLayerRef.current = null;
+      setIsMapReady(false);
     };
   }, []);
 
@@ -108,17 +161,23 @@ export default function EmployeeLocationMap({
   useEffect(() => {
     const map = mapInstanceRef.current;
     const markersGroup = markersLayerRef.current;
-    if (!map || !markersGroup) return;
+    const L = leafletRef.current;
+    if (!map || !markersGroup || !L || !isMapReady) return;
 
     markersGroup.clearLayers();
 
     const validEmployees = employees.filter(
-      (e) => e.latitude != null && e.longitude != null && !isNaN(e.latitude) && !isNaN(e.longitude)
+      (e) =>
+        e.latitude != null &&
+        e.longitude != null &&
+        !isNaN(e.latitude) &&
+        !isNaN(e.longitude) &&
+        isEmployeeLive(e)
     );
 
     if (validEmployees.length === 0) return;
 
-    const latLngs: L.LatLngTuple[] = [];
+    const latLngs: LeafletType.LatLngTuple[] = [];
 
     // Group close coordinates to avoid occlusion / overlap
     validEmployees.forEach((emp, index) => {
@@ -194,6 +253,12 @@ export default function EmployeeLocationMap({
 
       const popupContent = `
         <div style="padding: 6px; min-width: 210px; font-family: sans-serif; color: #0f172a;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <span style="display: inline-flex; align-items: center; gap: 4px; padding: 2px 7px; border-radius: 9999px; background-color: #ecfdf5; color: #047857; font-size: 10px; font-weight: 800; border: 1px solid #a7f3d0;">
+              <span style="height: 6px; width: 6px; border-radius: 9999px; background-color: #10b981;"></span>
+              LIVE NOW
+            </span>
+          </div>
           <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #f1f5f9;">
             <div style="height: 34px; width: 34px; border-radius: 9999px; ${theme.bg} color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; overflow: hidden;">
               ${
@@ -249,15 +314,23 @@ export default function EmployeeLocationMap({
         map.fitBounds(bounds, { padding: [60, 60], maxZoom: 15 });
       }
     }
-  }, [employees, selectedEmployeeId, onSelectEmployee]);
+  }, [employees, selectedEmployeeId, onSelectEmployee, isMapReady]);
+
+  const liveCount = employees.filter((e) => e.latitude != null && isEmployeeLive(e)).length;
 
   return (
     <div className="relative h-full w-full rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm bg-slate-100">
       <div ref={mapContainerRef} className="h-full w-full z-10" />
-      {employees.filter((e) => e.latitude != null).length === 0 && (
-        <div className="absolute inset-0 z-20 flex items-center justify-center bg-slate-900/10 backdrop-blur-[2px] pointer-events-none">
-          <div className="rounded-xl bg-white/95 px-4 py-2.5 shadow-lg border border-slate-200 text-xs font-semibold text-slate-700">
-            No active GPS pings recorded yet today
+      {liveCount === 0 && (
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-slate-900/10 backdrop-blur-[2px] pointer-events-none p-4 text-center">
+          <div className="rounded-xl bg-white/95 px-5 py-3.5 shadow-lg border border-slate-200 max-w-sm space-y-1">
+            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600">
+              LIVE TRACKING IDLE
+            </div>
+            <p className="text-xs font-bold text-slate-800">No employees currently live on GPS</p>
+            <p className="text-[11px] text-slate-500 font-medium leading-relaxed">
+              Old locations are hidden from the live map. Only staff actively on duty with GPS tracking enabled are displayed.
+            </p>
           </div>
         </div>
       )}

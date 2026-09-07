@@ -13,8 +13,25 @@ import {
   History,
 } from 'lucide-react';
 import { apiFetch } from '@/lib/api';
-import type { TrackedEmployee } from './EmployeeLocationMap';
+import { isEmployeeLive, type TrackedEmployee } from './EmployeeLocationMap';
 import LocationHistoryModal from './LocationHistoryModal';
+
+function formatPingTimestamp(dateStr?: string | null): string {
+  if (!dateStr) return 'No pings yet';
+  const pingDate = new Date(dateStr);
+  const now = new Date();
+  const isToday =
+    pingDate.getDate() === now.getDate() &&
+    pingDate.getMonth() === now.getMonth() &&
+    pingDate.getFullYear() === now.getFullYear();
+
+  const timeStr = pingDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  if (isToday) {
+    return `Today at ${timeStr}`;
+  }
+  const dateStrFormatted = pingDate.toLocaleDateString([], { month: 'short', day: 'numeric' });
+  return `${dateStrFormatted} at ${timeStr}`;
+}
 
 // Dynamically import Leaflet Map with SSR disabled
 const EmployeeLocationMap = dynamic(
@@ -126,7 +143,7 @@ export default function HRLocationsSection() {
 
   const totalEmployees = employees.length;
   const trackedCount = employees.filter((e) => e.is_location_tracking_enabled).length;
-  const activePingsCount = employees.filter((e) => e.latitude != null).length;
+  const liveCount = employees.filter((e) => e.latitude != null && isEmployeeLive(e)).length;
 
   return (
     <div className="flex-1 flex flex-col h-full overflow-y-auto p-4 space-y-4">
@@ -196,12 +213,12 @@ export default function HRLocationsSection() {
         </div>
 
         <div className="flex items-center gap-3 rounded-2xl bg-white p-4 border border-slate-200/80 shadow-sm">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
             <MapPin className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Active GPS Pings</p>
-            <p className="text-xl font-black text-slate-900">{activePingsCount}</p>
+            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Live GPS Staff</p>
+            <p className="text-xl font-black text-slate-900">{liveCount}</p>
           </div>
         </div>
       </div>
@@ -212,9 +229,13 @@ export default function HRLocationsSection() {
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4 text-[#073933]" />
             <h2 className="text-sm font-bold text-slate-900">Live Employee Map</h2>
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              LIVE NOW
+            </span>
           </div>
           <span className="text-[11px] text-slate-400">
-            Displaying live markers for all employees with recorded positions
+            Displaying live markers for staff currently active with GPS
           </span>
         </div>
 
@@ -341,22 +362,33 @@ export default function HRLocationsSection() {
                         </div>
                       </td>
 
-                      {/* Last Location */}
+                      {/* Last Location & Live Status */}
                       <td className="py-3">
                         {emp.latitude != null && emp.longitude != null ? (
-                          <div>
-                            <div className="flex items-center gap-1 font-mono text-[11px] text-slate-800">
-                              <MapPin className="h-3 w-3 text-emerald-600" />
-                              {emp.latitude.toFixed(4)}, {emp.longitude.toFixed(4)}
+                          <div className="space-y-0.5">
+                            <div className="flex items-center gap-1.5 font-mono text-[11px] text-slate-800">
+                              <MapPin
+                                className={`h-3 w-3 ${
+                                  isEmployeeLive(emp) ? 'text-emerald-600' : 'text-slate-400'
+                                }`}
+                              />
+                              <span>
+                                {emp.latitude.toFixed(4)}, {emp.longitude.toFixed(4)}
+                              </span>
+                              {isEmployeeLive(emp) ? (
+                                <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full text-[9px] font-extrabold bg-emerald-100 text-emerald-800">
+                                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                  LIVE
+                                </span>
+                              ) : (
+                                <span className="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-slate-100 text-slate-500">
+                                  Offline
+                                </span>
+                              )}
                             </div>
                             <div className="flex items-center gap-1 text-[10px] text-slate-400 mt-0.5">
                               <Clock className="h-2.5 w-2.5" />
-                              {emp.last_ping_at
-                                ? new Date(emp.last_ping_at).toLocaleTimeString([], {
-                                    hour: '2-digit',
-                                    minute: '2-digit',
-                                  })
-                                : 'Recent'}
+                              <span>{formatPingTimestamp(emp.last_ping_at)}</span>
                             </div>
                           </div>
                         ) : (
