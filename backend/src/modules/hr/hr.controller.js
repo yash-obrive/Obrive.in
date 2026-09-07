@@ -122,8 +122,13 @@ exports.getLocationOverview = async (req, res, next) => {
 exports.getLocationHistory = async (req, res, next) => {
   try {
     const employeeId = parseInt(req.params.id);
-    const { days } = req.query;
-    const history = await hrService.getEmployeeLocationHistory(employeeId, days);
+    const { days, filter, date, timezoneOffset } = req.query;
+    const history = await hrService.getEmployeeLocationHistory(employeeId, {
+      days,
+      filter,
+      date,
+      timezoneOffset,
+    });
     successResponse(res, history, 'Location history retrieved');
   } catch (err) {
     errorResponse(res, err.message, 500);

@@ -146,7 +146,7 @@ export default function HRLocationsSection() {
   const liveCount = employees.filter((e) => e.latitude != null && isEmployeeLive(e)).length;
 
   return (
-    <div className="flex-1 flex flex-col h-full overflow-y-auto p-4 space-y-4">
+    <div className="flex-1 flex flex-col h-full overflow-y-auto p-4 pb-44 space-y-4">
       
       {/* Header Section */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
@@ -431,6 +431,9 @@ export default function HRLocationsSection() {
           </table>
         </div>
       </div>
+
+      {/* Bottom Spacer to ensure full clearance above floating assistant widgets */}
+      <div className="h-16 w-full pointer-events-none" aria-hidden="true" />
 
       {/* History Modal */}
       {selectedHistoryEmp && (

@@ -230,7 +230,7 @@ export default function HRDashboard() {
           >
             {/* Center Area */}
             <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
-              <div className="flex-1 overflow-y-auto p-4 scrollbar-hide w-full space-y-5">
+              <div className="flex-1 overflow-y-auto p-4 pb-36 scrollbar-hide w-full space-y-5">
                 
                 {/* 1. Original Obrive Workload Cards (Devanshi, Parveen, Naman, etc.) */}
                 <WorkloadSection members={workloadMembers} />
@@ -293,7 +293,7 @@ export default function HRDashboard() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="flex-1 overflow-y-auto p-4 scrollbar-hide w-full space-y-4"
+            className="flex-1 overflow-y-auto p-4 pb-44 scrollbar-hide w-full space-y-4"
           >
             {/* Header & Controls Bar */}
             <div className="rounded-2xl bg-white p-5 shadow-sm border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -517,6 +517,9 @@ export default function HRDashboard() {
                 </table>
               </div>
             </div>
+
+            {/* Bottom Spacer to ensure full clearance above floating assistant widgets */}
+            <div className="h-16 w-full pointer-events-none" aria-hidden="true" />
           </motion.div>
         )}
 
