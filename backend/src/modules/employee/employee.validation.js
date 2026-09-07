@@ -29,6 +29,13 @@ const employeeIdParamSchema = z.object({
   employeeId: z.coerce.number().int().positive(),
 });
 
+const recordLocationSchema = z.object({
+  latitude: z.number().min(-90).max(90),
+  longitude: z.number().min(-180).max(180),
+  accuracy: z.number().optional(),
+  source: z.string().optional(),
+});
+
 module.exports = {
   availabilityQuerySchema,
   availabilitySchema,
@@ -36,4 +43,5 @@ module.exports = {
   loginSchema,
   slotIdParamSchema,
   updateProfileSchema,
+  recordLocationSchema,
 };
