@@ -110,11 +110,11 @@ export default function PricingSection() {
                         </p>
                         
                         <div className="mb-6">
-                          <div className={`${FONTS.microgrammaBold.className} text-primary text-3xl`}>
+                          <div suppressHydrationWarning className={`${FONTS.microgrammaBold.className} text-primary text-3xl`}>
                             {isUSD ? formatUSD(pkg.priceUSD) : formatINR(pkg.priceINR)}
                             {pkg.isMonthly && <span className="text-base text-primary/50 font-sans ml-1">/mo</span>}
                           </div>
-                          <div className="text-primary/50 text-xs mt-1">
+                          <div suppressHydrationWarning className="text-primary/50 text-xs mt-1">
                             ≈ {isUSD ? formatINR(pkg.priceINR) : formatUSD(pkg.priceUSD)}
                             {pkg.isMonthly && "/mo"}
                           </div>

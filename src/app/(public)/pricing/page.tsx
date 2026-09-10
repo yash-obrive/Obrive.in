@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import PricingHero from "./components/PricingHero";
 import PricingSection from "./components/PricingSection";
 import PricingHowItWorks from "./components/PricingHowItWorks";
@@ -67,12 +68,12 @@ export default function PricingPage() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-              <a href="/contact?intent=quote" className="bg-accent text-white px-8 py-4 rounded-full font-bold text-center hover:bg-accent/90 transition-colors">
+              <Link href="/contact?intent=quote" className="bg-accent text-white px-8 py-4 rounded-full font-bold text-center hover:bg-accent/90 transition-colors">
                 Request Custom Quote
-              </a>
-              <a href="/contact?intent=payment" className="bg-white/10 text-white border border-white/20 px-8 py-4 rounded-full font-bold text-center hover:bg-white/20 transition-colors">
+              </Link>
+              <Link href="/contact?intent=payment" className="bg-white/10 text-white border border-white/20 px-8 py-4 rounded-full font-bold text-center hover:bg-white/20 transition-colors">
                 Start with Razorpay
-              </a>
+              </Link>
             </div>
           </div>
         </div>
