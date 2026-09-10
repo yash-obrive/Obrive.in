@@ -64,3 +64,12 @@ exports.getMyLogs = async (req, res, next) => {
   try { successResponse(res, await service.getMyLogs(req.user.id)); }
   catch (err) { next(err); }
 };
+
+exports.recordLocation = async (req, res, next) => {
+  try {
+    const result = await service.recordLocation(req.user.id, req.body);
+    successResponse(res, result, result.recorded ? 'Location recorded' : result.message);
+  } catch (err) {
+    next(err);
+  }
+};
