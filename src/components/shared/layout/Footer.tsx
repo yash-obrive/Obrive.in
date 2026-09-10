@@ -130,7 +130,7 @@ export default function Footer() {
               <Link href="/legal" className="hover:text-primary">
                 Legal Notice
               </Link>
-              <Link href="/legal/accessibility" className="hover:text-primary">
+              <Link href="/terms-accessibility" className="hover:text-primary">
                 Terms & Accessibility
               </Link>
             </div>
