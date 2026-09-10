@@ -405,6 +405,22 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         href: "/join-the-otters",
         category: "company",
         searchKeywords: "careers / join the otters /join-the-otters explore opportunities to build the future of immersive technology. company"
+      },
+      {
+        num: "04",
+        title: "Pricing",
+        description: "Explore our fixed-price service streams, scopes and packages.",
+        href: "/pricing",
+        category: "company",
+        searchKeywords: "pricing /pricing explore our fixed-price service streams, scopes and packages. company"
+      },
+      {
+        num: "05",
+        title: "Contact",
+        description: "Get in touch to discuss your next project, scope and requirements.",
+        href: "/contact",
+        category: "company",
+        searchKeywords: "contact /contact get in touch to discuss your next project, scope and requirements. company"
       }
     ]
   },
