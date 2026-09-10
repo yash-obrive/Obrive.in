@@ -38,9 +38,6 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
               className="flex-1 bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-accent transition-colors"
               aria-label="Search sitemap"
             />
-            <span className="text-primary/60 text-sm whitespace-nowrap hidden sm:block">
-              {visiblePagesCount} page{visiblePagesCount === 1 ? "" : "s"}
-            </span>
           </div>
         </FullWidthSection>
       </div>
