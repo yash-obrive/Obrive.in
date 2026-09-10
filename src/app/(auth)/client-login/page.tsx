@@ -47,11 +47,11 @@ const handleLogin = async () => {
       }),
     });
 
-    const data = await res.json();
+    const data = await res.json().catch(() => null);
     console.log('Response:', data);
 
     if (!res.ok) {
-      throw new Error(data.message || "Login failed");
+      throw new Error(data?.message || (res.status === 404 ? "API service unreachable" : "Login failed"));
     }
 
     if (data?.data?.accessToken) {
