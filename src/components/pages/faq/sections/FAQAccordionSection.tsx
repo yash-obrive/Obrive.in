@@ -44,7 +44,7 @@ export default function FAQAccordionSection({
 
       <div className="border border-zinc-800 rounded-xl overflow-hidden">
         <Accordion type="single" collapsible className="space-y-0">
-          {items.map((item, index) => (
+          {items?.map((item, index) => (
             <AccordionItem
               key={index}
               value={`item-${index}`}

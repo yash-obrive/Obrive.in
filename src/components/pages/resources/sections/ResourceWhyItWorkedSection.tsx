@@ -25,7 +25,7 @@ export default function ResourceWhyItWorkedSection({
         {title}
       </h2>
       <div className="space-y-6 pl-6 max-md:pl-0">
-        {items.map((item, index) => (
+        {items?.map((item, index) => (
           <div key={index}>
             <h3 className={`${FONTS.microgrammaBold.className} text-lg mb-2`}>
               {item.title}

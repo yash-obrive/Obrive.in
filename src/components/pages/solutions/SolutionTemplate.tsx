@@ -67,7 +67,7 @@ export function SolutionTemplate({
             className="w-full"
             itemClassName="flex items-stretch max-md:basis-full"
           >
-            {keyBenefits.map((item) => (
+            {keyBenefits?.map((item) => (
               <KeyBenefitsCard key={item.title} {...item} />
             ))}
           </InfiniteHorizontalScroll>
