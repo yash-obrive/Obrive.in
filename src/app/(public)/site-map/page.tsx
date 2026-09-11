@@ -20,20 +20,19 @@ export default function DirectoryPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
-      <FullWidthSection backgroundColor="none" className="pt-32 pb-16 sm:pt-40 sm:pb-20">
-        <div className="max-w-[1280px] mx-auto flex flex-col items-start">
-          <div className="text-accent text-xs font-bold tracking-[0.14em] uppercase mb-4">
+      <FullWidthSection backgroundColor="accent" className="py-10 pt-30">
+        <div className="text-center flex flex-col items-center gap-8">
+          <div className="text-secondary text-xs font-bold tracking-[0.14em] uppercase mb-4">
             Obrive Website Directory
           </div>
           <h1
-            className={`${FONTS.microgrammaBold.className} text-primary text-5xl sm:text-6xl md:text-[88px] leading-[0.95] tracking-[-0.065em] max-w-[900px] mb-6`}
+            className={`${FONTS.microgrammaBold.className} text-secondary sm:leading-20 text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-[90vw] sm:max-w-3xl md:max-w-4xl break-words text-balance`}
           >
             Explore the Obrive ecosystem.
           </h1>
-          <p className="text-primary/70 text-lg max-w-[760px] mb-10">
+          <p className="text-base sm:text-md text-center max-w-3xl px-4 font-medium">
             Find the right solution, product, industry application, technology resource or support page. Obrive connects AR, VR, MR, 3D Design and Spatial Computing to real-world business experiences.
           </p>
-
         </div>
       </FullWidthSection>
 

@@ -35,7 +35,7 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
               placeholder="Search the sitemap — e.g. automotive, AR, digital twins, OBPARK..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="flex-1 bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-accent transition-colors"
+              className="flex-1 bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors"
               aria-label="Search sitemap"
             />
           </div>
@@ -50,10 +50,10 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
                 <section id={category.id} className="border-t border-primary/10 pt-8 mt-2 scroll-mt-32">
                   <div className="flex flex-col md:flex-row justify-between gap-6 mb-8">
                     <div>
-                      <div className="text-accent text-xs font-bold tracking-[0.14em] uppercase mb-2">
+                      <div className="text-secondary text-xs font-bold tracking-[0.14em] uppercase mb-2">
                         Directory
                       </div>
-                      <h2 className={`${FONTS.microgrammaBold.className} text-primary text-3xl sm:text-4xl m-0`}>
+                      <h2 className={`${FONTS.microgrammaBold.className} text-secondary text-3xl sm:text-4xl m-0`}>
                         {category.title}
                       </h2>
                     </div>
@@ -67,9 +67,9 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
                       <Link
                         key={entry.href}
                         href={entry.href}
-                        className="group flex flex-col min-h-[165px] p-5 bg-gradient-to-br from-white to-primary/5 border border-primary/10 rounded-[18px] transition-all duration-200 hover:border-accent hover:-translate-y-1 hover:shadow-lg"
+                        className="group flex flex-col min-h-[165px] p-5 bg-gradient-to-br from-white to-primary/5 border border-primary/10 rounded-[18px] transition-all duration-200 hover:border-primary/30 hover:-translate-y-1 hover:shadow-lg"
                       >
-                        <div className="text-accent text-[11px] font-extrabold tracking-[0.1em]">
+                        <div className="text-secondary text-[11px] font-extrabold tracking-[0.1em]">
                           {entry.num}
                         </div>
                         <h3 className={`${FONTS.microgrammaBold.className} text-primary text-lg mt-[18px] mb-[7px]`}>
