@@ -78,7 +78,7 @@ export default function AnimatedButton({
     </span>
   );
 
-  if (asChild && href) {
+  if (href) {
     return (
       <Button
         asChild

@@ -3,7 +3,7 @@ import Link from "next/link";
 import FONTS from "@/assets/fonts";
 import { IMAGES, IMAGES_META } from "@/assets/images";
 import { GROUPS, PRIMARY_FOOTER_CARD, SOCIAL_LINKS } from "@/constants/Footer";
-import PrimaryFooterCard from "../cards/PrimaryFooterCard";
+import DynamicFooterCard from "./DynamicFooterCard";
 import {
   HoverCard,
   HoverCardContent,
@@ -19,7 +19,7 @@ export default function Footer() {
   return (
     <footer aria-label="Site footer" className="py-16">
       <div className="flex w-full flex-col gap-12">
-        <PrimaryFooterCard {...PRIMARY_FOOTER_CARD} />
+        <DynamicFooterCard />
 
         {/* Links Grid */}
         <section className="w-full flex flex-col gap-12">

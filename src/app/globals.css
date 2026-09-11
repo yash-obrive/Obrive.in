@@ -223,7 +223,7 @@ body {
 }
 
 .btn__icon.--1 {
-  transform: translate(-150%) translate(-1.5rem) translateY(-50%);
+  transform: translate(-250%) translate(-2rem) translateY(-50%);
   transition-delay: 0s;
 }
 

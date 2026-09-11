@@ -129,7 +129,7 @@ function ContactFormContent() {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={`w-full bg-white border ${errors.name ? 'border-red-500' : 'border-primary/20'} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-accent transition-colors`}
+            className={`w-full bg-white border ${errors.name ? 'border-red-500' : 'border-primary/20'} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors`}
             placeholder="John Doe"
           />
           {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
@@ -142,7 +142,7 @@ function ContactFormContent() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full bg-white border ${errors.email ? 'border-red-500' : 'border-primary/20'} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-accent transition-colors`}
+            className={`w-full bg-white border ${errors.email ? 'border-red-500' : 'border-primary/20'} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors`}
             placeholder="john@example.com"
           />
           {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
@@ -155,7 +155,7 @@ function ContactFormContent() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-accent transition-colors"
+            className="w-full bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors"
             placeholder="+1 (555) 000-0000"
           />
         </div>
@@ -167,7 +167,7 @@ function ContactFormContent() {
             name="company"
             value={formData.company}
             onChange={handleChange}
-            className="w-full bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-accent transition-colors"
+            className="w-full bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors"
             placeholder="Acme Corp"
           />
         </div>
@@ -179,7 +179,7 @@ function ContactFormContent() {
           name="service"
           value={formData.service}
           onChange={handleChange}
-          className={`w-full bg-white border ${errors.service ? 'border-red-500' : 'border-primary/20'} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-accent transition-colors appearance-none`}
+          className={`w-full bg-white border ${errors.service ? 'border-red-500' : 'border-primary/20'} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors appearance-none`}
         >
           <option value="">Select a service...</option>
           {Object.values(PRICING_SERVICES_MAP).map((serviceName) => (
@@ -197,7 +197,7 @@ function ContactFormContent() {
           name="projectRequirement"
           value={formData.projectRequirement}
           onChange={handleChange}
-          className="w-full bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-accent transition-colors"
+          className="w-full bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors"
           placeholder="e.g., E-commerce AR Viewer, Corporate Website Redesign"
         />
       </div>
@@ -209,7 +209,7 @@ function ContactFormContent() {
           value={formData.message}
           onChange={handleChange}
           rows={5}
-          className={`w-full bg-white border ${errors.message ? 'border-red-500' : 'border-primary/20'} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-accent transition-colors resize-y`}
+          className={`w-full bg-white border ${errors.message ? 'border-red-500' : 'border-primary/20'} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors resize-y`}
           placeholder="Tell us about your goals, timeline, and any specific requirements..."
         />
         {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
@@ -239,21 +239,21 @@ function ContactFormContent() {
 
 export default function ContactForm() {
   return (
-    <FullWidthSection className="py-20 bg-background relative overflow-hidden">
+    <FullWidthSection backgroundColor="white" className="py-20 relative overflow-hidden">
       <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
       
       <div className="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
         
         {/* Contact Info Column */}
-        <div className="lg:col-span-5">
-          <div className="sticky top-32">
-            <div className="text-accent text-xs font-bold tracking-[0.14em] uppercase mb-4">
+        <div className="lg:col-span-5 flex flex-col justify-center">
+          <div>
+            <div className="uppercase text-xs font-medium text-primary mb-4">
               GET IN TOUCH
             </div>
-            <h1 className={`${FONTS.microgrammaBold.className} text-primary text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6`}>
+            <h1 className={`${FONTS.microgrammaBold.className} text-secondary sm:leading-20 text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-[90vw] sm:max-w-3xl md:max-w-4xl break-words text-balance mb-6 uppercase`}>
               Let's discuss your next project.
             </h1>
-            <p className="text-primary/70 text-lg leading-relaxed mb-10 max-w-[400px]">
+            <p className="text-base sm:text-md max-w-[600px] font-medium text-secondary mb-10">
               Whether you need immersive experiences, custom software, or a full-funnel growth strategy, our team is ready to help you build what's next.
             </p>
 
@@ -269,7 +269,7 @@ export default function ContactForm() {
               <div>
                 <h4 className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}>Direct Contact</h4>
                 <p className="text-primary/70 flex flex-col gap-1">
-                  <a href="mailto:hello@obrive.com" className="hover:text-accent transition-colors">hello@obrive.com</a>
+                  <a href="mailto:info@obrive.com" className="hover:text-secondary transition-colors">info@obrive.com</a>
                 </p>
               </div>
             </div>
@@ -278,9 +278,12 @@ export default function ContactForm() {
 
         {/* Form Column */}
         <div className="lg:col-span-7">
-          <div className="bg-white p-8 sm:p-10 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-primary/5">
-            <Suspense fallback={<div className="h-[600px] flex items-center justify-center"><div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin"/></div>}>
-              <ContactFormContent />
+          <div className="bg-gradient p-8 sm:p-10 rounded-[32px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-primary/10 relative overflow-hidden">
+            <div className="absolute top-[-20%] right-[-10%] w-[300px] h-[300px] rounded-full bg-white/40 blur-[80px] pointer-events-none" />
+            <Suspense fallback={<div className="h-[600px] flex items-center justify-center relative z-10"><div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin"/></div>}>
+              <div className="relative z-10">
+                <ContactFormContent />
+              </div>
             </Suspense>
           </div>
         </div>

@@ -27,9 +27,9 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
 
   return (
     <>
-      <div className="sticky top-[76px] z-15 bg-white/90 backdrop-blur-md border-b border-primary/10 py-4 max-md:top-[64px]">
+      <div className="sticky top-[76px] z-15 bg-white/90 backdrop-blur-md py-4 max-md:top-[64px]">
         <FullWidthSection backgroundColor="none" className="py-0">
-          <div className="flex gap-2.5 items-center max-w-[1280px] mx-auto">
+          <div className="flex gap-2.5 items-center max-w-2xl mx-auto">
             <input
               type="text"
               placeholder="Search the sitemap — e.g. automotive, AR, digital twins, OBPARK..."
@@ -47,10 +47,10 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
           {filteredCategories.length > 0 ? (
             filteredCategories.map((category) => (
               <FadeInOnView key={category.id}>
-                <section id={category.id} className="border-t border-primary/10 pt-8 mt-2 scroll-mt-32">
+                <section id={category.id} className="pt-8 mt-2 scroll-mt-32">
                   <div className="flex flex-col md:flex-row justify-between gap-6 mb-8">
                     <div>
-                      <div className="text-secondary text-xs font-bold tracking-[0.14em] uppercase mb-2">
+                      <div className="uppercase text-xs font-medium text-primary mb-2">
                         Directory
                       </div>
                       <h2 className={`${FONTS.microgrammaBold.className} text-secondary text-3xl sm:text-4xl m-0`}>

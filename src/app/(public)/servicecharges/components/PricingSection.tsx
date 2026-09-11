@@ -5,11 +5,13 @@ import FONTS from "@/assets/fonts";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { PRICING_STREAMS } from "@/constants/pages/pricingData";
+import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
 import Link from "next/link";
 import { MoveRight } from "lucide-react";
 
 export default function PricingSection() {
   const [isUSD, setIsUSD] = useState(false);
+  const [hoveredPackageId, setHoveredPackageId] = useState<string | null>(null);
 
   const formatINR = (value: number) => {
     return new Intl.NumberFormat("en-IN", {
@@ -29,12 +31,12 @@ export default function PricingSection() {
 
   return (
     <div id="services">
-      <FullWidthSection className="py-20 bg-background border-t border-primary/10">
+      <FullWidthSection className="py-20 bg-background">
         <div className="max-w-[1280px] mx-auto">
           {/* Header & Toggle */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
             <div className="max-w-[760px]">
-              <div className="text-accent text-xs font-bold tracking-[0.14em] uppercase mb-2">
+              <div className="uppercase text-xs font-medium text-primary mb-2">
                 OBRIVE SERVICES
               </div>
               <h2 className={`${FONTS.microgrammaBold.className} text-primary text-3xl sm:text-4xl lg:text-5xl mb-4`}>
@@ -73,14 +75,25 @@ export default function PricingSection() {
             {PRICING_STREAMS.map((stream) => (
               <div key={stream.id}>
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="text-accent font-bold text-lg">{stream.number}</div>
+                  <div className="text-secondary font-bold text-lg">{stream.number}</div>
                   <h3 className={`${FONTS.microgrammaBold.className} text-primary text-2xl`}>
                     {stream.title}
                   </h3>
                   <div className="hidden sm:block w-px h-6 bg-primary/20 mx-2" />
-                  <span className="hidden sm:block text-primary/50 text-xs tracking-widest uppercase font-bold">
-                    {stream.subtitle}
-                  </span>
+                  <div className="hidden md:flex flex-wrap items-center gap-2 text-primary/50 text-xs tracking-widest uppercase font-bold mt-2 sm:mt-0">
+                    {stream.packages.map((pkg, i) => (
+                      <React.Fragment key={pkg.id}>
+                        <span 
+                          className={`cursor-pointer transition-colors ${hoveredPackageId === pkg.id ? "text-primary" : (hoveredPackageId ? "opacity-40" : "hover:text-primary")}`}
+                          onMouseEnter={() => setHoveredPackageId(pkg.id)}
+                          onMouseLeave={() => setHoveredPackageId(null)}
+                        >
+                          {pkg.name}
+                        </span>
+                        {i < stream.packages.length - 1 && <span>·</span>}
+                      </React.Fragment>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -88,18 +101,24 @@ export default function PricingSection() {
                     <FadeInOnView key={pkg.id} delay={index * 0.1}>
                       <div
                         className={`flex flex-col h-full bg-white rounded-2xl p-6 transition-all duration-300 border ${
-                          pkg.isRecommended || pkg.isPopular || pkg.isBestSeller
-                            ? "border-accent shadow-[0_8px_30px_rgb(0,0,0,0.08)] -translate-y-1"
-                            : "border-primary/10 hover:border-accent hover:shadow-lg hover:-translate-y-1"
+                          hoveredPackageId && hoveredPackageId !== pkg.id
+                            ? "opacity-20 scale-[0.98]"
+                            : ""
+                        } ${
+                          hoveredPackageId === pkg.id
+                            ? "border-primary/60 shadow-xl -translate-y-2"
+                            : pkg.isRecommended || pkg.isPopular || pkg.isBestSeller
+                            ? "border-primary/40 shadow-[0_8px_30px_rgb(0,0,0,0.08)] -translate-y-1"
+                            : "border-primary/10 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1"
                         } relative overflow-hidden`}
                       >
                         {(pkg.isRecommended || pkg.isPopular || pkg.isBestSeller) && (
-                          <div className="absolute top-0 right-0 bg-accent text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-bl-lg">
+                          <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-bl-lg">
                             {pkg.isRecommended ? "Recommended" : pkg.isPopular ? "Popular" : "Best Seller"}
                           </div>
                         )}
                         
-                        <div className="text-accent text-xs font-extrabold tracking-widest uppercase mb-4 mt-2">
+                        <div className="text-secondary text-xs font-extrabold tracking-widest uppercase mb-4 mt-2">
                           {pkg.category}
                         </div>
                         <h4 className={`${FONTS.microgrammaBold.className} text-primary text-xl mb-3`}>
@@ -123,22 +142,21 @@ export default function PricingSection() {
                         <ul className="space-y-3 mb-8 flex-grow border-t border-primary/10 pt-6">
                           {pkg.features.map((feature, fIndex) => (
                             <li key={fIndex} className="flex items-start text-sm text-primary/80">
-                              <span className="text-accent mr-2.5 font-bold mt-0.5">•</span>
+                              <span className="text-secondary mr-2.5 font-bold mt-0.5">•</span>
                               <span className="leading-relaxed">{feature.text}</span>
                             </li>
                           ))}
                         </ul>
 
-                        <Link
-                          href={`/contact?service=${pkg.id}`}
-                          className={`w-full py-3.5 px-6 rounded-full font-bold text-sm flex items-center justify-center transition-all ${
-                            pkg.isRecommended || pkg.isPopular || pkg.isBestSeller
-                              ? "bg-accent text-white hover:bg-accent/90"
-                              : "bg-primary/5 text-primary hover:bg-primary/10"
-                          }`}
-                        >
-                          {pkg.ctaText}
-                        </Link>
+                        <div className="mt-auto flex justify-center w-full">
+                          <AnimatedButton
+                            href={`/checkout?service=${pkg.id}`}
+                            variant={pkg.isRecommended || pkg.isPopular || pkg.isBestSeller ? "default" : "outline"}
+                            className="px-8"
+                          >
+                            {pkg.ctaText}
+                          </AnimatedButton>
+                        </div>
                       </div>
                     </FadeInOnView>
                   ))}

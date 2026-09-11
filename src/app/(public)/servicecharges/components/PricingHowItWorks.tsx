@@ -30,7 +30,7 @@ export default function PricingHowItWorks() {
     <FullWidthSection className="py-20 bg-white">
       <div className="max-w-[1280px] mx-auto">
         <div className="mb-12">
-          <div className="text-accent text-xs font-bold tracking-[0.14em] uppercase mb-2">
+          <div className="uppercase text-xs font-medium text-primary mb-2">
             HOW IT WORKS
           </div>
           <h2 className={`${FONTS.microgrammaBold.className} text-primary text-3xl sm:text-4xl lg:text-[38px] leading-tight`}>
@@ -42,9 +42,9 @@ export default function PricingHowItWorks() {
           {steps.map((step, index) => (
             <div 
               key={index} 
-              className="bg-primary/5 border border-primary/10 rounded-2xl p-6 hover:border-accent/50 transition-colors"
+              className="bg-primary/5 border border-primary/10 rounded-2xl p-6 hover:border-primary/30 transition-colors"
             >
-              <div className="text-accent text-lg font-bold mb-3">{step.number}</div>
+              <div className="text-secondary text-lg font-bold mb-3">{step.number}</div>
               <h4 className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}>
                 {step.title}
               </h4>

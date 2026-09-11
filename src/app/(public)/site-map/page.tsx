@@ -6,7 +6,6 @@ import DirectorySearch from "./components/DirectorySearch";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
 import Link from "next/link";
-import PrimaryFooterCard from "@/components/shared/cards/PrimaryFooterCard";
 
 export const metadata: Metadata = {
   title: "Obrive Website Directory | AR, VR, MR, 3D & Spatial Computing",
@@ -39,15 +38,6 @@ export default function DirectoryPage() {
       {/* Interactive Directory Search & List */}
       <DirectorySearch categories={directoryData} />
 
-      {/* CTA Section using the project's native PrimaryFooterCard */}
-      <FullWidthSection backgroundColor="none" className="pb-20">
-        <div className="max-w-[1280px] mx-auto">
-          <PrimaryFooterCard
-            title="Have a project in mind?"
-            description="Tell Obrive what you want to build and we’ll help identify the right technology, product or implementation path."
-          />
-        </div>
-      </FullWidthSection>
     </div>
   );
 }

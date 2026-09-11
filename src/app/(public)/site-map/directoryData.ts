@@ -408,11 +408,11 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
       },
       {
         num: "04",
-        title: "Pricing",
+        title: "Service Charges",
         description: "Explore our fixed-price service streams, scopes and packages.",
-        href: "/pricing",
+        href: "/servicecharges",
         category: "company",
-        searchKeywords: "pricing /pricing explore our fixed-price service streams, scopes and packages. company"
+        searchKeywords: "service charges /servicecharges explore our fixed-price service streams, scopes and packages. company"
       },
       {
         num: "05",
