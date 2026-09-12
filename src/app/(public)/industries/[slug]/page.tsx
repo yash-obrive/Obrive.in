@@ -77,6 +77,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
         })}
       </Script>
       <SolutionTemplate
+        slug=""
         hero={industryData.hero}
         keyBenefits={industryData.keyBenefits}
         howItWorks={industryData.howItWorks}

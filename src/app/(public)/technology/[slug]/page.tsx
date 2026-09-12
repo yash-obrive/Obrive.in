@@ -75,6 +75,7 @@ export default async function TechnologyPage({ params }: TechnologyPageProps) {
         })}
       </Script>
       <SolutionTemplate
+        slug=""
         hero={technologyData.hero}
         keyBenefits={technologyData.keyBenefits}
         howItWorks={technologyData.howItWorks}
