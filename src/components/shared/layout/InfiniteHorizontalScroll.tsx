@@ -124,11 +124,15 @@ export const InfiniteHorizontalScroll =
         };
 
         api.on("select", onSelect);
+        
+        // Explicitly start the autoplay plugin once the API is ready
+        // This resolves issues with playOnInit failing in React StrictMode
+        plugin.play();
 
         return () => {
           api.off("select", onSelect);
         };
-      }, [api]);
+      }, [api, plugin]);
 
       // Handle visibility and focus for autoplay
       useEffect(() => {

@@ -402,9 +402,9 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         num: "03",
         title: "Careers / Join the Otters",
         description: "Explore opportunities to build the future of immersive technology.",
-        href: "/join-the-otters",
+        href: "/career",
         category: "company",
-        searchKeywords: "careers / join the otters /join-the-otters explore opportunities to build the future of immersive technology. company"
+        searchKeywords: "careers / join the otters /career explore opportunities to build the future of immersive technology. company"
       },
       {
         num: "04",
@@ -433,9 +433,9 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         num: "01",
         title: "Help Desk",
         description: "Product and platform assistance.",
-        href: "/help",
+        href: "/support/help-center",
         category: "support-and-legal",
-        searchKeywords: "help desk /help product and platform assistance. support & legal"
+        searchKeywords: "help desk /support/help-center product and platform assistance. support & legal"
       },
       {
         num: "02",

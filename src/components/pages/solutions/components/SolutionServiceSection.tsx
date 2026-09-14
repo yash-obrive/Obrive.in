@@ -59,9 +59,6 @@ const SolutionServiceSection = ({
       <p className="text-xs leading-6 text-zinc-500 max-w-[660px] mt-2">
         {footer}
       </p>
-
-      {/* Divider */}
-      <div className="border-b border-zinc-100 mt-6" />
     </div>
   );
 };
