@@ -71,11 +71,12 @@ export function SolutionTemplate({
       </FadeInOnView>
 
       <FadeInOnView>
-        <div className="flex gap-10 my-5 max-lg:flex-col max-lg:items-stretch max-md:gap-6 max-md:my-14 max-sm:my-10">
+        <div className="flex gap-10 my-5 max-lg:flex-col max-lg:items-stretch max-md:gap-6 max-md:my-14 max-sm:my-10 relative">
           <InfiniteHorizontalScroll
             speed={25}
             gap={16}
             pauseOnHover={true}
+            showNavigation={true}
             className="w-full"
             itemClassName="flex items-stretch max-md:basis-full"
           >
