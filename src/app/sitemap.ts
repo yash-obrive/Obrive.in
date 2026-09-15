@@ -6,6 +6,9 @@ import {
 } from "@/lib/mdx";
 import { getSolutionSlugs } from "@/lib/solutions";
 import { getProductSlugs } from "@/lib/products";
+import { getIndustrySlugs } from "@/lib/industries";
+import { getUseCaseSlugs } from "@/lib/use-cases";
+import { getTechnologySlugs } from "@/lib/technology";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://obrive.com";
@@ -25,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: `${baseUrl}/site-map`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
@@ -35,6 +38,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/servicecharges`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
   ];
 
@@ -51,6 +66,52 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const solutionSlugs = getSolutionSlugs();
   const solutionPages: MetadataRoute.Sitemap = solutionSlugs.map((slug) => ({
     url: `${baseUrl}/solutions/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.9,
+  }));
+
+  // Industries pages
+  const blockedIndustrySlugs = new Set([
+    "retail",
+    "healthcare",
+    "manufacturing",
+    "architecture-engineering",
+    "education",
+    "enterprise"
+  ]);
+  const industrySlugs = getIndustrySlugs().filter(slug => !blockedIndustrySlugs.has(slug));
+  const industryPages: MetadataRoute.Sitemap = industrySlugs.map((slug) => ({
+    url: `${baseUrl}/industries/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.9,
+  }));
+
+  // Use Cases pages
+  const blockedUseCaseSlugs = new Set([
+    "3d-product-configuration",
+    "digital-twins",
+    "remote-assistance"
+  ]);
+  const useCaseSlugs = getUseCaseSlugs().filter(slug => !blockedUseCaseSlugs.has(slug));
+  const useCasePages: MetadataRoute.Sitemap = useCaseSlugs.map((slug) => ({
+    url: `${baseUrl}/use-cases/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.9,
+  }));
+
+  // Technology pages
+  const blockedTechnologySlugs = new Set([
+    "mixed-reality",
+    "extended-reality",
+    "digital-twins",
+    "ai-immersive-technology"
+  ]);
+  const technologySlugs = getTechnologySlugs().filter(slug => !blockedTechnologySlugs.has(slug));
+  const technologyPages: MetadataRoute.Sitemap = technologySlugs.map((slug) => ({
+    url: `${baseUrl}/technology/${slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly",
     priority: 0.9,
@@ -96,6 +157,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticPages,
     ...productPages,
     ...solutionPages,
+    ...industryPages,
+    ...useCasePages,
+    ...technologyPages,
     ...caseStudyPages,
     ...faqPages,
     ...legalPages,

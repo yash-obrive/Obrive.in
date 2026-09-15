@@ -33,7 +33,7 @@ export const FAQSection = ({ title, children }: FAQSectionProps) => {
       <h2 className="text-2xl font-semibold text-teal-900 mb-6">{title}</h2>
       
       <Accordion type="single" collapsible className="space-y-4">
-        {faqItems.map((item, index) => (
+        {faqItems?.map((item, index) => (
           <AccordionItem
             key={index}
             value={`item-${title}-${index}`}

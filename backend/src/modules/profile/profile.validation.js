@@ -5,9 +5,11 @@ const UpdateProfileSchema = z.object({
   email     : z.string().email(),
   department: z.string(),
   jobTitle  : z.string(),
-  phoneNumber: z.coerce.string().regex(/^\d+$/, { message: "Phone number must contain only digits" }),
-  joinDate  : z.string(),
-  biography : z.string(),
+  phoneNumber: z.string().regex(/^[+]?[\d\s\-()]+$/, { message: "Invalid phone number format" }).optional().or(z.literal('')),
+  joinDate  : z.string().optional().or(z.literal('')),
+  biography : z.string().optional().or(z.literal('')),
+  avatar    : z.string().optional(),
+  avatar_url: z.string().optional(),
 }).partial().refine((data) => Object.keys(data).length > 0, {
   message: 'At least one field is required',
 }); 

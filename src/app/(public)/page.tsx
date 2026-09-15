@@ -65,39 +65,45 @@ const EffortlessControl = dynamic(
 );
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.obrive.in"),
+  metadataBase: new URL("https://obrive.com"),
 
-  title:
-    "Obrive – AR, VR, MR & Spatial Computing Solutions | Immersive Tech in Bangalore",
+  title: "AR, VR, MR & Spatial Computing Solutions | Obrive",
 
   description:
-    "Obrive is a leading immersive technology company in Bangalore, India offering cutting-edge AR, VR, MR, 3D design & spatial computing solutions for industries including real estate, automotive, retail, education & enterprise digital transformation.",
+    "Leading immersive technology company in Bangalore delivering AR, VR, MR, 3D visualization and spatial computing solutions for enterprise digital transformation.",
 
   keywords: [
-    "Obrive immersive technology",
-    "AR VR MR solutions India",
-    "spatial computing development",
+    "AR development global",
+    "VR development enterprise",
+    "MR solutions India",
+    "spatial computing studio",
     "3D visualization Bangalore",
     "augmented reality services",
     "virtual reality applications",
     "mixed reality enterprise solutions",
-    "immersive tech Bangalore",
+    "immersive technology company",
   ],
 
   alternates: {
-    canonical: "https://www.obrive.in",
+    canonical: "https://obrive.com/",
   },
 
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 
   openGraph: {
     type: "website",
-    url: "https://www.obrive.in",
-    title:
-      "Obrive – AR, VR, MR & Spatial Computing Solutions | Immersive Tech in Bangalore",
+    url: "https://obrive.com/",
+    title: "Obrive – AR, VR, MR & Spatial Computing Solutions",
     description:
       "Leading immersive technology company in Bangalore delivering AR, VR, MR, 3D visualization and spatial computing solutions for enterprise digital transformation.",
     siteName: "Obrive",
@@ -106,8 +112,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title:
-      "Obrive – AR, VR, MR & Spatial Computing Solutions",
+    title: "Obrive – AR, VR, MR & Spatial Computing Solutions",
     description:
       "Immersive technology company in Bangalore delivering AR, VR, MR and 3D visualization solutions.",
   },
@@ -119,9 +124,22 @@ export const metadata: Metadata = {
   },
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Obrive",
+  url: "https://obrive.com/",
+  description:
+    "Leading immersive technology company delivering AR, VR, MR, 3D visualization and spatial computing solutions for enterprise digital transformation.",
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
       <SmoothScrollProvider>
         <div className="flex flex-col items-center">
           {/* hero content */}
@@ -131,16 +149,17 @@ export default function Home() {
                 <h1
                   className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl md:text-5xl lg:text-6xl text-secondary`}
                 >
-                  Orchestrating What’s Next
+                  AR, VR, MR & Spatial Computing Solutions for Enterprise
                 </h1>
               </FadeInOnLoad>
               <FadeInOnLoad delay={0.3}>
-                <p className="text-sm sm:text-md text-center max-w-4xl px-4 font-medium">
-                  Stop manual bottlenecks. Elevate client experience. Conquer
-                  compliance effortlessly. Obrive's AI-driven automation
-                  platform liberates your team from repetitive tasks. Focus on
-                  growth, efficiency, and client trust—all from one intuitive
-                  dashboard.
+                <p className="text-sm sm:text-md text-center max-w-4xl px-4 font-medium leading-relaxed">
+                  Obrive Industries is an immersive technology company
+                  delivering enterprise-grade Augmented Reality (AR), Virtual
+                  Reality (VR), Mixed Reality (MR), 3D design, and spatial
+                  computing solutions. We help forward-thinking organizations
+                  modernize operations, elevate client experiences, and unlock
+                  interactive digital realities.
                 </p>
               </FadeInOnLoad>
             </div>
@@ -193,7 +212,7 @@ export default function Home() {
                   </Button>
                 </Link>
                 <p className="uppercase text-[10px] font-semibold max-sm:text-left text-primary text-center sm:text-right">
-                  Powering Your brand Workflows with Intelligent Automation
+                  Powering Enterprise Digital Transformation with Immersive Technology
                 </p>
               </div>
             </FadeInOnView>
@@ -216,9 +235,10 @@ export default function Home() {
                     <h2
                       className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl lg:text-4xl leading-tight`}
                     >
-                      Streamline processes. Empower people. Obrive enables
-                      organisations to modernise operations through smart
-                      automation—turning manual effort into strategic execution.
+                      Empower teams. Captivate audiences. Obrive enables
+                      enterprises to transform operations through immersive
+                      technology—turning complex concepts into interactive
+                      realities.
                     </h2>
                     <Link href="/about">
                       <Button

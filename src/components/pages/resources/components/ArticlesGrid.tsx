@@ -23,9 +23,9 @@ const ArticlesGrid = ({
         <div className="px-2 sm:px-4 lg:px-0">
           <div className="flex flex-col items-center gap-2 sm:gap-3">
             <RoundedBallIcon />
-            <h3 className="uppercase text-xs sm:text-sm font-medium text-center">
+            <h2 className="uppercase text-xs sm:text-sm font-medium text-center">
               All Articles
-            </h3>
+            </h2>
           </div>
 
           {/* Articles Grid with Smooth Transitions */}
