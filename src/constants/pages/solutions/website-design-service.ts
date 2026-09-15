@@ -456,5 +456,10 @@ export const WEBSITE_DESIGN_SERVICE_INDUSTRIES_CONTENT: SolutionIndustriesConten
     description: "Obrive can support multi-market websites with reusable components, localization-ready content structures, scalable navigation, analytics and governance.",
     items: ["Multi-language experiences", "Regional content variations", "Global design systems", "CMS/content architecture", "Accessibility-aware interfaces", "Analytics and measurement"],
   },
+  technologyCapabilities: {
+    title: "Website Design & Development Technologies",
+    subtitle: "",
+    items: ["Next.js & React", "TypeScript", "Tailwind CSS", "Headless CMS (Sanity, Contentful)", "Framer Motion", "Vercel", "WebGL & Three.js", "Analytics & Tag Management"],
+  },
   footerText: "",
 };
