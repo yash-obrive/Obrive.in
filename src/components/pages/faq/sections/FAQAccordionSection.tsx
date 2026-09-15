@@ -1,5 +1,5 @@
-import React from "react";
 import DOMPurify from "dompurify";
+import type React from "react";
 import {
   Accordion,
   AccordionContent,
@@ -36,10 +36,7 @@ export default function FAQAccordionSection({
   };
 
   return (
-    <section
-      className="mb-6"
-      id={title ? slugify(title) : undefined}
-    >
+    <section className="mb-6" id={title ? slugify(title) : undefined}>
       {title && <p className="text-base mb-4 text-gray-700">{title}</p>}
 
       <div className="border border-zinc-800 rounded-xl overflow-hidden">

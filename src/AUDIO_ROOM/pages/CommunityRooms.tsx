@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { apiFetch } from "@/lib/api";
-import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { useEffect, useState } from "react";
 import FONTS from "@/assets/fonts";
+import { Button } from "@/components/ui/button";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { apiFetch } from "@/lib/api";
 
-export default function CommunityRooms() { 
+export default function CommunityRooms() {
   const { me, loading: userLoading } = useCurrentUser();
   const [rooms, setRooms] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ export default function CommunityRooms() {
 
         // only live rooms
         const liveRooms = (data?.data || []).filter(
-          (r: any) => String(r.roomStatus).toLowerCase() === "live"
+          (r: any) => String(r.roomStatus).toLowerCase() === "live",
         );
 
         setRooms(liveRooms);
@@ -88,9 +88,7 @@ export default function CommunityRooms() {
             <div className="text-lg font-semibold tracking-tight text-slate-900">
               Getting live rooms
             </div>
-            <div className="mt-2 text-sm text-slate-500">
-              Loading rooms ...
-            </div>
+            <div className="mt-2 text-sm text-slate-500">Loading rooms ...</div>
           </div>
         </div>
       </div>
@@ -105,33 +103,39 @@ export default function CommunityRooms() {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-7 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#074139] shadow-sm backdrop-blur">
-                Conversations, new ideas, trends, community live discussions and more. <span className="ml-2 text-slate-400">join now</span>
+                Conversations, new ideas, trends, community live discussions and
+                more. <span className="ml-2 text-slate-400">join now</span>
               </div>
               <h1 className="text-4xl font-black tracking-tight sm:text-4xl lg:text-5xl">
                 Step into the room.
-                <span className="block text-[#074139]">Join conversations live.</span>
+                <span className="block text-[#074139]">
+                  Join conversations live.
+                </span>
               </h1>
               <p className="mt-4 max-w-xl text-sm leading-6 text-slate-600 sm:text-base">
-                Discover rooms for your interests. Join the people of obrive and other community members. The rooms update regularly based on new happenings, events, and trending topics of the time.
+                Discover rooms for your interests. Join the people of obrive and
+                other community members. The rooms update regularly based on new
+                happenings, events, and trending topics of the time.
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-3 sm:flex sm:gap-4">
               <div className="min-w-30 rounded-3xl border border-black/10 bg-white/75 px-4 py-4 shadow-sm backdrop-blur">
                 <div className="text-2xl font-black">{liveCount}</div>
-                <div className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-500">Live now</div>
+                <div className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-500">
+                  Live now
+                </div>
               </div>
               <div className="min-w-30 rounded-3xl border border-black/10 bg-white/75 px-4 py-4 shadow-sm backdrop-blur">
                 <div className="text-2xl font-black">{allowedCount}</div>
-                <div className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-500">Available for you</div>
+                <div className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-500">
+                  Available for you
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-
-
-          </div>
+          <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between"></div>
 
           {error && (
             <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 shadow-sm">
@@ -171,51 +175,53 @@ export default function CommunityRooms() {
                 .join("");
 
               return (
-                <div 
-                  key={room.id} 
+                <div
+                  key={room.id}
                   className="h-[220px] group bg-gradient flex flex-col justify-between rounded-xl border border-black/[0.08] bg-white/90 p-5 shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-black/[0.15]"
                 >
-{/* w-full sm:w-[450px] md:w-[550px] lg:w-[580px] py-6 sm:py-6 px-6 sm:px-10 lg:px-8 min-h-[320px] rounded-2xl bg-gradient cursor-default */}
+                  {/* w-full sm:w-[450px] md:w-[550px] lg:w-[580px] py-6 sm:py-6 px-6 sm:px-10 lg:px-8 min-h-[320px] rounded-2xl bg-gradient cursor-default */}
                   <div>
                     {/* Upper Metadata Row */}
 
+                    <div className="flex items-end gap-2 leading-none">
+                      {/* The Avatar Indicator Box */}
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-[#074139] text-[9px] font-bold text-white shadow-sm">
+                        {initials || "R"}
+                      </div>
 
-
-                  <div className="flex items-end gap-2 leading-none"> 
-                    {/* The Avatar Indicator Box */}
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-[#074139] text-[9px] font-bold text-white shadow-sm">
-                      {initials || "R"}
+                      {/* Label Wrapper - Forced to match structural bottom */}
+                      <div className="min-w-0 flex items-end h-8">
+                        <h3 className="text-base text-bold text-[15px] sm:text-[15px] md:text-[15px] lg:text-[15px] mb-1 font-medium tracking-tight transition-colors line-clamp-1 translate-y-[2px]">
+                          {label}
+                        </h3>
+                      </div>
                     </div>
 
-                    {/* Label Wrapper - Forced to match structural bottom */}
-                    <div className="min-w-0 flex items-end h-8">
-                      <h3 className="text-base text-bold text-[15px] sm:text-[15px] md:text-[15px] lg:text-[15px] mb-1 font-medium tracking-tight transition-colors line-clamp-1 translate-y-[2px]">
-                        {label}
-                      </h3>
-                    </div>
-                  </div>
-                                              
-                        {room.roomDescription ? (
-                          <p className={`${FONTS.microgrammaBold.className} text-[20px] mt-4 sm:text-2xl md:text-2xl lg:text-2xl text-secondary line-clamp-3`}>
-                            {room.roomDescription}
-                          </p>
-                        ) : (
-                          <p className="mt-1.5 text-[14px] italic text-slate-400">
-                            join to explore ideas with others.
-                          </p>
-                        )}
-
+                    {room.roomDescription ? (
+                      <p
+                        className={`${FONTS.microgrammaBold.className} text-[20px] mt-4 sm:text-2xl md:text-2xl lg:text-2xl text-secondary line-clamp-3`}
+                      >
+                        {room.roomDescription}
+                      </p>
+                    ) : (
+                      <p className="mt-1.5 text-[14px] italic text-slate-400">
+                        join to explore ideas with others.
+                      </p>
+                    )}
                   </div>
 
                   {/* Operational Action Footer Layer */}
                   <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-
-                      <span className={allowed ? "text-[#074139]" : "text-slate-500"}>
+                      <span
+                        className={
+                          allowed ? "text-[#074139]" : "text-slate-500"
+                        }
+                      >
                         {allowed ? "Open" : "Restricted"}
                       </span>
-                    {/* Badge System Logs */}
-                    {/* <div className="mt-4 flex flex-wrap gap-1.5 items-center"> */}
+                      {/* Badge System Logs */}
+                      {/* <div className="mt-4 flex flex-wrap gap-1.5 items-center"> */}
 
                       {/* <span className="rounded-md border border-black/[0.06] bg-slate-50/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
                         Room #{room.id}
@@ -232,13 +238,15 @@ export default function CommunityRooms() {
 
                         
                       )} */}
-                      
-                    {/* </div> */}
 
+                      {/* </div> */}
                     </div>
 
                     {allowed ? (
-                      <Link href={`/audio-room/room/${room.id}`} className="shrink-0">
+                      <Link
+                        href={`/audio-room/room/${room.id}`}
+                        className="shrink-0"
+                      >
                         <Button
                           size="sm"
                           className="rounded-sm cursor-pointer bg-[#074139] px-4 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#055c3c] active:scale-98"
@@ -266,5 +274,3 @@ export default function CommunityRooms() {
     </div>
   );
 }
-
-

@@ -1,14 +1,14 @@
-import { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 import { IMAGES } from "@/assets/images";
 import {
-  REAL_ESTATE_INDUSTRY,
-  AUTOMOTIVE_INDUSTRY,
-  RETAIL_INDUSTRY,
-  HEALTHCARE_INDUSTRY,
-  MANUFACTURING_INDUSTRY,
   ARCHITECTURE_ENGINEERING_INDUSTRY,
+  AUTOMOTIVE_INDUSTRY,
   EDUCATION_INDUSTRY,
   ENTERPRISE_INDUSTRY,
+  HEALTHCARE_INDUSTRY,
+  MANUFACTURING_INDUSTRY,
+  REAL_ESTATE_INDUSTRY,
+  RETAIL_INDUSTRY,
 } from "@/constants/pages/industries";
 
 // Reusing identical structure as SolutionHero for compatibility
@@ -44,7 +44,7 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     keyBenefits: REAL_ESTATE_INDUSTRY.keyBenefits,
     workflowStepsSidebar: REAL_ESTATE_INDUSTRY.workflowStepsSidebar,
   },
-  "automotive": {
+  automotive: {
     slug: "automotive",
     hero: {
       ...AUTOMOTIVE_INDUSTRY.hero,
@@ -54,7 +54,7 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     keyBenefits: AUTOMOTIVE_INDUSTRY.keyBenefits,
     workflowStepsSidebar: AUTOMOTIVE_INDUSTRY.workflowStepsSidebar,
   },
-  "retail": {
+  retail: {
     slug: "retail",
     hero: {
       ...RETAIL_INDUSTRY.hero,
@@ -64,7 +64,7 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     keyBenefits: RETAIL_INDUSTRY.keyBenefits,
     workflowStepsSidebar: RETAIL_INDUSTRY.workflowStepsSidebar,
   },
-  "healthcare": {
+  healthcare: {
     slug: "healthcare",
     hero: {
       ...HEALTHCARE_INDUSTRY.hero,
@@ -74,7 +74,7 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     keyBenefits: HEALTHCARE_INDUSTRY.keyBenefits,
     workflowStepsSidebar: HEALTHCARE_INDUSTRY.workflowStepsSidebar,
   },
-  "manufacturing": {
+  manufacturing: {
     slug: "manufacturing",
     hero: {
       ...MANUFACTURING_INDUSTRY.hero,
@@ -92,9 +92,10 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     },
     howItWorks: ARCHITECTURE_ENGINEERING_INDUSTRY.howItWorks,
     keyBenefits: ARCHITECTURE_ENGINEERING_INDUSTRY.keyBenefits,
-    workflowStepsSidebar: ARCHITECTURE_ENGINEERING_INDUSTRY.workflowStepsSidebar,
+    workflowStepsSidebar:
+      ARCHITECTURE_ENGINEERING_INDUSTRY.workflowStepsSidebar,
   },
-  "education": {
+  education: {
     slug: "education",
     hero: {
       ...EDUCATION_INDUSTRY.hero,
@@ -104,7 +105,7 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     keyBenefits: EDUCATION_INDUSTRY.keyBenefits,
     workflowStepsSidebar: EDUCATION_INDUSTRY.workflowStepsSidebar,
   },
-  "enterprise": {
+  enterprise: {
     slug: "enterprise",
     hero: {
       ...ENTERPRISE_INDUSTRY.hero,

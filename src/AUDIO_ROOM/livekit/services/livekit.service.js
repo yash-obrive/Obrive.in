@@ -1,8 +1,4 @@
-import {
-  AudioPresets,
-  Room,
-  RoomEvent,
-} from "livekit-client";
+import { AudioPresets, Room, RoomEvent } from "livekit-client";
 
 class LiveKitService {
   constructor() {
@@ -12,114 +8,67 @@ class LiveKitService {
     this.remoteAudioElements = new Map();
   }
 
-  async connect({
-    token,
-    roomId,
-  }) {
+  async connect({ token, roomId }) {
     try {
       this.disconnect();
       this.isConnecting = true;
       this.pendingDisconnect = false;
 
-      const livekitUrl =
-        process.env
-          .NEXT_PUBLIC_LIVEKIT_URL;
+      const livekitUrl = process.env.NEXT_PUBLIC_LIVEKIT_URL;
 
-      this.room =
-        new Room({
-          publishDefaults: {
-            audioPreset:
-              AudioPresets.musicHighQuality,
-            dtx: false,
-            red: true,
-          },
-        });
+      this.room = new Room({
+        publishDefaults: {
+          audioPreset: AudioPresets.musicHighQuality,
+          dtx: false,
+          red: true,
+        },
+      });
 
       this.room.on(
         RoomEvent.TrackSubscribed,
-        (
-          track,
-          publication,
-          participant
-        ) => {
-          if (
-            track.kind !==
-            "audio"
-          ) {
+        (track, publication, participant) => {
+          if (track.kind !== "audio") {
             return;
           }
 
-          const element =
-            track.attach();
+          const element = track.attach();
 
           element.autoplay = true;
           element.playsInline = true;
-          element.dataset.participantIdentity =
-            participant.identity;
-          element.dataset.trackSid =
-            publication.trackSid;
+          element.dataset.participantIdentity = participant.identity;
+          element.dataset.trackSid = publication.trackSid;
           element.style.display = "none";
 
-          document.body.appendChild(
-            element
-          );
+          document.body.appendChild(element);
 
-          this.remoteAudioElements.set(
-            publication.trackSid,
-            element
-          );
+          this.remoteAudioElements.set(publication.trackSid, element);
 
-          console.log(
-            "Remote audio attached",
-            participant.identity
-          );
+          console.log("Remote audio attached", participant.identity);
+        },
+      );
+
+      this.room.on(RoomEvent.TrackUnsubscribed, (track, publication) => {
+        const element = this.remoteAudioElements.get(publication.trackSid);
+
+        if (!element) {
+          return;
         }
-      );
 
-      this.room.on(
-        RoomEvent.TrackUnsubscribed,
-        (
-          track,
-          publication
-        ) => {
-          const element =
-            this.remoteAudioElements.get(
-              publication.trackSid
-            );
+        track.detach(element);
+        element.remove();
+        this.remoteAudioElements.delete(publication.trackSid);
+      });
 
-          if (!element) {
-            return;
-          }
+      this.room.on(RoomEvent.AudioPlaybackStatusChanged, () => {
+        console.log(
+          "LiveKit audio playback:",
+          this.room?.canPlaybackAudio ? "allowed" : "blocked",
+        );
+      });
 
-          track.detach(element);
-          element.remove();
-          this.remoteAudioElements.delete(
-            publication.trackSid
-          );
-        }
-      );
+      await this.room.connect(livekitUrl, token);
 
-      this.room.on(
-        RoomEvent.AudioPlaybackStatusChanged,
-        () => {
-          console.log(
-            "LiveKit audio playback:",
-            this.room?.canPlaybackAudio
-              ? "allowed"
-              : "blocked"
-          );
-        }
-      );
-
-      await this.room.connect(
-        livekitUrl,
-        token
-      );
-
-      console.log(
-        "LiveKit connected:",
-        roomId
-      );
+      console.log("LiveKit connected:", roomId);
 
       if (this.pendingDisconnect) {
         this.disconnect();
@@ -127,19 +76,13 @@ class LiveKitService {
 
       return this.room;
     } catch (error) {
-      console.error(
-        "LiveKit connection error:",
-        error
-      );
+      console.error("LiveKit connection error:", error);
 
       throw error;
     } finally {
       this.isConnecting = false;
 
-      if (
-        this.pendingDisconnect &&
-        this.room
-      ) {
+      if (this.pendingDisconnect && this.room) {
         this.disconnect();
       }
     }
@@ -156,9 +99,7 @@ class LiveKitService {
       this.room = null;
     }
 
-    this.remoteAudioElements.forEach(
-      (element) => element.remove()
-    );
+    this.remoteAudioElements.forEach((element) => element.remove());
     this.remoteAudioElements.clear();
     this.pendingDisconnect = false;
   }
@@ -173,35 +114,20 @@ class LiveKitService {
         return false;
       }
 
-      if (
-        !this.room.localParticipant
-          ?.permissions?.canPublish
-      ) {
-        console.error(
-          "Mic enable blocked: LiveKit canPublish is false"
-        );
+      if (!this.room.localParticipant?.permissions?.canPublish) {
+        console.error("Mic enable blocked: LiveKit canPublish is false");
         return false;
       }
 
-      await this.room.localParticipant
-        .setMicrophoneEnabled(
-          true,
-          {
-            echoCancellation: true,
-            noiseSuppression: false,
-            autoGainControl: false,
-          }
-        );
+      await this.room.localParticipant.setMicrophoneEnabled(true, {
+        echoCancellation: true,
+        noiseSuppression: false,
+        autoGainControl: false,
+      });
 
-      return Boolean(
-        this.room.localParticipant
-          .isMicrophoneEnabled
-      );
+      return Boolean(this.room.localParticipant.isMicrophoneEnabled);
     } catch (error) {
-      console.error(
-        "Mic enable error:",
-        error
-      );
+      console.error("Mic enable error:", error);
 
       return false;
     }
@@ -213,27 +139,18 @@ class LiveKitService {
         return false;
       }
 
-      await this.room.localParticipant
-        .setMicrophoneEnabled(
-          false
-        );
+      await this.room.localParticipant.setMicrophoneEnabled(false);
 
       return true;
     } catch (error) {
-      console.error(
-        "Mic disable error:",
-        error
-      );
+      console.error("Mic disable error:", error);
 
       return false;
     }
   }
 
   isMicrophoneEnabled() {
-    return Boolean(
-      this.room?.localParticipant
-        ?.isMicrophoneEnabled
-    );
+    return Boolean(this.room?.localParticipant?.isMicrophoneEnabled);
   }
 }
 

@@ -1,9 +1,17 @@
 "use client";
 
+import {
+  Facebook,
+  Linkedin,
+  Link as LinkIcon,
+  Share2,
+  Twitter,
+  X,
+} from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Share2, Link as LinkIcon, X, Twitter, Facebook, Linkedin } from "lucide-react";
 import CustomToast from "./components/Toast";
+
 interface ResourceWorkflowStepsProps {
   steps: string[];
 }
@@ -13,52 +21,52 @@ export default function ResourceWorkflowSteps({
 }: ResourceWorkflowStepsProps) {
   const [copied, setCopied] = React.useState(false);
   const [stepTargets, setStepTargets] = React.useState<(HTMLElement | null)[]>(
-    []
+    [],
   );
-const [showToast, setShowToast] = React.useState(false);
-   const handleShare = async () => {
-     try {
+  const [showToast, setShowToast] = React.useState(false);
+  const handleShare = async () => {
+    try {
       await handleCopy();
-       const url = window.location.href;
-       if (navigator.share) {
-         await navigator.share({ title: document.title, url });
-       } else if (navigator.clipboard) {
-         await navigator.clipboard.writeText(url);
-         setCopied(true);
-         setTimeout(() => setCopied(false), 2000);
-       }
-     } catch {
-       // no-op: user cancelled or unsupported
-     }
-   };
+      const url = window.location.href;
+      if (navigator.share) {
+        await navigator.share({ title: document.title, url });
+      } else if (navigator.clipboard) {
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    } catch {
+      // no-op: user cancelled or unsupported
+    }
+  };
 
   const handleTwitterShare = async () => {
     await handleCopy();
-  const url = encodeURIComponent(window.location.href);
-  const text = encodeURIComponent(document.title);
-  window.open(
-    `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
-    "_blank"
-  );
-};
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(document.title);
+    window.open(
+      `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
+      "_blank",
+    );
+  };
 
-const handleFacebookShare = async () => {
-  await handleCopy();
-  const url = encodeURIComponent(window.location.href);
-  window.open(
-    `https://www.facebook.com/sharer/sharer.php?u=${url}`,
-    "_blank"
-  );
-};
+  const handleFacebookShare = async () => {
+    await handleCopy();
+    const url = encodeURIComponent(window.location.href);
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+      "_blank",
+    );
+  };
 
-const handleLinkedInShare = async () => {
-  await handleCopy();
-  const url = encodeURIComponent(window.location.href);
-  window.open(
-    `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
-    "_blank"
-  );
-};
+  const handleLinkedInShare = async () => {
+    await handleCopy();
+    const url = encodeURIComponent(window.location.href);
+    window.open(
+      `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+      "_blank",
+    );
+  };
 
   const handleCopy = async () => {
     try {
@@ -66,11 +74,11 @@ const handleLinkedInShare = async () => {
       await navigator.clipboard.writeText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-       setShowToast(true);
+      setShowToast(true);
 
-    setTimeout(() => {
-      setShowToast(false);
-    }, 2000);
+      setTimeout(() => {
+        setShowToast(false);
+      }, 2000);
     } catch {}
   };
 
@@ -90,7 +98,7 @@ const handleLinkedInShare = async () => {
         .trim();
 
     const contentRoot = document.querySelector<HTMLElement>(
-      "[data-resource-content]"
+      "[data-resource-content]",
     );
     if (!contentRoot) {
       setStepTargets(Array(steps.length).fill(null));
@@ -98,12 +106,12 @@ const handleLinkedInShare = async () => {
     }
 
     const sectionNodes = Array.from(
-      contentRoot.querySelectorAll<HTMLElement>("section")
+      contentRoot.querySelectorAll<HTMLElement>("section"),
     );
 
     const sectionData = sectionNodes.map((section) => {
       const heading = section.querySelector<HTMLElement>(
-        "h1, h2, h3, h4, h5, h6"
+        "h1, h2, h3, h4, h5, h6",
       );
       if (heading) {
         heading.id = heading.id || normalize(heading.textContent || "");
@@ -131,7 +139,7 @@ const handleLinkedInShare = async () => {
 
       if (matchedIndex === -1) {
         matchedIndex = sectionData.findIndex(
-          (_, index) => !usedIndices.has(index)
+          (_, index) => !usedIndices.has(index),
         );
       }
 
@@ -154,7 +162,7 @@ const handleLinkedInShare = async () => {
         target.scrollIntoView({ behavior: "smooth", block: "start" });
       } catch {}
     },
-    [stepTargets]
+    [stepTargets],
   );
 
   return (
@@ -214,34 +222,34 @@ const handleLinkedInShare = async () => {
             <LinkIcon className="size-4" color="black" />
           </Button>
           <Button
-  variant="default"
-  size="lg"
-  className="bg-accent text-white"
-  onClick={handleTwitterShare}
->
-  <Twitter className="size-4" color="black" />
-</Button>
+            variant="default"
+            size="lg"
+            className="bg-accent text-white"
+            onClick={handleTwitterShare}
+          >
+            <Twitter className="size-4" color="black" />
+          </Button>
 
-<Button
-  variant="default"
-  size="lg"
-  className="bg-accent text-white"
-  onClick={handleFacebookShare}
->
-  <Facebook className="size-4"color="black" />
-</Button>
+          <Button
+            variant="default"
+            size="lg"
+            className="bg-accent text-white"
+            onClick={handleFacebookShare}
+          >
+            <Facebook className="size-4" color="black" />
+          </Button>
 
-<Button
-  variant="default"
-  size="lg"
-  className="bg-accent text-white"
-  onClick={handleLinkedInShare}
->
-  <Linkedin className="size-4"color="black" />
-</Button>
+          <Button
+            variant="default"
+            size="lg"
+            className="bg-accent text-white"
+            onClick={handleLinkedInShare}
+          >
+            <Linkedin className="size-4" color="black" />
+          </Button>
         </div>
       </div>
-      <CustomToast show={showToast} message={"Link copied"}/>
+      <CustomToast show={showToast} message={"Link copied"} />
     </section>
   );
 }

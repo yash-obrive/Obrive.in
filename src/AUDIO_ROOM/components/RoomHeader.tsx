@@ -1,26 +1,30 @@
 "use client";
 
+import { Radio, Users } from "lucide-react";
 import React from "react";
-import { Users, Radio } from "lucide-react";
 
 interface RoomHeaderProps {
   title?: string;
-  description?: string; 
+  description?: string;
   participantCount?: number;
 }
 
-const RoomHeader = ({ title, description, participantCount = 0 }: RoomHeaderProps) => {
+const RoomHeader = ({
+  title,
+  description,
+  participantCount = 0,
+}: RoomHeaderProps) => {
   return (
     <div className="w-full bg-[#ffffff] px-4 py-2 shadow-xs border-b border-black/[0.03]">
       <div className="flex items-center justify-between gap-3">
-        
         {/* Left Side Content - Compact & Inline */}
         <div className="min-w-0 flex flex-items-center gap-3 items-center">
-          
           {/* Micro Status Badge */}
           <div className="flex items-center gap-1 rounded-full border border-[#076d47]/20 bg-[#076d47]/5 px-2 py-0.5 shrink-0">
             <Radio size={10} className="text-[#076d47]" />
-            <span className="text-[9px] font-bold text-[#076d47] uppercase tracking-wider">Live</span>
+            <span className="text-[9px] font-bold text-[#076d47] uppercase tracking-wider">
+              Live
+            </span>
           </div>
 
           {/* Heading and Meta Description Stack */}
@@ -32,7 +36,6 @@ const RoomHeader = ({ title, description, participantCount = 0 }: RoomHeaderProp
               {description || "Room details will appear here."}
             </p>
           </div>
-
         </div>
 
         {/* Right Side Metric Block - Ultra Low Profile */}
@@ -45,7 +48,6 @@ const RoomHeader = ({ title, description, participantCount = 0 }: RoomHeaderProp
             Active
           </span>
         </div>
-
       </div>
     </div>
   );

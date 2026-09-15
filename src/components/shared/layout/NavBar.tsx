@@ -1,32 +1,32 @@
 "use client";
-import { MOBILE_NAV_STRUCTURE } from "@/constants/navigation";
-import Link from "next/link";
-import { FadeInOnLoad } from "@/components/shared/motion/GsapMotion";
-import { useState, useEffect, useRef, useMemo } from "react";
-import AnimatedButton from "../buttons/AnimatedButton";
 import { Menu, X } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
-import { ProductsDropdown } from "./dropdowns/ProductsDropdown";
-import { SolutionsDropdown } from "./dropdowns/SolutionsDropdown";
-import { CaseStudiesDropdown } from "./dropdowns/CaseStudiesDropdown";
-import { CompanyDropdown } from "./dropdowns/CompanyDropdown";
-import { ResourcesDropdown } from "./dropdowns/ResourcesDropdown";
-import PrimaryLogo from "../logo/PrimaryLogo";
-import {
-  NavigationMenu,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
+import Link from "next/link";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { FadeInOnLoad } from "@/components/shared/motion/GsapMotion";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { buttonVariants } from "@/components/ui/button";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import { MOBILE_NAV_STRUCTURE } from "@/constants/navigation";
+import AnimatedButton from "../buttons/AnimatedButton";
+import PrimaryLogo from "../logo/PrimaryLogo";
+import { CaseStudiesDropdown } from "./dropdowns/CaseStudiesDropdown";
+import { CompanyDropdown } from "./dropdowns/CompanyDropdown";
+import { ProductsDropdown } from "./dropdowns/ProductsDropdown";
+import { ResourcesDropdown } from "./dropdowns/ResourcesDropdown";
+import { SolutionsDropdown } from "./dropdowns/SolutionsDropdown";
 
 // Breakpoint constants
 const BREAKPOINTS = {
@@ -109,7 +109,7 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
 
       setScrollY(currentScrollY);
       setIsScrolled(
-        currentScrollY > NAVBAR_DIMENSIONS.scroll.scrolledThreshold
+        currentScrollY > NAVBAR_DIMENSIONS.scroll.scrolledThreshold,
       );
 
       // Determine scroll direction
@@ -177,8 +177,8 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
     const deviceDimensions = isMobile
       ? NAVBAR_DIMENSIONS.mobile
       : isTablet
-      ? NAVBAR_DIMENSIONS.tablet
-      : NAVBAR_DIMENSIONS.desktop;
+        ? NAVBAR_DIMENSIONS.tablet
+        : NAVBAR_DIMENSIONS.desktop;
 
     if (scrollY <= shrinkStartHeight) {
       return {
@@ -199,8 +199,8 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
         maxWidth: isMobile
           ? `calc(100% - ${NAVBAR_DIMENSIONS.mobile.maxWidthGutter}px)`
           : isTablet
-          ? `calc(100% - ${NAVBAR_DIMENSIONS.tablet.maxWidthGutter}px)`
-          : `${NAVBAR_DIMENSIONS.desktop.maxWidth}px`,
+            ? `calc(100% - ${NAVBAR_DIMENSIONS.tablet.maxWidthGutter}px)`
+            : `${NAVBAR_DIMENSIONS.desktop.maxWidth}px`,
         marginTop: `${deviceDimensions.marginTop}px`,
         borderRadius: `${deviceDimensions.borderRadius}px`,
         height: `${deviceDimensions.endHeight}px`,
@@ -231,8 +231,8 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
           ? isMobile
             ? `calc(100% - ${NAVBAR_DIMENSIONS.mobile.maxWidthGutter}px)`
             : isTablet
-            ? `calc(100% - ${NAVBAR_DIMENSIONS.tablet.maxWidthGutter}px)`
-            : `${NAVBAR_DIMENSIONS.desktop.maxWidth}px`
+              ? `calc(100% - ${NAVBAR_DIMENSIONS.tablet.maxWidthGutter}px)`
+              : `${NAVBAR_DIMENSIONS.desktop.maxWidth}px`
           : "100%",
       marginTop: `${easeProgress * marginTop}px`,
       borderRadius: `${easeProgress * borderRadius}px`,
@@ -253,7 +253,9 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
     scrollDirection === "down" && scrollY > heroSectionHeight;
   const progressiveValues = getProgressiveValues();
   const borderClass =
-    progressiveValues.progress > 0 ? "border-[0.5px] border-primary/30" : "border-[0.5px] border-transparent";
+    progressiveValues.progress > 0
+      ? "border-[0.5px] border-primary/30"
+      : "border-[0.5px] border-transparent";
 
   // Get background color classes
   const getBackgroundColor = () => {

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useMemo } from "react";
+import type React from "react";
+import { useMemo } from "react";
 import Navbar from "./Navbar";
 
 interface AudioRoomLayoutProps {
@@ -15,11 +16,14 @@ const AudioRoomLayout = ({
   setActiveSection,
 }: AudioRoomLayoutProps) => {
   // FIXED: Cached configuration settings values to block garbage compilation ticks
-  const sections = useMemo(() => [
-    { id: "participants", label: "Participants", icon: "👥" },
-    { id: "chat", label: "Chat", icon: "💬" },
-    { id: "controls", label: "Controls", icon: "🎛️" },
-  ], []);
+  const sections = useMemo(
+    () => [
+      { id: "participants", label: "Participants", icon: "👥" },
+      { id: "chat", label: "Chat", icon: "💬" },
+      { id: "controls", label: "Controls", icon: "🎛️" },
+    ],
+    [],
+  );
 
   return (
     <div className="h-screen w-screen overflow-hidden flex flex-col bg-[#f8f9fa] text-slate-900 antialiased">
@@ -28,7 +32,6 @@ const AudioRoomLayout = ({
 
       {/* Main Framework Layout Viewport */}
       <div className="flex flex-1 min-h-0 overflow-hidden relative flex-col md:flex-row">
-        
         {/* 1. DESKTOP ONLY: Streamlined Left Side Tabs Bar Container */}
         <nav className="hidden md:flex w-44 bg-white border-r border-slate-200/80 flex-col gap-1 p-2 select-none">
           <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-2.5 mt-2 mb-1.5">
@@ -81,7 +84,6 @@ const AudioRoomLayout = ({
             {children}
           </div>
         </main>
-
       </div>
     </div>
   );

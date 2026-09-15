@@ -1,6 +1,6 @@
 // backend/src/modules/client/client.service.js
-const { prisma } = require('../../../prisma');
-const jwt = require('jsonwebtoken');
+const { prisma } = require("../../../prisma");
+const jwt = require("jsonwebtoken");
 
 // ========== LOGIN SERVICE (NEW - ADD THIS) ==========
 exports.clientLogin = async (clientId) => {
@@ -11,85 +11,95 @@ exports.clientLogin = async (clientId) => {
     WHERE userid = ${clientId} AND role = 'client'
     LIMIT 1
   `;
-  
+
   const client = result[0];
-  
+
   if (!client) {
-    const error = new Error('Invalid Client ID');
+    const error = new Error("Invalid Client ID");
     error.status = 401;
     throw error;
   }
-  
-  if (client.status !== 'active' && client.status !== 'offline') {
-    const error = new Error('Account disabled. Contact admin.');
+
+  if (client.status !== "active" && client.status !== "offline") {
+    const error = new Error("Account disabled. Contact admin.");
     error.status = 401;
     throw error;
   }
-  
+
   // Generate JWT token
   const token = jwt.sign(
-    { 
-      id: client.id, 
-      clientId: client.userid, 
-      name: client.name, 
-      role: client.role 
+    {
+      id: client.id,
+      clientId: client.userid,
+      name: client.name,
+      role: client.role,
     },
     process.env.JWT_ACCESS_SECRET,
-    { expiresIn: process.env.JWT_ACCESS_EXPIRES || '24h' }
+    { expiresIn: process.env.JWT_ACCESS_EXPIRES || "24h" },
   );
-  
+
   return {
     token,
     user: {
       clientId: client.userid,
       name: client.name,
       email: client.email,
-      role: client.role
-    }
+      role: client.role,
+    },
   };
 };
 
 // ========== HIS EXISTING CODE (Keep as is - DON'T CHANGE) ==========
 exports.getMyProfile = async (clientId) => {
   const client = await prisma.client.findUnique({
-    where:  { id: clientId },
-    select: { id: true, clientId: true, companyName: true, contactName: true, email: true, phone: true, industry: true },
+    where: { id: clientId },
+    select: {
+      id: true,
+      clientId: true,
+      companyName: true,
+      contactName: true,
+      email: true,
+      phone: true,
+      industry: true,
+    },
   });
-  if (!client) throw { status: 404, message: 'Client not found' };
+  if (!client) throw { status: 404, message: "Client not found" };
   return client;
 };
 
 exports.getMyProjects = async (clientId) => {
   return prisma.project.findMany({
-    where:   { clientId },
+    where: { clientId },
     include: {
       assignments: {
-        include: { employee: { select: { fullName: true, designation: true } } },
+        include: {
+          employee: { select: { fullName: true, designation: true } },
+        },
       },
     },
-    orderBy: { createdAt: 'desc' },
+    orderBy: { createdAt: "desc" },
   });
 };
 
 exports.getProjectById = async (clientId, projectId) => {
   const project = await prisma.project.findFirst({
-    where:   { id: projectId, clientId },
+    where: { id: projectId, clientId },
     include: {
       assignments: { include: { employee: true } },
-      meetings:    true,
+      meetings: true,
     },
   });
-  if (!project) throw { status: 404, message: 'Project not found' };
+  if (!project) throw { status: 404, message: "Project not found" };
   return project;
 };
 
 exports.requestProject = async (clientId, data) => {
   return prisma.project.create({
     data: {
-      title:       data.title,
+      title: data.title,
       description: data.description,
       clientId,
-      status:      'PENDING',
+      status: "PENDING",
     },
   });
 };

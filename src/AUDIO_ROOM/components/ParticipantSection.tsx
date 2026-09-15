@@ -5,7 +5,7 @@ import ParticipantCard from "./ParticipantCard";
 
 interface Participant {
   id: number;
-  name: string; 
+  name: string;
   role: string;
   isMuted?: boolean;
   isSpeaking?: boolean;
@@ -27,7 +27,7 @@ const ParticipantSection = ({
   canModerate = false,
 }: ParticipantSectionProps) => {
   const uniqueParticipants = Array.from(
-    new Map(participants.map((p) => [p.id, p])).values()
+    new Map(participants.map((p) => [p.id, p])).values(),
   );
 
   return (

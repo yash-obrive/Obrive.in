@@ -5,7 +5,7 @@ exports.registerMessageHandler = (io, socket) => {
   socket.on("send_message", async (data) => {
     try {
       const { conversationId, content } = data;
-      
+
       const convId = parseInt(conversationId);
       if (isNaN(convId)) {
         console.error("Invalid conversationId received:", conversationId);

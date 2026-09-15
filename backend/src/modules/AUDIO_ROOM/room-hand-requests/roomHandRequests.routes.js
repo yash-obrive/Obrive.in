@@ -1,8 +1,6 @@
-const express =
-  require("express");
+const express = require("express");
 
-const router =
-  express.Router();
+const router = express.Router();
 
 const {
   getPendingHandRequestsController,
@@ -17,8 +15,7 @@ router.get(
   auth,
   requireRoomRoles(["host", "moderator", "admin"]),
   zodValidate({ part: "params", schema: RoomIdParamSchema }),
-  getPendingHandRequestsController
+  getPendingHandRequestsController,
 );
 
-module.exports =
-  router;
+module.exports = router;

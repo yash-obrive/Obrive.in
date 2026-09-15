@@ -1,10 +1,10 @@
 import React from "react";
 import FONTS from "@/assets/fonts";
-import { ButtonLink } from "@/components/ui/ButtonLink";
 import { StyledText } from "@/components/shared/StyledText";
-import CompanyInfoSection from "./sections/CompanyInfoSection";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import CompanyInfoApproachTable from "./sections/CompanyInfoApproachTable";
 import CompanyInfoHeader from "./sections/CompanyInfoHeader";
+import CompanyInfoSection from "./sections/CompanyInfoSection";
 
 // Export components for direct import in MDX files
 export { CompanyInfoSection, CompanyInfoApproachTable, CompanyInfoHeader };

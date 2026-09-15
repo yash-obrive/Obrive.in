@@ -1,6 +1,7 @@
+import type React from "react";
+import { useState } from "react";
 import FONTS from "@/assets/fonts";
 import { Button } from "@/components/ui/button";
-import React, { useState } from "react";
 
 const AboutYou = ({
   props,

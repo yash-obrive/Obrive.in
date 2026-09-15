@@ -85,7 +85,6 @@ export const OBNEST_OTHER_BENEFITS = [
   },
   {
     title: "International & Remote Buyers",
-    description:
-      "View and decide on properties from anywhere in the world.",
+    description: "View and decide on properties from anywhere in the world.",
   },
 ] as const;

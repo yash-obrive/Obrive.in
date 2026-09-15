@@ -40,7 +40,7 @@ const ScheduledRooms = () => {
   // ======================================================
   useEffect(() => {
     let isMounted = true;
-    
+
     const fetchRooms = async () => {
       try {
         setLoading(true);
@@ -53,7 +53,7 @@ const ScheduledRooms = () => {
 
         if (isMounted) {
           const scheduledRooms = (data.data || []).filter(
-            (room: Room) => room.roomStatus === "scheduled"
+            (room: Room) => room.roomStatus === "scheduled",
           );
           setRooms(scheduledRooms);
         }
@@ -65,7 +65,9 @@ const ScheduledRooms = () => {
     };
 
     fetchRooms();
-    return () => { isMounted = false; };
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   // Structural re-fetch trigger helper
@@ -75,7 +77,7 @@ const ScheduledRooms = () => {
       const data = await response.json();
       if (response.ok) {
         const scheduledRooms = (data.data || []).filter(
-          (room: Room) => room.roomStatus === "scheduled"
+          (room: Room) => room.roomStatus === "scheduled",
         );
         setRooms(scheduledRooms);
       }
@@ -146,7 +148,9 @@ const ScheduledRooms = () => {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {!loading && rooms.length === 0 ? (
             <div className="col-span-full py-10 text-center rounded-md border border-dashed border-slate-200 bg-slate-50/50">
-              <p className="text-xs text-slate-400 italic">No scheduled rooms found.</p>
+              <p className="text-xs text-slate-400 italic">
+                No scheduled rooms found.
+              </p>
             </div>
           ) : (
             rooms.map((room) => (
@@ -157,7 +161,10 @@ const ScheduledRooms = () => {
                 <div>
                   {/* Card Title & Status Tag Badge */}
                   <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-[11px] font-bold tracking-tight text-slate-800 truncate" title={room.roomName}>
+                    <h3
+                      className="text-[11px] font-bold tracking-tight text-slate-800 truncate"
+                      title={room.roomName}
+                    >
                       {room.roomName}
                     </h3>
                     <div className="shrink-0 rounded bg-amber-50 border border-amber-200 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-amber-700">
@@ -167,7 +174,8 @@ const ScheduledRooms = () => {
 
                   {/* Description Context Block */}
                   <p className="mt-2 mb-4 text-[10px] text-slate-400 line-clamp-2 leading-relaxed">
-                    {room.roomDescription || "No description provided for this event."}
+                    {room.roomDescription ||
+                      "No description provided for this event."}
                   </p>
                 </div>
 
@@ -175,14 +183,22 @@ const ScheduledRooms = () => {
                 <div className="mt-auto border-t border-slate-100 pt-3">
                   <div className="grid grid-cols-2 gap-y-1.5 text-[9px] text-slate-500 mb-3.5">
                     <div className="flex items-center gap-1">
-                      <span className="font-semibold text-slate-400">Limit:</span>
-                      <span className="font-bold text-slate-600">{room.participantLimit} slots</span>
+                      <span className="font-semibold text-slate-400">
+                        Limit:
+                      </span>
+                      <span className="font-bold text-slate-600">
+                        {room.participantLimit} slots
+                      </span>
                     </div>
                     <div className="flex items-center gap-1 justify-end">
-                      <span className="font-semibold text-slate-400">Access:</span>
-                      <span className="capitalize font-bold text-slate-600">{room.visibility}</span>
+                      <span className="font-semibold text-slate-400">
+                        Access:
+                      </span>
+                      <span className="capitalize font-bold text-slate-600">
+                        {room.visibility}
+                      </span>
                     </div>
-                    
+
                     <div className="col-span-full flex flex-col gap-0.5 mt-1 rounded bg-slate-50 p-2 border border-slate-100">
                       <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">
                         Target Start Time

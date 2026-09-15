@@ -1,108 +1,74 @@
-const { prisma } =
-  require("../../../../prisma");
+const { prisma } = require("../../../../prisma");
 
 const {
   emitHandRaiseUpdated,
-} = require(
-  "../room-hand-action/roomHandAction.service"
-);
+} = require("../room-hand-action/roomHandAction.service");
 
-const raiseHandService =
-  async (payload) => {
-    const {
-      roomId,
-      userId,
-    } = payload;
+const raiseHandService = async (payload) => {
+  const { roomId, userId } = payload;
 
-    // ==========================
-    // CHECK ACTIVE PARTICIPANT
-    // ==========================
+  // ==========================
+  // CHECK ACTIVE PARTICIPANT
+  // ==========================
 
-    const participant =
-      await prisma.room_participants.findFirst(
-        {
-          where: {
-            roomId:
-              Number(roomId),
+  const participant = await prisma.room_participants.findFirst({
+    where: {
+      roomId: Number(roomId),
 
-            userId:
-              Number(userId),
+      userId: Number(userId),
 
-            leftAt: null,
-          },
-        }
-      );
+      leftAt: null,
+    },
+  });
 
-    if (
-      !participant
-    ) {
-      throw new Error(
-        "User is not inside room"
-      );
-    }
+  if (!participant) {
+    throw new Error("User is not inside room");
+  }
 
-    // ==========================
-    // CHECK EXISTING REQUEST
-    // ==========================
+  // ==========================
+  // CHECK EXISTING REQUEST
+  // ==========================
 
-    const existingRequest =
-      await prisma.room_hand_raises.findFirst(
-        {
-          where: {
-            roomId:
-              Number(roomId),
+  const existingRequest = await prisma.room_hand_raises.findFirst({
+    where: {
+      roomId: Number(roomId),
 
-            userId:
-              Number(userId),
+      userId: Number(userId),
 
-            status:
-              "pending",
-          },
-        }
-      );
+      status: "pending",
+    },
+  });
 
-    if (
-      existingRequest
-    ) {
-      throw new Error(
-        "Hand already raised"
-      );
-    }
+  if (existingRequest) {
+    throw new Error("Hand already raised");
+  }
 
-    // ==========================
-    // CREATE REQUEST
-    // ==========================
+  // ==========================
+  // CREATE REQUEST
+  // ==========================
 
-    const request =
-      await prisma.room_hand_raises.create(
-        {
-          data: {
-            roomId:
-              Number(roomId),
+  const request = await prisma.room_hand_raises.create({
+    data: {
+      roomId: Number(roomId),
 
-            userId:
-              Number(userId),
-          },
+      userId: Number(userId),
+    },
 
-          include: {
-            user: {
-              select: {
-                id: true,
-                name: true,
-                userid:
-                  true,
-              },
-            },
-          },
-        }
-      );
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          userid: true,
+        },
+      },
+    },
+  });
 
-    await emitHandRaiseUpdated(
-      roomId
-    );
+  await emitHandRaiseUpdated(roomId);
 
-    return request;
-  };
+  return request;
+};
 
 module.exports = {
   raiseHandService,

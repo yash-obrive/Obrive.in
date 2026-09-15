@@ -23,12 +23,24 @@ export default function FallingProfileLeaves({ count = 12 }: Props) {
       // Use ui-avatars to generate simple circular avatars
       const url = `https://ui-avatars.com/api/?name=User+${i + 1}&background=076d47&color=ffffff&size=128`;
 
-      return { left, size, duration, delay, rotate, sway, url, key: `leaf-${i}` };
+      return {
+        left,
+        size,
+        duration,
+        delay,
+        rotate,
+        sway,
+        url,
+        key: `leaf-${i}`,
+      };
     });
   }, [count]);
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div
+      aria-hidden
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+    >
       <style>{`
         @keyframes fall {
           0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }

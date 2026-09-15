@@ -1,18 +1,17 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+// Native Event Hooks to manage background track engines smoothly
+import { RoomEvent } from "livekit-client";
 import { useParams, useRouter } from "next/navigation";
-import RoomHeader from "./RoomHeader";
-import ParticipantSection from "./ParticipantSection";
-import BottomControls from "./BottomControls";
-import RaisedHandsPanel from "./RaisedHandsPanel";
-import { apiFetch } from "@/lib/api";
+import { useEffect, useRef, useState } from "react";
 import livekitService from "@/AUDIO_ROOM/livekit/services/livekit.service";
 import { useSocket } from "@/context/SocketContext";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
-
-// Native Event Hooks to manage background track engines smoothly
-import { RoomEvent } from "livekit-client";
+import { apiFetch } from "@/lib/api";
+import BottomControls from "./BottomControls";
+import ParticipantSection from "./ParticipantSection";
+import RaisedHandsPanel from "./RaisedHandsPanel";
+import RoomHeader from "./RoomHeader";
 
 const AudioRoomPage = () => {
   const [isChatOpen, setIsChatOpen] = useState(true);
@@ -48,15 +47,19 @@ const AudioRoomPage = () => {
     ...(roomData?.participants?.listeners || []),
   ];
 
-  const roomTitle = roomData?.room?.roomName || roomData?.roomName || "Live Room";
-  const roomDescription = roomData?.room?.roomDescription || roomData?.roomDescription || "Room details will appear here.";
+  const roomTitle =
+    roomData?.room?.roomName || roomData?.roomName || "Live Room";
+  const roomDescription =
+    roomData?.room?.roomDescription ||
+    roomData?.roomDescription ||
+    "Room details will appear here.";
 
   const currentParticipant = participantGroups.find(
-    (participant: any) => Number(participant.id) === currentUserId
+    (participant: any) => Number(participant.id) === currentUserId,
   );
 
   const canModerate = ["host", "moderator", "admin"].includes(
-    currentUserRole?.toLowerCase()
+    currentUserRole?.toLowerCase(),
   );
 
   const joinSocketRoom = () => {
@@ -87,7 +90,7 @@ const AudioRoomPage = () => {
         roomId: Number(roomId),
         roomRole: data.data.roomRole || roomRole,
         livekitToken: data.data.token,
-      })
+      }),
     );
 
     return data.data.token;
@@ -116,25 +119,36 @@ const AudioRoomPage = () => {
         token: token,
         roomId: String(roomId),
       });
-      
+
       // Safe Log: Confirms successful entry without dumping token hash keys
-      console.log("[LiveKit Engine] Audio streaming pipeline linked successfully.");
+      console.log(
+        "[LiveKit Engine] Audio streaming pipeline linked successfully.",
+      );
 
       // ========================================================
       // BIND NATIVE PERMISSION HANDSHAKE LISTENERS
       // ========================================================
       if (connectedRoom) {
-        connectedRoom.on(RoomEvent.ParticipantPermissionsChanged, async (_previousPermissions: any, participant: any) => {
-          if (!participant?.isLocal) return;
+        connectedRoom.on(
+          RoomEvent.ParticipantPermissionsChanged,
+          async (_previousPermissions: any, participant: any) => {
+            if (!participant?.isLocal) return;
 
-          const canPublish = Boolean(connectedRoom.localParticipant.permissions?.canPublish);
-          console.log(`[LiveKit Engine] Permissions altered. canPublish: ${canPublish}`);
+            const canPublish = Boolean(
+              connectedRoom.localParticipant.permissions?.canPublish,
+            );
+            console.log(
+              `[LiveKit Engine] Permissions altered. canPublish: ${canPublish}`,
+            );
 
-          if (!canPublish) {
-            await livekitService.disableMicrophone();
-            console.log("[LiveKit Engine] Local audio stream track terminated by server.");
-          }
-        });
+            if (!canPublish) {
+              await livekitService.disableMicrophone();
+              console.log(
+                "[LiveKit Engine] Local audio stream track terminated by server.",
+              );
+            }
+          },
+        );
       }
     } catch (error) {
       console.error("[LiveKit Error] Realtime connection fallback triggered.");
@@ -206,22 +220,31 @@ const AudioRoomPage = () => {
   useEffect(() => {
     if (!socket) return;
 
-    const updateParticipantMuteState = (targetUserId: number, nextIsMuted: boolean) => {
+    const updateParticipantMuteState = (
+      targetUserId: number,
+      nextIsMuted: boolean,
+    ) => {
       setRoomData((previousRoomData: any) => {
         if (!previousRoomData?.participants) return previousRoomData;
 
         const updateGroup = (participants: any[] = []) =>
           participants.map((participant) =>
             Number(participant.id) === targetUserId
-              ? { ...participant, isMuted: nextIsMuted, isSpeaking: !nextIsMuted }
-              : participant
+              ? {
+                  ...participant,
+                  isMuted: nextIsMuted,
+                  isSpeaking: !nextIsMuted,
+                }
+              : participant,
           );
 
         return {
           ...previousRoomData,
           participants: {
             ...previousRoomData.participants,
-            hostAndSpeakers: updateGroup(previousRoomData.participants.hostAndSpeakers),
+            hostAndSpeakers: updateGroup(
+              previousRoomData.participants.hostAndSpeakers,
+            ),
             moderators: updateGroup(previousRoomData.participants.moderators),
             listeners: updateGroup(previousRoomData.participants.listeners),
           },
@@ -295,7 +318,9 @@ const AudioRoomPage = () => {
           throw new Error("Failed to join room");
         }
 
-        const livekitToken = joinedRoom.livekitToken || await requestLiveKitToken(joinedRoom?.roomRole);
+        const livekitToken =
+          joinedRoom.livekitToken ||
+          (await requestLiveKitToken(joinedRoom?.roomRole));
         await connectLiveKit(livekitToken);
 
         joinSocketRoom();
@@ -316,7 +341,12 @@ const AudioRoomPage = () => {
       livekitService.disconnect();
       sessionStorage.removeItem("audio-room-session");
 
-      if (socket?.connected && hasJoinedRoom.current && roomId && currentUserId) {
+      if (
+        socket?.connected &&
+        hasJoinedRoom.current &&
+        roomId &&
+        currentUserId
+      ) {
         socket.emit("leave_audio_room", { roomId: Number(roomId) });
       }
       hasJoinedRoom.current = false;
@@ -343,7 +373,7 @@ const AudioRoomPage = () => {
         ];
 
         const currentParticipant = participantGroups.find(
-          (participant: any) => Number(participant.id) === currentUserId
+          (participant: any) => Number(participant.id) === currentUserId,
         );
 
         setRoomData((previousRoomData: any) => ({
@@ -370,7 +400,9 @@ const AudioRoomPage = () => {
         <div className="relative flex items-center justify-center">
           <div className="h-10 w-10 animate-spin  border-black/5 border-t-[#076d47]" />
         </div>
-        <h3 className="mt-4 text-[10px] font-semibold uppercase tracking-widest ">Connecting Space</h3>
+        <h3 className="mt-4 text-[10px] font-semibold uppercase tracking-widest ">
+          Connecting Space
+        </h3>
       </div>
     );
   }
@@ -378,8 +410,12 @@ const AudioRoomPage = () => {
   if (userError || !currentUserId) {
     return (
       <div className="flex h-screen w-full flex-col items-center justify-center bg-gradient px-4 text-center">
-        <h3 className="text-sm font-bold uppercase tracking-widest text-slate-800">Unable to Load Room</h3>
-        <p className="mt-1 text-[10px] text-slate-500">Access verification failed.</p>
+        <h3 className="text-sm font-bold uppercase tracking-widest text-slate-800">
+          Unable to Load Room
+        </h3>
+        <p className="mt-1 text-[10px] text-slate-500">
+          Access verification failed.
+        </p>
       </div>
     );
   }
@@ -401,7 +437,6 @@ const AudioRoomPage = () => {
       <main className="flex-1 min-h-0 flex overflow-hidden relative">
         <div className="flex-1 h-full overflow-y-auto md:overflow-hidden px-4 py-4 sm:px-6 md:px-8">
           <div className="mx-auto max-w-5xl h-full flex flex-col gap-4 pb-4 md:pb-0">
-            
             <div className="flex-1 min-h-[120px] rounded-xl border border-black/[0.04] bg-white/60 p-4 shadow-sm backdrop-blur-sm flex flex-col overflow-hidden">
               <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
                 <ParticipantSection
@@ -437,7 +472,6 @@ const AudioRoomPage = () => {
                 />
               </div>
             </div>
-
           </div>
         </div>
       </main>

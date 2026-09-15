@@ -1,15 +1,14 @@
 "use client";
 
-import React, { ReactNode, useState } from "react";
-import Sidebar from "./Sidebar";
+import type React from "react";
+import { ReactNode, useState } from "react";
 import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 
 interface RoomConfigurationLayoutProps {
   children: React.ReactNode;
   activeSection: string;
-  setActiveSection: React.Dispatch<
-    React.SetStateAction<any>
-  >;
+  setActiveSection: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const RoomConfigurationLayout = ({
@@ -17,8 +16,7 @@ const RoomConfigurationLayout = ({
   activeSection,
   setActiveSection,
 }: RoomConfigurationLayoutProps) => {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] =
-    useState<boolean>(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
 
   return (
     <div className="h-screen w-screen overflow-hidden flex flex-col bg-gradient-to-br from-slate-50 via-white to-slate-100">

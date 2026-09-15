@@ -1,5 +1,5 @@
-import FONTS from "@/assets/fonts";
 import React from "react";
+import FONTS from "@/assets/fonts";
 
 interface CareerHeaderProps {
   title: string;
@@ -18,7 +18,9 @@ export default function CareerHeader({
 }: CareerHeaderProps) {
   return (
     <div className="mb-8">
-      <h1 className={`${FONTS.microgrammaBold.className} text-primary text-4xl mb-4`}>
+      <h1
+        className={`${FONTS.microgrammaBold.className} text-primary text-4xl mb-4`}
+      >
         {title}
       </h1>
       <div className="flex flex-col gap-2">

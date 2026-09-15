@@ -1,17 +1,17 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import Autoplay from "embla-carousel-autoplay";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { CAREER_CARD } from "@/constants/pages/career/career-card";
-import CareerCard from "./card/CareerCard";
+import { useEffect, useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
-  type CarouselApi,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
+import { CAREER_CARD } from "@/constants/pages/career/career-card";
+import CareerCard from "./card/CareerCard";
 export default function CareerCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -25,7 +25,7 @@ export default function CareerCarousel() {
         stopOnInteraction: false,
         stopOnMouseEnter: true,
       }),
-    []
+    [],
   );
 
   // Setup carousel API

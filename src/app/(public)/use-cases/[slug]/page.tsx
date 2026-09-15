@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Script from "next/script";
 import { SolutionTemplate } from "@/components/pages/solutions/SolutionTemplate";
 import { getUseCaseData, getUseCaseSlugs } from "@/lib/use-cases";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import Script from "next/script";
 
 interface UseCasePageProps {
   params: Promise<{
@@ -31,7 +31,7 @@ export async function generateMetadata({
   const blockedSlugs = new Set([
     "3d-product-configuration",
     "digital-twins",
-    "remote-assistance"
+    "remote-assistance",
   ]);
 
   // Returning baseline metadata using the exact pattern established in the Solutions/Industries fallback

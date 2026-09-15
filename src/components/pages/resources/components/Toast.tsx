@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 type CustomToastProps = {
   show: boolean;
@@ -19,7 +19,7 @@ export default function CustomToast({ show, message }: CustomToastProps) {
           className="fixed bottom-4 left-4 z-50"
         >
           <div className="bg-[#198450] text-white px-6 py-2 rounded-lg shadow-lg text-sm">
-            {message} 
+            {message}
           </div>
         </motion.div>
       )}

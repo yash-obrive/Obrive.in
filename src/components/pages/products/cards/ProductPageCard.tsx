@@ -1,13 +1,17 @@
+import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import {
   BACKGROUND_IMAGE,
   BACKGROUND_IMAGE_META,
   IMAGES,
 } from "@/assets/images";
-import { QUOTES_TYPE } from "@/constants/pages/products/quotes";
-import Image from "next/image";
+import type { QUOTES_TYPE } from "@/constants/pages/products/quotes";
 
-export default function ProductPageCard({ quote, author, authorImage }: QUOTES_TYPE) {
+export default function ProductPageCard({
+  quote,
+  author,
+  authorImage,
+}: QUOTES_TYPE) {
   return (
     <div className="w-[1238px] max-md:w-full border bg-none border-zinc-800 rounded-2xl flex max-md:flex-col overflow-hidden">
       <div className="p-8 max-md:p-4 flex flex-col gap-4 w-3xl max-md:w-full">

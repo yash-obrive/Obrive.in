@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import FONTS from "@/assets/fonts";
 
 export interface TableColumn {
@@ -142,8 +142,8 @@ export default function ResourceTheImpactTable({
                     colIndex === 0 && firstColumnBold
                       ? FONTS.microgrammaBold.className
                       : column.bold
-                      ? FONTS.microgrammaBold.className
-                      : ""
+                        ? FONTS.microgrammaBold.className
+                        : ""
                   }`}
                 >
                   {row[column.key as keyof typeof row]}

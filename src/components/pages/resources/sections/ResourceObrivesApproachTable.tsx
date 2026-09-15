@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import FONTS from "@/assets/fonts";
 
 interface ApproachPhase {
@@ -97,9 +97,7 @@ export default function ResourceObrivesApproachTable({
         ))}
       </div>
       <div className="mt-3 px-6">
-        <p>
-          {footerContent}
-        </p>
+        <p>{footerContent}</p>
       </div>
     </section>
   );

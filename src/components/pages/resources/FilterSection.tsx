@@ -1,10 +1,10 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { Button } from "@/components/ui/button";
 import { filters } from "@/constants/pages/resources/filters";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
 
 const FilterSection = () => {
   const router = useRouter();
@@ -28,7 +28,7 @@ const FilterSection = () => {
       const url = queryString ? `/resources?${queryString}` : "/resources";
       router.push(url);
     },
-    [router, searchParams]
+    [router, searchParams],
   );
 
   return (

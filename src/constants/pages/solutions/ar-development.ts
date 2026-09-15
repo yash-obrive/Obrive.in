@@ -412,3 +412,155 @@ export const AR_DEVELOPMENT_KEY_BENEFITS = [
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
 ] as const;
+
+export const AR_DEVELOPMENT_INDUSTRIES: import("../../../types/solutions").SolutionIndustriesContent = {
+  "slug": "augmented-reality-development",
+  "hero": {
+    "title": "Augmented Reality Across Industries",
+    "description": "AR Solutions Designed Around Industry-Specific Outcomes. AR becomes more valuable when it is designed around the realities of a specific industry. Obrive develops configurable AR experiences for customer engagement, workforce enablement, visualization, training, field operations, sales, service and spatial interaction."
+  },
+  "industries": [
+    {
+      "id": "automotive-mobility",
+      "title": "Automotive & Mobility",
+      "description": "Create immersive vehicle discovery, AR showrooms, virtual vehicle placement, product configuration, service guidance, dealership experiences, navigation concepts and technician training."
+    },
+    {
+      "id": "manufacturing-industrial-engineering",
+      "title": "Manufacturing & Industrial Engineering",
+      "description": "Support assembly, inspection, maintenance, work instructions, machine visualization, operator training, quality workflows, digital twins and remote expert assistance."
+    },
+    {
+      "id": "healthcare-medical",
+      "title": "Healthcare & Medical",
+      "description": "Develop AR experiences for medical education, anatomy visualization, procedure guidance, patient education, equipment training, facility navigation and clinical knowledge support. Solutions can be designed around the relevant regulatory, privacy and safety requirements."
+    },
+    {
+      "id": "pharmaceuticals-life-sciences",
+      "title": "Pharmaceuticals & Life Sciences",
+      "description": "Use AR for laboratory training, equipment guidance, manufacturing procedures, product education, scientific visualization, facility walkthroughs and field enablement."
+    },
+    {
+      "id": "retail-ecommerce",
+      "title": "Retail & eCommerce",
+      "description": "Help customers visualize products in their space, try products virtually, explore 3D catalogs, interact with packaging and connect physical retail experiences with digital commerce."
+    },
+    {
+      "id": "consumer-goods-brands",
+      "title": "Consumer Goods & Brands",
+      "description": "Turn packaging, campaigns, product launches and brand storytelling into interactive experiences that connect physical products with digital content."
+    },
+    {
+      "id": "real-estate-property",
+      "title": "Real Estate & Property",
+      "description": "Visualize properties, interiors and developments at scale; create AR sales experiences, site overlays, interactive floor plans, neighborhood experiences and buyer engagement tools."
+    },
+    {
+      "id": "architecture-engineering-construction",
+      "title": "Architecture, Engineering & Construction",
+      "description": "Overlay BIM or 3D information onto physical sites, support design review, construction coordination, inspection, safety training, progress visualization and stakeholder communication."
+    },
+    {
+      "id": "education-edtech",
+      "title": "Education & EdTech",
+      "description": "Create interactive lessons, science visualization, vocational training, campus experiences, AR textbooks, skills development and hands-on learning experiences."
+    },
+    {
+      "id": "energy-utilities-infrastructure",
+      "title": "Energy, Utilities & Infrastructure",
+      "description": "Support asset inspection, maintenance, field guidance, safety procedures, remote assistance, infrastructure visualization and workforce training."
+    },
+    {
+      "id": "oil-gas",
+      "title": "Oil & Gas",
+      "description": "Enable equipment visualization, maintenance guidance, safety training, inspection workflows, remote expert support and operational knowledge transfer."
+    },
+    {
+      "id": "mining-natural-resources",
+      "title": "Mining & Natural Resources",
+      "description": "Use AR for equipment guidance, site visualization, safety training, maintenance, inspection, geological visualization and field-worker enablement."
+    },
+    {
+      "id": "aerospace",
+      "title": "Aerospace",
+      "description": "Develop AR experiences for assembly guidance, component visualization, maintenance, inspection, training, technical documentation and engineering collaboration."
+    },
+    {
+      "id": "logistics-warehousing-supply-chain",
+      "title": "Logistics, Warehousing & Supply Chain",
+      "description": "Support warehouse navigation, picking guidance, asset identification, inventory visualization, packaging workflows, loading procedures and worker training."
+    },
+    {
+      "id": "travel-tourism-hospitality",
+      "title": "Travel, Tourism & Hospitality",
+      "description": "Create destination overlays, cultural storytelling, hotel and resort experiences, navigation, interactive attractions and location-based AR experiences."
+    },
+    {
+      "id": "media-entertainment-gaming",
+      "title": "Media, Entertainment & Gaming",
+      "description": "Build interactive storytelling, social AR, branded experiences, location-based entertainment, fan engagement, live-event activations and immersive content."
+    },
+    {
+      "id": "sports-fitness",
+      "title": "Sports & Fitness",
+      "description": "Develop fan experiences, venue navigation, athlete and equipment visualization, interactive training, AR coaching concepts and branded activations."
+    },
+    {
+      "id": "banking-financial-services-insurance",
+      "title": "Banking, Financial Services & Insurance",
+      "description": "Explore AR for branch experiences, financial education, property and asset visualization, claims inspection concepts, customer onboarding and spatial service experiences where appropriate."
+    },
+    {
+      "id": "telecommunications",
+      "title": "Telecommunications",
+      "description": "Support network visualization, field installation, equipment guidance, retail demonstrations, customer education and technician training."
+    },
+    {
+      "id": "agriculture-agritech",
+      "title": "Agriculture & AgriTech",
+      "description": "Create AR experiences for equipment guidance, crop and field visualization, training, maintenance, agricultural education and spatial decision support."
+    },
+    {
+      "id": "government-public-sector",
+      "title": "Government & Public Sector",
+      "description": "Design AR for public information, infrastructure visualization, training, cultural heritage, emergency preparedness, citizen education and operational guidance."
+    }
+  ],
+  "footerText": "Our industry solutions are not limited to these sectors. We can adapt the same AR foundations—3D, spatial UX, computer vision, AI, integration and analytics—to new industries and specialized operational environments.",
+  "globalDelivery": {
+    "title": "Global AR Delivery",
+    "subtitle": "Build Once. Localize, Integrate and Scale Worldwide.",
+    "description": "Obrive is positioned to support organizations operating across markets, languages, devices and regulatory environments. We design AR solutions that can be localized for different regions while maintaining a consistent product and brand experience.",
+    "items": [
+      "Multi-language AR interfaces and content",
+      "Region-specific product catalogs and experiences",
+      "Multi-market content management",
+      "Cloud and API integration",
+      "Role-based access and enterprise controls",
+      "Device and browser compatibility planning",
+      "Analytics and usage measurement",
+      "Localization of 3D assets, instructions and voice experiences",
+      "Deployment support across distributed teams",
+      "Scalable content pipelines for multiple products, sites or countries"
+    ]
+  },
+  "technologyCapabilities": {
+    "title": "AR Technology & Platform Capabilities",
+    "subtitle": "Choose the Technology Stack That Fits the Experience",
+    "items": [
+      "WebAR and WebXR experiences",
+      "Apple ARKit and RealityKit experiences",
+      "Google ARCore experiences",
+      "Unity-based cross-platform AR",
+      "Unreal Engine-based immersive experiences",
+      "3D asset and real-time rendering pipelines",
+      "Computer vision and object recognition",
+      "AI and generative AI integrations",
+      "Voice and conversational interfaces",
+      "Spatial mapping and environment-aware interactions",
+      "Cloud-connected AR applications",
+      "Enterprise APIs, ERP, CRM, IoT and data integrations",
+      "Analytics, telemetry and experience measurement"
+    ]
+  }
+};

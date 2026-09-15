@@ -1,13 +1,16 @@
 const { prisma } = require("../../../../prisma");
 const { RoomServiceClient } = require("livekit-server-sdk");
-const { normalizeRole, persistSpecificUserRoomRole } = require("../roomRolePolicy");
+const {
+  normalizeRole,
+  persistSpecificUserRoomRole,
+} = require("../roomRolePolicy");
 const { canModerateTarget } = require("../audioRoomAuthz");
 
 const livekitHost = process.env.LIVEKIT_URL || "http://localhost:7880";
 const roomService = new RoomServiceClient(
   livekitHost,
   process.env.LIVEKIT_API_KEY,
-  process.env.LIVEKIT_API_SECRET
+  process.env.LIVEKIT_API_SECRET,
 );
 
 const downgradeToListenerService = async (payload) => {
@@ -74,15 +77,19 @@ const downgradeToListenerService = async (payload) => {
       userId.toString(),
       JSON.stringify({ role: "listener", isMuted: true }), // 3rd argument
       {
-        canPublish: false,                                  // 4th argument
+        canPublish: false, // 4th argument
         canPublishData: true,
         canSubscribe: true,
-      }
+      },
     );
-    
-    console.log(`[LiveKit Sync] Demoted to listener. Room: ${roomId} | User: ${userId}`);
+
+    console.log(
+      `[LiveKit Sync] Demoted to listener. Room: ${roomId} | User: ${userId}`,
+    );
   } catch (lkError) {
-    console.error(`[LiveKit Error] Failed to execute track drop: ${lkError.message}`);
+    console.error(
+      `[LiveKit Error] Failed to execute track drop: ${lkError.message}`,
+    );
   }
 
   return {

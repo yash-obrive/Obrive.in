@@ -1,14 +1,10 @@
-const express =
-  require("express");
+const express = require("express");
 
-const router =
-  express.Router();
+const router = express.Router();
 
 const {
   downgradeToListenerController,
-} = require(
-  "./speakerDowngrade.controller"
-);
+} = require("./speakerDowngrade.controller");
 const auth = require("../../../middleware/auth");
 const zodValidate = require("../../../middleware/zodValidate");
 const { requireRoomRoles } = require("../audioRoomAuthz");
@@ -19,7 +15,7 @@ router.post(
   auth,
   requireRoomRoles(["host", "moderator", "admin"]),
   zodValidate({ part: "body", schema: SpeakerDowngradeBodySchema }),
-  downgradeToListenerController
+  downgradeToListenerController,
 );
 
 module.exports = router;

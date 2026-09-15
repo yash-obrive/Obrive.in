@@ -1,27 +1,26 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import Image from "next/image";
+import Link from "next/link";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
-import RoundedBallIcon from "@/components/shared/icons/RoundedBallIcon";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import dynamic from "next/dynamic";
-
-import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import UsecaseCard from "@/components/pages/home/card/UsecaseCard";
-import { HOME_CARD, HOME_CARD_BLOG } from "@/constants/pages/home/home-card";
 import BlogCard from "@/components/pages/home/card/BlogCard";
+import GoodByeCard from "@/components/pages/home/card/GoodByeCard";
+import UsecaseCard from "@/components/pages/home/card/UsecaseCard";
+import { HomepageRiveAnimation } from "@/components/pages/home/HomepageRiveAnimation";
+import ObriveVideo from "@/components/pages/home/Videos/ObriveVideo";
+import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
+import SmoothScrollLink from "@/components/shared/buttons/SmoothScrollLink";
+import RoundedBallIcon from "@/components/shared/icons/RoundedBallIcon";
+import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import {
   FadeInOnLoad,
   FadeInOnView,
   StaggerTiltBottomLeftOnScroll,
 } from "@/components/shared/motion/GsapMotion";
-import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
-import SmoothScrollLink from "@/components/shared/buttons/SmoothScrollLink";
 import SmoothScrollProvider from "@/components/shared/motion/SmoothScrollProvider";
-import ObriveVideo from "@/components/pages/home/Videos/ObriveVideo";
-import Link from "next/link";
-import GoodByeCard from "@/components/pages/home/card/GoodByeCard";
-import { HomepageRiveAnimation } from "@/components/pages/home/HomepageRiveAnimation";
+import { Button } from "@/components/ui/button";
+import { HOME_CARD, HOME_CARD_BLOG } from "@/constants/pages/home/home-card";
 
 // Dynamic imports for performance optimization
 // const HomepageRiveAnimation = dynamic(
@@ -43,7 +42,7 @@ const VideoCardObrive = dynamic(
     loading: () => (
       <div className="h-[300px] animate-pulse bg-gray-200 rounded-lg" />
     ),
-  }
+  },
 );
 
 const ImmersiveExperience = dynamic(
@@ -52,7 +51,7 @@ const ImmersiveExperience = dynamic(
     loading: () => (
       <div className="h-[400px] animate-pulse bg-gray-200 rounded-lg" />
     ),
-  }
+  },
 );
 
 const EffortlessControl = dynamic(
@@ -61,7 +60,7 @@ const EffortlessControl = dynamic(
     loading: () => (
       <div className="h-[400px] animate-pulse bg-gray-200 rounded-lg" />
     ),
-  }
+  },
 );
 
 export const metadata: Metadata = {
@@ -120,7 +119,7 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "IN-KA",
     "geo.placename": "Bangalore, Karnataka, India",
-    "ICBM": "12.9716, 77.5946",
+    ICBM: "12.9716, 77.5946",
   },
 };
 
@@ -212,7 +211,8 @@ export default function Home() {
                   </Button>
                 </Link>
                 <p className="uppercase text-[10px] font-semibold max-sm:text-left text-primary text-center sm:text-right">
-                  Powering Enterprise Digital Transformation with Immersive Technology
+                  Powering Enterprise Digital Transformation with Immersive
+                  Technology
                 </p>
               </div>
             </FadeInOnView>

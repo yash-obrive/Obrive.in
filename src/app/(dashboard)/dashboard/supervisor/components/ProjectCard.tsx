@@ -1,41 +1,41 @@
-'use client'
+"use client";
 
-import { FolderOpen, Users, Calendar } from 'lucide-react'
+import { Calendar, FolderOpen, Users } from "lucide-react";
 
 interface ProjectCardProps {
-  id: number
-  name: string
-  description?: string
-  priority?: string
-  team_members?: any[]
-  tasks?: any[]
-  created_at?: string
-  onSelect?: () => void
+  id: number;
+  name: string;
+  description?: string;
+  priority?: string;
+  team_members?: any[];
+  tasks?: any[];
+  created_at?: string;
+  onSelect?: () => void;
 }
 
 export default function ProjectCard({
   name,
   description,
-  priority = 'medium',
+  priority = "medium",
   team_members = [],
   tasks = [],
   created_at,
   onSelect,
 }: ProjectCardProps) {
-  const completedTasks = tasks.filter((t) => t.status === 'completed').length
+  const completedTasks = tasks.filter((t) => t.status === "completed").length;
 
   const getPriorityColor = (priority: string) => {
     switch (priority.toLowerCase()) {
-      case 'high':
-        return 'bg-red-100 text-red-700'
-      case 'medium':
-        return 'bg-yellow-100 text-yellow-700'
-      case 'low':
-        return 'bg-green-100 text-green-700'
+      case "high":
+        return "bg-red-100 text-red-700";
+      case "medium":
+        return "bg-yellow-100 text-yellow-700";
+      case "low":
+        return "bg-green-100 text-green-700";
       default:
-        return 'bg-gray-100 text-gray-700'
+        return "bg-gray-100 text-gray-700";
     }
-  }
+  };
 
   return (
     <div
@@ -52,7 +52,7 @@ export default function ProjectCard({
           </div>
           <span
             className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold uppercase tracking-wider flex-shrink-0 ${getPriorityColor(
-              priority
+              priority,
             )}`}
           >
             {priority}
@@ -60,7 +60,9 @@ export default function ProjectCard({
         </div>
 
         {description && (
-          <p className="text-sm text-gray-600 mb-3 line-clamp-2">{description}</p>
+          <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+            {description}
+          </p>
         )}
       </div>
 
@@ -85,5 +87,5 @@ export default function ProjectCard({
         )}
       </div>
     </div>
-  )
+  );
 }

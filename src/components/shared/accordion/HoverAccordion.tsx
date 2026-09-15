@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { ArrowRight } from "lucide-react";
+import * as React from "react";
 
 type AccordionItem = {
   id?: string;
@@ -43,7 +43,7 @@ export default function HoverAccordion({
   const [active, setActive] = React.useState<number>(defaultOpen);
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
   const [progressingIdx, setProgressingIdx] = React.useState<number | null>(
-    null
+    null,
   );
   const contentRefs = React.useRef<(HTMLDivElement | null)[]>([]);
   const [heights, setHeights] = React.useState<number[]>([]);
@@ -229,7 +229,7 @@ export default function HoverAccordion({
               contentRefs.current[i] = el;
             }}
             style={{
-              maxHeight: active === i ? heights[i] ?? 0 : 0,
+              maxHeight: active === i ? (heights[i] ?? 0) : 0,
               opacity: active === i ? 1 : 0,
               transition: `max-height ${transitionMs}ms ease-in-out, opacity ${transitionMs}ms ease-in-out`,
             }}

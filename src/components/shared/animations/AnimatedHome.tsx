@@ -1,12 +1,12 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
-import { type HoverScaleOptions } from "@/lib/useHoverScale";
-import AnimatedStripeSvg from "@/assets/images/animate/animted-box.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import AnimatedStripeSvg from "@/assets/images/animate/animted-box.svg";
+import type { HoverScaleOptions } from "@/lib/useHoverScale";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -908,7 +908,7 @@ const ImageElement = ({
 
         affectedIndices.forEach((targetIndex) => {
           const targetStripe = allStripes[targetIndex].querySelector(
-            "[data-stripe-image]"
+            "[data-stripe-image]",
           );
           if (!targetStripe) return;
 
@@ -949,7 +949,7 @@ const ImageElement = ({
 
         affectedIndices.forEach((targetIndex) => {
           const targetStripe = allStripes[targetIndex].querySelector(
-            "[data-stripe-image]"
+            "[data-stripe-image]",
           );
           if (!targetStripe) return;
 
@@ -1102,7 +1102,7 @@ export const Box = ({
           duration: 1.2,
           ease: "power3.out",
         },
-        0
+        0,
       ) // Start at time 0
         .to(
           leftSection,
@@ -1111,7 +1111,7 @@ export const Box = ({
             duration: 1.2,
             ease: "power3.out",
           },
-          0
+          0,
         ) // Start at time 0
         .to(
           centerSection,
@@ -1120,7 +1120,7 @@ export const Box = ({
             duration: 1.2,
             ease: "power3.out",
           },
-          0
+          0,
         ) // Start at time 0
         .to(
           rightSection,
@@ -1129,7 +1129,7 @@ export const Box = ({
             duration: 1.2,
             ease: "power3.out",
           },
-          0
+          0,
         ); // Start at time 0
 
       // Add subtle floating animation after split completes
@@ -1179,7 +1179,7 @@ export const Box = ({
           ref={leftSectionRef}
           className={cn(
             "absolute w-[345px] h-[345px] top-0 left-0 rounded-3xl overflow-hidden",
-            cardBgClassName
+            cardBgClassName,
           )}
           aria-label="Left panel"
         >
@@ -1188,7 +1188,7 @@ export const Box = ({
               <div className="relative w-[728.55px] h-[453.74px] ml-[-393.55px]">
                 <div className="relative w-[729px] h-[454px]">
                   {leftPanelImages.map((imageData, index) =>
-                    renderImageElement(imageData, index)
+                    renderImageElement(imageData, index),
                   )}
                 </div>
               </div>
@@ -1204,13 +1204,13 @@ export const Box = ({
           <div
             className={cn(
               "absolute w-[345px] h-[345px] top-0 left-[23px] rounded-3xl overflow-hidden",
-              cardBgClassName
+              cardBgClassName,
             )}
           />
           <div
             className={cn(
               "absolute w-[345px] h-[345px] top-0 left-[412px] rounded-3xl overflow-hidden",
-              cardBgClassName
+              cardBgClassName,
             )}
           />
 
@@ -1219,7 +1219,7 @@ export const Box = ({
               <div className="relative w-[728.55px] h-[453.74px]">
                 <div className="relative w-[729px] h-[454px]">
                   {centerPanelImages.map((imageData, index) =>
-                    renderImageElement(imageData, index)
+                    renderImageElement(imageData, index),
                   )}
                 </div>
               </div>
@@ -1231,7 +1231,7 @@ export const Box = ({
           ref={rightSectionRef}
           className={cn(
             "absolute w-[345px] h-[345px] top-0 left-[1167px] rounded-3xl overflow-hidden",
-            cardBgClassName
+            cardBgClassName,
           )}
           aria-label="Right panel"
         >
@@ -1240,7 +1240,7 @@ export const Box = ({
               <div className="mt-[-300px] ml-[-100px] mr-[-120px] rotate-180 relative w-[728.55px] h-[453.74px]">
                 <div className="relative w-[729px] h-[454px]">
                   {rightPanelImages.map((imageData, index) =>
-                    renderImageElement(imageData, index)
+                    renderImageElement(imageData, index),
                   )}
                 </div>
               </div>

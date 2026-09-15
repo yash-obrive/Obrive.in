@@ -9,7 +9,9 @@ export default function FinalPage() {
     >
       {/* Main Content */}
       <section className="max-w-3xl">
-        <h1 className={`text-2xl md:text-3xl ${FONTS.microgrammaBold.className} font-semibold text-[#074139] mb-6`}>
+        <h1
+          className={`text-2xl md:text-3xl ${FONTS.microgrammaBold.className} font-semibold text-[#074139] mb-6`}
+        >
           Thank You for Interviewing with Obrive Industries
         </h1>
 
@@ -32,7 +34,9 @@ export default function FinalPage() {
           MR, 3D Design, and Spatial Computing.
         </p>
 
-        <p className={`text-[#074139] ${FONTS.microgrammaBold.className} font-light mt-6`}>
+        <p
+          className={`text-[#074139] ${FONTS.microgrammaBold.className} font-light mt-6`}
+        >
           Together, let’s build the future of immersive experiences.
         </p>
       </section>

@@ -1,5 +1,5 @@
-import FONTS from "@/assets/fonts";
 import React from "react";
+import FONTS from "@/assets/fonts";
 
 export const HeroSection = () => {
   return (

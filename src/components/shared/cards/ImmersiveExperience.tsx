@@ -1,11 +1,11 @@
+import FONTS from "@/assets/fonts";
+import { IMAGES_META } from "@/assets/images";
+import HoverAccordion from "../accordion/HoverAccordion";
+import AnimatedButton from "../buttons/AnimatedButton";
+import ImmersiveIcon from "../icons/ImmersiveIcon";
+import RoundedBallIcon from "../icons/RoundedBallIcon";
 import FullWidthSection from "../layout/FullWidthSection";
 import { FadeInOnView } from "../motion/GsapMotion";
-import RoundedBallIcon from "../icons/RoundedBallIcon";
-import FONTS from "@/assets/fonts";
-import ImmersiveIcon from "../icons/ImmersiveIcon";
-import HoverAccordion from "../accordion/HoverAccordion";
-import { IMAGES_META } from "@/assets/images";
-import AnimatedButton from "../buttons/AnimatedButton";
 
 const ImmersiveExperience = () => {
   return (

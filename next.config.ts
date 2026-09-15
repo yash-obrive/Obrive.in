@@ -1,6 +1,7 @@
 // next.config.ts
-import type { NextConfig } from "next";
+
 import createMDX from "@next/mdx";
+import type { NextConfig } from "next";
 
 const withMDX = createMDX({
   extension: /\.mdx?$/, // support .mdx files
@@ -16,7 +17,10 @@ const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "mdx"],
 
   // Standalone output for Docker optimization (disabled on Windows to avoid symlink EPERM errors unless NEXT_STANDALONE is set)
-  output: (process.platform === "win32" && !process.env.NEXT_STANDALONE) ? undefined : "standalone",
+  output:
+    process.platform === "win32" && !process.env.NEXT_STANDALONE
+      ? undefined
+      : "standalone",
 
   // Target modern browsers to eliminate legacy polyfills
   experimental: {
@@ -41,16 +45,16 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
+        protocol: "https",
+        hostname: "images.unsplash.com",
       },
       {
-        protocol: 'https',
-        hostname: 'api.dicebear.com',
+        protocol: "https",
+        hostname: "api.dicebear.com",
       },
       {
-        protocol: 'https',
-        hostname: 'randomuser.me', // <-- added randomuser.me to allowed domains for avatars , it is written in this format because of next/image remotePatterns requirement
+        protocol: "https",
+        hostname: "randomuser.me", // <-- added randomuser.me to allowed domains for avatars , it is written in this format because of next/image remotePatterns requirement
       },
     ],
   },
@@ -204,7 +208,7 @@ const nextConfig: NextConfig = {
         source: "/coming-soon/site-map",
         destination: "/site-map",
         permanent: true,
-      }
+      },
     ];
   },
 
@@ -222,8 +226,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-
-
-
 export default withMDX(nextConfig);
-

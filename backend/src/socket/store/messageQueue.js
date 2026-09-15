@@ -10,7 +10,9 @@ exports.queueMessage = (message) => {
 setInterval(async () => {
   if (messageQueue.length === 0) return;
 
-  const messagesToInsert = messageQueue.filter(msg => !isNaN(msg.conversation_id));
+  const messagesToInsert = messageQueue.filter(
+    (msg) => !isNaN(msg.conversation_id),
+  );
   messageQueue.length = 0;
 
   if (messagesToInsert.length === 0) return;
@@ -31,30 +33,32 @@ setInterval(async () => {
 
     for (const [convId, senderIds] of Object.entries(updates)) {
       const conversationId = parseInt(convId);
-      
+
       // Increment unread_count and UNHIDE for everyone in the conversation who is NOT the sender(s)
       await prisma.conversation_participants.updateMany({
         where: {
           conversation_id: conversationId,
-          user_id: { notIn: Array.from(senderIds) }
+          user_id: { notIn: Array.from(senderIds) },
         },
         data: {
-          is_hidden: false
-        }
+          is_hidden: false,
+        },
       });
 
       await prisma.conversation_unread.updateMany({
         where: {
           conversation_id: conversationId,
-          user_id: { notIn: Array.from(senderIds) }
+          user_id: { notIn: Array.from(senderIds) },
         },
         data: {
-          unread_count: { increment: 1 }
-        }
+          unread_count: { increment: 1 },
+        },
       });
     }
 
-    console.log(`Inserted ${messagesToInsert.length} messages and updated unread counts`);
+    console.log(
+      `Inserted ${messagesToInsert.length} messages and updated unread counts`,
+    );
   } catch (error) {
     console.error("Message batch insert or unread update failed", error);
   }

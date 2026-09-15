@@ -1,14 +1,14 @@
-import { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 import { IMAGES } from "@/assets/images";
 import {
-  AUGMENTED_REALITY,
-  VIRTUAL_REALITY,
-  MIXED_REALITY,
-  EXTENDED_REALITY,
-  SPATIAL_COMPUTING,
-  DIGITAL_TWINS,
-  THREE_D_VISUALIZATION,
   AI_IMMERSIVE_TECHNOLOGY,
+  AUGMENTED_REALITY,
+  DIGITAL_TWINS,
+  EXTENDED_REALITY,
+  MIXED_REALITY,
+  SPATIAL_COMPUTING,
+  THREE_D_VISUALIZATION,
+  VIRTUAL_REALITY,
 } from "@/constants/pages/technology";
 
 // Reusing identical structure as SolutionHero for compatibility

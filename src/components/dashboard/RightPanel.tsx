@@ -1,96 +1,102 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { ChevronRight, ChevronUp, ChevronDown, User } from 'lucide-react'
+import { ChevronDown, ChevronRight, ChevronUp, User } from "lucide-react";
+import { useState } from "react";
 
 interface Event {
-  id: string
-  title: string
-  time: string
-  priority: 'high' | 'medium' | 'low'
+  id: string;
+  title: string;
+  time: string;
+  priority: "high" | "medium" | "low";
 }
 
 interface Activity {
-  id: string
-  user: string
-  avatar: string
-  action: string
-  timestamp: string
+  id: string;
+  user: string;
+  avatar: string;
+  action: string;
+  timestamp: string;
 }
 
 interface RightPanelProps {
-  events?: Event[]
-  activities?: Activity[]
+  events?: Event[];
+  activities?: Activity[];
 }
 
 export default function RightPanel({
   events = [
     {
-      id: '1',
-      title: 'Presentation of the new department',
-      time: 'Today 15:00 PM',
-      priority: 'high',
+      id: "1",
+      title: "Presentation of the new department",
+      time: "Today 15:00 PM",
+      priority: "high",
     },
     {
-      id: '2',
+      id: "2",
       title: "Anne's Birthday",
-      time: 'Today 15:00 PM',
-      priority: 'medium',
+      time: "Today 15:00 PM",
+      priority: "medium",
     },
     {
-      id: '3',
+      id: "3",
       title: "Ray's Birthday",
-      time: 'Tomorrow 1:00 PM',
-      priority: 'low',
+      time: "Tomorrow 1:00 PM",
+      priority: "low",
     },
   ],
   activities = [
     {
-      id: '1',
-      user: 'Oscar Holloway',
-      avatar: 'OH',
-      action: 'Updated the status of Mind Map task to In Progress',
-      timestamp: '',
+      id: "1",
+      user: "Oscar Holloway",
+      avatar: "OH",
+      action: "Updated the status of Mind Map task to In Progress",
+      timestamp: "",
     },
     {
-      id: '2',
-      user: 'Unknown',
-      avatar: 'UN',
-      action: 'Updated the status of Mind Map task to In Progress',
-      timestamp: '',
+      id: "2",
+      user: "Unknown",
+      avatar: "UN",
+      action: "Updated the status of Mind Map task to In Progress",
+      timestamp: "",
     },
     {
-      id: '3',
-      user: 'Emily Tyler',
-      avatar: 'ET',
-      action: 'Attached files to the task',
-      timestamp: '',
+      id: "3",
+      user: "Emily Tyler",
+      avatar: "ET",
+      action: "Attached files to the task",
+      timestamp: "",
     },
   ],
 }: RightPanelProps) {
   const [dateRange, setDateRange] = useState({
-    start: 'Nov 16, 2020',
-    end: 'Dec 16, 2020',
-  })
+    start: "Nov 16, 2020",
+    end: "Dec 16, 2020",
+  });
 
   const getPriorityIcon = (priority: string) => {
-    if (priority === 'high') return <ChevronUp className="w-4 h-4 text-green-500" />
-    if (priority === 'low') return <ChevronDown className="w-4 h-4 text-red-500" />
-    return <div className="w-4 h-4" />
-  }
+    if (priority === "high")
+      return <ChevronUp className="w-4 h-4 text-green-500" />;
+    if (priority === "low")
+      return <ChevronDown className="w-4 h-4 text-red-500" />;
+    return <div className="w-4 h-4" />;
+  };
 
   return (
     <div className="w-80 bg-white rounded-lg border border-gray-200 flex flex-col m-2 shadow-sm overflow-hidden">
       {/* Date Range Selector */}
       <div className="p-6 border-b border-gray-100">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-semibold text-gray-700">Date Range</span>
+          <span className="text-sm font-semibold text-gray-700">
+            Date Range
+          </span>
           <button className="text-gray-400 hover:text-gray-600 transition">
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
         <div className="mt-4 text-xs text-gray-600">
-          <p>{dateRange.start} - {dateRange.end}</p>
+          <p>
+            {dateRange.start} - {dateRange.end}
+          </p>
         </div>
       </div>
 
@@ -128,7 +134,9 @@ export default function RightPanel({
 
         {/* Activity Stream */}
         <div className="p-6">
-          <h3 className="text-sm font-bold text-gray-900 mb-4">Activity Stream</h3>
+          <h3 className="text-sm font-bold text-gray-900 mb-4">
+            Activity Stream
+          </h3>
 
           <div className="space-y-4">
             {activities.map((activity) => (
@@ -149,7 +157,9 @@ export default function RightPanel({
                     {activity.action}
                   </p>
                   {activity.timestamp && (
-                    <p className="text-xs text-gray-400 mt-1">{activity.timestamp}</p>
+                    <p className="text-xs text-gray-400 mt-1">
+                      {activity.timestamp}
+                    </p>
                   )}
                 </div>
               </div>
@@ -158,5 +168,5 @@ export default function RightPanel({
         </div>
       </div>
     </div>
-  )
+  );
 }

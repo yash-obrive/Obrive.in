@@ -1,14 +1,12 @@
-const { prisma } = require('../../../prisma');
+const { prisma } = require("../../../prisma");
 
 class WorkSessionService {
-
   // =====================================================
   // INIT / START SESSION
   // =====================================================
 
   async startSession(userId) {
     try {
-
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
@@ -17,12 +15,12 @@ class WorkSessionService {
         where: {
           userId,
           workDate: {
-            gte: today
-          }
+            gte: today,
+          },
         },
         orderBy: {
-          created_at: 'desc'
-        }
+          created_at: "desc",
+        },
       });
 
       // -------------------------------------------------
@@ -30,7 +28,6 @@ class WorkSessionService {
       // -------------------------------------------------
 
       if (!session) {
-
         session = await prisma.work_sessions.create({
           data: {
             userId,
@@ -44,10 +41,10 @@ class WorkSessionService {
 
             totalActiveDuration: 0,
 
-            status: 'active',
+            status: "active",
 
-            isAutoEnded: false
-          }
+            isAutoEnded: false,
+          },
         });
 
         console.log(`✅ New work session created for user ${userId}`);
@@ -56,15 +53,13 @@ class WorkSessionService {
       // -------------------------------------------------
       // RESUME EXISTING ENDED SESSION
       // -------------------------------------------------
-
-      else if (session.status === 'ended') {
-
+      else if (session.status === "ended") {
         session = await prisma.work_sessions.update({
           where: {
-            id: session.id
+            id: session.id,
           },
           data: {
-            status: 'active',
+            status: "active",
 
             startedAt: new Date(),
 
@@ -72,42 +67,38 @@ class WorkSessionService {
 
             isAutoEnded: false,
 
-            sessionEnd: null
-          }
+            sessionEnd: null,
+          },
         });
 
         console.log(`🔄 Existing session resumed for user ${userId}`);
       }
-      
+
       // -------------------------------------------------
       // ENSURE SESSION IS ACTIVE
       // -------------------------------------------------
-      
-      else if (session.status !== 'active') {
-        
+      else if (session.status !== "active") {
         console.warn(
-          `⚠️ Session ${session.id} has unexpected status: ${session.status}. Reactivating.`
+          `⚠️ Session ${session.id} has unexpected status: ${session.status}. Reactivating.`,
         );
-        
+
         session = await prisma.work_sessions.update({
           where: {
-            id: session.id
+            id: session.id,
           },
           data: {
-            status: 'active',
+            status: "active",
             startedAt: new Date(),
             lastHeartbeat: new Date(),
             isAutoEnded: false,
-            sessionEnd: null
-          }
+            sessionEnd: null,
+          },
         });
       }
 
       return this.buildSessionResponse(session);
-
     } catch (err) {
-
-      console.error('❌ Error starting session:', err);
+      console.error("❌ Error starting session:", err);
 
       throw err;
     }
@@ -118,61 +109,56 @@ class WorkSessionService {
   // =====================================================
 
   async recordHeartbeat(userId, sessionId) {
-
     try {
-
       let session = await prisma.work_sessions.findUnique({
         where: {
-          id: sessionId
-        }
+          id: sessionId,
+        },
       });
 
       if (!session) {
-        throw new Error('Session not found');
+        throw new Error("Session not found");
       }
 
       if (session.userId !== userId) {
-        throw new Error('Unauthorized session access');
+        throw new Error("Unauthorized session access");
       }
 
       // If session is ended or inactive, try to reactivate it
-      if (session.status !== 'active') {
-        
+      if (session.status !== "active") {
         console.log(
-          `⚠️ Heartbeat for inactive session ${sessionId}. Reactivating...`
+          `⚠️ Heartbeat for inactive session ${sessionId}. Reactivating...`,
         );
-        
+
         session = await prisma.work_sessions.update({
           where: {
-            id: sessionId
+            id: sessionId,
           },
           data: {
-            status: 'active',
+            status: "active",
             startedAt: new Date(),
             lastHeartbeat: new Date(),
             isAutoEnded: false,
-            sessionEnd: null
-          }
+            sessionEnd: null,
+          },
         });
-        
+
         return this.buildSessionResponse(session);
       }
 
       // Update heartbeat
       const updatedSession = await prisma.work_sessions.update({
         where: {
-          id: sessionId
+          id: sessionId,
         },
         data: {
-          lastHeartbeat: new Date()
-        }
+          lastHeartbeat: new Date(),
+        },
       });
 
       return this.buildSessionResponse(updatedSession);
-
     } catch (err) {
-
-      console.error('❌ Heartbeat error:', err);
+      console.error("❌ Heartbeat error:", err);
 
       throw err;
     }
@@ -183,21 +169,19 @@ class WorkSessionService {
   // =====================================================
 
   async endSession(userId, sessionId) {
-
     try {
-
       const session = await prisma.work_sessions.findUnique({
         where: {
-          id: sessionId
-        }
+          id: sessionId,
+        },
       });
 
       if (!session) {
-        throw new Error('Session not found');
+        throw new Error("Session not found");
       }
 
       if (session.userId !== userId) {
-        throw new Error('Unauthorized');
+        throw new Error("Unauthorized");
       }
 
       // ---------------------------------------------
@@ -207,39 +191,35 @@ class WorkSessionService {
       let totalDuration = session.totalActiveDuration;
 
       if (session.startedAt) {
-
-        const elapsedSeconds =
-          Math.floor(
-            (Date.now() - new Date(session.startedAt).getTime()) / 1000
-          );
+        const elapsedSeconds = Math.floor(
+          (Date.now() - new Date(session.startedAt).getTime()) / 1000,
+        );
 
         totalDuration += elapsedSeconds;
       }
 
       const endedSession = await prisma.work_sessions.update({
         where: {
-          id: session.id
+          id: session.id,
         },
         data: {
           totalActiveDuration: totalDuration,
 
-          status: 'ended',
+          status: "ended",
 
           sessionEnd: new Date(),
 
           startedAt: null,
 
-          updated_at: new Date()
-        }
+          updated_at: new Date(),
+        },
       });
 
       console.log(`⏹️ Session ended for user ${userId}`);
 
       return this.buildSessionResponse(endedSession);
-
     } catch (err) {
-
-      console.error('❌ End session error:', err);
+      console.error("❌ End session error:", err);
 
       throw err;
     }
@@ -250,9 +230,7 @@ class WorkSessionService {
   // =====================================================
 
   async getTodaySession(userId) {
-
     try {
-
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
@@ -260,12 +238,12 @@ class WorkSessionService {
         where: {
           userId,
           workDate: {
-            gte: today
-          }
+            gte: today,
+          },
         },
         orderBy: {
-          created_at: 'desc'
-        }
+          created_at: "desc",
+        },
       });
 
       if (!session) {
@@ -273,10 +251,8 @@ class WorkSessionService {
       }
 
       return this.buildSessionResponse(session);
-
     } catch (err) {
-
-      console.error('❌ Error fetching session:', err);
+      console.error("❌ Error fetching session:", err);
 
       throw err;
     }
@@ -287,58 +263,52 @@ class WorkSessionService {
   // =====================================================
 
   async autoEndInactiveSessions() {
-
     try {
-
       const cutoff = new Date(Date.now() - 15 * 60 * 1000);
 
       const sessions = await prisma.work_sessions.findMany({
         where: {
-          status: 'active',
+          status: "active",
           lastHeartbeat: {
-            lt: cutoff
-          }
-        }
+            lt: cutoff,
+          },
+        },
       });
 
       for (const session of sessions) {
-
         let totalDuration = session.totalActiveDuration;
 
         if (session.startedAt) {
-
-          const elapsedSeconds =
-            Math.floor(
-              (new Date(session.lastHeartbeat).getTime()
-                - new Date(session.startedAt).getTime()) / 1000
-            );
+          const elapsedSeconds = Math.floor(
+            (new Date(session.lastHeartbeat).getTime() -
+              new Date(session.startedAt).getTime()) /
+              1000,
+          );
 
           totalDuration += elapsedSeconds;
         }
 
         await prisma.work_sessions.update({
           where: {
-            id: session.id
+            id: session.id,
           },
           data: {
             totalActiveDuration: totalDuration,
 
-            status: 'ended',
+            status: "ended",
 
             sessionEnd: new Date(),
 
             startedAt: null,
 
-            isAutoEnded: true
-          }
+            isAutoEnded: true,
+          },
         });
 
         console.log(`⚠️ Auto-ended inactive session ${session.id}`);
       }
-
     } catch (err) {
-
-      console.error('❌ Auto-end error:', err);
+      console.error("❌ Auto-end error:", err);
     }
   }
 
@@ -347,18 +317,12 @@ class WorkSessionService {
   // =====================================================
 
   buildSessionResponse(session) {
-
     let liveDuration = session.totalActiveDuration;
 
-    if (
-      session.status === 'active' &&
-      session.startedAt
-    ) {
-
-      const elapsedSeconds =
-        Math.floor(
-          (Date.now() - new Date(session.startedAt).getTime()) / 1000
-        );
+    if (session.status === "active" && session.startedAt) {
+      const elapsedSeconds = Math.floor(
+        (Date.now() - new Date(session.startedAt).getTime()) / 1000,
+      );
 
       liveDuration += elapsedSeconds;
     }
@@ -380,7 +344,7 @@ class WorkSessionService {
 
       totalActiveDuration: liveDuration,
 
-      isAutoEnded: session.isAutoEnded
+      isAutoEnded: session.isAutoEnded,
     };
   }
 }

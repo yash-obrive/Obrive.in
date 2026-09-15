@@ -9,8 +9,7 @@ module.exports = async (req, res, next) => {
     // 🔥 Check cookie first
     if (req.headers.authorization?.startsWith("Bearer ")) {
       token = req.headers.authorization.split(" ")[1];
-    }
-    else if (req.cookies?.accessToken) {
+    } else if (req.cookies?.accessToken) {
       token = req.cookies.accessToken;
     }
 
@@ -36,7 +35,6 @@ module.exports = async (req, res, next) => {
     return errorResponse(res, msg, 401);
   }
 };
-
 
 //this middleware is used to protect routes that require authentication. It checks for the presence of a JWT access token in the cookies or Authorization header, verifies it, and attaches the decoded user information to the request object if valid. If the token is missing, invalid, or expired, it returns an appropriate error response. This allows us to secure our API endpoints and ensure that only authenticated users can access certain resources.
 //it solves the problem of securing API routes by ensuring that only requests with valid JWT access tokens can access protected endpoints. It also handles token expiration and account status checks to prevent unauthorized access. By using this middleware, we can easily protect any route by simply adding it to the route definition, ensuring a consistent authentication mechanism across our application.

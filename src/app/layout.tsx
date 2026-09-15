@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Michroma } from "next/font/google";
-import { TimerProvider } from '@/context/TimerContext';
+import { TimerProvider } from "@/context/TimerContext";
 import "./globals.css";
 import Script from "next/script";
 
@@ -69,7 +69,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://unpkg.com" />
         <link rel="dns-prefetch" href="https://storage.googleapis.com" />
-        <script dangerouslySetInnerHTML={{ __html: `function initApollo(){var cacheBuster=Math.random().toString(36).substring(7);var trackerScript=document.createElement("script");trackerScript.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+cacheBuster;trackerScript.async=true;trackerScript.defer=true;trackerScript.onload=function(){if(window.trackingFunctions&&typeof window.trackingFunctions.onLoad==="function"){window.trackingFunctions.onLoad({appId:"68f8c36bb512bf0015c5fffd"});}};document.head.appendChild(trackerScript);}initApollo();` }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `function initApollo(){var cacheBuster=Math.random().toString(36).substring(7);var trackerScript=document.createElement("script");trackerScript.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+cacheBuster;trackerScript.async=true;trackerScript.defer=true;trackerScript.onload=function(){if(window.trackingFunctions&&typeof window.trackingFunctions.onLoad==="function"){window.trackingFunctions.onLoad({appId:"68f8c36bb512bf0015c5fffd"});}};document.head.appendChild(trackerScript);}initApollo();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -84,8 +88,7 @@ export default function RootLayout({
                 "Obrive Industries delivers cutting-edge AR, VR, MR and spatial computing solutions across industries. From immersive 3D visualisation to bespoke XR applications, we turn ideas into interactive realities.",
               image:
                 "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-intro-poster.8a0a1b5d.webp&w=1920&q=75",
-              logo:
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-logo.fb3eb1d9.svg&w=256&q=75",
+              logo: "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-logo.fb3eb1d9.svg&w=256&q=75",
               telephone: "+91 888-477-4300",
               email: "info@obrive.com",
               address: {
@@ -108,23 +111,23 @@ export default function RootLayout({
         />
       </head>
       <body className={`${michroma.className} antialiased bg-white`}>
-      {children}
+        {children}
 
-      {/* Google Analytics */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-DC50858P0E"
-        strategy="afterInteractive"
-      />
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-DC50858P0E"
+          strategy="afterInteractive"
+        />
 
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-DC50858P0E');
         `}
-      </Script>
-    </body>
+        </Script>
+      </body>
     </html>
   );
 }

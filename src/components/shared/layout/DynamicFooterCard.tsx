@@ -1,8 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import PrimaryFooterCard from "../cards/PrimaryFooterCard";
 import { PRIMARY_FOOTER_CARD } from "@/constants/Footer";
+import PrimaryFooterCard from "../cards/PrimaryFooterCard";
 
 export default function DynamicFooterCard() {
   const pathname = usePathname();

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import FeaturedCard from "@/components/pages/resources/card/FeaturedCard";
 import PopularCard from "@/components/pages/resources/card/PopularCard";
 import TwoDotIcons from "@/components/shared/icons/TwoDotIcons";

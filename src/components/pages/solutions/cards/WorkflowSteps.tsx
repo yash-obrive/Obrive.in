@@ -1,6 +1,6 @@
-import FONTS from "@/assets/fonts";
-import { WORKFLOW_STEPS_TYPE } from "@/constants/pages/solutions/workflow-steps";
 import Image from "next/image";
+import FONTS from "@/assets/fonts";
+import type { WORKFLOW_STEPS_TYPE } from "@/constants/pages/solutions/workflow-steps";
 
 const WorkflowSteps = ({
   step,

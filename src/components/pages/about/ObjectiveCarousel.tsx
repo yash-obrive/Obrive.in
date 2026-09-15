@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import { objectiveCardsData } from "@/constants/pages/about/object-frame";
 
 export default function ObjectiveCarousel() {

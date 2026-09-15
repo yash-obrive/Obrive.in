@@ -1,10 +1,10 @@
-import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import { ReactNode } from "react";
-import { FAQMetadata } from "@/lib/mdx";
-import FAQWorkflowSteps from "./FAQWorkflowSteps";
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
+import type { ReactNode } from "react";
 import FONTS from "@/assets/fonts";
+import FullWidthSection from "@/components/shared/layout/FullWidthSection";
+import { buttonVariants } from "@/components/ui/button";
+import type { FAQMetadata } from "@/lib/mdx";
+import FAQWorkflowSteps from "./FAQWorkflowSteps";
 
 const slugify = (value: string) =>
   value

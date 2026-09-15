@@ -67,7 +67,9 @@ function startAudioRoomCron() {
           },
         });
 
-        console.log(`Cleaned ${staleParticipantIds.length} stale audio participant(s)`);
+        console.log(
+          `Cleaned ${staleParticipantIds.length} stale audio participant(s)`,
+        );
       }
     } catch (error) {
       console.error("Audio room cron failed:", error);

@@ -1,127 +1,133 @@
-'use client'
+"use client";
 
-import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { Plus, ArrowLeft, Menu, X, Trash2 } from 'lucide-react'
-import SkeletonLoading from '@/components/SkelitonLoading'
-import { apiFetch } from '@/lib/api'
-import CreateProjectDialog from '../components/CreateProjectDialog'
-import ProjectCard from '../components/ProjectCard'
-import ProjectDetailsView from '../components/ProjectDetailsView'
-import ConfirmationAlert from '@/components/ConfirmationAlert'
+import { motion } from "framer-motion";
+import { ArrowLeft, Menu, Plus, Trash2, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import ConfirmationAlert from "@/components/ConfirmationAlert";
+import SkeletonLoading from "@/components/SkelitonLoading";
+import { apiFetch } from "@/lib/api";
+import CreateProjectDialog from "../components/CreateProjectDialog";
+import ProjectCard from "../components/ProjectCard";
+import ProjectDetailsView from "../components/ProjectDetailsView";
 
 interface Project {
-  id: number
-  name: string
-  description?: string
-  priority?: string
-  created_at?: string
-  team_members?: any[]
-  tasks?: any[]
+  id: number;
+  name: string;
+  description?: string;
+  priority?: string;
+  created_at?: string;
+  team_members?: any[];
+  tasks?: any[];
 }
 
 const Projects = () => {
-  const [projects, setProjects] = useState<Project[]>([])
-  const [loading, setLoading] = useState(true)
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [isCreateProjectOpen, setIsCreateProjectOpen] = useState(false)
-  const [isProjectListOpen, setIsProjectListOpen] = useState(false)
-  const [creating, setCreating] = useState(false)
-  const [deleteAlert, setDeleteAlert] = useState<{ isOpen: boolean; projectId: number | null }>({
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isCreateProjectOpen, setIsCreateProjectOpen] = useState(false);
+  const [isProjectListOpen, setIsProjectListOpen] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [deleteAlert, setDeleteAlert] = useState<{
+    isOpen: boolean;
+    projectId: number | null;
+  }>({
     isOpen: false,
     projectId: null,
-  })
+  });
 
   // Fetch all supervisor projects
   useEffect(() => {
-    fetchProjects()
-  }, [])
+    fetchProjects();
+  }, []);
 
   const fetchProjects = async () => {
     try {
-      setLoading(true)
-      const response = await apiFetch('/supervisor/projects', { method: 'GET' })
-      const result = await response.json()
+      setLoading(true);
+      const response = await apiFetch("/supervisor/projects", {
+        method: "GET",
+      });
+      const result = await response.json();
       if (result.success) {
         // Transform project_assignments to team_members
         const transformedProjects = result.data.map((project: any) => ({
           ...project,
-          team_members: project.project_assignments?.map((pa: any) => pa.users) || []
-        }))
-        setProjects(transformedProjects || [])
+          team_members:
+            project.project_assignments?.map((pa: any) => pa.users) || [],
+        }));
+        setProjects(transformedProjects || []);
       }
     } catch (error) {
-      console.error('Error fetching projects:', error)
+      console.error("Error fetching projects:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleCreateProject = async (formData: {
-    name: string
-    project_id: string
-    description?: string
-    priority?: string
-    deadline?: string
-    team_members: number[]
+    name: string;
+    project_id: string;
+    description?: string;
+    priority?: string;
+    deadline?: string;
+    team_members: number[];
   }) => {
     try {
-      setCreating(true)
-      const response = await apiFetch('/projects', {
-        method: 'POST',
+      setCreating(true);
+      const response = await apiFetch("/projects", {
+        method: "POST",
         body: JSON.stringify(formData),
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
       if (result.success) {
         // Transform the new project to include team_members for the UI
         const newProject = {
           ...result.data,
-          team_members: formData.team_members.map(id => {
-            const emp = result.data.team_members?.find((m: any) => m.id === id)
-            return emp || { id }
-          })
-        }
-        setProjects([...projects, newProject])
-        setIsCreateProjectOpen(false)
-        fetchProjects() // Refetch to get full data with joined users
+          team_members: formData.team_members.map((id) => {
+            const emp = result.data.team_members?.find((m: any) => m.id === id);
+            return emp || { id };
+          }),
+        };
+        setProjects([...projects, newProject]);
+        setIsCreateProjectOpen(false);
+        fetchProjects(); // Refetch to get full data with joined users
       }
     } catch (error) {
-      console.error('Error creating project:', error)
+      console.error("Error creating project:", error);
     } finally {
-      setCreating(false)
+      setCreating(false);
     }
-  }
+  };
 
   const handleDeleteProject = async (projectId: number) => {
-    setDeleteAlert({ isOpen: true, projectId })
-  }
+    setDeleteAlert({ isOpen: true, projectId });
+  };
 
   const confirmDeleteProject = async () => {
-    const projectId = deleteAlert.projectId
-    if (!projectId) return
+    const projectId = deleteAlert.projectId;
+    if (!projectId) return;
 
     try {
       const response = await apiFetch(`/projects/${projectId}`, {
-        method: 'DELETE',
-      })
+        method: "DELETE",
+      });
 
-      const result = await response.json()
+      const result = await response.json();
       if (result.success) {
-        setProjects(projects.filter((p) => p.id !== projectId))
+        setProjects(projects.filter((p) => p.id !== projectId));
         if (selectedProject?.id === projectId) {
-          setSelectedProject(null)
+          setSelectedProject(null);
         }
       }
     } catch (error) {
-      console.error('Error deleting project:', error)
+      console.error("Error deleting project:", error);
     } finally {
-      setDeleteAlert({ isOpen: false, projectId: null })
+      setDeleteAlert({ isOpen: false, projectId: null });
     }
-  }
+  };
 
   if (loading) {
-    return <SkeletonLoading />
+    return <SkeletonLoading />;
   }
 
   return (
@@ -142,7 +148,7 @@ const Projects = () => {
           Projects
         </button>
         <span className="text-sm font-semibold text-[#1a472a]">
-          {selectedProject ? 'Project Details' : 'All Projects'}
+          {selectedProject ? "Project Details" : "All Projects"}
         </span>
       </div>
 
@@ -158,7 +164,7 @@ const Projects = () => {
         {/* Projects List */}
         <div
           className={`${
-            isProjectListOpen ? 'translate-x-0' : '-translate-x-full'
+            isProjectListOpen ? "translate-x-0" : "-translate-x-full"
           } fixed inset-y-3 left-3 z-50 w-[min(20rem,calc(100vw-1.5rem))] transition-transform lg:static lg:w-64 lg:translate-x-0 lg:flex-shrink-0`}
         >
           <div className="h-full overflow-y-auto rounded-2xl bg-white p-3 shadow-sm">
@@ -186,19 +192,21 @@ const Projects = () => {
             {/* Projects List */}
             <div className="space-y-2">
               {projects.length === 0 ? (
-                <p className="text-center text-sm text-gray-500">No projects yet</p>
+                <p className="text-center text-sm text-gray-500">
+                  No projects yet
+                </p>
               ) : (
                 projects.map((project) => (
                   <button
                     key={project.id}
                     onClick={() => {
-                      setSelectedProject(project)
-                      setIsProjectListOpen(false)
+                      setSelectedProject(project);
+                      setIsProjectListOpen(false);
                     }}
                     className={`w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium transition ${
                       selectedProject?.id === project.id
-                        ? 'bg-[#1a472a] text-white'
-                        : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                        ? "bg-[#1a472a] text-white"
+                        : "bg-gray-50 text-gray-700 hover:bg-gray-100"
                     }`}
                   >
                     <p className="truncate">{project.name}</p>
@@ -246,12 +254,17 @@ const Projects = () => {
                 </button>
               </div>
 
-              <ProjectDetailsView project={selectedProject} onProjectUpdate={fetchProjects} />
+              <ProjectDetailsView
+                project={selectedProject}
+                onProjectUpdate={fetchProjects}
+              />
             </>
           ) : (
             <div className="flex h-full items-center justify-center">
               <div className="text-center">
-                <p className="text-gray-500 mb-4">Select a project or create a new one</p>
+                <p className="text-gray-500 mb-4">
+                  Select a project or create a new one
+                </p>
                 <button
                   type="button"
                   onClick={() => setIsCreateProjectOpen(true)}
@@ -284,7 +297,7 @@ const Projects = () => {
         onCancel={() => setDeleteAlert({ isOpen: false, projectId: null })}
       />
     </motion.div>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

@@ -1,8 +1,8 @@
 "use client";
 
+import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
 import { useEffect, useRef } from "react";
 import { ICONS_META } from "@/assets/images";
-import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
 
 const OB_RIVE_SRC = "/animations/OB.riv";
 const OB_STATE_MACHINE = "OB";
@@ -43,7 +43,7 @@ export default function ObIcon({ className }: ObIconProps) {
           rive.pause();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(node);

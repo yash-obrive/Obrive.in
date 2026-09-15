@@ -29,7 +29,9 @@ const BenefitsTable = () => {
                   className="border-b border-zinc-300 last:border-b-0"
                 >
                   <td className="align-top w-[170px] px-6 py-4 border-r border-zinc-300">
-                    <div className={`text-sm ${FONTS.microgrammaBold.className}`}>
+                    <div
+                      className={`text-sm ${FONTS.microgrammaBold.className}`}
+                    >
                       {item.benefit}
                     </div>
                   </td>
@@ -52,7 +54,9 @@ const BenefitsTable = () => {
             key={item.benefit}
             className="bg-white border border-zinc-300 rounded-lg shadow-sm overflow-hidden"
           >
-            <div className={`border-b border-zinc-300 px-4 py-3 text-sm text-gray-800 ${FONTS.microgrammaBold.className}`}>
+            <div
+              className={`border-b border-zinc-300 px-4 py-3 text-sm text-gray-800 ${FONTS.microgrammaBold.className}`}
+            >
               {item.benefit}
             </div>
             <div className="px-4 py-3">

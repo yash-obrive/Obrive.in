@@ -1,359 +1,369 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { Plus, Trash2, CheckCircle, Circle, UserPlus, Edit, Crown, BarChart2 } from 'lucide-react'
-import { apiFetch } from '@/lib/api'
-import CreateTaskDialog from './CreateTaskDialog'
-import EditTaskDialog from './EditTaskDialog'
-import AssignEmployeesDialog from './AssignEmployeesDialog'
-import ConfirmationAlert from '@/components/ConfirmationAlert'
-import CreateProjectDialog from './CreateProjectDialog'
+import {
+  BarChart2,
+  CheckCircle,
+  Circle,
+  Crown,
+  Edit,
+  Plus,
+  Trash2,
+  UserPlus,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import ConfirmationAlert from "@/components/ConfirmationAlert";
+import { apiFetch } from "@/lib/api";
+import AssignEmployeesDialog from "./AssignEmployeesDialog";
+import CreateProjectDialog from "./CreateProjectDialog";
+import CreateTaskDialog from "./CreateTaskDialog";
+import EditTaskDialog from "./EditTaskDialog";
 
 interface Task {
-  id: number
-  project_id?: number
-  task_number?: string
-  title: string
-  description?: string
-  deadline?: string
-  status?: string
-  assigned_to?: number
-  assigned_to_name?: string
-  created_by?: number
-  created_by_name?: string
+  id: number;
+  project_id?: number;
+  task_number?: string;
+  title: string;
+  description?: string;
+  deadline?: string;
+  status?: string;
+  assigned_to?: number;
+  assigned_to_name?: string;
+  created_by?: number;
+  created_by_name?: string;
 }
 
 interface Project {
-  id: number
-  name: string
-  project_id?: string
-  description?: string
-  priority?: string
-  deadline?: string
-  progress?: number
-  leader_id?: number
-  team_members?: any[]
-  tasks?: Task[]
+  id: number;
+  name: string;
+  project_id?: string;
+  description?: string;
+  priority?: string;
+  deadline?: string;
+  progress?: number;
+  leader_id?: number;
+  team_members?: any[];
+  tasks?: Task[];
 }
 
 interface ProjectDetailsViewProps {
-  project: Project
-  onProjectUpdate: () => void
+  project: Project;
+  onProjectUpdate: () => void;
 }
 
 export default function ProjectDetailsView({
   project,
   onProjectUpdate,
 }: ProjectDetailsViewProps) {
-  const [tasks, setTasks] = useState<Task[]>(project.tasks || [])
-  const [loading, setLoading] = useState(false)
-  const [isCreateTaskOpen, setIsCreateTaskOpen] = useState(false)
-  const [isEditTaskOpen, setIsEditTaskOpen] = useState(false)
-  const [isEditProjectOpen, setIsEditProjectOpen] = useState(false) // 1. NEW: Project Edit Modal State
-  const [selectedTask, setSelectedTask] = useState<Task | null>(null)
-  const [taskToEdit, setTaskToEdit] = useState<Task | null>(null)
-  const [isAssignEmployeesOpen, setIsAssignEmployeesOpen] = useState(false)
-  const [updatingProgress, setUpdatingProgress] = useState(false)
-  const [currentUser, setCurrentUser] = useState<any>(null)
+  const [tasks, setTasks] = useState<Task[]>(project.tasks || []);
+  const [loading, setLoading] = useState(false);
+  const [isCreateTaskOpen, setIsCreateTaskOpen] = useState(false);
+  const [isEditTaskOpen, setIsEditTaskOpen] = useState(false);
+  const [isEditProjectOpen, setIsEditProjectOpen] = useState(false); // 1. NEW: Project Edit Modal State
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+  const [taskToEdit, setTaskToEdit] = useState<Task | null>(null);
+  const [isAssignEmployeesOpen, setIsAssignEmployeesOpen] = useState(false);
+  const [updatingProgress, setUpdatingProgress] = useState(false);
+  const [currentUser, setCurrentUser] = useState<any>(null);
   const [alertConfig, setAlertConfig] = useState<{
-    isOpen: boolean
-    title: string
-    description: string
-    type: 'success' | 'error' | 'info' | 'warning'
-    onConfirm?: () => void
+    isOpen: boolean;
+    title: string;
+    description: string;
+    type: "success" | "error" | "info" | "warning";
+    onConfirm?: () => void;
   }>({
     isOpen: false,
-    title: '',
-    description: '',
-    type: 'info',
-  })
+    title: "",
+    description: "",
+    type: "info",
+  });
 
   useEffect(() => {
-    setTasks(project.tasks || [])
-    const userStr = localStorage.getItem('user')
+    setTasks(project.tasks || []);
+    const userStr = localStorage.getItem("user");
     if (userStr) {
-      setCurrentUser(JSON.parse(userStr))
+      setCurrentUser(JSON.parse(userStr));
     }
-  }, [project])
+  }, [project]);
 
   const fetchProjectTasks = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await apiFetch(`/projects/${project.id}`, {
-        method: 'GET',
-      })
-      const result = await response.json()
+        method: "GET",
+      });
+      const result = await response.json();
       if (result.success && result.data.tasks) {
-        setTasks(result.data.tasks)
+        setTasks(result.data.tasks);
       }
     } catch (error) {
-      console.error('Error fetching tasks:', error)
+      console.error("Error fetching tasks:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleCreateTask = async (data: any) => {
     try {
       const response = await apiFetch(`/tasks/${project.id}`, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify(data),
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
       if (result.success) {
         setAlertConfig({
           isOpen: true,
-          title: 'Success',
-          description: 'Task created successfully',
-          type: 'success',
-        })
-        setTasks([result.data, ...tasks])
-        setIsCreateTaskOpen(false)
-        onProjectUpdate()
+          title: "Success",
+          description: "Task created successfully",
+          type: "success",
+        });
+        setTasks([result.data, ...tasks]);
+        setIsCreateTaskOpen(false);
+        onProjectUpdate();
       }
     } catch (error: any) {
       setAlertConfig({
         isOpen: true,
-        title: 'Error',
-        description: error.message || 'Failed to create task',
-        type: 'error',
-      })
+        title: "Error",
+        description: error.message || "Failed to create task",
+        type: "error",
+      });
     }
-  }
+  };
 
   const handleEditTask = async (data: any) => {
-    if (!taskToEdit) return
+    if (!taskToEdit) return;
     try {
       const response = await apiFetch(`/tasks/${taskToEdit.id}`, {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify(data),
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
       if (result.success) {
         setAlertConfig({
           isOpen: true,
-          title: 'Success',
-          description: 'Task updated successfully',
-          type: 'success',
-        })
-        setTasks(tasks.map((t) => (t.id === taskToEdit.id ? result.data : t)))
-        setIsEditTaskOpen(false)
-        setTaskToEdit(null)
-        onProjectUpdate()
+          title: "Success",
+          description: "Task updated successfully",
+          type: "success",
+        });
+        setTasks(tasks.map((t) => (t.id === taskToEdit.id ? result.data : t)));
+        setIsEditTaskOpen(false);
+        setTaskToEdit(null);
+        onProjectUpdate();
       }
     } catch (error: any) {
       setAlertConfig({
         isOpen: true,
-        title: 'Error',
-        description: error.message || 'Failed to update task',
-        type: 'error',
-      })
+        title: "Error",
+        description: error.message || "Failed to update task",
+        type: "error",
+      });
     }
-  }
+  };
 
   // 2. NEW: Project Update Handler Function
   const handleEditProjectSubmit = async (data: any) => {
     try {
       const response = await apiFetch(`/projects/${project.id}`, {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify(data),
-      })
+      });
 
-      const result = await response.json() 
+      const result = await response.json();
       if (result.success) {
         setAlertConfig({
           isOpen: true,
-          title: 'Success',
-          description: 'Project updated successfully',
-          type: 'success',
-        })
-        setIsEditProjectOpen(false)
-        onProjectUpdate() // Parent component ko refresh karne ke liye
+          title: "Success",
+          description: "Project updated successfully",
+          type: "success",
+        });
+        setIsEditProjectOpen(false);
+        onProjectUpdate(); // Parent component ko refresh karne ke liye
       }
     } catch (error: any) {
       setAlertConfig({
         isOpen: true,
-        title: 'Error',
-        description: error.message || 'Failed to update project',
-        type: 'error',
-      })
+        title: "Error",
+        description: error.message || "Failed to update project",
+        type: "error",
+      });
     }
-  }
+  };
 
   const handleDeleteTask = async (taskId: number) => {
     setAlertConfig({
       isOpen: true,
-      title: 'Delete Task',
-      description: 'Are you sure you want to delete this task? This action cannot be undone.',
-      type: 'error',
+      title: "Delete Task",
+      description:
+        "Are you sure you want to delete this task? This action cannot be undone.",
+      type: "error",
       onConfirm: async () => {
         try {
           const response = await apiFetch(`/tasks/${taskId}`, {
-            method: 'DELETE',
-          })
+            method: "DELETE",
+          });
 
-          const result = await response.json()
+          const result = await response.json();
           if (result.success) {
-            setTasks(tasks.filter((t) => t.id !== taskId))
-            onProjectUpdate()
+            setTasks(tasks.filter((t) => t.id !== taskId));
+            onProjectUpdate();
           }
         } catch (error) {
-          console.error('Error deleting task:', error)
+          console.error("Error deleting task:", error);
         } finally {
-          setAlertConfig(prev => ({ ...prev, isOpen: false }))
+          setAlertConfig((prev) => ({ ...prev, isOpen: false }));
         }
-      }
-    })
-  }
+      },
+    });
+  };
 
   const handleToggleTaskStatus = async (task: Task) => {
     try {
-      const newStatus = task.status === 'completed' ? 'pending' : 'completed'
+      const newStatus = task.status === "completed" ? "pending" : "completed";
       const response = await apiFetch(`/tasks/${task.id}`, {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify({ status: newStatus }),
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
       if (result.success) {
         setAlertConfig({
           isOpen: true,
-          title: 'Success',
+          title: "Success",
           description: `Task marked as ${newStatus}`,
-          type: 'success',
-        })
+          type: "success",
+        });
         setTasks(
           tasks.map((t) =>
-            t.id === task.id ? { ...t, status: newStatus } : t
-          )
-        )
-        onProjectUpdate()
+            t.id === task.id ? { ...t, status: newStatus } : t,
+          ),
+        );
+        onProjectUpdate();
       }
     } catch (error) {
-      console.error('Error updating task:', error)
+      console.error("Error updating task:", error);
     }
-  }
+  };
 
   const handleAssignLeader = async (leaderId: number) => {
     try {
       const response = await apiFetch(`/projects/${project.id}/leader`, {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify({ leaderId }),
-      })
-      const result = await response.json()
+      });
+      const result = await response.json();
       if (result.success) {
         setAlertConfig({
           isOpen: true,
-          title: 'Success',
-          description: 'Project leader assigned successfully',
-          type: 'success',
-        })
-        onProjectUpdate()
+          title: "Success",
+          description: "Project leader assigned successfully",
+          type: "success",
+        });
+        onProjectUpdate();
       }
     } catch (error: any) {
       setAlertConfig({
         isOpen: true,
-        title: 'Error',
-        description: error.message || 'Failed to assign leader',
-        type: 'error',
-      })
+        title: "Error",
+        description: error.message || "Failed to assign leader",
+        type: "error",
+      });
     }
-  }
+  };
 
   const handleUpdateProgress = async (progress: number) => {
     try {
-      setUpdatingProgress(true)
+      setUpdatingProgress(true);
       const response = await apiFetch(`/projects/${project.id}/progress`, {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify({ progress }),
-      })
-      const result = await response.json()
+      });
+      const result = await response.json();
       if (result.success) {
-        onProjectUpdate()
+        onProjectUpdate();
       }
     } catch (error: any) {
-      console.error('Error updating progress:', error)
+      console.error("Error updating progress:", error);
     } finally {
-      setUpdatingProgress(false)
+      setUpdatingProgress(false);
     }
-  }
+  };
 
   const getTaskStatusStyle = (status?: string) => {
     switch (status) {
-      case 'completed':
-        return 'bg-emerald-100 text-emerald-700'
-      case 'in-progress':
-        return 'bg-sky-100 text-sky-700'
-      case 'pending':
-        return 'bg-amber-100 text-amber-700'
+      case "completed":
+        return "bg-emerald-100 text-emerald-700";
+      case "in-progress":
+        return "bg-sky-100 text-sky-700";
+      case "pending":
+        return "bg-amber-100 text-amber-700";
       default:
-        return 'bg-gray-100 text-gray-700'
+        return "bg-gray-100 text-gray-700";
     }
-  }
+  };
 
   const handleAssignEmployees = async (employeeIds: number[]) => {
     try {
-      setLoading(true)
+      setLoading(true);
       for (const employeeId of employeeIds) {
-        if (!project.team_members?.some(member => member.id === employeeId)) {
+        if (!project.team_members?.some((member) => member.id === employeeId)) {
           await apiFetch(`/projects/${project.id}/assign`, {
-            method: 'POST',
+            method: "POST",
             body: JSON.stringify({ employeeId }),
-          })
+          });
         }
       }
-      
+
       setAlertConfig({
         isOpen: true,
-        title: 'Success',
-        description: 'Employees assigned successfully',
-        type: 'success',
-      })
-      
-      onProjectUpdate()
-      setIsAssignEmployeesOpen(false)
+        title: "Success",
+        description: "Employees assigned successfully",
+        type: "success",
+      });
+
+      onProjectUpdate();
+      setIsAssignEmployeesOpen(false);
     } catch (error: any) {
       setAlertConfig({
         isOpen: true,
-        title: 'Error',
-        description: error.message || 'Failed to assign employees',
-        type: 'error',
-      })
+        title: "Error",
+        description: error.message || "Failed to assign employees",
+        type: "error",
+      });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleRemoveEmployee = async (employeeId: number) => {
     setAlertConfig({
       isOpen: true,
-      title: 'Remove Member',
+      title: "Remove Member",
       description:
-        'Are you sure you want to remove this employee from the project?',
-      type: 'warning',
+        "Are you sure you want to remove this employee from the project?",
+      type: "warning",
       onConfirm: async () => {
         try {
           const response = await apiFetch(
             `/projects/${project.id}/assign/${employeeId}`,
             {
-              method: 'DELETE',
-            }
-          )
+              method: "DELETE",
+            },
+          );
 
-          const result = await response.json()
+          const result = await response.json();
           if (result.success) {
-            onProjectUpdate()
+            onProjectUpdate();
           }
         } catch (error) {
-          console.error('Error removing employee:', error)
+          console.error("Error removing employee:", error);
         } finally {
-          setAlertConfig((prev) => ({ ...prev, isOpen: false }))
+          setAlertConfig((prev) => ({ ...prev, isOpen: false }));
         }
       },
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -367,20 +377,22 @@ export default function ProjectDetailsView({
               <div className="flex items-center gap-2 mt-1">
                 <span
                   className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${
-                    project.priority === 'high'
-                      ? 'bg-red-100 text-red-700'
-                      : project.priority === 'medium'
-                        ? 'bg-yellow-100 text-yellow-700'
-                        : 'bg-green-100 text-green-700'
+                    project.priority === "high"
+                      ? "bg-red-100 text-red-700"
+                      : project.priority === "medium"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-green-100 text-green-700"
                   }`}
                 >
-                  {project.priority || 'Medium'}
+                  {project.priority || "Medium"}
                 </span>
               </div>
             </div>
-            
+
             {/* Show edit button only for supervisor / admin / hr */}
-            {(currentUser?.role === 'supervisor' || currentUser?.role === 'hr' || currentUser?.role === 'admin') && (
+            {(currentUser?.role === "supervisor" ||
+              currentUser?.role === "hr" ||
+              currentUser?.role === "admin") && (
               <button
                 type="button"
                 onClick={() => setIsEditProjectOpen(true)}
@@ -388,7 +400,9 @@ export default function ProjectDetailsView({
                 title="Edit Project Details"
               >
                 <Edit className="h-4 w-4" />
-                <span className="text-xs font-medium hidden sm:inline">Edit Details</span>
+                <span className="text-xs font-medium hidden sm:inline">
+                  Edit Details
+                </span>
               </button>
             )}
           </div>
@@ -401,20 +415,28 @@ export default function ProjectDetailsView({
 
           <div className="mt-4">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-medium text-gray-500">Progress</span>
-              <span className="text-xs font-bold text-[#073933]">{project.progress || 0}%</span>
+              <span className="text-xs font-medium text-gray-500">
+                Progress
+              </span>
+              <span className="text-xs font-bold text-[#073933]">
+                {project.progress || 0}%
+              </span>
             </div>
             <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-              <div 
-                className="h-full bg-[#073933] transition-all duration-500" 
+              <div
+                className="h-full bg-[#073933] transition-all duration-500"
                 style={{ width: `${project.progress || 0}%` }}
               ></div>
             </div>
-            {(currentUser?.role === 'supervisor' || currentUser?.role === 'hr' || (project.leader_id && currentUser?.id && Number(project.leader_id) === Number(currentUser.id))) && (
-              <input 
-                type="range" 
-                min="0" 
-                max="100" 
+            {(currentUser?.role === "supervisor" ||
+              currentUser?.role === "hr" ||
+              (project.leader_id &&
+                currentUser?.id &&
+                Number(project.leader_id) === Number(currentUser.id))) && (
+              <input
+                type="range"
+                min="0"
+                max="100"
                 value={project.progress || 0}
                 onChange={(e) => handleUpdateProgress(parseInt(e.target.value))}
                 className="w-full mt-2 h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#073933]"
@@ -430,23 +452,27 @@ export default function ProjectDetailsView({
                   <div
                     key={member.id}
                     className={`flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium transition ${
-                      project.leader_id === member.id 
-                        ? 'bg-amber-100 text-amber-800 ring-1 ring-amber-200' 
-                        : 'bg-[#eef7ff] text-[#1a472a]'
+                      project.leader_id === member.id
+                        ? "bg-amber-100 text-amber-800 ring-1 ring-amber-200"
+                        : "bg-[#eef7ff] text-[#1a472a]"
                     }`}
                   >
-                    {project.leader_id === member.id && <Crown className="h-3 w-3" />}
+                    {project.leader_id === member.id && (
+                      <Crown className="h-3 w-3" />
+                    )}
                     {member.name}
                     <div className="flex items-center gap-1 ml-1 border-l border-black/10 pl-1">
-                      {(currentUser?.role === 'supervisor' || currentUser?.role === 'hr') && project.leader_id !== member.id && (
-                        <button
-                          onClick={() => handleAssignLeader(member.id)}
-                          className="text-amber-600 hover:text-amber-700"
-                          title="Make Leader"
-                        >
-                          <Crown className="h-3 w-3" />
-                        </button>
-                      )}
+                      {(currentUser?.role === "supervisor" ||
+                        currentUser?.role === "hr") &&
+                        project.leader_id !== member.id && (
+                          <button
+                            onClick={() => handleAssignLeader(member.id)}
+                            className="text-amber-600 hover:text-amber-700"
+                            title="Make Leader"
+                          >
+                            <Crown className="h-3 w-3" />
+                          </button>
+                        )}
                       <button
                         onClick={() => handleRemoveEmployee(member.id)}
                         className="text-red-500 hover:text-red-700"
@@ -491,7 +517,9 @@ export default function ProjectDetailsView({
 
           {tasks.length === 0 ? (
             <div className="rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 p-8 text-center">
-              <p className="text-sm text-gray-500">No tasks yet. Create one to get started.</p>
+              <p className="text-sm text-gray-500">
+                No tasks yet. Create one to get started.
+              </p>
             </div>
           ) : (
             <div className="space-y-2">
@@ -505,7 +533,7 @@ export default function ProjectDetailsView({
                     onClick={() => handleToggleTaskStatus(task)}
                     className="mt-0.5 flex-shrink-0 text-gray-400 hover:text-[#073933]"
                   >
-                    {task.status === 'completed' ? (
+                    {task.status === "completed" ? (
                       <CheckCircle className="h-5 w-5 text-green-500" />
                     ) : (
                       <Circle className="h-5 w-5" />
@@ -515,19 +543,23 @@ export default function ProjectDetailsView({
                   <div className="flex-1 min-w-0">
                     <p
                       className={`font-medium ${
-                        task.status === 'completed'
-                          ? 'text-gray-400 line-through'
-                          : 'text-gray-900'
+                        task.status === "completed"
+                          ? "text-gray-400 line-through"
+                          : "text-gray-900"
                       }`}
                     >
                       {task.title}
                     </p>
                     {task.description && (
-                      <p className="text-xs text-gray-600 mt-1">{task.description}</p>
+                      <p className="text-xs text-gray-600 mt-1">
+                        {task.description}
+                      </p>
                     )}
                     <div className="flex flex-wrap items-center gap-2 mt-2">
-                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${getTaskStatusStyle(task.status)}`}>
-                        {task.status || 'pending'}
+                      <span
+                        className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${getTaskStatusStyle(task.status)}`}
+                      >
+                        {task.status || "pending"}
                       </span>
                       {task.assigned_to_name && (
                         <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
@@ -546,8 +578,8 @@ export default function ProjectDetailsView({
                     <button
                       type="button"
                       onClick={() => {
-                        setTaskToEdit(task)
-                        setIsEditTaskOpen(true)
+                        setTaskToEdit(task);
+                        setIsEditTaskOpen(true);
                       }}
                       className="rounded-lg p-1 text-gray-400 hover:bg-gray-200 hover:text-blue-600 transition"
                       title="Edit task"
@@ -591,8 +623,8 @@ export default function ProjectDetailsView({
       <EditTaskDialog
         open={isEditTaskOpen}
         onClose={() => {
-          setIsEditTaskOpen(false)
-          setTaskToEdit(null)
+          setIsEditTaskOpen(false);
+          setTaskToEdit(null);
         }}
         task={taskToEdit}
         onSubmit={handleEditTask}
@@ -616,5 +648,5 @@ export default function ProjectDetailsView({
         onCancel={() => setAlertConfig((prev) => ({ ...prev, isOpen: false }))}
       />
     </>
-  )
+  );
 }

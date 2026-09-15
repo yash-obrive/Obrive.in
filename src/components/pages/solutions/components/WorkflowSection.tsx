@@ -1,16 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
-import WorkflowSteps from "../cards/WorkflowSteps";
-import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import FONTS from "@/assets/fonts";
 import { IMAGES, IMAGES_META } from "@/assets/images";
+import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import BenefitsTable from "../cards/BenefitsTable";
-import Image from "next/image";
+import WorkflowSteps from "../cards/WorkflowSteps";
 
 interface WorkflowSectionProps {
-  howItWorks: readonly any[];
-  workflowStepsSidebar: readonly string[];
+  howItWorks?: readonly any[];
+  workflowStepsSidebar?: readonly string[];
 }
 
 const WorkflowSection = ({
@@ -88,6 +88,6 @@ const WorkflowSection = ({
       </div>
     </div>
   );
-}
+};
 
 export default WorkflowSection;

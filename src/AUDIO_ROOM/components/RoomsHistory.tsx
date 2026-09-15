@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { apiFetch } from "@/lib/api";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { apiFetch } from "@/lib/api";
 
 // ======================================================
 // HIGH-PERFORMANCE MINIMALIST SOLID UI UTILITIES
@@ -135,7 +135,7 @@ const RoomsHistory = () => {
         JSON.stringify({
           roomId,
           roomRole: data.data.roomRole,
-        })
+        }),
       );
 
       window.location.href = `/audio-room/room/${roomId}`;
@@ -148,35 +148,42 @@ const RoomsHistory = () => {
   // ======================================================
   // END ROOM
   // ======================================================
-const handleEndRoom = async (roomId: number) => {
-  try {
-    if (!me?.id) {
-      alert("Session signature expired. Please re-authenticate.");
-      return;
+  const handleEndRoom = async (roomId: number) => {
+    try {
+      if (!me?.id) {
+        alert("Session signature expired. Please re-authenticate.");
+        return;
+      }
+
+      // Call the dedicated dashboard bypass route
+      const response = await apiFetch("/audio-room/admin/end-room", {
+        method: "POST",
+        body: JSON.stringify({
+          roomId: roomId, // Coerced cleanly on backend by Zod definition array
+          userId: me.id,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message ||
+            `System rejected action with status: ${response.status}`,
+        );
+      }
+
+      console.log("✅ Room successfully terminated via admin context:", data);
+      refreshRoomsList();
+    } catch (err) {
+      console.error("❌ History Dashboard action failure:", err);
+      alert(
+        err instanceof Error
+          ? err.message
+          : "Failed to terminate targeted audio session.",
+      );
     }
-
-    // Call the dedicated dashboard bypass route
-    const response = await apiFetch("/audio-room/admin/end-room", { 
-      method: "POST",
-      body: JSON.stringify({ 
-        roomId: roomId, // Coerced cleanly on backend by Zod definition array
-        userId: me.id 
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message || `System rejected action with status: ${response.status}`);
-    }
-
-    console.log("✅ Room successfully terminated via admin context:", data);
-    refreshRoomsList();
-  } catch (err) {
-    console.error("❌ History Dashboard action failure:", err);
-    alert(err instanceof Error ? err.message : "Failed to terminate targeted audio session.");
-  }
-};
+  };
 
   // ======================================================
   // ROOM CARD RENDERING BLOCK
@@ -196,7 +203,10 @@ const handleEndRoom = async (roomId: number) => {
         <div>
           {/* Header */}
           <div className="flex items-start justify-between gap-3">
-            <h3 className="text-[11px] font-bold tracking-tight text-slate-800 truncate" title={room.roomName}>
+            <h3
+              className="text-[11px] font-bold tracking-tight text-slate-800 truncate"
+              title={room.roomName}
+            >
               {room.roomName}
             </h3>
 
@@ -232,15 +242,21 @@ const handleEndRoom = async (roomId: number) => {
             </div>
             <div className="flex items-center gap-1 justify-end">
               <span className="font-semibold text-slate-400">Limit:</span>
-              <span className="font-bold text-slate-600">{room.participantLimit} slots</span>
+              <span className="font-bold text-slate-600">
+                {room.participantLimit} slots
+              </span>
             </div>
             <div className="flex items-center gap-1">
               <span className="font-semibold text-slate-400">Type:</span>
-              <span className="capitalize font-bold text-slate-500">{room.roomType || "Audio"}</span>
+              <span className="capitalize font-bold text-slate-500">
+                {room.roomType || "Audio"}
+              </span>
             </div>
             <div className="flex items-center gap-1 justify-end">
               <span className="font-semibold text-slate-400">Access:</span>
-              <span className="capitalize font-bold text-slate-500">{room.visibility}</span>
+              <span className="capitalize font-bold text-slate-500">
+                {room.visibility}
+              </span>
             </div>
           </div>
 
@@ -281,7 +297,8 @@ const handleEndRoom = async (roomId: number) => {
         {/* Error Notification Banner */}
         {error && (
           <div className="rounded-md border border-red-200 bg-red-50 p-3 text-[10px] text-red-700 flex items-center gap-2 shadow-sm">
-            <span className="font-bold">❌ Error:</span> <span className="font-semibold">{error}</span>
+            <span className="font-bold">❌ Error:</span>{" "}
+            <span className="font-semibold">{error}</span>
           </div>
         )}
 
@@ -314,7 +331,9 @@ const handleEndRoom = async (roomId: number) => {
               liveRooms.map(renderRoomCard)
             ) : (
               <div className="col-span-full py-10 text-center rounded-md border border-dashed border-slate-200 bg-slate-50/50">
-                <p className="text-[10px] text-slate-400 italic">No rooms are currently live.</p>
+                <p className="text-[10px] text-slate-400 italic">
+                  No rooms are currently live.
+                </p>
               </div>
             )}
           </div>
@@ -336,7 +355,9 @@ const handleEndRoom = async (roomId: number) => {
               pastRooms.map(renderRoomCard)
             ) : (
               <div className="col-span-full py-10 text-center rounded-md border border-dashed border-slate-200 bg-slate-50/50">
-                <p className="text-[10px] text-slate-400 italic">No previous sessions found.</p>
+                <p className="text-[10px] text-slate-400 italic">
+                  No previous sessions found.
+                </p>
               </div>
             )}
           </div>

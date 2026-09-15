@@ -1,6 +1,6 @@
 // backend/src/modules/tasks/tasks.controller.js
-const taskService = require('./tasks.service');
-const { successResponse, errorResponse } = require('../../utils/apiResponse');
+const taskService = require("./tasks.service");
+const { successResponse, errorResponse } = require("../../utils/apiResponse");
 
 exports.createTask = async (req, res) => {
   try {
@@ -9,7 +9,7 @@ exports.createTask = async (req, res) => {
     const { title, description, deadline, status, assigned_to } = req.body;
 
     if (!title) {
-      return errorResponse(res, 'Task title is required', 400);
+      return errorResponse(res, "Task title is required", 400);
     }
 
     const task = await taskService.createTask(
@@ -21,10 +21,10 @@ exports.createTask = async (req, res) => {
         status,
         assigned_to: assigned_to ? parseInt(assigned_to) : null,
       },
-      userId
+      userId,
     );
 
-    successResponse(res, task, 'Task created successfully', 201);
+    successResponse(res, task, "Task created successfully", 201);
   } catch (err) {
     errorResponse(res, err.message, 400);
   }
@@ -44,9 +44,13 @@ exports.updateTask = async (req, res) => {
       assigned_to: assigned_to ? parseInt(assigned_to) : null,
     });
 
-    successResponse(res, task, 'Task updated successfully');
+    successResponse(res, task, "Task updated successfully");
   } catch (err) {
-    errorResponse(res, err.message, err.message.includes('permission') ? 403 : 400);
+    errorResponse(
+      res,
+      err.message,
+      err.message.includes("permission") ? 403 : 400,
+    );
   }
 };
 
@@ -57,10 +61,10 @@ exports.getTasksByProject = async (req, res) => {
 
     const tasks = await taskService.getTasksByProject(
       parseInt(projectId),
-      userId
+      userId,
     );
 
-    successResponse(res, tasks, 'Project tasks retrieved');
+    successResponse(res, tasks, "Project tasks retrieved");
   } catch (err) {
     errorResponse(res, err.message, 400);
   }
@@ -73,12 +77,12 @@ exports.getTaskById = async (req, res) => {
 
     const task = await taskService.getTaskById(parseInt(taskId), userId);
 
-    successResponse(res, task, 'Task details retrieved');
+    successResponse(res, task, "Task details retrieved");
   } catch (err) {
     errorResponse(
       res,
       err.message,
-      err.message.includes('permission') ? 403 : 404
+      err.message.includes("permission") ? 403 : 404,
     );
   }
 };
@@ -90,12 +94,12 @@ exports.deleteTask = async (req, res) => {
 
     await taskService.deleteTask(parseInt(taskId), userId);
 
-    successResponse(res, null, 'Task deleted successfully');
+    successResponse(res, null, "Task deleted successfully");
   } catch (err) {
     errorResponse(
       res,
       err.message,
-      err.message.includes('permission') ? 403 : 404
+      err.message.includes("permission") ? 403 : 404,
     );
   }
 };
@@ -106,7 +110,7 @@ exports.getMyTasks = async (req, res) => {
 
     const tasks = await taskService.getMyTasks(userId);
 
-    successResponse(res, tasks, 'User tasks retrieved');
+    successResponse(res, tasks, "User tasks retrieved");
   } catch (err) {
     errorResponse(res, err.message, 400);
   }
@@ -117,10 +121,10 @@ exports.getProjectTeamMembers = async (req, res) => {
     const { projectId } = req.params;
 
     const members = await taskService.getProjectTeamMembers(
-      parseInt(projectId)
+      parseInt(projectId),
     );
 
-    successResponse(res, members, 'Project team members retrieved');
+    successResponse(res, members, "Project team members retrieved");
   } catch (err) {
     errorResponse(res, err.message, 400);
   }

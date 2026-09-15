@@ -3,15 +3,15 @@
 import { motion } from "framer-motion";
 import { CalendarDays, RefreshCcw } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import ConfirmationAlert from "@/components/ConfirmationAlert";
 import SkeletonLoading from "@/components/SkelitonLoading";
 import { apiFetch } from "@/lib/api";
 import EmployeesOnLeaveList from "../components/EmployeesOnLeaveList";
 import LeaveApplicationDialog from "../components/LeaveApplicationDialog";
 import LeaveBalanceRing from "../components/LeaveBalanceRing";
 import LeaveRequestHistory from "../components/LeaveRequestHistory";
-import ConfirmationAlert from "@/components/ConfirmationAlert";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 type LeaveSummary = {
   month?: {
@@ -346,11 +346,11 @@ export default function Vacations() {
             tomorrow={summary?.colleaguesOnLeave?.tomorrow || []}
           />
 
-          <LeaveRequestHistory 
-            requests={(summary?.requests || []).map(r => ({
+          <LeaveRequestHistory
+            requests={(summary?.requests || []).map((r) => ({
               ...r,
-              leaveDate: r.leaveDate || r.startDate // Support both naming conventions
-            }))} 
+              leaveDate: r.leaveDate || r.startDate, // Support both naming conventions
+            }))}
             onDelete={handleDeleteLeave}
           />
         </div>

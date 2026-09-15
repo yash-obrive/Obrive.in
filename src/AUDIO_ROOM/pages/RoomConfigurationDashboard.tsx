@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import RoomConfigurationLayout from "../layouts/RoomConfiguratoinLayout";
 import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
-
 // Components
 import CreateRoom from "../components/CreateRoom";
 import RoomsHistory from "../components/RoomsHistory";
 import RoomsScheduled from "../components/RoomsScheduled";
+import RoomConfigurationLayout from "../layouts/RoomConfiguratoinLayout";
+
 // import Templates from "../components/Templates";
 // import ActiveRooms from "../components/ActiveRooms";
 // import RoomRecordings from "../components/RoomRecordings";
@@ -25,12 +25,12 @@ type ActiveSection =
 const RoomConfigurationDashboard = () => {
   const router = useRouter();
   const { me, loading } = useCurrentUser();
-  const [activeSection, setActiveSection] = useState<ActiveSection>("create-room");
+  const [activeSection, setActiveSection] =
+    useState<ActiveSection>("create-room");
 
-  const canAccessRoomConfiguration =
-    ["supervisor", "admin"].includes(
-      me?.role?.toLowerCase() || ""
-    );
+  const canAccessRoomConfiguration = ["supervisor", "admin"].includes(
+    me?.role?.toLowerCase() || "",
+  );
 
   useEffect(() => {
     if (!loading && !canAccessRoomConfiguration) {
@@ -39,7 +39,6 @@ const RoomConfigurationDashboard = () => {
   }, [canAccessRoomConfiguration, loading, router]);
 
   const renderComponent = () => {
-
     switch (activeSection) {
       case "create-room":
         return <CreateRoom />;

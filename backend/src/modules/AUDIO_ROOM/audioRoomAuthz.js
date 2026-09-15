@@ -70,7 +70,8 @@ const requireRoomRoles =
   (allowedRoles = MODERATOR_ROOM_ROLES) =>
   async (req, res, next) => {
     try {
-      const roomId = req.body?.roomId || req.params?.roomId || req.query?.roomId;
+      const roomId =
+        req.body?.roomId || req.params?.roomId || req.query?.roomId;
 
       if (!roomId) {
         return res.status(400).json({
@@ -115,7 +116,9 @@ const canModerateTarget = async (roomId, actorUserId, targetUserId) => {
   }
 
   const actorRole = normalizeRole(await getActorRoomRole(roomId, actorUserId));
-  const targetRole = normalizeRole(await getActorRoomRole(roomId, targetUserId));
+  const targetRole = normalizeRole(
+    await getActorRoomRole(roomId, targetUserId),
+  );
 
   if (actorRole === "admin") {
     return true;

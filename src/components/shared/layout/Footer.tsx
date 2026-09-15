@@ -2,13 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import FONTS from "@/assets/fonts";
 import { IMAGES, IMAGES_META } from "@/assets/images";
-import { GROUPS, PRIMARY_FOOTER_CARD, SOCIAL_LINKS } from "@/constants/Footer";
-import DynamicFooterCard from "./DynamicFooterCard";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import { GROUPS, PRIMARY_FOOTER_CARD, SOCIAL_LINKS } from "@/constants/Footer";
+import DynamicFooterCard from "./DynamicFooterCard";
 
 export default function Footer() {
   const cell =

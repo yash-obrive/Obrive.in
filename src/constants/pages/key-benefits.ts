@@ -129,13 +129,15 @@ export const OBNAVI_KEY_BENEFITS = [
 export const OBMOVE_KEY_BENEFITS = [
   {
     title: "Immersive 3D Exploration",
-    description: "Walk around life-sized cars, step inside, and experience interiors in detail.",
+    description:
+      "Walk around life-sized cars, step inside, and experience interiors in detail.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
   {
     title: "Personalized Customization ",
-    description: "Instantly change trims, colors, wheels, and features to design your dream car.",
+    description:
+      "Instantly change trims, colors, wheels, and features to design your dream car.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },

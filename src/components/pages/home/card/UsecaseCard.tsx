@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
 import FONTS from "@/assets/fonts";
 import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
-import { HomeCard } from "@/constants/pages/home/home-card";
+import { Button } from "@/components/ui/button";
+import type { HomeCard } from "@/constants/pages/home/home-card";
 
 export default function UsecaseCard({
   title,

@@ -70,7 +70,7 @@ test("LiveKit token service rejects users without room access", async () => {
         roomId: 10,
         userId: 7,
       }),
-    /not allowed/
+    /not allowed/,
   );
 });
 

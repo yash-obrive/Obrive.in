@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getCareerBySlug, getAllCareerSlugs } from "@/lib/mdx";
-import CareerTemplate from "@/components/pages/career/CareerTemplate";
 import { createCareerMDXComponents } from "@/components/pages/career/CareerMDXComponents";
+import CareerTemplate from "@/components/pages/career/CareerTemplate";
+import { getAllCareerSlugs, getCareerBySlug } from "@/lib/mdx";
 
 export async function generateStaticParams() {
   const slugs = await getAllCareerSlugs();

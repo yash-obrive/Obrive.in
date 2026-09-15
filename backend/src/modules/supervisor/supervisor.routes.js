@@ -18,11 +18,31 @@ router.use(authenticate);
 
 // Employee endpoints
 router.get("/employees", ctrl.getAllEmployees);
-router.patch("/employees/:employeeId/block", zodValidate({ part: "params", schema: EmployeeIdParamSchema }), ctrl.blockEmployeeAccess);
-router.get("/employees/:employeeId", zodValidate({ part: "params", schema: EmployeeIdParamSchema }), ctrl.getEmployeeStatus);
-router.get("/employees/:employeeId/projects", zodValidate({ part: "params", schema: EmployeeIdParamSchema }), ctrl.getEmployeeProjects);
-router.delete("/employees/:employeeId", zodValidate({ part: "params", schema: EmployeeIdParamSchema }), ctrl.deleteEmployee);
-router.post("/add-user", zodValidate({ part: "body", schema: AddUserBodySchema }), ctrl.addUser);
+router.patch(
+  "/employees/:employeeId/block",
+  zodValidate({ part: "params", schema: EmployeeIdParamSchema }),
+  ctrl.blockEmployeeAccess,
+);
+router.get(
+  "/employees/:employeeId",
+  zodValidate({ part: "params", schema: EmployeeIdParamSchema }),
+  ctrl.getEmployeeStatus,
+);
+router.get(
+  "/employees/:employeeId/projects",
+  zodValidate({ part: "params", schema: EmployeeIdParamSchema }),
+  ctrl.getEmployeeProjects,
+);
+router.delete(
+  "/employees/:employeeId",
+  zodValidate({ part: "params", schema: EmployeeIdParamSchema }),
+  ctrl.deleteEmployee,
+);
+router.post(
+  "/add-user",
+  zodValidate({ part: "body", schema: AddUserBodySchema }),
+  ctrl.addUser,
+);
 
 // Project endpoints
 router.get("/projects", ctrl.getSupervisorProjects);
@@ -33,8 +53,12 @@ router.put(
   "/leaves/:id/status",
   zodValidate({ part: "params", schema: LeaveIdParamSchema }),
   zodValidate({ part: "body", schema: UpdateLeaveStatusBodySchema }),
-  ctrl.updateLeaveStatus
+  ctrl.updateLeaveStatus,
 );
-router.delete("/leaves/:id", zodValidate({ part: "params", schema: LeaveIdParamSchema }), ctrl.deleteLeaveRequest);
+router.delete(
+  "/leaves/:id",
+  zodValidate({ part: "params", schema: LeaveIdParamSchema }),
+  ctrl.deleteLeaveRequest,
+);
 
 module.exports = router;

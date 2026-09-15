@@ -1,7 +1,11 @@
 const { prisma } = require("../../../../prisma");
 const { getIO } = require("../../../socket");
-const { getPendingHandRequestsService } = require("../room-hand-requests/roomHandRequests.service");
-const { getRoomDetailsService } = require("../room-details/roomDetails.service");
+const {
+  getPendingHandRequestsService,
+} = require("../room-hand-requests/roomHandRequests.service");
+const {
+  getRoomDetailsService,
+} = require("../room-details/roomDetails.service");
 const { RoomServiceClient } = require("livekit-server-sdk");
 const { persistSpecificUserRoomRole } = require("../roomRolePolicy");
 
@@ -9,7 +13,7 @@ const livekitHost = process.env.LIVEKIT_URL || "http://localhost:7880";
 const roomService = new RoomServiceClient(
   livekitHost,
   process.env.LIVEKIT_API_KEY,
-  process.env.LIVEKIT_API_SECRET
+  process.env.LIVEKIT_API_SECRET,
 );
 
 const emitHandRaiseUpdated = async (roomId) => {
@@ -63,7 +67,7 @@ const handleHandRequestActionService = async (payload) => {
         },
         data: {
           roomRole: "speaker", // Lowercase to match your database conventions
-          isMuted: true,       // Approved speakers start muted to protect overall room levels
+          isMuted: true, // Approved speakers start muted to protect overall room levels
           isSpeaking: false,
         },
       });
@@ -92,15 +96,19 @@ const handleHandRequestActionService = async (payload) => {
         request.userId.toString(),
         JSON.stringify({ role: "speaker", isMuted: true }), // 3rd argument: metadata string
         {
-          canPublish: true,      // 4th argument: permissions object
-          canPublishData: true,  
-          canSubscribe: true,    
-        }
+          canPublish: true, // 4th argument: permissions object
+          canPublishData: true,
+          canSubscribe: true,
+        },
       );
-      
-      console.log(`[LiveKit Sync] Hand Request Approved. Room: ${roomId} | Promoted Speaker Identity: ${request.userId}`);
+
+      console.log(
+        `[LiveKit Sync] Hand Request Approved. Room: ${roomId} | Promoted Speaker Identity: ${request.userId}`,
+      );
     } catch (lkError) {
-      console.error(`[LiveKit Error] Failed to elevate streaming track rules: ${lkError.message}`);
+      console.error(
+        `[LiveKit Error] Failed to elevate streaming track rules: ${lkError.message}`,
+      );
     }
 
     const roomDetails = await getRoomDetailsService(roomId, request.userId);
@@ -111,7 +119,9 @@ const handleHandRequestActionService = async (payload) => {
       participants: roomDetails.participants,
     });
   } else {
-    console.log(`[Hand Request] Action complete. Room: ${roomId} | Request ${requestId} was: ${status}`);
+    console.log(
+      `[Hand Request] Action complete. Room: ${roomId} | Request ${requestId} was: ${status}`,
+    );
   }
 
   return {

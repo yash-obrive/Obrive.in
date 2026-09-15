@@ -22,10 +22,19 @@ export const GROUPS = [
   {
     title: "Our Services",
     items: [
-      { label: "AR Development", href: "/solutions/augmented-reality-development" },
-      { label: "VR Development", href: "/solutions/virtual-reality-development" },
+      {
+        label: "AR Development",
+        href: "/solutions/augmented-reality-development",
+      },
+      {
+        label: "VR Development",
+        href: "/solutions/virtual-reality-development",
+      },
       { label: "3D Modelling", href: "/solutions/3d-design-development" },
-      { label: "Spatial Computing", href: "/solutions/spatial-computing-app-development" }, 
+      {
+        label: "Spatial Computing",
+        href: "/solutions/spatial-computing-app-development",
+      },
     ],
   },
   {
@@ -66,7 +75,6 @@ export const SOCIAL_LINKS = [
     meta: SOCIAL_ICONS_META.SOCIAL_MEDIUM,
   },
 ] as const;
-
 
 export const PRIMARY_FOOTER_CARD = {
   title: "Automate Your Immersive Workflow",

@@ -1,45 +1,35 @@
 "use client";
 
-import React, { Dispatch, SetStateAction } from "react";
-import {
-  ChevronRight,
-  Send,
-} from "lucide-react";
+import { ChevronRight, Send } from "lucide-react";
+import React, { type Dispatch, type SetStateAction } from "react";
 
 interface ChatPanelProps {
   isChatOpen: boolean;
-  setIsChatOpen: Dispatch<
-    SetStateAction<boolean>
-  >;
+  setIsChatOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const mockMessages = [
   {
     id: 1,
     name: "System",
-    message:
-      "Rohan joined the room",
+    message: "Rohan joined the room",
     isSystem: true,
   },
   {
     id: 2,
     name: "Priya",
-    message:
-      "Welcome everyone!",
+    message: "Welcome everyone!",
     isSystem: false,
   },
   {
     id: 3,
     name: "Amit",
-    message:
-      "Let's start the discussion.",
+    message: "Let's start the discussion.",
     isSystem: false,
   },
 ];
 
-const ChatPanel = ({
-  setIsChatOpen,
-}: ChatPanelProps) => {
+const ChatPanel = ({ setIsChatOpen }: ChatPanelProps) => {
   return (
     <div className="h-full flex flex-col min-h-0">
       {/* Header */}
@@ -56,20 +46,14 @@ const ChatPanel = ({
         "
       >
         <div>
-          <h2 className="text-sm font-semibold text-slate-800">
-            Chat
-          </h2>
+          <h2 className="text-sm font-semibold text-slate-800">Chat</h2>
 
-          <p className="text-[10px] text-slate-500">
-            Open discussion
-          </p>
+          <p className="text-[10px] text-slate-500">Open discussion</p>
         </div>
 
         {/* Collapse */}
         <button
-          onClick={() =>
-            setIsChatOpen(false)
-          }
+          onClick={() => setIsChatOpen(false)}
           className="
             flex
             items-center
@@ -83,20 +67,16 @@ const ChatPanel = ({
             hover:bg-white
           "
         >
-          <ChevronRight
-            size={18}
-            className="text-slate-600"
-          />
+          <ChevronRight size={18} className="text-slate-600" />
         </button>
       </div>
 
       {/* Messages */}
       <div className="flex-1 min-h-0 overflow-y-auto p-4 space-y-2">
-        {mockMessages.map(
-          (message) => (
-            <div
-              key={message.id}
-              className={`
+        {mockMessages.map((message) => (
+          <div
+            key={message.id}
+            className={`
                 rounded-tl-xl
                 rounded-tr-xl
                 rounded-bl-xl
@@ -110,17 +90,16 @@ const ChatPanel = ({
                     : "bg-white/60 border border-slate-200/60 text-slate-700"
                 }
               `}
-            >
-              {!message.isSystem && (
-                <p className="font-semibold text-slate-800 mb-1">
-                  {message.name}
-                </p>
-              )}
+          >
+            {!message.isSystem && (
+              <p className="font-semibold text-slate-800 mb-1">
+                {message.name}
+              </p>
+            )}
 
-              <p>{message.message}</p>
-            </div>
-          )
-        )}
+            <p>{message.message}</p>
+          </div>
+        ))}
       </div>
 
       {/* Input */}

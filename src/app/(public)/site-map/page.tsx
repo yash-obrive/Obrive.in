@@ -1,11 +1,11 @@
-import React from "react";
-import { Metadata } from "next";
-import FONTS from "@/assets/fonts";
-import { getDirectoryData } from "./directoryData";
-import DirectorySearch from "./components/DirectorySearch";
-import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
+import type { Metadata } from "next";
 import Link from "next/link";
+import React from "react";
+import FONTS from "@/assets/fonts";
+import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
+import FullWidthSection from "@/components/shared/layout/FullWidthSection";
+import DirectorySearch from "./components/DirectorySearch";
+import { getDirectoryData } from "./directoryData";
 
 export const metadata: Metadata = {
   title: "Obrive Website Directory | AR, VR, MR, 3D & Spatial Computing",
@@ -30,14 +30,15 @@ export default function DirectoryPage() {
             Explore the Obrive ecosystem.
           </h1>
           <p className="text-base sm:text-md text-center max-w-3xl px-4 font-medium">
-            Find the right solution, product, industry application, technology resource or support page. Obrive connects AR, VR, MR, 3D Design and Spatial Computing to real-world business experiences.
+            Find the right solution, product, industry application, technology
+            resource or support page. Obrive connects AR, VR, MR, 3D Design and
+            Spatial Computing to real-world business experiences.
           </p>
         </div>
       </FullWidthSection>
 
       {/* Interactive Directory Search & List */}
       <DirectorySearch categories={directoryData} />
-
     </div>
   );
 }

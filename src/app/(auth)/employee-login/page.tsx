@@ -1,4 +1,6 @@
 "use client";
+import { useRouter } from "next/navigation";
+import React from "react";
 import FONTS from "@/assets/fonts";
 import CustomToast from "@/components/pages/resources/components/Toast";
 import RightArrowIcon from "@/components/shared/icons/RightArrowIcon";
@@ -7,8 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { apiFetch } from "@/lib/api";
-import { useRouter } from "next/navigation";
-import React from "react";
 
 export default function EmployeeLogin() {
   const router = useRouter();
@@ -70,11 +70,7 @@ export default function EmployeeLogin() {
           const profileRes = await apiFetch("/employee/me");
           const profileJson = await profileRes.json();
 
-          if (
-            profileRes.ok &&
-            profileJson?.success &&
-            role === "employee"
-          ) {
+          if (profileRes.ok && profileJson?.success && role === "employee") {
             if (isProfileIncomplete(profileJson.data)) {
               redirectPath = `/profile/${profileJson.data.id}`;
             }
@@ -82,7 +78,7 @@ export default function EmployeeLogin() {
         } catch (profileError) {
           console.error(
             "Failed to fetch employee profile after login:",
-            profileError
+            profileError,
           );
         }
 
@@ -99,7 +95,6 @@ export default function EmployeeLogin() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[2.5fr_2fr] w-full min-h-screen">
-      
       {/* LEFT SIDE - HIDDEN ON MOBILE */}
       <div className="bg-primary hidden lg:flex items-center justify-center">
         <div className="text-white text-center flex items-center gap-6 flex-col justify-center px-10">
@@ -140,7 +135,6 @@ export default function EmployeeLogin() {
 
         <div className="w-full max-w-sm">
           <form className="flex flex-col gap-4">
-            
             <div>
               <Label htmlFor="email">Email Address</Label>
 
@@ -167,11 +161,7 @@ export default function EmployeeLogin() {
               />
             </div>
 
-            {error && (
-              <p className="text-red-500 text-sm">
-                {error}
-              </p>
-            )}
+            {error && <p className="text-red-500 text-sm">{error}</p>}
 
             <Button
               size="lg"
@@ -198,10 +188,7 @@ export default function EmployeeLogin() {
       </div>
 
       {showToast && (
-        <CustomToast
-          show={showToast}
-          message={"Login successful!"}
-        />
+        <CustomToast show={showToast} message={"Login successful!"} />
       )}
     </div>
   );

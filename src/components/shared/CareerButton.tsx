@@ -21,7 +21,9 @@ export function CareerButton({
         size: "lg",
       })} ${className} inline-flex items-center justify-center gap-2 w-fit !text-white`}
     >
-      <span className="!text-white leading-none uppercase text-[10px]">{children}</span>
+      <span className="!text-white leading-none uppercase text-[10px]">
+        {children}
+      </span>
       <ArrowRight className="w-4 h-4 text-white" />
     </Link>
   );

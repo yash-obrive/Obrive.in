@@ -1,7 +1,7 @@
 "use client";
 
-import { PropsWithChildren } from "react";
-import { motion, Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
+import type { PropsWithChildren } from "react";
 
 type CommonProps = PropsWithChildren<{ className?: string; delay?: number }>;
 

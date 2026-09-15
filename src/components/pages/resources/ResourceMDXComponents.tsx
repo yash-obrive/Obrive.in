@@ -1,16 +1,16 @@
-import React from "react";
 import Link from "next/link";
+import React from "react";
 import FONTS from "@/assets/fonts";
-import { ButtonLink } from "@/components/ui/ButtonLink";
-import ResourceChallengeSection from "./sections/ResourceChallengeSection";
 import { StyledText } from "@/components/shared/StyledText";
-import ResourceStrategicApproachSection from "./sections/ResourceStrategicApproachSection";
-import ResourceCompanyOverviewSection from "./sections/ResourceCompanyOverviewSection";
-import ResourceWhyItWorkedSection from "./sections/ResourceWhyItWorkedSection";
-import ResourceOutcomeSnapshotSection from "./sections/ResourceOutcomeSnapshotSection";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import ResourceImpactMetricsTable from "./ResourceImpactMetricsTable";
+import ResourceChallengeSection from "./sections/ResourceChallengeSection";
+import ResourceCompanyOverviewSection from "./sections/ResourceCompanyOverviewSection";
 import ResourceObrivesApproachTable from "./sections/ResourceObrivesApproachTable";
+import ResourceOutcomeSnapshotSection from "./sections/ResourceOutcomeSnapshotSection";
+import ResourceStrategicApproachSection from "./sections/ResourceStrategicApproachSection";
 import ResourceTheImpactTable from "./sections/ResourceTheImpactTable";
+import ResourceWhyItWorkedSection from "./sections/ResourceWhyItWorkedSection";
 
 // Export components for direct import in MDX files
 export {
@@ -119,11 +119,12 @@ export const createResourceMDXComponents = (metadata: any) => ({
   // The Impact table component
   ResourceTheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
   TheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
-  
+
   // Custom components
   Link,
   a: (props: any) => {
-    const isInternal = props.href?.startsWith("/") || props.href?.startsWith("#");
+    const isInternal =
+      props.href?.startsWith("/") || props.href?.startsWith("#");
     if (isInternal) {
       return <Link {...props} />;
     }
@@ -169,7 +170,8 @@ export default {
   ),
   Link,
   a: (props: any) => {
-    const isInternal = props.href?.startsWith("/") || props.href?.startsWith("#");
+    const isInternal =
+      props.href?.startsWith("/") || props.href?.startsWith("#");
     if (isInternal) {
       return <Link {...props} />;
     }

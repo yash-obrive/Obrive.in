@@ -21,7 +21,13 @@ exports.socketAuthMiddleware = async (socket, next) => {
     const decoded = verifyAccessToken(token);
     const user = await prisma.users.findUnique({
       where: { id: decoded.id },
-      select: { id: true, name: true, role: true, status: true, is_active: true },
+      select: {
+        id: true,
+        name: true,
+        role: true,
+        status: true,
+        is_active: true,
+      },
     });
 
     if (!user || user.is_active === false || user.status === "inactive") {

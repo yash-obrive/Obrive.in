@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 import { JOIN_TEAM_CARD } from "@/constants/pages/career/join-team-card";
 import JoinTeamCards from "./card/JoinTeamCards";
 

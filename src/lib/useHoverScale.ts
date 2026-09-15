@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useEffect, useRef } from "react";
 
 export type HoverScaleOptions = {
   scale?: number;
@@ -12,7 +12,7 @@ export type HoverScaleOptions = {
 };
 
 export function useHoverScale<T extends HTMLElement>(
-  options: HoverScaleOptions = {}
+  options: HoverScaleOptions = {},
 ) {
   const {
     scale = 1.04,

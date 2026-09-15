@@ -1,5 +1,5 @@
+import type React from "react";
 import FONTS from "@/assets/fonts";
-import React from "react";
 
 interface ResourceChallengeSectionProps {
   title?: string;

@@ -1,8 +1,8 @@
 "use client";
 
+import { useCallback, useEffect, useState } from "react";
 import FONTS from "@/assets/fonts";
 import { Button } from "@/components/ui/button";
-import { useCallback, useEffect, useState } from "react";
 
 const CONSENT_STORAGE_KEY = "cookie_consent";
 

@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
 import { Michroma } from "next/font/google";
+import type { ReactNode } from "react";
+
 // import localFont from "next/font/local";
 
 // const microgrammaBold = localFont({
@@ -20,13 +21,9 @@ interface CommunityLayoutProps {
   children: ReactNode;
 }
 
-export default function CommunityLayout({
-  children,
-}: CommunityLayoutProps) {
+export default function CommunityLayout({ children }: CommunityLayoutProps) {
   return (
-    <section
-      className={`${michroma.className}  min-h-screen `}
-    >
+    <section className={`${michroma.className}  min-h-screen `}>
       {children}
     </section>
   );

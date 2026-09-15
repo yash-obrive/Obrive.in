@@ -1,7 +1,7 @@
-import FONTS from "@/assets/fonts";
-import { HomeCardBlog } from "@/constants/pages/home/home-card";
 import Image from "next/image";
 import Link from "next/link";
+import FONTS from "@/assets/fonts";
+import type { HomeCardBlog } from "@/constants/pages/home/home-card";
 
 export default function BlogCard({
   imageSrc,

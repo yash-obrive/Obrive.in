@@ -1,4 +1,4 @@
-const { prisma } = require('../../../prisma');
+const { prisma } = require("../../../prisma");
 
 // ── Profile ──────────────────────────────────────────────────
 exports.getMyProfile = async (userId) => {
@@ -7,7 +7,7 @@ exports.getMyProfile = async (userId) => {
   });
 
   if (!user) {
-    const err = new Error('User not found');
+    const err = new Error("User not found");
     err.status = 404;
     throw err;
   }
@@ -17,11 +17,15 @@ exports.getMyProfile = async (userId) => {
 
 exports.updateMyProfile = async (userId, data) => {
   const employee = await prisma.employee.findUnique({ where: { userId } });
-  if (!employee) throw { status: 404, message: 'Employee not found' };
+  if (!employee) throw { status: 404, message: "Employee not found" };
 
   return prisma.employee.update({
     where: { userId },
-    data:  { fullName: data.fullName, phone: data.phone, department: data.department },
+    data: {
+      fullName: data.fullName,
+      phone: data.phone,
+      department: data.department,
+    },
   });
 };
 
@@ -32,78 +36,94 @@ exports.getAvailability = async (employeeId, date) => {
 
   return prisma.availabilitySlot.findMany({
     where,
-    orderBy: [{ date: 'asc' }, { startTime: 'asc' }],
+    orderBy: [{ date: "asc" }, { startTime: "asc" }],
   });
 };
 
 exports.addAvailabilitySlot = async (userId, data) => {
   const employee = await prisma.employee.findUnique({ where: { userId } });
-  if (!employee) throw { status: 404, message: 'Employee not found' };
+  if (!employee) throw { status: 404, message: "Employee not found" };
 
   // Prevent overlapping slots on same date
   const existing = await prisma.availabilitySlot.findMany({
     where: { employeeId: employee.id, date: new Date(data.date) },
   });
 
-  const overlap = existing.some(slot =>
-    data.startTime < slot.endTime && data.endTime > slot.startTime
+  const overlap = existing.some(
+    (slot) => data.startTime < slot.endTime && data.endTime > slot.startTime,
   );
-  if (overlap) throw { status: 409, message: 'Time slot overlaps with an existing slot' };
+  if (overlap)
+    throw { status: 409, message: "Time slot overlaps with an existing slot" };
 
   return prisma.availabilitySlot.create({
     data: {
       employeeId: employee.id,
-      date:       new Date(data.date),
-      startTime:  data.startTime,
-      endTime:    data.endTime,
-      slotType:   data.slotType,
-      note:       data.note,
+      date: new Date(data.date),
+      startTime: data.startTime,
+      endTime: data.endTime,
+      slotType: data.slotType,
+      note: data.note,
     },
   });
 };
 
 exports.updateAvailabilitySlot = async (slotId, userId, data) => {
   const employee = await prisma.employee.findUnique({ where: { userId } });
-  const slot     = await prisma.availabilitySlot.findUnique({ where: { id: slotId } });
+  const slot = await prisma.availabilitySlot.findUnique({
+    where: { id: slotId },
+  });
 
   if (!slot || slot.employeeId !== employee.id)
-    throw { status: 403, message: 'Not authorized to edit this slot' };
+    throw { status: 403, message: "Not authorized to edit this slot" };
 
   return prisma.availabilitySlot.update({
     where: { id: slotId },
-    data:  { startTime: data.startTime, endTime: data.endTime, slotType: data.slotType, note: data.note },
+    data: {
+      startTime: data.startTime,
+      endTime: data.endTime,
+      slotType: data.slotType,
+      note: data.note,
+    },
   });
 };
 
 exports.deleteAvailabilitySlot = async (slotId, userId) => {
   const employee = await prisma.employee.findUnique({ where: { userId } });
-  const slot     = await prisma.availabilitySlot.findUnique({ where: { id: slotId } });
+  const slot = await prisma.availabilitySlot.findUnique({
+    where: { id: slotId },
+  });
 
   if (!slot || slot.employeeId !== employee.id)
-    throw { status: 403, message: 'Not authorized to delete this slot' };
+    throw { status: 403, message: "Not authorized to delete this slot" };
 
   await prisma.availabilitySlot.delete({ where: { id: slotId } });
-  return { message: 'Slot deleted' };
+  return { message: "Slot deleted" };
 };
 
 // ── My Projects ──────────────────────────────────────────────
 exports.getMyProjects = async (userId) => {
   const employee = await prisma.employee.findUnique({ where: { userId } });
-  if (!employee) throw { status: 404, message: 'Employee not found' };
+  if (!employee) throw { status: 404, message: "Employee not found" };
 
-  return prisma.projectAssignment.findMan
+  return prisma.projectAssignment.findMan;
   y({
-    where:   { employeeId: employee.id },
-    include: { project: { include: { client: { select: { companyName: true, contactName: true } } } } },
+    where: { employeeId: employee.id },
+    include: {
+      project: {
+        include: {
+          client: { select: { companyName: true, contactName: true } },
+        },
+      },
+    },
   });
 };
 
 // ── Login Logs ───────────────────────────────────────────────
 exports.getMyLogs = async (userId) => {
   return prisma.loginLog.findMany({
-    where:   { userId },
-    orderBy: { loginTime: 'desc' },
-    take:    50,
+    where: { userId },
+    orderBy: { loginTime: "desc" },
+    take: 50,
   });
 };
 
@@ -115,7 +135,10 @@ exports.recordLocation = async (userId, data) => {
   });
 
   if (!user || !user.is_location_tracking_enabled) {
-    return { recorded: false, message: 'Location tracking disabled for this employee' };
+    return {
+      recorded: false,
+      message: "Location tracking disabled for this employee",
+    };
   }
 
   const location = await prisma.employee_locations.create({
@@ -124,7 +147,7 @@ exports.recordLocation = async (userId, data) => {
       latitude: data.latitude,
       longitude: data.longitude,
       accuracy: data.accuracy || null,
-      source: data.source || 'work_timer_30m',
+      source: data.source || "work_timer_30m",
     },
   });
 

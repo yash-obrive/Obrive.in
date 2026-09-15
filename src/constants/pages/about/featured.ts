@@ -18,8 +18,7 @@ export const FEATURED_IN: FeaturedItem[] = [
     src_meta: ABOUT_FEATURE_META.AUGMENTED_REALITY,
     description:
       "Obrive is proud to be featured by Best AR among the Top 50+ AR Company worldwide.",
-    link: "https://www.goodfirms.co/company/obrive-industries-private-limited"
-
+    link: "https://www.goodfirms.co/company/obrive-industries-private-limited",
   },
   {
     src: ABOUT_FEATURE.VIRTUAL_REALITY,

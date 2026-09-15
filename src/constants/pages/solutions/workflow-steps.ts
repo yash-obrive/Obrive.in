@@ -1,5 +1,5 @@
+import type { StaticImageData } from "next/image";
 import { IMAGES, IMAGES_META } from "@/assets/images";
-import { StaticImageData } from "next/image";
 
 export const WORKFLOW_STEPS = [
   {

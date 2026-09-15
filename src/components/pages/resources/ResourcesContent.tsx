@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useMemo, useCallback, useRef } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { BlogCardContent } from "@/constants/pages/resources/blog-card";
-import ResourcesFilter from "./components/ResourcesFilter";
-import FeaturedPopularSection from "./components/FeaturedPopularSection";
 import ArticlesGrid from "./components/ArticlesGrid";
 import CustomPagination from "./components/CustomPagination";
+import FeaturedPopularSection from "./components/FeaturedPopularSection";
+import ResourcesFilter from "./components/ResourcesFilter";
 
 const FILTER_KEYWORDS = {
   AR: ["ar", "augmented reality", "augmented"],
@@ -20,7 +20,7 @@ const BLOGS_PER_PAGE = 12;
 // Optimized filter function with memoization
 const filterBlogsByKeyword = (
   blogs: typeof BlogCardContent,
-  keyword: string
+  keyword: string,
 ) => {
   const searchTerms = FILTER_KEYWORDS[
     keyword as keyof typeof FILTER_KEYWORDS
@@ -97,7 +97,7 @@ const ResourcesContent = () => {
         setIsTransitioning(false);
       }, 300);
     },
-    [currentFilter, preserveScrollPosition, restoreScrollPosition]
+    [currentFilter, preserveScrollPosition, restoreScrollPosition],
   );
 
   const handlePageChange = useCallback(
@@ -116,7 +116,7 @@ const ResourcesContent = () => {
         setIsTransitioning(false);
       }, 300);
     },
-    [currentPage, preserveScrollPosition, restoreScrollPosition]
+    [currentPage, preserveScrollPosition, restoreScrollPosition],
   );
 
   return (

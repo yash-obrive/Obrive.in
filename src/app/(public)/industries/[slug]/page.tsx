@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Script from "next/script";
 import { SolutionTemplate } from "@/components/pages/solutions/SolutionTemplate";
 import { getIndustryData, getIndustrySlugs } from "@/lib/industries";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import Script from "next/script";
 
 interface IndustryPageProps {
   params: Promise<{
@@ -34,7 +34,7 @@ export async function generateMetadata({
     "manufacturing",
     "architecture-engineering",
     "education",
-    "enterprise"
+    "enterprise",
   ]);
 
   // Returning baseline metadata using the exact pattern established in the Solutions fallback
@@ -73,7 +73,7 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
           "@id": `https://www.obrive.in/industries/${slug}`,
           url: `https://www.obrive.in/industries/${slug}`,
           name: industryData.hero.title,
-          description: industryData.hero.description
+          description: industryData.hero.description,
         })}
       </Script>
       <SolutionTemplate

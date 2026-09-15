@@ -10,9 +10,9 @@ interface ResourceStrategicApproachSectionProps {
   steps: StrategicStep[];
 }
 
-export default function ResourceStrategicApproachSection({ 
-  title = "Strategic Approach", 
-  steps 
+export default function ResourceStrategicApproachSection({
+  title = "Strategic Approach",
+  steps,
 }: ResourceStrategicApproachSectionProps) {
   return (
     <section className="mb-8">

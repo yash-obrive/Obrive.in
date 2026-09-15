@@ -1,18 +1,15 @@
-'use client'
+"use client";
 
-import { ReactNode } from 'react'
-
-import { TimerProvider } from '@/context/TimerContext'
-import { SocketProvider } from '@/context/SocketContext'
-import LocationPermissionGate from '@/components/dashboard/LocationPermissionGate'
+import type { ReactNode } from "react";
+import LocationPermissionGate from "@/components/dashboard/LocationPermissionGate";
+import { SocketProvider } from "@/context/SocketContext";
+import { TimerProvider } from "@/context/TimerContext";
 
 interface DashboardLayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
-export default function DashboardLayout({
-  children
-}: DashboardLayoutProps) {
+export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <TimerProvider>
       <SocketProvider>
@@ -23,5 +20,5 @@ export default function DashboardLayout({
         </LocationPermissionGate>
       </SocketProvider>
     </TimerProvider>
-  )
+  );
 }

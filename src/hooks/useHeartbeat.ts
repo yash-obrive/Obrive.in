@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { apiFetch } from '@/lib/api';
+import { useEffect, useRef, useState } from "react";
+import { apiFetch } from "@/lib/api";
 
 interface HeartbeatData {
   sessionId: number | null;
@@ -26,36 +26,37 @@ export const useHeartbeat = () => {
   useEffect(() => {
     const startSession = async () => {
       try {
-        const response = await apiFetch('/work-sessions/start-session', {
-          method: 'POST',
+        const response = await apiFetch("/work-sessions/start-session", {
+          method: "POST",
         });
 
         const data = await response.json();
-        
+
         if (data.success) {
           sessionIdRef.current = data.data.sessionId;
           lastServerDurationRef.current = data.data.totalActiveDuration;
           timerStartTimeRef.current = Date.now();
 
-          setHeartbeatData(prev => ({
+          setHeartbeatData((prev) => ({
             ...prev,
             sessionId: data.data.sessionId,
             totalActiveDuration: data.data.totalActiveDuration,
-            isSessionActive: true
+            isSessionActive: true,
           }));
 
           startHeartbeat(data.data.sessionId);
           startLocalTimer();
         }
       } catch (err) {
-        console.error('Failed to start session:', err);
+        console.error("Failed to start session:", err);
       }
     };
 
     startSession();
 
     return () => {
-      if (heartbeatIntervalRef.current) clearInterval(heartbeatIntervalRef.current);
+      if (heartbeatIntervalRef.current)
+        clearInterval(heartbeatIntervalRef.current);
       if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
     };
   }, []);
@@ -63,24 +64,26 @@ export const useHeartbeat = () => {
   // LOCAL TIMER - updates every 1 second for smooth UI
   const startLocalTimer = () => {
     timerIntervalRef.current = setInterval(() => {
-      const elapsedSeconds = Math.floor((Date.now() - timerStartTimeRef.current) / 1000);
+      const elapsedSeconds = Math.floor(
+        (Date.now() - timerStartTimeRef.current) / 1000,
+      );
       const displayDuration = lastServerDurationRef.current + elapsedSeconds;
 
-      setHeartbeatData(prev => ({
+      setHeartbeatData((prev) => ({
         ...prev,
         totalActiveDuration: displayDuration,
-        isSessionActive: true
+        isSessionActive: true,
       }));
-    }, 1000);  // Update every 1 second
+    }, 1000); // Update every 1 second
   };
 
   // SERVER HEARTBEAT - every 45 seconds
   const startHeartbeat = (sessionId: number) => {
     heartbeatIntervalRef.current = setInterval(async () => {
       try {
-        const response = await apiFetch('/work-sessions/heartbeat', {
-          method: 'POST',
-          body: JSON.stringify({ sessionId: sessionId })
+        const response = await apiFetch("/work-sessions/heartbeat", {
+          method: "POST",
+          body: JSON.stringify({ sessionId: sessionId }),
         });
 
         const data = await response.json();
@@ -90,49 +93,51 @@ export const useHeartbeat = () => {
           lastServerDurationRef.current = data.data.totalActiveDuration;
           timerStartTimeRef.current = Date.now();
 
-          setHeartbeatData(prev => ({
+          setHeartbeatData((prev) => ({
             ...prev,
             totalActiveDuration: data.data.totalActiveDuration,
-            isSessionActive: data.data.status === 'active'
+            isSessionActive: data.data.status === "active",
           }));
         } else if (response.status === 410) {
-          setHeartbeatData(prev => ({
+          setHeartbeatData((prev) => ({
             ...prev,
-            isSessionActive: false
+            isSessionActive: false,
           }));
-          if (heartbeatIntervalRef.current) clearInterval(heartbeatIntervalRef.current);
+          if (heartbeatIntervalRef.current)
+            clearInterval(heartbeatIntervalRef.current);
           if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
         }
       } catch (err) {
-        console.error('Heartbeat error:', err);
+        console.error("Heartbeat error:", err);
       }
-    }, 45000);  // Every 45 seconds
+    }, 45000); // Every 45 seconds
   };
 
   const endSession = async () => {
     if (!sessionIdRef.current) return;
 
     try {
-      await apiFetch('/work-sessions/end-session', {
-        method: 'POST',
-        body: JSON.stringify({ sessionId: sessionIdRef.current })
+      await apiFetch("/work-sessions/end-session", {
+        method: "POST",
+        body: JSON.stringify({ sessionId: sessionIdRef.current }),
       });
 
-      setHeartbeatData(prev => ({
+      setHeartbeatData((prev) => ({
         ...prev,
-        isSessionActive: false
+        isSessionActive: false,
       }));
 
-      if (heartbeatIntervalRef.current) clearInterval(heartbeatIntervalRef.current);
+      if (heartbeatIntervalRef.current)
+        clearInterval(heartbeatIntervalRef.current);
       if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
     } catch (err) {
-      console.error('Failed to end session:', err);
+      console.error("Failed to end session:", err);
     }
   };
 
   return {
     heartbeatData,
     endSession,
-    totalActiveDuration: heartbeatData.totalActiveDuration
+    totalActiveDuration: heartbeatData.totalActiveDuration,
   };
 };

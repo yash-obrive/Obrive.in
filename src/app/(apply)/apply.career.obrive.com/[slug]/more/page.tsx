@@ -1,11 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import ResumeSubmit from "@/components/pages/apply/ResumeSubmit";
+import React, { useEffect, useState } from "react";
 import AboutYou from "@/components/pages/apply/AboutYou";
-import MoreDetails from "@/components/pages/apply/MoreDetails";
-import VideoRecord from "@/components/pages/apply/Video_record";
 import FinalPage from "@/components/pages/apply/FinalPage";
+import MoreDetails from "@/components/pages/apply/MoreDetails";
+import ResumeSubmit from "@/components/pages/apply/ResumeSubmit";
+import VideoRecord from "@/components/pages/apply/Video_record";
 
 const page = () => {
   const [stage, setStage] = useState(1);
@@ -14,7 +14,7 @@ const page = () => {
   useEffect(() => {
     if (stage > 14) {
       alert(
-        "Thank you for completing the application! We will be in touch soon."
+        "Thank you for completing the application! We will be in touch soon.",
       );
       router.push("/");
     }

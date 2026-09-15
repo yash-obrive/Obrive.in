@@ -3,9 +3,13 @@ import { KeyBenefitsCard } from "@/components/shared/cards/KeyBenefitsCard";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { InfiniteHorizontalScroll } from "@/components/shared/layout/InfiniteHorizontalScroll";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
-import WorkflowSection from "./components/WorkflowSection";
+import type {
+  ServiceSection,
+  SidebarLink,
+  WorkflowStep,
+} from "@/types/solutions";
 import SolutionSidebarLayout from "./components/SolutionSidebarLayout";
-import { SidebarLink, ServiceSection, WorkflowStep } from "@/types/solutions";
+import WorkflowSection from "./components/WorkflowSection";
 
 interface SolutionTemplateProps {
   slug: string;
@@ -15,8 +19,8 @@ interface SolutionTemplateProps {
     description2: string;
   };
   keyBenefits: readonly any[];
-  howItWorks: readonly any[];
-  workflowStepsSidebar: readonly string[];
+  howItWorks?: readonly any[];
+  workflowStepsSidebar?: readonly string[];
   sidebarLinks?: readonly SidebarLink[];
   serviceSections?: readonly ServiceSection[];
   processSteps?: readonly WorkflowStep[];
@@ -90,6 +94,7 @@ export function SolutionTemplate({
       <FullWidthSection backgroundColor="none">
         {sidebarLinks && serviceSections && processSteps ? (
           <SolutionSidebarLayout
+            slug={slug}
             sidebarLinks={sidebarLinks as SidebarLink[]}
             serviceSections={serviceSections as ServiceSection[]}
             processSteps={processSteps as WorkflowStep[]}

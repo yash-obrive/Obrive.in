@@ -1,43 +1,45 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect, useCallback } from 'react';
-import nextDynamic from 'next/dynamic';
+import { motion } from "framer-motion";
 import {
-  LayoutDashboard,
-  MapPin,
-  FolderOpen,
   Calendar,
-  Palmtree,
-  List,
-  MessageSquare,
-  Search,
-  RefreshCw,
-  ExternalLink,
   Clock,
+  ExternalLink,
+  FolderOpen,
   History,
+  LayoutDashboard,
+  List,
+  MapPin,
+  MessageSquare,
+  Palmtree,
+  RefreshCw,
+  Search,
   ShieldCheck,
   Users,
-} from 'lucide-react';
-import { motion } from 'framer-motion';
-
-import Sidebar from '@/components/dashboard/Sidebar';
-import Header from '../employee/components/Header';
-import WorkloadSection from '../employee/components/WorkloadSection';
-import Projects from '../employee/components/Projects';
-import NearestEvents from '../employee/components/NearestEvents';
-import ActivityStream from '@/components/dashboard/ActivityStream';
-import Calender from '@/components/dashboard/Calender';
-import Vacations from '@/components/dashboard/Vacations';
-import Notes from '../employee/sections/Notes';
-import Messenger from '@/components/chat/Messenger';
-import SkeletonLoading from '@/components/SkelitonLoading';
-import { useDashboardData } from '../useDashboardData';
-import { apiFetch } from '@/lib/api';
-import { isEmployeeLive, type TrackedEmployee } from './components/EmployeeLocationMap';
-import LocationHistoryModal from './components/LocationHistoryModal';
+} from "lucide-react";
+import nextDynamic from "next/dynamic";
+import React, { useCallback, useEffect, useState } from "react";
+import Messenger from "@/components/chat/Messenger";
+import ActivityStream from "@/components/dashboard/ActivityStream";
+import Calender from "@/components/dashboard/Calender";
+import Sidebar from "@/components/dashboard/Sidebar";
+import Vacations from "@/components/dashboard/Vacations";
+import SkeletonLoading from "@/components/SkelitonLoading";
+import { apiFetch } from "@/lib/api";
+import Header from "../employee/components/Header";
+import NearestEvents from "../employee/components/NearestEvents";
+import Projects from "../employee/components/Projects";
+import WorkloadSection from "../employee/components/WorkloadSection";
+import Notes from "../employee/sections/Notes";
+import { useDashboardData } from "../useDashboardData";
+import {
+  isEmployeeLive,
+  type TrackedEmployee,
+} from "./components/EmployeeLocationMap";
+import LocationHistoryModal from "./components/LocationHistoryModal";
 
 function formatPingTimestamp(dateStr?: string | null): string {
-  if (!dateStr) return 'No pings yet';
+  if (!dateStr) return "No pings yet";
   const pingDate = new Date(dateStr);
   const now = new Date();
   const isToday =
@@ -45,17 +47,23 @@ function formatPingTimestamp(dateStr?: string | null): string {
     pingDate.getMonth() === now.getMonth() &&
     pingDate.getFullYear() === now.getFullYear();
 
-  const timeStr = pingDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const timeStr = pingDate.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   if (isToday) {
     return `Today at ${timeStr}`;
   }
-  const dateStrFormatted = pingDate.toLocaleDateString([], { month: 'short', day: 'numeric' });
+  const dateStrFormatted = pingDate.toLocaleDateString([], {
+    month: "short",
+    day: "numeric",
+  });
   return `${dateStrFormatted} at ${timeStr}`;
 }
 
 // Dynamically import Leaflet Map with SSR disabled
 const EmployeeLocationMap = nextDynamic(
-  () => import('./components/EmployeeLocationMap'),
+  () => import("./components/EmployeeLocationMap"),
   {
     ssr: false,
     loading: () => (
@@ -64,34 +72,50 @@ const EmployeeLocationMap = nextDynamic(
         Loading Interactive Map...
       </div>
     ),
-  }
+  },
 );
 
 export default function HRDashboard() {
-  const { workloadMembers, projects, events, activities, user, loading: dashboardLoading, error: dashboardError, refetch } = useDashboardData('hr');
-  
-  const [activeSection, setActiveSection] = useState('dashboard');
+  const {
+    workloadMembers,
+    projects,
+    events,
+    activities,
+    user,
+    loading: dashboardLoading,
+    error: dashboardError,
+    refetch,
+  } = useDashboardData("hr");
+
+  const [activeSection, setActiveSection] = useState("dashboard");
   const [supportOpen, setSupportOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // Location Tracking State
-  const [trackedEmployees, setTrackedEmployees] = useState<TrackedEmployee[]>([]);
+  const [trackedEmployees, setTrackedEmployees] = useState<TrackedEmployee[]>(
+    [],
+  );
   const [locLoading, setLocLoading] = useState(false);
   const [locRefreshing, setLocRefreshing] = useState(false);
   const [locError, setLocError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterTracking, setFilterTracking] = useState<'all' | 'enabled' | 'disabled'>('all');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterTracking, setFilterTracking] = useState<
+    "all" | "enabled" | "disabled"
+  >("all");
   const [togglingId, setTogglingId] = useState<number | null>(null);
-  const [selectedHistoryEmp, setSelectedHistoryEmp] = useState<{ id: number; name: string } | null>(null);
+  const [selectedHistoryEmp, setSelectedHistoryEmp] = useState<{
+    id: number;
+    name: string;
+  } | null>(null);
 
   const navItems = [
-    { label: 'Dashboard', icon: LayoutDashboard, key: 'dashboard' },
-    { label: 'Location Tracking', icon: MapPin, key: 'location' },
-    { label: 'Projects', icon: FolderOpen, key: 'projects' },
-    { label: 'Calender', icon: Calendar, key: 'calender' },
-    { label: 'Vacations', icon: Palmtree, key: 'Vacations' },
-    { label: 'Sticky Notes', icon: List, key: 'tasks' },
-    { label: 'Messenger', icon: MessageSquare, key: 'messenger' },
+    { label: "Dashboard", icon: LayoutDashboard, key: "dashboard" },
+    { label: "Location Tracking", icon: MapPin, key: "location" },
+    { label: "Projects", icon: FolderOpen, key: "projects" },
+    { label: "Calender", icon: Calendar, key: "calender" },
+    { label: "Vacations", icon: Palmtree, key: "Vacations" },
+    { label: "Sticky Notes", icon: List, key: "tasks" },
+    { label: "Messenger", icon: MessageSquare, key: "messenger" },
   ];
 
   // Fetch location overview
@@ -100,7 +124,7 @@ export default function HRDashboard() {
       if (!isSilent) setLocLoading(true);
       else setLocRefreshing(true);
 
-      const res = await apiFetch('/hr/locations');
+      const res = await apiFetch("/hr/locations");
       if (res.ok) {
         const data = await res.json();
         if (data?.success && Array.isArray(data.data)) {
@@ -108,13 +132,15 @@ export default function HRDashboard() {
           setLocError(null);
         }
       } else if (res.status === 403) {
-        setLocError('Access Denied: Please log in with an HR or Admin account (hr@obrive.com).');
+        setLocError(
+          "Access Denied: Please log in with an HR or Admin account (hr@obrive.com).",
+        );
       } else {
-        setLocError('Unable to load employee locations.');
+        setLocError("Unable to load employee locations.");
       }
     } catch (err) {
-      console.error('Failed to fetch employee locations:', err);
-      setLocError('Connection error loading locations.');
+      console.error("Failed to fetch employee locations:", err);
+      setLocError("Connection error loading locations.");
     } finally {
       setLocLoading(false);
       setLocRefreshing(false);
@@ -126,7 +152,10 @@ export default function HRDashboard() {
   }, [fetchLocations]);
 
   // Handle Toggle Switch
-  const handleToggleTracking = async (employeeId: number, currentStatus: boolean) => {
+  const handleToggleTracking = async (
+    employeeId: number,
+    currentStatus: boolean,
+  ) => {
     try {
       setTogglingId(employeeId);
       const nextStatus = !currentStatus;
@@ -134,29 +163,38 @@ export default function HRDashboard() {
       // Optimistic update
       setTrackedEmployees((prev) =>
         prev.map((emp) =>
-          emp.id === employeeId ? { ...emp, is_location_tracking_enabled: nextStatus } : emp
-        )
+          emp.id === employeeId
+            ? { ...emp, is_location_tracking_enabled: nextStatus }
+            : emp,
+        ),
       );
 
-      const res = await apiFetch(`/hr/employees/${employeeId}/location-tracking`, {
-        method: 'PATCH',
-        body: JSON.stringify({ enabled: nextStatus }),
-      });
+      const res = await apiFetch(
+        `/hr/employees/${employeeId}/location-tracking`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({ enabled: nextStatus }),
+        },
+      );
 
       if (!res.ok) {
         // Rollback
         setTrackedEmployees((prev) =>
           prev.map((emp) =>
-            emp.id === employeeId ? { ...emp, is_location_tracking_enabled: currentStatus } : emp
-          )
+            emp.id === employeeId
+              ? { ...emp, is_location_tracking_enabled: currentStatus }
+              : emp,
+          ),
         );
       }
     } catch (err) {
-      console.error('Toggle failed:', err);
+      console.error("Toggle failed:", err);
       setTrackedEmployees((prev) =>
         prev.map((emp) =>
-          emp.id === employeeId ? { ...emp, is_location_tracking_enabled: currentStatus } : emp
-        )
+          emp.id === employeeId
+            ? { ...emp, is_location_tracking_enabled: currentStatus }
+            : emp,
+        ),
       );
     } finally {
       setTogglingId(null);
@@ -188,16 +226,24 @@ export default function HRDashboard() {
   const filteredEmployees = trackedEmployees.filter((emp) => {
     const matchesSearch =
       emp.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (emp.department && emp.department.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (emp.job_title && emp.job_title.toLowerCase().includes(searchTerm.toLowerCase()));
+      (emp.department &&
+        emp.department.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      (emp.job_title &&
+        emp.job_title.toLowerCase().includes(searchTerm.toLowerCase()));
 
-    if (filterTracking === 'enabled') return matchesSearch && emp.is_location_tracking_enabled;
-    if (filterTracking === 'disabled') return matchesSearch && !emp.is_location_tracking_enabled;
+    if (filterTracking === "enabled")
+      return matchesSearch && emp.is_location_tracking_enabled;
+    if (filterTracking === "disabled")
+      return matchesSearch && !emp.is_location_tracking_enabled;
     return matchesSearch;
   });
 
-  const trackedCount = trackedEmployees.filter((e) => e.is_location_tracking_enabled).length;
-  const activePingsCount = trackedEmployees.filter((e) => e.latitude != null).length;
+  const trackedCount = trackedEmployees.filter(
+    (e) => e.is_location_tracking_enabled,
+  ).length;
+  const activePingsCount = trackedEmployees.filter(
+    (e) => e.latitude != null,
+  ).length;
 
   return (
     <>
@@ -216,12 +262,14 @@ export default function HRDashboard() {
 
       {/* 2. Main Content Area */}
       <div className="flex-1 flex flex-col gap-2 overflow-hidden min-w-0">
-        
         {/* Header */}
-        <Header userName={user?.name || 'HR Admin'} activeSection={activeSection} />
+        <Header
+          userName={user?.name || "HR Admin"}
+          activeSection={activeSection}
+        />
 
         {/* SECTION: DASHBOARD */}
-        {activeSection === 'dashboard' && (
+        {activeSection === "dashboard" && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -231,7 +279,6 @@ export default function HRDashboard() {
             {/* Center Area */}
             <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
               <div className="flex-1 overflow-y-auto p-4 pb-36 scrollbar-hide w-full space-y-5">
-                
                 {/* 1. Original Obrive Workload Cards (Devanshi, Parveen, Naman, etc.) */}
                 <WorkloadSection members={workloadMembers} />
 
@@ -242,16 +289,19 @@ export default function HRDashboard() {
                       <MapPin className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-[#073933]">Employee Location Tracking</h3>
+                      <h3 className="text-sm font-bold text-[#073933]">
+                        Employee Location Tracking
+                      </h3>
                       <p className="text-xs text-slate-500 mt-0.5">
-                        {trackedCount} active tracked &bull; {activePingsCount} live GPS positions today
+                        {trackedCount} active tracked &bull; {activePingsCount}{" "}
+                        live GPS positions today
                       </p>
                     </div>
                   </div>
 
                   <button
                     type="button"
-                    onClick={() => setActiveSection('location')}
+                    onClick={() => setActiveSection("location")}
                     className="self-start sm:self-auto rounded-xl bg-[#073933] hover:bg-[#0b534b] text-white px-4 py-2.5 text-xs font-bold transition shadow-sm"
                   >
                     Open Live Map & Controls &rarr;
@@ -267,17 +317,26 @@ export default function HRDashboard() {
             <div className="w-80 flex flex-col gap-4 h-full min-h-0">
               <div className="flex-1 min-h-0 bg-white rounded-xl flex flex-col shadow-sm border border-slate-100 overflow-hidden">
                 <div className="px-4 py-3 border-b border-slate-50 flex items-center justify-between">
-                  <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">Upcoming Events</h3>
-                  <span className="text-[9px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-bold">{events?.length || 0}</span>
+                  <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
+                    Upcoming Events
+                  </h3>
+                  <span className="text-[9px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-bold">
+                    {events?.length || 0}
+                  </span>
                 </div>
                 <div className="flex-1 overflow-y-auto p-3 scrollbar-hide">
-                  <NearestEvents events={events} setActiveSection={setActiveSection} />
+                  <NearestEvents
+                    events={events}
+                    setActiveSection={setActiveSection}
+                  />
                 </div>
               </div>
 
               <div className="flex-1 min-h-0 bg-white rounded-xl flex flex-col shadow-sm border border-slate-100 overflow-hidden">
                 <div className="px-4 py-3 border-b border-slate-50">
-                  <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">Recent Activity</h3>
+                  <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
+                    Recent Activity
+                  </h3>
                 </div>
                 <div className="flex-1 overflow-y-auto p-3 scrollbar-hide">
                   <ActivityStream activities={activities} />
@@ -288,7 +347,7 @@ export default function HRDashboard() {
         )}
 
         {/* SECTION: LOCATION TRACKING */}
-        {activeSection === 'location' && (
+        {activeSection === "location" && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -298,9 +357,12 @@ export default function HRDashboard() {
             {/* Header & Controls Bar */}
             <div className="rounded-2xl bg-white p-5 shadow-sm border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h2 className="text-xl font-bold text-[#073933]">Staff Location Tracking</h2>
+                <h2 className="text-xl font-bold text-[#073933]">
+                  Staff Location Tracking
+                </h2>
                 <p className="text-xs text-slate-500 mt-1">
-                  Monitor live team positions on the interactive map and configure individual tracking switches.
+                  Monitor live team positions on the interactive map and
+                  configure individual tracking switches.
                 </p>
               </div>
 
@@ -311,7 +373,9 @@ export default function HRDashboard() {
                   disabled={locRefreshing}
                   className="flex items-center gap-1.5 rounded-xl bg-[#F4F9FD] hover:bg-[#e6f2fb] px-3.5 py-2 text-xs font-bold text-[#073933] transition"
                 >
-                  <RefreshCw className={`h-3.5 w-3.5 ${locRefreshing ? 'animate-spin' : ''}`} />
+                  <RefreshCw
+                    className={`h-3.5 w-3.5 ${locRefreshing ? "animate-spin" : ""}`}
+                  />
                   Refresh
                 </button>
               </div>
@@ -328,17 +392,25 @@ export default function HRDashboard() {
             <div className="rounded-2xl bg-white p-4 shadow-sm border border-slate-100 space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">Live Employee Pins</h3>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    Live Employee Pins
+                  </h3>
                   <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     LIVE NOW
                   </span>
                 </div>
                 <span className="text-xs text-slate-400">
-                  {trackedEmployees.filter((e) => e.latitude != null && isEmployeeLive(e)).length}{' '}
-                  {trackedEmployees.filter((e) => e.latitude != null && isEmployeeLive(e)).length === 1
-                    ? 'employee'
-                    : 'employees'}{' '}
+                  {
+                    trackedEmployees.filter(
+                      (e) => e.latitude != null && isEmployeeLive(e),
+                    ).length
+                  }{" "}
+                  {trackedEmployees.filter(
+                    (e) => e.latitude != null && isEmployeeLive(e),
+                  ).length === 1
+                    ? "employee"
+                    : "employees"}{" "}
                   currently live with GPS
                 </span>
               </div>
@@ -363,18 +435,18 @@ export default function HRDashboard() {
                 </div>
 
                 <div className="flex gap-2 self-start sm:self-auto">
-                  {(['all', 'enabled', 'disabled'] as const).map((filter) => (
+                  {(["all", "enabled", "disabled"] as const).map((filter) => (
                     <button
                       key={filter}
                       type="button"
                       onClick={() => setFilterTracking(filter)}
                       className={`rounded-lg px-3 py-1 text-xs font-bold capitalize transition ${
                         filterTracking === filter
-                          ? 'bg-[#073933] text-white'
-                          : 'bg-[#F4F9FD] text-slate-600 hover:bg-[#eef7ff]'
+                          ? "bg-[#073933] text-white"
+                          : "bg-[#F4F9FD] text-slate-600 hover:bg-[#eef7ff]"
                       }`}
                     >
-                      {filter === 'all' ? 'All Staff' : `Tracking ${filter}`}
+                      {filter === "all" ? "All Staff" : `Tracking ${filter}`}
                     </button>
                   ))}
                 </div>
@@ -394,46 +466,68 @@ export default function HRDashboard() {
                   <tbody className="divide-y divide-slate-100">
                     {locLoading ? (
                       <tr>
-                        <td colSpan={5} className="py-8 text-center text-slate-400">
+                        <td
+                          colSpan={5}
+                          className="py-8 text-center text-slate-400"
+                        >
                           <RefreshCw className="h-4 w-4 animate-spin mx-auto mb-2 text-[#073933]" />
                           Loading employee directory...
                         </td>
                       </tr>
                     ) : filteredEmployees.length === 0 ? (
                       <tr>
-                        <td colSpan={5} className="py-8 text-center text-slate-400">
+                        <td
+                          colSpan={5}
+                          className="py-8 text-center text-slate-400"
+                        >
                           No employees match criteria.
                         </td>
                       </tr>
                     ) : (
                       filteredEmployees.map((emp) => {
                         const isToggling = togglingId === emp.id;
-                        const initials = emp.name ? emp.name.charAt(0).toUpperCase() : 'E';
+                        const initials = emp.name
+                          ? emp.name.charAt(0).toUpperCase()
+                          : "E";
 
                         return (
-                          <tr key={emp.id} className="hover:bg-[#F4F9FD]/60 transition">
-                            
+                          <tr
+                            key={emp.id}
+                            className="hover:bg-[#F4F9FD]/60 transition"
+                          >
                             {/* Avatar & Name */}
                             <td className="py-3 pl-2">
                               <div className="flex items-center gap-2.5">
                                 <div className="h-8 w-8 rounded-full bg-[#eef7ff] text-[#073933] flex items-center justify-center font-bold text-xs overflow-hidden border border-slate-200">
                                   {emp.avatar_url ? (
-                                    <img src={emp.avatar_url} alt={emp.name} className="h-full w-full object-cover" />
+                                    <img
+                                      src={emp.avatar_url}
+                                      alt={emp.name}
+                                      className="h-full w-full object-cover"
+                                    />
                                   ) : (
                                     initials
                                   )}
                                 </div>
                                 <div>
-                                  <p className="font-bold text-[#073933] text-xs">{emp.name}</p>
-                                  <p className="text-slate-400 text-[10px]">{emp.email}</p>
+                                  <p className="font-bold text-[#073933] text-xs">
+                                    {emp.name}
+                                  </p>
+                                  <p className="text-slate-400 text-[10px]">
+                                    {emp.email}
+                                  </p>
                                 </div>
                               </div>
                             </td>
 
                             {/* Department & Role */}
                             <td className="py-3">
-                              <p className="font-semibold text-slate-800">{emp.job_title || 'Employee'}</p>
-                              <p className="text-slate-400 text-[10px]">{emp.department || 'General'}</p>
+                              <p className="font-semibold text-slate-800">
+                                {emp.job_title || "Employee"}
+                              </p>
+                              <p className="text-slate-400 text-[10px]">
+                                {emp.department || "General"}
+                              </p>
                             </td>
 
                             {/* Toggle Button */}
@@ -441,24 +535,37 @@ export default function HRDashboard() {
                               <div className="flex flex-col items-center justify-center gap-1">
                                 <button
                                   type="button"
-                                  onClick={() => handleToggleTracking(emp.id, emp.is_location_tracking_enabled)}
+                                  onClick={() =>
+                                    handleToggleTracking(
+                                      emp.id,
+                                      emp.is_location_tracking_enabled,
+                                    )
+                                  }
                                   disabled={isToggling}
                                   className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                                    emp.is_location_tracking_enabled ? 'bg-[#073933]' : 'bg-slate-300'
-                                  } ${isToggling ? 'opacity-50 cursor-wait' : ''}`}
+                                    emp.is_location_tracking_enabled
+                                      ? "bg-[#073933]"
+                                      : "bg-slate-300"
+                                  } ${isToggling ? "opacity-50 cursor-wait" : ""}`}
                                 >
                                   <span
                                     className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-md ring-0 transition duration-200 ease-in-out ${
-                                      emp.is_location_tracking_enabled ? 'translate-x-4' : 'translate-x-0'
+                                      emp.is_location_tracking_enabled
+                                        ? "translate-x-4"
+                                        : "translate-x-0"
                                     }`}
                                   />
                                 </button>
                                 <span
                                   className={`text-[9px] font-bold uppercase tracking-wider ${
-                                    emp.is_location_tracking_enabled ? 'text-[#073933]' : 'text-slate-400'
+                                    emp.is_location_tracking_enabled
+                                      ? "text-[#073933]"
+                                      : "text-slate-400"
                                   }`}
                                 >
-                                  {emp.is_location_tracking_enabled ? 'ON' : 'OFF'}
+                                  {emp.is_location_tracking_enabled
+                                    ? "ON"
+                                    : "OFF"}
                                 </span>
                               </div>
                             </td>
@@ -470,11 +577,14 @@ export default function HRDashboard() {
                                   <div className="flex items-center gap-1.5 font-mono text-[11px] text-slate-700">
                                     <MapPin
                                       className={`h-3 w-3 ${
-                                        isEmployeeLive(emp) ? 'text-emerald-600' : 'text-slate-400'
+                                        isEmployeeLive(emp)
+                                          ? "text-emerald-600"
+                                          : "text-slate-400"
                                       }`}
                                     />
                                     <span>
-                                      {emp.latitude.toFixed(4)}, {emp.longitude.toFixed(4)}
+                                      {emp.latitude.toFixed(4)},{" "}
+                                      {emp.longitude.toFixed(4)}
                                     </span>
                                     {isEmployeeLive(emp) ? (
                                       <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full text-[9px] font-extrabold bg-emerald-100 text-emerald-800">
@@ -489,11 +599,15 @@ export default function HRDashboard() {
                                   </div>
                                   <div className="flex items-center gap-1 text-[10px] text-slate-400">
                                     <Clock className="h-2.5 w-2.5" />
-                                    <span>{formatPingTimestamp(emp.last_ping_at)}</span>
+                                    <span>
+                                      {formatPingTimestamp(emp.last_ping_at)}
+                                    </span>
                                   </div>
                                 </div>
                               ) : (
-                                <span className="text-[11px] text-slate-400 italic">No pings recorded</span>
+                                <span className="text-[11px] text-slate-400 italic">
+                                  No pings recorded
+                                </span>
                               )}
                             </td>
 
@@ -501,14 +615,18 @@ export default function HRDashboard() {
                             <td className="py-3 pr-2 text-right">
                               <button
                                 type="button"
-                                onClick={() => setSelectedHistoryEmp({ id: emp.id, name: emp.name })}
+                                onClick={() =>
+                                  setSelectedHistoryEmp({
+                                    id: emp.id,
+                                    name: emp.name,
+                                  })
+                                }
                                 className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white hover:bg-[#F4F9FD] px-2.5 py-1 text-[11px] font-bold text-[#073933] transition"
                               >
                                 <History className="h-3 w-3" />
                                 Logs
                               </button>
                             </td>
-
                           </tr>
                         );
                       })
@@ -519,17 +637,21 @@ export default function HRDashboard() {
             </div>
 
             {/* Bottom Spacer to ensure full clearance above floating assistant widgets */}
-            <div className="h-16 w-full pointer-events-none" aria-hidden="true" />
+            <div
+              className="h-16 w-full pointer-events-none"
+              aria-hidden="true"
+            />
           </motion.div>
         )}
 
         {/* OTHER SECTIONS */}
-        {activeSection === 'projects' && <Projects projects={projects} variant="projects" />}
-        {activeSection === 'calender' && <Calender />}
-        {activeSection === 'Vacations' && <Vacations />}
-        {activeSection === 'tasks' && <Notes />}
-        {activeSection === 'messenger' && <Messenger />}
-
+        {activeSection === "projects" && (
+          <Projects projects={projects} variant="projects" />
+        )}
+        {activeSection === "calender" && <Calender />}
+        {activeSection === "Vacations" && <Vacations />}
+        {activeSection === "tasks" && <Notes />}
+        {activeSection === "messenger" && <Messenger />}
       </div>
 
       {/* History Modal */}

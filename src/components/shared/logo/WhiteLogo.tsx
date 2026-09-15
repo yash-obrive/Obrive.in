@@ -1,6 +1,6 @@
-import { IMAGES, IMAGES_META } from "@/assets/images";
 import Image from "next/image";
 import React from "react";
+import { IMAGES, IMAGES_META } from "@/assets/images";
 
 export default function WhiteLogo() {
   return (

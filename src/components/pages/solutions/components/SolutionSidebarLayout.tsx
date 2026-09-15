@@ -1,12 +1,19 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import SolutionServiceSection from "./SolutionServiceSection";
-import SolutionProcessSteps from "./SolutionProcessSteps";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import FONTS from "@/assets/fonts";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
-import { SidebarLink, ServiceSection, WorkflowStep } from "@/types/solutions";
+import type {
+  ServiceSection,
+  SidebarLink,
+  WorkflowStep,
+} from "@/types/solutions";
+import SolutionProcessSteps from "./SolutionProcessSteps";
+import SolutionServiceSection from "./SolutionServiceSection";
 
 interface SolutionSidebarLayoutProps {
+  slug: string;
   sidebarLinks: SidebarLink[];
   serviceSections: ServiceSection[];
   processSteps: WorkflowStep[];
@@ -14,31 +21,32 @@ interface SolutionSidebarLayoutProps {
 }
 
 const SolutionSidebarLayout = ({
+  slug,
   sidebarLinks,
   serviceSections,
   processSteps,
   serviceLabel = "Our Services",
 }: SolutionSidebarLayoutProps) => {
-  const [activeId, setActiveId] = useState<string>(
-    sidebarLinks[0]?.id || ""
-  );
+  const [activeId, setActiveId] = useState<string>(sidebarLinks[0]?.id || "");
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   // Intersection observer — highlight active sidebar link on scroll
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
-    serviceSections.forEach((section) => {
-      const el = sectionRefs.current[section.id];
+    const sectionsToObserve = [...serviceSections.map(s => s.id)];
+
+    sectionsToObserve.forEach((id) => {
+      const el = sectionRefs.current[id];
       if (!el) return;
 
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setActiveId(section.id);
+            setActiveId(id);
           }
         },
-        { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
+        { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
       );
       observer.observe(el);
       observers.push(observer);
@@ -66,17 +74,31 @@ const SolutionSidebarLayout = ({
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className={`w-full text-left flex items-center gap-3 py-3 px-2 cursor-pointer transition-colors text-xs leading-5
-                  ${index === 0 ? "border-y" : "border-b"} border-primary/80
-                  ${
-                    activeId === link.id
-                      ? "bg-primary/10 text-primary font-medium"
-                      : "hover:bg-primary/5 text-zinc-700"
-                  }`}
+                className={`w-full text-left flex items-center gap-3 py-4 cursor-pointer transition-colors text-xs leading-5 ${FONTS.microgrammaBold.className} text-black border-zinc-300
+                  ${index === 0 ? "border-y" : "border-b"}
+                  ${activeId === link.id ? "opacity-100" : "hover:bg-zinc-50"}
+                `}
               >
                 {link.label}
               </button>
             ))}
+            <button
+              onClick={() => {
+                const element = document.getElementById("our-process");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className={`w-full text-left flex items-center gap-3 py-4 cursor-pointer transition-colors text-xs leading-5 border-b border-zinc-300 hover:bg-zinc-50 ${FONTS.microgrammaBold.className} text-black`}
+            >
+              Our Process
+            </button>
+            <Link
+              href={`/solutions/${slug}/industries`}
+              className={`w-full text-left flex items-center gap-3 py-4 cursor-pointer transition-colors text-xs leading-5 border-b border-zinc-300 hover:bg-zinc-50 ${FONTS.microgrammaBold.className} text-black`}
+            >
+              Industries We Serve
+            </Link>
           </div>
         </div>
 
@@ -93,6 +115,7 @@ const SolutionSidebarLayout = ({
               </div>
             </FadeInOnView>
           ))}
+          
         </div>
       </div>
 

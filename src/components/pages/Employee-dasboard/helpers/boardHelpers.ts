@@ -4,7 +4,7 @@ type Task = {
   duration: string;
   column: string;
   color: string;
-  date?: string; 
+  date?: string;
 };
 
 type Column = {
@@ -16,7 +16,7 @@ type Column = {
 export const addCardToColumn = (
   column: Column,
   index: number,
-  card: Task
+  card: Task,
 ): Column => {
   const newItems = [...column.items];
   newItems.splice(index, 0, { ...card, date: column.id });
@@ -24,10 +24,7 @@ export const addCardToColumn = (
   return { ...column, items: newItems };
 };
 
-export const removeCardFromColumn = (
-  column: Column,
-  index: number
-): Column => {
+export const removeCardFromColumn = (column: Column, index: number): Column => {
   const newItems = [...column.items];
   newItems.splice(index, 1);
 
@@ -37,7 +34,7 @@ export const removeCardFromColumn = (
 export const moveCardInColumn = (
   column: Column,
   from: number,
-  to: number
+  to: number,
 ): Column => {
   const newItems = [...column.items];
   const [moved] = newItems.splice(from, 1);

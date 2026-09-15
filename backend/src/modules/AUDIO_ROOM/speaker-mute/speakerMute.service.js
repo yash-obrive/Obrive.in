@@ -7,7 +7,7 @@ const livekitHost = process.env.LIVEKIT_URL || "http://localhost:7880";
 const roomService = new RoomServiceClient(
   livekitHost,
   process.env.LIVEKIT_API_KEY,
-  process.env.LIVEKIT_API_SECRET
+  process.env.LIVEKIT_API_SECRET,
 );
 
 const muteUnmuteService = async (payload) => {
@@ -65,15 +65,19 @@ const muteUnmuteService = async (payload) => {
       userId.toString(),
       JSON.stringify({ role: currentRole, isMuted: Boolean(isMuted) }), // 3rd argument
       {
-        canPublish: canPublishAudio(currentRole),                       // 4th argument
+        canPublish: canPublishAudio(currentRole), // 4th argument
         canPublishData: true,
         canSubscribe: true,
-      }
+      },
     );
-    
-    console.log(`[LiveKit Sync] Mute pushed. Room: ${roomId} | User: ${userId} | Muted: ${isMuted}`);
+
+    console.log(
+      `[LiveKit Sync] Mute pushed. Room: ${roomId} | User: ${userId} | Muted: ${isMuted}`,
+    );
   } catch (lkError) {
-    console.error(`[LiveKit Error] Failed to sync dynamic mute permissions: ${lkError.message}`);
+    console.error(
+      `[LiveKit Error] Failed to sync dynamic mute permissions: ${lkError.message}`,
+    );
   }
 
   return {

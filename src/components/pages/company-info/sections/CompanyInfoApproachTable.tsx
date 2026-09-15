@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import FONTS from "@/assets/fonts";
 
 interface ApproachPhase {

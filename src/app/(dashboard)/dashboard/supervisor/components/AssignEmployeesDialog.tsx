@@ -1,32 +1,32 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import supportImg from '@/assets/images/employee/illustration.png'
-import { useState, useEffect } from 'react'
-import { apiFetch } from '@/lib/api'
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import supportImg from "@/assets/images/employee/illustration.png";
+import { apiFetch } from "@/lib/api";
 
 interface AssignEmployeesDialogProps {
-  open: boolean
-  onClose: () => void
-  project: ProjectData | null
-  onAssign: (employeeIds: number[]) => Promise<void> | void
+  open: boolean;
+  onClose: () => void;
+  project: ProjectData | null;
+  onAssign: (employeeIds: number[]) => Promise<void> | void;
 }
 
 interface Employee {
-  id: number
-  name: string
-  email: string
-  job_title?: string
-  department?: string
+  id: number;
+  name: string;
+  email: string;
+  job_title?: string;
+  department?: string;
 }
 
 type ProjectMember = {
-  id: number
-}
+  id: number;
+};
 
 type ProjectData = {
-  team_members?: ProjectMember[]
-}
+  team_members?: ProjectMember[];
+};
 
 export default function AssignEmployeesDialog({
   open,
@@ -34,61 +34,64 @@ export default function AssignEmployeesDialog({
   project,
   onAssign,
 }: AssignEmployeesDialogProps) {
-  const [employees, setEmployees] = useState<Employee[]>([])
-  const [selectedEmployeeIds, setSelectedEmployeeIds] = useState<number[]>([])
-  const [loading, setLoading] = useState(false)
-  const [assigning, setAssigning] = useState(false)
+  const [employees, setEmployees] = useState<Employee[]>([]);
+  const [selectedEmployeeIds, setSelectedEmployeeIds] = useState<number[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [assigning, setAssigning] = useState(false);
 
-  const currentMembers = project?.team_members || []
+  const currentMembers = project?.team_members || [];
 
   useEffect(() => {
     if (open) {
-      fetchEmployees()
+      fetchEmployees();
     }
-  }, [open])
+  }, [open]);
 
   const fetchEmployees = async () => {
     try {
-      setLoading(true)
-      const response = await apiFetch('/supervisor/employees', { method: 'GET' })
-      const result = await response.json()
+      setLoading(true);
+      const response = await apiFetch("/supervisor/employees", {
+        method: "GET",
+      });
+      const result = await response.json();
       if (result.success) {
-        setEmployees(result.data || [])
+        setEmployees(result.data || []);
       }
     } catch (error) {
-      console.error('Error fetching employees:', error)
+      console.error("Error fetching employees:", error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (selectedEmployeeIds.length === 0) return
+    e.preventDefault();
+    if (selectedEmployeeIds.length === 0) return;
 
     try {
-      setAssigning(true)
-      await onAssign(selectedEmployeeIds)
-      setSelectedEmployeeIds([])
+      setAssigning(true);
+      await onAssign(selectedEmployeeIds);
+      setSelectedEmployeeIds([]);
     } finally {
-      setAssigning(false)
+      setAssigning(false);
     }
-  }
+  };
 
   const toggleEmployee = (employeeId: number) => {
-    setSelectedEmployeeIds(prev =>
+    setSelectedEmployeeIds((prev) =>
       prev.includes(employeeId)
-        ? prev.filter(id => id !== employeeId)
-        : [...prev, employeeId]
-    )
-  }
+        ? prev.filter((id) => id !== employeeId)
+        : [...prev, employeeId],
+    );
+  };
 
   // Filter out already assigned employees
   const availableEmployees = employees.filter(
-    emp => !currentMembers.some((member: ProjectMember) => member.id === emp.id)
-  )
+    (emp) =>
+      !currentMembers.some((member: ProjectMember) => member.id === emp.id),
+  );
 
-  if (!open) return null
+  if (!open) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-3 backdrop-blur-sm">
@@ -123,9 +126,13 @@ export default function AssignEmployeesDialog({
               Available Employees
             </label>
             {loading ? (
-              <p className="text-center text-sm text-gray-500">Loading employees...</p>
+              <p className="text-center text-sm text-gray-500">
+                Loading employees...
+              </p>
             ) : availableEmployees.length === 0 ? (
-              <p className="text-center text-sm text-gray-500">No available employees</p>
+              <p className="text-center text-sm text-gray-500">
+                No available employees
+              </p>
             ) : (
               <div className="max-h-48 overflow-y-auto space-y-2">
                 {availableEmployees.map((employee) => (
@@ -163,10 +170,12 @@ export default function AssignEmployeesDialog({
             disabled={assigning || selectedEmployeeIds.length === 0}
             className="w-full rounded-xl bg-[#073933] py-3 font-medium text-white transition hover:bg-[#0a4a42] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {assigning ? 'Assigning...' : `Assign ${selectedEmployeeIds.length} Employee${selectedEmployeeIds.length !== 1 ? 's' : ''}`}
+            {assigning
+              ? "Assigning..."
+              : `Assign ${selectedEmployeeIds.length} Employee${selectedEmployeeIds.length !== 1 ? "s" : ""}`}
           </button>
         </form>
       </div>
     </div>
-  )
+  );
 }

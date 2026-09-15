@@ -1,10 +1,10 @@
-import { getAllCareerSlugs, getCareerBySlug } from "@/lib/mdx";
 import { notFound, redirect } from "next/navigation";
 import React from "react";
 import FONTS from "@/assets/fonts";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { getAllCareerSlugs, getCareerBySlug } from "@/lib/mdx";
 
 export async function generateStaticParams() {
   const slugs = await getAllCareerSlugs();

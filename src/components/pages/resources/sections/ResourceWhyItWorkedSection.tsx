@@ -1,5 +1,5 @@
+import type React from "react";
 import FONTS from "@/assets/fonts";
-import React from "react";
 
 interface WhyItWorkedItem {
   title: string | React.ReactNode;
@@ -12,10 +12,10 @@ interface ResourceWhyItWorkedSectionProps {
   finalQuote?: string;
 }
 
-export default function ResourceWhyItWorkedSection({ 
-  title = "Why It Worked", 
+export default function ResourceWhyItWorkedSection({
+  title = "Why It Worked",
   items,
-  finalQuote
+  finalQuote,
 }: ResourceWhyItWorkedSectionProps) {
   return (
     <section className="mb-8 space-y-6">
@@ -45,7 +45,9 @@ export default function ResourceWhyItWorkedSection({
       <div className="pr-30 max-md:pr-0">
         {finalQuote && (
           <div className="bg-primary text-accent rounded-xl py-10 px-16 max-md:py-8 max-md:px-6 mt-6">
-            <p className={`${FONTS.microgrammaBold.className} tracking-wide text-lg sm:text-xl leading-relaxed`}>
+            <p
+              className={`${FONTS.microgrammaBold.className} tracking-wide text-lg sm:text-xl leading-relaxed`}
+            >
               "{finalQuote}"
             </p>
           </div>

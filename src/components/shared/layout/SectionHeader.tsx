@@ -1,6 +1,6 @@
 import React from "react";
-import RoundedBallIcon from "../icons/RoundedBallIcon";
 import FONTS from "@/assets/fonts";
+import RoundedBallIcon from "../icons/RoundedBallIcon";
 
 const SectionHeader = ({
   title,
@@ -23,7 +23,9 @@ const SectionHeader = ({
         >
           {title}
         </h3>
-        <p className="text-center text-primary w-xl max-md:w-full max-md:text-sm">{description}</p>
+        <p className="text-center text-primary w-xl max-md:w-full max-md:text-sm">
+          {description}
+        </p>
       </div>
     </div>
   );

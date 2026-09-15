@@ -1,10 +1,10 @@
+import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import {
   CASE_STUDIES_AVATAR,
   RESOURCES_NEWS_IMAGES,
   RESOURCES_NEWS_IMAGES_META,
 } from "@/assets/images";
-import Image from "next/image";
 
 const FeaturedCard = () => {
   return (

@@ -1,7 +1,7 @@
+import type { ReactNode } from "react";
 import Footer from "@/components/shared/layout/Footer";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import NavBar from "@/components/shared/layout/NavBar";
-import { ReactNode } from "react";
 
 export default function PublicLayout({ children }: { children: ReactNode }) {
   return (

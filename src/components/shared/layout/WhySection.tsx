@@ -1,10 +1,16 @@
 "use client";
+import Link from "next/link";
 import FONTS from "@/assets/fonts";
 import { Button } from "@/components/ui/button";
-import { WHY_SECTION_TYPE } from "@/constants/pages/why-section";
-import Link from "next/link";
+import type { WHY_SECTION_TYPE } from "@/constants/pages/why-section";
 
-const WhySection = ({ link,why, title, button, description }: WHY_SECTION_TYPE) => {
+const WhySection = ({
+  link,
+  why,
+  title,
+  button,
+  description,
+}: WHY_SECTION_TYPE) => {
   return (
     <section className="flex items-center justify-center">
       <div className="flex flex-col max-sm:text-center md:flex-row gap-8 max-sm:gap-2 md:gap-20 max-md:gap-0 lg:gap-40 w-full">
@@ -32,18 +38,16 @@ const WhySection = ({ link,why, title, button, description }: WHY_SECTION_TYPE) 
                 variant={"outline"}
                 size={"lg"}
                 className="relative z-50 text-xs border-primary text-[10px] cursor-pointer text-primary uppercase"
-                 onClick={() => {
-                   document.getElementById("career")?.scrollIntoView({
-      behavior: "smooth",
-    });
-    setTimeout(() => {
-      history.replaceState(null, "", window.location.pathname);
-    }, 500);
-  }}
+                onClick={() => {
+                  document.getElementById("career")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                  setTimeout(() => {
+                    history.replaceState(null, "", window.location.pathname);
+                  }, 500);
+                }}
               >
-               <a href={link}>
-                  {button}
-                </a>
+                <a href={link}>{button}</a>
               </Button>
             ) : (
               <Button

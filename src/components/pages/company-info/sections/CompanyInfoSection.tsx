@@ -1,5 +1,5 @@
+import type React from "react";
 import FONTS from "@/assets/fonts";
-import React from "react";
 
 interface CompanyInfoItem {
   title?: string | React.ReactNode;
@@ -18,7 +18,9 @@ export default function CompanyInfoSection({
   return (
     <section>
       {title && (
-        <h2 className={`${FONTS.microgrammaBold.className} text-primary text-3xl mb-6`}>
+        <h2
+          className={`${FONTS.microgrammaBold.className} text-primary text-3xl mb-6`}
+        >
           {title}
         </h2>
       )}
@@ -26,7 +28,9 @@ export default function CompanyInfoSection({
         {items?.map((item, index) => (
           <div key={index}>
             {item.title && (
-              <h3 className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}>
+              <h3
+                className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}
+              >
                 {item.title}
               </h3>
             )}

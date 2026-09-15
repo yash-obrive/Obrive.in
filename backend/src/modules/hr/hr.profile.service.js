@@ -1,8 +1,7 @@
 // backend/src/modules/hr/hr.profile.service.js
-const { prisma } = require('../../../prisma');
+const { prisma } = require("../../../prisma");
 
 class HRProfileService {
-  
   async getProfile(userId) {
     const result = await prisma.$queryRaw`
       SELECT id, userid, email, name, role, status, biography, phone_number, date_of_birth, created_at
@@ -10,11 +9,11 @@ class HRProfileService {
       WHERE id = ${userId} AND role = 'hr'
       LIMIT 1
     `;
-    
+
     if (!result[0]) {
-      throw new Error('HR profile not found');
+      throw new Error("HR profile not found");
     }
-    
+
     return {
       id: result[0].id,
       userid: result[0].userid,
@@ -25,18 +24,18 @@ class HRProfileService {
       bio: result[0].biography,
       phone: result[0].phone_number,
       dateOfBirth: result[0].date_of_birth,
-      joinedDate: result[0].created_at
+      joinedDate: result[0].created_at,
     };
   }
-  
+
   async updateProfile(userId, updateData) {
     const { name, bio, phone, dateOfBirth } = updateData;
-    
+
     // Build dynamic update query based on provided fields
-    let updateFields = [];
-    let values = [];
+    const updateFields = [];
+    const values = [];
     let paramCount = 1;
-    
+
     if (name) {
       updateFields.push(`name = $${paramCount++}`);
       values.push(name);
@@ -53,23 +52,23 @@ class HRProfileService {
       updateFields.push(`date_of_birth = $${paramCount++}`);
       values.push(new Date(dateOfBirth));
     }
-    
+
     updateFields.push(`updated_at = NOW()`);
-    
+
     if (updateFields.length === 1) {
       // Only updated_at, no other changes
       return this.getProfile(userId);
     }
-    
+
     const updateQuery = `
       UPDATE users 
-      SET ${updateFields.join(', ')}
+      SET ${updateFields.join(", ")}
       WHERE id = $${paramCount} AND role = 'hr'
     `;
     values.push(userId);
-    
+
     await prisma.$executeRawUnsafe(updateQuery, ...values);
-    
+
     return this.getProfile(userId);
   }
 }

@@ -1,17 +1,17 @@
 "use client";
 
-import FONTS from "@/assets/fonts";
-import { FEATURED_IN } from "@/constants/pages/about/featured";
-import Image from "next/image";
-import React, { useEffect, useState, useCallback } from "react";
-import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import React, { useCallback, useEffect, useState } from "react";
+import FONTS from "@/assets/fonts";
+import { Button } from "@/components/ui/button";
+import { FEATURED_IN } from "@/constants/pages/about/featured";
 
 const FeaturedIn = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalCards = FEATURED_IN.length;
   const [cardsPerView, setCardsPerView] = useState<number | undefined>(
-    undefined
+    undefined,
   );
   const maxIndex = cardsPerView ? Math.ceil(totalCards / cardsPerView) - 1 : 0;
 
@@ -90,41 +90,44 @@ const FeaturedIn = () => {
               >
                 {FEATURED_IN.slice(
                   slideIndex * cardsPerView,
-                  (slideIndex + 1) * cardsPerView
+                  (slideIndex + 1) * cardsPerView,
                 ).map((item, cardIndex) => (
-                <a
-                 key={`${slideIndex}-${cardIndex}`}
-  href={item.link}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="flex-1 min-w-0 flex flex-col items-center justify-center gap-4"
-> <div
+                  <a
                     key={`${slideIndex}-${cardIndex}`}
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex-1 min-w-0 flex flex-col items-center justify-center gap-4"
                   >
-                    <div className="w-full max-w-md h-[320px] rounded-xl bg-primary flex items-center justify-center mx-auto">
-                      <Image
-                        src={item.src}
-                        width={item.src_meta.width}
-                        height={item.src_meta.height}
-                        alt={item.src_meta.alt}
-                        priority
-                        className="max-w-[200px] max-h-[200px] object-contain"
-                      />
+                    {" "}
+                    <div
+                      key={`${slideIndex}-${cardIndex}`}
+                      className="flex-1 min-w-0 flex flex-col items-center justify-center gap-4"
+                    >
+                      <div className="w-full max-w-md h-[320px] rounded-xl bg-primary flex items-center justify-center mx-auto">
+                        <Image
+                          src={item.src}
+                          width={item.src_meta.width}
+                          height={item.src_meta.height}
+                          alt={item.src_meta.alt}
+                          priority
+                          className="max-w-[200px] max-h-[200px] object-contain"
+                        />
+                      </div>
+                      <p className="text-sm text-primary/80 text-left max-w-md mx-auto">
+                        {item.description}
+                      </p>
                     </div>
-                    <p className="text-sm text-primary/80 text-left max-w-md mx-auto">
-                      {item.description}
-                    </p>
-                  </div></a>
+                  </a>
                 ))}
                 {/* Fill empty space if odd number of cards on last slide */}
                 {slideIndex === Math.ceil(totalCards / cardsPerView) - 1 &&
                   FEATURED_IN.slice(
                     slideIndex * cardsPerView,
-                    (slideIndex + 1) * cardsPerView
+                    (slideIndex + 1) * cardsPerView,
                   ).length === 1 && <div className="flex-1 min-w-0"></div>}
               </div>
-            )
+            ),
           )}
         </div>
       </div>

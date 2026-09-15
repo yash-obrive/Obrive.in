@@ -1,7 +1,7 @@
-import FONTS from "@/assets/fonts";
-import { BlogCardContent } from "@/constants/pages/resources/blog-card";
 import Image from "next/image";
 import Link from "next/link";
+import FONTS from "@/assets/fonts";
+import { BlogCardContent } from "@/constants/pages/resources/blog-card";
 
 interface BlogRecommendationsProps {
   currentSlug: string;
@@ -13,7 +13,7 @@ export default function BlogRecommendations({
   maxRecommendations = 2,
 }: BlogRecommendationsProps) {
   const currentIndex = BlogCardContent.findIndex(
-    (blog) => blog.slug === currentSlug
+    (blog) => blog.slug === currentSlug,
   );
 
   const recommendations = Array.from({ length: maxRecommendations }, (_, i) => {

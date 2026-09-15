@@ -15,7 +15,12 @@ exports.getMessages = async (req, res, next) => {
   try {
     const { conversationId } = req.params;
     const { page, limit } = req.query;
-    const data = await chatService.getMessages(conversationId, req.user.id, page, limit);
+    const data = await chatService.getMessages(
+      conversationId,
+      req.user.id,
+      page,
+      limit,
+    );
     return successResponse(res, data, "Messages fetched");
   } catch (error) {
     next(error);
@@ -35,7 +40,11 @@ exports.addParticipants = async (req, res, next) => {
   try {
     const { conversationId } = req.params;
     const { participantIds } = req.body;
-    const data = await chatService.addParticipants(conversationId, req.user.id, participantIds);
+    const data = await chatService.addParticipants(
+      conversationId,
+      req.user.id,
+      participantIds,
+    );
     return successResponse(res, data, "Participants added");
   } catch (error) {
     next(error);
@@ -45,16 +54,20 @@ exports.addParticipants = async (req, res, next) => {
 exports.removeParticipant = async (req, res, next) => {
   try {
     const { conversationId, userId } = req.params;
-    const data = await chatService.removeParticipant(conversationId, req.user.id, userId);
-    
+    const data = await chatService.removeParticipant(
+      conversationId,
+      req.user.id,
+      userId,
+    );
+
     // Emit system message via socket
     if (data.systemMessage) {
       const io = getIO();
       io.to(`conversation:${conversationId}`).emit("message_received", {
         ...data.systemMessage,
-        conversation_id: parseInt(conversationId)
+        conversation_id: parseInt(conversationId),
       });
-      
+
       // Also notify the removed user to leave the room (if they are connected)
       io.to(`user:${userId}`).emit("removed_from_group", { conversationId });
     }
@@ -79,7 +92,11 @@ exports.deleteConversation = async (req, res, next) => {
   try {
     const { conversationId } = req.params;
     const { type } = req.query; // 'self' or 'permanent'
-    const data = await chatService.deleteConversation(conversationId, req.user.id, type);
+    const data = await chatService.deleteConversation(
+      conversationId,
+      req.user.id,
+      type,
+    );
     return successResponse(res, data, "Conversation deleted");
   } catch (error) {
     next(error);

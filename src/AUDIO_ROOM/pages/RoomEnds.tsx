@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 export default function RoomEndsPage() {
   return (
     <div className="relative flex h-screen w-screen items-center justify-center overflow-hidden bg-[#090a0f] text-white">
-
       {/* Background Radial Outer Layer */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -53,13 +52,11 @@ export default function RoomEndsPage() {
         }}
         className="relative z-10 w-full max-w-[520px] px-4"
       >
-
         <div
           className="rounded-3xl border border-white/5 
           bg-[#13141c]/90 backdrop-blur-xl
           px-6 py-6 shadow-2xl"
         >
-
           {/* Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
@@ -87,7 +84,6 @@ export default function RoomEndsPage() {
           >
             Thank you for being part of the conversation.
           </motion.p>
-
         </div>
       </motion.div>
     </div>

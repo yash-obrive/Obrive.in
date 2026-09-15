@@ -1,7 +1,7 @@
+import Link from "next/link";
+import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
-import Link from "next/link";
 import RightAnimateIcon from "../icons/RightAnimateIcon";
 
 interface AnimatedButtonProps {
@@ -58,9 +58,7 @@ export default function AnimatedButton({
       )}
 
       {/* text */}
-      <span className="btn__label">
-        {children}
-      </span>
+      <span className="btn__label">{children}</span>
 
       {/* right icon */}
       {showArrow && (

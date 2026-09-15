@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef, useState } from 'react';
-import type * as LeafletType from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import type * as LeafletType from "leaflet";
+import React, { useEffect, useRef, useState } from "react";
+import "leaflet/dist/leaflet.css";
 
 export interface TrackedEmployee {
   id: number;
@@ -28,7 +28,12 @@ export function isEmployeeLive(emp: TrackedEmployee): boolean {
   if (emp.is_live !== undefined && emp.is_live !== null) {
     return Boolean(emp.is_live);
   }
-  if (!emp.is_location_tracking_enabled || !emp.last_ping_at || emp.latitude == null || emp.longitude == null) {
+  if (
+    !emp.is_location_tracking_enabled ||
+    !emp.last_ping_at ||
+    emp.latitude == null ||
+    emp.longitude == null
+  ) {
     return false;
   }
   const pingTime = new Date(emp.last_ping_at).getTime();
@@ -46,40 +51,40 @@ interface MapProps {
 // Distinct, vibrant color themes per employee
 const EMPLOYEE_THEMES = [
   {
-    bg: 'background: linear-gradient(135deg, #2563eb, #1d4ed8);', // Vibrant Blue
-    border: '#3b82f6',
-    ping: 'rgba(37, 99, 235, 0.4)',
-    badgeBg: 'background: #1e3a8a;',
+    bg: "background: linear-gradient(135deg, #2563eb, #1d4ed8);", // Vibrant Blue
+    border: "#3b82f6",
+    ping: "rgba(37, 99, 235, 0.4)",
+    badgeBg: "background: #1e3a8a;",
   },
   {
-    bg: 'background: linear-gradient(135deg, #7c3aed, #5b21b6);', // Vibrant Purple
-    border: '#8b5cf6',
-    ping: 'rgba(124, 58, 237, 0.4)',
-    badgeBg: 'background: #4c1d95;',
+    bg: "background: linear-gradient(135deg, #7c3aed, #5b21b6);", // Vibrant Purple
+    border: "#8b5cf6",
+    ping: "rgba(124, 58, 237, 0.4)",
+    badgeBg: "background: #4c1d95;",
   },
   {
-    bg: 'background: linear-gradient(135deg, #059669, #047857);', // Emerald
-    border: '#10b981',
-    ping: 'rgba(5, 150, 105, 0.4)',
-    badgeBg: 'background: #064e3b;',
+    bg: "background: linear-gradient(135deg, #059669, #047857);", // Emerald
+    border: "#10b981",
+    ping: "rgba(5, 150, 105, 0.4)",
+    badgeBg: "background: #064e3b;",
   },
   {
-    bg: 'background: linear-gradient(135deg, #d97706, #b45309);', // Amber
-    border: '#f59e0b',
-    ping: 'rgba(217, 119, 6, 0.4)',
-    badgeBg: 'background: #78350f;',
+    bg: "background: linear-gradient(135deg, #d97706, #b45309);", // Amber
+    border: "#f59e0b",
+    ping: "rgba(217, 119, 6, 0.4)",
+    badgeBg: "background: #78350f;",
   },
   {
-    bg: 'background: linear-gradient(135deg, #e11d48, #be123c);', // Crimson Rose
-    border: '#f43f5e',
-    ping: 'rgba(225, 29, 72, 0.4)',
-    badgeBg: 'background: #881337;',
+    bg: "background: linear-gradient(135deg, #e11d48, #be123c);", // Crimson Rose
+    border: "#f43f5e",
+    ping: "rgba(225, 29, 72, 0.4)",
+    badgeBg: "background: #881337;",
   },
   {
-    bg: 'background: linear-gradient(135deg, #0891b2, #0e7490);', // Cyan Teal
-    border: '#06b6d4',
-    ping: 'rgba(8, 145, 178, 0.4)',
-    badgeBg: 'background: #164e63;',
+    bg: "background: linear-gradient(135deg, #0891b2, #0e7490);", // Cyan Teal
+    border: "#06b6d4",
+    ping: "rgba(8, 145, 178, 0.4)",
+    badgeBg: "background: #164e63;",
   },
 ];
 
@@ -100,14 +105,15 @@ export default function EmployeeLocationMap({
 
   // Initialize Map dynamically on client
   useEffect(() => {
-    if (typeof window === 'undefined' || !mapContainerRef.current) return;
+    if (typeof window === "undefined" || !mapContainerRef.current) return;
 
     let isMounted = true;
 
     async function init() {
       try {
-        const leafletModule = await import('leaflet');
-        const Leaflet = (leafletModule.default || leafletModule) as unknown as typeof LeafletType;
+        const leafletModule = await import("leaflet");
+        const Leaflet = (leafletModule.default ||
+          leafletModule) as unknown as typeof LeafletType;
         leafletRef.current = Leaflet;
 
         if (!isMounted || !mapContainerRef.current) return;
@@ -127,17 +133,21 @@ export default function EmployeeLocationMap({
           scrollWheelZoom: true,
         }).setView([20.5937, 78.9629], 5);
 
-        Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19,
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        }).addTo(map);
+        Leaflet.tileLayer(
+          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+          {
+            maxZoom: 19,
+            attribution:
+              '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          },
+        ).addTo(map);
 
         const markersGroup = Leaflet.layerGroup().addTo(map);
         markersLayerRef.current = markersGroup;
         mapInstanceRef.current = map;
         setIsMapReady(true);
       } catch (err) {
-        console.error('Error loading Leaflet map:', err);
+        console.error("Error loading Leaflet map:", err);
       }
     }
 
@@ -149,7 +159,10 @@ export default function EmployeeLocationMap({
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
       }
-      if (mapContainerRef.current && (mapContainerRef.current as any)._leaflet_id) {
+      if (
+        mapContainerRef.current &&
+        (mapContainerRef.current as any)._leaflet_id
+      ) {
         delete (mapContainerRef.current as any)._leaflet_id;
       }
       markersLayerRef.current = null;
@@ -172,7 +185,7 @@ export default function EmployeeLocationMap({
         e.longitude != null &&
         !isNaN(e.latitude) &&
         !isNaN(e.longitude) &&
-        isEmployeeLive(e)
+        isEmployeeLive(e),
     );
 
     if (validEmployees.length === 0) return;
@@ -192,14 +205,14 @@ export default function EmployeeLocationMap({
           other.longitude != null &&
           Math.hypot(
             (other.latitude as number) - (emp.latitude as number),
-            (other.longitude as number) - (emp.longitude as number)
-          ) < 0.003
+            (other.longitude as number) - (emp.longitude as number),
+          ) < 0.003,
       );
 
       // If overlapping, offset in a small circle so both pins are distinctly visible
       if (nearbyNeighbors.length > 0) {
         const offsetIndex = nearbyNeighbors.length;
-        const totalAngle = (offsetIndex * (2 * Math.PI / 4)) + Math.PI / 4;
+        const totalAngle = offsetIndex * ((2 * Math.PI) / 4) + Math.PI / 4;
         const radius = 0.0012; // ~120m visual separation
         lat = lat + radius * Math.sin(totalAngle);
         lng = lng + radius * Math.cos(totalAngle);
@@ -209,15 +222,15 @@ export default function EmployeeLocationMap({
 
       const isSelected = emp.id === selectedEmployeeId;
       const theme = getEmployeeTheme(emp.id);
-      const initials = emp.name ? emp.name.charAt(0).toUpperCase() : 'E';
-      const firstName = emp.name ? emp.name.split(' ')[0] : 'Employee';
+      const initials = emp.name ? emp.name.charAt(0).toUpperCase() : "E";
+      const firstName = emp.name ? emp.name.split(" ")[0] : "Employee";
 
       // Custom marker HTML icon with Avatar + Name Badge
       const markerHtml = `
         <div style="display: flex; flex-direction: column; align-items: center; cursor: pointer; transform: translate3d(0,0,0);">
           <div style="position: relative; display: flex; align-items: center; justify-content: center;">
             <div style="position: absolute; inset: -4px; border-radius: 9999px; background: ${theme.ping}; animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></div>
-            <div style="position: relative; display: flex; height: 38px; width: 38px; align-items: center; justify-content: center; border-radius: 9999px; border: 2.5px solid #ffffff; ${theme.bg} color: #ffffff; font-weight: 800; font-size: 15px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2); overflow: hidden; ${isSelected ? 'outline: 3px solid #3b82f6; outline-offset: 2px;' : ''}">
+            <div style="position: relative; display: flex; height: 38px; width: 38px; align-items: center; justify-content: center; border-radius: 9999px; border: 2.5px solid #ffffff; ${theme.bg} color: #ffffff; font-weight: 800; font-size: 15px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2); overflow: hidden; ${isSelected ? "outline: 3px solid #3b82f6; outline-offset: 2px;" : ""}">
               ${
                 emp.avatar_url
                   ? `<img src="${emp.avatar_url}" alt="${emp.name}" style="height: 100%; width: 100%; object-fit: cover;" onerror="this.style.display='none';this.parentElement.innerText='${initials}'" />`
@@ -235,7 +248,7 @@ export default function EmployeeLocationMap({
       `;
 
       const customIcon = L.divIcon({
-        className: 'custom-emp-marker',
+        className: "custom-emp-marker",
         html: markerHtml,
         iconSize: [60, 65],
         iconAnchor: [30, 30],
@@ -245,11 +258,14 @@ export default function EmployeeLocationMap({
       const marker = L.marker([lat, lng], { icon: customIcon });
 
       const lastPingTime = emp.last_ping_at
-        ? new Date(emp.last_ping_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) +
-          ' (' +
+        ? new Date(emp.last_ping_at).toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }) +
+          " (" +
           new Date(emp.last_ping_at).toLocaleDateString() +
-          ')'
-        : 'Recently';
+          ")"
+        : "Recently";
 
       const popupContent = `
         <div style="padding: 6px; min-width: 210px; font-family: sans-serif; color: #0f172a;">
@@ -269,13 +285,13 @@ export default function EmployeeLocationMap({
             </div>
             <div>
               <p style="font-weight: 800; font-size: 14px; margin: 0; line-height: 1.2;">${emp.name}</p>
-              <p style="font-size: 11px; color: #64748b; margin: 2px 0 0 0;">${emp.job_title || 'Employee'} • ${emp.department || 'General'}</p>
+              <p style="font-size: 11px; color: #64748b; margin: 2px 0 0 0;">${emp.job_title || "Employee"} • ${emp.department || "General"}</p>
             </div>
           </div>
           <div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #475569; margin-bottom: 12px;">
             <p style="margin: 0;"><strong>GPS:</strong> ${(emp.latitude as number).toFixed(5)}, ${(emp.longitude as number).toFixed(5)}</p>
             <p style="margin: 0;"><strong>Last Ping:</strong> ${lastPingTime}</p>
-            ${emp.accuracy ? `<p style="margin: 0;"><strong>Accuracy:</strong> &plusmn;${Math.round(emp.accuracy)}m</p>` : ''}
+            ${emp.accuracy ? `<p style="margin: 0;"><strong>Accuracy:</strong> &plusmn;${Math.round(emp.accuracy)}m</p>` : ""}
           </div>
           <div>
             <a 
@@ -291,15 +307,15 @@ export default function EmployeeLocationMap({
       `;
 
       marker.bindPopup(popupContent);
-      marker.on('click', () => {
+      marker.on("click", () => {
         if (onSelectEmployee) onSelectEmployee(emp);
       });
 
       // Bring to front on hover
-      marker.on('mouseover', () => {
+      marker.on("mouseover", () => {
         marker.setZIndexOffset(1000);
       });
-      marker.on('mouseout', () => {
+      marker.on("mouseout", () => {
         marker.setZIndexOffset(0);
       });
 
@@ -316,7 +332,9 @@ export default function EmployeeLocationMap({
     }
   }, [employees, selectedEmployeeId, onSelectEmployee, isMapReady]);
 
-  const liveCount = employees.filter((e) => e.latitude != null && isEmployeeLive(e)).length;
+  const liveCount = employees.filter(
+    (e) => e.latitude != null && isEmployeeLive(e),
+  ).length;
 
   return (
     <div className="relative h-full w-full rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm bg-slate-100">
@@ -327,9 +345,12 @@ export default function EmployeeLocationMap({
             <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600">
               LIVE TRACKING IDLE
             </div>
-            <p className="text-xs font-bold text-slate-800">No employees currently live on GPS</p>
+            <p className="text-xs font-bold text-slate-800">
+              No employees currently live on GPS
+            </p>
             <p className="text-[11px] text-slate-500 font-medium leading-relaxed">
-              Old locations are hidden from the live map. Only staff actively on duty with GPS tracking enabled are displayed.
+              Old locations are hidden from the live map. Only staff actively on
+              duty with GPS tracking enabled are displayed.
             </p>
           </div>
         </div>

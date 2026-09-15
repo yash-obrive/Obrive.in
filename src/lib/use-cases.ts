@@ -1,14 +1,14 @@
-import { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 import { IMAGES } from "@/assets/images";
 import {
   AR_PRODUCT_VISUALIZATION,
-  VIRTUAL_TRAINING,
   DIGITAL_TWINS,
-  VIRTUAL_SHOWROOMS,
   INDOOR_NAVIGATION,
+  REMOTE_ASSISTANCE,
   THREE_D_PRODUCT_CONFIGURATION,
   VIRTUAL_PROPERTY_TOURS,
-  REMOTE_ASSISTANCE,
+  VIRTUAL_SHOWROOMS,
+  VIRTUAL_TRAINING,
 } from "@/constants/pages/use-cases";
 
 // Reusing identical structure as SolutionHero for compatibility

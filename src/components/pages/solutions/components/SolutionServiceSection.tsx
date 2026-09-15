@@ -1,5 +1,7 @@
 import FONTS from "@/assets/fonts";
 
+import type { ServiceSubSection } from "@/types/solutions";
+
 interface SolutionServiceSectionProps {
   id: string;
   title: string;
@@ -7,6 +9,7 @@ interface SolutionServiceSectionProps {
   description: string;
   label: string;
   items: readonly string[];
+  subSections?: readonly ServiceSubSection[];
   footer: string;
 }
 
@@ -17,21 +20,24 @@ const SolutionServiceSection = ({
   description,
   label,
   items,
+  subSections,
   footer,
 }: SolutionServiceSectionProps) => {
   return (
     <div id={id} className="flex flex-col gap-5 scroll-mt-24">
       {/* Section Title */}
       <h2
-        className={`${FONTS.microgrammaBold.className} text-primary text-3xl max-xl:text-2xl max-lg:text-xl max-md:text-lg`}
+        className={`${FONTS.microgrammaBold.className} text-black text-[32px] max-xl:text-3xl max-lg:text-2xl max-md:text-xl`}
       >
         {title}
       </h2>
 
       {/* Subtitle */}
-      <p className="text-zinc-800 text-base font-medium max-md:text-sm">
-        {subtitle}
-      </p>
+      {subtitle && (
+        <p className="text-zinc-600 text-base max-md:text-sm max-w-[680px]">
+          {subtitle}
+        </p>
+      )}
 
       {/* Description */}
       <p className="text-sm leading-7 tracking-[0.3px] text-zinc-600 max-w-[680px]">
@@ -39,26 +45,64 @@ const SolutionServiceSection = ({
       </p>
 
       {/* Tag Label */}
-      <p className="text-xs text-zinc-500 font-medium mt-1">
-        {label}:
-      </p>
+      {label && <p className={`${FONTS.microgrammaBold.className} text-black text-xl max-md:text-lg mt-2`}>{label}</p>}
 
       {/* Tag container — flex wrap for variable sizes and preventing overflow */}
-      <div className="flex flex-wrap gap-2">
-        {items.map((item) => (
-          <div
-            key={item}
-            className="flex items-center justify-center gap-2 px-4 py-2 border border-zinc-300 rounded-full bg-transparent hover:bg-zinc-50 transition-colors max-w-full"
-          >
-            <span className="text-xs text-zinc-700 leading-snug text-center break-words">{item}</span>
-          </div>
-        ))}
-      </div>
+      {items && items.length > 0 && (
+        <div className="flex flex-wrap gap-2.5 mt-2">
+          {items.map((item) => (
+            <div
+              key={item}
+              className="flex items-center justify-center gap-2 px-3 py-1.5 border border-zinc-300 rounded-full bg-transparent hover:bg-zinc-50 transition-colors max-w-full"
+            >
+              <span className="text-[11px] sm:text-xs text-zinc-600 leading-snug text-center break-words">
+                {item}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Nested Sub-Sections */}
+      {subSections && subSections.length > 0 && (
+        <div className="flex flex-col gap-8 mt-4">
+          {subSections.map((sub, idx) => (
+            <div key={idx} className="flex flex-col gap-2">
+              {sub.title && (
+                <h3 className={`${FONTS.microgrammaBold.className} text-black text-xl max-md:text-lg`}>
+                  {sub.title}
+                </h3>
+              )}
+              {sub.description && (
+                <p className="text-sm leading-7 tracking-[0.3px] text-zinc-600 max-w-[680px]">
+                  {sub.description}
+                </p>
+              )}
+              {sub.items && sub.items.length > 0 && (
+                <div className="flex flex-wrap gap-2.5 mt-2">
+                  {sub.items.map((item, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center justify-center gap-2 px-3 py-1.5 border border-zinc-300 rounded-full bg-transparent hover:bg-zinc-50 transition-colors max-w-full"
+                    >
+                      <span className="text-[11px] sm:text-xs text-zinc-600 leading-snug text-center break-words">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Footer paragraph */}
-      <p className="text-xs leading-6 text-zinc-500 max-w-[660px] mt-2">
-        {footer}
-      </p>
+      {footer && (
+        <p className="text-xs leading-6 text-zinc-500 max-w-[660px] mt-4">
+          {footer}
+        </p>
+      )}
     </div>
   );
 };

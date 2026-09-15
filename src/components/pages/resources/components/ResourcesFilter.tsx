@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
+import { Button } from "@/components/ui/button";
 import { filters } from "@/constants/pages/resources/filters";
 
 interface ResourcesFilterProps {

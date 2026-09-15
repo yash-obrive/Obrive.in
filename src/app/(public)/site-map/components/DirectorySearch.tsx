@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
 import Link from "next/link";
+import React, { useState } from "react";
 import FONTS from "@/assets/fonts";
-import { DirectoryCategory } from "../directoryData";
-import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
+import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
+import type { DirectoryCategory } from "../directoryData";
 
 interface DirectorySearchProps {
   categories: DirectoryCategory[];
@@ -16,14 +16,17 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
 
   // Filter logic
   let visiblePagesCount = 0;
-  const filteredCategories = categories.map((cat) => {
-    const filteredEntries = cat.entries.filter((entry) => {
-      const isMatch = !normalizedQuery || entry.searchKeywords.includes(normalizedQuery);
-      if (isMatch) visiblePagesCount++;
-      return isMatch;
-    });
-    return { ...cat, entries: filteredEntries };
-  }).filter((cat) => cat.entries.length > 0);
+  const filteredCategories = categories
+    .map((cat) => {
+      const filteredEntries = cat.entries.filter((entry) => {
+        const isMatch =
+          !normalizedQuery || entry.searchKeywords.includes(normalizedQuery);
+        if (isMatch) visiblePagesCount++;
+        return isMatch;
+      });
+      return { ...cat, entries: filteredEntries };
+    })
+    .filter((cat) => cat.entries.length > 0);
 
   return (
     <>
@@ -53,7 +56,9 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
                       <div className="uppercase text-xs font-medium text-primary mb-2">
                         Directory
                       </div>
-                      <h2 className={`${FONTS.microgrammaBold.className} text-secondary text-3xl sm:text-4xl m-0`}>
+                      <h2
+                        className={`${FONTS.microgrammaBold.className} text-secondary text-3xl sm:text-4xl m-0`}
+                      >
                         {category.title}
                       </h2>
                     </div>
@@ -61,7 +66,7 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
                       {category.description}
                     </p>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {category.entries.map((entry) => (
                       <Link
@@ -72,13 +77,14 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
                         <div className="text-secondary text-[11px] font-extrabold tracking-[0.1em]">
                           {entry.num}
                         </div>
-                        <h3 className={`${FONTS.microgrammaBold.className} text-primary text-lg mt-[18px] mb-[7px]`}>
+                        <h3
+                          className={`${FONTS.microgrammaBold.className} text-primary text-lg mt-[18px] mb-[7px]`}
+                        >
                           {entry.title}
                         </h3>
                         <p className="text-primary/70 text-[13px] m-0 mb-auto leading-relaxed">
                           {entry.description}
                         </p>
-
                       </Link>
                     ))}
                   </div>
@@ -87,8 +93,14 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
             ))
           ) : (
             <div className="py-20 text-center">
-              <h3 className={`${FONTS.microgrammaBold.className} text-primary text-2xl`}>No results found</h3>
-              <p className="text-primary/70 mt-2">Try adjusting your search terms.</p>
+              <h3
+                className={`${FONTS.microgrammaBold.className} text-primary text-2xl`}
+              >
+                No results found
+              </h3>
+              <p className="text-primary/70 mt-2">
+                Try adjusting your search terms.
+              </p>
             </div>
           )}
         </div>

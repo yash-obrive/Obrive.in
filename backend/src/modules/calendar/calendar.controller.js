@@ -1,4 +1,9 @@
-const { getTasksForCalendar, createTask, updateTask, deleteTask } = require('./calandar.service.js');
+const {
+  getTasksForCalendar,
+  createTask,
+  updateTask,
+  deleteTask,
+} = require("./calandar.service.js");
 
 const getCalendarTasks = async (req, res) => {
   try {
@@ -14,14 +19,13 @@ const getCalendarTasks = async (req, res) => {
       count: allTasks.length,
       data: allTasks,
     });
-    
   } catch (error) {
     console.error("Error in calendar controller:", error);
     // Send the error HTTP response
     return res.status(500).json({
       success: false,
       message: "An error occurred while fetching tasks",
-      error: error.message
+      error: error.message,
     });
   }
 };
@@ -34,15 +38,15 @@ const getCalendarTasks = async (req, res) => {
 const createCalendarTask = async (req, res) => {
   try {
     const taskData = req.body;
-    
+
     console.log("📝 Creating task with data:", taskData);
 
     // Validate required fields
-    if (!taskData.title || taskData.title.trim() === '') {
+    if (!taskData.title || taskData.title.trim() === "") {
       console.log("❌ Validation failed: title is empty");
       return res.status(400).json({
         success: false,
-        message: "Task title is required"
+        message: "Task title is required",
       });
     }
 
@@ -56,18 +60,17 @@ const createCalendarTask = async (req, res) => {
     return res.status(201).json({
       success: true,
       message: "Task created successfully",
-      data: newTask
+      data: newTask,
     });
-
   } catch (error) {
     console.error("❌ Error creating task:", error);
     console.error("Error Stack:", error.stack);
-    
+
     return res.status(500).json({
       success: false,
       message: "An error occurred while creating the task",
       error: error.message,
-      details: error.code || error.meta // Include Prisma error details
+      details: error.code || error.meta, // Include Prisma error details
     });
   }
 };
@@ -86,7 +89,7 @@ const updateCalendarTask = async (req, res) => {
     if (!id || isNaN(id)) {
       return res.status(400).json({
         success: false,
-        message: "Valid task ID is required"
+        message: "Valid task ID is required",
       });
     }
 
@@ -96,24 +99,23 @@ const updateCalendarTask = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Task updated successfully",
-      data: updatedTask
+      data: updatedTask,
     });
-
   } catch (error) {
     console.error("Error updating task:", error);
 
     // Handle "record not found" error
-    if (error.code === 'P2025') {
+    if (error.code === "P2025") {
       return res.status(404).json({
         success: false,
-        message: "Task not found"
+        message: "Task not found",
       });
     }
 
     return res.status(500).json({
       success: false,
       message: "An error occurred while updating the task",
-      error: error.message
+      error: error.message,
     });
   }
 };
@@ -130,7 +132,7 @@ const deleteCalendarTask = async (req, res) => {
     if (!id || isNaN(id)) {
       return res.status(400).json({
         success: false,
-        message: "Valid task ID is required"
+        message: "Valid task ID is required",
       });
     }
 
@@ -140,26 +142,30 @@ const deleteCalendarTask = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Task deleted successfully",
-      data: deletedTask
+      data: deletedTask,
     });
-
   } catch (error) {
     console.error("Error deleting task:", error);
 
     // Handle "record not found" error
-    if (error.code === 'P2025') {
+    if (error.code === "P2025") {
       return res.status(404).json({
         success: false,
-        message: "Task not found"
+        message: "Task not found",
       });
     }
 
     return res.status(500).json({
       success: false,
       message: "An error occurred while deleting the task",
-      error: error.message
+      error: error.message,
     });
   }
 };
 
-module.exports = { getCalendarTasks, createCalendarTask, updateCalendarTask, deleteCalendarTask };
+module.exports = {
+  getCalendarTasks,
+  createCalendarTask,
+  updateCalendarTask,
+  deleteCalendarTask,
+};
