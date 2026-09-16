@@ -4,9 +4,6 @@ import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { InfiniteHorizontalScroll } from "@/components/shared/layout/InfiniteHorizontalScroll";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import WorkflowSection from "./components/WorkflowSection";
-import SolutionFAQSection from "./components/SolutionFAQSection";
-import { SolutionFAQCategory, SolutionFAQMeta } from "@/lib/solutions";
-
 interface SolutionTemplateProps {
   hero: {
     title: string;
@@ -16,8 +13,6 @@ interface SolutionTemplateProps {
   keyBenefits: readonly any[];
   howItWorks: readonly any[];
   workflowStepsSidebar: readonly string[];
-  faqs?: readonly SolutionFAQCategory[];
-  faqMeta?: SolutionFAQMeta;
 }
 
 export function SolutionTemplate({
@@ -25,8 +20,6 @@ export function SolutionTemplate({
   keyBenefits,
   howItWorks,
   workflowStepsSidebar,
-  faqs,
-  faqMeta,
 }: SolutionTemplateProps) {
   return (
     <div>
@@ -86,14 +79,6 @@ export function SolutionTemplate({
           workflowStepsSidebar={workflowStepsSidebar}
         />
       </FullWidthSection>
-
-      {faqs && faqs.length > 0 && (
-        <SolutionFAQSection
-          title={faqMeta?.title}
-          description={faqMeta?.description}
-          categories={faqs}
-        />
-      )}
     </div>
   );
 }

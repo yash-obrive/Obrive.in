@@ -337,35 +337,11 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
           })(),
         })}
       </Script>
-      {solutionData.faqs && solutionData.faqs.length > 0 && (
-        <Script
-          id={`${slug}-faq-schema`}
-          type="application/ld+json"
-          strategy="afterInteractive"
-        >
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: solutionData.faqs.flatMap((cat) =>
-              cat.items.map((item) => ({
-                "@type": "Question",
-                name: item.question,
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: item.answer.replace(/<[^>]+>/g, ""),
-                },
-              }))
-            ),
-          })}
-        </Script>
-      )}
       <SolutionTemplate
         hero={solutionData.hero}
         keyBenefits={solutionData.keyBenefits}
         howItWorks={solutionData.howItWorks}
         workflowStepsSidebar={solutionData.workflowStepsSidebar}
-        faqs={solutionData.faqs}
-        faqMeta={solutionData.faqMeta}
       />
     </>
   );
