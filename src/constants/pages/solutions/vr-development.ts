@@ -98,3 +98,9 @@ export const VR_DEVELOPMENT_KEY_BENEFITS = [
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
 ] as const;
+
+export {
+  VR_DEVELOPMENT_FAQS,
+  VR_DEVELOPMENT_FAQS_META,
+} from "./faqs/vr-development-faqs";
+

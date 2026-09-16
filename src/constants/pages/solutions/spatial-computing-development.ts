@@ -99,3 +99,5 @@ export const SPATIAL_COMPUTING_KEY_BENEFITS = [
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
 ] as const;
+
+export { SPATIAL_COMPUTING_FAQS, SPATIAL_COMPUTING_FAQ_META } from "./faqs/spatial-computing-faqs";

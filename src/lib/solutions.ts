@@ -5,24 +5,32 @@ import {
   AR_DEVELOPMENT_HOW_IT_WORKS,
   AR_DEVELOPMENT_KEY_BENEFITS,
   AR_DEVELOPMENT_WORKFLOW_STEPS_SIDEBAR,
+  AR_DEVELOPMENT_FAQS,
+  AR_DEVELOPMENT_FAQS_META,
 } from "@/constants/pages/solutions/ar-development";
 import {
   VR_DEVELOPMENT_HERO,
   VR_DEVELOPMENT_HOW_IT_WORKS,
   VR_DEVELOPMENT_KEY_BENEFITS,
   VR_DEVELOPMENT_WORKFLOW_STEPS_SIDEBAR,
+  VR_DEVELOPMENT_FAQS,
+  VR_DEVELOPMENT_FAQS_META,
 } from "@/constants/pages/solutions/vr-development";
 import {
   THREE_D_DESIGN_HERO,
   THREE_D_DESIGN_HOW_IT_WORKS,
   THREE_D_DESIGN_KEY_BENEFITS,
   THREE_D_DESIGN_WORKFLOW_STEPS_SIDEBAR,
+  THREE_D_DESIGN_FAQS,
+  THREE_D_DESIGN_FAQ_META,
 } from "@/constants/pages/solutions/3d-design-development";
 import {
   SPATIAL_COMPUTING_HERO,
   SPATIAL_COMPUTING_HOW_IT_WORKS,
   SPATIAL_COMPUTING_KEY_BENEFITS,
   SPATIAL_COMPUTING_WORKFLOW_STEPS_SIDEBAR,
+  SPATIAL_COMPUTING_FAQS,
+  SPATIAL_COMPUTING_FAQ_META,
 } from "@/constants/pages/solutions/spatial-computing-development";
 
 export interface SolutionHero {
@@ -37,12 +45,29 @@ export interface SolutionHero {
   };
 }
 
+export interface SolutionFAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface SolutionFAQCategory {
+  title: string;
+  items: SolutionFAQItem[];
+}
+
+export interface SolutionFAQMeta {
+  title: string;
+  description?: string;
+}
+
 export interface SolutionData {
   slug: string;
   hero: SolutionHero;
   howItWorks: readonly any[];
   keyBenefits: readonly any[];
   workflowStepsSidebar: readonly string[];
+  faqs?: readonly SolutionFAQCategory[];
+  faqMeta?: SolutionFAQMeta;
 }
 
 const SOLUTIONS_DATA: Record<string, SolutionData> = {
@@ -55,6 +80,8 @@ const SOLUTIONS_DATA: Record<string, SolutionData> = {
     howItWorks: AR_DEVELOPMENT_HOW_IT_WORKS,
     keyBenefits: AR_DEVELOPMENT_KEY_BENEFITS,
     workflowStepsSidebar: AR_DEVELOPMENT_WORKFLOW_STEPS_SIDEBAR,
+    faqs: AR_DEVELOPMENT_FAQS,
+    faqMeta: AR_DEVELOPMENT_FAQS_META,
   },
   "virtual-reality-development": {
     slug: "virtual-reality-development",
@@ -65,6 +92,8 @@ const SOLUTIONS_DATA: Record<string, SolutionData> = {
     howItWorks: VR_DEVELOPMENT_HOW_IT_WORKS,
     keyBenefits: VR_DEVELOPMENT_KEY_BENEFITS,
     workflowStepsSidebar: VR_DEVELOPMENT_WORKFLOW_STEPS_SIDEBAR,
+    faqs: VR_DEVELOPMENT_FAQS,
+    faqMeta: VR_DEVELOPMENT_FAQS_META,
   },
   "3d-design-development": {
     slug: "3d-design-development",
@@ -75,6 +104,8 @@ const SOLUTIONS_DATA: Record<string, SolutionData> = {
     howItWorks: THREE_D_DESIGN_HOW_IT_WORKS,
     keyBenefits: THREE_D_DESIGN_KEY_BENEFITS,
     workflowStepsSidebar: THREE_D_DESIGN_WORKFLOW_STEPS_SIDEBAR,
+    faqs: THREE_D_DESIGN_FAQS,
+    faqMeta: THREE_D_DESIGN_FAQ_META,
   },
   "spatial-computing-app-development": {
     slug: "spatial-computing-app-development",
@@ -85,6 +116,8 @@ const SOLUTIONS_DATA: Record<string, SolutionData> = {
     howItWorks: SPATIAL_COMPUTING_HOW_IT_WORKS,
     keyBenefits: SPATIAL_COMPUTING_KEY_BENEFITS,
     workflowStepsSidebar: SPATIAL_COMPUTING_WORKFLOW_STEPS_SIDEBAR,
+    faqs: SPATIAL_COMPUTING_FAQS,
+    faqMeta: SPATIAL_COMPUTING_FAQ_META,
   },
 };
 

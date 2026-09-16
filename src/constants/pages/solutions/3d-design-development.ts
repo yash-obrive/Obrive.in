@@ -98,3 +98,5 @@ export const THREE_D_DESIGN_KEY_BENEFITS = [
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
 ] as const;
+
+export { THREE_D_DESIGN_FAQS, THREE_D_DESIGN_FAQ_META } from "./faqs/3d-design-faqs";
