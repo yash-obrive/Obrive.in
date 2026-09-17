@@ -53,7 +53,7 @@ export default function ResourceObrivesApproachTable({
         </div>
 
         {/* Table Rows */}
-        {phases.map((item, index) => (
+        {phases?.map((item, index) => (
           <div
             key={index}
             className="grid grid-cols-[38%_62%] border-t border-gray-300"
@@ -73,7 +73,7 @@ export default function ResourceObrivesApproachTable({
       </div>
 
       <div className="md:hidden space-y-4">
-        {phases.map((item, index) => (
+        {phases?.map((item, index) => (
           <div
             key={index}
             className="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden"

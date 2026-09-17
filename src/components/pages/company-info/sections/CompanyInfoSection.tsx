@@ -23,7 +23,7 @@ export default function CompanyInfoSection({
         </h2>
       )}
       <div className="space-y-6">
-        {items.map((item, index) => (
+        {items?.map((item, index) => (
           <div key={index}>
             {item.title && (
               <h3 className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}>

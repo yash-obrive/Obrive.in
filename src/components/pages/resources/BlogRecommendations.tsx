@@ -24,7 +24,7 @@ export default function BlogRecommendations({
   return (
     <section className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-y border-black/15 divide-y divide-black/15 md:divide-y-0 md:divide-x">
-        {recommendations.map((blog) => (
+        {recommendations?.map((blog) => (
           <article
             key={blog.slug}
             className="group relative flex h-full px-6 sm:px-10 md:px-30 py-8 md:py-0"

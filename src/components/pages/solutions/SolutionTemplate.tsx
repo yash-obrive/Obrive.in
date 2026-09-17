@@ -4,8 +4,11 @@ import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { InfiniteHorizontalScroll } from "@/components/shared/layout/InfiniteHorizontalScroll";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import WorkflowSection from "./components/WorkflowSection";
+import SolutionSidebarLayout from "./components/SolutionSidebarLayout";
+import { SidebarLink, ServiceSection, WorkflowStep } from "@/types/solutions";
 
 interface SolutionTemplateProps {
+  slug: string;
   hero: {
     title: string;
     description: string;
@@ -14,13 +17,22 @@ interface SolutionTemplateProps {
   keyBenefits: readonly any[];
   howItWorks: readonly any[];
   workflowStepsSidebar: readonly string[];
+  sidebarLinks?: readonly SidebarLink[];
+  serviceSections?: readonly ServiceSection[];
+  processSteps?: readonly WorkflowStep[];
+  serviceLabel?: string;
 }
 
 export function SolutionTemplate({
+  slug,
   hero,
   keyBenefits,
   howItWorks,
   workflowStepsSidebar,
+  sidebarLinks,
+  serviceSections,
+  processSteps,
+  serviceLabel,
 }: SolutionTemplateProps) {
   return (
     <div>
@@ -59,15 +71,16 @@ export function SolutionTemplate({
       </FadeInOnView>
 
       <FadeInOnView>
-        <div className="flex gap-10 my-5 max-lg:flex-col max-lg:items-stretch max-md:gap-6 max-md:my-14 max-sm:my-10">
+        <div className="flex gap-10 my-5 max-lg:flex-col max-lg:items-stretch max-md:gap-6 max-md:my-14 max-sm:my-10 relative">
           <InfiniteHorizontalScroll
             speed={25}
             gap={16}
             pauseOnHover={true}
+            showNavigation={true}
             className="w-full"
             itemClassName="flex items-stretch max-md:basis-full"
           >
-            {keyBenefits.map((item) => (
+            {keyBenefits?.map((item) => (
               <KeyBenefitsCard key={item.title} {...item} />
             ))}
           </InfiniteHorizontalScroll>
@@ -75,10 +88,19 @@ export function SolutionTemplate({
       </FadeInOnView>
 
       <FullWidthSection backgroundColor="none">
-        <WorkflowSection
-          howItWorks={howItWorks}
-          workflowStepsSidebar={workflowStepsSidebar}
-        />
+        {sidebarLinks && serviceSections && processSteps ? (
+          <SolutionSidebarLayout
+            sidebarLinks={sidebarLinks as SidebarLink[]}
+            serviceSections={serviceSections as ServiceSection[]}
+            processSteps={processSteps as WorkflowStep[]}
+            serviceLabel={serviceLabel}
+          />
+        ) : (
+          <WorkflowSection
+            howItWorks={howItWorks}
+            workflowStepsSidebar={workflowStepsSidebar}
+          />
+        )}
       </FullWidthSection>
     </div>
   );

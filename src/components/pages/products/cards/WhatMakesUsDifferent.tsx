@@ -78,7 +78,7 @@ export default function WhatMakesUsDifferent({
       className="bg-primary pl-18 max-sm:p-0 max-md:pl-4"
     >
       <div className="grid grid-cols-1 relative sm:grid-cols-2 lg:grid-cols-4 h-auto sm:h-[569px] max-md:py-8">
-        {items.map((item, idx) => {
+        {items?.map((item, idx) => {
           const bordered = idx % 2 === 0;
           return (
             <div
