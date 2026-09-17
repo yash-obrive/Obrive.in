@@ -23,7 +23,7 @@ export default function FAQWorkflowSteps({
     <section>
       <div>
         <div className="w-[430px] max-sm:w-full">
-          {steps.map((step, index) => {
+          {steps?.map((step, index) => {
             const targetId = stepIds?.[index];
 
             return (

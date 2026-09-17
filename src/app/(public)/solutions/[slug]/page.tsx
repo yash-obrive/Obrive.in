@@ -338,10 +338,14 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
         })}
       </Script>
       <SolutionTemplate
+        slug={slug}
         hero={solutionData.hero}
         keyBenefits={solutionData.keyBenefits}
         howItWorks={solutionData.howItWorks}
         workflowStepsSidebar={solutionData.workflowStepsSidebar}
+        sidebarLinks={solutionData.sidebarLinks}
+        serviceSections={solutionData.serviceSections}
+        processSteps={solutionData.processSteps}
       />
     </>
   );
