@@ -93,45 +93,85 @@ import { StyledText } from "@/components/shared/StyledText";
       header: "App AR",
       width: "30%",
     },
-  ]}
-  data={[
-    {
-      feature: <StyledText>Accessibility</StyledText>,
-      webar: "No install, browser-based",
-      appar: "Requires download/install",
-    },
-    {
-      feature: <StyledText>Setup Speed</StyledText>,
-      webar: "Fast and lightweight",
-      appar: "More complex setup",
-    },
-    {
-      feature: <StyledText>Tracking Capability</StyledText>,
-      webar: "Basic, often marker-based",
-      appar: "Advanced—SLAM, depth, environment mapping",
-    },
-    {
-      feature: <StyledText>Engagement Potential</StyledText>,
-      webar: "Great for marketing & quick demos",
-      appar: "Ideal for immersive, repeat-use cases",
-    },
-    {
-      feature: <StyledText>Hardware Integration</StyledText>,
-      webar: "Limited",
-      appar: "Full access (camera, sensors, performance)",
-    },
-    {
-      feature: <StyledText>Maintenance Overhead</StyledText>,
-      webar: "Low",
-      appar: "Higher (updates, compatibility)",
-    },
-    {
-      feature: <StyledText>Analytics</StyledText>,
-      webar: "Web metrics",
-      appar: "Deeper usage data",
-    },
-  ]}
-/>
+  ]}>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Accessibility</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      No install, browser-based
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Requires download/install
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Setup Speed</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Fast and lightweight
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      More complex setup
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Tracking Capability</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Basic, often marker-based
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Advanced—SLAM, depth, environment mapping
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Engagement Potential</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Great for marketing & quick demos
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Ideal for immersive, repeat-use cases
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Hardware Integration</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Limited
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Full access (camera, sensors, performance)
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Maintenance Overhead</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Low
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Higher (updates, compatibility)
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Analytics</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Web metrics
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Deeper usage data
+    </ImpactTableCell>
+  </ImpactTableRow>
+</TheImpactTable>
 
 <WhyItWorkedSection title="Use Cases That Make the Difference">
   <WhyItWorkedItem>

@@ -94,40 +94,74 @@ import { StyledText } from "@/components/shared/StyledText";
       header: "App VR (Native)",
       width: "30%",
     },
-  ]}
-  data={[
-    {
-      feature: <StyledText>Accessibility</StyledText>,
-      webar: "Instant via browser—no installs",
-      appar: "Requires download, setup, and installation",
-    },
-    {
-      feature: <StyledText>Performance & Capabilities</StyledText>,
-      webar: "Good for moderate VR experiences",
-      appar: "Superior visuals, tracking, SLAM, spatial mapping",
-    },
-    {
-      feature: <StyledText>Development Simplicity</StyledText>,
-      webar: "Single codebase, fast updates",
-      appar: "More complex—platform-specific builds & updates",
-    },
-    {
-      feature: <StyledText>Maintenance & Updates</StyledText>,
-      webar: "Instant—refresh browser to deploy updates",
-      appar: "Needs App Store updates and user compliance",
-    },
-    {
-      feature: <StyledText>Platform Reach</StyledText>,
-      webar: "Broad device/browser support",
-      appar: "Device-specific (iOS, Android, headsets)",
-    },
-    {
-      feature: <StyledText>Enterprise Use Cases</StyledText>,
-      webar: "Quick demos, presentations, lightweight training",
-      appar: "Deep training, simulations, long-term immersive scenarios",
-    },
-  ]}
-/>
+  ]}>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Accessibility</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Instant via browser—no installs
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      Requires download, setup, and installation
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Performance & Capabilities</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Good for moderate VR experiences
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      Superior visuals, tracking, SLAM, spatial mapping
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Development Simplicity</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Single codebase, fast updates
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      More complex—platform-specific builds & updates
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Maintenance & Updates</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Instant—refresh browser to deploy updates
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      Needs App Store updates and user compliance
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Platform Reach</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Broad device/browser support
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      Device-specific (iOS, Android, headsets)
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Enterprise Use Cases</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Quick demos, presentations, lightweight training
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      Deep training, simulations, long-term immersive scenarios
+    </ImpactTableCell>
+  </ImpactTableRow>
+</TheImpactTable>
 
 <WhyItWorkedSection title="When to Choose Web VR—and When to Go Native">
   <WhyItWorkedItem>

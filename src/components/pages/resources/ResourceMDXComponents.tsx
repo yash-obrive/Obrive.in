@@ -9,7 +9,11 @@ import ResourceCompanyOverviewSection from "./sections/ResourceCompanyOverviewSe
 import ResourceObrivesApproachTable, { ApproachPhaseItem, ApproachTableTitle, ApproachTableDescription } from "./sections/ResourceObrivesApproachTable";
 import ResourceOutcomeSnapshotSection from "./sections/ResourceOutcomeSnapshotSection";
 import ResourceStrategicApproachSection, { StrategicStepItem } from "./sections/ResourceStrategicApproachSection";
-import ResourceTheImpactTable from "./sections/ResourceTheImpactTable";
+import ResourceTheImpactTable, {
+  ImpactTableRow,
+  ImpactTableCell,
+  ImpactTableMetric
+} from "./sections/ResourceTheImpactTable";
 import ResourceWhyItWorkedSection, { WhyItWorkedItem } from "./sections/ResourceWhyItWorkedSection";
 
 export {
@@ -135,6 +139,9 @@ export const createResourceMDXComponents = (metadata: any) => ({
   // The Impact table component
   ResourceTheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
   TheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
+  ImpactTableRow: (props: any) => <ImpactTableRow {...props} />,
+  ImpactTableCell: (props: any) => <ImpactTableCell {...props} />,
+  ImpactTableMetric: (props: any) => <ImpactTableMetric {...props} />,
   WhyItWorkedItem: (props: any) => <WhyItWorkedItem {...props} />,
   StrategicStepItem: (props: any) => <StrategicStepItem {...props} />,
   ApproachPhaseItem: (props: any) => <ApproachPhaseItem {...props} />,
