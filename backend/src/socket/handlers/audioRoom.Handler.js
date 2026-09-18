@@ -1,5 +1,5 @@
 // backend/src/socket/handlers/audioRoom.Handler.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 const { getRoomDetailsService } = require("../../modules/AUDIO_ROOM/room-details/roomDetails.service");
 
 exports.registerAudioRoomHandler = (io, socket) => {

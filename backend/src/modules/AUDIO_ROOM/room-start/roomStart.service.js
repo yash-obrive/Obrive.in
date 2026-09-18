@@ -1,4 +1,4 @@
-const { prisma } = require("../../../../prisma");
+const { prisma } = require("../../../../db");
 
 const startRoomService = async (
   payload

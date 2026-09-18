@@ -1,6 +1,6 @@
 // backend/src/socket/middleware/auth.middleware.js
 const { verifyAccessToken } = require("../../utils/jwt");
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 const cookie = require("cookie");
 
 exports.socketAuthMiddleware = async (socket, next) => {

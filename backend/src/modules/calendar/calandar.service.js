@@ -1,4 +1,4 @@
-const { prisma } = require('../../../prisma');
+const { prisma } = require('../../../db');
 
 /**
  * Fetch tasks between an optional start and end date
@@ -8,15 +8,15 @@ const { prisma } = require('../../../prisma');
  */
 const getTasksForCalendar = async (startDate, endDate) => {
   let queryConditions = {};
-  
+
   // If dates are provided, filter the tasks
   if (startDate && endDate) {
     queryConditions = {
       where: {
         // Using 'deadline' field from tasks table in schema.prisma
         deadline: {
-          gte: new Date(startDate), 
-          lte: new Date(endDate),   
+          gte: new Date(startDate),
+          lte: new Date(endDate),
         },
       },
     };
@@ -24,7 +24,7 @@ const getTasksForCalendar = async (startDate, endDate) => {
 
   // Fetch the tasks from the database
   const tasks = await prisma.tasks.findMany(queryConditions);
-  
+
   return tasks;
 };
 

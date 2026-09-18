@@ -1,4 +1,4 @@
-const { prisma } = require('../../../prisma');
+const { prisma } = require('../../../db');
 
 // ── Get all sticky notes ──────────────────────────
 exports.getAllStickyNotes = async (_userId) => {
@@ -123,10 +123,10 @@ exports.updateStickyNote = async (noteId, userId, data) => {
   if (data.content !== undefined) updateData.content = data.content;
   if (data.color !== undefined) updateData.color = data.color.toLowerCase();
 
-if (data.note_date !== undefined) {
-  const noteDate = new Date(`${data.note_date}T00:00:00`);
-  updateData.note_date = noteDate;
-}
+  if (data.note_date !== undefined) {
+    const noteDate = new Date(`${data.note_date}T00:00:00`);
+    updateData.note_date = noteDate;
+  }
   if (data.position !== undefined) updateData.position = data.position;
 
   updateData.updated_at = new Date();

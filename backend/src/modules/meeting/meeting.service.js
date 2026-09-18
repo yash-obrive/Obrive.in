@@ -1,10 +1,10 @@
-const { prisma } = require('../../../prisma');
+const { prisma } = require('../../../db');
 
 exports.getMeetings = async (userId, role) => {
   if (role === 'EMPLOYEE') {
     const emp = await prisma.employee.findUnique({ where: { userId } });
     return prisma.meeting.findMany({
-      where:   { participants: { some: { employeeId: emp.id } } },
+      where: { participants: { some: { employeeId: emp.id } } },
       include: { participants: { include: { employee: { select: { fullName: true } } } } },
     });
   }
@@ -19,10 +19,10 @@ exports.scheduleMeeting = async (createdBy, data) => {
   const conflicts = await prisma.availabilitySlot.findMany({
     where: {
       employeeId: { in: data.participantIds },
-      date:       new Date(data.date),
-      slotType:   'BUSY',
-      startTime:  { lt: data.endTime },
-      endTime:    { gt: data.startTime },
+      date: new Date(data.date),
+      slotType: 'BUSY',
+      startTime: { lt: data.endTime },
+      endTime: { gt: data.startTime },
     },
     include: { employee: { select: { fullName: true } } },
   });
@@ -34,12 +34,12 @@ exports.scheduleMeeting = async (createdBy, data) => {
 
   return prisma.meeting.create({
     data: {
-      title:       data.title,
+      title: data.title,
       description: data.description,
-      projectId:   data.projectId,
-      date:        new Date(data.date),
-      startTime:   data.startTime,
-      endTime:     data.endTime,
+      projectId: data.projectId,
+      date: new Date(data.date),
+      startTime: data.startTime,
+      endTime: data.endTime,
       createdBy,
       participants: {
         create: data.participantIds.map(empId => ({ employeeId: empId })),
@@ -52,7 +52,7 @@ exports.scheduleMeeting = async (createdBy, data) => {
 exports.updateMeetingStatus = async (meetingId, status) => {
   return prisma.meeting.update({
     where: { id: meetingId },
-    data:  { status },
+    data: { status },
   });
 };
 

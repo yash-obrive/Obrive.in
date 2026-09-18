@@ -1,4 +1,4 @@
-const { prisma }       = require('../../../prisma');
+const { prisma } = require('../../../db');
 const { hashPassword } = require('../../utils/bcrypt');
 
 exports.getAllUsers = async () => {
@@ -8,7 +8,7 @@ exports.getAllUsers = async () => {
         id: true, email: true, role: true,
         isActive: true, createdAt: true,
         employee: { select: { fullName: true, department: true, designation: true } },
-        hr:       { select: { fullName: true } },
+        hr: { select: { fullName: true } },
       },
       orderBy: { createdAt: 'desc' },
     }),
@@ -31,16 +31,16 @@ exports.createEmployee = async (data) => {
     });
     const employee = await tx.employee.create({
       data: {
-        userId:      user.id,
-        fullName:    data.fullName,
-        phone:       data.phone,
-        department:  data.department,
+        userId: user.id,
+        fullName: data.fullName,
+        phone: data.phone,
+        department: data.department,
         designation: data.designation,
-        dateJoined:  data.dateJoined ? new Date(data.dateJoined) : undefined,
+        dateJoined: data.dateJoined ? new Date(data.dateJoined) : undefined,
       },
     });
     return {
-      user:     { id: user.id, email: user.email, role: user.role },
+      user: { id: user.id, email: user.email, role: user.role },
       employee: { id: employee.id, fullName: employee.fullName },
     };
   });
@@ -57,25 +57,25 @@ exports.createHr = async (data) => {
     });
     return {
       user: { id: user.id, email: user.email, role: user.role },
-      hr:   { id: hr.id, fullName: hr.fullName },
+      hr: { id: hr.id, fullName: hr.fullName },
     };
   });
 };
 
 exports.createClient = async (data) => {
-  const hash  = await hashPassword(data.password);
+  const hash = await hashPassword(data.password);
   const count = await prisma.client.count();
   const clientId = `CLT-${String(count + 1).padStart(4, '0')}`;
 
   const client = await prisma.client.create({
     data: {
       clientId,
-      email:       data.email,
-      password:    hash,
+      email: data.email,
+      password: hash,
       companyName: data.companyName,
       contactName: data.contactName,
-      phone:       data.phone,
-      industry:    data.industry,
+      phone: data.phone,
+      industry: data.industry,
     },
     select: {
       id: true, clientId: true,
@@ -91,7 +91,7 @@ exports.toggleUserActive = async (userId) => {
 
   return prisma.user.update({
     where: { id: userId },
-    data:  { isActive: !user.isActive },
+    data: { isActive: !user.isActive },
     select: { id: true, email: true, role: true, isActive: true },
   });
 };
@@ -124,7 +124,7 @@ exports.getDashboardStats = async () => {
     prisma.project.count(),
     prisma.project.count({ where: { status: 'IN_PROGRESS' } }),
     prisma.loginLog.findMany({
-      take:    10,
+      take: 10,
       orderBy: { loginTime: 'desc' },
       include: { user: { select: { email: true, role: true } } },
     }),

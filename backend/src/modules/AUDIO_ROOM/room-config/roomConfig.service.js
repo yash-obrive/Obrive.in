@@ -1,13 +1,13 @@
-const { prisma } = require("../../../../prisma");
+const { prisma } = require("../../../../db");
 const { getCreatorRoomRole } = require("../roomRolePolicy");
 
 const createRoomConfigService =
-  async (payload, userId) => { 
-    
+  async (payload, userId) => {
+
     // payload comes from the request body, userId comes from the authenticated user 
     //payload data from the request body was created in the frontend and sent to the backend. It contains all the necessary information to create a room configuration, including room details, role assignments, join permissions, notifications, and invites.
 
-    const { roomConfig, roleAssignments, joinPermissions, notifications, invites,} = payload;
+    const { roomConfig, roleAssignments, joinPermissions, notifications, invites, } = payload;
 
     return await prisma.$transaction(
       async (tx) => { // tx is generally used to represent a transaction object that allows you to perform multiple database operations as a single unit of work. In this case, it is used to ensure that all the database operations related to creating a room configuration are executed atomically, meaning either all of them succeed or none of them are applied.
@@ -53,15 +53,15 @@ const createRoomConfigService =
                 startTime:
                   roomConfig.startTime
                     ? new Date(
-                        roomConfig.startTime
-                      )
+                      roomConfig.startTime
+                    )
                     : null,
 
                 endTime:
                   roomConfig.endTime
                     ? new Date(
-                        roomConfig.endTime
-                      )
+                      roomConfig.endTime
+                    )
                     : null,
 
                 participantLimit:
@@ -96,14 +96,14 @@ const createRoomConfigService =
         // ==================================
 
         const normalizedRoleAssignments =
-          roleAssignments?.map( ( role ) => ({
+          roleAssignments?.map((role) => ({
 
-              roomConfigId: createdRoom.id,
-              assignmentType: role.assignmentType,
-              crmRole: role.assignmentType === "crm-role" ? role.crmRole : null,
-              assignedRoomRole: role.assignedRoomRole,
-              userId: role.userId ? Number(role.userId) : null,
-            })
+            roomConfigId: createdRoom.id,
+            assignmentType: role.assignmentType,
+            crmRole: role.assignmentType === "crm-role" ? role.crmRole : null,
+            assignedRoomRole: role.assignedRoomRole,
+            userId: role.userId ? Number(role.userId) : null,
+          })
           ) || [];
 
         const creatorHasExplicitAssignment =
@@ -141,14 +141,14 @@ const createRoomConfigService =
             creatorHasExplicitAssignment
               ? []
               : [
-                  {
-                    roomConfigId: createdRoom.id,
-                    assignmentType: "specific-user",
-                    crmRole: null,
-                    assignedRoomRole: creatorRoomRole,
-                    userId: userId,
-                  },
-                ]
+                {
+                  roomConfigId: createdRoom.id,
+                  assignmentType: "specific-user",
+                  crmRole: null,
+                  assignedRoomRole: creatorRoomRole,
+                  userId: userId,
+                },
+              ]
           ),
         ];
 
@@ -217,26 +217,26 @@ const createRoomConfigService =
           );
         }
 
-console.log(
-  "✅ Room Created:",
-  createdRoom
-);
+        console.log(
+          "✅ Room Created:",
+          createdRoom
+        );
 
-console.table(
-  roleAssignments || []
-);
+        console.table(
+          roleAssignments || []
+        );
 
-console.table(
-  joinPermissions || []
-);
+        console.table(
+          joinPermissions || []
+        );
 
-console.table(
-  notifications || []
-);
+        console.table(
+          notifications || []
+        );
 
-console.table(
-  invites || []
-);
+        console.table(
+          invites || []
+        );
 
 
         // ==================================
@@ -251,33 +251,33 @@ console.table(
 
 
 
-        // ==================================
-        // Get list of users
-        // ==================================
+// ==================================
+// Get list of users
+// ==================================
 
 
-        const getAllUsers = async () => {
-          try {
-            const users = await prisma.users.findMany({
-              select: {
-                id: true,
-                userid: true,
-                name: true,
-                role: true,
-              },
-              orderBy: {
-                name: "asc",
-              },
-            });
+const getAllUsers = async () => {
+  try {
+    const users = await prisma.users.findMany({
+      select: {
+        id: true,
+        userid: true,
+        name: true,
+        role: true,
+      },
+      orderBy: {
+        name: "asc",
+      },
+    });
 
-            return users;
-          } catch (error) {
-            throw new Error(error.message);
-          }
-        };
+    return users;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 
-  module.exports = {
+module.exports = {
   createRoomConfigService,
   getAllUsers,
 };

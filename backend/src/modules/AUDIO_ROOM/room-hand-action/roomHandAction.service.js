@@ -1,4 +1,4 @@
-const { prisma } = require("../../../../prisma");
+const { prisma } = require("../../../../db");
 const { getIO } = require("../../../socket");
 const { getPendingHandRequestsService } = require("../room-hand-requests/roomHandRequests.service");
 const { getRoomDetailsService } = require("../room-details/roomDetails.service");
@@ -93,11 +93,11 @@ const handleHandRequestActionService = async (payload) => {
         JSON.stringify({ role: "speaker", isMuted: true }), // 3rd argument: metadata string
         {
           canPublish: true,      // 4th argument: permissions object
-          canPublishData: true,  
-          canSubscribe: true,    
+          canPublishData: true,
+          canSubscribe: true,
         }
       );
-      
+
       console.log(`[LiveKit Sync] Hand Request Approved. Room: ${roomId} | Promoted Speaker Identity: ${request.userId}`);
     } catch (lkError) {
       console.error(`[LiveKit Error] Failed to elevate streaming track rules: ${lkError.message}`);

@@ -1,5 +1,5 @@
 const { prisma } =
-  require("../../../../prisma");
+  require("../../../../db");
 
 const getPendingHandRequestsService =
   async (roomId) => {

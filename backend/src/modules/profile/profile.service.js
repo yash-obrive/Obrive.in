@@ -1,4 +1,4 @@
-const { prisma } = require('../../../prisma');
+const { prisma } = require('../../../db');
 
 class ProfileService {
   async getProfileById(id) {
@@ -23,14 +23,14 @@ class ProfileService {
 
     if (!existing) {
       const err = new Error('Profile not found');
-      err.status = 404; 
+      err.status = 404;
       throw err;
     }
 
     // 1. Safely handle the phone number conversion if provided in data
     let formattedPhoneNumber = existing.phone_number;
     if (data.phoneNumber !== undefined && data.phoneNumber !== null) {
-      formattedPhoneNumber = String(data.phoneNumber); 
+      formattedPhoneNumber = String(data.phoneNumber);
     }
 
     return prisma.users.update({

@@ -1,5 +1,5 @@
 // backend/src/modules/chat/chat.service.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 
 exports.getConversationById = async (conversationId, userId) => {
   const result = await prisma.$queryRaw`
@@ -164,7 +164,7 @@ exports.createConversation = async (userId, { type, name, participantIds }) => {
         },
         data: { is_hidden: false }
       });
-      
+
       // Fetch full formatted object
       const formatted = await this.getConversationById(existing[0].id, userId);
       return formatted;
@@ -282,7 +282,7 @@ exports.removeParticipant = async (conversationId, adminId, userIdToRemove) => {
     }
   });
 
-  return { 
+  return {
     message: "Participant removed successfully",
     systemMessage: {
       ...systemMessage,
@@ -386,7 +386,7 @@ exports.seedDummyChats = async (userId) => {
   });
 
   // Create direct chats with each
-  const directChats = await Promise.all(dummyUsers.map(u => 
+  const directChats = await Promise.all(dummyUsers.map(u =>
     this.createConversation(userId, {
       type: 'direct',
       participantIds: [u.id]

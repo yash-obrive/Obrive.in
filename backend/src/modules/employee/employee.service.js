@@ -1,4 +1,4 @@
-const { prisma } = require('../../../prisma');
+const { prisma } = require('../../../db');
 
 // ── Profile ──────────────────────────────────────────────────
 exports.getMyProfile = async (userId) => {
@@ -21,7 +21,7 @@ exports.updateMyProfile = async (userId, data) => {
 
   return prisma.employee.update({
     where: { userId },
-    data:  { fullName: data.fullName, phone: data.phone, department: data.department },
+    data: { fullName: data.fullName, phone: data.phone, department: data.department },
   });
 };
 
@@ -53,31 +53,31 @@ exports.addAvailabilitySlot = async (userId, data) => {
   return prisma.availabilitySlot.create({
     data: {
       employeeId: employee.id,
-      date:       new Date(data.date),
-      startTime:  data.startTime,
-      endTime:    data.endTime,
-      slotType:   data.slotType,
-      note:       data.note,
+      date: new Date(data.date),
+      startTime: data.startTime,
+      endTime: data.endTime,
+      slotType: data.slotType,
+      note: data.note,
     },
   });
 };
 
 exports.updateAvailabilitySlot = async (slotId, userId, data) => {
   const employee = await prisma.employee.findUnique({ where: { userId } });
-  const slot     = await prisma.availabilitySlot.findUnique({ where: { id: slotId } });
+  const slot = await prisma.availabilitySlot.findUnique({ where: { id: slotId } });
 
   if (!slot || slot.employeeId !== employee.id)
     throw { status: 403, message: 'Not authorized to edit this slot' };
 
   return prisma.availabilitySlot.update({
     where: { id: slotId },
-    data:  { startTime: data.startTime, endTime: data.endTime, slotType: data.slotType, note: data.note },
+    data: { startTime: data.startTime, endTime: data.endTime, slotType: data.slotType, note: data.note },
   });
 };
 
 exports.deleteAvailabilitySlot = async (slotId, userId) => {
   const employee = await prisma.employee.findUnique({ where: { userId } });
-  const slot     = await prisma.availabilitySlot.findUnique({ where: { id: slotId } });
+  const slot = await prisma.availabilitySlot.findUnique({ where: { id: slotId } });
 
   if (!slot || slot.employeeId !== employee.id)
     throw { status: 403, message: 'Not authorized to delete this slot' };
@@ -93,7 +93,7 @@ exports.getMyProjects = async (userId) => {
 
   return prisma.projectAssignment.findMan
   y({
-    where:   { employeeId: employee.id },
+    where: { employeeId: employee.id },
     include: { project: { include: { client: { select: { companyName: true, contactName: true } } } } },
   });
 };
@@ -101,9 +101,9 @@ exports.getMyProjects = async (userId) => {
 // ── Login Logs ───────────────────────────────────────────────
 exports.getMyLogs = async (userId) => {
   return prisma.loginLog.findMany({
-    where:   { userId },
+    where: { userId },
     orderBy: { loginTime: 'desc' },
-    take:    50,
+    take: 50,
   });
 };
 

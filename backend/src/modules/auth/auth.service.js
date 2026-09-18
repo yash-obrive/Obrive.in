@@ -1,5 +1,5 @@
 // backend/src/modules/auth/auth.service.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 const bcrypt = require("bcrypt");
 const {
   signAccessToken,
@@ -78,18 +78,18 @@ exports.loginClient = async ({ clientId, password }) => {
   `;
 
   const client = result[0];
-  
+
 
   if (!client || client.status === 'inactive') {
     throw { status: 401, message: 'Invalid client credentials' };
   }
-  
+
   const isValid = await bcrypt.compare(password, client.password);
-  
+
   if (!isValid) {
     throw { status: 401, message: 'Invalid client credentials' };
   }
-  
+
 
   const payload = { id: client.id, role: 'client', clientId: client.userid };
   const accessToken = signAccessToken(payload);

@@ -1,5 +1,5 @@
 const { prisma } =
-  require("../../../../prisma");
+  require("../../../../db");
 const { resolveConfiguredRoomRole } = require("../roomRolePolicy");
 
 const getRoomDetailsService =
@@ -103,105 +103,105 @@ const getRoomDetailsService =
         specificUserRole.assignedRoomRole;
     }
 
-// ==========================
-// GET PARTICIPANTS
-// ==========================
+    // ==========================
+    // GET PARTICIPANTS
+    // ==========================
 
-const roomParticipants =
-  await prisma.room_participants.findMany(
-    {
-      where: {
-        roomId:
-          Number(roomId),
+    const roomParticipants =
+      await prisma.room_participants.findMany(
+        {
+          where: {
+            roomId:
+              Number(roomId),
 
-        leftAt: null,
-      },
-
-      include: {
-        user: {
-          select: {
-            id: true,
-            name: true,
-            userid: true,
-            role: true,
+            leftAt: null,
           },
-        },
-      },
-    }
-  );
 
-const uniqueRoomParticipants =
-  Array.from(
-    roomParticipants
-      .reduce(
-        (
-          map,
-          participant
-        ) => {
-          const existingParticipant =
-            map.get(
-              participant.userId
-            );
+          include: {
+            user: {
+              select: {
+                id: true,
+                name: true,
+                userid: true,
+                role: true,
+              },
+            },
+          },
+        }
+      );
 
-          if (
-            !existingParticipant ||
-            participant.joinedAt >
-              existingParticipant.joinedAt
-          ) {
-            map.set(
-              participant.userId,
+    const uniqueRoomParticipants =
+      Array.from(
+        roomParticipants
+          .reduce(
+            (
+              map,
               participant
-            );
-          }
+            ) => {
+              const existingParticipant =
+                map.get(
+                  participant.userId
+                );
 
-          return map;
-        },
-        new Map()
-      )
-      .values()
-  );
+              if (
+                !existingParticipant ||
+                participant.joinedAt >
+                existingParticipant.joinedAt
+              ) {
+                map.set(
+                  participant.userId,
+                  participant
+                );
+              }
 
-const currentParticipant =
-  uniqueRoomParticipants.find(
-    (
-      participant
-    ) =>
-      participant.userId ===
-      Number(userId)
-  );
+              return map;
+            },
+            new Map()
+          )
+          .values()
+      );
 
-if (
-  currentParticipant
-) {
-  myRole =
-    configuredCurrentUserRole ||
-    currentParticipant.roomRole;
-}
-else {
-  if (!configuredCurrentUserRole) {
-    const error = new Error("You are not allowed to join this room");
-    error.status = 403;
-    throw error;
-  }
+    const currentParticipant =
+      uniqueRoomParticipants.find(
+        (
+          participant
+        ) =>
+          participant.userId ===
+          Number(userId)
+      );
 
-  myRole = configuredCurrentUserRole;
-}
+    if (
+      currentParticipant
+    ) {
+      myRole =
+        configuredCurrentUserRole ||
+        currentParticipant.roomRole;
+    }
+    else {
+      if (!configuredCurrentUserRole) {
+        const error = new Error("You are not allowed to join this room");
+        error.status = 403;
+        throw error;
+      }
 
-// ==========================
-// GROUP PARTICIPANTS
-// ==========================
+      myRole = configuredCurrentUserRole;
+    }
+
+    // ==========================
+    // GROUP PARTICIPANTS
+    // ==========================
 
     const participants =
-      {
-        hostAndSpeakers:
-          [],
+    {
+      hostAndSpeakers:
+        [],
 
-        moderators:
-          [],
+      moderators:
+        [],
 
-        listeners:
-          [],
-      };
+      listeners:
+        [],
+    };
 
     uniqueRoomParticipants.forEach(
       (
@@ -218,30 +218,30 @@ else {
           participant.roomRole;
 
         const formattedUser =
-          {
-            id: user.id,
+        {
+          id: user.id,
 
-            name:
-              user.name,
+          name:
+            user.name,
 
-            userid:
-              user.userid,
+          userid:
+            user.userid,
 
-            role:
-              effectiveRoomRole,
+          role:
+            effectiveRoomRole,
 
-            isMuted:
-              participant.isMuted,
+          isMuted:
+            participant.isMuted,
 
-            isSpeaking:
-              participant.isSpeaking,
-          };
+          isSpeaking:
+            participant.isSpeaking,
+        };
 
         if (
           effectiveRoomRole ===
-            "host" ||
+          "host" ||
           effectiveRoomRole ===
-            "speaker"
+          "speaker"
         ) {
           participants.hostAndSpeakers.push(
             formattedUser
@@ -250,9 +250,9 @@ else {
 
         else if (
           effectiveRoomRole ===
-            "moderator" ||
+          "moderator" ||
           effectiveRoomRole ===
-            "admin"
+          "admin"
         ) {
           participants.moderators.push(
             formattedUser
