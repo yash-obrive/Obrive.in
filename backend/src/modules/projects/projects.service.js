@@ -1,11 +1,11 @@
 // backend/src/modules/projects/projects.service.js
-const { prisma } = require('../../../prisma');
+const { prisma } = require('../../../db');
 
 class ProjectService {
-  
+
   async getProjectsByRole(userId, role) {
     let projects;
-    
+
     if (role === 'hr' || role === 'supervisor' || role === 'admin') {
       projects = await this.getAllProjects();
     } else if (role === 'employee') {
@@ -17,8 +17,8 @@ class ProjectService {
     // if (role === 'client') {
     //   projects = await this.getClientProjects(userId);
     // }
-    
-    
+
+
     // Convert BigInt to Number for JSON serialization
     return projects.map(project => ({
       ...project,
@@ -46,16 +46,16 @@ class ProjectService {
             LEFT JOIN users u ON pa_inner.employee_id = u.id
             WHERE pa.employee_id = ${userId}
             GROUP BY p.id, p.name, p.description, p.priority, p.created_at`;
-    
+
     // Convert BigInt to Number for JSON serialization
     const convertedProjects = projects.map(project => ({
       ...project,
       id: Number(project.id),
-      team_members: project.team_members && project.team_members.length > 0 
+      team_members: project.team_members && project.team_members.length > 0
         ? project.team_members.map(member => ({
-            ...member,
-            id: Number(member.id)
-          }))
+          ...member,
+          id: Number(member.id)
+        }))
         : []
     }));
 
@@ -122,7 +122,7 @@ class ProjectService {
       FROM projects p
       ORDER BY p.created_at DESC
     `;
-    
+
     return result.map(p => ({
       ...p,
       id: Number(p.id),
@@ -168,7 +168,7 @@ class ProjectService {
       assignees_count: Number(p.assignees_count || 0)
     }));
   }
-  
+
   async getEmployeeProjects(employeeId) {
     const result = await prisma.$queryRaw`
       SELECT 
@@ -189,7 +189,7 @@ class ProjectService {
       WHERE pa.employee_id = ${employeeId}
       ORDER BY p.created_at DESC
     `;
-    
+
     return result.map(p => ({ // returns an array so that we can map through it and convert BigInt to Number for JSON serialization
       ...p,
       id: Number(p.id),
@@ -201,7 +201,7 @@ class ProjectService {
     }));
   }
 
-  
+
   async getProjectById(projectId) {
     const project = await prisma.$queryRaw`
       SELECT p.*, u.name as created_by_name, l.name as leader_name
@@ -211,7 +211,7 @@ class ProjectService {
       WHERE p.id = ${projectId}
       LIMIT 1
     `;
-    
+
     const tasks = await prisma.$queryRaw`
       SELECT t.*, u.name as assigned_to_name
       FROM tasks t
@@ -226,7 +226,7 @@ class ProjectService {
       JOIN users u ON pa.employee_id = u.id
       WHERE pa.project_id = ${projectId}
     `;
-    
+
     // Convert BigInt in tasks as well
     const convertedTasks = tasks.map(task => ({
       ...task,
@@ -239,14 +239,14 @@ class ProjectService {
       ...member,
       id: Number(member.id)
     }));
-    
-    return { 
-      project: project[0] ? { 
-        ...project[0], 
+
+    return {
+      project: project[0] ? {
+        ...project[0],
         id: Number(project[0].id),
         leader_id: project[0].leader_id ? Number(project[0].leader_id) : null,
         progress: project[0].progress ? Number(project[0].progress) : 0
-      } : null, 
+      } : null,
       tasks: convertedTasks,
       team_members: convertedTeamMembers
     };
@@ -283,7 +283,7 @@ class ProjectService {
 
   async createProject(data) {
     const { name, description, priority, project_id, team_members, deadline, client_id } = data;
-    
+
     return await prisma.$transaction(async (tx) => {
       const normalizedClientId = client_id == null || client_id === '' ? null : String(client_id).trim();
 
@@ -384,7 +384,7 @@ class ProjectService {
     });
   }
 
-    async getProjectStatus(projectId, progress, userId) {
+  async getProjectStatus(projectId, progress, userId) {
     const project = await prisma.projects.findUnique({
       where: { id: parseInt(projectId) },
       include: {
@@ -410,92 +410,92 @@ class ProjectService {
   }
 
 
-async updateProject(id, projectData, userId) {
-  // 1. Check if project exists
-  const targetProject = await prisma.projects.findUnique({
-    where: { id: parseInt(id) },
-  });
-  
-  if (!targetProject) {
-    throw new Error('Project not found');
-  }
-
-  // 2. Check User Role
-  const requestingUser = await prisma.users.findUnique({
-    where: { id: parseInt(userId) },
-  });
-
-  if (!requestingUser) {
-    throw new Error('User not found');
-  }
-
-  if (requestingUser.role !== 'supervisor' && requestingUser.role !== 'hr' && requestingUser.role !== 'admin') {
-    throw new Error('Only supervisors, HR, or admins can update projects');
-  }
-
-// 3. STRICT CLEANING: Jo fields schema me nahi hain ya relational hain unhe nikalein
-const { 
-  id: _, 
-  created_at, 
-  updated_at, 
-  tasks, 
-  project_assignments,
-  leader,
-  status, // 👈 Frontend se aane wale galat 'status' ko yahan extract karke alag kiya
-  team_members,
-  ...rawCleanData 
-} = projectData;
-
-const cleanData = { ...rawCleanData };
-
-// 4. Sahi Column Map Karein (Agar frontend ka status database ke project_status me save karna hai)
-if (status) {
-  cleanData.project_status = status; // 👈 status ki jagah project_status use karein
-}
-
-// Data Types Validation
-if (cleanData.leader_id) {
-  cleanData.leader_id = parseInt(cleanData.leader_id);
-}
-if (cleanData.progress) {
-  cleanData.progress = parseInt(cleanData.progress);
-}
-if (cleanData.deadline) {
-  cleanData.deadline = new Date(cleanData.deadline);
-}
-
-// 5. Final Prisma Query
-const result = await prisma.$transaction(async (tx) => {
-  const updatedProject = await tx.projects.update({
-    where: { id: parseInt(id) },
-    data: cleanData,
-  });
-
-  if (Array.isArray(team_members)) {
-    await tx.project_assignments.deleteMany({
-      where: { project_id: parseInt(id) },
+  async updateProject(id, projectData, userId) {
+    // 1. Check if project exists
+    const targetProject = await prisma.projects.findUnique({
+      where: { id: parseInt(id) },
     });
 
-    const normalizedTeamMembers = team_members
-      .map((member) => Number(member))
-      .filter((memberId) => Number.isInteger(memberId));
-
-    if (normalizedTeamMembers.length > 0) {
-      await tx.project_assignments.createMany({
-        data: normalizedTeamMembers.map((employeeId) => ({
-          project_id: parseInt(id),
-          employee_id: employeeId,
-        })),
-        skipDuplicates: true,
-      });
+    if (!targetProject) {
+      throw new Error('Project not found');
     }
+
+    // 2. Check User Role
+    const requestingUser = await prisma.users.findUnique({
+      where: { id: parseInt(userId) },
+    });
+
+    if (!requestingUser) {
+      throw new Error('User not found');
+    }
+
+    if (requestingUser.role !== 'supervisor' && requestingUser.role !== 'hr' && requestingUser.role !== 'admin') {
+      throw new Error('Only supervisors, HR, or admins can update projects');
+    }
+
+    // 3. STRICT CLEANING: Jo fields schema me nahi hain ya relational hain unhe nikalein
+    const {
+      id: _,
+      created_at,
+      updated_at,
+      tasks,
+      project_assignments,
+      leader,
+      status, // 👈 Frontend se aane wale galat 'status' ko yahan extract karke alag kiya
+      team_members,
+      ...rawCleanData
+    } = projectData;
+
+    const cleanData = { ...rawCleanData };
+
+    // 4. Sahi Column Map Karein (Agar frontend ka status database ke project_status me save karna hai)
+    if (status) {
+      cleanData.project_status = status; // 👈 status ki jagah project_status use karein
+    }
+
+    // Data Types Validation
+    if (cleanData.leader_id) {
+      cleanData.leader_id = parseInt(cleanData.leader_id);
+    }
+    if (cleanData.progress) {
+      cleanData.progress = parseInt(cleanData.progress);
+    }
+    if (cleanData.deadline) {
+      cleanData.deadline = new Date(cleanData.deadline);
+    }
+
+    // 5. Final Prisma Query
+    const result = await prisma.$transaction(async (tx) => {
+      const updatedProject = await tx.projects.update({
+        where: { id: parseInt(id) },
+        data: cleanData,
+      });
+
+      if (Array.isArray(team_members)) {
+        await tx.project_assignments.deleteMany({
+          where: { project_id: parseInt(id) },
+        });
+
+        const normalizedTeamMembers = team_members
+          .map((member) => Number(member))
+          .filter((memberId) => Number.isInteger(memberId));
+
+        if (normalizedTeamMembers.length > 0) {
+          await tx.project_assignments.createMany({
+            data: normalizedTeamMembers.map((employeeId) => ({
+              project_id: parseInt(id),
+              employee_id: employeeId,
+            })),
+            skipDuplicates: true,
+          });
+        }
+      }
+
+      return updatedProject;
+    });
+
+    return result;
   }
-
-  return updatedProject;
-});
-
-return result;
-}
 
 
   async assignProjectLeader(projectId, leaderId, userId) {

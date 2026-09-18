@@ -1,5 +1,5 @@
 // backend/src/socket/store/messageQueue.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 
 const messageQueue = [];
 
@@ -31,7 +31,7 @@ setInterval(async () => {
 
     for (const [convId, senderIds] of Object.entries(updates)) {
       const conversationId = parseInt(convId);
-      
+
       // Increment unread_count and UNHIDE for everyone in the conversation who is NOT the sender(s)
       await prisma.conversation_participants.updateMany({
         where: {

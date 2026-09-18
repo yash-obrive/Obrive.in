@@ -1,4 +1,4 @@
-const { prisma } = require("../../../../prisma");
+const { prisma } = require("../../../../db");
 const { RoomServiceClient } = require("livekit-server-sdk");
 const { canPublishAudio, normalizeRole } = require("../roomRolePolicy");
 const { canModerateTarget } = require("../audioRoomAuthz");
@@ -70,7 +70,7 @@ const muteUnmuteService = async (payload) => {
         canSubscribe: true,
       }
     );
-    
+
     console.log(`[LiveKit Sync] Mute pushed. Room: ${roomId} | User: ${userId} | Muted: ${isMuted}`);
   } catch (lkError) {
     console.error(`[LiveKit Error] Failed to sync dynamic mute permissions: ${lkError.message}`);

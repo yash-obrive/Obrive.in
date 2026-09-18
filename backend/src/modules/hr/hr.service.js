@@ -1,31 +1,31 @@
 // backend/src/modules/hr/hr.service.js
-const { prisma } = require('../../../prisma');
+const { prisma } = require('../../../db');
 
 class HRService {
-  
+
   // Get HR dashboard statistics (FIXED - removed leave_requests)
   async getDashboardStats() {
     // Total employees
     const totalEmployees = await prisma.$queryRaw`
       SELECT COUNT(*) as count FROM users WHERE role = 'employee'
     `;
-    
+
     // Active employees
     const activeEmployees = await prisma.$queryRaw`
       SELECT COUNT(*) as count FROM users WHERE role = 'employee' AND status = 'online'
     `;
-    
+
     // New hires this month
     const newHires = await prisma.$queryRaw`
       SELECT COUNT(*) as count FROM users 
       WHERE role = 'employee' AND created_at >= DATE_TRUNC('month', CURRENT_DATE)
     `;
-    
+
     // Get unique departments count
     const departments = await prisma.$queryRaw`
       SELECT DISTINCT department FROM users WHERE role = 'employee' AND department IS NOT NULL
     `;
-    
+
     return {
       totalEmployees: Number(totalEmployees[0].count),
       activeEmployees: Number(activeEmployees[0].count),
@@ -33,7 +33,7 @@ class HRService {
       totalDepartments: departments.length
     };
   }
-  
+
   // Get all employees
   async getAllEmployees() {
     return await prisma.$queryRaw`
@@ -43,7 +43,7 @@ class HRService {
       ORDER BY created_at DESC
     `;
   }
-  
+
   // Get employee by ID
   async getEmployeeById(employeeId) {
     const result = await prisma.$queryRaw`
@@ -52,13 +52,13 @@ class HRService {
       WHERE id = ${employeeId} AND role = 'employee'
       LIMIT 1
     `;
-    
+
     if (!result[0]) {
       throw new Error('Employee not found');
     }
     return result[0];
   }
-  
+
   // Get HR profile
   async getHRProfile(userId) {
     const result = await prisma.$queryRaw`
@@ -67,17 +67,17 @@ class HRService {
       WHERE id = ${userId} AND role = 'hr'
       LIMIT 1
     `;
-    
+
     if (!result[0]) {
       throw new Error('HR profile not found');
     }
     return result[0];
   }
-  
+
   // Update HR profile
   async updateHRProfile(userId, data) {
     const { name, bio, dateOfBirth, phone } = data;
-    
+
     await prisma.$executeRaw`
       UPDATE users 
       SET name = COALESCE(${name}, name),
@@ -87,14 +87,14 @@ class HRService {
           updated_at = NOW()
       WHERE id = ${userId} AND role = 'hr'
     `;
-    
+
     return this.getHRProfile(userId);
   }
-  
+
   // Update employee
   async updateEmployee(employeeId, data) {
     const { name, department, jobTitle, phone, status } = data;
-    
+
     await prisma.$executeRaw`
       UPDATE users 
       SET name = COALESCE(${name}, name),
@@ -105,10 +105,10 @@ class HRService {
           updated_at = NOW()
       WHERE id = ${employeeId} AND role = 'employee'
     `;
-    
+
     return this.getEmployeeById(employeeId);
   }
-  
+
   // Delete employee
   async deleteEmployee(employeeId) {
     await prisma.$executeRaw`
@@ -116,7 +116,7 @@ class HRService {
     `;
     return { message: 'Employee deleted successfully' };
   }
-  
+
   // Search employees
   async searchEmployees(searchTerm) {
     return await prisma.$queryRaw`

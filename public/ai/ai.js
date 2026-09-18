@@ -5,7 +5,7 @@ const DEFAULT_AGENT_ID = 'agent_4201k6mkfkg0epv9wdr4hdn3fp38';
 let AGENT_ID = (typeof window !== 'undefined' && window.ELEVENLABS_AGENT_ID) || DEFAULT_AGENT_ID;
 
 // Try to read data-agent-id from the script tag if present (works when script tag has id="eleven-ai")
-function tryReadAgentFromScriptTag() {
+function tryReadAgentFromScriptTag() { 
   try {
     // Prefer an explicit script element with id 'eleven-ai'
     const scriptEl = document.getElementById('eleven-ai') || Array.from(document.getElementsByTagName('script')).find(s => s.src && s.src.includes('/ai/ai.js'));

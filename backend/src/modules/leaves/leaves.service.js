@@ -1,4 +1,4 @@
-const { prisma } = require('../../../prisma');
+const { prisma } = require('../../../db');
 
 const LEAVE_LIMITS = { vacation: 6, sick: 2 };
 const ACTIVE_STATUSES = ['approved', 'pending'];
@@ -15,21 +15,21 @@ class LeavesService {
   calculateDaysInMonth(start, end, monthStart, monthEnd) {
     const s = new Date(start);
     const e = new Date(end);
-    
+
     // If leave doesn't overlap with the month, return 0
     if (e < monthStart || s > monthEnd) return 0;
-    
+
     // The actual start is the later of leave start or month start
     const actualStart = s > monthStart ? s : monthStart;
     // The actual end is the earlier of leave end or month end
     const actualEnd = e < monthEnd ? e : monthEnd;
-    
+
     return Math.ceil((actualEnd - actualStart) / (1000 * 60 * 60 * 24)) + 1;
   }
 
   async getDashboard(userId, selectedDate) {
     const referenceDate = selectedDate && selectedDate !== 'undefined' ? new Date(selectedDate) : new Date();
-    
+
     // Get month bounds
     const startOfMonth = new Date(referenceDate.getFullYear(), referenceDate.getMonth(), 1);
     const endOfMonth = new Date(referenceDate.getFullYear(), referenceDate.getMonth() + 1, 0);
@@ -45,14 +45,14 @@ class LeavesService {
       orderBy: { start_date: 'asc' },
     });
 
-     // Calculate Balance (Logic: Sum days of approved/pending requests that fall within this month)
-     const usage = { vacation: 0, sick: 0 };
-     userRequests.forEach(req => {
-       const type = req.leave_type.toLowerCase().includes('sick') ? 'sick' : 'vacation';
-       if (ACTIVE_STATUSES.includes(req.status) && usage[type] !== undefined) {
-         usage[type] += this.calculateDaysInMonth(req.start_date, req.end_date, startOfMonth, endOfMonth);
-       }
-     });
+    // Calculate Balance (Logic: Sum days of approved/pending requests that fall within this month)
+    const usage = { vacation: 0, sick: 0 };
+    userRequests.forEach(req => {
+      const type = req.leave_type.toLowerCase().includes('sick') ? 'sick' : 'vacation';
+      if (ACTIVE_STATUSES.includes(req.status) && usage[type] !== undefined) {
+        usage[type] += this.calculateDaysInMonth(req.start_date, req.end_date, startOfMonth, endOfMonth);
+      }
+    });
 
     return {
       selectedDate: referenceDate.toISOString().split('T')[0],
@@ -107,13 +107,13 @@ class LeavesService {
 
   async deleteLeave(leaveId, userId) {
     const id = parseInt(leaveId, 10);
-    
+
     const leave = await prisma.leaves.findUnique({
       where: { id }
     });
 
     if (!leave) throw new Error('Leave request not found');
-    
+
     // Check if it belongs to the user
     if (leave.user_id !== userId) {
       throw new Error('Unauthorized to delete this leave request');

@@ -1,5 +1,5 @@
 const { prisma } =
-  require("../../../../prisma");
+  require("../../../../db");
 
 const { getIO } =
   require("../../../socket");
@@ -59,23 +59,23 @@ const leaveRoomService =
         }
       );
 
-      const io = getIO();
+    const io = getIO();
 
-      const roomDetails =
-        await getRoomDetailsService(
-          roomId,
-          userId
-        );
+    const roomDetails =
+      await getRoomDetailsService(
+        roomId,
+        userId
+      );
 
-        io.to( `audio-room:${roomId}`).emit("participant_updated", {
-          roomId:
-            Number(
-              roomId
-            ),
+    io.to(`audio-room:${roomId}`).emit("participant_updated", {
+      roomId:
+        Number(
+          roomId
+        ),
 
-          participants:
-            roomDetails.participants,
-        });
+      participants:
+        roomDetails.participants,
+    });
 
     return updatedParticipant;
   };

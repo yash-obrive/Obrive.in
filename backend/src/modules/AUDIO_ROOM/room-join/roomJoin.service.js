@@ -1,7 +1,7 @@
-const { prisma } = require("../../../../prisma");
-const { getRoomDetailsService,} = require("../room-details/roomDetails.service");
-const { getIO,} = require( "../../../socket");
-const { createLiveKitToken,} = require("../livekit/token/create-token");
+const { prisma } = require("../../../../db");
+const { getRoomDetailsService, } = require("../room-details/roomDetails.service");
+const { getIO, } = require("../../../socket");
+const { createLiveKitToken, } = require("../livekit/token/create-token");
 const { canPublishAudio, resolveConfiguredRoomRole } = require("../roomRolePolicy");
 
 const joinRoomService = async (payload) => {
@@ -82,11 +82,11 @@ const joinRoomService = async (payload) => {
     user.role
   );
 
-// ==================================
-// ADD PARTICIPANT
-// ==================================
+  // ==================================
+  // ADD PARTICIPANT
+  // ==================================
 
-async function addParticipant(roomRole) {
+  async function addParticipant(roomRole) {
     await prisma.$transaction(
       async (tx) => {
         const activeParticipants =
@@ -192,7 +192,7 @@ async function addParticipant(roomRole) {
           roomDetails.participants,
       }
     );
-}
+  }
 
 
   const roomRole = resolveConfiguredRoomRole({ room, user });

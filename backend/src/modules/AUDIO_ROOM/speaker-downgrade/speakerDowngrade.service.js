@@ -1,4 +1,4 @@
-const { prisma } = require("../../../../prisma");
+const { prisma } = require("../../../../db");
 const { RoomServiceClient } = require("livekit-server-sdk");
 const { normalizeRole, persistSpecificUserRoomRole } = require("../roomRolePolicy");
 const { canModerateTarget } = require("../audioRoomAuthz");
@@ -79,7 +79,7 @@ const downgradeToListenerService = async (payload) => {
         canSubscribe: true,
       }
     );
-    
+
     console.log(`[LiveKit Sync] Demoted to listener. Room: ${roomId} | User: ${userId}`);
   } catch (lkError) {
     console.error(`[LiveKit Error] Failed to execute track drop: ${lkError.message}`);

@@ -1,4 +1,4 @@
-const { prisma } = require("../../../../../prisma");
+const { prisma } = require("../../../../../db");
 const { createLiveKitToken } = require("../token/create-token");
 const { resolveConfiguredRoomRole } = require("../../roomRolePolicy");
 

@@ -1,4 +1,4 @@
-const { prisma } = require('../../../prisma');
+const { prisma } = require('../../../db');
 
 class WorkSessionService {
 
@@ -78,17 +78,17 @@ class WorkSessionService {
 
         console.log(`🔄 Existing session resumed for user ${userId}`);
       }
-      
+
       // -------------------------------------------------
       // ENSURE SESSION IS ACTIVE
       // -------------------------------------------------
-      
+
       else if (session.status !== 'active') {
-        
+
         console.warn(
           `⚠️ Session ${session.id} has unexpected status: ${session.status}. Reactivating.`
         );
-        
+
         session = await prisma.work_sessions.update({
           where: {
             id: session.id
@@ -137,11 +137,11 @@ class WorkSessionService {
 
       // If session is ended or inactive, try to reactivate it
       if (session.status !== 'active') {
-        
+
         console.log(
           `⚠️ Heartbeat for inactive session ${sessionId}. Reactivating...`
         );
-        
+
         session = await prisma.work_sessions.update({
           where: {
             id: sessionId
@@ -154,7 +154,7 @@ class WorkSessionService {
             sessionEnd: null
           }
         });
-        
+
         return this.buildSessionResponse(session);
       }
 
