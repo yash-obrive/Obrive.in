@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { z } from "zod";
+import { apiFetch } from "@/lib/api";
 import FONTS from "@/assets/fonts";
 import {
   PRICING_STREAMS,
@@ -87,7 +88,7 @@ export default function CheckoutForm() {
   const serviceParam = searchParams.get("service");
 
   const [packageDetails, setPackageDetails] = useState<PricingPackage | null>(
-    null
+    null,
   );
   const [formData, setFormData] = useState<CheckoutFormData>({
     firstName: "",
@@ -105,6 +106,17 @@ export default function CheckoutForm() {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [paymentId, setPaymentId] = useState<string>("");
 
+  // Server-returned financial breakdown — populated after create-order succeeds.
+  // ALL display values come from here; client never recalculates amounts.
+  const [breakdown, setBreakdown] = useState<{
+    baseAmount: number;
+    serviceGst: number;
+    gatewayFee: number;
+    gatewayFeeGst: number;
+    gatewayCharges: number;
+    totalAmount: number;
+  } | null>(null);
+
   useEffect(() => {
     if (serviceParam) {
       let foundPkg: PricingPackage | null = null;
@@ -120,7 +132,7 @@ export default function CheckoutForm() {
   }, [serviceParam]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -129,15 +141,21 @@ export default function CheckoutForm() {
     }
   };
 
-  const formatINR = (value: number) =>
+  const formatINR = (rupees: number) =>
     new Intl.NumberFormat("en-IN", {
       style: "currency",
       currency: "INR",
       maximumFractionDigits: 0,
-    }).format(value);
+    }).format(rupees);
 
-  const gstAmount = packageDetails ? packageDetails.priceINR * 0.18 : 0;
-  const totalAmount = packageDetails ? packageDetails.priceINR + gstAmount : 0;
+  // Preview breakdown shown before server responds (from frontend pricing data, in rupees).
+  // These are for display only — Razorpay uses the server-authoritative totalAmount.
+  const previewGst = packageDetails ? Math.round(packageDetails.priceINR * 1800 / 10000) : 0;
+  const previewGatewayFee = packageDetails ? Math.round(packageDetails.priceINR * 200 / 10000) : 0;
+  const previewGatewayFeeGst = Math.round(previewGatewayFee * 1800 / 10000);
+  const previewTotal = packageDetails
+    ? packageDetails.priceINR + previewGst + previewGatewayFee + previewGatewayFeeGst
+    : 0;
 
   const handleSubmit = async (e?: React.FormEvent) => {
     e?.preventDefault();
@@ -168,7 +186,7 @@ export default function CheckoutForm() {
     if (!scriptLoaded) {
       setSubmitState("error");
       setErrorMessage(
-        "Failed to load payment gateway. Please check your connection."
+        "Failed to load payment gateway. Please check your connection.",
       );
       return;
     }
@@ -177,18 +195,16 @@ export default function CheckoutForm() {
     let orderId: string;
     let orderAmount: number;
     try {
-      const res = await fetch("/api/razorpay/create-order", {
+      const res = await apiFetch("/payments/create-order", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount: totalAmount,
-          currency: "INR",
-          receipt: `receipt_${packageDetails.id}_${Date.now()}`,
-          notes: {
-            service: packageDetails.name,
-            email: formData.email,
-            company: formData.company || "",
-          },
+          packageId: packageDetails.id,
+          customerName: `${formData.firstName} ${formData.lastName}`,
+          customerEmail: formData.email,
+          customerPhone: formData.phone,
+          company: formData.company || "",
+          gst: formData.gst || "",
+          address: formData.address || "",
         }),
       });
 
@@ -198,14 +214,24 @@ export default function CheckoutForm() {
         throw new Error(order.error || "Could not create payment order");
       }
 
-      orderId = order.id;
-      orderAmount = order.amount;
+      orderId = order.orderId;
+      orderAmount = order.totalAmount; // Use server-calculated total — not client value
+
+      // Store server breakdown for display — client does NOT recalculate
+      setBreakdown({
+        baseAmount:     order.baseAmount,
+        serviceGst:     order.serviceGst,
+        gatewayFee:     order.gatewayFee,
+        gatewayFeeGst:  order.gatewayFeeGst,
+        gatewayCharges: order.gatewayCharges,
+        totalAmount:    order.totalAmount,
+      });
     } catch (err) {
       setSubmitState("error");
       setErrorMessage(
         err instanceof Error
           ? err.message
-          : "Failed to initiate payment. Please try again."
+          : "Failed to initiate payment. Please try again.",
       );
       return;
     }
@@ -238,14 +264,12 @@ export default function CheckoutForm() {
         setSubmitState("verifying");
         // Step 4: Verify payment signature
         try {
-          const verifyRes = await fetch("/api/razorpay/verify-payment", {
+          const verifyRes = await apiFetch("/payments/verify", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              ...response,
-              customerData: formData,
-              packageData: packageDetails,
-              amount: orderAmount,
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
             }),
           });
           const verifyData = await verifyRes.json();
@@ -260,7 +284,7 @@ export default function CheckoutForm() {
           setErrorMessage(
             err instanceof Error
               ? err.message
-              : "Payment verification failed. Please contact support."
+              : "Payment verification failed. Please contact support.",
           );
         }
       },
@@ -521,8 +545,18 @@ export default function CheckoutForm() {
 
               {/* Razorpay badge */}
               <div className="flex items-center justify-center gap-2 mt-3 text-primary/40 text-xs">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z" />
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z"
+                  />
                 </svg>
                 Secured by Razorpay · 256-bit SSL
               </div>
@@ -575,18 +609,47 @@ export default function CheckoutForm() {
 
                 <div className="h-px w-full bg-primary/10" />
 
-                <div className="space-y-3 text-sm">
+                {/* Financial breakdown — always uses server-returned values when available */}
+                <div className="space-y-2 text-sm">
                   <div className="flex justify-between items-center text-primary/80">
-                    <span>
-                      Base Scope ({packageDetails.isMonthly ? "Monthly" : "One-time"})
-                    </span>
+                    <span>Service Price ({packageDetails.isMonthly ? "Monthly" : "One-time"})</span>
                     <span className="font-bold">
-                      {formatINR(packageDetails.priceINR)}
+                      {breakdown
+                        ? formatINR(breakdown.baseAmount / 100)
+                        : formatINR(packageDetails.priceINR)}
                     </span>
                   </div>
                   <div className="flex justify-between items-center text-primary/80">
-                    <span>Estimated GST (18%)</span>
-                    <span className="font-bold">{formatINR(gstAmount)}</span>
+                    <span>GST on Service @ 18%</span>
+                    <span className="font-bold">
+                      {breakdown
+                        ? formatINR(breakdown.serviceGst / 100)
+                        : formatINR(previewGst)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center text-primary/70 text-xs mt-2 pt-2 border-t border-primary/5">
+                    <span>Payment Gateway Fee @ 2%</span>
+                    <span className="font-medium">
+                      {breakdown
+                        ? formatINR(breakdown.gatewayFee / 100)
+                        : formatINR(previewGatewayFee)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center text-primary/70 text-xs">
+                    <span>GST on Gateway Fee @ 18%</span>
+                    <span className="font-medium">
+                      {breakdown
+                        ? formatINR(breakdown.gatewayFeeGst / 100)
+                        : formatINR(previewGatewayFeeGst)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center text-primary/60 text-xs pb-2 border-b border-primary/5">
+                    <span>Payment Gateway Charges</span>
+                    <span className="font-medium">
+                      {breakdown
+                        ? formatINR(breakdown.gatewayCharges / 100)
+                        : formatINR(previewGatewayFee + previewGatewayFeeGst)}
+                    </span>
                   </div>
                 </div>
 
@@ -594,12 +657,14 @@ export default function CheckoutForm() {
 
                 <div className="flex justify-between items-center">
                   <span className="font-bold text-primary uppercase text-sm">
-                    Total Due
+                    Total Payable
                   </span>
                   <span
                     className={`${FONTS.microgrammaBold.className} text-2xl text-primary`}
                   >
-                    {formatINR(totalAmount)}
+                    {breakdown
+                      ? formatINR(breakdown.totalAmount / 100)
+                      : formatINR(previewTotal)}
                   </span>
                 </div>
 
@@ -638,9 +703,24 @@ export default function CheckoutForm() {
                     <div className="absolute inset-0 w-full h-full bg-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
                     <span className="relative flex items-center justify-center gap-2">
                       {isProcessing && (
-                        <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                        <svg
+                          className="animate-spin w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v8z"
+                          />
                         </svg>
                       )}
                       {buttonLabel()}
@@ -663,8 +743,18 @@ export default function CheckoutForm() {
 
             <div className="mt-8 pt-6 border-t border-primary/10">
               <div className="flex items-center gap-2 text-primary/50 text-xs">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z" />
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z"
+                  />
                 </svg>
                 Secured by Razorpay · 256-bit SSL encryption
               </div>

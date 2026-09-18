@@ -31,6 +31,16 @@ export async function POST(req: NextRequest) {
     const senderEmail = process.env.BREVO_SENDER_EMAIL || "no-reply@obrive.in"; // Must be verified in Brevo
 
     if (!brevoApiKey) {
+      if (process.env.NODE_ENV === "production") {
+        console.error("Contact Form Submission Error: BREVO_API_KEY is missing in production.");
+        return NextResponse.json(
+          { 
+            success: false, 
+            error: "Contact service is not configured." 
+          },
+          { status: 500 }
+        );
+      }
       console.log("New Contact Form Submission (Mock DB save):", data);
       
       return NextResponse.json(

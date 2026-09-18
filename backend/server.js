@@ -30,10 +30,16 @@ app.use(
     credentials: true,
   }),
 ); // Allow cookies to be sent from frontend domains, multiple origins for testing with different frontends
-app.use(express.json({ limit: "10mb" }));
+app.use(express.json({
+  limit: "10mb",
+  verify: (req, res, buf) => {
+    req.rawBody = buf;
+  }
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(morgan("dev"));
+const morganFormat = process.env.NODE_ENV === "production" ? "combined" : "dev";
+app.use(morgan(morganFormat));
 
 // ============================================
 // ✅ PUBLIC HEALTH CHECK
@@ -138,18 +144,25 @@ app.use(
   require("./src/modules/AUDIO_ROOM/participant-remove/participantRemove.routes"),
 );
 
+// PAYMENT ROUTES ───────────────────────────────────────────────
+app.use("/api/payments", require("./src/modules/payments/payment.routes"));
+
 // ── Error handler ─────────────────────────────────────────────
 app.use(require("./src/middleware/errorHandler"));
 
 // ── Start ─────────────────────────────────────────────────────
 async function bootstrap() {
   try {
-    await connectWithRetry(5);
-
-    console.log("✅ Database connected");
-    // Start cron jobs
-    startWorkSessionCron();
-    startAudioRoomCron();
+    if (process.env.DATABASE_URL) {
+      await connectWithRetry(5);
+      console.log("✅ Database connected");
+      // Start cron jobs
+      startWorkSessionCron();
+      startAudioRoomCron();
+    } else {
+      console.warn("Database not configured; database-dependent modules are unavailable.");
+    }
+    
     // Initialize Socket.io
     initializeSocket(server);
     // Start server

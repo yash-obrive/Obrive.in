@@ -173,6 +173,10 @@ const nextConfig: NextConfig = {
             value:
               "<https://www.googletagmanager.com>; rel=preconnect, <https://unpkg.com>; rel=preconnect, <https://storage.googleapis.com>; rel=preconnect",
           },
+          {
+            key: "Content-Security-Policy-Report-Only",
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://images.unsplash.com https://api.dicebear.com https://randomuser.me; connect-src 'self' wss: https:; frame-src 'self' https://calendly.com;"
+          }
         ],
       },
       {

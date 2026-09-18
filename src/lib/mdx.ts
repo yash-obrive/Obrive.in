@@ -331,6 +331,8 @@ export async function getAllCareers(): Promise<CareerData[]> {
 }
 
 export const sharedMdxOptions = {
+  blockJS: true,
+  blockDangerousJS: true,
   mdxOptions: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
