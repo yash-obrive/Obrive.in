@@ -2,12 +2,13 @@ import React from "react";
 import FONTS from "@/assets/fonts";
 import { StyledText } from "@/components/shared/StyledText";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import CompanyInfoSection from "./sections/CompanyInfoSection";
 import CompanyInfoApproachTable from "./sections/CompanyInfoApproachTable";
 import CompanyInfoHeader from "./sections/CompanyInfoHeader";
-import CompanyInfoSection from "./sections/CompanyInfoSection";
+import FAQAccordionSection, { FAQItem } from "../faq/sections/FAQAccordionSection";
 
 // Export components for direct import in MDX files
-export { CompanyInfoSection, CompanyInfoApproachTable, CompanyInfoHeader };
+export { CompanyInfoSection, CompanyInfoApproachTable, CompanyInfoHeader, FAQAccordionSection, FAQItem };
 
 // Create a function that returns MDX components with access to metadata
 export const createCompanyInfoMDXComponents = (metadata: any) => ({
@@ -78,6 +79,9 @@ export const createCompanyInfoMDXComponents = (metadata: any) => ({
   // Custom components
   ButtonLink,
   StyledText,
+  FAQAccordionSection,
+  FAQAccordion: (props: any) => <FAQAccordionSection {...props} />,
+  FAQItem,
 });
 
 export default {
@@ -134,4 +138,7 @@ export default {
   em: (props: any) => <em className="italic" {...props} />,
   StyledText,
   ButtonLink,
+  FAQAccordionSection,
+  FAQAccordion: (props: any) => <FAQAccordionSection {...props} />,
+  FAQItem,
 };

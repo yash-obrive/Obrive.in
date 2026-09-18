@@ -1,7 +1,17 @@
 import FONTS from "@/assets/fonts";
 import { BENEFITS_TABLE } from "@/constants/pages/solutions/workflow-steps";
 
-const BenefitsTable = () => {
+export interface BenefitItem {
+  benefit?: string;
+  title?: string;
+  description: string;
+}
+
+interface BenefitsTableProps {
+  data?: readonly BenefitItem[];
+}
+
+const BenefitsTable = ({ data = BENEFITS_TABLE }: BenefitsTableProps) => {
   return (
     <div className="w-full">
       <div className="hidden md:inline-block">
@@ -23,16 +33,16 @@ const BenefitsTable = () => {
             </thead>
 
             <tbody>
-              {BENEFITS_TABLE.map((item) => (
+              {data.map((item, i) => (
                 <tr
-                  key={item.benefit}
+                  key={item.benefit || item.title || i}
                   className="border-b border-zinc-300 last:border-b-0"
                 >
                   <td className="align-top w-[170px] px-6 py-4 border-r border-zinc-300">
                     <div
                       className={`text-sm ${FONTS.microgrammaBold.className}`}
                     >
-                      {item.benefit}
+                      {item.benefit || item.title}
                     </div>
                   </td>
 
@@ -49,15 +59,15 @@ const BenefitsTable = () => {
       </div>
 
       <div className="md:hidden space-y-4">
-        {BENEFITS_TABLE.map((item) => (
+        {data.map((item, i) => (
           <div
-            key={item.benefit}
+            key={item.benefit || item.title || i}
             className="bg-white border border-zinc-300 rounded-lg shadow-sm overflow-hidden"
           >
             <div
               className={`border-b border-zinc-300 px-4 py-3 text-sm text-gray-800 ${FONTS.microgrammaBold.className}`}
             >
-              {item.benefit}
+              {item.benefit || item.title}
             </div>
             <div className="px-4 py-3">
               <div className="text-xs text-gray-600 leading-relaxed">

@@ -1,0 +1,16 @@
+
+> obrive-project@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.5.16
+   - Local:        http://localhost:3003
+   - Network:      http://172.18.0.1:3003
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · optimizePackageImports
+
+ ✓ Starting...
+ ✓ Ready in 2.9s
+ ○ Compiling /resources/[slug] ...
+ ✓ Compiled /resources/[slug] in 3.6s (2204 modules)
+ GET /resources/web-vr-vs-app-vr-enterprises 200 in 6116ms

@@ -21,14 +21,22 @@ const WorkflowSteps = ({
           {title}
         </h1>
 
-        <Image
-          src={src}
-          alt={srcMeta.alt}
-          width={srcMeta.width}
-          height={srcMeta.height}
-          className="w-full h-auto"
-          sizes="(max-width: 768px) 100vw, 720px"
-        />
+        {srcMeta ? (
+          <Image
+            src={src}
+            alt={srcMeta.alt}
+            width={srcMeta.width}
+            height={srcMeta.height}
+            className="w-full h-auto"
+            sizes="(max-width: 768px) 100vw, 720px"
+          />
+        ) : (
+          <img
+            src={typeof src === "string" ? src : ""}
+            alt={title}
+            className="w-full h-auto rounded-lg"
+          />
+        )}
 
         <p className="max-w-[700px] w-full text-xs leading-6 max-md:text-xs max-sm:text-[11px]">
           {description}

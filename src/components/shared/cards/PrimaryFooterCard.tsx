@@ -41,7 +41,6 @@ function FooterCardRive({ className }: FooterCardRiveProps) {
         }
 
         if (entry.isIntersecting) {
-          rive.resizeDrawingSurfaceToCanvas();
           rive.play();
         } else {
           rive.pause();

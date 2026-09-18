@@ -2,8 +2,8 @@ import React from "react";
 import FONTS from "@/assets/fonts";
 import { CareerButton } from "@/components/shared/CareerButton";
 import { StyledText } from "@/components/shared/StyledText";
-import CareerHeader from "./sections/CareerHeader";
 import CareerSection from "./sections/CareerSection";
+import CareerHeader from "./sections/CareerHeader";
 
 export { CareerSection, CareerHeader, CareerButton };
 

@@ -490,45 +490,6 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
       },
       {
         num: "03",
-        title: "Guides",
-        description:
-          "Practical guides for planning and deploying immersive technology.",
-        href: "/resources/guides",
-        category: "resources",
-        searchKeywords:
-          "guides /resources/guides practical guides for planning and deploying immersive technology. resources",
-      },
-      {
-        num: "04",
-        title: "Whitepapers",
-        description:
-          "Deep-dive research and strategic technology perspectives.",
-        href: "/resources/whitepapers",
-        category: "resources",
-        searchKeywords:
-          "whitepapers /resources/whitepapers deep-dive research and strategic technology perspectives. resources",
-      },
-      {
-        num: "05",
-        title: "Industry Insights",
-        description: "Trends, use cases and emerging opportunities.",
-        href: "/resources/insights",
-        category: "resources",
-        searchKeywords:
-          "industry insights /resources/insights trends, use cases and emerging opportunities. resources",
-      },
-      {
-        num: "06",
-        title: "Immersive Technology Glossary",
-        description:
-          "Definitions of AR, VR, MR, XR, spatial computing, digital twins and related terms.",
-        href: "/resources/glossary",
-        category: "resources",
-        searchKeywords:
-          "immersive technology glossary /resources/glossary definitions of ar, vr, mr, xr, spatial computing, digital twins and related terms. resources",
-      },
-      {
-        num: "07",
         title: "FAQ",
         description:
           "Answers to common questions about Obrive, its technologies, services and products.",

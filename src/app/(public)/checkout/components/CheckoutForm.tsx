@@ -5,11 +5,47 @@ import type React from "react";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import FONTS from "@/assets/fonts";
-import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
 import {
   PRICING_STREAMS,
   type PricingPackage,
 } from "@/constants/pages/pricingData";
+
+// Razorpay types
+declare global {
+  interface Window {
+    Razorpay: new (options: RazorpayOptions) => RazorpayInstance;
+  }
+}
+
+interface RazorpayOptions {
+  key: string;
+  amount: number;
+  currency: string;
+  name: string;
+  description: string;
+  order_id: string;
+  prefill?: {
+    name?: string;
+    email?: string;
+    contact?: string;
+  };
+  notes?: Record<string, string>;
+  theme?: { color?: string };
+  handler: (response: RazorpaySuccessResponse) => void;
+  modal?: {
+    ondismiss?: () => void;
+  };
+}
+
+interface RazorpayInstance {
+  open: () => void;
+}
+
+interface RazorpaySuccessResponse {
+  razorpay_order_id: string;
+  razorpay_payment_id: string;
+  razorpay_signature: string;
+}
 
 const checkoutSchema = z.object({
   firstName: z.string().min(2, "First Name is required"),
@@ -23,14 +59,36 @@ const checkoutSchema = z.object({
 
 type CheckoutFormData = z.infer<typeof checkoutSchema>;
 
+type SubmitState =
+  | "idle"
+  | "creating-order"
+  | "payment-open"
+  | "verifying"
+  | "success"
+  | "error"
+  | "dismissed";
+
+function loadRazorpayScript(): Promise<boolean> {
+  return new Promise((resolve) => {
+    if (typeof window !== "undefined" && window.Razorpay) {
+      resolve(true);
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+}
+
 export default function CheckoutForm() {
   const searchParams = useSearchParams();
   const serviceParam = searchParams.get("service");
 
   const [packageDetails, setPackageDetails] = useState<PricingPackage | null>(
-    null,
+    null
   );
-
   const [formData, setFormData] = useState<CheckoutFormData>({
     firstName: "",
     lastName: "",
@@ -40,14 +98,12 @@ export default function CheckoutForm() {
     gst: "",
     address: "",
   });
-
   const [errors, setErrors] = useState<
     Partial<Record<keyof CheckoutFormData, string>>
   >({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitState, setSubmitState] = useState<
-    "idle" | "error" | "unconfigured"
-  >("idle");
+  const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [paymentId, setPaymentId] = useState<string>("");
 
   useEffect(() => {
     if (serviceParam) {
@@ -64,7 +120,7 @@ export default function CheckoutForm() {
   }, [serviceParam]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -73,13 +129,22 @@ export default function CheckoutForm() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitState("idle");
-    setIsSubmitting(true);
+  const formatINR = (value: number) =>
+    new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    }).format(value);
 
+  const gstAmount = packageDetails ? packageDetails.priceINR * 0.18 : 0;
+  const totalAmount = packageDetails ? packageDetails.priceINR + gstAmount : 0;
+
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    setErrorMessage("");
+
+    // Validate form
     const result = checkoutSchema.safeParse(formData);
-
     if (!result.success) {
       const newErrors: Partial<Record<keyof CheckoutFormData, string>> = {};
       result.error.issues.forEach((issue) => {
@@ -88,29 +153,194 @@ export default function CheckoutForm() {
         }
       });
       setErrors(newErrors);
-      setIsSubmitting(false);
+      return;
+    }
+    setErrors({});
+
+    if (!packageDetails) {
+      setErrorMessage("No package selected.");
       return;
     }
 
-    setErrors({});
+    // Step 1: Load Razorpay script
+    setSubmitState("creating-order");
+    const scriptLoaded = await loadRazorpayScript();
+    if (!scriptLoaded) {
+      setSubmitState("error");
+      setErrorMessage(
+        "Failed to load payment gateway. Please check your connection."
+      );
+      return;
+    }
 
-    // Simulate Razorpay/Payment Network request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitState("unconfigured");
-    }, 1200);
-  };
+    // Step 2: Create order on server
+    let orderId: string;
+    let orderAmount: number;
+    try {
+      const res = await fetch("/api/razorpay/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: totalAmount,
+          currency: "INR",
+          receipt: `receipt_${packageDetails.id}_${Date.now()}`,
+          notes: {
+            service: packageDetails.name,
+            email: formData.email,
+            company: formData.company || "",
+          },
+        }),
+      });
 
-  const formatINR = (value: number) => {
-    return new Intl.NumberFormat("en-IN", {
-      style: "currency",
+      const order = await res.json();
+
+      if (!res.ok || order.error) {
+        throw new Error(order.error || "Could not create payment order");
+      }
+
+      orderId = order.id;
+      orderAmount = order.amount;
+    } catch (err) {
+      setSubmitState("error");
+      setErrorMessage(
+        err instanceof Error
+          ? err.message
+          : "Failed to initiate payment. Please try again."
+      );
+      return;
+    }
+
+    // Step 3: Open Razorpay modal
+    setSubmitState("payment-open");
+
+    const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "";
+
+    const options: RazorpayOptions = {
+      key: razorpayKey,
+      amount: orderAmount,
       currency: "INR",
-      maximumFractionDigits: 0,
-    }).format(value);
+      name: "Obrive Industries",
+      description: packageDetails.name,
+      order_id: orderId,
+      prefill: {
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        contact: formData.phone,
+      },
+      notes: {
+        service: packageDetails.name,
+        company: formData.company || "",
+        gst: formData.gst || "",
+        address: formData.address,
+      },
+      theme: { color: "#073933" },
+      handler: async (response: RazorpaySuccessResponse) => {
+        setSubmitState("verifying");
+        // Step 4: Verify payment signature
+        try {
+          const verifyRes = await fetch("/api/razorpay/verify-payment", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              ...response,
+              customerData: formData,
+              packageData: packageDetails,
+              amount: orderAmount,
+            }),
+          });
+          const verifyData = await verifyRes.json();
+          if (verifyData.success) {
+            setPaymentId(response.razorpay_payment_id);
+            setSubmitState("success");
+          } else {
+            throw new Error(verifyData.error || "Verification failed");
+          }
+        } catch (err) {
+          setSubmitState("error");
+          setErrorMessage(
+            err instanceof Error
+              ? err.message
+              : "Payment verification failed. Please contact support."
+          );
+        }
+      },
+      modal: {
+        ondismiss: () => {
+          setSubmitState("dismissed");
+        },
+      },
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
   };
 
-  const gstAmount = packageDetails ? packageDetails.priceINR * 0.18 : 0;
-  const totalAmount = packageDetails ? packageDetails.priceINR + gstAmount : 0;
+  const isProcessing =
+    submitState === "creating-order" ||
+    submitState === "payment-open" ||
+    submitState === "verifying";
+
+  const buttonLabel = () => {
+    switch (submitState) {
+      case "creating-order":
+        return "Creating Order...";
+      case "payment-open":
+      case "verifying":
+        return "Processing Payment...";
+      default:
+        return "Proceed to Payment →";
+    }
+  };
+
+  // Success screen
+  if (submitState === "success") {
+    return (
+      <section className="bg-white py-16 md:py-24 relative z-10 -mt-10 rounded-t-[32px]">
+        <div className="max-w-[640px] mx-auto px-6 text-center">
+          <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-[#073933]/10 flex items-center justify-center">
+            <svg
+              className="w-10 h-10 text-[#073933]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </div>
+          <h2
+            className={`${FONTS.microgrammaBold.className} text-3xl text-primary mb-4`}
+          >
+            Payment Successful
+          </h2>
+          <p className="text-primary/70 mb-2">
+            Thank you! Your payment has been confirmed and your service scope
+            has been initiated.
+          </p>
+          {paymentId && (
+            <p className="text-primary/50 text-xs mt-4 font-mono">
+              Payment ID: {paymentId}
+            </p>
+          )}
+          <p className="text-primary/60 text-sm mt-6">
+            You will receive a confirmation email at{" "}
+            <span className="font-semibold text-primary">{formData.email}</span>{" "}
+            shortly. Our team will be in touch within 1 business day.
+          </p>
+          <a
+            href="/servicecharges"
+            className="mt-8 inline-block text-sm text-primary/60 underline hover:text-primary transition-colors"
+          >
+            ← Back to Pricing
+          </a>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-white py-16 md:py-24 relative z-10 -mt-10 rounded-t-[32px]">
@@ -255,23 +485,57 @@ export default function CheckoutForm() {
               )}
             </div>
 
+            {/* Desktop Pay Button */}
             <div className="hidden lg:block pt-4 border-t border-primary/10">
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full relative group overflow-hidden rounded-full px-8 py-4 bg-primary text-white font-bold transition-all disabled:opacity-70"
+                disabled={isProcessing || !packageDetails}
+                className="w-full relative group overflow-hidden rounded-full px-8 py-4 bg-primary text-white font-bold transition-all disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                <div className="absolute inset-0 w-full h-full bg-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
+                <div className="absolute inset-0 w-full h-full bg-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
                 <span className="relative flex items-center justify-center gap-2">
-                  {isSubmitting ? "Processing..." : "Proceed to Payment"}
+                  {isProcessing && (
+                    <svg
+                      className="animate-spin w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v8z"
+                      />
+                    </svg>
+                  )}
+                  {buttonLabel()}
                 </span>
               </button>
 
-              {submitState === "unconfigured" && (
+              {/* Razorpay badge */}
+              <div className="flex items-center justify-center gap-2 mt-3 text-primary/40 text-xs">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                Secured by Razorpay · 256-bit SSL
+              </div>
+
+              {/* Status messages */}
+              {submitState === "dismissed" && (
                 <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-800 text-sm">
-                  <b>Razorpay integration pending:</b> The payment gateway keys
-                  are not yet configured on the backend. This is a frontend demo
-                  of the checkout flow.
+                  Payment window was closed. You can try again when ready.
+                </div>
+              )}
+              {submitState === "error" && (
+                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                  {errorMessage || "An error occurred. Please try again."}
                 </div>
               )}
             </div>
@@ -289,7 +553,10 @@ export default function CheckoutForm() {
 
             {!packageDetails ? (
               <div className="text-primary/60 text-sm">
-                No service package selected. Please return to the pricing page
+                No service package selected.{" "}
+                <a href="/servicecharges" className="underline text-primary">
+                  Return to pricing
+                </a>{" "}
                 to select a package.
               </div>
             ) : (
@@ -311,8 +578,7 @@ export default function CheckoutForm() {
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between items-center text-primary/80">
                     <span>
-                      Base Scope (
-                      {packageDetails.isMonthly ? "Monthly" : "One-time"})
+                      Base Scope ({packageDetails.isMonthly ? "Monthly" : "One-time"})
                     </span>
                     <span className="font-bold">
                       {formatINR(packageDetails.priceINR)}
@@ -337,7 +603,7 @@ export default function CheckoutForm() {
                   </span>
                 </div>
 
-                <div className="pt-4 pb-2">
+                <div className="pt-2 pb-2">
                   <ul className="space-y-3">
                     {packageDetails.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
@@ -362,22 +628,33 @@ export default function CheckoutForm() {
                   </ul>
                 </div>
 
-                <div className="lg:hidden pt-6">
+                {/* Mobile Pay Button */}
+                <div className="lg:hidden pt-4 border-t border-primary/10">
                   <button
-                    onClick={handleSubmit}
-                    disabled={isSubmitting}
-                    className="w-full relative group overflow-hidden rounded-full px-8 py-4 bg-primary text-white font-bold transition-all disabled:opacity-70"
+                    onClick={() => handleSubmit()}
+                    disabled={isProcessing}
+                    className="w-full relative group overflow-hidden rounded-full px-8 py-4 bg-primary text-white font-bold transition-all disabled:opacity-60"
                   >
-                    <div className="absolute inset-0 w-full h-full bg-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"></div>
+                    <div className="absolute inset-0 w-full h-full bg-accent/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
                     <span className="relative flex items-center justify-center gap-2">
-                      {isSubmitting ? "Processing..." : "Proceed to Payment"}
+                      {isProcessing && (
+                        <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                        </svg>
+                      )}
+                      {buttonLabel()}
                     </span>
                   </button>
 
-                  {submitState === "unconfigured" && (
+                  {submitState === "dismissed" && (
                     <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-800 text-sm">
-                      <b>Razorpay integration pending:</b> Backend not
-                      configured.
+                      Payment window was closed. You can try again when ready.
+                    </div>
+                  )}
+                  {submitState === "error" && (
+                    <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                      {errorMessage || "An error occurred. Please try again."}
                     </div>
                   )}
                 </div>
@@ -386,20 +663,10 @@ export default function CheckoutForm() {
 
             <div className="mt-8 pt-6 border-t border-primary/10">
               <div className="flex items-center gap-2 text-primary/50 text-xs">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z"
-                  />
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z" />
                 </svg>
-                Secure 256-bit SSL encryption
+                Secured by Razorpay · 256-bit SSL encryption
               </div>
             </div>
           </div>

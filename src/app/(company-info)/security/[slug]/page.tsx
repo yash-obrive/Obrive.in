@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCompanyInfoMDXComponents } from "@/components/pages/company-info/CompanyInfoMDXComponents";
 import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
-import { getAllCompanyInfoSlugs, getCompanyInfoBySlug } from "@/lib/mdx";
+import { getAllCompanyInfoSlugs, getCompanyInfoBySlug, sharedMdxOptions } from "@/lib/mdx";
 
 interface SecurityPageProps {
   params: { slug: string };
@@ -30,6 +30,7 @@ export default async function SecurityPage({ params }: SecurityPageProps) {
       <MDXRemote
         source={securityDoc.content}
         components={createCompanyInfoMDXComponents(securityDoc.metadata)}
+        options={sharedMdxOptions}
       />
     </CompanyInfoTemplate>
   );

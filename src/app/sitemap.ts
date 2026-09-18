@@ -9,6 +9,7 @@ import { getProductSlugs } from "@/lib/products";
 import { getSolutionSlugs } from "@/lib/solutions";
 import { getTechnologySlugs } from "@/lib/technology";
 import { getUseCaseSlugs } from "@/lib/use-cases";
+import { getAllCaseStudySlugs as getNewCaseStudySlugs } from "@/lib/case-studies";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://obrive.com";
@@ -125,7 +126,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
   );
 
-  // Case study/resource pages
+  // Old Case study/resource pages
   const caseStudySlugs = await getAllCaseStudySlugs();
   const caseStudyPages: MetadataRoute.Sitemap = caseStudySlugs.map((slug) => ({
     url: `${baseUrl}/resources/${slug}`,
@@ -133,6 +134,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly",
     priority: 0.7,
   }));
+
+  // New JSON-based Case Study pages
+  const newCaseStudySlugs = getNewCaseStudySlugs();
+  const newCaseStudyPages: MetadataRoute.Sitemap = newCaseStudySlugs.map((slug) => ({
+    url: `${baseUrl}/case-studies/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  // Blog pages
+  const { getAllBlogs } = await import("@/lib/blogs");
+  const blogSlugs = getAllBlogs().map((b) => b.slug);
+  const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
+    url: `${baseUrl}/blog/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8,
+  }));
+  const blogIndexPage: MetadataRoute.Sitemap = [{
+    url: `${baseUrl}/blog`,
+    lastModified: new Date(),
+    changeFrequency: "daily",
+    priority: 0.9,
+  }];
 
   // FAQ pages
   const faqSlugs = await getAllFAQSlugs();
@@ -169,6 +195,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...useCasePages,
     ...technologyPages,
     ...caseStudyPages,
+    ...newCaseStudyPages,
+    ...blogIndexPage,
+    ...blogPages,
     ...faqPages,
     ...legalPages,
     ...supportPages,

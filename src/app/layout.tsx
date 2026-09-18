@@ -4,7 +4,7 @@ import { TimerProvider } from "@/context/TimerContext";
 import "./globals.css";
 import Script from "next/script";
 
-export const michroma = Michroma({
+const michroma = Michroma({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-michroma",

@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import type React from "react";
 import { Suspense, useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
 import FONTS from "@/assets/fonts";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
@@ -41,7 +42,7 @@ function ContactFormContent() {
   >({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitState, setSubmitState] = useState<
-    "idle" | "error" | "unconfigured"
+    "idle" | "error" | "success" | "unconfigured"
   >("idle");
 
   useEffect(() => {
@@ -101,15 +102,42 @@ function ContactFormContent() {
 
     setErrors({});
 
-    // Simulate network request since there is no backend
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitState("unconfigured"); // Emphasize backend is missing
-    }, 1200);
+    // Send data to our API route
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        setIsSubmitting(false);
+        if (res.ok) {
+          setSubmitState("success");
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            company: "",
+            service: "",
+            projectRequirement: "",
+            message: "",
+          });
+        } else {
+          setSubmitState("error");
+          console.error("Submission failed:", data);
+        }
+      })
+      .catch((err) => {
+        console.error("Submission error:", err);
+        setIsSubmitting(false);
+        setSubmitState("error");
+      });
   };
 
+  // Removed early return for success state, using modal instead
   return (
-    <form onSubmit={handleSubmit} className="w-full space-y-6">
+    <div className="relative w-full">
+      <form onSubmit={handleSubmit} className="w-full space-y-6">
       {/* Alert for Payment Intent */}
       {intentParam === "payment" && (
         <div className="bg-amber-500/10 border border-amber-500/20 text-amber-600 rounded-lg p-4 mb-6 text-sm">
@@ -152,6 +180,13 @@ function ContactFormContent() {
           </div>
         </div>
       )}
+
+      {submitState === "error" && (
+        <div className="bg-red-500/10 border border-red-500/20 text-red-600 rounded-lg p-4 mb-6 text-sm">
+          <strong>Error:</strong> Failed to submit your request. Please try again later.
+        </div>
+      )}
+
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
@@ -290,7 +325,50 @@ function ContactFormContent() {
         By submitting this form, you agree to our Privacy Policy and Terms of
         Service.
       </p>
-    </form>
+      </form>
+
+      <AnimatePresence>
+        {submitState === "success" && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 bg-white/95 backdrop-blur-sm z-50 flex items-center justify-center rounded-[32px]"
+          >
+            <div className="bg-primary/5 border border-primary/20 text-primary p-8 rounded-xl text-center flex flex-col items-center max-w-md shadow-2xl">
+              <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white mb-6">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+              </div>
+              <h3 className={`${FONTS.microgrammaBold.className} text-2xl mb-4`}>
+                Message Sent Successfully!
+              </h3>
+              <p className="text-primary/70 text-lg leading-relaxed max-w-md mx-auto">
+                Thank you for reaching out. Our team has received your enquiry and
+                will get back to you shortly.
+              </p>
+              <button
+                onClick={() => setSubmitState("idle")}
+                className="mt-8 bg-primary text-white py-3 px-8 rounded-xl font-bold hover:bg-primary/90 transition-colors"
+              >
+                Send Another Message
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
 

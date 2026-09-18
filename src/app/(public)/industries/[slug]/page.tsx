@@ -77,11 +77,14 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
         })}
       </Script>
       <SolutionTemplate
-        slug=""
+        slug={slug}
         hero={industryData.hero}
         keyBenefits={industryData.keyBenefits}
         howItWorks={industryData.howItWorks}
         workflowStepsSidebar={industryData.workflowStepsSidebar}
+        sidebarLinks={industryData.sidebarLinks}
+        serviceSections={industryData.serviceSections}
+        processSteps={industryData.processSteps}
       />
     </>
   );

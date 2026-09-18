@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import FONTS from "@/assets/fonts";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import type {
   ServiceSection,
@@ -68,34 +67,34 @@ const SolutionSidebarLayout = ({
       <div className="flex items-start gap-10 my-20 max-xl:gap-8 max-lg:flex-col max-lg:items-stretch max-lg:gap-12 max-md:my-14 max-sm:my-10">
         {/* Sticky Sidebar */}
         <div className="sticky top-20 self-start max-lg:hidden">
-          <div className="w-56">
-            <p className="text-xs py-4 px-2 text-zinc-500">{serviceLabel}</p>
+          <div className="w-sm">
+            <p className="text-xs py-4 px-2">{serviceLabel}</p>
             {sidebarLinks.map((link, index) => (
-              <button
+              <div
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className={`w-full text-left flex items-center gap-3 py-4 cursor-pointer transition-colors text-xs leading-5 ${FONTS.microgrammaBold.className} text-black border-zinc-300
-                  ${index === 0 ? "border-y" : "border-b"}
-                  ${activeId === link.id ? "opacity-100" : "hover:bg-zinc-50"}
+                className={`flex items-center gap-3 py-4 px-2 cursor-pointer hover:bg-primary/10 transition-colors text-xs
+                  ${index === 0 ? "border-y" : "border-b"} border-primary/80
+                  ${activeId === link.id ? "text-primary font-semibold" : ""}
                 `}
               >
-                {link.label}
-              </button>
+                <span>{link.label}</span>
+              </div>
             ))}
-            <button
+            <div
               onClick={() => {
                 const element = document.getElementById("our-process");
                 if (element) {
                   element.scrollIntoView({ behavior: "smooth" });
                 }
               }}
-              className={`w-full text-left flex items-center gap-3 py-4 cursor-pointer transition-colors text-xs leading-5 border-b border-zinc-300 hover:bg-zinc-50 ${FONTS.microgrammaBold.className} text-black`}
+              className="flex items-center gap-3 py-4 px-2 cursor-pointer hover:bg-primary/10 transition-colors text-xs border-b border-primary/80"
             >
-              Our Process
-            </button>
+              <span>Our Process</span>
+            </div>
             <Link
               href={`/solutions/${slug}/industries`}
-              className={`w-full text-left flex items-center gap-3 py-4 cursor-pointer transition-colors text-xs leading-5 border-b border-zinc-300 hover:bg-zinc-50 ${FONTS.microgrammaBold.className} text-black`}
+              className="flex items-center gap-3 py-4 px-2 cursor-pointer hover:bg-primary/10 transition-colors text-xs border-b border-primary/80"
             >
               Industries We Serve
             </Link>

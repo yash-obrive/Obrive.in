@@ -10,6 +10,11 @@ import {
   REAL_ESTATE_INDUSTRY,
   RETAIL_INDUSTRY,
 } from "@/constants/pages/industries";
+import type {
+  ServiceSection,
+  SidebarLink,
+  WorkflowStep,
+} from "@/types/solutions";
 
 // Reusing identical structure as SolutionHero for compatibility
 export interface IndustryHero {
@@ -28,9 +33,12 @@ export interface IndustryHero {
 export interface IndustryData {
   slug: string;
   hero: IndustryHero;
-  howItWorks: readonly any[];
+  howItWorks?: readonly any[];
   keyBenefits: readonly any[];
-  workflowStepsSidebar: readonly string[];
+  workflowStepsSidebar?: readonly string[];
+  sidebarLinks?: readonly SidebarLink[];
+  serviceSections?: readonly ServiceSection[];
+  processSteps?: readonly WorkflowStep[];
 }
 
 const INDUSTRIES_DATA: Record<string, IndustryData> = {
@@ -43,6 +51,8 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     howItWorks: REAL_ESTATE_INDUSTRY.howItWorks,
     keyBenefits: REAL_ESTATE_INDUSTRY.keyBenefits,
     workflowStepsSidebar: REAL_ESTATE_INDUSTRY.workflowStepsSidebar,
+    sidebarLinks: REAL_ESTATE_INDUSTRY.sidebarLinks,
+    serviceSections: REAL_ESTATE_INDUSTRY.serviceSections,
   },
   automotive: {
     slug: "automotive",
@@ -53,6 +63,8 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     howItWorks: AUTOMOTIVE_INDUSTRY.howItWorks,
     keyBenefits: AUTOMOTIVE_INDUSTRY.keyBenefits,
     workflowStepsSidebar: AUTOMOTIVE_INDUSTRY.workflowStepsSidebar,
+    sidebarLinks: AUTOMOTIVE_INDUSTRY.sidebarLinks,
+    serviceSections: AUTOMOTIVE_INDUSTRY.serviceSections,
   },
   retail: {
     slug: "retail",
@@ -63,6 +75,8 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     howItWorks: RETAIL_INDUSTRY.howItWorks,
     keyBenefits: RETAIL_INDUSTRY.keyBenefits,
     workflowStepsSidebar: RETAIL_INDUSTRY.workflowStepsSidebar,
+    sidebarLinks: RETAIL_INDUSTRY.sidebarLinks,
+    serviceSections: RETAIL_INDUSTRY.serviceSections,
   },
   healthcare: {
     slug: "healthcare",
@@ -73,6 +87,8 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     howItWorks: HEALTHCARE_INDUSTRY.howItWorks,
     keyBenefits: HEALTHCARE_INDUSTRY.keyBenefits,
     workflowStepsSidebar: HEALTHCARE_INDUSTRY.workflowStepsSidebar,
+    sidebarLinks: HEALTHCARE_INDUSTRY.sidebarLinks,
+    serviceSections: HEALTHCARE_INDUSTRY.serviceSections,
   },
   manufacturing: {
     slug: "manufacturing",
@@ -83,6 +99,8 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     howItWorks: MANUFACTURING_INDUSTRY.howItWorks,
     keyBenefits: MANUFACTURING_INDUSTRY.keyBenefits,
     workflowStepsSidebar: MANUFACTURING_INDUSTRY.workflowStepsSidebar,
+    sidebarLinks: MANUFACTURING_INDUSTRY.sidebarLinks,
+    serviceSections: MANUFACTURING_INDUSTRY.serviceSections,
   },
   "architecture-engineering": {
     slug: "architecture-engineering",
@@ -92,8 +110,9 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     },
     howItWorks: ARCHITECTURE_ENGINEERING_INDUSTRY.howItWorks,
     keyBenefits: ARCHITECTURE_ENGINEERING_INDUSTRY.keyBenefits,
-    workflowStepsSidebar:
-      ARCHITECTURE_ENGINEERING_INDUSTRY.workflowStepsSidebar,
+    workflowStepsSidebar: ARCHITECTURE_ENGINEERING_INDUSTRY.workflowStepsSidebar,
+    sidebarLinks: ARCHITECTURE_ENGINEERING_INDUSTRY.sidebarLinks,
+    serviceSections: ARCHITECTURE_ENGINEERING_INDUSTRY.serviceSections,
   },
   education: {
     slug: "education",
@@ -104,6 +123,8 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     howItWorks: EDUCATION_INDUSTRY.howItWorks,
     keyBenefits: EDUCATION_INDUSTRY.keyBenefits,
     workflowStepsSidebar: EDUCATION_INDUSTRY.workflowStepsSidebar,
+    sidebarLinks: EDUCATION_INDUSTRY.sidebarLinks,
+    serviceSections: EDUCATION_INDUSTRY.serviceSections,
   },
   enterprise: {
     slug: "enterprise",
@@ -114,6 +135,8 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     howItWorks: ENTERPRISE_INDUSTRY.howItWorks,
     keyBenefits: ENTERPRISE_INDUSTRY.keyBenefits,
     workflowStepsSidebar: ENTERPRISE_INDUSTRY.workflowStepsSidebar,
+    sidebarLinks: ENTERPRISE_INDUSTRY.sidebarLinks,
+    serviceSections: ENTERPRISE_INDUSTRY.serviceSections,
   },
 };
 

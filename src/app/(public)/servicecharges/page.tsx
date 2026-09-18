@@ -54,19 +54,19 @@ export default function PricingPage() {
             style={{ fontFamily: "var(--font-michroma)" }}
           >
             <Link
-              href="/refund-policy"
+              href="/legal/refund-policy"
               className="hover:text-primary transition-colors"
             >
               Refund Policy
             </Link>
             <Link
-              href="/gst-information"
+              href="/legal/gst-taxes-policy"
               className="hover:text-primary transition-colors"
             >
               GST & Taxes
             </Link>
             <Link
-              href="/services-policy"
+              href="/legal/service-policy"
               className="hover:text-primary transition-colors"
             >
               Services Policy

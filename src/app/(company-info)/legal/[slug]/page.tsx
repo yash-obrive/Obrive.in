@@ -4,10 +4,10 @@ import Script from "next/script";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCompanyInfoMDXComponents } from "@/components/pages/company-info/CompanyInfoMDXComponents";
 import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
-import { getAllCompanyInfoSlugs, getCompanyInfoBySlug } from "@/lib/mdx";
+import { getAllCompanyInfoSlugs, getCompanyInfoBySlug, sharedMdxOptions } from "@/lib/mdx";
 
 interface LegalPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export const dynamicParams = false;
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: LegalPageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const legalDoc = await getCompanyInfoBySlug(slug, "legal");
 
   if (!legalDoc) {
@@ -282,6 +282,7 @@ export default async function LegalPage({ params }: LegalPageProps) {
         <MDXRemote
           source={legalDoc.content}
           components={createCompanyInfoMDXComponents(legalDoc.metadata)}
+          options={sharedMdxOptions}
         />
       </CompanyInfoTemplate>
     </>

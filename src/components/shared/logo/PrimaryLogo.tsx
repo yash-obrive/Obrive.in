@@ -27,6 +27,7 @@ export default function PrimaryLogo({
       alt={logoMeta.alt}
       className={className}
       priority
+      unoptimized
     />
   );
 }

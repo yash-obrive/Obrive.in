@@ -4,7 +4,7 @@ import Script from "next/script";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCompanyInfoMDXComponents } from "@/components/pages/company-info/CompanyInfoMDXComponents";
 import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
-import { getCompanyInfoBySlug } from "@/lib/mdx";
+import { getCompanyInfoBySlug, sharedMdxOptions } from "@/lib/mdx";
 
 export const metadata: Metadata = {
   title: "Obrive Industries — Accessibility | Terms & Accessibility",
@@ -59,6 +59,7 @@ export default async function TermsAccessibilityPage() {
         <MDXRemote
           source={legalDoc.content}
           components={createCompanyInfoMDXComponents(legalDoc.metadata)}
+          options={sharedMdxOptions}
         />
       </CompanyInfoTemplate>
     </>

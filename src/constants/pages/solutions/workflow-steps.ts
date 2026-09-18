@@ -68,8 +68,8 @@ export type WORKFLOW_STEPS_TYPE = {
   step: string;
   title: string;
   description: string;
-  src: StaticImageData;
-  srcMeta: {
+  src: StaticImageData | string;
+  srcMeta?: {
     alt: string;
     width: number;
     height: number;

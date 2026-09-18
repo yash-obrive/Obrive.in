@@ -4,7 +4,7 @@ import Script from "next/script";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createFAQMDXComponents } from "@/components/pages/faq/FAQMDXComponents";
 import FAQTemplate from "@/components/pages/faq/FAQTemplate";
-import { getAllFAQSlugs, getFAQBySlug } from "@/lib/mdx";
+import { getAllFAQSlugs, getFAQBySlug, sharedMdxOptions } from "@/lib/mdx";
 import { faqMetadata } from "./metadata";
 
 interface FaqSlugPageProps {
@@ -110,6 +110,7 @@ const FaqSlugPage = async ({ params }: FaqSlugPageProps) => {
         <MDXRemote
           source={faqData.content}
           components={createFAQMDXComponents(faqData.metadata)}
+          options={sharedMdxOptions}
         />
       </FAQTemplate>
     </>

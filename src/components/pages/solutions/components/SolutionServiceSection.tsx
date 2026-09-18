@@ -5,12 +5,12 @@ import type { ServiceSubSection } from "@/types/solutions";
 interface SolutionServiceSectionProps {
   id: string;
   title: string;
-  subtitle: string;
-  description: string;
-  label: string;
-  items: readonly string[];
+  subtitle?: string;
+  description?: string;
+  label?: string;
+  items?: readonly string[];
   subSections?: readonly ServiceSubSection[];
-  footer: string;
+  footer?: string;
 }
 
 const SolutionServiceSection = ({
@@ -27,7 +27,7 @@ const SolutionServiceSection = ({
     <div id={id} className="flex flex-col gap-5 scroll-mt-24">
       {/* Section Title */}
       <h2
-        className={`${FONTS.microgrammaBold.className} text-black text-[32px] max-xl:text-3xl max-lg:text-2xl max-md:text-xl`}
+        className={`${FONTS.microgrammaBold.className} text-primary text-[32px] max-xl:text-3xl max-lg:text-2xl max-md:text-xl`}
       >
         {title}
       </h2>
@@ -45,7 +45,7 @@ const SolutionServiceSection = ({
       </p>
 
       {/* Tag Label */}
-      {label && <p className={`${FONTS.microgrammaBold.className} text-black text-xl max-md:text-lg mt-2`}>{label}</p>}
+      {label && <p className={`${FONTS.microgrammaBold.className} text-primary text-xl max-md:text-lg mt-2`}>{label}</p>}
 
       {/* Tag container — flex wrap for variable sizes and preventing overflow */}
       {items && items.length > 0 && (
@@ -65,29 +65,30 @@ const SolutionServiceSection = ({
 
       {/* Nested Sub-Sections */}
       {subSections && subSections.length > 0 && (
-        <div className="flex flex-col gap-8 mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           {subSections.map((sub, idx) => (
-            <div key={idx} className="flex flex-col gap-2">
+            <div
+              key={idx}
+              className="bg-white border border-zinc-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3"
+            >
               {sub.title && (
-                <h3 className={`${FONTS.microgrammaBold.className} text-black text-xl max-md:text-lg`}>
+                <h3 className={`${FONTS.microgrammaBold.className} text-primary text-lg`}>
                   {sub.title}
                 </h3>
               )}
               {sub.description && (
-                <p className="text-sm leading-7 tracking-[0.3px] text-zinc-600 max-w-[680px]">
+                <p className="text-sm leading-6 tracking-[0.3px] text-zinc-600">
                   {sub.description}
                 </p>
               )}
               {sub.items && sub.items.length > 0 && (
-                <div className="flex flex-wrap gap-2.5 mt-2">
+                <div className="flex flex-wrap gap-2 mt-2">
                   {sub.items.map((item, i) => (
                     <div
                       key={i}
-                      className="flex items-center justify-center gap-2 px-3 py-1.5 border border-zinc-300 rounded-full bg-transparent hover:bg-zinc-50 transition-colors max-w-full"
+                      className="flex items-center justify-center px-3 py-1 bg-zinc-50 border border-zinc-200 rounded-full text-[11px] sm:text-xs text-zinc-600 leading-snug break-words"
                     >
-                      <span className="text-[11px] sm:text-xs text-zinc-600 leading-snug text-center break-words">
-                        {item}
-                      </span>
+                      {item}
                     </div>
                   ))}
                 </div>

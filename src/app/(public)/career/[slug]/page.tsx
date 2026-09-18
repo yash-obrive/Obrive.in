@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCareerMDXComponents } from "@/components/pages/career/CareerMDXComponents";
 import CareerTemplate from "@/components/pages/career/CareerTemplate";
-import { getAllCareerSlugs, getCareerBySlug } from "@/lib/mdx";
+import { getAllCareerSlugs, getCareerBySlug, sharedMdxOptions } from "@/lib/mdx";
 
 export async function generateStaticParams() {
   const slugs = await getAllCareerSlugs();
@@ -71,7 +71,7 @@ export default async function CareerPage({
 
   return (
     <CareerTemplate metadata={career.metadata}>
-      <MDXRemote source={career.content} components={components} />
+      <MDXRemote source={career.content} components={components} options={sharedMdxOptions} />
     </CareerTemplate>
   );
 }

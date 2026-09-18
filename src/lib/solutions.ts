@@ -139,6 +139,7 @@ export interface SolutionData {
   sidebarLinks?: readonly SidebarLink[];
   serviceSections?: readonly ServiceSection[];
   processSteps?: readonly WorkflowStep[];
+  faqs?: Record<string, { q: string; a: string }[]>;
 }
 
 const SOLUTIONS_DATA: Record<string, SolutionData> = {
@@ -309,14 +310,31 @@ const SOLUTIONS_DATA: Record<string, SolutionData> = {
   },
 };
 
+import solutionFaqs from "@/data/solution-faqs.json";
+
 export function getSolutionSlugs(): string[] {
   return Object.keys(SOLUTIONS_DATA);
 }
 
 export function getSolutionData(slug: string): SolutionData | null {
-  return SOLUTIONS_DATA[slug] || null;
+  const data = SOLUTIONS_DATA[slug];
+  if (!data) return null;
+  
+  // Inject FAQs if available
+  const faqs = (solutionFaqs as Record<string, Record<string, {q: string; a: string}[]>>)[slug];
+  if (faqs) {
+    return { ...data, faqs };
+  }
+  
+  return data;
 }
 
 export function getAllSolutions(): SolutionData[] {
-  return Object.values(SOLUTIONS_DATA);
+  return Object.values(SOLUTIONS_DATA).map(data => {
+    const faqs = (solutionFaqs as Record<string, Record<string, {q: string; a: string}[]>>)[data.slug];
+    if (faqs) {
+      return { ...data, faqs };
+    }
+    return data;
+  });
 }

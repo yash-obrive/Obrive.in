@@ -1,6 +1,9 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import type { CASE_STUDIES_AVATAR, CASE_STUDIES_IMAGES } from "@/assets/images";
 
 const caseStudiesDirectory = path.join(process.cwd(), "src/content/resources");
@@ -326,3 +329,10 @@ export async function getAllCareers(): Promise<CareerData[]> {
 
   return careers.filter((career): career is CareerData => career !== null);
 }
+
+export const sharedMdxOptions = {
+  mdxOptions: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+  },
+};

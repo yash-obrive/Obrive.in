@@ -7,14 +7,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-interface FAQItem {
-  question: string;
-  answer: string | React.ReactNode;
-}
-
 interface FAQAccordionSectionProps {
   title?: string;
-  items: FAQItem[];
+  children: React.ReactNode;
 }
 
 const slugify = (value: string) =>
@@ -26,8 +21,31 @@ const slugify = (value: string) =>
 
 export default function FAQAccordionSection({
   title,
-  items,
+  children,
 }: FAQAccordionSectionProps) {
+  return (
+    <section className="mb-6" id={title ? slugify(title) : undefined}>
+      {title && <p className="text-base mb-4 text-gray-700">{title}</p>}
+
+      <div className="border border-zinc-800 rounded-xl overflow-hidden">
+        <Accordion type="single" collapsible className="space-y-0">
+          {children}
+        </Accordion>
+      </div>
+    </section>
+  );
+}
+
+interface FAQItemProps {
+  question?: string;
+  q?: string;
+  answer?: string | React.ReactNode;
+  children?: React.ReactNode;
+  value?: string;
+}
+
+export function FAQItem({ question, q, answer, children, value }: FAQItemProps) {
+  const actualQuestion = question || q || "";
   const sanitizeHTML = (html: string): string => {
     if (typeof window !== "undefined") {
       return DOMPurify.sanitize(html);
@@ -35,42 +53,29 @@ export default function FAQAccordionSection({
     return html;
   };
 
-  return (
-    <section className="mb-6" id={title ? slugify(title) : undefined}>
-      {title && <p className="text-base mb-4 text-gray-700">{title}</p>}
+  const itemValue = value || `faq-${slugify(actualQuestion).substring(0, 20)}`;
+  const content = children || answer;
 
-      <div className="border border-zinc-800 rounded-xl overflow-hidden">
-        <Accordion type="single" collapsible className="space-y-0">
-          {items?.map((item, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className="bg-white"
-            >
-              <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
-                <span className="text-sm pr-4 text-secondary">
-                  {item.question}
-                </span>
-              </AccordionTrigger>
-              <AccordionContent className="px-6 pb-4">
-                <div className="text-sm leading-relaxed text-gray-700">
-                  {typeof item.answer === "string" ? (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: sanitizeHTML(item.answer),
-                      }}
-                    />
-                  ) : (
-                    <div className="[&>ul]:list-disc [&>ul]:list-outside [&>ul]:pl-8 [&>ul]:space-y-2">
-                      {item.answer}
-                    </div>
-                  )}
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    </section>
+  return (
+    <AccordionItem value={itemValue} className="bg-white">
+      <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
+        <span className="text-sm pr-4 text-secondary">{actualQuestion}</span>
+      </AccordionTrigger>
+      <AccordionContent className="px-6 pb-4">
+        <div className="text-sm leading-relaxed text-gray-700">
+          {typeof content === "string" ? (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: sanitizeHTML(content),
+              }}
+            />
+          ) : (
+            <div className="[&>ul]:list-disc [&>ul]:list-outside [&>ul]:pl-8 [&>ul]:space-y-2">
+              {content}
+            </div>
+          )}
+        </div>
+      </AccordionContent>
+    </AccordionItem>
   );
 }

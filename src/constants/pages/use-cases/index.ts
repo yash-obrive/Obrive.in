@@ -11,6 +11,31 @@ import {
   OBNEST_IMAGES_META,
 } from "@/assets/images";
 
+import {
+  THREE_D_PRODUCT_CONFIGURATION_HERO,
+  THREE_D_PRODUCT_CONFIGURATION_KEY_BENEFITS,
+  THREE_D_PRODUCT_CONFIGURATION_HOW_IT_WORKS,
+  THREE_D_PRODUCT_CONFIGURATION_WORKFLOW_STEPS_SIDEBAR,
+  THREE_D_PRODUCT_CONFIGURATION_SERVICE_SECTIONS,
+  THREE_D_PRODUCT_CONFIGURATION_SIDEBAR_LINKS,
+} from "./3d-product-configuration";
+import {
+  DIGITAL_TWINS_HERO,
+  DIGITAL_TWINS_KEY_BENEFITS,
+  DIGITAL_TWINS_HOW_IT_WORKS,
+  DIGITAL_TWINS_WORKFLOW_STEPS_SIDEBAR,
+  DIGITAL_TWINS_SERVICE_SECTIONS,
+  DIGITAL_TWINS_SIDEBAR_LINKS,
+} from "./digital-twins";
+import {
+  REMOTE_ASSISTANCE_HERO,
+  REMOTE_ASSISTANCE_KEY_BENEFITS,
+  REMOTE_ASSISTANCE_HOW_IT_WORKS,
+  REMOTE_ASSISTANCE_WORKFLOW_STEPS_SIDEBAR,
+  REMOTE_ASSISTANCE_SERVICE_SECTIONS,
+  REMOTE_ASSISTANCE_SIDEBAR_LINKS,
+} from "./remote-assistance";
+
 const PLACEHOLDER_WORKFLOW = [
   "Step 1: Identify Use Case",
   "Step 2: Prototype Solution",
@@ -499,6 +524,12 @@ const VR_KEY_BENEFITS = [
   },
 ] as const;
 
+const DEFAULT_SIDEBAR_LINKS = [
+  { id: "industries", label: "Industries & Applications" },
+  { id: "why-choose", label: "Why Choose Obrive" },
+  { id: "scope", label: "Use-Case Scope" },
+] as const;
+
 export const AR_PRODUCT_VISUALIZATION = {
   hero: {
     title: "AR Product Visualization",
@@ -514,6 +545,50 @@ export const AR_PRODUCT_VISUALIZATION = {
   workflowStepsSidebar: AR_WORKFLOW,
   howItWorks: AR_HOW_IT_WORKS,
   keyBenefits: AR_KEY_BENEFITS,
+  sidebarLinks: DEFAULT_SIDEBAR_LINKS,
+  serviceSections: [
+    {
+      id: "industries",
+      title: "Industries & Applications",
+      subtitle: "",
+      description: "AR visualization applications across different sectors.",
+      label: "Industries",
+      items: [],
+      footer: "",
+      subSections: [
+        { title: "Manufacturing", description: "Visualize industrial equipment and machinery in physical workspaces." },
+        { title: "Retail & E-commerce", description: "Enable customers to preview products in their homes before buying." },
+        { title: "Architecture & Design", description: "Project architectural models and interior designs into real-world spaces." },
+        { title: "Education & Training", description: "Overlay educational diagrams and interactive 3D models for students." },
+        { title: "Logistics", description: "Optimize warehouse layouts and spatial planning using AR overlays." }
+      ]
+    },
+    {
+      id: "why-choose",
+      title: "Why Choose Obrive",
+      subtitle: "",
+      description: "Enhance spatial understanding with real-time AR overlays.",
+      label: "Why Choose Obrive",
+      items: [],
+      footer: "",
+      subSections: AR_KEY_BENEFITS.map(b => ({ title: b.title, description: b.description }))
+    },
+    {
+      id: "scope",
+      title: "Use-Case Scope",
+      subtitle: "",
+      description: "Explore the different scopes of AR product visualization.",
+      label: "Use-Case Scope",
+      items: [],
+      footer: "",
+      subSections: [
+        { title: "At-Home Try-Ons", description: "Visualize furniture, appliances, or apparel in personal spaces." },
+        { title: "Industrial Equipment", description: "Preview large machinery installations on the factory floor." },
+        { title: "Interior Design", description: "Experiment with room layouts and decor in real-time." },
+        { title: "Maintenance Assistance", description: "Overlay service manuals and diagnostics onto physical equipment." }
+      ]
+    }
+  ]
 };
 
 export const VIRTUAL_TRAINING = {
@@ -531,22 +606,60 @@ export const VIRTUAL_TRAINING = {
   workflowStepsSidebar: VR_WORKFLOW,
   howItWorks: VR_HOW_IT_WORKS,
   keyBenefits: VR_KEY_BENEFITS,
+  sidebarLinks: DEFAULT_SIDEBAR_LINKS,
+  serviceSections: [
+    {
+      id: "industries",
+      title: "Industries & Applications",
+      subtitle: "",
+      description: "Virtual training applications across high-stakes sectors.",
+      label: "Industries",
+      items: [],
+      footer: "",
+      subSections: [
+        { title: "Manufacturing", description: "Train operators on complex machinery and assembly line procedures." },
+        { title: "Healthcare & Surgery", description: "Simulate surgical procedures and medical equipment handling." },
+        { title: "Energy & Utilities", description: "Prepare workers for hazardous environments and emergency protocols." },
+        { title: "Aviation & Aerospace", description: "Provide immersive flight simulation and maintenance training." },
+        { title: "Emergency Services", description: "Recreate disaster response scenarios for safe, repeatable practice." }
+      ]
+    },
+    {
+      id: "why-choose",
+      title: "Why Choose Obrive",
+      subtitle: "",
+      description: "Accelerate learning and reduce risks with immersive VR simulations.",
+      label: "Why Choose Obrive",
+      items: [],
+      footer: "",
+      subSections: VR_KEY_BENEFITS.map(b => ({ title: b.title, description: b.description }))
+    },
+    {
+      id: "scope",
+      title: "Use-Case Scope",
+      subtitle: "",
+      description: "Explore the different scopes of virtual training.",
+      label: "Use-Case Scope",
+      items: [],
+      footer: "",
+      subSections: [
+        { title: "Equipment Operation", description: "Master heavy machinery and specialized tools in a safe virtual space." },
+        { title: "Safety & Compliance", description: "Interactive modules for OSHA and workplace safety standards." },
+        { title: "Soft Skills Training", description: "Simulate customer service, leadership, and conflict resolution scenarios." },
+        { title: "Maintenance Procedures", description: "Step-by-step repair and diagnostic simulations." },
+        { title: "Surgical Simulation", description: "High-fidelity anatomical models for surgical practice." }
+      ]
+    }
+  ]
 };
 
 export const DIGITAL_TWINS = {
-  hero: {
-    title: "Digital Twins",
-    description:
-      "Create exact virtual replicas of physical assets, systems, or environments.",
-    description2: "Placeholder secondary description for digital twins.",
-    ctaButtons: {
-      primary: "Explore Digital Twins",
-      secondary: "SCHEDULE A DEMO",
-    },
-  },
-  workflowStepsSidebar: PLACEHOLDER_WORKFLOW,
-  howItWorks: PLACEHOLDER_HOW_IT_WORKS,
-  keyBenefits: PLACEHOLDER_KEY_BENEFITS,
+  hero: DIGITAL_TWINS_HERO,
+  keyBenefits: DIGITAL_TWINS_KEY_BENEFITS,
+  howItWorks: DIGITAL_TWINS_HOW_IT_WORKS,
+  workflowStepsSidebar: DIGITAL_TWINS_WORKFLOW_STEPS_SIDEBAR,
+  sidebarLinks: DIGITAL_TWINS_SIDEBAR_LINKS,
+  serviceSections: DIGITAL_TWINS_SERVICE_SECTIONS,
 };
 
 export const VIRTUAL_SHOWROOMS = {
@@ -564,6 +677,50 @@ export const VIRTUAL_SHOWROOMS = {
   workflowStepsSidebar: OBMOVE_WORKFLOW,
   howItWorks: OBMOVE_HOW_IT_WORKS,
   keyBenefits: OBMOVE_KEY_BENEFITS,
+  sidebarLinks: DEFAULT_SIDEBAR_LINKS,
+  serviceSections: [
+    {
+      id: "industries",
+      title: "Industries & Applications",
+      subtitle: "",
+      description: "Virtual showroom applications across retail sectors.",
+      label: "Industries",
+      items: [],
+      footer: "",
+      subSections: [
+        { title: "Retail & E-commerce", description: "Interactive 3D storefronts for consumer goods and electronics." },
+        { title: "Automotive", description: "Virtual car dealerships with 3D configuration and exterior walkarounds." },
+        { title: "Furniture & Home Decor", description: "Immersive showrooms to explore home furnishings in realistic settings." },
+        { title: "Fashion & Apparel", description: "Virtual boutiques featuring 3D garments and accessories." },
+        { title: "Consumer Electronics", description: "Detailed 3D exploration of gadgets and appliances." }
+      ]
+    },
+    {
+      id: "why-choose",
+      title: "Why Choose Obrive",
+      subtitle: "",
+      description: "Transform the buying journey with immersive, personalized showrooms.",
+      label: "Why Choose Obrive",
+      items: [],
+      footer: "",
+      subSections: OBMOVE_KEY_BENEFITS.map(b => ({ title: b.title, description: b.description }))
+    },
+    {
+      id: "scope",
+      title: "Use-Case Scope",
+      subtitle: "",
+      description: "Explore the different scopes of virtual showrooms.",
+      label: "Use-Case Scope",
+      items: [],
+      footer: "",
+      subSections: [
+        { title: "B2C E-commerce", description: "Direct-to-consumer interactive product catalogs." },
+        { title: "B2B Wholesale Showrooms", description: "Virtual exhibition spaces for bulk buyers and distributors." },
+        { title: "Virtual Pop-up Stores", description: "Temporary immersive brand activations and campaigns." },
+        { title: "Product Configurators", description: "Real-time customization of colors, materials, and trims." }
+      ]
+    }
+  ]
 };
 
 export const INDOOR_NAVIGATION = {
@@ -581,23 +738,60 @@ export const INDOOR_NAVIGATION = {
   workflowStepsSidebar: OBNAVI_WORKFLOW,
   howItWorks: OBNAVI_HOW_IT_WORKS,
   keyBenefits: OBNAVI_KEY_BENEFITS,
+  sidebarLinks: DEFAULT_SIDEBAR_LINKS,
+  serviceSections: [
+    {
+      id: "industries",
+      title: "Industries & Applications",
+      subtitle: "",
+      description: "Indoor navigation applications across complex facilities.",
+      label: "Industries",
+      items: [],
+      footer: "",
+      subSections: [
+        { title: "Retail & Malls", description: "Guide shoppers to specific stores, products, and promotions." },
+        { title: "Healthcare & Hospitals", description: "Help patients and visitors navigate complex hospital corridors." },
+        { title: "Airports & Transit Hubs", description: "Direct travelers to gates, lounges, and baggage claim areas." },
+        { title: "Corporate Campuses", description: "Assist employees and guests in finding meeting rooms and amenities." },
+        { title: "Museums & Events", description: "Provide interactive, location-aware guides for exhibits and expos." }
+      ]
+    },
+    {
+      id: "why-choose",
+      title: "Why Choose Obrive",
+      subtitle: "",
+      description: "Deliver seamless, frustration-free wayfinding with AR overlays.",
+      label: "Why Choose Obrive",
+      items: [],
+      footer: "",
+      subSections: OBNAVI_KEY_BENEFITS.map(b => ({ title: b.title, description: b.description }))
+    },
+    {
+      id: "scope",
+      title: "Use-Case Scope",
+      subtitle: "",
+      description: "Explore the different scopes of indoor navigation.",
+      label: "Use-Case Scope",
+      items: [],
+      footer: "",
+      subSections: [
+        { title: "Retail Wayfinding", description: "Turn-by-turn directions to specific aisles and products." },
+        { title: "Hospital Navigation", description: "Stress-free routing to departments and clinics." },
+        { title: "Event & Expo Guides", description: "Dynamic routing to booths and speaker sessions." },
+        { title: "Smart Office Navigation", description: "Integration with meeting room booking systems." },
+        { title: "Facility Management", description: "Guide maintenance staff directly to service tickets." }
+      ]
+    }
+  ]
 };
 
 export const THREE_D_PRODUCT_CONFIGURATION = {
-  hero: {
-    title: "3D Product Configurators",
-    description:
-      "Allow customers to customize and interact with 3D product models in real-time.",
-    description2:
-      "Placeholder secondary description for 3D product configurators.",
-    ctaButtons: {
-      primary: "Explore Configurators",
-      secondary: "SCHEDULE A DEMO",
-    },
-  },
-  workflowStepsSidebar: PLACEHOLDER_WORKFLOW,
-  howItWorks: PLACEHOLDER_HOW_IT_WORKS,
-  keyBenefits: PLACEHOLDER_KEY_BENEFITS,
+  hero: THREE_D_PRODUCT_CONFIGURATION_HERO,
+  keyBenefits: THREE_D_PRODUCT_CONFIGURATION_KEY_BENEFITS,
+  howItWorks: THREE_D_PRODUCT_CONFIGURATION_HOW_IT_WORKS,
+  workflowStepsSidebar: THREE_D_PRODUCT_CONFIGURATION_WORKFLOW_STEPS_SIDEBAR,
+  sidebarLinks: THREE_D_PRODUCT_CONFIGURATION_SIDEBAR_LINKS,
+  serviceSections: THREE_D_PRODUCT_CONFIGURATION_SERVICE_SECTIONS,
 };
 
 export const VIRTUAL_PROPERTY_TOURS = {
@@ -615,20 +809,58 @@ export const VIRTUAL_PROPERTY_TOURS = {
   workflowStepsSidebar: OBNEST_WORKFLOW,
   howItWorks: OBNEST_HOW_IT_WORKS,
   keyBenefits: OBNEST_KEY_BENEFITS,
+  sidebarLinks: DEFAULT_SIDEBAR_LINKS,
+  serviceSections: [
+    {
+      id: "industries",
+      title: "Industries & Applications",
+      subtitle: "",
+      description: "Virtual property tour applications across real estate.",
+      label: "Industries",
+      items: [],
+      footer: "",
+      subSections: [
+        { title: "Real Estate", description: "Immersive walkthroughs for residential and commercial listings." },
+        { title: "Architecture & Design", description: "Pre-visualization of unbuilt spaces for client approval." },
+        { title: "Hospitality & Resorts", description: "Virtual previews of hotel suites, event spaces, and amenities." },
+        { title: "Commercial Property", description: "Remote office space tours for prospective tenants." },
+        { title: "Construction", description: "Progress tracking and stakeholder updates via 3D models." }
+      ]
+    },
+    {
+      id: "why-choose",
+      title: "Why Choose Obrive",
+      subtitle: "",
+      description: "Accelerate sales cycles with immersive property walkthroughs.",
+      label: "Why Choose Obrive",
+      items: [],
+      footer: "",
+      subSections: OBNEST_KEY_BENEFITS.map(b => ({ title: b.title, description: b.description }))
+    },
+    {
+      id: "scope",
+      title: "Use-Case Scope",
+      subtitle: "",
+      description: "Explore the different scopes of virtual property tours.",
+      label: "Use-Case Scope",
+      items: [],
+      footer: "",
+      subSections: [
+        { title: "Residential Sales", description: "High-fidelity tours of homes and apartments for buyers." },
+        { title: "Commercial Leasing", description: "Interactive exploration of office and retail spaces." },
+        { title: "Off-Plan Development", description: "Visualize properties before construction is completed." },
+        { title: "Hotel Bookings", description: "Premium virtual experiences to drive hospitality reservations." },
+        { title: "Renovation Visualization", description: "Before-and-after spatial previews for remodel projects." }
+      ]
+    }
+  ]
 };
 
 export const REMOTE_ASSISTANCE = {
-  hero: {
-    title: "Remote Assistance",
-    description:
-      "AR-guided visual support and collaboration for field technicians and experts.",
-    description2: "Placeholder secondary description for remote assistance.",
-    ctaButtons: {
-      primary: "Explore Remote Assistance",
-      secondary: "SCHEDULE A DEMO",
-    },
-  },
-  workflowStepsSidebar: PLACEHOLDER_WORKFLOW,
-  howItWorks: PLACEHOLDER_HOW_IT_WORKS,
-  keyBenefits: PLACEHOLDER_KEY_BENEFITS,
+  hero: REMOTE_ASSISTANCE_HERO,
+  keyBenefits: REMOTE_ASSISTANCE_KEY_BENEFITS,
+  howItWorks: REMOTE_ASSISTANCE_HOW_IT_WORKS,
+  workflowStepsSidebar: REMOTE_ASSISTANCE_WORKFLOW_STEPS_SIDEBAR,
+  sidebarLinks: REMOTE_ASSISTANCE_SIDEBAR_LINKS,
+  serviceSections: REMOTE_ASSISTANCE_SERVICE_SECTIONS,
 };

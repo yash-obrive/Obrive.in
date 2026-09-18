@@ -74,11 +74,14 @@ export default async function UseCasePage({ params }: UseCasePageProps) {
         })}
       </Script>
       <SolutionTemplate
-        slug=""
+        slug={slug}
         hero={useCaseData.hero}
         keyBenefits={useCaseData.keyBenefits}
         howItWorks={useCaseData.howItWorks}
         workflowStepsSidebar={useCaseData.workflowStepsSidebar}
+        sidebarLinks={useCaseData.sidebarLinks}
+        serviceSections={useCaseData.serviceSections}
+        processSteps={useCaseData.processSteps}
       />
     </>
   );

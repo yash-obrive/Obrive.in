@@ -12,12 +12,12 @@ export interface ServiceSubSection {
 export interface ServiceSection {
   id: string;
   title: string;
-  subtitle: string;
-  description: string;
-  label: string;
-  items: readonly string[];
+  subtitle?: string;
+  description?: string;
+  label?: string;
+  items?: readonly string[];
   subSections?: readonly ServiceSubSection[];
-  footer: string;
+  footer?: string;
 }
 
 export interface WorkflowStep {

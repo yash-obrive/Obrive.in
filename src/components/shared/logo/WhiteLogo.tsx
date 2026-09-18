@@ -9,6 +9,7 @@ export default function WhiteLogo() {
       height={IMAGES_META.WHITE_LOGO.height}
       src={IMAGES.WHITE_LOGO}
       alt={IMAGES_META.WHITE_LOGO.alt}
+      unoptimized
     />
   );
 }

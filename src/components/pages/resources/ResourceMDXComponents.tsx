@@ -12,7 +12,6 @@ import ResourceStrategicApproachSection from "./sections/ResourceStrategicApproa
 import ResourceTheImpactTable from "./sections/ResourceTheImpactTable";
 import ResourceWhyItWorkedSection from "./sections/ResourceWhyItWorkedSection";
 
-// Export components for direct import in MDX files
 export {
   ResourceChallengeSection,
   ResourceStrategicApproachSection,
@@ -48,6 +47,19 @@ export const createResourceMDXComponents = (metadata: any) => ({
   p: (props: any) => (
     <p className="text-base leading-relaxed text-gray-700 mb-4" {...props} />
   ),
+  ul: (props: any) => (
+    <ul className="list-disc pl-6 space-y-2 mb-4 text-gray-700" {...props} />
+  ),
+  ol: (props: any) => (
+    <ol className="list-decimal pl-6 space-y-2 mb-4 text-gray-700" {...props} />
+  ),
+  li: (props: any) => (
+    <li className="text-base leading-relaxed text-gray-700" {...props} />
+  ),
+  strong: (props: any) => (
+    <strong className={`${FONTS.microgrammaBold.className} text-gray-900`} {...props} />
+  ),
+  em: (props: any) => <em className="italic" {...props} />,
   blockquote: (props: any) => (
     <div className="pr-30">
       <div className="bg-primary text-accent rounded-xl p-12 my-6">
@@ -108,7 +120,6 @@ export const createResourceMDXComponents = (metadata: any) => ({
     );
   },
 
-  // Obrive's Approach table component
   ResourceObrivesApproachTable: (props: any) => (
     <ResourceObrivesApproachTable {...props} />
   ),
@@ -117,7 +128,6 @@ export const createResourceMDXComponents = (metadata: any) => ({
   ),
 
   // The Impact table component
-  ResourceTheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
   TheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
 
   // Custom components
@@ -157,6 +167,19 @@ export default {
   p: (props: any) => (
     <p className="text-base leading-relaxed text-gray-700 mb-4" {...props} />
   ),
+  ul: (props: any) => (
+    <ul className="list-disc pl-6 space-y-2 mb-4 text-gray-700" {...props} />
+  ),
+  ol: (props: any) => (
+    <ol className="list-decimal pl-6 space-y-2 mb-4 text-gray-700" {...props} />
+  ),
+  li: (props: any) => (
+    <li className="text-base leading-relaxed text-gray-700" {...props} />
+  ),
+  strong: (props: any) => (
+    <strong className={`${FONTS.microgrammaBold.className} text-gray-900`} {...props} />
+  ),
+  em: (props: any) => <em className="italic" {...props} />,
   blockquote: (props: any) => (
     <div className="pr-30">
       <div className="bg-primary text-accent rounded-xl p-12 my-6">

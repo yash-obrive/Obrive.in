@@ -5,16 +5,16 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { CASE_STUDIES_IMAGES } from "@/assets/images";
 import { createResourceMDXComponents } from "@/components/pages/resources/ResourceMDXComponents";
 import ResourceTemplate from "@/components/pages/resources/ResourceTemplate";
-import { getAllCaseStudySlugs, getCaseStudyBySlug } from "@/lib/mdx";
+import { getAllCaseStudySlugs, getCaseStudyBySlug, sharedMdxOptions } from "@/lib/mdx";
 
 interface ResourcePageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: ResourcePageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const resource = await getCaseStudyBySlug(slug);
 
   if (!resource) {
@@ -238,6 +238,7 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
         <MDXRemote
           source={resource.content}
           components={createResourceMDXComponents(resource.metadata)}
+          options={sharedMdxOptions}
         />
       </ResourceTemplate>
     </>
