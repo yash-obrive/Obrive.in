@@ -619,18 +619,13 @@ model CommunityComment {
 
 model CommunityPostLike {
   id           String            @id @default(uuid())
-
   user_id      Int
   postId       String
-
   createdAt    DateTime          @default(now())
-
   user         users             @relation("CommunityPostLikeUser", fields: [user_id], references: [id])
-
   post         CommunityPost     @relation(fields: [postId], references: [id], onDelete: Cascade)
 
   @@unique([user_id, postId])
-
   @@map("community_post_likes")
 }
 
@@ -638,18 +633,13 @@ model CommunityPostLike {
 
 model CommunityCommentLike {
   id           String               @id @default(uuid())
-
   user_id      Int
   commentId    String
-
   createdAt    DateTime             @default(now())
-
   user         users                @relation("CommunityCommentLikeUser", fields: [user_id], references: [id])
-
   comment      CommunityComment     @relation(fields: [commentId], references: [id], onDelete: Cascade)
 
   @@unique([user_id, commentId])
-
   @@map("community_comment_likes")
 }
 
@@ -657,17 +647,12 @@ model CommunityCommentLike {
 
 model CommunitySavedPost {
   id           String            @id @default(uuid())
-
   user_id      Int
   postId       String
-
   createdAt    DateTime          @default(now())
-
   user         users             @relation("CommunitySavedPostUser", fields: [user_id], references: [id])
-
   post         CommunityPost     @relation(fields: [postId], references: [id], onDelete: Cascade)
 
   @@unique([user_id, postId])
-
   @@map("community_saved_posts")
 }
