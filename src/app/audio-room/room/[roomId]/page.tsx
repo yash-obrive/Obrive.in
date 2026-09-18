@@ -1,4 +1,4 @@
-import AudioRoomPage from "@/AUDIO_ROOM/components/AudioRoomPage";
+import AudioRoomPage from "@/features/audio-room/components/AudioRoomPage";
 
 export default function RoomPage() {
   return <AudioRoomPage />;

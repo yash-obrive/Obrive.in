@@ -15,7 +15,7 @@ import {
   VolumeX,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import livekitService from "@/AUDIO_ROOM/livekit/services/livekit.service";
+import livekitService from "@/features/audio-room/livekit/services/livekit.service";
 import { useSocket } from "@/context/SocketContext";
 import { apiFetch } from "@/lib/api";
 

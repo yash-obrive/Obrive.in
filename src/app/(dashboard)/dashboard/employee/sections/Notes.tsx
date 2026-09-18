@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import Board, {
   type BoardColumn,
-} from "@/components/pages/Employee-dasboard/board/Board";
-import { getYesterdayThroughNextFourDays } from "@/components/pages/Employee-dasboard/constants/dates";
+} from "@/components/dashboard/employee/board/Board";
+import { getYesterdayThroughNextFourDays } from "@/components/dashboard/employee/constants/dates";
 import SkeletonLoading from "@/components/SkelitonLoading";
 import { apiFetch } from "@/lib/api";
 

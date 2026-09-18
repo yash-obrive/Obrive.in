@@ -4,7 +4,7 @@
 import { RoomEvent } from "livekit-client";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import livekitService from "@/AUDIO_ROOM/livekit/services/livekit.service";
+import livekitService from "@/features/audio-room/livekit/services/livekit.service";
 import { useSocket } from "@/context/SocketContext";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { apiFetch } from "@/lib/api";
