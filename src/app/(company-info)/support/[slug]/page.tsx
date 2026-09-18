@@ -7,7 +7,7 @@ import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemp
 import { getAllCompanyInfoSlugs, getCompanyInfoBySlug, sharedMdxOptions } from "@/lib/mdx";
 
 interface SupportPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export const dynamicParams = false;

@@ -5,9 +5,9 @@ import { ProductTemplate } from "@/components/pages/products/ProductTemplate";
 import { getProductData, getProductSlugs } from "@/lib/products";
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export const dynamicParams = false;

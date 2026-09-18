@@ -16,9 +16,9 @@ export const dynamicParams = false;
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const career = await getCareerBySlug(slug);
 
   if (!career) {
@@ -58,9 +58,9 @@ export async function generateMetadata({
 export default async function CareerPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const career = await getCareerBySlug(slug);
 
   if (!career) {

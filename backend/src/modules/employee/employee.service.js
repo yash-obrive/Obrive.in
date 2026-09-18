@@ -105,8 +105,7 @@ exports.getMyProjects = async (userId) => {
   const employee = await prisma.employee.findUnique({ where: { userId } });
   if (!employee) throw { status: 404, message: "Employee not found" };
 
-  return prisma.projectAssignment.findMan;
-  y({
+  return prisma.projectAssignment.findMany({
     where: { employeeId: employee.id },
     include: {
       project: {

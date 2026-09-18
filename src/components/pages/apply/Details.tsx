@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false;
 
-const DetailsPage = async ({ params }: { params: { slug: string } }) => {
+const DetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const career = await getCareerBySlug(slug);
 
