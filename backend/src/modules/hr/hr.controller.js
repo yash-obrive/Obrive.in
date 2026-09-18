@@ -95,3 +95,42 @@ exports.searchEmployees = async (req, res, next) => {
     errorResponse(res, err.message, 500);
   }
 };
+
+// Toggle location tracking for employee
+exports.toggleLocationTracking = async (req, res, next) => {
+  try {
+    const employeeId = parseInt(req.params.id);
+    const { enabled } = req.body;
+    const result = await hrService.toggleEmployeeLocationTracking(employeeId, enabled);
+    successResponse(res, result, `Location tracking ${enabled ? 'enabled' : 'disabled'}`);
+  } catch (err) {
+    errorResponse(res, err.message, err.status || 500);
+  }
+};
+
+// Get all employee locations overview
+exports.getLocationOverview = async (req, res, next) => {
+  try {
+    const employees = await hrService.getEmployeesLocationOverview();
+    successResponse(res, employees, 'Employee locations retrieved');
+  } catch (err) {
+    errorResponse(res, err.message, 500);
+  }
+};
+
+// Get employee location history
+exports.getLocationHistory = async (req, res, next) => {
+  try {
+    const employeeId = parseInt(req.params.id);
+    const { days, filter, date, timezoneOffset } = req.query;
+    const history = await hrService.getEmployeeLocationHistory(employeeId, {
+      days,
+      filter,
+      date,
+      timezoneOffset,
+    });
+    successResponse(res, history, 'Location history retrieved');
+  } catch (err) {
+    errorResponse(res, err.message, 500);
+  }
+};

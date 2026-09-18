@@ -194,7 +194,31 @@ const nextConfig: NextConfig = {
   },
 
   async redirects() {
-    return [];
+    return [
+      {
+        source: "/directory",
+        destination: "/site-map",
+        permanent: true,
+      },
+      {
+        source: "/coming-soon/site-map",
+        destination: "/site-map",
+        permanent: true,
+      }
+    ];
+  },
+
+  async rewrites() {
+    return [
+      {
+        source: "/terms-accessibility",
+        destination: "/legal/accessibility",
+      },
+      {
+        source: "/privacy-policy",
+        destination: "/legal/privacy-policy",
+      },
+    ];
   },
 };
 

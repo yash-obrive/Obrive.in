@@ -8,6 +8,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface InfiniteHorizontalScrollProps {
   children: React.ReactNode;
@@ -16,6 +17,7 @@ interface InfiniteHorizontalScrollProps {
   pauseOnHover?: boolean;
   autoplayDelay?: number;
   showIndicators?: boolean;
+  showNavigation?: boolean;
   indicatorPosition?: "bottom" | "top";
   className?: string;
   itemClassName?: string;
@@ -30,6 +32,7 @@ export const InfiniteHorizontalScroll =
       pauseOnHover = true,
       autoplayDelay = 1500,
       showIndicators = true,
+      showNavigation = false,
       indicatorPosition = "bottom",
       className = "",
       itemClassName = "",
@@ -85,10 +88,28 @@ export const InfiniteHorizontalScroll =
       // Handle indicator click
       const handleIndicatorClick = useCallback(
         (index: number) => {
-          api?.scrollTo(index);
+          if (api) {
+            api.scrollTo(index);
+            plugin.reset();
+          }
         },
-        [api]
+        [api, plugin]
       );
+
+      // Handle navigation buttons
+      const scrollPrev = useCallback(() => {
+        if (api) {
+          api.scrollPrev();
+          plugin.reset();
+        }
+      }, [api, plugin]);
+
+      const scrollNext = useCallback(() => {
+        if (api) {
+          api.scrollNext();
+          plugin.reset();
+        }
+      }, [api, plugin]);
 
       // Setup carousel API listeners
       useEffect(() => {
@@ -103,11 +124,15 @@ export const InfiniteHorizontalScroll =
         };
 
         api.on("select", onSelect);
+        
+        // Explicitly start the autoplay plugin once the API is ready
+        // This resolves issues with playOnInit failing in React StrictMode
+        plugin.play();
 
         return () => {
           api.off("select", onSelect);
         };
-      }, [api]);
+      }, [api, plugin]);
 
       // Handle visibility and focus for autoplay
       useEffect(() => {
@@ -187,13 +212,13 @@ export const InfiniteHorizontalScroll =
           <Carousel
             opts={carouselOpts}
             plugins={[plugin]}
-            className="w-full"
+            className="w-full relative group"
             setApi={setApi}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
             <CarouselContent
-              className="flex"
+              className="flex py-2"
               style={{
                 marginLeft: `-${gap}px`,
                 touchAction: "pan-y pinch-zoom", // Better mobile touch handling
@@ -210,6 +235,27 @@ export const InfiniteHorizontalScroll =
                 </CarouselItem>
               ))}
             </CarouselContent>
+            
+            {showNavigation && (
+              <>
+                <button
+                  type="button"
+                  onClick={scrollPrev}
+                  className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full bg-[#A7F1E0] text-primary hover:opacity-80 transition-opacity h-10 w-10 md:h-12 md:w-12 shadow-sm z-10 sm:flex"
+                  aria-label="Previous slide"
+                >
+                  <ArrowLeft className="h-5 w-5 md:h-6 md:w-6" />
+                </button>
+                <button
+                  type="button"
+                  onClick={scrollNext}
+                  className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full bg-[#A7F1E0] text-primary hover:opacity-80 transition-opacity h-10 w-10 md:h-12 md:w-12 shadow-sm z-10 sm:flex"
+                  aria-label="Next slide"
+                >
+                  <ArrowRight className="h-5 w-5 md:h-6 md:w-6" />
+                </button>
+              </>
+            )}
           </Carousel>
 
           {indicatorPosition === "bottom" && indicators}

@@ -43,6 +43,11 @@ export default function ProfilePage() {
 
         if (response.ok && result?.success) {
           const profile = result.data;
+          // ponytail: store avatar directly with user data
+          if (profile.avatar_url) {
+            setAvatar(profile.avatar_url);
+            setIsUploaded(true);
+          }
           setFormData({
             fullName: profile.name || '',
             email: profile.email || '',
@@ -91,9 +96,29 @@ export default function ProfilePage() {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
-      reader.onloadend = () => {
-        setAvatar(reader.result as string);
-        setIsUploaded(true);
+      reader.onload = (event) => {
+        // ponytail: native canvas resize to keep payload tiny without external libs
+        const img = new window.Image();
+        img.onload = () => {
+          const maxDim = 600;
+          let { width, height } = img;
+          if (width > height && width > maxDim) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          } else if (height > maxDim) {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx?.drawImage(img, 0, 0, width, height);
+          const compressed = canvas.toDataURL('image/jpeg', 0.85);
+          setAvatar(compressed);
+          setIsUploaded(true);
+        };
+        img.src = event.target?.result as string;
       };
       reader.readAsDataURL(file);
     }
@@ -131,11 +156,19 @@ export default function ProfilePage() {
       setSaving(true);
       const response = await apiFetch(`/profile/${userId}`, {
         method: 'PUT',
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          avatar: avatar || undefined,
+        }),
       });
       const result = await response.json();
 
       if (response.ok && result?.success) {
+        if (typeof window !== 'undefined' && result.data) {
+          const stored = localStorage.getItem('user');
+          const parsed = stored ? JSON.parse(stored) : {};
+          localStorage.setItem('user', JSON.stringify({ ...parsed, ...result.data }));
+        }
         setToastMessage('Profile saved successfully!');
         setShowToast(true);
         setTimeout(() => {

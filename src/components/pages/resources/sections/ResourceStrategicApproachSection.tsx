@@ -20,7 +20,7 @@ export default function ResourceStrategicApproachSection({
         {title}
       </h2>
       <div className="space-y-6">
-        {steps.map((step, index) => (
+        {steps?.map((step, index) => (
           <div key={index}>
             <h3 className={`${FONTS.microgrammaBold.className} text-lg mb-2`}>
               {index + 1}. {step.title}

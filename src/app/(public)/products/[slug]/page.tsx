@@ -300,151 +300,99 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <>
       {slug === "obpark" && (
-        <>
-          <Script
-            id="obpark-gtag-loader"
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-C8Z8aCTCLRT"
-            strategy="afterInteractive"
-          />
-          <Script id="obpark-gtag-init" strategy="afterInteractive">{`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
-            gtag('config', 'G-C8Z8aCTCLRT');
-          `}</Script>
-          <Script
-            id="obpark-schema"
-            type="application/ld+json"
-            strategy="afterInteractive"
-          >
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Product",
-              name: "OBPARK",
-              description:
-                "Make parking effortless for your customers with AR wayfinding. Increase in revenues, visits and customer satisfaction guaranteed with OBPARK | Obrive Products",
-              image: [
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobpark-hero.65e28982.webp&w=1920&q=75",
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobpark_3.db8370e2.webp&w=1200&q=75",
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstep_6.64adc1fc.webp&w=640&q=75",
-              ],
-              brand: {
-                "@type": "Brand",
-                name: "Obrive",
-              },
-            })}
-          </Script>
-        </>
+        <Script
+          id="obpark-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: "OBPARK",
+            description:
+              "Make parking effortless for your customers with AR wayfinding. Increase in revenues, visits and customer satisfaction guaranteed with OBPARK | Obrive Products",
+            image: [
+              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobpark-hero.65e28982.webp&w=1920&q=75",
+              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobpark_3.db8370e2.webp&w=1200&q=75",
+              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstep_6.64adc1fc.webp&w=640&q=75",
+            ],
+            brand: {
+              "@type": "Brand",
+              name: "Obrive",
+            },
+          })}
+        </Script>
       )}
       {slug === "obnavi" && (
-        <>
-          <Script
-            id="obnavi-gtag-loader"
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-C8Z8CTCLRT"
-            strategy="afterInteractive"
-          />
-          <Script id="obnavi-gtag-init" strategy="afterInteractive">{`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
-            gtag('config', 'G-C8Z8CTCLRT');
-          `}</Script>
-          <Script
-            id="obnavi-schema"
-            type="application/ld+json"
-            strategy="afterInteractive"
-          >
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Product",
-              name: "OBNAVI",
-              description:
-                "Shopping just got smarter. Get real-time AR navigation, find products instantly, and get personalized recommendations. OBNAVI guides you everywhere.",
-              image: [
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnavi-hero.e25a129e.webp&w=1920&q=75",
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnavi_3.df52f4da.webp&w=1200&q=75",
-              ],
-              brand: {
-                "@type": "Brand",
-                name: "Obrive",
-              },
-            })}
-          </Script>
-        </>
+        <Script
+          id="obnavi-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: "OBNAVI",
+            description:
+              "Shopping just got smarter. Get real-time AR navigation, find products instantly, and get personalized recommendations. OBNAVI guides you everywhere.",
+            image: [
+              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnavi-hero.e25a129e.webp&w=1920&q=75",
+              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnavi_3.df52f4da.webp&w=1200&q=75",
+            ],
+            brand: {
+              "@type": "Brand",
+              name: "Obrive",
+            },
+          })}
+        </Script>
       )}
       {slug === "obmove" && (
-        <>
-          <Script
-            id="obmove-gtag-loader"
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-C8Z8CTCLRT"
-            strategy="afterInteractive"
-          />
-          <Script id="obmove-gtag-init" strategy="afterInteractive">{`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
-            gtag('config', 'G-C8Z8CTCLRT');
-          `}</Script>
-          <Script
-            id="obmove-schema"
-            type="application/ld+json"
-            strategy="afterInteractive"
-          >
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Product",
-              name: "OBMOVE",
-              description:
-                "Explore, customize, and test drive any vehicle in VR before committing to one product. OBMOVE makes it happen. See how.",
-              image: [
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove-hero.d1062fdc.webp&w=1920&q=75",
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove_3.072acded.webp&w=1200&q=75",
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove_1.777137d2.webp&w=1200&q=75",
-              ],
-              brand: {
-                "@type": "Brand",
-                name: "Obrive",
-              },
-            })}
-          </Script>
-        </>
+        <Script
+          id="obmove-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: "OBMOVE",
+            description:
+              "Explore, customize, and test drive any vehicle in VR before committing to one product. OBMOVE makes it happen. See how.",
+            image: [
+              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove-hero.d1062fdc.webp&w=1920&q=75",
+              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove_3.072acded.webp&w=1200&q=75",
+              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove_1.777137d2.webp&w=1200&q=75",
+            ],
+            brand: {
+              "@type": "Brand",
+              name: "Obrive",
+            },
+          })}
+        </Script>
       )}
       {slug === "obnest" && (
-        <>
-          <Script
-            id="obnest-gtag-loader"
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-C8Z8CTCLRT"
-            strategy="afterInteractive"
-          />
-          <Script id="obnest-gtag-init" strategy="afterInteractive">{`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
-            gtag('config', 'G-C8Z8CTCLRT');
-          `}</Script>
-          <Script
-            id="obnest-schema"
-            type="application/ld+json"
-            strategy="afterInteractive"
-          >
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Product",
-              name: "OBNEST",
-              description:
-                "Channeling MR/VR technology to deliver the property of your dreams at your doorstep. Get a Demo Now! | OBNEST",
-              image: [
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnest-hero.07df667c.webp&w=1920&q=75",
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnest_3.acbe931d.webp&w=1200&q=75",
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fauthor.1358b851.webp&w=640&q=75",
-              ],
-              brand: {
-                "@type": "Brand",
-                name: "Obrive",
-              },
-            })}
-          </Script>
-        </>
+        <Script
+          id="obnest-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: "OBNEST",
+            description:
+              "Channeling MR/VR technology to deliver the property of your dreams at your doorstep. Get a Demo Now! | OBNEST",
+            image: [
+              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnest-hero.07df667c.webp&w=1920&q=75",
+              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnest_3.acbe931d.webp&w=1200&q=75",
+              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fauthor.1358b851.webp&w=640&q=75",
+            ],
+            brand: {
+              "@type": "Brand",
+              name: "Obrive",
+            },
+          })}
+        </Script>
       )}
       <ProductTemplate {...productData} />
     </>

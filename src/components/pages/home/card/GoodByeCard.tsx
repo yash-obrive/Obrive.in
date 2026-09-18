@@ -75,7 +75,7 @@ const GoodByeCard = () => {
       <div className="bg-gradient overflow-hidden relative flex flex-col max-sm:-space-y-10 justify-between w-full sm:min-w-[1238px] rounded-xl min-h-[250px] sm:min-h-[300px] md:min-h-[361px]">
         <div className="flex px-4 sm:px-10 py-6 sm:py-6 flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
           <h2 className="text-xl sm:text-2xl">
-            Say Goodbye to Traditional Experiences
+            Why Choose Obrive for AR, VR & Spatial Computing
           </h2>
 
           <div className="max-sm:hidden">
@@ -84,11 +84,9 @@ const GoodByeCard = () => {
               size={"lg"}
               className="uppercase z-10 text-xs cursor-pointer"
               iconSize={16}
-              href="https://calendly.com/obrive-inc/talk-to-ob-experts"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/faq/ob-services-faq"
             >
-              Talk to Expert
+              SERVICES FAQ
             </AnimatedButton>
           </div>
         </div>
@@ -111,11 +109,9 @@ const GoodByeCard = () => {
               size={"lg"}
               className="uppercase text-xs cursor-pointer"
               iconSize={16}
-              href="https://calendly.com/obrive-inc/talk-to-ob-experts"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/faq/ob-services-faq"
             >
-              Talk to Expert
+              SERVICES FAQ
             </AnimatedButton>
           </div>
           <div className="sm:hidden w-full px-4 mt-4">

@@ -117,7 +117,7 @@ const handleLinkedInShare = async () => {
 
     const usedIndices = new Set<number>();
 
-    const mappedTargets = steps.map((step) => {
+    const mappedTargets = steps?.map((step) => {
       const normalizedStep = normalize(step);
 
       let matchedIndex = sectionData.findIndex((data, index) => {
@@ -161,7 +161,7 @@ const handleLinkedInShare = async () => {
     <section>
       <div>
         <div className="w-sm">
-          {steps.map((step, index) => {
+          {steps?.map((step, index) => {
             const hasTarget = Boolean(stepTargets[index]);
             return (
               <button

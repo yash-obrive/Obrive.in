@@ -55,7 +55,7 @@ export default function CompanyInfoApproachTable({
         </div>
 
         {/* Table Rows */}
-        {phases.map((item, index) => (
+        {phases?.map((item, index) => (
           <div
             key={index}
             className="grid grid-cols-[26%_62%] text-primary/80 odd:bg-gray-50 border-t border-gray-200"
@@ -71,7 +71,7 @@ export default function CompanyInfoApproachTable({
       </div>
 
       <div className="md:hidden space-y-4">
-        {phases.map((item, index) => (
+        {phases?.map((item, index) => (
           <div
             key={index}
             className="bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden"

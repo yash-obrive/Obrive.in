@@ -147,16 +147,14 @@ const EffortlessControl = () => {
                     ]}
                   />
                   <div className="mt-4">
-                    <Link href="/products/obpark">
                     <AnimatedButton
                       size={"lg"}
                       className="uppercase text-[10px] cursor-pointer"
-                      href="/coming-soon"
+                      href="/products/obpark"
                       aria-label="Learn more about ObPark AR navigation and parking solutions"
                     >
                       learn more about ob
                     </AnimatedButton>
-                    </Link>
                   </div>
                 </div>
               </div>

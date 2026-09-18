@@ -139,7 +139,7 @@ exports.logout = async ({ userId, logId }) => {
 exports.getCurrentUserDetails = async (userId) => {
   try {
     const user = await prisma.$queryRaw`
-      SELECT id, userid, email, name, role, status, is_active
+      SELECT id, userid, email, name, role, status, is_active, avatar_url, is_location_tracking_enabled
       FROM users 
       WHERE id = ${userId}
       LIMIT 1
@@ -157,6 +157,8 @@ exports.getCurrentUserDetails = async (userId) => {
       role: user[0].role,
       status: user[0].status,
       is_active: user[0].is_active,
+      avatar_url: user[0].avatar_url,
+      is_location_tracking_enabled: Boolean(user[0].is_location_tracking_enabled),
     };
   } catch (_err) {
     throw { status: 401, message: "Failed to fetch user details" };
@@ -198,7 +200,8 @@ exports.getAllUsers = async () => {
       date_of_birth,
       bio,
       phone_number,
-      created_at
+      created_at,
+      avatar_url
     FROM users
     ORDER BY created_at DESC
   `;

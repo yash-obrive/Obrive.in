@@ -27,9 +27,14 @@ const UpdateEmployeeBodySchema = z.object({
   message: 'At least one field is required',
 });
 
+const ToggleLocationTrackingBodySchema = z.object({
+  enabled: z.boolean(),
+});
+
 module.exports = {
   EmployeeIdParamSchema,
   SearchEmployeesQuerySchema,
   UpdateEmployeeBodySchema,
   UpdateHrProfileBodySchema,
+  ToggleLocationTrackingBodySchema,
 };

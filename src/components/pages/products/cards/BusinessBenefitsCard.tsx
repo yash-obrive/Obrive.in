@@ -17,7 +17,7 @@ export default function BusinessBenefitsCard({
   return (
     <div className="w-full lg:w-[523px] bg-white h-fit pb-8 rounded-2xl shadow-xl">
       <div className="flex flex-col gap-5">
-        {items.map((item, idx) => {
+        {items?.map((item, idx) => {
           const isLast = idx === items.length - 1;
           return (
             <div

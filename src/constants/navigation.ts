@@ -4,7 +4,7 @@ export const NAV_LINKS = [
     href: "/products",
   },
   {
-    title: "Solutions",
+    title: "Services",
     href: "/solutions",
   },
   {
@@ -36,7 +36,7 @@ export const MOBILE_NAV_STRUCTURE = [
     ],
   },
   {
-    title: "Solutions",
+    title: "Services",
     mainHref: "/solutions",
     items: [
       {

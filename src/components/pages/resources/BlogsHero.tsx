@@ -9,13 +9,13 @@ const BlogsHero = () => {
           <h1
             className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-secondary`}
           >
-            OB Resource Library
+            AR, VR & Spatial Computing Resources
           </h1>
           <p className="text-sm sm:text-base text-center max-w-3xl px-4 font-medium">
-            Stay ahead in the world of AR, VR, MR, and Spatial Computin with
-            Obrive’s knowledge hub. Explore insightful blogs, industry updates,
-            and expert resources designed to help you innovate, adapt, and lead
-            with confidence in the immersive technology landscape.
+            Stay ahead in the world of AR, VR, MR, and Spatial Computing with
+            Obrive’s knowledge hub. Explore insightful articles, industry updates,
+            and expert case studies covering retail, real estate, healthcare,
+            manufacturing, and enterprise spatial computing solutions.
           </p>
         </div>
       </FullWidthSection>

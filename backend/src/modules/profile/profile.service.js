@@ -41,8 +41,10 @@ class ProfileService {
         department: data.department ?? existing.department,
         job_title: data.jobTitle ?? existing.job_title,
         phone_number: formattedPhoneNumber,
-        join_date: data.joinDate ? new Date(data.joinDate) : existing.join_date,
+        join_date: (data.joinDate && !isNaN(new Date(data.joinDate).getTime())) ? new Date(data.joinDate) : existing.join_date,
         biography: data.biography ?? existing.biography,
+        // ponytail: store base64/url directly in db, move to s3 when db size matters
+        avatar_url: data.avatar_url ?? data.avatar ?? existing.avatar_url,
       },
     });
   }

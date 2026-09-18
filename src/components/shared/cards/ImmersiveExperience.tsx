@@ -85,14 +85,14 @@ const ImmersiveExperience = () => {
                         ),
                       },
                       {
-                        id: "ie-payroll",
+                        id: "ie-rendering",
                         wrapperClassName:
                           "border-b border-primary/40 px-6 py-6",
                         heading: (
                           <h3
                             className={`${FONTS.microgrammaBold.className} text-md`}
                           >
-                            Payroll and census data collection
+                            Automated Rendering & Spatial Syncing
                           </h3>
                         ),
                         content: (
@@ -105,15 +105,14 @@ const ImmersiveExperience = () => {
                         ),
                       },
                       {
-                        id: "ie-inbox",
+                        id: "ie-collaboration",
                         wrapperClassName:
                           "border-b border-primary/40 px-6 py-6",
                         heading: (
                           <h3
                             className={`${FONTS.microgrammaBold.className} text-md`}
                           >
-                            Smart Inbox with auto-responses <br /> and task
-                            creation
+                            Collaborative In-Experience <br /> Feedback & Review
                           </h3>
                         ),
                         content: (
