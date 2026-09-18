@@ -66,46 +66,31 @@ import { StyledText } from "@/components/shared/StyledText";
   </WhyItWorkedItem>
 </WhyItWorkedSection>
 
-<ResourceObrivesApproachTable
-  title="Smart Packaging, Smarter Engagement"
-  subtitle=""
-  description={
-    <>
-      By late 2024, the trend was clear—and impactful. Here’s how{" "}
-      <StyledText>AR Packaging</StyledText> began reshaping touchpoints:
-    </>
-  }
-  header1="Feature"
-  header2="Impact"
-  footerContent="These experiences blurred the line between “physical” and “digital,” transforming shelf browsing into a memorable brand interaction."
-  phases={[
-    {
-      phase: "Scan-to-Experience WebAR",
-      action:
-        "No apps, just quick QR scanning—great for impulse buyers and social sharing.",
-    },
-    {
-      phase: "Interactive 3D Product Demos",
-      action:
-        "Customers rotate, zoom, and explore virtually—before buying or unboxing.",
-    },
-    {
-      phase: "Dynamic Content Updates",
-      action:
-        "Swap promotions, instructions, or demos after printing—no new packaging needed.",
-    },
-    {
-      phase: "Brand Storytelling in 3D",
-      action:
-        "From sustainable sourcing to craftsmanship—bring the brand narrative alive.",
-    },
-    {
-      phase: "Collectible AR Experiences",
-      action:
-        "Unlock rewards, gamified mini-experiences, or loyalty perks via packaging.",
-    },
-  ]}
-/>
+<ResourceObrivesApproachTable title="Smart Packaging, Smarter Engagement" subtitle="" header1="Feature" header2="Impact" footerContent="These experiences blurred the line between “physical” and “digital,” transforming shelf browsing into a memorable brand interaction.">
+<ApproachTableDescription>
+By late 2024, the trend was clear—and impactful. Here’s how{" "}
+<StyledText>AR Packaging</StyledText>began reshaping touchpoints:
+</ApproachTableDescription>
+
+<ApproachPhaseItem phase="Scan-to-Experience WebAR">
+  No apps, just quick QR scanning—great for impulse buyers and social sharing.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Interactive 3D Product Demos">
+  Customers rotate, zoom, and explore virtually—before buying or unboxing.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Dynamic Content Updates">
+  Swap promotions, instructions, or demos after printing—no new packaging
+  needed.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Brand Storytelling in 3D">
+  From sustainable sourcing to craftsmanship—bring the brand narrative alive.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Collectible AR Experiences">Unlock rewards, gamified mini-experiences, or loyalty perks via packaging.</ApproachPhaseItem>
+</ResourceObrivesApproachTable>
 
 <WhyItWorkedSection
   title={

@@ -65,45 +65,34 @@ import { StyledText } from "@/components/shared/StyledText";
   </WhyItWorkedItem>
 </WhyItWorkedSection>
 
-<ResourceObrivesApproachTable
-  title={<>Why VR Training Works So Well</>}
-  description={
-    <>
-      Here’s what makes <StyledText>VR Training</StyledText> so effective:
-    </>
-  }
-  subtitle=""
-  header1="Feature"
-  header2="Impact"
-  footerContent="VR transforms training from passive absorption into active, hands-on mastery."
-  phases={[
-    {
-      phase: "Interactive 3D Models in Scene",
-      action:
-        "Let audiences rotate, zoom, and inspect your product—in their space, not just on your screen.",
-    },
-    {
-      phase: "Spatial Storytelling",
-      action:
-        "Position visuals around the room—overlay data on physical objects or surfaces, making ideas stick.",
-    },
-    {
-      phase: "App-Free Access",
-      action:
-        "WebAR means no downloads—just scan and present. Seamless, anywhere.",
-    },
-    {
-      phase: "Real-Time Customization",
-      action:
-        "Tweak overlays on the fly—add diagrams, data, or visuals instantly as the conversation evolves.",
-    },
-    {
-      phase: "Enhanced Memory Retention",
-      action:
-        "Interactive spatial visuals are more memorable than static slides—forgettable deck? That’s history.",
-    },
-  ]}
-/>
+<ResourceObrivesApproachTable subtitle="" header1="Feature" header2="Impact" footerContent="VR transforms training from passive absorption into active, hands-on mastery.">
+<ApproachTableTitle>Why VR Training Works So Well</ApproachTableTitle>
+
+<ApproachTableDescription>
+  Here’s what makes <StyledText>VR Training</StyledText>so effective:
+</ApproachTableDescription>
+
+<ApproachPhaseItem phase="Interactive 3D Models in Scene">
+  Let audiences rotate, zoom, and inspect your product—in their space, not just
+  on your screen.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Spatial Storytelling">
+  Position visuals around the room—overlay data on physical objects or surfaces,
+  making ideas stick.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="App-Free Access">
+  WebAR means no downloads—just scan and present. Seamless, anywhere.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Real-Time Customization">
+  Tweak overlays on the fly—add diagrams, data, or visuals instantly as the
+  conversation evolves.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Enhanced Memory Retention">Interactive spatial visuals are more memorable than static slides—forgettable deck? That’s history.</ApproachPhaseItem>
+</ResourceObrivesApproachTable>
 
 <WhyItWorkedSection title="When a Pilot Becomes a Strategy">
   <WhyItWorkedItem>

@@ -48,43 +48,31 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
   </CompanyInfoItem>
 </CompanyInfoSection>
 
-<ApproachTable
-  title="Featured Sections"
-  header1="Category"
-  header2="Description"
-  phases={[
-    {
-      phase: "General Support",
-      action:
-        "Find step-by-step guides on product configuration, onboarding workflows, and environment setup.",
-    },
-    {
-      phase: "Feature Documentation",
-      action:
-        "Dive into how-to articles on AR overlays, VR app deployment, spatial interaction patterns, and 3D asset workflow integration.",
-    },
-    {
-      phase: "Interactive Troubleshooting",
-      action:
-        "Resolve issues quickly with searchable docs, troubleshooting guides, and visual walkthroughs.",
-    },
-    {
-      phase: "Client Portal Guidance",
-      action:
-        "Learn to manage previews, share immersive demos, gather feedback, and enable version approvals—all securely.",
-    },
-    {
-      phase: "API & Platform Integrations",
-      action:
-        "Technical reference for integrating Obrive tools with LMS systems, CAD libraries, CRM, or IoT frameworks.",
-    },
-    {
-      phase: "Support Access",
-      action:
-        "Submit support tickets or schedule a live consultation with our technical team for urgent assistance.",
-    },
-  ]}
-/>
+<ApproachTable title="Featured Sections" header1="Category" header2="Description">
+<ApproachPhaseItem phase="General Support">Find step-by-step guides on product configuration, onboarding workflows, and environment setup.</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Feature Documentation">
+  Dive into how-to articles on AR overlays, VR app deployment, spatial
+  interaction patterns, and 3D asset workflow integration.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Interactive Troubleshooting">
+  Resolve issues quickly with searchable docs, troubleshooting guides, and
+  visual walkthroughs.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Client Portal Guidance">
+  Learn to manage previews, share immersive demos, gather feedback, and enable
+  version approvals—all securely.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="API & Platform Integrations">
+  Technical reference for integrating Obrive tools with LMS systems, CAD
+  libraries, CRM, or IoT frameworks.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Support Access">Submit support tickets or schedule a live consultation with our technical team for urgent assistance.</ApproachPhaseItem>
+</ApproachTable>
 
 <CompanyInfoSection title="Why Our Help Center Works for You">
   <CompanyInfoItem>

@@ -59,38 +59,27 @@ import { StyledText } from "@/components/shared/StyledText";
   </WhyItWorkedItem>
 </WhyItWorkedSection>
 
-<ResourceObrivesApproachTable
-  title={<>Why MR Works: Productivity in Practice</>}
-  subtitle=""
-  description="Mixed Reality boosts enterprise efficiency by combining digital clarity with physical context:"
-  footerContent="MR is the productivity layer that works where other tools just talk."
-  header1="Benefit"
-  header2="Enterprise Impact"
-  phases={[
-    {
-      phase: "Hands-Free Guidance",
-      action:
-        "Employees follow virtual overlays while keeping both hands ready.",
-    },
-    {
-      phase: "Real-Time Collaboration",
-      action:
-        "Remote experts see what on-site workers see and guide them live.",
-    },
-    {
-      phase: "Contextual Data Layers",
-      action: "Critical metrics and alerts overlay directly on equipment.",
-    },
-    {
-      phase: "Workflow Anchoring",
-      action: "MR keeps digital instructions bound to real-world locations.",
-    },
-    {
-      phase: "Faster Onboarding",
-      action: "New hires learn by doing—supported by visual cues and prompts.",
-    },
-  ]}
-/>
+<ResourceObrivesApproachTable subtitle="" description="Mixed Reality boosts enterprise efficiency by combining digital clarity with physical context:" footerContent="MR is the productivity layer that works where other tools just talk." header1="Benefit" header2="Enterprise Impact">
+<ApproachTableTitle>Why MR Works: Productivity in Practice</ApproachTableTitle>
+
+<ApproachPhaseItem phase="Hands-Free Guidance">
+  Employees follow virtual overlays while keeping both hands ready.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Real-Time Collaboration">
+  Remote experts see what on-site workers see and guide them live.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Contextual Data Layers">
+  Critical metrics and alerts overlay directly on equipment.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Workflow Anchoring">
+  MR keeps digital instructions bound to real-world locations.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Faster Onboarding">New hires learn by doing—supported by visual cues and prompts.</ApproachPhaseItem>
+</ResourceObrivesApproachTable>
 
 <WhyItWorkedSection title="Enterprise Use Cases Where MR Wins">
   <WhyItWorkedItem>

@@ -6,7 +6,7 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import ResourceImpactMetricsTable from "./ResourceImpactMetricsTable";
 import ResourceChallengeSection from "./sections/ResourceChallengeSection";
 import ResourceCompanyOverviewSection from "./sections/ResourceCompanyOverviewSection";
-import ResourceObrivesApproachTable from "./sections/ResourceObrivesApproachTable";
+import ResourceObrivesApproachTable, { ApproachPhaseItem, ApproachTableTitle, ApproachTableDescription } from "./sections/ResourceObrivesApproachTable";
 import ResourceOutcomeSnapshotSection from "./sections/ResourceOutcomeSnapshotSection";
 import ResourceStrategicApproachSection, { StrategicStepItem } from "./sections/ResourceStrategicApproachSection";
 import ResourceTheImpactTable from "./sections/ResourceTheImpactTable";
@@ -23,6 +23,9 @@ export {
   ResourceTheImpactTable,
   WhyItWorkedItem,
   StrategicStepItem,
+  ApproachPhaseItem,
+  ApproachTableTitle,
+  ApproachTableDescription,
 };
 
 // Create a function that returns MDX components with access to metadata
@@ -134,6 +137,9 @@ export const createResourceMDXComponents = (metadata: any) => ({
   TheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
   WhyItWorkedItem: (props: any) => <WhyItWorkedItem {...props} />,
   StrategicStepItem: (props: any) => <StrategicStepItem {...props} />,
+  ApproachPhaseItem: (props: any) => <ApproachPhaseItem {...props} />,
+  ApproachTableTitle: (props: any) => <ApproachTableTitle {...props} />,
+  ApproachTableDescription: (props: any) => <ApproachTableDescription {...props} />,
 
   // Custom generic components
   Link,
@@ -209,4 +215,7 @@ export default {
   StyledText,
   WhyItWorkedItem,
   StrategicStepItem,
+  ApproachPhaseItem,
+  ApproachTableTitle,
+  ApproachTableDescription,
 };

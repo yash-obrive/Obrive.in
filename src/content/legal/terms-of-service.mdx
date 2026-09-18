@@ -206,38 +206,28 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
   </CompanyInfoItem>
 </CompanyInfoSection>
 
-<ApproachTable
-  title="Summary of Updates"
-  header1="Section"
-  header2="Key Takeaway"
-  phases={[
-    {
-      phase: "Acceptance",
-      action: "Using service means agreeing to terms",
-    },
-    {
-      phase: "Permitted Use",
-      action: "Create, deploy, preview immersive apps",
-    },
-    {
-      phase: "Restrictions",
-      action: "No reverse-engineering. Keep accounts secure",
-    },
-    {
-      phase: "IP Rights",
-      action: "You own your content; Obrive owns the platform",
-    },
-    {
-      phase: "Termination & Suspension",
-      action: "Terms violation may end your access",
-    },
-    {
-      phase: "Warranty & Liability",
-      action: "Services are “as is”; liability limited",
-    },
-    {
-      phase: "Legal Governance",
-      action: "Jurisdiction based on Obrive’s location",
-    },
-  ]}
-/>
+<ApproachTable title="Summary of Updates" header1="Section" header2="Key Takeaway">
+<ApproachPhaseItem phase="Acceptance">Using service means agreeing to terms</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Permitted Use">
+  Create, deploy, preview immersive apps
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Restrictions">
+  No reverse-engineering. Keep accounts secure
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="IP Rights">
+  You own your content; Obrive owns the platform
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Termination & Suspension">
+  Terms violation may end your access
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Warranty & Liability">
+  Services are “as is”; liability limited
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Legal Governance">Jurisdiction based on Obrive’s location</ApproachPhaseItem>
+</ApproachTable>

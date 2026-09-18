@@ -115,30 +115,20 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
   </CompanyInfoItem>
 </CompanyInfoSection>
 
-<ApproachTable
-  title="Summary of Updates"
-  header1="Date"
-  header2="Highlights"
-  phases={[
-    {
-      phase: "Aug 15, 2025",
-      action: "Spatial Collaboration Hub (Beta)",
-    },
-    {
-      phase: "Aug 1, 2025",
-      action: "Voice-Guided Training + load time fix",
-    },
-    {
-      phase: "Jul 23, 2025",
-      action: "Asset Library tag/search enhancements",
-    },
-    {
-      phase: "Jul 22, 2025",
-      action: "Gesture input bug fix in Obmove",
-    },
-    {
-      phase: "Jul 8, 2025",
-      action: "Performance & security optimizations",
-    },
-  ]}
-/>
+<ApproachTable title="Summary of Updates" header1="Date" header2="Highlights">
+<ApproachPhaseItem phase="Aug 15, 2025">Spatial Collaboration Hub (Beta)</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Aug 1, 2025">
+  Voice-Guided Training + load time fix
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Jul 23, 2025">
+  Asset Library tag/search enhancements
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Jul 22, 2025">
+  Gesture input bug fix in Obmove
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Jul 8, 2025">Performance & security optimizations</ApproachPhaseItem>
+</ApproachTable>

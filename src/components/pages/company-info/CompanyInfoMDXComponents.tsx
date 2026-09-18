@@ -3,12 +3,12 @@ import FONTS from "@/assets/fonts";
 import { StyledText } from "@/components/shared/StyledText";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import CompanyInfoSection, { CompanyInfoItem } from "./sections/CompanyInfoSection";
-import CompanyInfoApproachTable from "./sections/CompanyInfoApproachTable";
+import CompanyInfoApproachTable, { CompanyInfoApproachPhaseItem, CompanyInfoApproachTableTitle, CompanyInfoApproachTableDescription } from "./sections/CompanyInfoApproachTable";
 import CompanyInfoHeader from "./sections/CompanyInfoHeader";
 import FAQAccordionSection, { FAQItem } from "../faq/sections/FAQAccordionSection";
 
 // Export components for direct import in MDX files
-export { CompanyInfoSection, CompanyInfoItem, CompanyInfoApproachTable, CompanyInfoHeader, FAQAccordionSection, FAQItem };
+export { CompanyInfoSection, CompanyInfoItem, CompanyInfoApproachTable, CompanyInfoHeader, FAQAccordionSection, FAQItem, CompanyInfoApproachPhaseItem, CompanyInfoApproachTableTitle, CompanyInfoApproachTableDescription };
 
 // Create a function that returns MDX components with access to metadata
 export const createCompanyInfoMDXComponents = (metadata: any) => ({
@@ -70,11 +70,23 @@ export const createCompanyInfoMDXComponents = (metadata: any) => ({
   CompanyInfoApproachTable: (props: any) => (
     <CompanyInfoApproachTable {...props} />
   ),
+  CompanyInfoApproachPhaseItem: (props: any) => (
+    <CompanyInfoApproachPhaseItem {...props} />
+  ),
+  CompanyInfoApproachTableTitle: (props: any) => (
+    <CompanyInfoApproachTableTitle {...props} />
+  ),
+  CompanyInfoApproachTableDescription: (props: any) => (
+    <CompanyInfoApproachTableDescription {...props} />
+  ),
   CompanyInfoHeader: (props: any) => <CompanyInfoHeader {...props} />,
 
   // Backward compatibility - shorter names
   InfoSection: (props: any) => <CompanyInfoSection {...props} />,
   ApproachTable: (props: any) => <CompanyInfoApproachTable {...props} />,
+  ApproachPhaseItem: (props: any) => <CompanyInfoApproachPhaseItem {...props} />,
+  ApproachTableTitle: (props: any) => <CompanyInfoApproachTableTitle {...props} />,
+  ApproachTableDescription: (props: any) => <CompanyInfoApproachTableDescription {...props} />,
   PageHeader: (props: any) => <CompanyInfoHeader {...props} />,
 
   // Custom components

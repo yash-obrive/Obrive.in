@@ -59,51 +59,37 @@ import { StyledText } from "@/components/shared/StyledText";
   </WhyItWorkedItem>
 </WhyItWorkedSection>
 
-<ResourceObrivesApproachTable
-  title={
-    <>
-      Why AR Presentations Work <br />
-      (Beyond the Wow Factor)
-    </>
-  }
-  description={
-    <>
-      Here’s what makes <StyledText>AR Presentations</StyledText> actually
-      powerful:
-    </>
-  }
-  subtitle=""
-  header1="Feature"
-  header2="Impact"
-  footerContent="AR presentations blur the line between “just talking” and “making it tangible.”"
-  phases={[
-    {
-      phase: "Interactive 3D Models in Scene",
-      action:
-        "Let audiences rotate, zoom, and inspect your product—in their space, not just on your screen.",
-    },
-    {
-      phase: "Spatial Storytelling",
-      action:
-        "Position visuals around the room—overlay data on physical objects or surfaces, making ideas stick.",
-    },
-    {
-      phase: "App-Free Access",
-      action:
-        "WebAR means no downloads—just scan and present. Seamless, anywhere.",
-    },
-    {
-      phase: "Real-Time Customization",
-      action:
-        "Tweak overlays on the fly—add diagrams, data, or visuals instantly as the conversation evolves.",
-    },
-    {
-      phase: "Enhanced Memory Retention",
-      action:
-        "Interactive spatial visuals are more memorable than static slides—forgettable deck? That’s history.",
-    },
-  ]}
-/>
+<ResourceObrivesApproachTable subtitle="" header1="Feature" header2="Impact" footerContent="AR presentations blur the line between “just talking” and “making it tangible.”">
+<ApproachTableTitle>
+Why AR Presentations Work <br />
+(Beyond the Wow Factor)
+</ApproachTableTitle>
+
+<ApproachTableDescription>
+  Here’s what makes <StyledText>AR Presentations</StyledText>actually powerful:
+</ApproachTableDescription>
+
+<ApproachPhaseItem phase="Interactive 3D Models in Scene">
+  Let audiences rotate, zoom, and inspect your product—in their space, not just
+  on your screen.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Spatial Storytelling">
+  Position visuals around the room—overlay data on physical objects or surfaces,
+  making ideas stick.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="App-Free Access">
+  WebAR means no downloads—just scan and present. Seamless, anywhere.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Real-Time Customization">
+  Tweak overlays on the fly—add diagrams, data, or visuals instantly as the
+  conversation evolves.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Enhanced Memory Retention">Interactive spatial visuals are more memorable than static slides—forgettable deck? That’s history.</ApproachPhaseItem>
+</ResourceObrivesApproachTable>
 
 <WhyItWorkedSection title="The Presentation That Changed Everything">
   <WhyItWorkedItem>

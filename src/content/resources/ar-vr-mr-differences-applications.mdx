@@ -75,30 +75,20 @@ import { StyledText } from "@/components/shared/StyledText";
   </WhyItWorkedItem>
 </WhyItWorkedSection>
 
-<ResourceObrivesApproachTable
-  title={<>Defining the Spectrum</>}
-  subtitle=""
-  footerContent="Think: AR informs, VR transports, MR merges."
-  header1="Reality Type"
-  header2="What It Means"
-  phases={[
-    {
-      phase: "AR (Augmented Reality)",
-      action:
-        "Adds digital elements to your real-world view—e.g., product overlays on shelves.",
-    },
-    {
-      phase: "VR (Virtual Reality)",
-      action:
-        "Immerses you in a fully virtual world—e.g., walking through virtual spaces.",
-    },
-    {
-      phase: "MR (Mixed Reality)",
-      action:
-        "Blends physical and digital worlds, with interaction—e.g., editing virtual designs on your real desk.",
-    },
-  ]}
-/>
+<ResourceObrivesApproachTable subtitle="" footerContent="Think: AR informs, VR transports, MR merges." header1="Reality Type" header2="What It Means">
+<ApproachTableTitle>Defining the Spectrum</ApproachTableTitle>
+
+<ApproachPhaseItem phase="AR (Augmented Reality)">
+  Adds digital elements to your real-world view—e.g., product overlays on
+  shelves.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="VR (Virtual Reality)">
+  Immerses you in a fully virtual world—e.g., walking through virtual spaces.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="MR (Mixed Reality)">Blends physical and digital worlds, with interaction—e.g., editing virtual designs on your real desk.</ApproachPhaseItem>
+</ResourceObrivesApproachTable>
 
 <WhyItWorkedSection title="Live Use Cases Across Tech Types">
   <WhyItWorkedItem>

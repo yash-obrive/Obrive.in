@@ -63,46 +63,33 @@ import { StyledText } from "@/components/shared/StyledText";
   </WhyItWorkedItem>
 </WhyItWorkedSection>
 
-<ResourceObrivesApproachTable
-  title="Why AR Printing Works"
-  subtitle=""
-  description={
-    <>
-      As we test more campaigns into 2024, the value became clear. Here’s what
-      makes <StyledText>AR Printing</StyledText> more than just flashy:
-    </>
-  }
-  header1="Feature"
-  header2="Why It Matters"
-  footerContent="Suddenly, print isn’t passive—it’s active, engaging, and memorable."
-  phases={[
-    {
-      phase: "App-Free WebAR Activation",
-      action:
-        "Just scan from a flyer—no installation required, perfect for impulse engagement.",
-    },
-    {
-      phase: "3D Product Demonstrations",
-      action:
-        "Users can rotate, zoom, and immerse—right from a page, driving interest before purchase.",
-    },
-    {
-      phase: "Dynamic Overlays",
-      action:
-        "Swap content (tutorials, promos) without reprinting—great for flexible campaigns.",
-    },
-    {
-      phase: "Narrative in Print",
-      action:
-        "Tell brand stories—from process to ethos—through layered, visual storytelling.",
-    },
-    {
-      phase: "Shareable AR Moments",
-      action:
-        "If it’s interactive, it gets shared. Users post videos, turning print into a social media moment.",
-    },
-  ]}
-/>
+<ResourceObrivesApproachTable title="Why AR Printing Works" subtitle="" header1="Feature" header2="Why It Matters" footerContent="Suddenly, print isn’t passive—it’s active, engaging, and memorable.">
+<ApproachTableDescription>
+As we test more campaigns into 2024, the value became clear. Here’s what
+makes <StyledText>AR Printing</StyledText>more than just flashy:
+</ApproachTableDescription>
+
+<ApproachPhaseItem phase="App-Free WebAR Activation">
+  Just scan from a flyer—no installation required, perfect for impulse
+  engagement.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="3D Product Demonstrations">
+  Users can rotate, zoom, and immerse—right from a page, driving interest before
+  purchase.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Dynamic Overlays">
+  Swap content (tutorials, promos) without reprinting—great for flexible
+  campaigns.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Narrative in Print">
+  Tell brand stories—from process to ethos—through layered, visual storytelling.
+</ApproachPhaseItem>
+
+<ApproachPhaseItem phase="Shareable AR Moments">If it’s interactive, it gets shared. Users post videos, turning print into a social media moment.</ApproachPhaseItem>
+</ResourceObrivesApproachTable>
 
 <WhyItWorkedSection title="More Than Just a Gimmick—It's Smart Strategy">
   <WhyItWorkedItem>
