@@ -1,8 +1,7 @@
 // backend/src/modules/hr/hr.service.js
 const { prisma } = require("../../../prisma");
 
-class HRService {
-  // Get HR dashboard statistics (FIXED - removed leave_requests)
+class HRService {  // Get HR dashboard statistics (FIXED - removed leave_requests)
   async getDashboardStats() {
     // Total employees
     const totalEmployees = await prisma.$queryRaw`

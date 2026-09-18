@@ -1,5 +1,4 @@
 const { prisma } = require("../../../prisma");
-
 const LEAVE_LIMITS = { vacation: 6, sick: 2 };
 const ACTIVE_STATUSES = ["approved", "pending"];
 
@@ -32,7 +31,6 @@ class LeavesService {
       selectedDate && selectedDate !== "undefined"
         ? new Date(selectedDate)
         : new Date();
-
     // Get month bounds
     const startOfMonth = new Date(
       referenceDate.getFullYear(),
@@ -68,8 +66,7 @@ class LeavesService {
           req.end_date,
           startOfMonth,
           endOfMonth,
-        );
-      }
+        );      }
     });
 
     return {
@@ -137,7 +134,6 @@ class LeavesService {
     });
 
     if (!leave) throw new Error("Leave request not found");
-
     // Check if it belongs to the user
     if (leave.user_id !== userId) {
       throw new Error("Unauthorized to delete this leave request");

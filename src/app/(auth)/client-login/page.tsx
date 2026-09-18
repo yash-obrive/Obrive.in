@@ -47,27 +47,27 @@ export default function ClientLogin() {
         }),
       });
 
-      const data = await res.json();
-      console.log("Response:", data);
+    const data = await res.json().catch(() => null);
+    console.log('Response:', data);
 
-      if (!res.ok) {
-        throw new Error(data.message || "Login failed");
-      }
+    if (!res.ok) {
+      throw new Error(data?.message || (res.status === 404 ? "API service unreachable" : "Login failed"));
+    }
 
-      if (data?.data?.accessToken) {
-        localStorage.setItem("token", data.data.accessToken);
-      }
+    if (data?.data?.accessToken) {
+      localStorage.setItem("token", data.data.accessToken);
+    }
 
-      if (data?.data?.client) {
-        localStorage.setItem("user", JSON.stringify(data.data.client));
-        router.push("/dashboard/client");
-      }
+    if (data?.data?.client) {
+      localStorage.setItem("user", JSON.stringify(data.data.client));
+      router.push("/dashboard/client");
+    }
 
-      setShowToast(true);
-    } catch (err: any) {
-      setError(err.message || "Login failed");
-    } finally {
-      setLoading(false);
+    setShowToast(true);
+  } catch (err: any) {
+    setError(err.message || "Login failed");
+  } finally {
+    setLoading(false);
     }
   };
 

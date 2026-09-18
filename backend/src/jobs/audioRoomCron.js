@@ -1,5 +1,5 @@
 const cron = require("node-cron");
-const { prisma } = require("../../prisma");
+const { prisma } = require("../../db");
 const { getIO } = require("../socket");
 
 function startAudioRoomCron() {

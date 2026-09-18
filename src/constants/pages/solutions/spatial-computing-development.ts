@@ -451,3 +451,5 @@ export const SPATIAL_COMPUTING_INDUSTRIES: import("../../../types/solutions").So
     ]
   }
 };
+
+export { SPATIAL_COMPUTING_FAQS, SPATIAL_COMPUTING_FAQ_META } from "./faqs/spatial-computing-faqs";

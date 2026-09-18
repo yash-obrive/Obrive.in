@@ -474,3 +474,5 @@ export const THREE_D_DESIGN_INDUSTRIES: import("../../../types/solutions").Solut
     ]
   }
 };
+
+export { THREE_D_DESIGN_FAQS, THREE_D_DESIGN_FAQ_META } from "./faqs/3d-design-faqs";

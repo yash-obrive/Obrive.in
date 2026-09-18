@@ -1,5 +1,4 @@
 const { prisma } = require("../../../prisma");
-
 // ── Get all sticky notes ──────────────────────────
 exports.getAllStickyNotes = async (_userId) => {
   return await prisma.sticky_notes.findMany({

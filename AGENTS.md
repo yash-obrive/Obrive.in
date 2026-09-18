@@ -7,6 +7,18 @@
 - **Component & Palette Reuse:** Before building new UI widgets, inspect existing production pages (such as `src/app/(dashboard)/dashboard/employee/page.tsx` and `src/components/dashboard/`) and reuse existing components (`WorkloadSection`, `Projects`, `NearestEvents`, `ActivityStream`, etc.) and brand color tokens (`#073933`, `#F4F9FD`, `#eef7ff`).
 - **Global Style Isolation:** Do not inject third-party library CSS (e.g., Leaflet, calendar styles) into root files (`globals.css` or `layout.tsx`) where they could bleed into or conflict with global fonts. Scope third-party styles locally inside dynamic client components.
 
+## Repository Collaboration & Git Workflow Rules
+
+- **Target Repository (`origin`):** The primary remote repository is `origin` (`https://github.com/shivansh-006/obrive.git`).
+- **Feature Branch Integration:** `naman-feature` is the user's primary feature/staging branch. All feature work and topic branches merge into `naman-feature`.
+- **Pull Request Targeting:** When asked to create or check pull requests, always target `shivansh-006/obrive:main` as the base branch from `naman-feature`.
+- **Remote Instructions for User:** When providing git commands for the user to execute (e.g., pushes), always explicitly use the `origin` remote (e.g., `git push origin <branch-name>`), never `upstream-org` or `personal`.
+
+## Git Operations
+
+- **Explicit Commits Only:** Never execute `git commit` unless explicitly and directly requested in the user's most recent prompt.
+- **NEVER PUSH:** Absolutely NEVER execute `git push` under any circumstances. All remote pushes must be handled manually by the user in their own terminal.
+
 ---
 
 ## OBRIVE PERMANENT PROJECT RULES
@@ -390,3 +402,4 @@ Memorize:
 > **UNDERSTAND → VERIFY → REUSE → MINIMAL CHANGE → TEST → REPORT**
 
 Never skip directly from understanding to coding without verification.
+

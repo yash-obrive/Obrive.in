@@ -1,4 +1,4 @@
-const { prisma } = require("../../../../prisma");
+const { prisma } = require("../../../../db");
 
 const getRoomsService = async () => {
   const rooms = await prisma.room_configs.findMany({

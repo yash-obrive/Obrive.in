@@ -47,3 +47,6 @@ next-env.d.ts
 
 # livekit yaml file
 backend/src/modules/AUDIO_ROOM/livekit/infrastructure/livekit.yaml
+
+# local agent rules
+GEMINI.md

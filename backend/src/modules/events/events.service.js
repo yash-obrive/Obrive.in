@@ -3,8 +3,7 @@ const { prisma } = require("../../../prisma");
 
 class EventsService {
   async getAllEvents() {
-    const events = await prisma.$queryRaw`
-        SELECT 
+    const events = await prisma.$queryRaw`        SELECT 
             id,
             title,
             description,
@@ -33,8 +32,7 @@ class EventsService {
 
   // Get nearest events for dashboard (within next 4 days)
   async getNearestEvents(limit = 4) {
-    const events = await prisma.$queryRaw`
-            SELECT 
+    const events = await prisma.$queryRaw`            SELECT 
                 id,
                 title,
                 description,
@@ -93,8 +91,7 @@ class EventsService {
     const formattedEventTime = eventTime ? `${eventTime}:00` : null;
     const formattedEndTime = endTime ? `${endTime}:00` : null;
 
-    await prisma.$executeRaw`
-        INSERT INTO events (
+    await prisma.$executeRaw`        INSERT INTO events (
             title, description, category, priority, 
             event_date, event_time, end_time, location, 
             event_type, is_recurring, repeat_type, repeat_days, 
@@ -148,8 +145,7 @@ class EventsService {
       ? new Date(repeatEndDate).toISOString().split("T")[0]
       : null;
 
-    await prisma.$executeRaw`
-            UPDATE events SET
+    await prisma.$executeRaw`            UPDATE events SET
                 title = COALESCE(${title}, title),
                 description = COALESCE(${description}, description),
                 category = COALESCE(${category}, category),
@@ -197,8 +193,7 @@ class EventsService {
     const formattedStartDate = new Date(startDate).toISOString().split("T")[0];
     const formattedEndDate = new Date(endDate).toISOString().split("T")[0];
 
-    const events = await prisma.$queryRaw`
-            SELECT 
+    const events = await prisma.$queryRaw`            SELECT 
                 id,
                 title,
                 description,
@@ -217,7 +212,6 @@ class EventsService {
       ...event,
       id: Number(event.id),
     }));
-  }
-}
+  }}
 
 module.exports = new EventsService();

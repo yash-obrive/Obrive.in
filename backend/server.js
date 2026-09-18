@@ -9,14 +9,13 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const { prisma, connectWithRetry } = require("./prisma");
+const { prisma, connectWithRetry } = require("./db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const startWorkSessionCron = require("./src/jobs/workSessionCron");
 const startAudioRoomCron = require("./src/jobs/audioRoomCron");
 const http = require("http");
 const { initializeSocket } = require("./src/socket");
-
 const app = express();
 const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
@@ -40,7 +39,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const morganFormat = process.env.NODE_ENV === "production" ? "combined" : "dev";
 app.use(morgan(morganFormat));
-
 // ============================================
 // ✅ PUBLIC HEALTH CHECK
 // ============================================
@@ -71,8 +69,7 @@ app.use("/api/events", require("./src/modules/events/events.routes"));
 app.use(
   "/api/sticky-notes",
   require("./src/modules/sticky-notes/sticky-notes.routes"),
-);
-// Calendar routes ─────────────────────────────────────────────────────
+);// Calendar routes ─────────────────────────────────────────────────────
 app.use("/api/calendar", require("./src/modules/calendar/calendar.routes"));
 // Vacations/Leaves routes ──────────────────────────────────────────────
 app.use("/api/vacations", require("./src/modules/vacations/vacations.routes"));
@@ -129,8 +126,7 @@ app.use(
 app.use(
   "/api/audio-room",
   require("./src/modules/AUDIO_ROOM/room-hand-action/roomHandAction.routes"),
-);
-//  MODERATION ROUTES ─────────────────────────────────────────────
+);//  MODERATION ROUTES ─────────────────────────────────────────────
 app.use(
   "/api/audio-room",
   require("./src/modules/AUDIO_ROOM/speaker-mute/speakerMute.routes"),
@@ -170,15 +166,13 @@ async function bootstrap() {
       console.log(`🚀 Server running on port ${PORT}`);
     });
   } catch (err) {
-    console.error("🔴 Failed to start:", err);
-    process.exit(1);
+    console.error("🔴 Failed to start:", err);    process.exit(1);
   }
 }
 
 bootstrap();
 
-process.on("SIGINT", async () => {
-  await prisma.$disconnect();
+process.on("SIGINT", async () => {  await prisma.$disconnect();
   console.log("🔌 DB disconnected. Shutting down.");
   process.exit(0);
 });

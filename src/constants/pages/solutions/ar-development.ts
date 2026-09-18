@@ -564,3 +564,8 @@ export const AR_DEVELOPMENT_INDUSTRIES: import("../../../types/solutions").Solut
     ]
   }
 };
+
+export {
+  AR_DEVELOPMENT_FAQS,
+  AR_DEVELOPMENT_FAQS_META,
+} from "./faqs/ar-development-faqs";

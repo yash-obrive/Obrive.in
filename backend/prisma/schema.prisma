@@ -629,7 +629,6 @@ model CommunityPostLike {
   user users @relation("CommunityPostLikeUser", fields: [user_id], references: [id])
 
   post CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
-
   @@unique([user_id, postId])
   @@map("community_post_likes")
 }
@@ -647,7 +646,6 @@ model CommunityCommentLike {
   user users @relation("CommunityCommentLikeUser", fields: [user_id], references: [id])
 
   comment CommunityComment @relation(fields: [commentId], references: [id], onDelete: Cascade)
-
   @@unique([user_id, commentId])
   @@map("community_comment_likes")
 }
@@ -665,7 +663,6 @@ model CommunitySavedPost {
   user users @relation("CommunitySavedPostUser", fields: [user_id], references: [id])
 
   post CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
-
   @@unique([user_id, postId])
   @@map("community_saved_posts")
 }

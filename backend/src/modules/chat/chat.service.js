@@ -1,5 +1,5 @@
 // backend/src/modules/chat/chat.service.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 
 exports.getConversationById = async (conversationId, userId) => {
   const result = await prisma.$queryRaw`
@@ -402,6 +402,5 @@ exports.seedDummyChats = async (userId) => {
       }),
     ),
   );
-
   return { group, directChats };
 };

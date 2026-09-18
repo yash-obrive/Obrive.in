@@ -1,5 +1,4 @@
 const { prisma } = require("../../../prisma");
-
 exports.getMeetings = async (userId, role) => {
   if (role === "EMPLOYEE") {
     const emp = await prisma.employee.findUnique({ where: { userId } });
@@ -7,8 +6,7 @@ exports.getMeetings = async (userId, role) => {
       where: { participants: { some: { employeeId: emp.id } } },
       include: {
         participants: { include: { employee: { select: { fullName: true } } } },
-      },
-    });
+      },    });
   }
   return prisma.meeting.findMany({
     include: {
@@ -24,8 +22,7 @@ exports.scheduleMeeting = async (createdBy, data) => {
     where: {
       employeeId: { in: data.participantIds },
       date: new Date(data.date),
-      slotType: "BUSY",
-      startTime: { lt: data.endTime },
+      slotType: "BUSY",      startTime: { lt: data.endTime },
       endTime: { gt: data.startTime },
     },
     include: { employee: { select: { fullName: true } } },

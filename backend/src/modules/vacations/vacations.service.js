@@ -1,5 +1,4 @@
 const { prisma } = require("../../../prisma");
-
 class VacationsService {
   async getAllEmployeesWithLeaves() {
     return await prisma.users.findMany({

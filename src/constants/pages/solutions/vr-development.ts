@@ -449,3 +449,8 @@ export const VR_DEVELOPMENT_INDUSTRIES: import("../../../types/solutions").Solut
     ]
   }
 };
+
+export {
+  VR_DEVELOPMENT_FAQS,
+  VR_DEVELOPMENT_FAQS_META,
+} from "./faqs/vr-development-faqs";

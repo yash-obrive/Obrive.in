@@ -1,5 +1,4 @@
 const { prisma } = require("../../../prisma");
-
 class ProfileService {
   async getProfileById(id) {
     const profile = await prisma.users.findUnique({
@@ -22,8 +21,7 @@ class ProfileService {
     });
 
     if (!existing) {
-      const err = new Error("Profile not found");
-      err.status = 404;
+      const err = new Error("Profile not found");      err.status = 404;
       throw err;
     }
 

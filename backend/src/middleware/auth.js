@@ -1,6 +1,6 @@
 const { verifyAccessToken } = require("../utils/jwt");
 const { errorResponse } = require("../utils/apiResponse");
-const { prisma } = require("../../prisma");
+const { prisma } = require("../../db");
 
 module.exports = async (req, res, next) => {
   try {

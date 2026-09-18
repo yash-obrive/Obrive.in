@@ -1,5 +1,5 @@
 // backend/src/socket/store/messageQueue.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 
 const messageQueue = [];
 
