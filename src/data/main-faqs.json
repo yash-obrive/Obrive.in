@@ -1,0 +1,602 @@
+{
+  "General \u2014 Working With Obrive": [
+    {
+      "q": "What services does Obrive provide?",
+      "a": "Obrive is a technology, design, development, and immersive experience company that helps businesses transform ideas into digital products, platforms, applications, websites, and interactive experiences. Our capabilities include website design and development, UI/UX design, mobile app development, web application development, custom software and digital platforms, AI-powered solutions, digital marketing, SEO, AEO, GEO, Augmented Reality (AR), Virtual Reality (VR), Mixed Reality (MR), 3D design and development, Spatial Computing, immersive experiences, and enterprise technology solutions."
+    },
+    {
+      "q": "What type of companies does Obrive work with?",
+      "a": "We work with startups, small and medium-sized businesses, enterprises, institutions, brands, property developers, retailers, manufacturers, automotive companies, healthcare organizations, educational institutions, hospitality businesses, real estate companies, and organizations exploring emerging technologies."
+    },
+    {
+      "q": "Can Obrive build a complete digital product from idea to launch?",
+      "a": "Yes. Obrive can support the complete product lifecycle\u2014from business and product discovery, UX/UI design and prototyping through development, testing, deployment, integrations, analytics, optimization, and ongoing support."
+    },
+    {
+      "q": "Can I hire Obrive for only one service?",
+      "a": "Yes. You can engage Obrive for an individual requirement such as website design, website development, UI/UX design, mobile app development, 3D modeling, AR development, VR development, SEO, AEO, GEO, or digital marketing, or engage us as an end-to-end technology partner."
+    },
+    {
+      "q": "Can Obrive work with an existing website or application?",
+      "a": "Yes. We can redesign, modernize, rebuild, optimize, migrate, integrate, maintain, or extend existing websites, applications, platforms, and digital products."
+    },
+    {
+      "q": "Does Obrive work with startups?",
+      "a": "Yes. We work with startups at different stages, including idea validation, MVP development, product design, website development, mobile application development, technology prototyping, launch, and growth."
+    },
+    {
+      "q": "Does Obrive work with enterprise organizations?",
+      "a": "Yes. We develop scalable digital and immersive solutions for organizations that require integrations, security, structured workflows, analytics, enterprise applications, and multi-location or multi-user deployments."
+    },
+    {
+      "q": "Can Obrive sign an NDA before discussing my project?",
+      "a": "Yes. An NDA can be arranged when confidentiality is required before sharing proprietary business, product, technical, or commercial information."
+    },
+    {
+      "q": "How do I hire Obrive?",
+      "a": "You can contact Obrive with your requirements, business objectives, existing technology, preferred timeline, and approximate budget. Our team can then understand the requirement and determine the appropriate design, technology, development, and delivery approach."
+    }
+  ],
+  "Website Design FAQs": [
+    {
+      "q": "Does Obrive design websites for businesses?",
+      "a": "Yes. Obrive designs websites for startups, businesses, brands, enterprises, products, services, institutions, and technology companies."
+    },
+    {
+      "q": "What type of websites can Obrive design?",
+      "a": "We can design corporate websites, business websites, startup websites, product websites, service websites, landing pages, portfolio websites, eCommerce experiences, enterprise websites, technology websites, real estate websites, marketplace interfaces, and custom digital experiences."
+    },
+    {
+      "q": "Can Obrive create a website design from scratch?",
+      "a": "Yes. We can take your business idea, brand identity, target audience, content requirements, and business objectives and create a website experience from the ground up."
+    },
+    {
+      "q": "Does Obrive provide UI/UX design for websites?",
+      "a": "Yes. Website projects can include information architecture, user journeys, wireframes, UX strategy, UI design, responsive layouts, interaction design, design systems, prototypes, and developer-ready design specifications."
+    },
+    {
+      "q": "Can Obrive redesign my existing website?",
+      "a": "Yes. We can audit an existing website and redesign its UX, UI, information architecture, content structure, responsive experience, conversion paths, and visual identity."
+    },
+    {
+      "q": "Can Obrive design responsive websites?",
+      "a": "Yes. Website interfaces can be designed for desktop, laptop, tablet, and mobile experiences."
+    },
+    {
+      "q": "Can Obrive design websites for international businesses?",
+      "a": "Yes. We can design websites intended for international audiences, multiple markets, different regions, and multilingual or multi-location business models."
+    },
+    {
+      "q": "Can Obrive design websites for Indian businesses?",
+      "a": "Yes. We work with businesses targeting Indian markets, including businesses serving Tier 1, Tier 2, and Tier 3 cities."
+    },
+    {
+      "q": "Can Obrive design websites for global audiences?",
+      "a": "Yes. Website architecture, content structure, UX, localization, SEO, and technical implementation can be planned around international markets."
+    },
+    {
+      "q": "Can Obrive create a website design system?",
+      "a": "Yes. We can create reusable design systems covering typography, colors, components, buttons, forms, cards, navigation, responsive behavior, interaction patterns, and other UI elements."
+    },
+    {
+      "q": "Does Obrive design landing pages?",
+      "a": "Yes. We can design conversion-focused landing pages for products, services, campaigns, lead generation, advertising, product launches, and specific marketing objectives."
+    }
+  ],
+  "Website Development FAQs": [
+    {
+      "q": "Does Obrive provide website development?",
+      "a": "Yes. Obrive develops websites ranging from business and corporate websites to custom web platforms and complex application-based experiences."
+    },
+    {
+      "q": "What technologies can Obrive use for website development?",
+      "a": "Technology selection depends on the project requirements. Depending on the use case, development can involve modern frontend frameworks, backend technologies, databases, APIs, cloud infrastructure, content management systems, eCommerce technologies, and custom application architectures."
+    },
+    {
+      "q": "Can Obrive develop websites using Next.js and React?",
+      "a": "Yes. Obrive can develop modern websites and web applications using technologies such as React and Next.js when they are appropriate for the project's requirements."
+    },
+    {
+      "q": "Can Obrive convert an existing website into Next.js?",
+      "a": "Yes. Existing websites can be redesigned or migrated to modern frameworks such as Next.js where there is a business or technical reason to do so."
+    },
+    {
+      "q": "Can Obrive develop custom websites instead of using templates?",
+      "a": "Yes. We can build custom website experiences based on your brand, business requirements, UX strategy, integrations, functionality, and scalability requirements."
+    },
+    {
+      "q": "Can Obrive develop websites using WordPress?",
+      "a": "Yes. WordPress can be considered when a content management system is appropriate for the project. We can also work with existing WordPress websites for redesign, development, migration, optimization, and maintenance."
+    },
+    {
+      "q": "Can Obrive develop eCommerce websites?",
+      "a": "Yes. We can design and develop eCommerce experiences including product catalogs, shopping journeys, checkout flows, payment integrations, customer accounts, order management, promotions, and third-party integrations."
+    },
+    {
+      "q": "Can Obrive develop custom web applications?",
+      "a": "Yes. Obrive can develop custom web applications and business platforms involving dashboards, user accounts, workflows, databases, APIs, integrations, automation, analytics, and role-based access."
+    },
+    {
+      "q": "Can Obrive integrate APIs into websites?",
+      "a": "Yes. Websites and web applications can integrate third-party and custom APIs for payments, CRM, maps, authentication, communication, analytics, business systems, AI services, and other external platforms."
+    },
+    {
+      "q": "Can Obrive integrate payment gateways?",
+      "a": "Yes. Payment gateway integration can be included when required, subject to the selected payment provider, market, compliance requirements, and project architecture."
+    },
+    {
+      "q": "Can Obrive integrate CRM and business software with a website?",
+      "a": "Yes. We can design and develop integrations between websites or web applications and appropriate CRM, ERP, marketing, analytics, communication, payment, or business systems."
+    },
+    {
+      "q": "Can Obrive build a website with an admin dashboard?",
+      "a": "Yes. Custom admin dashboards can be developed for managing content, products, users, leads, transactions, analytics, workflows, and other business operations."
+    }
+  ],
+  "Website Cost & Project FAQs": [
+    {
+      "q": "How much does it cost to build a website?",
+      "a": "Website cost depends on the scope, number of pages, UX/UI complexity, functionality, integrations, technology, content requirements, eCommerce requirements, backend systems, and ongoing support. Obrive can provide a project-specific estimate after understanding your requirements."
+    },
+    {
+      "q": "How long does it take to build a website?",
+      "a": "The timeline depends on project scope and complexity. A simple business website may require substantially less time than a custom web application, eCommerce platform, or enterprise website."
+    },
+    {
+      "q": "Can Obrive build an MVP website or product quickly?",
+      "a": "Yes. For projects where speed is important, we can define an MVP scope, prioritize essential functionality, and create a phased development roadmap."
+    },
+    {
+      "q": "Can I start with a small website and scale later?",
+      "a": "Yes. Website architecture can be planned so that additional pages, features, integrations, applications, markets, and functionality can be introduced as the business grows."
+    },
+    {
+      "q": "Does Obrive provide website maintenance?",
+      "a": "Yes. Website maintenance and support can include updates, bug fixes, performance improvements, security-related maintenance, content changes, feature enhancements, monitoring, and technical support."
+    }
+  ],
+  "Mobile App Development FAQs": [
+    {
+      "q": "Does Obrive develop mobile applications?",
+      "a": "Yes. Obrive develops mobile applications for businesses, startups, products, services, and enterprise use cases."
+    },
+    {
+      "q": "Can Obrive develop Android and iOS applications?",
+      "a": "Yes. Depending on project requirements, applications can be developed for Android, iOS, or both platforms."
+    },
+    {
+      "q": "Does Obrive develop cross-platform mobile apps?",
+      "a": "Yes. Cross-platform technologies can be considered when they provide the right balance of development efficiency, performance, maintainability, and platform compatibility."
+    },
+    {
+      "q": "Can Obrive develop native mobile applications?",
+      "a": "Yes. Native development can be considered when a project requires platform-specific functionality, performance, hardware capabilities, or deeper operating-system integration."
+    },
+    {
+      "q": "Can Obrive design and develop the complete mobile app?",
+      "a": "Yes. We can support mobile app strategy, UX/UI design, prototyping, frontend development, backend development, API integration, testing, deployment, analytics, and post-launch improvements."
+    }
+  ],
+  "Web Application & Custom Software FAQs": [
+    {
+      "q": "Can Obrive build custom software?",
+      "a": "Yes. Obrive develops custom digital platforms and software tailored to specific business workflows, operational requirements, customer experiences, and technology environments."
+    },
+    {
+      "q": "Can Obrive build SaaS platforms?",
+      "a": "Yes. SaaS products can include user authentication, subscriptions, dashboards, role-based access, billing, analytics, APIs, integrations, administration systems, and scalable cloud architecture."
+    },
+    {
+      "q": "Can Obrive build marketplaces?",
+      "a": "Yes. Custom marketplace platforms can include buyer and seller experiences, listings, search, filters, payments, commissions, accounts, dashboards, reviews, notifications, and administration functionality."
+    },
+    {
+      "q": "Can Obrive automate business processes?",
+      "a": "Yes. We can analyze manual workflows and develop digital automation involving applications, APIs, dashboards, AI systems, notifications, integrations, and business rules."
+    },
+    {
+      "q": "Can Obrive build AI-powered applications?",
+      "a": "Yes. AI can be incorporated into applications for conversational interfaces, intelligent search, recommendations, automation, content workflows, data analysis, classification, assistants, and other appropriate use cases."
+    }
+  ],
+  "UI/UX Design FAQs": [
+    {
+      "q": "Does Obrive provide UI/UX design services?",
+      "a": "Yes. Our UI/UX capabilities can cover research, information architecture, user journeys, wireframes, interaction design, visual design, prototypes, design systems, usability considerations, and developer handoff."
+    },
+    {
+      "q": "Can Obrive redesign the UX of an existing product?",
+      "a": "Yes. We can analyze an existing digital experience and identify opportunities to improve navigation, usability, information hierarchy, interactions, conversion paths, and overall product experience."
+    },
+    {
+      "q": "Does Obrive design dashboards and enterprise interfaces?",
+      "a": "Yes. We can design dashboards, enterprise applications, admin panels, analytics interfaces, workflow systems, operational tools, and role-based digital experiences."
+    },
+    {
+      "q": "Can Obrive design UX for AR, VR, MR and Spatial Computing?",
+      "a": "Yes. Immersive UX requires different interaction patterns from conventional websites and applications. Obrive designs immersive experiences around spatial interaction, context, environment, device capabilities, and user workflows."
+    }
+  ],
+  "Digital Marketing FAQs": [
+    {
+      "q": "Does Obrive provide digital marketing services?",
+      "a": "Yes. Digital marketing can include strategy, content, SEO, AEO, GEO, social media, paid campaigns, conversion optimization, analytics, and other digital growth activities depending on the project."
+    },
+    {
+      "q": "Can Obrive create a digital marketing strategy for a new business?",
+      "a": "Yes. We can develop a digital strategy based on the business model, audience, market, competition, goals, channels, content opportunities, and conversion objectives."
+    },
+    {
+      "q": "Can Obrive manage marketing for an existing website?",
+      "a": "Yes. We can evaluate the existing website and develop an ongoing strategy covering content, search visibility, conversion opportunities, campaigns, and digital acquisition."
+    }
+  ],
+  "SEO FAQs": [
+    {
+      "q": "Does Obrive provide SEO services?",
+      "a": "Yes. Obrive can provide SEO strategy and implementation covering technical SEO, on-page SEO, content strategy, keyword research, internal linking, structured data where appropriate, performance, search visibility, and ongoing optimization."
+    },
+    {
+      "q": "Can Obrive optimize a website for Google Search?",
+      "a": "Yes. We can work on technical and content foundations that help search engines discover, understand, crawl, index, and evaluate relevant website content."
+    },
+    {
+      "q": "Can Obrive perform an SEO audit?",
+      "a": "Yes. An SEO audit can examine technical implementation, indexing, crawlability, site architecture, content, metadata, internal linking, performance, structured data, and other relevant search factors."
+    },
+    {
+      "q": "Can Obrive help a new website launch with SEO?",
+      "a": "Yes. SEO can be incorporated into the website architecture, content planning, technical implementation, metadata, internal linking, structured data, and launch process rather than being treated only as a post-launch activity."
+    },
+    {
+      "q": "Can Obrive provide local SEO?",
+      "a": "Yes. Local search strategy can be developed for businesses targeting specific cities, regions, service areas, or physical locations."
+    },
+    {
+      "q": "Can Obrive create SEO content?",
+      "a": "Yes. We can develop search-focused content around genuine customer questions, services, industries, use cases, educational topics, and commercial intent."
+    }
+  ],
+  "AEO & GEO FAQs": [
+    {
+      "q": "What is AEO and does Obrive provide it?",
+      "a": "AEO, or Answer Engine Optimization, focuses on making useful information easier for answer-oriented search experiences and conversational systems to understand and reference. Obrive can incorporate clear question-and-answer content, structured information, strong topical coverage, internal linking, and other foundational SEO practices."
+    },
+    {
+      "q": "What is GEO and does Obrive provide it?",
+      "a": "GEO, commonly used for Generative Engine Optimization, refers to improving a brand's discoverability and representation across generative AI and AI-assisted search experiences. Obrive approaches this through strong, useful, authoritative content and solid technical SEO foundations rather than relying on artificial shortcuts."
+    },
+    {
+      "q": "Can Obrive optimize my website for AI search?",
+      "a": "Yes. We can structure website content so that important information is clear, accessible, crawlable, internally connected, and useful to people and search systems. Google states that existing SEO fundamentals remain relevant to AI features such as AI Overviews and AI Mode."
+    },
+    {
+      "q": "Can AEO, GEO and SEO be implemented together?",
+      "a": "Yes. They can be treated as complementary parts of a broader search visibility strategy, with the primary focus remaining on useful content, technical accessibility, clear information architecture, and a strong user experience."
+    }
+  ],
+  "AI Development FAQs": [
+    {
+      "q": "Does Obrive provide AI development services?",
+      "a": "Yes. Obrive can incorporate AI into websites, mobile applications, enterprise platforms, automation workflows, customer experiences, and specialized digital products."
+    },
+    {
+      "q": "Can Obrive build AI chatbots?",
+      "a": "Yes. AI conversational experiences can be designed for websites, applications, customer support, lead generation, internal knowledge, product assistance, and other appropriate business use cases."
+    },
+    {
+      "q": "Can Obrive integrate AI into an existing website?",
+      "a": "Yes. AI functionality can be integrated into existing websites and applications depending on the technology stack, data environment, security requirements, and desired use case."
+    },
+    {
+      "q": "Can Obrive build AI automation solutions?",
+      "a": "Yes. AI can be combined with APIs, business rules, databases, workflows, notifications, and existing software to automate appropriate business processes."
+    }
+  ],
+  "AR Development FAQs": [
+    {
+      "q": "Does Obrive develop Augmented Reality applications?",
+      "a": "Yes. Obrive develops AR experiences that connect digital information, 3D content, and interactive experiences with the physical environment. Our AR capabilities include visualization, guided experiences, training, marketing, navigation, product experiences, and enterprise applications."
+    },
+    {
+      "q": "What can an AR development company build?",
+      "a": "AR can be used for product visualization, virtual try-ons, navigation, training, remote assistance, marketing campaigns, education, retail experiences, industrial workflows, architecture, real estate, automotive applications, and other location- or context-aware experiences."
+    },
+    {
+      "q": "Can Obrive build AR apps for iOS and Android?",
+      "a": "Yes. Platform selection depends on the project requirements, device capabilities, tracking requirements, and intended user experience."
+    },
+    {
+      "q": "Can Obrive develop marker-based and markerless AR?",
+      "a": "Yes. The appropriate AR approach depends on the project, environment, tracking requirements, devices, and interaction model."
+    },
+    {
+      "q": "Can Obrive integrate 3D models into AR applications?",
+      "a": "Yes. 3D assets can be optimized and integrated into AR experiences for visualization, interaction, product demonstrations, training, navigation, and other use cases."
+    }
+  ],
+  "VR Development FAQs": [
+    {
+      "q": "Does Obrive develop Virtual Reality applications?",
+      "a": "Yes. Obrive develops immersive VR experiences for training, simulation, education, product visualization, collaboration, walkthroughs, and enterprise applications."
+    },
+    {
+      "q": "What can VR development be used for?",
+      "a": "VR can be used for employee training, safety simulations, equipment training, virtual tours, real estate experiences, healthcare education, industrial simulations, education, product demonstrations, events, and immersive collaboration."
+    },
+    {
+      "q": "Can Obrive build VR training simulations?",
+      "a": "Yes. VR training environments can simulate real-world scenarios and provide interactive learning experiences, assessment workflows, analytics, and performance tracking."
+    },
+    {
+      "q": "Can Obrive develop VR applications for headsets?",
+      "a": "Yes. Headset selection and technical implementation depend on the intended experience, audience, hardware requirements, and deployment environment."
+    }
+  ],
+  "Mixed Reality FAQs": [
+    {
+      "q": "Does Obrive provide Mixed Reality development?",
+      "a": "Yes. Obrive develops MR experiences that combine physical environments with interactive digital content and spatial interaction."
+    },
+    {
+      "q": "What is Mixed Reality used for?",
+      "a": "MR can support product visualization, engineering collaboration, industrial workflows, training, remote assistance, education, healthcare applications, design reviews, and interactive enterprise experiences."
+    },
+    {
+      "q": "Can Obrive build MR applications for enterprises?",
+      "a": "Yes. MR solutions can be designed around enterprise workflows, collaborative environments, 3D content, spatial interaction, data visualization, and operational requirements."
+    }
+  ],
+  "3D Design & Development FAQs": [
+    {
+      "q": "Does Obrive provide 3D design services?",
+      "a": "Yes. Obrive provides 3D design and development capabilities for product visualization, architectural visualization, immersive experiences, simulations, digital products, AR/VR/MR applications, and other interactive use cases."
+    },
+    {
+      "q": "Can Obrive create 3D models?",
+      "a": "Yes. We can create, optimize, and prepare 3D assets for appropriate digital and immersive applications."
+    },
+    {
+      "q": "Does Obrive provide architectural 3D visualization?",
+      "a": "Yes. Architectural visualization can include realistic 3D environments, walkthroughs, interactive visualization, and immersive experiences."
+    },
+    {
+      "q": "Can Obrive create 3D product visualization?",
+      "a": "Yes. Products can be represented as interactive 3D assets for websites, applications, AR, VR, marketing, sales, demonstrations, and immersive commerce experiences."
+    },
+    {
+      "q": "Can 3D assets be used in AR and VR?",
+      "a": "Yes. 3D assets can be optimized for use across AR, VR, MR, Spatial Computing, websites, applications, simulations, and interactive experiences."
+    }
+  ],
+  "Spatial Computing FAQs": [
+    {
+      "q": "Does Obrive provide Spatial Computing development?",
+      "a": "Yes. Spatial Computing is one of Obrive's core technology areas. We develop experiences that combine physical environments, digital content, spatial data, 3D interaction, immersive interfaces, and intelligent technology."
+    },
+    {
+      "q": "What is Spatial Computing?",
+      "a": "Spatial Computing refers broadly to technology that enables computers and digital systems to understand, represent, interact with, or augment physical and spatial environments."
+    },
+    {
+      "q": "What can Spatial Computing be used for?",
+      "a": "Applications can include navigation, retail experiences, industrial workflows, training, architecture, real estate, healthcare, education, entertainment, digital twins, visualization, collaboration, and location-based experiences."
+    },
+    {
+      "q": "Can Obrive develop enterprise Spatial Computing solutions?",
+      "a": "Yes. We can design spatial applications around specific operational, customer experience, visualization, collaboration, and training requirements."
+    }
+  ],
+  "Immersive Experience FAQs": [
+    {
+      "q": "Can Obrive create immersive brand experiences?",
+      "a": "Yes. We can combine 3D, AR, VR, MR, Spatial Computing, interactive design, web technologies, and digital storytelling to create immersive customer and brand experiences."
+    },
+    {
+      "q": "Can Obrive create immersive experiences for events and exhibitions?",
+      "a": "Yes. Immersive technologies can be used for exhibitions, brand activations, product launches, trade shows, museums, educational installations, and experiential marketing."
+    },
+    {
+      "q": "Can Obrive create interactive 3D experiences for websites?",
+      "a": "Yes. Depending on the browser, device, performance requirements, and project objectives, websites can incorporate interactive 3D and immersive experiences."
+    }
+  ],
+  "Industry-Specific FAQs": [
+    {
+      "q": "Does Obrive develop technology for real estate?",
+      "a": "Yes. Solutions can include 3D visualization, virtual tours, AR property visualization, VR walkthroughs, property experiences, Spatial Computing, and digital platforms."
+    },
+    {
+      "q": "Does Obrive work with automotive companies?",
+      "a": "Yes. Automotive applications can include 3D visualization, virtual showrooms, AR experiences, VR training, product configuration, immersive sales experiences, and Spatial Computing."
+    },
+    {
+      "q": "Does Obrive develop solutions for retail and eCommerce?",
+      "a": "Yes. Retail solutions can include product visualization, AR experiences, interactive product discovery, immersive commerce, digital navigation, 3D product experiences, and customer engagement platforms."
+    },
+    {
+      "q": "Does Obrive work with manufacturing companies?",
+      "a": "Yes. Immersive technologies can support training, visualization, simulation, remote assistance, equipment workflows, design reviews, and operational applications."
+    },
+    {
+      "q": "Does Obrive develop healthcare technology solutions?",
+      "a": "Yes. Depending on the project, technologies such as AR, VR, 3D, Spatial Computing, AI, and custom software can support training, visualization, simulation, education, and operational experiences."
+    },
+    {
+      "q": "Does Obrive work with education and training organizations?",
+      "a": "Yes. We can develop interactive learning experiences, VR simulations, AR learning applications, 3D educational environments, and digital platforms."
+    },
+    {
+      "q": "Does Obrive develop technology for hospitality and tourism?",
+      "a": "Yes. Immersive experiences can support virtual tours, location-based experiences, property visualization, navigation, interactive guest experiences, and digital engagement."
+    }
+  ],
+  "Integration & Technology FAQs": [
+    {
+      "q": "Can Obrive integrate maps and location services?",
+      "a": "Yes. Location-based applications can integrate mapping, positioning, navigation, geospatial information, and other relevant location technologies depending on the project."
+    },
+    {
+      "q": "Can Obrive integrate IoT devices with applications?",
+      "a": "Yes. Where appropriate, applications can connect with IoT devices, sensors, databases, APIs, and operational systems."
+    },
+    {
+      "q": "Can Obrive integrate third-party software?",
+      "a": "Yes. We can evaluate and integrate suitable third-party services and APIs based on the technical and business requirements."
+    },
+    {
+      "q": "Can Obrive build cloud-based platforms?",
+      "a": "Yes. Cloud architecture can be incorporated into web applications, SaaS products, enterprise platforms, APIs, analytics systems, and immersive technology solutions."
+    },
+    {
+      "q": "Can Obrive build scalable technology platforms?",
+      "a": "Yes. Architecture can be planned around expected users, data, transactions, integrations, performance, geographic expansion, and future product requirements."
+    }
+  ],
+  "Security, Performance & Support": [
+    {
+      "q": "Does Obrive consider website security during development?",
+      "a": "Yes. Security considerations can be incorporated into architecture, authentication, access control, API design, data handling, hosting, deployment, and ongoing maintenance."
+    },
+    {
+      "q": "Can Obrive improve website performance?",
+      "a": "Yes. Performance optimization can include frontend optimization, asset optimization, caching, code optimization, image handling, infrastructure considerations, and other technical improvements."
+    },
+    {
+      "q": "Can Obrive migrate my website to a new platform or server?",
+      "a": "Yes. Migration projects can include planning, data migration, application migration, DNS changes, testing, deployment, and post-migration verification."
+    },
+    {
+      "q": "Can Obrive provide post-launch support?",
+      "a": "Yes. Post-launch support can include maintenance, technical troubleshooting, performance optimization, security updates, feature development, monitoring, and continuous improvements."
+    }
+  ],
+  "Project Process FAQs": [
+    {
+      "q": "What is Obrive's development process?",
+      "a": "A typical project can move through discovery and requirements, strategy, UX/UI design, technical architecture, development, integrations, testing, deployment, analytics, and ongoing optimization. The exact process is adapted to the project's scope and requirements."
+    },
+    {
+      "q": "Does Obrive provide a project roadmap before development?",
+      "a": "Yes. For projects requiring structured planning, we can define objectives, scope, features, technology, milestones, deliverables, dependencies, and deployment stages before development begins."
+    },
+    {
+      "q": "Can I see a prototype before development?",
+      "a": "Yes. UX/UI prototypes can be created to demonstrate important user journeys and interactions before full development."
+    },
+    {
+      "q": "Does Obrive provide testing?",
+      "a": "Yes. Testing can cover functionality, responsiveness, usability, integrations, performance, device compatibility, and other requirements relevant to the project."
+    },
+    {
+      "q": "Can Obrive work with an existing internal technology team?",
+      "a": "Yes. Obrive can work as an external development partner, specialist technology team, design partner, or alongside an organization's existing product and engineering teams."
+    },
+    {
+      "q": "Can Obrive take over an unfinished project?",
+      "a": "Yes. We can review an existing project, understand its current architecture and status, identify technical issues, and determine a suitable path for completion or redevelopment."
+    }
+  ],
+  "Choosing the Right Service": [
+    {
+      "q": "I need a website. Where should I start?",
+      "a": "Start by defining your business objective, target audience, required functionality, content, preferred markets, integrations, and expected outcomes. Obrive can help translate those requirements into a website strategy, UX/UI design, technical architecture, and development plan."
+    },
+    {
+      "q": "I need a website and mobile app. Can Obrive handle both?",
+      "a": "Yes. Obrive can coordinate website, web application, mobile application, backend, API, UX/UI, analytics, and supporting digital infrastructure as one product ecosystem."
+    },
+    {
+      "q": "I need a website, SEO and digital marketing. Can Obrive provide everything?",
+      "a": "Yes. These services can be planned together so that website architecture, UX, content, search visibility, conversion paths, analytics, and digital marketing support the same business objectives."
+    },
+    {
+      "q": "I need AR, VR, 3D and a website for the same product. Can Obrive build the complete ecosystem?",
+      "a": "Yes. Obrive can combine conventional digital experiences with immersive technologies to create a connected product ecosystem."
+    },
+    {
+      "q": "Should my business choose AR, VR, MR or Spatial Computing?",
+      "a": "The appropriate technology depends on the business problem, user environment, hardware, interaction requirements, deployment model, and desired outcome. Obrive can evaluate the use case and recommend an appropriate technical approach based on those requirements."
+    },
+    {
+      "q": "Can Obrive help me decide what technology my business needs?",
+      "a": "Yes. If you know the business problem but are unsure whether you need a website, mobile app, web application, AI solution, AR, VR, MR, 3D, Spatial Computing, or another technology, Obrive can help define the appropriate digital solution."
+    }
+  ],
+  "International & Local Development FAQs": [
+    {
+      "q": "Does Obrive work with clients outside India?",
+      "a": "Yes. Obrive is based in India and can work with clients and organizations across international markets through remote and digital collaboration."
+    },
+    {
+      "q": "Does Obrive work with businesses in India?",
+      "a": "Yes. Obrive works with businesses across India and can support projects targeting local, regional, national, and international audiences."
+    },
+    {
+      "q": "Can Obrive build websites for specific cities or regions?",
+      "a": "Yes. Website architecture and content strategies can be designed for businesses targeting specific cities, regions, states, countries, or multiple markets."
+    },
+    {
+      "q": "Can Obrive build a multi-country website?",
+      "a": "Yes. International websites can be structured around countries, regions, languages, services, locations, and market-specific requirements."
+    },
+    {
+      "q": "Can Obrive help a business expand its digital presence internationally?",
+      "a": "Yes. International expansion can involve website architecture, localization, UX, content, technical SEO, regional landing pages, digital marketing, analytics, and market-specific digital experiences."
+    }
+  ],
+  "Business & Commercial FAQs": [
+    {
+      "q": "How do I request a project proposal from Obrive?",
+      "a": "Share your business requirement, desired service, target audience, current technology or website, expected functionality, timeline, and any relevant references. Our team can use this information to understand the project and prepare an appropriate engagement approach."
+    },
+    {
+      "q": "Can Obrive work on fixed-price projects?",
+      "a": "Depending on the scope and project definition, fixed-price engagements can be considered where requirements and deliverables can be clearly defined."
+    },
+    {
+      "q": "Can Obrive work on monthly retainers?",
+      "a": "Depending on the service, ongoing retainers can be considered for development, maintenance, digital marketing, SEO, content, optimization, and other continuous requirements."
+    },
+    {
+      "q": "Can Obrive work with businesses that have limited technical knowledge?",
+      "a": "Yes. You do not need to know the technical solution before contacting us. You can explain the business problem, customer requirement, or idea, and we can help translate it into a technology and product roadmap."
+    },
+    {
+      "q": "Can Obrive help turn a business idea into a digital product?",
+      "a": "Yes. We can help transform an initial concept into a structured digital product through discovery, UX/UI, prototyping, technology planning, development, testing, launch, and future iteration."
+    }
+  ],
+  "Why Obrive?": [
+    {
+      "q": "Why should I work with Obrive?",
+      "a": "Obrive brings together digital product development and immersive technology capabilities across website and application development, UX/UI, AI, AR, VR, MR, 3D, and Spatial Computing. This allows businesses to work with one technology partner when a project requires multiple digital capabilities."
+    },
+    {
+      "q": "Can Obrive handle both conventional digital products and emerging technologies?",
+      "a": "Yes. Obrive's capabilities span conventional digital experiences such as websites and applications as well as emerging technologies including AR, VR, MR, 3D, AI, and Spatial Computing."
+    },
+    {
+      "q": "Can Obrive build a solution that is ready for future expansion?",
+      "a": "Yes. Where appropriate, projects can be architected with scalability, integrations, modularity, additional features, new markets, and future technology adoption in mind."
+    },
+    {
+      "q": "Does Obrive provide end-to-end technology services?",
+      "a": "Yes. Depending on the project, Obrive can support strategy, UX/UI design, development, integrations, immersive technology, deployment, search visibility, digital growth, analytics, and ongoing optimization."
+    },
+    {
+      "q": "How can I discuss my project with Obrive?",
+      "a": "You can contact Obrive with your requirement and tell us what you are trying to build, improve, automate, launch, or scale. We can then determine the appropriate combination of design, development, technology, and digital growth services for your project."
+    }
+  ],
+  "Final CTA FAQ": [
+    {
+      "q": "I don't know exactly what service I need. Can Obrive still help?",
+      "a": "Absolutely. You do not need to arrive with a technical specification. Tell us what you want to achieve\u2014such as launching a business, building a website, developing an application, improving customer experience, automating operations, creating an immersive experience, increasing online visibility, or transforming an existing digital product. Obrive can help translate the requirement into a practical digital and technology solution."
+    },
+    {
+      "q": "How do I get started with Obrive?",
+      "a": "Start by sharing your requirement with our team. The more information you provide about your business, audience, objectives, current technology, desired features, market, and timeline, the easier it is to identify the right solution and next steps."
+    }
+  ]
+}

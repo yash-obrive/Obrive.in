@@ -187,6 +187,15 @@ export default function Home() {
                     Learn More
                   </Button>
                 </SmoothScrollLink>
+                <Link href="/faqs">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="text-primary uppercase text-xs"
+                  >
+                    FAQs
+                  </Button>
+                </Link>
               </div>
             </FadeInOnLoad>
           </FullWidthSection>

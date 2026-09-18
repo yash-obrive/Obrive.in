@@ -84,9 +84,9 @@ const GoodByeCard = () => {
               size={"lg"}
               className="uppercase z-10 text-xs cursor-pointer"
               iconSize={16}
-              href="/faq/ob-services-faq"
+              href="/faqs"
             >
-              SERVICES FAQ
+              EXPLORE FAQS
             </AnimatedButton>
           </div>
         </div>
@@ -109,9 +109,9 @@ const GoodByeCard = () => {
               size={"lg"}
               className="uppercase text-xs cursor-pointer"
               iconSize={16}
-              href="/faq/ob-services-faq"
+              href="/faqs"
             >
-              SERVICES FAQ
+              EXPLORE FAQS
             </AnimatedButton>
           </div>
           <div className="sm:hidden w-full px-4 mt-4">

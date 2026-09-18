@@ -32,78 +32,80 @@ const SolutionServiceSection = ({
         {title}
       </h2>
 
-      {/* Subtitle */}
-      {subtitle && (
-        <p className="text-zinc-600 text-base max-md:text-sm max-w-[680px]">
-          {subtitle}
+      <div className="flex flex-col gap-5 pl-4 md:pl-6">
+        {/* Subtitle */}
+        {subtitle && (
+          <p className="text-zinc-600 text-base max-md:text-sm max-w-[680px]">
+            {subtitle}
+          </p>
+        )}
+
+        {/* Description */}
+        <p className="text-sm leading-7 tracking-[0.3px] text-zinc-600 max-w-[680px]">
+          {description}
         </p>
-      )}
 
-      {/* Description */}
-      <p className="text-sm leading-7 tracking-[0.3px] text-zinc-600 max-w-[680px]">
-        {description}
-      </p>
+        {/* Tag Label */}
+        {label && <p className={`${FONTS.microgrammaBold.className} text-primary text-xl max-md:text-lg mt-2`}>{label}</p>}
 
-      {/* Tag Label */}
-      {label && <p className={`${FONTS.microgrammaBold.className} text-primary text-xl max-md:text-lg mt-2`}>{label}</p>}
+        {/* Tag container — flex wrap for variable sizes and preventing overflow */}
+        {items && items.length > 0 && (
+          <div className="flex flex-wrap gap-2.5 mt-2">
+            {items.map((item) => (
+              <div
+                key={item}
+                className="flex items-center justify-center gap-2 px-3 py-1.5 border border-zinc-300 rounded-full bg-transparent hover:bg-zinc-50 transition-colors max-w-full"
+              >
+                <span className="text-[11px] sm:text-xs text-zinc-600 leading-snug text-center break-words">
+                  {item}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
 
-      {/* Tag container — flex wrap for variable sizes and preventing overflow */}
-      {items && items.length > 0 && (
-        <div className="flex flex-wrap gap-2.5 mt-2">
-          {items.map((item) => (
-            <div
-              key={item}
-              className="flex items-center justify-center gap-2 px-3 py-1.5 border border-zinc-300 rounded-full bg-transparent hover:bg-zinc-50 transition-colors max-w-full"
-            >
-              <span className="text-[11px] sm:text-xs text-zinc-600 leading-snug text-center break-words">
-                {item}
-              </span>
-            </div>
-          ))}
-        </div>
-      )}
+        {/* Nested Sub-Sections */}
+        {subSections && subSections.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            {subSections.map((sub, idx) => (
+              <div
+                key={idx}
+                className="bg-white border border-zinc-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3"
+              >
+                {sub.title && (
+                  <h3 className={`${FONTS.microgrammaBold.className} text-primary text-lg`}>
+                    {sub.title}
+                  </h3>
+                )}
+                {sub.description && (
+                  <p className="text-sm leading-6 tracking-[0.3px] text-zinc-600">
+                    {sub.description}
+                  </p>
+                )}
+                {sub.items && sub.items.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {sub.items.map((item, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center justify-center px-3 py-1 bg-zinc-50 border border-zinc-200 rounded-full text-[11px] sm:text-xs text-zinc-600 leading-snug break-words"
+                      >
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
 
-      {/* Nested Sub-Sections */}
-      {subSections && subSections.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-          {subSections.map((sub, idx) => (
-            <div
-              key={idx}
-              className="bg-white border border-zinc-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3"
-            >
-              {sub.title && (
-                <h3 className={`${FONTS.microgrammaBold.className} text-primary text-lg`}>
-                  {sub.title}
-                </h3>
-              )}
-              {sub.description && (
-                <p className="text-sm leading-6 tracking-[0.3px] text-zinc-600">
-                  {sub.description}
-                </p>
-              )}
-              {sub.items && sub.items.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {sub.items.map((item, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center justify-center px-3 py-1 bg-zinc-50 border border-zinc-200 rounded-full text-[11px] sm:text-xs text-zinc-600 leading-snug break-words"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Footer paragraph */}
-      {footer && (
-        <p className="text-xs leading-6 text-zinc-500 max-w-[660px] mt-4">
-          {footer}
-        </p>
-      )}
+        {/* Footer paragraph */}
+        {footer && (
+          <p className="text-xs leading-6 text-zinc-500 max-w-[660px] mt-4">
+            {footer}
+          </p>
+        )}
+      </div>
     </div>
   );
 };

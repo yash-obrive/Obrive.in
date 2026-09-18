@@ -11,6 +11,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FaqPage() {
+export default function FAQsPage() {
   return <FAQMainClientLayout faqs={mainFaqs} />;
 }
