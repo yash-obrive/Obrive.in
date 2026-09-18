@@ -2,10 +2,10 @@ import React from "react";
 import FONTS from "@/assets/fonts";
 import { CareerButton } from "@/components/shared/CareerButton";
 import { StyledText } from "@/components/shared/StyledText";
-import CareerSection from "./sections/CareerSection";
+import CareerSection, { CareerItem } from "./sections/CareerSection";
 import CareerHeader from "./sections/CareerHeader";
 
-export { CareerSection, CareerHeader, CareerButton };
+export { CareerSection, CareerItem, CareerHeader, CareerButton };
 
 export const createCareerMDXComponents = (metadata: any) => ({
   h1: (props: any) => (
@@ -57,9 +57,11 @@ export const createCareerMDXComponents = (metadata: any) => ({
   em: (props: any) => <em className="italic" {...props} />,
 
   CareerSection: (props: any) => <CareerSection {...props} />,
+  CareerItem: (props: any) => <CareerItem {...props} />,
   CareerHeader: (props: any) => <CareerHeader {...props} />,
 
   JobSection: (props: any) => <CareerSection {...props} />,
+  JobItem: (props: any) => <CareerItem {...props} />,
   JobHeader: (props: any) => <CareerHeader {...props} />,
 
   CareerButton,
@@ -116,4 +118,5 @@ export default {
   em: (props: any) => <em className="italic" {...props} />,
   StyledText,
   CareerButton,
+  CareerItem,
 };

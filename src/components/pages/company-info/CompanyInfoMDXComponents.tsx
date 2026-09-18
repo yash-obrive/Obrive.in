@@ -2,13 +2,13 @@ import React from "react";
 import FONTS from "@/assets/fonts";
 import { StyledText } from "@/components/shared/StyledText";
 import { ButtonLink } from "@/components/ui/ButtonLink";
-import CompanyInfoSection from "./sections/CompanyInfoSection";
+import CompanyInfoSection, { CompanyInfoItem } from "./sections/CompanyInfoSection";
 import CompanyInfoApproachTable from "./sections/CompanyInfoApproachTable";
 import CompanyInfoHeader from "./sections/CompanyInfoHeader";
 import FAQAccordionSection, { FAQItem } from "../faq/sections/FAQAccordionSection";
 
 // Export components for direct import in MDX files
-export { CompanyInfoSection, CompanyInfoApproachTable, CompanyInfoHeader, FAQAccordionSection, FAQItem };
+export { CompanyInfoSection, CompanyInfoItem, CompanyInfoApproachTable, CompanyInfoHeader, FAQAccordionSection, FAQItem };
 
 // Create a function that returns MDX components with access to metadata
 export const createCompanyInfoMDXComponents = (metadata: any) => ({
@@ -66,6 +66,7 @@ export const createCompanyInfoMDXComponents = (metadata: any) => ({
 
   // Custom company-info components
   CompanyInfoSection: (props: any) => <CompanyInfoSection {...props} />,
+  CompanyInfoItem: (props: any) => <CompanyInfoItem {...props} />,
   CompanyInfoApproachTable: (props: any) => (
     <CompanyInfoApproachTable {...props} />
   ),
@@ -141,4 +142,5 @@ export default {
   FAQAccordionSection,
   FAQAccordion: (props: any) => <FAQAccordionSection {...props} />,
   FAQItem,
+  CompanyInfoItem,
 };

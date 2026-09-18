@@ -1,20 +1,37 @@
 import type React from "react";
 import FONTS from "@/assets/fonts";
 
-interface WhyItWorkedItem {
+interface WhyItWorkedItemType {
   title: string | React.ReactNode;
   description: string | React.ReactNode;
 }
 
 interface ResourceWhyItWorkedSectionProps {
   title?: string;
-  items: WhyItWorkedItem[];
+  items?: WhyItWorkedItemType[];
+  children?: React.ReactNode;
   finalQuote?: string;
+}
+
+export function WhyItWorkedItem({ title, children }: { title?: React.ReactNode, children: React.ReactNode }) {
+  return (
+    <div>
+      {title && (
+        <h3 className={`${FONTS.microgrammaBold.className} text-lg mb-2`}>
+          {title}
+        </h3>
+      )}
+      <div className="text-sm sm:text-base leading-relaxed [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2">
+        {children}
+      </div>
+    </div>
+  );
 }
 
 export default function ResourceWhyItWorkedSection({
   title = "Why It Worked",
   items,
+  children,
   finalQuote,
 }: ResourceWhyItWorkedSectionProps) {
   return (
@@ -25,22 +42,26 @@ export default function ResourceWhyItWorkedSection({
         {title}
       </h2>
       <div className="space-y-6 pl-6 max-md:pl-0">
-        {items?.map((item, index) => (
-          <div key={index}>
-            <h3 className={`${FONTS.microgrammaBold.className} text-lg mb-2`}>
-              {item.title}
-            </h3>
-            {typeof item.description === "string" ? (
-              <p className="text-sm sm:text-base leading-relaxed">
-                {item.description}
-              </p>
-            ) : (
-              <div className="text-sm sm:text-base leading-relaxed [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2">
-                {item.description}
-              </div>
-            )}
-          </div>
-        ))}
+        {children ? (
+          children
+        ) : (
+          items?.map((item, index) => (
+            <div key={index}>
+              <h3 className={`${FONTS.microgrammaBold.className} text-lg mb-2`}>
+                {item.title}
+              </h3>
+              {typeof item.description === "string" ? (
+                <p className="text-sm sm:text-base leading-relaxed">
+                  {item.description}
+                </p>
+              ) : (
+                <div className="text-sm sm:text-base leading-relaxed [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2">
+                  {item.description}
+                </div>
+              )}
+            </div>
+          ))
+        )}
       </div>
       <div className="pr-30 max-md:pr-0">
         {finalQuote && (

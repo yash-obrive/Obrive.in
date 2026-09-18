@@ -15,48 +15,38 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
   date="09.03.2025"
 />
 
-<CompanyInfoSection
-  items={[
-    {
-      title: "Welcome to Obrive Industries Help Center",
-      description: "Your Hub for Expertise, Support & Spatial Innovation",
-    },
-  ]}
-/>
+<CompanyInfoSection>
+  <CompanyInfoItem title="Welcome to Obrive Industries Help Center">
+    Your Hub for Expertise, Support & Spatial Innovation
+  </CompanyInfoItem>
+</CompanyInfoSection>
 
-<CompanyInfoSection
-  title="Explore Our Resources"
-  items={[
-    {
-      description: (
-        <>
-          <ul>
-            <li>
-              Help Center – Find comprehensive documentation on our immersive
-              technologies and solutions.
-            </li>
-            <li>
-              Product FAQ – Get answers on our AR, VR, Spatial App, and 3D
-              Design offerings.
-            </li>
-            <li>
-              Community Forum – Connect with fellow innovators, share knowledge,
-              and troubleshoot together.
-            </li>
-            <li>
-              Release Notes – Stay updated on the latest enhancements, fixes,
-              and feature additions.
-            </li>
-            <li>
-              Legal & Security – Review our compliance, data protection, and
-              privacy policies.
-            </li>
-          </ul>
-        </>
-      ),
-    },
-  ]}
-/>
+<CompanyInfoSection title="Explore Our Resources">
+  <CompanyInfoItem>
+    <ul>
+      <li>
+        Help Center – Find comprehensive documentation on our immersive
+        technologies and solutions.
+      </li>
+      <li>
+        Product FAQ – Get answers on our AR, VR, Spatial App, and 3D Design
+        offerings.
+      </li>
+      <li>
+        Community Forum – Connect with fellow innovators, share knowledge, and
+        troubleshoot together.
+      </li>
+      <li>
+        Release Notes – Stay updated on the latest enhancements, fixes, and
+        feature additions.
+      </li>
+      <li>
+        Legal & Security – Review our compliance, data protection, and privacy
+        policies.
+      </li>
+    </ul>
+  </CompanyInfoItem>
+</CompanyInfoSection>
 
 <ApproachTable
   title="Featured Sections"
@@ -96,47 +86,33 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
   ]}
 />
 
-<CompanyInfoSection
-  title="Why Our Help Center Works for You"
-  items={[
-    {
-      description: (
-        <>
-          <ul>
-            <li>
-              Dedicated Focus: Support content crafted specifically around
-              immersive and spatial computing challenges.
-            </li>
-            <li>
-              Stay Current: Regularly updated guides and notes aimed at
-              improving both usability and innovation.
-            </li>
-            <li>
-              Transparent & Trustworthy: Clear documentation on compliance,
-              security, and data integrity—aligned with industry best practices.
-            </li>
-            <li>
-              Self-Serve, or Request Support: Empowering you to find instant
-              answers or connect with our experts when needed.
-            </li>
-          </ul>
-        </>
-      ),
-    },
-  ]}
-/>
+<CompanyInfoSection title="Why Our Help Center Works for You">
+  <CompanyInfoItem>
+    <ul>
+      <li>
+        Dedicated Focus: Support content crafted specifically around immersive
+        and spatial computing challenges.
+      </li>
+      <li>
+        Stay Current: Regularly updated guides and notes aimed at improving both
+        usability and innovation.
+      </li>
+      <li>
+        Transparent & Trustworthy: Clear documentation on compliance, security,
+        and data integrity—aligned with industry best practices.
+      </li>
+      <li>
+        Self-Serve, or Request Support: Empowering you to find instant answers
+        or connect with our experts when needed.
+      </li>
+    </ul>
+  </CompanyInfoItem>
+</CompanyInfoSection>
 
-<CompanyInfoSection
-  title="Need direct help?"
-  items={[
-    {
-      description: (
-        <>
-          Reach out via our live chat or schedule a call with our team. We're
-          here to assist you every step of the way in building, deploying, and
-          scaling immersive experiences.
-        </>
-      ),
-    },
-  ]}
-/>
+<CompanyInfoSection title="Need direct help?">
+  <CompanyInfoItem>
+    Reach out via our live chat or schedule a call with our team. We're here to
+    assist you every step of the way in building, deploying, and scaling
+    immersive experiences.
+  </CompanyInfoItem>
+</CompanyInfoSection>

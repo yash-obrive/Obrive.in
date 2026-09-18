@@ -8,9 +8,9 @@ import ResourceChallengeSection from "./sections/ResourceChallengeSection";
 import ResourceCompanyOverviewSection from "./sections/ResourceCompanyOverviewSection";
 import ResourceObrivesApproachTable from "./sections/ResourceObrivesApproachTable";
 import ResourceOutcomeSnapshotSection from "./sections/ResourceOutcomeSnapshotSection";
-import ResourceStrategicApproachSection from "./sections/ResourceStrategicApproachSection";
+import ResourceStrategicApproachSection, { StrategicStepItem } from "./sections/ResourceStrategicApproachSection";
 import ResourceTheImpactTable from "./sections/ResourceTheImpactTable";
-import ResourceWhyItWorkedSection from "./sections/ResourceWhyItWorkedSection";
+import ResourceWhyItWorkedSection, { WhyItWorkedItem } from "./sections/ResourceWhyItWorkedSection";
 
 export {
   ResourceChallengeSection,
@@ -21,6 +21,8 @@ export {
   ResourceImpactMetricsTable,
   ResourceObrivesApproachTable,
   ResourceTheImpactTable,
+  WhyItWorkedItem,
+  StrategicStepItem,
 };
 
 // Create a function that returns MDX components with access to metadata
@@ -128,9 +130,12 @@ export const createResourceMDXComponents = (metadata: any) => ({
   ),
 
   // The Impact table component
+  ResourceTheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
   TheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
+  WhyItWorkedItem: (props: any) => <WhyItWorkedItem {...props} />,
+  StrategicStepItem: (props: any) => <StrategicStepItem {...props} />,
 
-  // Custom components
+  // Custom generic components
   Link,
   a: (props: any) => {
     const isInternal =
@@ -202,4 +207,6 @@ export default {
   },
   // Provide StyledText for default mapping
   StyledText,
+  WhyItWorkedItem,
+  StrategicStepItem,
 };

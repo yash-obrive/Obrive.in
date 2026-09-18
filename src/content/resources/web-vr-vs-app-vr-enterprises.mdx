@@ -6,7 +6,16 @@ author: "Arjun Patel, Head of Immersive Innovation"
 postType: "BLOG"
 seoTitle: "Web VR vs App VR: Enterprise Guide to Choosing the Right Solution"
 seoDescription: "Compare Web VR and App VR for enterprise use—accessibility, performance, cost, and real-world applications to help you choose the right VR solution."
-seoKeywords: ["Web VR", "App VR", "Virtual Reality", "Enterprise VR", "VR Solutions", "Technology Comparison", "Business VR"]
+seoKeywords:
+  [
+    "Web VR",
+    "App VR",
+    "Virtual Reality",
+    "Enterprise VR",
+    "VR Solutions",
+    "Technology Comparison",
+    "Business VR",
+  ]
 heroImage: "HERO_IMAGE_TWO"
 avatar: "AVATAR_ONE"
 workflowSteps:
@@ -30,56 +39,41 @@ impactMetrics:
 
 import { StyledText } from "@/components/shared/StyledText";
 
-<WhyItWorkedSection
-  title="I Always Assumed VR Was All About Apps—Until Web VR Changed That"
-  items={[
-    {
-      description: (
-        <>
-          A few years ago, if someone told me VR could just run in a browser,
-          I’d have raised an eyebrow. I believed immersive realism required a
-          full-fledged app, powerful hardware, and rigorous development.
-          <br />
-          <br />
-          But then came Web VR (via WebXR), and the paradigm shifted. One project,
-          one moment, changed everything.
-        </>
-      ),
-    },
-  ]}
-/>
+<WhyItWorkedSection title="I Always Assumed VR Was All About Apps—Until Web VR Changed That">
+  <WhyItWorkedItem>
+    A few years ago, if someone told me VR could just run in a browser, I’d have
+    raised an eyebrow. I believed immersive realism required a full-fledged app,
+    powerful hardware, and rigorous development.
+    <br />
+    <br />
+    But then came Web VR (via WebXR), and the paradigm shifted. One project, one
+    moment, changed everything.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
 
-<WhyItWorkedSection
-  title="The Moment That Shifted Everything"
-  items={[
-    {
-      description: (
-        <>
-          In early 2024, we tested two prototypes for a client in industrial
-          training:
-          <br />
-          <br />
-          <ul>
-            <li>
-              A <StyledText>Web VR demo</StyledText>, accessed through a
-              browser—no download, no installation.
-            </li>
-            <li>
-              A <StyledText>native VR app</StyledText>, built for headsets with
-              advanced spatial tracking.
-            </li>
-          </ul>
-          <br />
-          The Web VR version delivered seamless accessibility: stakeholders joined
-          instantly on multiple devices. Meanwhile, the native app provided stunning
-          visuals and precise interactions. <br />
-          Both impressed—but for different reasons. That balance sparked a
-          journey of enterprise-grade decision-making{" "}
-        </>
-      ),
-    },
-  ]}
-/>
+<WhyItWorkedSection title="The Moment That Shifted Everything">
+  <WhyItWorkedItem>
+    In early 2024, we tested two prototypes for a client in industrial training:
+    <br />
+    <br />
+    <ul>
+      <li>
+        A <StyledText>Web VR demo</StyledText>, accessed through a browser—no
+        download, no installation.
+      </li>
+      <li>
+        A <StyledText>native VR app</StyledText>, built for headsets with
+        advanced spatial tracking.
+      </li>
+    </ul>
+    <br />
+    The Web VR version delivered seamless accessibility: stakeholders joined
+    instantly on multiple devices. Meanwhile, the native app provided stunning
+    visuals and precise interactions. <br />
+    Both impressed—but for different reasons. That balance sparked a journey of
+    enterprise-grade decision-making{" "}
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
 
 <TheImpactTable
   title="Web VR vs App VR: What Leaders Need to Know"
@@ -135,112 +129,82 @@ import { StyledText } from "@/components/shared/StyledText";
   ]}
 />
 
-<WhyItWorkedSection
-  title="When to Choose Web VR—and When to Go Native"
-  items={[
-    {
-      description: (
-        <>
-          <StyledText>Web VR shines when:</StyledText>
-          <br />
-          <ul>
-            <li>
-              {" "}
-              Speed-to-market is key—share via a link or QR, and you're live.
-            </li>
-            <li> You need cross-platform reach without dev overhead.</li>
-            <li>
-              {" "}
-              You aim for light VR: product previews, walkthroughs, frequent updates.
-            </li>
-          </ul>
-          <br />
-          <StyledText>But Native App VR wins when:</StyledText>
-          <br />
-          <ul>
-            <li>
-              {" "}
-              You require realism—advanced tracking, SLAM, or high-fidelity interactions.
-            </li>
-            <li>
-              {" "}
-              Use cases demand offline stability, complex environments, or rugged
-              hardware.
-            </li>
-          </ul>
-        </>
-      ),
-    },
-  ]}
-/>
+<WhyItWorkedSection title="When to Choose Web VR—and When to Go Native">
+  <WhyItWorkedItem>
+    <StyledText>Web VR shines when:</StyledText>
+    <br />
+    <ul>
+      <li> Speed-to-market is key—share via a link or QR, and you're live.</li>
+      <li> You need cross-platform reach without dev overhead.</li>
+      <li>
+        {" "}
+        You aim for light VR: product previews, walkthroughs, frequent updates.
+      </li>
+    </ul>
+    <br />
+    <StyledText>But Native App VR wins when:</StyledText>
+    <br />
+    <ul>
+      <li>
+        {" "}
+        You require realism—advanced tracking, SLAM, or high-fidelity
+        interactions.
+      </li>
+      <li>
+        {" "}
+        Use cases demand offline stability, complex environments, or rugged
+        hardware.
+      </li>
+    </ul>
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
 
-<WhyItWorkedSection
-  title="Going Beyond Buzz: Why Both Paths Matter"
-  items={[
-    {
-      description: (
-        <>
-          Web VR isn’t about replacing app-based VR—it’s about lowering the
-          barrier to entry. You can <StyledText>start immersive</StyledText>{" "}
-          with Web VR, then deepen engagement via a robust native VR build.
-          <br />
-          <br />
-          At Obrive, that’s our dual-track strategy: deploy instant Web VR in early
-          phases, then transition into tailored App VR for scalable enterprise applications.
-        </>
-      ),
-    },
-  ]}
-/>
+<WhyItWorkedSection title="Going Beyond Buzz: Why Both Paths Matter">
+  <WhyItWorkedItem>
+    Web VR isn’t about replacing app-based VR—it’s about lowering the barrier to
+    entry. You can <StyledText>start immersive</StyledText> with Web VR, then
+    deepen engagement via a robust native VR build.
+    <br />
+    <br />
+    At Obrive, that’s our dual-track strategy: deploy instant Web VR in early
+    phases, then transition into tailored App VR for scalable enterprise
+    applications.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
 
-<WhyItWorkedSection
-  title="What’s Next on the Horizon"
-  items={[
-    {
-      description: (
-        <>
-          <ul>
-            <li>
-              As <StyledText>WebXR standards mature</StyledText>, more complex
-              VR features will become browser-ready.
-            </li>
-            <li>
-              Emerging <StyledText>5G and edge computing</StyledText> will boost
-              streaming fidelity for browser-based VR.
-            </li>
-            <li>
-              <StyledText>Hybrid frameworks</StyledText> (Unity, Babylon.js) are
-              blurring the lines—one build, multiple platformsen.
-            </li>
-            <li>
-              Collaboration-ready "VR-Ready" solutions support mobile, desktop,
-              and VR—maximizing reach
-            </li>
-          </ul>
-        </>
-      ),
-    },
-  ]}
-/>
+<WhyItWorkedSection title="What’s Next on the Horizon">
+  <WhyItWorkedItem>
+    <ul>
+      <li>
+        As <StyledText>WebXR standards mature</StyledText>, more complex VR
+        features will become browser-ready.
+      </li>
+      <li>
+        Emerging <StyledText>5G and edge computing</StyledText> will boost
+        streaming fidelity for browser-based VR.
+      </li>
+      <li>
+        <StyledText>Hybrid frameworks</StyledText> (Unity, Babylon.js) are
+        blurring the lines—one build, multiple platformsen.
+      </li>
+      <li>
+        Collaboration-ready "VR-Ready" solutions support mobile, desktop, and
+        VR—maximizing reach
+      </li>
+    </ul>
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
 
-<WhyItWorkedSection
-  title="Conclusion: Choose What Makes Sense—Not Just What’s Cool"
-  items={[
-    {
-      description: (
-        <>
-          Choosing between Web VR and App VR isn’t binary. It’s strategic.
-          <br />
-          <ul>
-            <li>Web VR gives you agility, accessibility, and speed.</li>
-            <li>App VR delivers precision, depth, and immersive power.</li>
-          </ul>
-          <br />
-          Wondering which makes sense for your enterprise use case? Let's
-          architect the immersive path that makes sense both now—and for what
-          comes next.
-        </>
-      ),
-    },
-  ]}
-/>
+<WhyItWorkedSection title="Conclusion: Choose What Makes Sense—Not Just What’s Cool">
+  <WhyItWorkedItem>
+    Choosing between Web VR and App VR isn’t binary. It’s strategic.
+    <br />
+    <ul>
+      <li>Web VR gives you agility, accessibility, and speed.</li>
+      <li>App VR delivers precision, depth, and immersive power.</li>
+    </ul>
+    <br />
+    Wondering which makes sense for your enterprise use case? Let's architect
+    the immersive path that makes sense both now—and for what comes next.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
