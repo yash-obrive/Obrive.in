@@ -178,11 +178,10 @@ export const BlogCardContent = [
   {
     src: RESOURCES_BLOG_IMAGES["3d-rendering-real-estate"],
     alt: RESOURCES_BLOG_IMAGES_META["3d-rendering-real-estate"].alt,
-    date: "25.07.2025",
-    title:
-      "3D Rendering for Real Estate: Bringing Properties to Life Before Construction",
+    date: "23.08.25",
+    title: "3D Rendering for Real Estate: Benefits, Use Cases & Examples",
     description:
-      "This read will take about 8–10 minutes—perfect for a thoughtful coffee break.",
+      "Learn how 3D rendering helps real estate teams visualize unbuilt properties, create virtual staging, and accelerate sales.",
     slug: "3d-rendering-real-estate",
   },
   {

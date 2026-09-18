@@ -39,7 +39,7 @@ export default function ResourceImpactMetricsTable({
               </thead>
 
               <tbody>
-                {metrics.map((metric, index) => (
+                {metrics?.map((metric, index) => (
                   <tr
                     key={index}
                     className="border-b border-zinc-300 last:border-b-0"
@@ -65,7 +65,7 @@ export default function ResourceImpactMetricsTable({
         </div>
 
         <div className="md:hidden space-y-4">
-          {metrics.map((metric, index) => (
+          {metrics?.map((metric, index) => (
             <div
               key={index}
               className="bg-white border border-zinc-300 rounded-lg shadow-sm overflow-hidden"

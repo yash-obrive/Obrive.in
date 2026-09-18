@@ -77,15 +77,21 @@ export default function PrimaryFooterCard({
   title,
   description,
   variant = "default",
+  buttonText = "Talk to Expert",
+  buttonLink = "https://calendly.com/obrive-inc/talk-to-ob-experts",
 }: {
   title: string;
   description: string;
   variant?: PrimaryFooterCardVariant;
+  buttonText?: string;
+  buttonLink?: string;
 }) {
   const titleClasses =
     variant === "small"
       ? "text-xl sm:text-2xl"
       : `${FONTS.microgrammaBold.className} sm:w-2xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight sm:leading-14`;
+
+  const isExternal = buttonLink.startsWith("http");
 
   return (
     <section className="w-full flex items-center my-20 justify-center">
@@ -98,17 +104,17 @@ export default function PrimaryFooterCard({
           </h2>
 
           <div className="max-sm:hidden">
-            <Link href="https://calendly.com/obrive-inc/talk-to-ob-experts">
-            <AnimatedButton
-              size={"lg"}
-              className="uppercase bg-accent text-primary hover:bg-accent/90! text-[10px] w-full sm:w-auto max-sm:hidden"
-              iconSize={16}
-              arrowColor="primary"
-              href="https://calendly.com/obrive-inc/talk-to-ob-experts"
-            >
-              Talk to Expert
-            </AnimatedButton>
-            </Link>
+              <AnimatedButton
+                size={"lg"}
+                className="uppercase bg-accent text-primary hover:bg-accent/90! text-[10px] w-full sm:w-auto max-sm:hidden"
+                iconSize={16}
+                arrowColor="primary"
+                href={buttonLink}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
+              >
+                {buttonText}
+              </AnimatedButton>
           </div>
         </div>
         <div className="flex flex-col gap-10 sm:flex-row justify-between max-sm:justify-center">
@@ -123,18 +129,17 @@ export default function PrimaryFooterCard({
           </div>
 
           <div className="sm:hidden w-[200px] pl-4 max-sm:-mt-10">
-            <Link href="https://calendly.com/obrive-inc/talk-to-ob-experts"> 
               <AnimatedButton
                 size={"lg"}
-                className="uppercase bg-accent text-primary hover:bg-accent/90 text-[10px] w-full sm:w-auto max-sm:hidden"
+                className="uppercase bg-accent text-primary hover:bg-accent/90 text-[10px] w-full sm:w-auto"
                 iconSize={16}
                 arrowColor="primary"
-                href="https://calendly.com/obrive-inc/talk-to-ob-experts"
+                href={buttonLink}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
               >
-                Talk to Expert
+                {buttonText}
               </AnimatedButton>
-            </Link>
-            
           </div>
 
           <div className="pointer-events-none sm:hidden w-full px-4 mt-4">

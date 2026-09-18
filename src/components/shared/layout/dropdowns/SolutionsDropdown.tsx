@@ -16,11 +16,11 @@ export function SolutionsDropdown() {
         showChevron={false}
         className="text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
       >
-        Solutions
+        Services
       </NavigationMenuTrigger>
       <NavigationMenuContent className="bg-primary! border-none p-6 w-[400px] md:w-[400px] absolute left-0 top-full mt-2 z-[60] rounded-md shadow-lg">
         <div>
-          <h3 className="text-white text-xs mb-2">SOLUTIONS</h3>
+          <h3 className="text-white text-xs mb-2">SERVICES</h3>
           <p className="text-white/80 text-[10px] mb-4">
             SERVICES TAILORED FOR INDUSTRIES. ENGINEERED FOR IMMERSION.
           </p>

@@ -10,6 +10,7 @@ const {
   loginSchema,
   slotIdParamSchema,
   updateProfileSchema,
+  recordLocationSchema,
 } = require('./employee.validation');
 
 router.post('/login', zodValidate({ part: 'body', schema: loginSchema }), ctrl.login);
@@ -59,5 +60,12 @@ router.get('/my-projects', authorize('employee'), ctrl.getMyProjects);
 
 // ── Login logs (own) ─────────────────────────────────────────
 router.get('/my-logs', authorize('employee'), ctrl.getMyLogs);
+
+// ── GPS Location Ping (Work Timer) ───────────────────────────
+router.post('/location',
+  authorize('employee'),
+  zodValidate({ part: 'body', schema: recordLocationSchema }),
+  ctrl.recordLocation
+);
 
 module.exports = router;

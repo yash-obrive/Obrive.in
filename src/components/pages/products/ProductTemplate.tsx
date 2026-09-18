@@ -223,6 +223,8 @@ export function ProductTemplate({
                 title={`Elevate Your Operations with ${hero.title}`}
                 description={`Discover how leading organizations are optimizing processes, increasing efficiency, and delivering exceptional experiences with ${hero.title}`}
                 variant="small"
+                buttonText={`${hero.title} FAQ`}
+                buttonLink={link || `/faq/${hero.title.toLowerCase()}-faq`}
               />
             </FramerFadeIn>
           </div>
@@ -240,7 +242,7 @@ export function ProductTemplate({
                 />
               </FramerFadeIn>
 
-              {howItWorks.map((step, index) => (
+              {howItWorks?.map((step, index) => (
                 <FramerFadeIn key={index}>
                   <div
                     className={`flex flex-col ${
@@ -280,7 +282,7 @@ export function ProductTemplate({
         </FramerFadeIn>
         <FramerFadeIn delay={0.2}>
           <InfiniteHorizontalScroll speed={25} gap={16} pauseOnHover={true}>
-            {keyBenefits.map((item) => (
+            {keyBenefits?.map((item) => (
               <KeyBenefitsCard key={item.title} {...item} />
             ))}
           </InfiniteHorizontalScroll>

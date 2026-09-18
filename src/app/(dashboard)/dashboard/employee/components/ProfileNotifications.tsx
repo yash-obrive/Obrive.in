@@ -20,6 +20,7 @@ type ProfileDropdownProps = {
 type UserData = {
   id?: string | number
   name?: string
+  avatar_url?: string
 }
 
 export default function ProfileDropdown({
@@ -73,7 +74,7 @@ export default function ProfileDropdown({
           >
             <div className="h-8 w-8 flex-shrink-0 overflow-hidden rounded-full">
               <Image
-                src={UserPfp}
+                src={user?.avatar_url || UserPfp}
                 alt="Profile picture"
                 className="h-full w-full rounded-full object-cover"
                 width={32}
@@ -110,9 +111,11 @@ export default function ProfileDropdown({
               <div className="flex items-center gap-3 border-b border-gray-100 pb-1">
                 <div className="flex h-12 w-12 items-center overflow-hidden rounded-full">
                   <Image
-                    src={UserPfp}
+                    src={user?.avatar_url || UserPfp}
                     alt="Profile picture"
                     className="h-full w-full rounded-full object-cover"
+                    width={48}
+                    height={48}
                   />
                 </div>
 
