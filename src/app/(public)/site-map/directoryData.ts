@@ -526,6 +526,15 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
       },
       {
         num: "03",
+        title: "Clients",
+        description: "See the global brands that trust Obrive.",
+        href: "/clients",
+        category: "company",
+        searchKeywords:
+          "clients /clients see the global brands that trust obrive. company",
+      },
+      {
+        num: "04",
         title: "Careers / Join the Otters",
         description:
           "Explore opportunities to build the future of immersive technology.",
@@ -535,7 +544,7 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
           "careers / join the otters /career explore opportunities to build the future of immersive technology. company",
       },
       {
-        num: "04",
+        num: "05",
         title: "Service Charges",
         description:
           "Explore our fixed-price service streams, scopes and packages.",
@@ -545,7 +554,7 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
           "service charges /servicecharges explore our fixed-price service streams, scopes and packages. company",
       },
       {
-        num: "05",
+        num: "06",
         title: "Contact",
         description:
           "Get in touch to discuss your next project, scope and requirements.",
