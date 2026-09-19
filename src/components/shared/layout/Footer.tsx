@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/hover-card";
 import { GROUPS, PRIMARY_FOOTER_CARD, SOCIAL_LINKS } from "@/constants/Footer";
 import DynamicFooterCard from "./DynamicFooterCard";
+import FooterCountrySwitcher from "./FooterCountrySwitcher";
 
 export default function Footer() {
   const cell =
@@ -144,6 +145,7 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-4">
+              <FooterCountrySwitcher />
               <p>Copyrights Reserved 2025</p>
             </div>
           </div>
