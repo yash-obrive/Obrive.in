@@ -1,13 +1,13 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import PrimaryFooterCard from "../cards/PrimaryFooterCard";
 import { PRIMARY_FOOTER_CARD } from "@/constants/Footer";
+import PrimaryFooterCard from "../cards/PrimaryFooterCard";
 
 export default function DynamicFooterCard() {
   const pathname = usePathname();
 
-  if (pathname === "/site-map") {
+  if (pathname?.endsWith("/site-map")) {
     return (
       <PrimaryFooterCard
         title="Have a project in mind?"
@@ -16,7 +16,7 @@ export default function DynamicFooterCard() {
     );
   }
 
-  if (pathname === "/contact") {
+  if (pathname?.endsWith("/contact")) {
     // Hide footer card on contact page since they are already there
     return null;
   }
