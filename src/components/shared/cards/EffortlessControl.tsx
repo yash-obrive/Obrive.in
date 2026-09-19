@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { OBPARK_IMAGES, OBPARK_IMAGES_META } from "@/assets/images";
 import HoverAccordion from "../accordion/HoverAccordion";

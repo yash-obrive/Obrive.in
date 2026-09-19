@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import { cn } from "@/lib/utils";
 
 interface PaginationProps {

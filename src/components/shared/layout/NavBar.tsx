@@ -1,6 +1,6 @@
 "use client";
 import { Menu, X } from "lucide-react";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FadeInOnLoad } from "@/components/shared/motion/GsapMotion";
 import {

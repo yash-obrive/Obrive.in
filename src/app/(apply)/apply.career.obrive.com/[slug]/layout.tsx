@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import type { ReactNode } from "react";
 import PrimaryLogo from "@/components/shared/logo/PrimaryLogo";
 

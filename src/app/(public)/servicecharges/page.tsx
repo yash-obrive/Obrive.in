@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import React from "react";
 import PricingHero from "./components/PricingHero";
 import PricingSection from "./components/PricingSection";

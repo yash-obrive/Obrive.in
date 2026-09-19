@@ -8,7 +8,7 @@ import type {
   SidebarLink,
   WorkflowStep,
 } from "@/types/solutions";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import { ArrowRight } from "lucide-react";
 import SolutionSidebarLayout from "./components/SolutionSidebarLayout";
 import WorkflowSection from "./components/WorkflowSection";

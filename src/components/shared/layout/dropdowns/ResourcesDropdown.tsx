@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import { ICONS, ICONS_META } from "@/assets/images";
 import { Button } from "@/components/ui/button";
 import {

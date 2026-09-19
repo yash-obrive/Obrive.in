@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import FAQAccordionSection, { FAQItem } from "@/components/pages/faq/sections/FAQAccordionSection";
 import FAQWorkflowSteps from "@/components/pages/faq/FAQWorkflowSteps";

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import React from "react";
 import FONTS from "@/assets/fonts";
 import AnimatedButton from "@/components/shared/buttons/AnimatedButton";

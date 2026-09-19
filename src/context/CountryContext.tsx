@@ -54,6 +54,21 @@ export function CountryProvider({
     }
   }, [initialCountry]);
 
+  // Sync state with URL pathname on load or change
+  useEffect(() => {
+    if (pathname) {
+      const segments = pathname.split("/").filter(Boolean);
+      if (segments.length > 0) {
+        const urlCountry = segments[0] as CountryCode;
+        if (isValidCountryCode(urlCountry) && urlCountry !== "global") {
+          setCountry(urlCountry);
+          return;
+        }
+      }
+      setCountry("global");
+    }
+  }, [pathname]);
+
   useEffect(() => {
     // Check if user previously dismissed banner
     if (typeof document !== "undefined") {
@@ -85,9 +100,29 @@ export function CountryProvider({
     setCountry(newCountry);
     dismissBanner();
 
-    // The user explicitly requested UI-only state updates for now,
-    // since the /[country]/ routes do not exist yet in this branch.
-    // router.push logic has been disabled.
+    // Navigate while preserving existing path
+    if (pathname) {
+      const segments = pathname.split("/").filter(Boolean);
+      let targetPath = "";
+
+      if (segments.length > 0 && isValidCountryCode(segments[0] as CountryCode)) {
+        if (newCountry === "global") {
+          targetPath = `/${segments.slice(1).join("/")}`;
+        } else {
+          targetPath = `/${newCountry}/${segments.slice(1).join("/")}`;
+        }
+      } else {
+        if (newCountry === "global") {
+          targetPath = pathname;
+        } else {
+          targetPath = `/${newCountry}${pathname === "/" ? "" : pathname}`;
+        }
+      }
+
+      router.push(targetPath || "/");
+    } else {
+      router.push(newCountry === "global" ? "/" : `/${newCountry}`);
+    }
   };
 
   const countryConfig = getCountryConfig(country);

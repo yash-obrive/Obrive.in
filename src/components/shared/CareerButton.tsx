@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import { buttonVariants } from "../ui/button";
 
 interface CareerButtonProps {

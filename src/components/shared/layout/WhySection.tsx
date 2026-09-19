@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { Button } from "@/components/ui/button";
 import type { WHY_SECTION_TYPE } from "@/constants/pages/why-section";

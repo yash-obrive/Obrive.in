@@ -1,7 +1,7 @@
 "use client";
 
 import { MoveRight } from "lucide-react";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import React, { useState } from "react";
 import FONTS from "@/assets/fonts";
 import AnimatedButton from "@/components/shared/buttons/AnimatedButton";

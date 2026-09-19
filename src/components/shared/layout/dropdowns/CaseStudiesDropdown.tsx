@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import { NAV_ICONS, NAV_ICONS_META } from "@/assets/images";
 import { buttonVariants } from "@/components/ui/button";
 import {

@@ -1,6 +1,6 @@
 "use client";
 import { Icon, LogOut, MessageCircle, X } from "lucide-react";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import supportImg from "@/assets/images/sidebar/support.png";

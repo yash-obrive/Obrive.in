@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import type { CAREER_CARD_TYPE } from "@/constants/pages/career/career-card";
 

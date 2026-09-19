@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { CASE_STUDIES_AVATAR } from "@/assets/images";
 import type { PopularCardContentType } from "@/constants/pages/resources/popular-card";
