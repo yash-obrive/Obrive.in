@@ -1,6 +1,7 @@
 // src/config/countries.ts
 
 export type CountryCode =
+  | "global"
   | "in"
   | "us"
   | "ca"
@@ -32,7 +33,7 @@ export interface CountryConfig {
   code: CountryCode;
   name: string;
   flag: string;
-  region: "India" | "Americas" | "Middle East" | "Europe" | "APAC" | "Africa";
+  region: "Global" | "India" | "Americas" | "Middle East" | "Europe" | "APAC" | "Africa";
   currency: string;
   currencySymbol: string;
   phone: string;
@@ -45,6 +46,23 @@ export interface CountryConfig {
 }
 
 export const COUNTRIES: Record<CountryCode, CountryConfig> = {
+  // --- GLOBAL (DEFAULT) ---
+  global: {
+    code: "global",
+    name: "Global",
+    flag: "🌍",
+    region: "Global",
+    currency: "USD",
+    currencySymbol: "$",
+    phone: "+1-800-XXX-XXXX",
+    contactEmail: "info@obrive.com",
+    offices: ["Global Headquarters"],
+    calendlyUrl: "https://calendly.com/obrive/inquiry",
+    hreflang: "en",
+    dir: "ltr",
+    isProductionReady: true,
+  },
+
   // --- INDIA ---
   in: {
     code: "in",
@@ -448,7 +466,7 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
   },
 };
 
-export const DEFAULT_COUNTRY: CountryCode = "in";
+export const DEFAULT_COUNTRY: CountryCode = "global";
 
 export const SUPPORTED_COUNTRIES: CountryCode[] = Object.keys(
   COUNTRIES
