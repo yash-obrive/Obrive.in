@@ -113,7 +113,7 @@ export function SolutionTemplate({
       </FullWidthSection>
 
       {/* FAQ Link CTA */}
-      <section className="py-24 px-4 md:px-8 text-center bg-gradient">
+      <section className="py-16 md:py-24 px-4 md:px-8 text-center bg-gradient">
         <h2 className={`${FONTS.microgrammaBold.className} text-[#073933] text-3xl md:text-4xl uppercase tracking-widest mb-6`}>
           Have Questions?
         </h2>

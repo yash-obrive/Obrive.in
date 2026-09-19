@@ -36,8 +36,8 @@ const WorkflowSection = ({
   };
 
   return (
-    <div className="flex items-start my-20 justify-between gap-10 max-xl:gap-8 max-lg:flex-col max-lg:items-stretch max-lg:justify-start max-lg:gap-12 max-md:my-14 max-sm:my-10">
-      <div className="sticky top-20 self-start max-md:hidden">
+    <div className="flex items-start my-20 justify-between gap-12 lg:gap-24 xl:gap-32 max-xl:gap-16 max-lg:flex-col max-lg:items-stretch max-lg:justify-start max-md:my-14 max-sm:my-10">
+      <div className="sticky top-20 self-start max-md:hidden flex-shrink-0">
         <div className="w-sm">
           <p className="text-xs py-4 px-2">Workflow Steps</p>
           {(workflowStepsSidebar || []).map((step, index) => (
@@ -71,7 +71,7 @@ const WorkflowSection = ({
         </div>
       </div>
 
-      <div className="flex flex-col gap-20 max-xl:gap-16 max-lg:gap-14 max-md:gap-12 max-sm:gap-10">
+      <div className="flex flex-col gap-32 md:gap-48 lg:gap-64 flex-1 max-lg:gap-24 max-md:gap-20">
         {howItWorks?.map((item, index) => (
           <FadeInOnView key={item.title}>
             <div

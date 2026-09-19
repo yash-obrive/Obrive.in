@@ -64,9 +64,9 @@ const SolutionSidebarLayout = ({
   return (
     <div>
       {/* ── Sidebar + Content ────────────────────────────────────────────── */}
-      <div className="flex items-start gap-10 my-20 max-xl:gap-8 max-lg:flex-col max-lg:items-stretch max-lg:gap-12 max-md:my-14 max-sm:my-10">
+      <div className="flex items-start gap-12 lg:gap-24 xl:gap-32 my-20 max-xl:gap-16 max-lg:flex-col max-lg:items-stretch max-md:my-14 max-sm:my-10">
         {/* Sticky Sidebar */}
-        <div className="sticky top-20 self-start max-lg:hidden">
+        <div className="sticky top-20 self-start max-lg:hidden flex-shrink-0">
           <div className="w-sm">
             <p className="text-xs py-4 px-2">{serviceLabel}</p>
             {sidebarLinks.map((link, index) => (
@@ -102,7 +102,7 @@ const SolutionSidebarLayout = ({
         </div>
 
         {/* Main Content */}
-        <div className="flex flex-col gap-16 flex-1 max-xl:gap-14 max-md:gap-12">
+        <div className="flex flex-col gap-32 md:gap-48 lg:gap-64 flex-1">
           {serviceSections.map((section) => (
             <FadeInOnView key={section.id}>
               <div

@@ -24,7 +24,7 @@ const SolutionServiceSection = ({
   footer,
 }: SolutionServiceSectionProps) => {
   return (
-    <div id={id} className="flex flex-col gap-5 scroll-mt-24">
+    <div id={id} className="flex flex-col gap-8 md:gap-12 scroll-mt-24">
       {/* Section Title */}
       <h2
         className={`${FONTS.microgrammaBold.className} text-primary text-[32px] max-xl:text-3xl max-lg:text-2xl max-md:text-xl`}
@@ -32,7 +32,7 @@ const SolutionServiceSection = ({
         {title}
       </h2>
 
-      <div className="flex flex-col gap-5 pl-4 md:pl-6">
+      <div className="flex flex-col gap-6 md:gap-8 pl-4 md:pl-6 lg:pl-10">
         {/* Subtitle */}
         {subtitle && (
           <p className="text-zinc-600 text-base max-md:text-sm max-w-[680px]">
@@ -46,7 +46,7 @@ const SolutionServiceSection = ({
         </p>
 
         {/* Tag Label */}
-        {label && <p className={`${FONTS.microgrammaBold.className} text-primary text-xl max-md:text-lg mt-2`}>{label}</p>}
+        {label && <p className={`${FONTS.microgrammaBold.className} text-primary text-xl max-md:text-lg mt-4 md:mt-8`}>{label}</p>}
 
         {/* Tag container — flex wrap for variable sizes and preventing overflow */}
         {items && items.length > 0 && (
@@ -101,7 +101,7 @@ const SolutionServiceSection = ({
 
         {/* Footer paragraph */}
         {footer && (
-          <p className="text-xs leading-6 text-zinc-500 max-w-[660px] mt-4">
+          <p className="text-xs leading-6 text-zinc-500 max-w-[660px] mt-6 md:mt-10">
             {footer}
           </p>
         )}
