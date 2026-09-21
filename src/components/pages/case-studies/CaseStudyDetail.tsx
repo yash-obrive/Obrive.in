@@ -31,45 +31,53 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
       <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10">
         
         <div>
-          <h2 className={`${FONTS.microgrammaBold.className} text-xl md:text-2xl text-secondary mb-4 uppercase tracking-widest`}>Overview</h2>
-          <p className="text-secondary/80 leading-relaxed text-sm sm:text-base lg:text-lg">{caseStudy.overview}</p>
+          <h2 className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}>Overview</h2>
+          <div className="pl-6 max-md:pl-0">
+            <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">{caseStudy.overview}</p>
+          </div>
         </div>
 
         {caseStudy.challenge && (
           <div>
-            <h2 className={`${FONTS.microgrammaBold.className} text-xl md:text-2xl text-secondary mb-4 uppercase tracking-widest`}>The Challenge</h2>
-            <p className="text-secondary/80 leading-relaxed text-sm sm:text-base lg:text-lg">{caseStudy.challenge}</p>
+            <h2 className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}>The Challenge</h2>
+            <div className="pl-6 max-md:pl-0">
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">{caseStudy.challenge}</p>
+            </div>
           </div>
         )}
 
         {caseStudy.architecture && caseStudy.architecture.length > 0 && (
           <div>
-            <h2 className={`${FONTS.microgrammaBold.className} text-xl md:text-2xl text-secondary mb-4 uppercase tracking-widest`}>Solution Architecture</h2>
-            <ul className="list-disc pl-5 space-y-3">
-              {caseStudy.architecture.map((arch, idx) => (
-                <li key={idx} className="text-secondary/80 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  <strong className="text-secondary font-bold">{arch.layer}:</strong> {arch.delivery} - {arch.purpose}
-                </li>
-              ))}
-            </ul>
+            <h2 className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}>Solution Architecture</h2>
+            <div className="pl-6 max-md:pl-0">
+              <ul className="list-disc pl-5 space-y-3">
+                {caseStudy.architecture.map((arch, idx) => (
+                  <li key={idx} className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
+                    <strong className="text-gray-900 font-bold">{arch.layer}:</strong> {arch.delivery} - {arch.purpose}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
 
         {caseStudy.deliverables && caseStudy.deliverables.length > 0 && (
           <div>
-            <h2 className={`${FONTS.microgrammaBold.className} text-xl md:text-2xl text-secondary mb-4 uppercase tracking-widest`}>Deliverables</h2>
-            <ul className="list-disc pl-5 space-y-2">
-              {caseStudy.deliverables.map((item, idx) => (
-                <li key={idx} className="text-secondary/80 leading-relaxed text-sm sm:text-base lg:text-lg">{item}</li>
-              ))}
-            </ul>
+            <h2 className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}>Deliverables</h2>
+            <div className="pl-6 max-md:pl-0">
+              <ul className="list-disc pl-5 space-y-2">
+                {caseStudy.deliverables.map((item, idx) => (
+                  <li key={idx} className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
 
         {caseStudy.techStack && caseStudy.techStack.length > 0 && (
           <div>
-            <h2 className={`${FONTS.microgrammaBold.className} text-xl md:text-2xl text-secondary mb-4 uppercase tracking-widest`}>Technology Stack</h2>
-            <div className="flex flex-wrap gap-2">
+            <h2 className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}>Technology Stack</h2>
+            <div className="pl-6 max-md:pl-0 flex flex-wrap gap-2">
               {caseStudy.techStack.flatMap(stack => stack.split(", ")).map((tech, idx) => (
                 <span key={idx} className="bg-primary/5 border-[0.5px] border-primary/20 px-4 py-2 rounded-full text-xs font-medium text-primary">
                   {tech.replace(".", "")}
@@ -81,21 +89,23 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
 
         {caseStudy.impacts && caseStudy.impacts.length > 0 && (
           <div>
-            <h2 className={`${FONTS.microgrammaBold.className} text-xl md:text-2xl text-secondary mb-4 uppercase tracking-widest`}>Impact & Outcomes</h2>
-            <ul className="list-disc pl-5 space-y-4">
-              {caseStudy.impacts.map((impact, idx) => (
-                <li key={idx} className="text-secondary/80 leading-relaxed text-sm sm:text-base lg:text-lg">
-                  <strong className="text-secondary font-bold">{impact.metric} {impact.label}:</strong> {impact.description}
-                </li>
-              ))}
-            </ul>
+            <h2 className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}>Impact & Outcomes</h2>
+            <div className="pl-6 max-md:pl-0">
+              <ul className="list-disc pl-5 space-y-4">
+                {caseStudy.impacts.map((impact, idx) => (
+                  <li key={idx} className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
+                    <strong className="text-gray-900 font-bold">{impact.metric} {impact.label}:</strong> {impact.description}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
 
         {caseStudy.faqs && caseStudy.faqs.length > 0 && (
           <div>
-            <h2 className={`${FONTS.microgrammaBold.className} text-xl md:text-2xl text-secondary mb-4 uppercase tracking-widest`}>Frequently Asked Questions</h2>
-            <Accordion type="single" collapsible className="w-full">
+            <h2 className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}>Frequently Asked Questions</h2>
+            <Accordion type="single" collapsible className="w-full pl-6 max-md:pl-0">
               {caseStudy.faqs.map((faq, idx) => (
                 <AccordionItem key={idx} value={`faq-${idx}`}>
                   <AccordionTrigger className={`${FONTS.microgrammaBold.className} text-left text-primary text-base md:text-lg hover:no-underline py-4`}>

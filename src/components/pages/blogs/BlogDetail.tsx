@@ -6,6 +6,7 @@ import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { Button, buttonVariants } from "@/components/ui/button";
 import BlogRecommendations from "@/components/pages/resources/BlogRecommendations";
 import ResourceWorkflowSteps from "@/components/pages/resources/ResourceWorkflowSteps";
+import ResourceBackButton from "@/components/pages/resources/ResourceBackButton";
 import { UserIcon } from "lucide-react";
 import { BlogCardContent } from "@/constants/pages/resources/blog-card";
 import {
@@ -40,12 +41,7 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 px-4 sm:px-8 lg:px-13 items-start justify-between">
             <div className="relative flex flex-col gap-4 w-full lg:min-w-[400px] lg:max-w-[500px]">
               <div className="relative z-10">
-                <Link
-                  href="/blog"
-                  className={`text-xs ${buttonVariants({ variant: "link" })}`}
-                >
-                  BACK
-                </Link>
+                <ResourceBackButton />
               </div>
 
               <div className="w-full max-sm:w-[300px] max-sm:h-[300px] h-64 sm:h-80 lg:h-90 rounded-2xl sm:flex items-center justify-center sm:relative">
@@ -119,7 +115,7 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
                   <section key={idx}>
                     {section.title && (
                       <h2
-                        className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6 text-secondary`}
+                        className={`${FONTS.microgrammaBold.className} text-3xl mb-4 mt-6`}
                       >
                         {section.title}
                       </h2>
@@ -141,14 +137,16 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
                         ))}
                       </Accordion>
                     ) : (
-                      section.content.map((paragraph, pIdx) => (
-                        <p
-                          key={pIdx}
-                          className="text-base leading-relaxed text-gray-700 mb-4"
-                        >
-                          {paragraph}
-                        </p>
-                      ))
+                      <div className="pl-6 max-md:pl-0 space-y-4">
+                        {section.content.map((paragraph, pIdx) => (
+                          <p
+                            key={pIdx}
+                            className="text-base leading-relaxed text-gray-700"
+                          >
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
                     )}
                   </section>
                 );
