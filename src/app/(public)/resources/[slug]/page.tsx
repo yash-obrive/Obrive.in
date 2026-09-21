@@ -68,11 +68,16 @@ export async function generateMetadata({
     };
   }
 
-  const heroImage = CASE_STUDIES_IMAGES[resource.metadata.heroImage];
+  const heroImageKey = resource.metadata.heroImage as keyof typeof CASE_STUDIES_IMAGES;
+  const heroImage = CASE_STUDIES_IMAGES[heroImageKey];
+  const heroImageSrc = typeof resource.metadata.heroImage === "string" && resource.metadata.heroImage.startsWith("/")
+    ? resource.metadata.heroImage
+    : (heroImage?.src || "/images/default-hero.png");
+
   // ensure absolute URL for social media images
-  const imageUrl = heroImage?.src.startsWith("http")
-    ? heroImage.src
-    : `https://www.obrive.com${heroImage?.src || "/images/default-hero.png"}`;
+  const imageUrl = heroImageSrc.startsWith("http")
+    ? heroImageSrc
+    : `https://www.obrive.com${heroImageSrc}`;
 
   // extract tags from postType for better SEO
   const tags = resource.metadata.postType?.split(" ").filter(Boolean) || [];
@@ -194,10 +199,15 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
     notFound();
   }
 
-  const heroImage = CASE_STUDIES_IMAGES[resource.metadata.heroImage];
-  const imageUrl = heroImage?.src.startsWith("http")
-    ? heroImage.src
-    : `https://obrive.com${heroImage?.src || "/images/default-hero.png"}`;
+  const heroImageKey = resource.metadata.heroImage as keyof typeof CASE_STUDIES_IMAGES;
+  const heroImage = CASE_STUDIES_IMAGES[heroImageKey];
+  const heroImageSrc = typeof resource.metadata.heroImage === "string" && resource.metadata.heroImage.startsWith("/")
+    ? resource.metadata.heroImage
+    : (heroImage?.src || "/images/default-hero.png");
+
+  const imageUrl = heroImageSrc.startsWith("http")
+    ? heroImageSrc
+    : `https://obrive.com${heroImageSrc}`;
 
   const pageTitle = resource.metadata.seoTitle || resource.metadata.title;
   const pageDescription =

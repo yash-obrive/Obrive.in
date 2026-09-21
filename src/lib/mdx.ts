@@ -30,7 +30,7 @@ export interface CaseStudyMetadata {
   seoDescription?: string;
   seoKeywords?: string[];
   // img fields
-  heroImage: keyof typeof CASE_STUDIES_IMAGES;
+  heroImage: keyof typeof CASE_STUDIES_IMAGES | string;
   avatar: keyof typeof CASE_STUDIES_AVATAR;
   workflowSteps?: string[];
   impactMetrics?: Array<{
