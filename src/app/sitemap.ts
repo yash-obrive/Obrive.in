@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { COUNTRIES, SUPPORTED_COUNTRIES } from "@/config/countries";
 import { getIndustrySlugs } from "@/lib/industries";
 import {
   getAllCaseStudySlugs,
@@ -9,76 +10,72 @@ import { getProductSlugs } from "@/lib/products";
 import { getSolutionSlugs } from "@/lib/solutions";
 import { getTechnologySlugs } from "@/lib/technology";
 import { getUseCaseSlugs } from "@/lib/use-cases";
-import { getAllCaseStudySlugs as getNewCaseStudySlugs } from "@/lib/case-studies";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://obrive.com";
 
-  // Static pages
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/site-map`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/legal`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/servicecharges`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/faqs`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
+  // Filter only production-ready countries
+  const activeCountries = SUPPORTED_COUNTRIES.filter(
+    (code) => COUNTRIES[code].isProductionReady,
+  );
+
+  const makeAlternates = (subpath: string) => {
+    const langs: Record<string, string> = {
+      "x-default": `${baseUrl}/in${subpath}`,
+    };
+    for (const code of activeCountries) {
+      langs[COUNTRIES[code].hreflang] = `${baseUrl}/${code}${subpath}`;
+    }
+    return { languages: langs };
+  };
+
+  // Country-specific static storefront pages
+  const staticPaths = [
+    "",
+    "/about",
+    "/site-map",
+    "/servicecharges",
+    "/contact",
+    "/global",
   ];
+  const localizedStaticPages: MetadataRoute.Sitemap = activeCountries.flatMap(
+    (country) =>
+      staticPaths.map((path) => ({
+        url: `${baseUrl}/${country}${path}`,
+        lastModified: new Date(),
+        changeFrequency: path === "" ? "weekly" : "monthly",
+        priority: path === "" ? 1.0 : 0.8,
+        alternates: makeAlternates(path),
+      })),
+  );
 
-  // Product pages
+  // Product pages per country
   const productSlugs = getProductSlugs();
-  const productPages: MetadataRoute.Sitemap = productSlugs.map((slug) => ({
-    url: `${baseUrl}/products/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
+  const localizedProductPages: MetadataRoute.Sitemap = activeCountries.flatMap(
+    (country) =>
+      productSlugs.map((slug) => ({
+        url: `${baseUrl}/${country}/products/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly",
+        priority: 0.9,
+        alternates: makeAlternates(`/products/${slug}`),
+      })),
+  );
 
-  // Solution pages
+  // Solution pages per country
   const solutionSlugs = getSolutionSlugs();
-  const solutionPages: MetadataRoute.Sitemap = solutionSlugs.map((slug) => ({
-    url: `${baseUrl}/solutions/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
+  const localizedSolutionPages: MetadataRoute.Sitemap = activeCountries.flatMap(
+    (country) =>
+      solutionSlugs.map((slug) => ({
+        url: `${baseUrl}/${country}/solutions/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly",
+        priority: 0.9,
+        alternates: makeAlternates(`/solutions/${slug}`),
+      })),
+  );
 
-  // Industries pages
+  // Industries pages per country
   const blockedIndustrySlugs = new Set([
     "retail",
     "healthcare",
@@ -90,14 +87,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const industrySlugs = getIndustrySlugs().filter(
     (slug) => !blockedIndustrySlugs.has(slug),
   );
-  const industryPages: MetadataRoute.Sitemap = industrySlugs.map((slug) => ({
-    url: `${baseUrl}/industries/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
+  const localizedIndustryPages: MetadataRoute.Sitemap = activeCountries.flatMap(
+    (country) =>
+      industrySlugs.map((slug) => ({
+        url: `${baseUrl}/${country}/industries/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly",
+        priority: 0.9,
+        alternates: makeAlternates(`/industries/${slug}`),
+      })),
+  );
 
-  // Use Cases pages
+  // Use Cases pages per country
   const blockedUseCaseSlugs = new Set([
     "3d-product-configuration",
     "digital-twins",
@@ -106,14 +107,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const useCaseSlugs = getUseCaseSlugs().filter(
     (slug) => !blockedUseCaseSlugs.has(slug),
   );
-  const useCasePages: MetadataRoute.Sitemap = useCaseSlugs.map((slug) => ({
-    url: `${baseUrl}/use-cases/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
+  const localizedUseCasePages: MetadataRoute.Sitemap = activeCountries.flatMap(
+    (country) =>
+      useCaseSlugs.map((slug) => ({
+        url: `${baseUrl}/${country}/use-cases/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly",
+        priority: 0.9,
+        alternates: makeAlternates(`/use-cases/${slug}`),
+      })),
+  );
 
-  // Technology pages
+  // Technology pages per country
   const blockedTechnologySlugs = new Set([
     "mixed-reality",
     "extended-reality",
@@ -123,59 +128,44 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const technologySlugs = getTechnologySlugs().filter(
     (slug) => !blockedTechnologySlugs.has(slug),
   );
-  const technologyPages: MetadataRoute.Sitemap = technologySlugs.map(
-    (slug) => ({
-      url: `${baseUrl}/technology/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    }),
+  const localizedTechnologyPages: MetadataRoute.Sitemap =
+    activeCountries.flatMap((country) =>
+      technologySlugs.map((slug) => ({
+        url: `${baseUrl}/${country}/technology/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly",
+        priority: 0.9,
+        alternates: makeAlternates(`/technology/${slug}`),
+      })),
+    );
+
+  // Case study/resource pages per country
+  const caseStudySlugs = await getAllCaseStudySlugs();
+  const localizedCaseStudyPages: MetadataRoute.Sitemap =
+    activeCountries.flatMap((country) =>
+      caseStudySlugs.map((slug) => ({
+        url: `${baseUrl}/${country}/resources/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+        alternates: makeAlternates(`/resources/${slug}`),
+      })),
+    );
+
+  // FAQ pages per country
+  const faqSlugs = await getAllFAQSlugs();
+  const localizedFaqPages: MetadataRoute.Sitemap = activeCountries.flatMap(
+    (country) =>
+      faqSlugs.map((slug) => ({
+        url: `${baseUrl}/${country}/faq/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.6,
+        alternates: makeAlternates(`/faq/${slug}`),
+      })),
   );
 
-  // Old Case study/resource pages
-  const caseStudySlugs = await getAllCaseStudySlugs();
-  const caseStudyPages: MetadataRoute.Sitemap = caseStudySlugs.map((slug) => ({
-    url: `${baseUrl}/resources/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
-
-  // New JSON-based Case Study pages
-  const newCaseStudySlugs = getNewCaseStudySlugs();
-  const newCaseStudyPages: MetadataRoute.Sitemap = newCaseStudySlugs.map((slug) => ({
-    url: `${baseUrl}/case-studies/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
-
-  // Blog pages
-  const { getAllBlogs } = await import("@/lib/blogs");
-  const blogSlugs = getAllBlogs().map((b) => b.slug);
-  const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
-  const blogIndexPage: MetadataRoute.Sitemap = [{
-    url: `${baseUrl}/blog`,
-    lastModified: new Date(),
-    changeFrequency: "daily",
-    priority: 0.9,
-  }];
-
-  // FAQ pages
-  const faqSlugs = await getAllFAQSlugs();
-  const faqPages: MetadataRoute.Sitemap = faqSlugs.map((slug) => ({
-    url: `${baseUrl}/faq/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
-
-  // Legal pages
+  // Global Legal & Support pages (from (company-info) route group)
   const legalSlugs = await getAllCompanyInfoSlugs("legal");
   const legalPages: MetadataRoute.Sitemap = legalSlugs.map((slug) => ({
     url: `${baseUrl}/legal/${slug}`,
@@ -184,7 +174,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.4,
   }));
 
-  // Support pages
   const supportSlugs = await getAllCompanyInfoSlugs("support");
   const supportPages: MetadataRoute.Sitemap = supportSlugs.map((slug) => ({
     url: `${baseUrl}/support/${slug}`,
@@ -194,17 +183,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   return [
-    ...staticPages,
-    ...productPages,
-    ...solutionPages,
-    ...industryPages,
-    ...useCasePages,
-    ...technologyPages,
-    ...caseStudyPages,
-    ...newCaseStudyPages,
-    ...blogIndexPage,
-    ...blogPages,
-    ...faqPages,
+    ...localizedStaticPages,
+    ...localizedProductPages,
+    ...localizedSolutionPages,
+    ...localizedIndustryPages,
+    ...localizedUseCasePages,
+    ...localizedTechnologyPages,
+    ...localizedCaseStudyPages,
+    ...localizedFaqPages,
     ...legalPages,
     ...supportPages,
   ];

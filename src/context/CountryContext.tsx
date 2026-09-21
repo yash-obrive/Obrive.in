@@ -54,21 +54,6 @@ export function CountryProvider({
     }
   }, [initialCountry]);
 
-  // Sync state with URL pathname on load or change
-  useEffect(() => {
-    if (pathname) {
-      const segments = pathname.split("/").filter(Boolean);
-      if (segments.length > 0) {
-        const urlCountry = segments[0] as CountryCode;
-        if (isValidCountryCode(urlCountry) && urlCountry !== "global") {
-          setCountry(urlCountry);
-          return;
-        }
-      }
-      setCountry("global");
-    }
-  }, [pathname]);
-
   useEffect(() => {
     // Check if user previously dismissed banner
     if (typeof document !== "undefined") {
@@ -100,28 +85,21 @@ export function CountryProvider({
     setCountry(newCountry);
     dismissBanner();
 
-    // Navigate while preserving existing path
+    // Replace country prefix in current pathname
     if (pathname) {
       const segments = pathname.split("/").filter(Boolean);
-      let targetPath = "";
+      let targetPath = `/${newCountry}`;
 
-      if (segments.length > 0 && isValidCountryCode(segments[0] as CountryCode)) {
-        if (newCountry === "global") {
-          targetPath = `/${segments.slice(1).join("/")}`;
-        } else {
-          targetPath = `/${newCountry}/${segments.slice(1).join("/")}`;
-        }
-      } else {
-        if (newCountry === "global") {
-          targetPath = pathname;
-        } else {
-          targetPath = `/${newCountry}${pathname === "/" ? "" : pathname}`;
-        }
+      if (segments.length > 0 && isValidCountryCode(segments[0])) {
+        const remaining = segments.slice(1).join("/");
+        targetPath = `/${newCountry}${remaining ? `/${remaining}` : ""}`;
+      } else if (segments.length > 0) {
+        targetPath = `/${newCountry}/${segments.join("/")}`;
       }
 
-      router.push(targetPath || "/");
+      router.push(targetPath);
     } else {
-      router.push(newCountry === "global" ? "/" : `/${newCountry}`);
+      router.push(`/${newCountry}`);
     }
   };
 

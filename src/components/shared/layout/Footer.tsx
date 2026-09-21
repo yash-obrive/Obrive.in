@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
@@ -7,11 +9,13 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { GROUPS, PRIMARY_FOOTER_CARD, SOCIAL_LINKS } from "@/constants/Footer";
-import DynamicFooterCard from "./DynamicFooterCard";
-import FooterCountrySwitcher from "./FooterCountrySwitcher";
+import { useCountry } from "@/context/CountryContext";
+import { SUPPORTED_COUNTRIES, COUNTRIES, CountryCode } from "@/config/countries";
+import { Globe } from "lucide-react";
 
 export default function Footer() {
+  const { country, countryConfig, switchCountry } = useCountry();
+
   const cell =
     "border border-primary/30 rounded-lg text-xs p-3 text-sm hover:text-white transition-colors duration-500 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-primary before:scale-y-0 before:origin-center hover:before:scale-y-100 before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.19,1,0.22,1)] before:-z-10 z-10";
 
@@ -61,19 +65,18 @@ export default function Footer() {
               >
                 Contact
               </div>
-              <div className={`${contactCellBase} p-3`}>+91-888-477-4300</div>
+              <div className={`${contactCellBase} p-3`}>{countryConfig.phone}</div>
               <a
-                href="mailto:info@obrive.com"
+                href={`mailto:${countryConfig.contactEmail}`}
                 className={`${contactCellBase} p-3`}
               >
-                info@obrive.com
+                {countryConfig.contactEmail}
               </a>
-              <div className={`${contactCellBase} p-3`}>
-                Bangalore, Karnataka, India
-              </div>
-              <div className={`${contactCellBase} p-3`}>
-                Ahmedabad, Gujarat, India
-              </div>
+              {countryConfig.offices.map((office) => (
+                <div key={office} className={`${contactCellBase} p-3`}>
+                  {office}
+                </div>
+              ))}
               <div className={`${contactCellBase} p-5`}></div>
               <HoverCard>
                 <HoverCardTrigger asChild>
@@ -145,7 +148,22 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-4">
-              <FooterCountrySwitcher />
+              {/* Apple-style Country Selector */}
+              <div className="flex items-center gap-2 border border-primary/30 rounded-lg px-2.5 py-1 text-xs text-primary/80 bg-transparent hover:border-primary/60 transition-colors">
+                <Globe className="w-3.5 h-3.5 text-primary/70 shrink-0" />
+                <select
+                  value={country}
+                  onChange={(e) => switchCountry(e.target.value as CountryCode)}
+                  aria-label="Select Country or Region"
+                  className="bg-transparent text-xs text-primary font-medium focus:outline-none cursor-pointer py-0.5"
+                >
+                  {SUPPORTED_COUNTRIES.map((code) => (
+                    <option key={code} value={code} className="bg-white text-primary">
+                      {COUNTRIES[code].name}
+                    </option>
+                  ))}
+                </select>
+              </div>
               <p>Copyrights Reserved 2025</p>
             </div>
           </div>

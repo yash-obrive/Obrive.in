@@ -24,6 +24,7 @@ export interface CaseStudyMetadata {
   quote: string;
   author: string;
   postType?: string;
+  targetCountries?: string[];
   // seo specific fields here
   seoTitle?: string;
   seoDescription?: string;
@@ -139,7 +140,7 @@ export async function getAllCaseStudySlugs(): Promise<string[]> {
   }
 }
 
-export async function getAllCaseStudies(): Promise<CaseStudyData[]> {
+export async function getAllCaseStudies(country?: string): Promise<CaseStudyData[]> {
   const slugs = await getAllCaseStudySlugs();
   const caseStudies = await Promise.all(
     slugs.map(async (slug) => {
@@ -148,9 +149,20 @@ export async function getAllCaseStudies(): Promise<CaseStudyData[]> {
     }),
   );
 
-  return caseStudies.filter(
-    (caseStudy): caseStudy is CaseStudyData => caseStudy !== null,
+  const validCaseStudies = caseStudies.filter(
+    (caseStudy): caseStudy is CaseStudyData => caseStudy !== null
   );
+
+  if (!country) {
+    return validCaseStudies;
+  }
+
+  const normalizedCountry = country.toLowerCase();
+  return validCaseStudies.filter((item) => {
+    const targets = item.metadata.targetCountries;
+    if (!targets || targets.length === 0) return true;
+    return targets.includes("all") || targets.includes(normalizedCountry);
+  });
 }
 
 // Company Info functions

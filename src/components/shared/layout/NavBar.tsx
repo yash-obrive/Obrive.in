@@ -19,14 +19,13 @@ import {
   NavigationMenu,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { MOBILE_NAV_STRUCTURE } from "@/constants/navigation";
-import AnimatedButton from "../buttons/AnimatedButton";
-import PrimaryLogo from "../logo/PrimaryLogo";
-import { CaseStudiesDropdown } from "./dropdowns/CaseStudiesDropdown";
-import { CompanyDropdown } from "./dropdowns/CompanyDropdown";
-import { ProductsDropdown } from "./dropdowns/ProductsDropdown";
-import { ResourcesDropdown } from "./dropdowns/ResourcesDropdown";
-import { SolutionsDropdown } from "./dropdowns/SolutionsDropdown";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { useCountry } from "@/context/CountryContext";
 
 // Breakpoint constants
 const BREAKPOINTS = {
@@ -99,6 +98,9 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const { countryConfig } = useCountry();
+  const calendlyUrl =
+    countryConfig?.calendlyUrl || "https://calendly.com/obrive-inc/talk-to-ob-experts";
 
   // Use the custom hook for device detection
   const { isMobile, isTablet } = useDeviceType(windowWidth, isMounted);
@@ -366,7 +368,7 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
                   asChild
                   className="text-xs hidden sm:flex"
                   size="lg"
-                  href="https://calendly.com/obrive-inc/talk-to-ob-experts"
+                  href={calendlyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Schedule a call with our experts on Calendly"
@@ -475,7 +477,7 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
                     asChild
                     className="text-xs hidden sm:flex"
                     size="lg"
-                    href="https://calendly.com/obrive-inc/talk-to-ob-experts"
+                    href={calendlyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Schedule a call with our experts on Calendly"
@@ -548,7 +550,7 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
                 Login
               </Link>
               <Link
-                href="https://calendly.com/obrive-inc/talk-to-ob-experts"
+                href={calendlyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${buttonVariants({
