@@ -2,6 +2,7 @@
 
 ## UI Consistency & Design System Invariants
 
+- **Exclusive Figma Component Invariant:** Never introduce, generate, or use any UI components, layouts, cards, buttons, typography, styles, or visual elements that are not directly defined in the official Obrive Figma design system (`https://www.figma.com/design/FcwvoTzXupoMx620uQ7LBN/Obrive-Website`) or its verified codebase implementations. When implementing external prototypes or specifications (e.g., standalone HTML prototypes), use them strictly for structure and data models—all visual rendering, layout, component hierarchy, typography, and styling must come exclusively from the Figma design system.
 - **Strict Layout Shell Consistency:** Always reuse the established layout architecture (`Sidebar`, `Header`, `RightPanel`, etc.) for any new dashboard, view, or section. Never create standalone or isolated full-page interfaces from scratch when an established application shell exists.
 - **Font & Brand Typography Preservation:** Never replace, remove, or override the global brand typography (e.g., `Michroma` font defined in `layout.tsx`). Headings, navigation items, and section labels must strictly adhere to the brand typography hierarchy.
 - **Component & Palette Reuse:** Before building new UI widgets, inspect existing production pages (such as `src/app/(dashboard)/dashboard/employee/page.tsx` and `src/components/dashboard/`) and reuse existing components (`WorkloadSection`, `Projects`, `NearestEvents`, `ActivityStream`, etc.) and brand color tokens (`#073933`, `#F4F9FD`, `#eef7ff`).

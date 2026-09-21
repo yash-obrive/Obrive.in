@@ -16,6 +16,7 @@ export const GROUPS = [
       { label: "About Obrive", href: "/about" },
       { label: "Join The Otters", href: "/career" },
       { label: "Obrive partners", href: "/about#featured-in" },
+      { label: "Global Markets", href: "/global" },
       { label: "Site Map", href: "/site-map" },
     ],
   },

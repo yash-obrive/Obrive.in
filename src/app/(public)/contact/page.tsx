@@ -6,13 +6,13 @@ export const metadata = {
   description:
     "Get in touch with Obrive to discuss your next AR, VR, digital product, or software engineering project. Let's build what's next.",
   alternates: {
-    canonical: "https://www.obrive.in/contact",
+    canonical: "https://obrive.com/contact",
   },
   openGraph: {
     title: "Contact Us | Discuss Your Project | Obrive",
     description:
       "Get in touch with Obrive to discuss your next AR, VR, digital product, or software engineering project.",
-    url: "https://www.obrive.in/contact",
+    url: "https://obrive.com/contact",
   },
   twitter: {
     card: "summary_large_image",

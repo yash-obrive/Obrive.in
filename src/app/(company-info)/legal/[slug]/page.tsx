@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import Script from "next/script";
 
 interface LegalPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export const dynamicParams = false;
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: LegalPageProps): Promise<Metadata> {
-  const { slug } =  params;
+  const { slug } = await params;
   const legalDoc = await getCompanyInfoBySlug(slug, "legal");
 
   if (!legalDoc) {
