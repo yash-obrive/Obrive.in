@@ -14,6 +14,8 @@ export default function ResourceImpactMetricsTable({
   metrics,
   title = "Impact",
 }: ResourceImpactMetricsTableProps) {
+  if (!metrics || metrics.length === 0) return null;
+
   return (
     <section>
       <h2 className={`${FONTS.microgrammaBold.className} text-3xl`}>{title}</h2>

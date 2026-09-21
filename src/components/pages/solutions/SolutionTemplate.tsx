@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { ICONS, ICONS_META } from "@/assets/images";
 import FONTS from "@/assets/fonts";
 import { KeyBenefitsCard } from "@/components/shared/cards/KeyBenefitsCard";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
@@ -112,22 +114,6 @@ export function SolutionTemplate({
         )}
       </FullWidthSection>
 
-      {/* FAQ Link CTA */}
-      <section className="py-16 md:py-24 px-4 md:px-8 text-center bg-gradient">
-        <h2 className={`${FONTS.microgrammaBold.className} text-[#073933] text-3xl md:text-4xl uppercase tracking-widest mb-6`}>
-          Have Questions?
-        </h2>
-        <p className="text-[#073933]/80 text-lg max-w-2xl mx-auto mb-10">
-          Find answers to common questions about {serviceLabel || "our services"} and our process.
-        </p>
-        <Link 
-          href={`/solutions/${slug}/faqs`}
-          className="inline-flex items-center gap-2 bg-[#073933] text-white px-8 py-4 rounded-full font-medium hover:bg-[#073933]/90 transition-all shadow-lg hover:shadow-xl"
-        >
-          View Frequently Asked Questions
-          <ArrowRight className="w-5 h-5" />
-        </Link>
-      </section>
     </div>
   );
 }

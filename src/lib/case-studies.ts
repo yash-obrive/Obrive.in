@@ -29,6 +29,10 @@ export interface CaseStudy {
     quote: string;
     author: string;
   };
+  faqs?: {
+    q: string;
+    a: string;
+  }[];
   outcome_snapshot: string;
   image: string;
 }

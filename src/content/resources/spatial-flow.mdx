@@ -67,38 +67,16 @@ impactMetrics:
 <ApproachPhaseItem phase="6. Phased Rollout & Adoption Scaling">Deployed initially to specific onboarding groups and scaled across global teams as adoption rose and metrics improved.</ApproachPhaseItem>
 </ObrivesApproachTable>
 
-<TheImpactTable>
-  <ImpactTableMetric
-    metric={"Onboarding Duration"}
-    beforeObrive={"5 days"}
-    afterObrive={"1 immersive session"}
-  />
-  <ImpactTableMetric
-    metric={"Training Error Rate"}
-    beforeObrive={"High (manual overload)"}
-    afterObrive={"40% reduction"}
-  />
-  <ImpactTableMetric
-    metric={"Participant Retention Scores"}
-    beforeObrive={"60%"}
-    afterObrive={"85%+"}
-  />
-  <ImpactTableMetric
-    metric={"Deployment Timeline"}
-    beforeObrive={"Pilot over 4 weeks"}
-    afterObrive={"Global rollout in 6 weeks"}
-  />
-  <ImpactTableMetric
-    metric={"Training Support Hours Required"}
-    beforeObrive={"High (live facilitation)"}
-    afterObrive={"Minimal—automated"}
-  />
-  <ImpactTableMetric
-    metric={"Cost of Managing Scale"}
-    beforeObrive={"Growing"}
-    afterObrive={"Efficient and scalable"}
-  />
-</TheImpactTable>
+<TheImpactTable
+  metrics={[
+    { metric: "Onboarding Duration", beforeObrive: "5 days", afterObrive: "1 immersive session" },
+    { metric: "Training Error Rate", beforeObrive: "High (manual overload)", afterObrive: "40% reduction" },
+    { metric: "Participant Retention Scores", beforeObrive: "60%", afterObrive: "85%+" },
+    { metric: "Deployment Timeline", beforeObrive: "Pilot over 4 weeks", afterObrive: "Global rollout in 6 weeks" },
+    { metric: "Training Support Hours Required", beforeObrive: "High (live facilitation)", afterObrive: "Minimal—automated" },
+    { metric: "Cost of Managing Scale", beforeObrive: "Growing", afterObrive: "Efficient and scalable" }
+  ]}
+/>
 
 <CompanyOverviewSection
   content=""

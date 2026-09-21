@@ -13,6 +13,7 @@ import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { Button, buttonVariants } from "@/components/ui/button";
 import type { CaseStudyMetadata } from "@/lib/mdx";
 import BlogRecommendations from "./BlogRecommendations";
+import ResourceBackButton from "./ResourceBackButton";
 import ResourceWorkflowSteps from "./ResourceWorkflowSteps";
 
 interface ResourceTemplateProps {
@@ -37,12 +38,7 @@ export default function ResourceTemplate({
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 px-4 sm:px-8 lg:px-13 items-start justify-between">
             <div className="relative flex flex-col gap-4 w-full lg:min-w-[400px] lg:max-w-[500px]">
               <div className="relative z-10">
-                <Link
-                  href="/resources"
-                  className={`text-xs ${buttonVariants({ variant: "link" })}`}
-                >
-                  BACK
-                </Link>
+                <ResourceBackButton />
               </div>
 
               <div className="w-full max-sm:w-[300px] max-sm:h-[300px] h-64 sm:h-80 lg:h-90 rounded-2xl sm:flex items-center justify-center sm:relative">
@@ -58,9 +54,14 @@ export default function ResourceTemplate({
                   const heroKey = metadata?.heroImage as
                     | keyof typeof CASE_STUDIES_IMAGES
                     | undefined;
-                  const fallbackHero = heroKey
-                    ? CASE_STUDIES_IMAGES[heroKey]
-                    : undefined;
+                  
+                  let fallbackHero: string | typeof CASE_STUDIES_IMAGES[keyof typeof CASE_STUDIES_IMAGES] | undefined = undefined;
+                  if (heroKey && CASE_STUDIES_IMAGES[heroKey]) {
+                    fallbackHero = CASE_STUDIES_IMAGES[heroKey];
+                  } else if (typeof metadata?.heroImage === "string" && metadata.heroImage.startsWith("/")) {
+                    fallbackHero = metadata.heroImage;
+                  }
+
                   const heroSrc = blogImage ?? fallbackHero;
                   const altText = blogImage
                     ? blogImageMeta?.alt || metadata.title

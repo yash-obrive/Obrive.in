@@ -21,5 +21,20 @@ export default function DynamicFooterCard() {
     return null;
   }
 
+  if (
+    pathname?.includes("/solutions/") &&
+    !pathname.endsWith("/faqs") &&
+    !pathname.endsWith("/industries")
+  ) {
+    return (
+      <PrimaryFooterCard
+        title="Have Questions?"
+        description="Find answers to common questions about our services and our process."
+        buttonText="View Frequently Asked Questions"
+        buttonLink={`${pathname}/faqs`}
+      />
+    );
+  }
+
   return <PrimaryFooterCard {...PRIMARY_FOOTER_CARD} />;
 }

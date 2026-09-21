@@ -53,7 +53,7 @@ export function FAQItem({ question, q, answer, children, value }: FAQItemProps) 
     return html;
   };
 
-  const itemValue = value || `faq-${slugify(actualQuestion).substring(0, 20)}`;
+  const itemValue = value || `faq-${slugify(actualQuestion)}`;
   const content = children || answer;
 
   return (

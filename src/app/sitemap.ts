@@ -139,11 +139,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       })),
     );
 
-  // Case study/resource pages per country
+  // Case study/resource/blog pages per country
   const caseStudySlugs = await getAllCaseStudySlugs();
+  const { getAllBlogs } = await import("@/lib/blogs");
+  const { getAllCaseStudySlugs: getAllJsonCaseStudySlugs } = await import("@/lib/case-studies");
+  const blogSlugs = getAllBlogs().map((b) => b.slug);
+  const jsonCaseStudySlugs = getAllJsonCaseStudySlugs();
+  const allResourceSlugs = [...caseStudySlugs, ...blogSlugs, ...jsonCaseStudySlugs];
+
   const localizedCaseStudyPages: MetadataRoute.Sitemap =
     activeCountries.flatMap((country) =>
-      caseStudySlugs.map((slug) => ({
+      allResourceSlugs.map((slug) => ({
         url: `${baseUrl}/${country}/resources/${slug}`,
         lastModified: new Date(),
         changeFrequency: "monthly",

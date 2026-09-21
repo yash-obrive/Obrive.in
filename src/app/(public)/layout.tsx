@@ -9,7 +9,6 @@ import {
   isValidCountryCode,
 } from "@/config/countries";
 import { headers } from "next/headers";
-import { ReactNode } from "react";
 
 export default async function LayoutPublic({
   children,

@@ -10,6 +10,7 @@ const BlogGridCard = ({
   title,
   slug,
   description,
+  type,
 }: BlogCardContentType) => {
   return (
     <Link
@@ -37,7 +38,7 @@ const BlogGridCard = ({
         </div>
 
         <div className="flex text-xs items-center justify-between px-3 mb-4 text-muted-foreground">
-          <span className="uppercase tracking-wide">BLOG</span>
+          <span className="uppercase tracking-wide">{type || "BLOG"}</span>
           <span>{date}</span>
         </div>
 

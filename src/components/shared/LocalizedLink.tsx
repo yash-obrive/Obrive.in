@@ -24,14 +24,14 @@ export default function LocalizedLink({ href, ...props }: ComponentProps<typeof 
     if (segments.length > 0) {
       const currentPrefix = segments[0] as CountryCode;
 
-      if (isValidCountryCode(currentPrefix) && currentPrefix !== "global") {
+      if (isValidCountryCode(currentPrefix) && (currentPrefix as string) !== "global") {
         // User is currently inside a country-prefixed route.
         // Only prefix if href is an absolute path (starts with /) and doesn't already have a country prefix
         if (href.startsWith("/")) {
           const hrefSegments = href.split("/").filter(Boolean);
           if (hrefSegments.length > 0) {
             const hrefPrefix = hrefSegments[0] as CountryCode;
-            if (!isValidCountryCode(hrefPrefix)) {
+            if (!isValidCountryCode(hrefPrefix) && hrefPrefix !== "global") {
               finalHref = `/${currentPrefix}${href}`;
             }
           } else {

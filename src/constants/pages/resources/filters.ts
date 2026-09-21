@@ -1,6 +1,7 @@
 export const filters = [
   "All",
   "Blog",
+  "Case Studies",
   "News",
   "AR",
   "VR",

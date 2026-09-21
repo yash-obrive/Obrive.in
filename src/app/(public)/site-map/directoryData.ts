@@ -16,8 +16,8 @@ export interface DirectoryCategory {
 
 export const DIRECTORY_DATA: DirectoryCategory[] = [
   {
-    id: "solutions",
-    title: "Solutions",
+    id: "services",
+    title: "Services",
     description:
       "Technology services for building and deploying immersive digital experiences.",
     entries: [
@@ -473,20 +473,20 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         title: "Blog",
         description:
           "Insights covering AR, VR, MR, 3D, spatial computing and industry applications.",
-        href: "/blog",
+        href: "/resources?filter=Blog",
         category: "resources",
         searchKeywords:
-          "blog /blog insights covering ar, vr, mr, 3d, spatial computing and industry applications. resources",
+          "blog /resources?filter=Blog insights covering ar, vr, mr, 3d, spatial computing and industry applications. resources",
       },
       {
         num: "02",
         title: "Case Studies",
         description:
           "Real-world projects, outcomes and implementation stories.",
-        href: "/case-studies",
+        href: "/resources?filter=Case Studies",
         category: "resources",
         searchKeywords:
-          "case studies /case-studies real-world projects, outcomes and implementation stories. resources",
+          "case studies /resources?filter=Case Studies real-world projects, outcomes and implementation stories. resources",
       },
       {
         num: "03",
@@ -519,22 +519,13 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         num: "02",
         title: "Partners",
         description: "Technology, strategic and implementation partnerships.",
-        href: "/partners",
-        category: "company",
-        searchKeywords:
-          "partners /partners technology, strategic and implementation partnerships. company",
-      },
-      {
-        num: "03",
-        title: "Clients",
-        description: "See the global brands that trust Obrive.",
         href: "/clients",
         category: "company",
         searchKeywords:
-          "clients /clients see the global brands that trust obrive. company",
+          "partners /clients technology, strategic and implementation partnerships. company",
       },
       {
-        num: "04",
+        num: "03",
         title: "Careers / Join the Otters",
         description:
           "Explore opportunities to build the future of immersive technology.",
@@ -544,7 +535,7 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
           "careers / join the otters /career explore opportunities to build the future of immersive technology. company",
       },
       {
-        num: "05",
+        num: "04",
         title: "Service Charges",
         description:
           "Explore our fixed-price service streams, scopes and packages.",
@@ -554,7 +545,7 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
           "service charges /servicecharges explore our fixed-price service streams, scopes and packages. company",
       },
       {
-        num: "06",
+        num: "05",
         title: "Contact",
         description:
           "Get in touch to discuss your next project, scope and requirements.",

@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { BlogCardContent } from "@/constants/pages/resources/blog-card";
 import ArticlesGrid from "./components/ArticlesGrid";
 import CustomPagination from "./components/CustomPagination";
@@ -32,19 +33,33 @@ const filterBlogsByKeyword = (
   });
 };
 
-const ResourcesContent = () => {
-  const [currentFilter, setCurrentFilter] = useState("All");
+const ResourcesContentInner = () => {
+  const searchParams = useSearchParams();
+  const queryFilter = searchParams.get("filter");
+  
+  const [currentFilter, setCurrentFilter] = useState(queryFilter || "All");
   const [currentPage, setCurrentPage] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollPositionRef = useRef<number>(0);
 
+  // Sync state when URL searchParams changes
+  useEffect(() => {
+    if (queryFilter && queryFilter !== currentFilter) {
+      setCurrentFilter(queryFilter);
+      setCurrentPage(1);
+    }
+  }, [queryFilter]); // purposefully omitted currentFilter from deps so it only triggers on URL change
+
   // Memoized filtered blogs for performance
   const filteredBlogs = useMemo(() => {
     switch (currentFilter) {
       case "All":
-      case "Blog":
         return BlogCardContent;
+      case "Blog":
+        return BlogCardContent.filter((blog) => blog.type !== "Case Studies");
+      case "Case Studies":
+        return BlogCardContent.filter((blog) => blog.type === "Case Studies");
       default:
         return filterBlogsByKeyword(BlogCardContent, currentFilter);
     }
@@ -142,6 +157,14 @@ const ResourcesContent = () => {
         isTransitioning={isTransitioning}
       />
     </div>
+  );
+};
+
+const ResourcesContent = () => {
+  return (
+    <Suspense fallback={<div>Loading resources...</div>}>
+      <ResourcesContentInner />
+    </Suspense>
   );
 };
 

@@ -71,7 +71,7 @@ const WorkflowSection = ({
         </div>
       </div>
 
-      <div className="flex flex-col gap-32 md:gap-48 lg:gap-64 flex-1 max-lg:gap-24 max-md:gap-20">
+      <div className="flex flex-col gap-16 md:gap-24 lg:gap-32 flex-1 max-lg:gap-12 max-md:gap-10">
         {howItWorks?.map((item, index) => (
           <FadeInOnView key={item.title}>
             <div

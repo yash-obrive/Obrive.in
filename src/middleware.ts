@@ -123,15 +123,24 @@ export function middleware(req: NextRequest) {
     }
   }
 
-  // Redirect to localized subpath (e.g. / -> /in, /about -> /in/about)
-  const redirectUrl = req.nextUrl.clone();
-  const subpath = pathname === "/" ? "" : pathname;
-  redirectUrl.pathname = `/${targetCountry}${subpath}`;
-  redirectUrl.search = search;
+  // Pass the country in custom headers for server components and layout
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.set("x-obrive-country", targetCountry);
 
-  const response = NextResponse.redirect(redirectUrl, { status: 307 });
+  const rawGeo2 =
+    req.headers.get("x-vercel-ip-country") || req.headers.get("cf-ipcountry");
+  const detectedGeo2 = mapGeoCountryToSupported(rawGeo2);
+  if (detectedGeo2 && detectedGeo2 !== targetCountry) {
+    requestHeaders.set("x-obrive-suggested-country", detectedGeo2);
+  }
 
-  // Set preferred_country cookie on initial redirect
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
+
+  // Set preferred_country cookie on initial load if not present
   if (!cookieCountry) {
     response.cookies.set("preferred_country", targetCountry, {
       path: "/",

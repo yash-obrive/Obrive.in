@@ -1,64 +1,137 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import FONTS from "@/assets/fonts";
+import { ICONS, ICONS_META } from "@/assets/images";
 import type { WorkflowStep } from "@/types/solutions";
 
 interface SolutionProcessStepsProps {
   steps: WorkflowStep[];
 }
 
-const SolutionProcessSteps = ({ steps }: SolutionProcessStepsProps) => {
-  if (!steps || steps.length < 4) return null;
+export default function SolutionProcessSteps({ steps }: SolutionProcessStepsProps) {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const timeoutRef = useRef<number | null>(null);
+  const [shouldAnimateGlow, setShouldAnimateGlow] = useState(false);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+
+    if (!node) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShouldAnimateGlow(true);
+
+            if (timeoutRef.current) {
+              window.clearTimeout(timeoutRef.current);
+            }
+
+            timeoutRef.current = window.setTimeout(() => {
+              setShouldAnimateGlow(false);
+              timeoutRef.current = null;
+            }, 10000);
+          }
+        });
+      },
+      {
+        threshold: 0.9,
+      },
+    );
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+      if (timeoutRef.current) {
+        window.clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
+  }, []);
+
+  const glowClassByIndex = (idx: number) => {
+    switch (idx % 4) {
+      case 0:
+        return "top-18";
+      case 1:
+        return "top-1/2 -translate-y-1/2";
+      case 2:
+        return "top-28 -translate-y-1/2";
+      default:
+        return "top-1/2 -translate-y-1/2";
+    }
+  };
+
+  if (!steps || steps.length === 0) return null;
 
   return (
-    <div id="our-process" className="bg-primary w-full py-16 lg:py-20">
-      {/* We use standard container to give left/right padding so the first line doesn't hug the screen edge */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, index) => {
-            const isEven = index % 2 === 0;
-
-            // Responsive staggering for vertical whitespace - compact offsets
-            const desktopPt = isEven ? "lg:pt-12 lg:mt-0" : "lg:pt-40 lg:mt-0";
-            const tabletPt = isEven ? "sm:pt-10 sm:mt-0" : "sm:pt-28 sm:mt-0";
-            const mobilePt = "pt-10 mt-0";
-
-            const desktopTop = isEven ? "lg:top-12" : "lg:top-40";
-            const tabletTop = isEven ? "sm:top-10" : "sm:top-28";
-            const mobileTop = "top-10";
-
-            return (
-              <div key={index} className="relative border-l border-[#F4F9FD]/15 flex flex-col h-full">
-                <div className={`absolute z-10 left-[-1px] -translate-x-1/2 -translate-y-1/2 ${mobileTop} ${tabletTop} ${desktopTop}`}>
-                  <div className="relative">
-                    {/* Diffuse outer glow (large) */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160px] h-[160px] pointer-events-none"
-                         style={{ background: 'radial-gradient(circle, rgba(213,243,235,0.2) 0%, rgba(213,243,235,0.08) 35%, rgba(213,243,235,0) 70%)' }} />
-                    {/* Soft translucent halo (medium) */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] pointer-events-none"
-                         style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.15) 40%, rgba(255,255,255,0) 70%)' }} />
-                    {/* Very small bright white center */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[4px] h-[4px] bg-white rounded-full shadow-[0_0_6px_2px_rgba(255,255,255,0.9)] pointer-events-none" />
-                  </div>
-                </div>
-                {/* Content starts at dot level */}
-                <div
-                  className={`pl-10 pr-6 md:pl-12 md:pr-8 lg:pl-16 lg:pr-10 pb-12 lg:pb-16 flex-1 ${mobilePt} ${tabletPt} ${desktopPt}`}
-                >
-                  <h3
-                    className={`${FONTS.microgrammaBold.className} text-[#F4F9FD] text-[15px] leading-snug mb-5`}
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="text-[13px] leading-6 text-[#F4F9FD]/60">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+    <div
+      id="our-process"
+      ref={sectionRef}
+      className="bg-primary w-full pl-18 max-sm:p-0 max-md:pl-4"
+    >
+      <div className="grid grid-cols-1 relative sm:grid-cols-2 lg:grid-cols-4 h-auto sm:h-[569px] max-md:py-8">
+        {steps.map((item, idx) => {
+          const bordered = idx % 2 === 0;
+          return (
+            <div
+              key={`${item.title}-${idx}`}
+              className={`relative p-6 max-sm:border-b border-accent/60 sm:p-10 lg:p-14 ${
+                bordered ? "sm:border-1 border-accent/60" : ""
+              }`}
+            >
+              <motion.div
+                className={`hidden lg:block absolute left-0 -translate-x-1/2 ${glowClassByIndex(
+                  idx,
+                )} z-10 pointer-events-none`}
+                animate={
+                  shouldAnimateGlow
+                    ? { y: [0, -16, 50, 0], opacity: [0.9, 1, 0.9, 1] }
+                    : { y: 0, opacity: 1 }
+                }
+                transition={{
+                  duration: 6,
+                  ease: "easeInOut",
+                  times: [0, 0.3, 0.7, 1],
+                  delay: idx * 0.3,
+                }}
+              >
+                <Image
+                  src={ICONS.GLOW_BALL}
+                  alt={ICONS_META.GLOW_BALL.alt}
+                  width={ICONS_META.GLOW_BALL.width}
+                  height={ICONS_META.GLOW_BALL.height}
+                />
+              </motion.div>
+              <h3
+                className={`${
+                  FONTS.microgrammaBold.className
+                } text-md text-accent mb-4 z-10 ${
+                  idx === 0
+                    ? "mt-10"
+                    : idx === 1
+                      ? "mt-70"
+                      : idx === 2
+                        ? "mt-8"
+                        : "mt-50"
+                } max-md:mt-6`}
+              >
+                {item.title}
+              </h3>
+              <p className="text-accent/80 text-xs leading-relaxed z-10">
+                {item.description}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
-};
-
-export default SolutionProcessSteps;
+}

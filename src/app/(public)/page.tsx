@@ -5,7 +5,6 @@ import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
 import BlogCard from "@/components/pages/home/card/BlogCard";
-import GoodByeCard from "@/components/pages/home/card/GoodByeCard";
 import UsecaseCard from "@/components/pages/home/card/UsecaseCard";
 import { HomepageRiveAnimation } from "@/components/pages/home/HomepageRiveAnimation";
 import ObriveVideo from "@/components/pages/home/Videos/ObriveVideo";
@@ -148,7 +147,7 @@ export default function Home() {
                 <h1
                   className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl md:text-5xl lg:text-6xl text-secondary`}
                 >
-                  AR, VR, MR & Spatial Computing Solutions for Enterprise
+                  Owning the Future
                 </h1>
               </FadeInOnLoad>
               <FadeInOnLoad delay={0.3}>
@@ -172,11 +171,11 @@ export default function Home() {
                   asChild
                   className="text-xs uppercase"
                   size="lg"
-                  href="/coming-soon"
-                  aria-label="talk to ella our ai assistant"
+                  href="/kr/faqs"
+                  aria-label="explore faqs"
                   iconSize={16}
                 >
-                  Talk to Ella
+                  Explore FAQs
                 </AnimatedButton>
                 <SmoothScrollLink href="/about" offset={80}>
                   <Button
@@ -187,15 +186,6 @@ export default function Home() {
                     Learn More
                   </Button>
                 </SmoothScrollLink>
-                <Link href="/faqs">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="text-primary uppercase text-xs"
-                  >
-                    FAQs
-                  </Button>
-                </Link>
               </div>
             </FadeInOnLoad>
           </FullWidthSection>
@@ -290,10 +280,7 @@ export default function Home() {
           {/* effortless control */}
           <EffortlessControl />
 
-          {/* goodbye card */}
-          <FadeInOnView>
-            <GoodByeCard />
-          </FadeInOnView>
+
 
           {/* video vard obrive */}
           <VideoCardObrive />

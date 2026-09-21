@@ -22,51 +22,26 @@ export async function generateMetadata({
   const { slug } = await params;
 
   if (slug === "obpark") {
-  return {
-    metadataBase: new URL("https://obrive.com"),
+    return {
+      metadataBase: new URL("https://obrive.com"),
 
-    title:
-      "Obpark – AR Parking Navigation & Smart Parking Solution | Obrive",
-
-    description:
-      "Obpark by Obrive is an AR-powered smart parking navigation system that helps drivers find, navigate, and reserve parking spaces with augmented reality guidance. Ideal for malls, commercial complexes and city parking in Bangalore & beyond.",
-
-    keywords: [
-      "Obpark AR parking solution",
-      "smart parking navigation Bangalore",
-      "augmented reality parking app India",
-      "AR wayfinding parking solution",
-      "Obpark smart parking software",
-      "Obrive Obpark product"
-    ],
-
-    alternates: {
-      canonical: "https://obrive.com/products/obpark",
-    },
-
-    robots: {
-      index: true,
-      follow: true,
-    },
-
-    openGraph: {
-      type: "website",
-      url: "https://obrive.com/products/obpark",
       title:
-        "Obpark – AR Parking Navigation & Smart Parking Solution | Obrive",
+        "Obpark – AR Parking Navigation & Smart Parking Solution | Obrive Bangalore",
+
       description:
-        "AR-powered smart parking navigation system helping drivers find and reserve parking spaces with real-time augmented reality guidance.",
-      siteName: "Obrive",
-      locale: "en_IN",
-      images: [
-        {
-          url: "https://obrive.com/_next/static/media/obpark-hero.webp",
-          alt: "Obpark AR Smart Parking Navigation System",
-        },
+        "Obpark by Obrive is an AR-powered smart parking navigation system that helps drivers find, navigate, and reserve parking spaces with augmented reality guidance. Ideal for malls, commercial complexes and city parking in Bangalore & beyond.",
+
+      keywords: [
+        "Obpark AR parking solution",
+        "smart parking navigation Bangalore",
+        "augmented reality parking app India",
+        "AR wayfinding parking solution",
+        "Obpark smart parking software",
+        "Obrive Obpark product",
       ],
 
       alternates: {
-        canonical: "https://www.obrive.in/products/obpark",
+        canonical: "https://obrive.com/products/obpark",
       },
 
       robots: {
@@ -76,7 +51,7 @@ export async function generateMetadata({
 
       openGraph: {
         type: "website",
-        url: "https://www.obrive.in/products/obpark",
+        url: "https://obrive.com/products/obpark",
         title:
           "Obpark – AR Parking Navigation & Smart Parking Solution | Obrive Bangalore",
         description:
@@ -85,7 +60,7 @@ export async function generateMetadata({
         locale: "en_IN",
         images: [
           {
-            url: "https://www.obrive.in/_next/static/media/obpark-hero.webp",
+            url: "https://obrive.com/_next/static/media/obpark-hero.webp",
             alt: "Obpark AR Smart Parking Navigation System",
           },
         ],
@@ -109,52 +84,26 @@ export async function generateMetadata({
   }
 
   if (slug === "obnest") {
-  return {
-    metadataBase: new URL("https://obrive.com"),
+    return {
+      metadataBase: new URL("https://obrive.com"),
 
-    title:
-      "Obnest – 3D Property Visualization & Immersive Walkthrough | Obrive",
-
-    description:
-      "Obnest by Obrive is a 3D property visualization and immersive walkthrough solution that enables interactive viewing of real estate, architectural designs, and building layouts. Enhance engagement with photoreal 3D experiences.",
-
-    keywords: [
-      "Obnest 3D property visualization",
-      "3D architectural walkthrough solution",
-      "real estate 3D visualization Bangalore",
-      "immersive 3D walkthrough India",
-      "Obrive Obnest product",
-      "spatial 3D design services"
-    ],
-
-    alternates: {
-      canonical: "https://obrive.com/products/obnest",
-    },
-
-    robots: {
-      index: true,
-      follow: true,
-    },
-
-    openGraph: {
-      type: "website",
-      url: "https://obrive.com/products/obnest",
       title:
         "Obnest – 3D Property Visualization & Immersive Walkthrough | Obrive Bangalore",
 
       description:
-        "Interactive 3D property visualization and immersive walkthrough solution for real estate and architectural projects.",
-      siteName: "Obrive",
-      locale: "en_IN",
-      images: [
-        {
-          url: "https://obrive.com/_next/static/media/obnest-hero.webp",
-          alt: "Obnest 3D Property Visualization & Walkthrough",
-        },
+        "Obnest by Obrive is a 3D property visualization and immersive walkthrough solution that enables interactive viewing of real estate, architectural designs, and building layouts. Enhance engagement with photoreal 3D experiences.",
+
+      keywords: [
+        "Obnest 3D property visualization",
+        "3D architectural walkthrough solution",
+        "real estate 3D visualization Bangalore",
+        "immersive 3D walkthrough India",
+        "Obrive Obnest product",
+        "spatial 3D design services",
       ],
 
       alternates: {
-        canonical: "https://www.obrive.in/products/obnest",
+        canonical: "https://obrive.com/products/obnest",
       },
 
       robots: {
@@ -164,7 +113,7 @@ export async function generateMetadata({
 
       openGraph: {
         type: "website",
-        url: "https://www.obrive.in/products/obnest",
+        url: "https://obrive.com/products/obnest",
         title:
           "Obnest – 3D Property Visualization & Immersive Walkthrough | Obrive Bangalore",
         description:
@@ -173,7 +122,7 @@ export async function generateMetadata({
         locale: "en_IN",
         images: [
           {
-            url: "https://www.obrive.in/_next/static/media/obnest-hero.webp",
+            url: "https://obrive.com/_next/static/media/obnest-hero.webp",
             alt: "Obnest 3D Property Visualization & Walkthrough",
           },
         ],
@@ -197,115 +146,25 @@ export async function generateMetadata({
   }
 
   if (slug === "obnavi") {
-  return {
-    metadataBase: new URL("https://obrive.com"),
+    return {
+      metadataBase: new URL("https://obrive.com"),
 
-    title:
-      "Obnavi – AR Spatial Navigation & Immersive Wayfinding | Obrive",
-
-    description:
-      "Obnavi by Obrive is an Augmented Reality (AR) spatial navigation and immersive wayfinding solution guiding users through complex environments using AR overlays and 3D spatial cues.",
-
-    keywords: [
-      "Obnavi AR navigation",
-      "AR wayfinding solution",
-      "spatial navigation app",
-      "AR indoor navigation India",
-      "spatial computing navigation",
-      "Obrive Obnavi"
-    ],
-
-    alternates: {
-      canonical: "https://obrive.com/products/obnavi",
-    },
-
-    robots: {
-      index: true,
-      follow: true,
-    },
-
-    openGraph: {
-      type: "website",
-      url: "https://obrive.com/products/obnavi",
-      title:
-        "Obnavi – AR Spatial Navigation & Immersive Wayfinding",
-      description:
-        "Immersive AR navigation and spatial wayfinding solution for malls, campuses, airports and smart environments.",
-      siteName: "Obrive",
-      locale: "en_IN",
-      images: [
-        {
-          url: "https://obrive.com/images/obnavi-hero.webp",
-          width: 1200,
-          height: 630,
-          alt: "Obnavi AR Spatial Navigation Solution",
-        },
-      ],
-
-    twitter: {
-      card: "summary_large_image",
-      title: "Obnavi – AR Spatial Navigation Solution",
-      description:
-        "Immersive AR wayfinding and spatial navigation system.",
-      images: ["https://obrive.com/images/obnavi-hero.webp"],
-    },
-
-    other: {
-      "geo.region": "IN-KA",
-      "geo.placename": "Bangalore, Karnataka, India",
-      "ICBM": "12.9716, 77.5946",
-    },
-  } satisfies Metadata;
-}
-
-  if (slug === "obmove") {
-  return {
-    metadataBase: new URL("https://obrive.com"),
-
-    title:
-      "Obmove – AR/VR Car Showroom & Immersive 3D Vehicle Experience | Obrive",
-
-    description:
-      "Obmove by Obrive is an immersive AR/VR car showroom and interactive 3D vehicle experience platform. Showcase vehicles with 360° views, AR features, configuration tools and next-gen digital engagement.",
-
-    keywords: [
-      "Obmove AR car showroom",
-      "immersive 3D vehicle experience",
-      "VR car showcase",
-      "automotive AR/VR solution",
-      "3D car configurator",
-      "Obrive Obmove product",
-      "interactive vehicle visualization"
-    ],
-
-    alternates: {
-      canonical: "https://obrive.com/products/obmove",
-    },
-
-    robots: {
-      index: true,
-      follow: true,
-    },
-
-    openGraph: {
-      type: "website",
-      url: "https://obrive.com/products/obmove",
-      title:
-        "Obmove – AR/VR Car Showroom & Immersive 3D Vehicle Experience | Obrive",
+      title: "Obnavi – AR Spatial Navigation & Immersive Wayfinding | Obrive",
 
       description:
-        "Immersive AR/VR car showroom platform with interactive 3D vehicle configuration and 360° digital experiences.",
-      siteName: "Obrive",
-      locale: "en_IN",
-      images: [
-        {
-          url: "https://obrive.com/_next/static/media/obmove-hero.webp",
-          alt: "Obmove AR/VR Car Showroom Experience",
-        },
+        "Obnavi by Obrive is an Augmented Reality (AR) spatial navigation and immersive wayfinding solution guiding users through complex environments using AR overlays and 3D spatial cues.",
+
+      keywords: [
+        "Obnavi AR navigation",
+        "AR wayfinding solution",
+        "spatial navigation app",
+        "AR indoor navigation India",
+        "spatial computing navigation",
+        "Obrive Obnavi",
       ],
 
       alternates: {
-        canonical: "https://www.obrive.in/products/obmove",
+        canonical: "https://obrive.com/products/obnavi",
       },
 
       robots: {
@@ -315,7 +174,69 @@ export async function generateMetadata({
 
       openGraph: {
         type: "website",
-        url: "https://www.obrive.in/products/obmove",
+        url: "https://obrive.com/products/obnavi",
+        title: "Obnavi – AR Spatial Navigation & Immersive Wayfinding",
+        description:
+          "Immersive AR navigation and spatial wayfinding solution for malls, campuses, airports and smart environments.",
+        siteName: "Obrive",
+        locale: "en_IN",
+        images: [
+          {
+            url: "https://obrive.com/images/obnavi-hero.webp",
+            width: 1200,
+            height: 630,
+            alt: "Obnavi AR Spatial Navigation Solution",
+          },
+        ],
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: "Obnavi – AR Spatial Navigation Solution",
+        description: "Immersive AR wayfinding and spatial navigation system.",
+        images: ["https://obrive.com/images/obnavi-hero.webp"],
+      },
+
+      other: {
+        "geo.region": "IN-KA",
+        "geo.placename": "Bangalore, Karnataka, India",
+        ICBM: "12.9716, 77.5946",
+      },
+    } satisfies Metadata;
+  }
+
+  if (slug === "obmove") {
+    return {
+      metadataBase: new URL("https://obrive.com"),
+
+      title:
+        "Obmove – AR/VR Car Showroom & Immersive 3D Vehicle Experience | Obrive",
+
+      description:
+        "Obmove by Obrive is an immersive AR/VR car showroom and interactive 3D vehicle experience platform. Showcase vehicles with 360° views, AR features, configuration tools and next-gen digital engagement.",
+
+      keywords: [
+        "Obmove AR car showroom",
+        "immersive 3D vehicle experience",
+        "VR car showcase",
+        "automotive AR/VR solution",
+        "3D car configurator",
+        "Obrive Obmove product",
+        "interactive vehicle visualization",
+      ],
+
+      alternates: {
+        canonical: "https://obrive.com/products/obmove",
+      },
+
+      robots: {
+        index: true,
+        follow: true,
+      },
+
+      openGraph: {
+        type: "website",
+        url: "https://obrive.com/products/obmove",
         title:
           "Obmove – AR/VR Car Showroom & Immersive 3D Vehicle Experience | Obrive",
         description:
@@ -324,7 +245,7 @@ export async function generateMetadata({
         locale: "en_IN",
         images: [
           {
-            url: "https://www.obrive.in/_next/static/media/obmove-hero.webp",
+            url: "https://obrive.com/_next/static/media/obmove-hero.webp",
             alt: "Obmove AR/VR Car Showroom Experience",
           },
         ],

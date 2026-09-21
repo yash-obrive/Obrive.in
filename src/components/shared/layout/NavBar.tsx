@@ -19,12 +19,14 @@ import {
   NavigationMenu,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { MOBILE_NAV_STRUCTURE } from "@/constants/navigation";
+import AnimatedButton from "../buttons/AnimatedButton";
+import PrimaryLogo from "../logo/PrimaryLogo";
+import { CaseStudiesDropdown } from "./dropdowns/CaseStudiesDropdown";
+import { CompanyDropdown } from "./dropdowns/CompanyDropdown";
+import { ProductsDropdown } from "./dropdowns/ProductsDropdown";
+import { ResourcesDropdown } from "./dropdowns/ResourcesDropdown";
+import { SolutionsDropdown } from "./dropdowns/SolutionsDropdown";
 import { useCountry } from "@/context/CountryContext";
 
 // Breakpoint constants

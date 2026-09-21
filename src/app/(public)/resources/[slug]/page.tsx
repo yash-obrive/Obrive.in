@@ -6,6 +6,10 @@ import { CASE_STUDIES_IMAGES } from "@/assets/images";
 import { createResourceMDXComponents } from "@/components/pages/resources/ResourceMDXComponents";
 import ResourceTemplate from "@/components/pages/resources/ResourceTemplate";
 import { getAllCaseStudySlugs, getCaseStudyBySlug, sharedMdxOptions } from "@/lib/mdx";
+import { getAllBlogs, getBlogBySlug } from "@/lib/blogs";
+import BlogDetail from "@/components/pages/blogs/BlogDetail";
+import { getCaseStudyBySlug as getJsonCaseStudyBySlug, getAllCaseStudySlugs as getAllJsonCaseStudySlugs } from "@/lib/case-studies";
+import CaseStudyDetail from "@/components/pages/case-studies/CaseStudyDetail";
 
 interface ResourcePageProps {
   params: Promise<{ slug: string }>;
@@ -18,6 +22,41 @@ export async function generateMetadata({
   const resource = await getCaseStudyBySlug(slug);
 
   if (!resource) {
+    const blog = getBlogBySlug(slug);
+    if (blog) {
+      return {
+        title: `${blog.title} | Obrive`,
+        description: blog.sections[0]?.content[0] || "Read more about this topic.",
+        metadataBase: new URL("https://obrive.com"),
+        alternates: {
+          canonical: `https://obrive.com/resources/${slug}`,
+        },
+      };
+    }
+    const jsonCaseStudy = getJsonCaseStudyBySlug(slug);
+    if (jsonCaseStudy) {
+      const title = `${jsonCaseStudy.title} | Obrive Case Study`;
+      const description = jsonCaseStudy.outcome_snapshot || jsonCaseStudy.overview.slice(0, 155) + "...";
+      return {
+        title,
+        description,
+        alternates: {
+          canonical: `https://obrive.com/resources/${jsonCaseStudy.slug}`,
+        },
+        openGraph: {
+          title,
+          description,
+          type: "article",
+          url: `https://obrive.com/resources/${jsonCaseStudy.slug}`,
+          images: [
+            {
+              url: `https://obrive.com/images/case-studies/${jsonCaseStudy.image}`,
+              alt: jsonCaseStudy.title,
+            },
+          ],
+        },
+      };
+    }
     return {
       title: "Resource Not Found | Obrive",
       description:
@@ -100,8 +139,11 @@ export async function generateMetadata({
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const slugs = await getAllCaseStudySlugs();
-  return slugs.map((slug) => ({
+  const caseStudySlugs = await getAllCaseStudySlugs();
+  const blogSlugs = getAllBlogs().map((b) => b.slug);
+  const jsonCaseStudySlugs = getAllJsonCaseStudySlugs();
+  const allSlugs = [...caseStudySlugs, ...blogSlugs, ...jsonCaseStudySlugs];
+  return allSlugs.map((slug) => ({
     slug,
   }));
 }
@@ -111,6 +153,44 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
   const resource = await getCaseStudyBySlug(slug);
 
   if (!resource) {
+    const blog = getBlogBySlug(slug);
+    if (blog) {
+      return <BlogDetail blog={blog} />;
+    }
+    const jsonCaseStudy = getJsonCaseStudyBySlug(slug);
+    if (jsonCaseStudy) {
+      const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: jsonCaseStudy.title,
+        description: jsonCaseStudy.outcome_snapshot || jsonCaseStudy.overview,
+        image: `https://obrive.com/images/case-studies/${jsonCaseStudy.image}`,
+        author: {
+          "@type": "Organization",
+          name: "Obrive",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Obrive",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://obrive.com/images/logo.png",
+          },
+        },
+      };
+    
+      return (
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(articleSchema),
+            }}
+          />
+          <CaseStudyDetail caseStudy={jsonCaseStudy} />
+        </>
+      );
+    }
     notFound();
   }
 

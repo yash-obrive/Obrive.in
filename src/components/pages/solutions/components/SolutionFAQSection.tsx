@@ -41,30 +41,6 @@ export default function SolutionFAQSection({
       className="min-h-screen"
     >
       <div id="faqs" className="pt-20 sm:pt-28 lg:pt-32 pb-16 sm:pb-24 lg:pb-30">
-        {/* Breadcrumb / Back to Service Link */}
-        {serviceSlug && (
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-13 mb-8">
-            <Link
-              href={`/solutions/${serviceSlug}`}
-              className="inline-flex items-center gap-2 text-sm text-zinc-600 hover:text-primary transition-colors font-medium group"
-            >
-              <svg
-                className="w-4 h-4 transition-transform group-hover:-translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-              <span>Back to {serviceTitle || "Service Overview"}</span>
-            </Link>
-          </div>
-        )}
 
         {/* Header */}
         <div className="flex flex-col items-center justify-center text-center px-4 sm:px-8 lg:px-13 mb-8 sm:mb-16 lg:mb-20">

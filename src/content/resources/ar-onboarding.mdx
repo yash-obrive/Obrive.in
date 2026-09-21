@@ -73,33 +73,15 @@ BuildSafe struggled with a disjointed, unengaging onboarding experience:
 </ObrivesApproachTable>
 
 <TheImpactTable
-  title="Quantified Impact">
-  <ImpactTableMetric
-    metric={"Onboarding Time"}
-    beforeObrive={"Multi-day sessions"}
-    afterObrive={"Completed in one immersive session"}
-  />
-  <ImpactTableMetric
-    metric={"Recall & Retention"}
-    beforeObrive={"~60%"}
-    afterObrive={"85%+ recall rate"}
-  />
-  <ImpactTableMetric
-    metric={"Trainer Support Hours"}
-    beforeObrive={"High (live facilitation)"}
-    afterObrive={"Minimal thanks to automation"}
-  />
-  <ImpactTableMetric
-    metric={"Onboarding Cost & Scalability"}
-    beforeObrive={"Increasing"}
-    afterObrive={"Efficient & scalable"}
-  />
-  <ImpactTableMetric
-    metric={"Global Rollout Timeline"}
-    beforeObrive={"Extended"}
-    afterObrive={"Scaled globally in under 2 months"}
-  />
-</TheImpactTable>
+  title="Quantified Impact"
+  metrics={[
+    { metric: "Onboarding Time", beforeObrive: "Multi-day sessions", afterObrive: "Completed in one immersive session" },
+    { metric: "Recall & Retention", beforeObrive: "~60%", afterObrive: "85%+ recall rate" },
+    { metric: "Trainer Support Hours", beforeObrive: "High (live facilitation)", afterObrive: "Minimal thanks to automation" },
+    { metric: "Onboarding Cost & Scalability", beforeObrive: "Increasing", afterObrive: "Efficient & scalable" },
+    { metric: "Global Rollout Timeline", beforeObrive: "Extended", afterObrive: "Scaled globally in under 2 months" }
+  ]}
+/>
 
 <WhyItWorkedSection>
 <WhyItWorkedItem title="Immersive Learning">Learners aren’t just watching—they’re engaged in context-rich simulations, improving memory and performance.</WhyItWorkedItem>
