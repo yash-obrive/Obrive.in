@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import Script from "next/script";
 
 interface SupportPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export const dynamicParams = false;
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: SupportPageProps): Promise<Metadata> {
-  const { slug } =  params;
+  const { slug } = await params;
   const supportDoc = await getCompanyInfoBySlug(slug, "support");
 
   if (!supportDoc) {

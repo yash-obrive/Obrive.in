@@ -30,7 +30,7 @@ export async function generateMetadata({
 
   if (slug === "augmented-reality-development") {
     return {
-      metadataBase: new URL("https://www.obrive.in"),
+      metadataBase: new URL("https://obrive.com"),
 
       title:
         "Augmented Reality Development FAQs | AR Services & Solutions | Obrive",
@@ -57,7 +57,7 @@ export async function generateMetadata({
       ],
 
       alternates: {
-        canonical: "https://www.obrive.in/solutions/augmented-reality-development",
+        canonical: "https://obrive.com/solutions/augmented-reality-development",
       },
 
       robots: {
@@ -67,7 +67,7 @@ export async function generateMetadata({
 
       openGraph: {
         type: "website",
-        url: "https://www.obrive.in/solutions/augmented-reality-development",
+        url: "https://obrive.com/solutions/augmented-reality-development",
         title:
           "Augmented Reality Development FAQs | AR Services & Solutions | Obrive",
         description:
@@ -94,7 +94,7 @@ export async function generateMetadata({
 
   if (slug === "virtual-reality-development") {
     return {
-      metadataBase: new URL("https://www.obrive.in"),
+      metadataBase: new URL("https://obrive.com"),
 
       title:
         "Virtual Reality Development FAQs | VR Services & Solutions | Obrive",
@@ -121,7 +121,7 @@ export async function generateMetadata({
       ],
 
       alternates: {
-        canonical: "https://www.obrive.in/solutions/virtual-reality-development",
+        canonical: "https://obrive.com/solutions/virtual-reality-development",
       },
 
       robots: {
@@ -131,7 +131,7 @@ export async function generateMetadata({
 
       openGraph: {
         type: "website",
-        url: "https://www.obrive.in/solutions/virtual-reality-development",
+        url: "https://obrive.com/solutions/virtual-reality-development",
         title:
           "Virtual Reality Development FAQs | VR Services & Solutions | Obrive",
         description:
@@ -158,7 +158,7 @@ export async function generateMetadata({
 
   if (slug === "3d-design-development") {
     return {
-      metadataBase: new URL("https://www.obrive.in"),
+      metadataBase: new URL("https://obrive.com"),
 
       title:
         "3D Design & Development FAQs | 3D Services & Solutions | Obrive",
@@ -193,7 +193,7 @@ export async function generateMetadata({
       ],
 
       alternates: {
-        canonical: "https://www.obrive.in/solutions/3d-design-development",
+        canonical: "https://obrive.com/solutions/3d-design-development",
       },
 
       robots: {
@@ -203,7 +203,7 @@ export async function generateMetadata({
 
       openGraph: {
         type: "website",
-        url: "https://www.obrive.in/solutions/3d-design-development",
+        url: "https://obrive.com/solutions/3d-design-development",
         title:
           "3D Design & Development FAQs | 3D Services & Solutions | Obrive",
         description:
@@ -230,7 +230,7 @@ export async function generateMetadata({
 
   if (slug === "spatial-computing-app-development") {
     return {
-      metadataBase: new URL("https://www.obrive.in"),
+      metadataBase: new URL("https://obrive.com"),
 
       title:
         "Spatial Computing App Development FAQs | Spatial Services & Solutions | Obrive",
@@ -259,7 +259,7 @@ export async function generateMetadata({
 
       alternates: {
         canonical:
-          "https://www.obrive.in/solutions/spatial-computing-app-development",
+          "https://obrive.com/solutions/spatial-computing-app-development",
       },
 
       robots: {
@@ -269,7 +269,7 @@ export async function generateMetadata({
 
       openGraph: {
         type: "website",
-        url: "https://www.obrive.in/solutions/spatial-computing-app-development",
+        url: "https://obrive.com/solutions/spatial-computing-app-development",
         title:
           "Spatial Computing App Development FAQs | Spatial Services & Solutions | Obrive",
         description:
@@ -319,8 +319,8 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
         {JSON.stringify({
           "@context": "https://schema.org/",
           "@type": "WebPage",
-          "@id": `https://www.obrive.in/solutions/${slug}`,
-          url: `https://www.obrive.in/solutions/${slug}`,
+          "@id": `https://obrive.com/solutions/${slug}`,
+          url: `https://obrive.com/solutions/${slug}`,
           name: (() => {
             switch (slug) {
               case "augmented-reality-development":
