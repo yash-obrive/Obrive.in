@@ -1,7 +1,6 @@
 // backend/src/modules/supervisor/supervisor.service.js
-const { prisma } = require("../../../db");
-const bcrypt = require('bcrypt');
-
+const { prisma } = require("../../../prisma");
+const bcrypt = require("bcrypt");
 
 class SupervisorService {
   async getAllEmployees(_supervisorId) {
@@ -166,83 +165,86 @@ class SupervisorService {
         throw new Error("Employee not found");
       }
 
-      await prisma.$transaction(async (tx) => {
-        await tx.events.updateMany({
-          where: { created_by: employeeId },
-          data: { created_by: null },
-        });
+      await prisma.$transaction(
+        async (tx) => {
+          await tx.events.updateMany({
+            where: { created_by: employeeId },
+            data: { created_by: null },
+          });
 
-        await tx.projects.updateMany({
-          where: { leader_id: employeeId },
-          data: { leader_id: null },
-        });
+          await tx.projects.updateMany({
+            where: { leader_id: employeeId },
+            data: { leader_id: null },
+          });
 
-        await tx.tasks.updateMany({
-          where: { assigned_to: employeeId },
-          data: { assigned_to: null, updated_at: new Date() },
-        });
+          await tx.tasks.updateMany({
+            where: { assigned_to: employeeId },
+            data: { assigned_to: null, updated_at: new Date() },
+          });
 
-        await tx.tasks.updateMany({
-          where: { created_by: employeeId },
-          data: { created_by: null, updated_at: new Date() },
-        });
+          await tx.tasks.updateMany({
+            where: { created_by: employeeId },
+            data: { created_by: null, updated_at: new Date() },
+          });
 
-        await tx.login_logs.deleteMany({
-          where: { userId: employeeId },
-        });
+          await tx.login_logs.deleteMany({
+            where: { userId: employeeId },
+          });
 
-        await tx.leave_requests.deleteMany({
-          where: { user_id: employeeId },
-        });
+          await tx.leave_requests.deleteMany({
+            where: { user_id: employeeId },
+          });
 
-        await tx.work_sessions.deleteMany({
-          where: { userId: employeeId },
-        });
+          await tx.work_sessions.deleteMany({
+            where: { userId: employeeId },
+          });
 
-        await tx.sticky_notes.deleteMany({
-          where: { user_id: employeeId },
-        });
+          await tx.sticky_notes.deleteMany({
+            where: { user_id: employeeId },
+          });
 
-        await tx.leaves.deleteMany({
-          where: { user_id: employeeId },
-        });
+          await tx.leaves.deleteMany({
+            where: { user_id: employeeId },
+          });
 
-        await tx.project_assignments.deleteMany({
-          where: { employee_id: employeeId },
-        });
+          await tx.project_assignments.deleteMany({
+            where: { employee_id: employeeId },
+          });
 
-        await tx.conversation_unread.deleteMany({
-          where: { user_id: employeeId },
-        });
+          await tx.conversation_unread.deleteMany({
+            where: { user_id: employeeId },
+          });
 
-        await tx.conversation_participants.deleteMany({
-          where: { user_id: employeeId },
-        });
+          await tx.conversation_participants.deleteMany({
+            where: { user_id: employeeId },
+          });
 
-        await tx.messages.updateMany({
-          where: { sender_id: employeeId },
-          data: { sender_id: null },
-        });
+          await tx.messages.updateMany({
+            where: { sender_id: employeeId },
+            data: { sender_id: null },
+          });
 
-        await tx.conversations.updateMany({
-          where: { created_by: employeeId },
-          data: { created_by: 1 }, // Fallback to a system/admin user
-        });
+          await tx.conversations.updateMany({
+            where: { created_by: employeeId },
+            data: { created_by: 1 }, // Fallback to a system/admin user
+          });
 
-        await tx.room_configs.updateMany({
-          where: { createdBy: employeeId },
-          data: { createdBy: null },
-        });
+          await tx.room_configs.updateMany({
+            where: { createdBy: employeeId },
+            data: { createdBy: null },
+          });
 
-        await tx.users.delete({
-          where: {
-            id: employeeId,
-          },
-        });
-      }, {
-        timeout: 30000, // 30 seconds timeout
-        maxWait: 5000,   // 5 seconds max wait for connection
-      });
+          await tx.users.delete({
+            where: {
+              id: employeeId,
+            },
+          });
+        },
+        {
+          timeout: 30000, // 30 seconds timeout
+          maxWait: 5000, // 5 seconds max wait for connection
+        },
+      );
 
       return { id: employeeId };
     } catch (error) {
@@ -338,14 +340,15 @@ class SupervisorService {
     }
   }
 
-
   async addUser({ email, password, role, name, userid }) {
     try {
       if (!role || !email || !password) {
         throw new Error("Role, email, and password are required");
       }
 
-      const existingUser = await prisma.users.findUnique({ where: { email: email } });
+      const existingUser = await prisma.users.findUnique({
+        where: { email: email },
+      });
 
       if (existingUser) {
         throw new Error("User already exists");
@@ -365,7 +368,7 @@ class SupervisorService {
           updated_at: new Date(),
         }, // this will store the new user in the database with the provided email, hashed password, role, and default status of online and is_active true. The created_at field will be set to the current date and time, while updated_at will be null since it's a new user.
         // select: {
-        //   id: true, 
+        //   id: true,
         //   email: true,
         //   role: true,
         //   status: true,
@@ -374,16 +377,9 @@ class SupervisorService {
       });
 
       return newUser;
-
-
     } catch (error) {
       throw new Error(`Failed to add user: ${error.message}`);
     }
-
   }
-
 }
 module.exports = new SupervisorService();
-
-
-

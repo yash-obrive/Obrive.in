@@ -8,6 +8,11 @@ const { LiveKitTokenBodySchema } = require("../livekit.validation");
 
 const router = express.Router();
 
-router.post("/livekit/token", auth, zodValidate({ part: "body", schema: LiveKitTokenBodySchema }), createLiveKitTokenController);
+router.post(
+  "/livekit/token",
+  auth,
+  zodValidate({ part: "body", schema: LiveKitTokenBodySchema }),
+  createLiveKitTokenController,
+);
 
 module.exports = router;

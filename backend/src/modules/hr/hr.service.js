@@ -1,9 +1,7 @@
 // backend/src/modules/hr/hr.service.js
-const { prisma } = require('../../../db');
+const { prisma } = require("../../../prisma");
 
-class HRService {
-
-  // Get HR dashboard statistics (FIXED - removed leave_requests)
+class HRService {  // Get HR dashboard statistics (FIXED - removed leave_requests)
   async getDashboardStats() {
     // Total employees
     const totalEmployees = await prisma.$queryRaw`
@@ -30,7 +28,7 @@ class HRService {
       totalEmployees: Number(totalEmployees[0].count),
       activeEmployees: Number(activeEmployees[0].count),
       newHiresThisMonth: Number(newHires[0].count),
-      totalDepartments: departments.length
+      totalDepartments: departments.length,
     };
   }
 
@@ -54,7 +52,7 @@ class HRService {
     `;
 
     if (!result[0]) {
-      throw new Error('Employee not found');
+      throw new Error("Employee not found");
     }
     return result[0];
   }
@@ -69,7 +67,7 @@ class HRService {
     `;
 
     if (!result[0]) {
-      throw new Error('HR profile not found');
+      throw new Error("HR profile not found");
     }
     return result[0];
   }
@@ -114,7 +112,7 @@ class HRService {
     await prisma.$executeRaw`
       DELETE FROM users WHERE id = ${employeeId} AND role = 'employee'
     `;
-    return { message: 'Employee deleted successfully' };
+    return { message: "Employee deleted successfully" };
   }
 
   // Search employees
@@ -133,8 +131,8 @@ class HRService {
     const user = await prisma.users.findUnique({
       where: { id: employeeId },
     });
-    if (!user || user.role !== 'employee') {
-      const err = new Error('Employee not found');
+    if (!user || user.role !== "employee") {
+      const err = new Error("Employee not found");
       err.status = 404;
       throw err;
     }
@@ -209,19 +207,25 @@ class HRService {
 
   // Get employee location history with flexible filters (preset, date, days, timezone)
   async getEmployeeLocationHistory(employeeId, options = {}) {
-    const opts = typeof options === 'number' || typeof options === 'string'
-      ? { days: options }
-      : (options || {});
+    const opts =
+      typeof options === "number" || typeof options === "string"
+        ? { days: options }
+        : options || {};
     const { filter, days, date, timezoneOffset = 0 } = opts;
 
     const safeId = parseInt(employeeId, 10);
-    const safeOffset = Math.min(Math.max(Number(timezoneOffset) || 0, -840), 840);
+    const safeOffset = Math.min(
+      Math.max(Number(timezoneOffset) || 0, -840),
+      840,
+    );
     const localTimeExpr = `("recordedAt" - (${safeOffset} || ' minutes')::INTERVAL)`;
     const localNowExpr = `(NOW() - (${safeOffset} || ' minutes')::INTERVAL)`;
 
     let dateCondition;
     if (date) {
-      const match = String(date).trim().match(/^\d{4}-\d{2}-\d{2}$/);
+      const match = String(date)
+        .trim()
+        .match(/^\d{4}-\d{2}-\d{2}$/);
       if (match) {
         const sanitizedDate = match[0];
         dateCondition = `${localTimeExpr}::date = '${sanitizedDate}'::date`;
@@ -229,20 +233,20 @@ class HRService {
     }
 
     if (!dateCondition) {
-      const activeFilter = String(filter || '').toLowerCase();
-      if (activeFilter === 'today' || days === 1 || days === '1') {
+      const activeFilter = String(filter || "").toLowerCase();
+      if (activeFilter === "today" || days === 1 || days === "1") {
         dateCondition = `${localTimeExpr}::date = ${localNowExpr}::date`;
-      } else if (activeFilter === 'yesterday') {
+      } else if (activeFilter === "yesterday") {
         dateCondition = `${localTimeExpr}::date = (${localNowExpr}::date - INTERVAL '1 day')::date`;
-      } else if (activeFilter === '3d' || days === 3 || days === '3') {
+      } else if (activeFilter === "3d" || days === 3 || days === "3") {
         dateCondition = `${localTimeExpr}::date >= (${localNowExpr}::date - INTERVAL '2 days')::date`;
-      } else if (activeFilter === '7d' || days === 7 || days === '7') {
+      } else if (activeFilter === "7d" || days === 7 || days === "7") {
         dateCondition = `${localTimeExpr}::date >= (${localNowExpr}::date - INTERVAL '6 days')::date`;
-      } else if (activeFilter === '14d' || days === 14 || days === '14') {
+      } else if (activeFilter === "14d" || days === 14 || days === "14") {
         dateCondition = `${localTimeExpr}::date >= (${localNowExpr}::date - INTERVAL '13 days')::date`;
-      } else if (activeFilter === '30d' || days === 30 || days === '30') {
+      } else if (activeFilter === "30d" || days === 30 || days === "30") {
         dateCondition = `${localTimeExpr}::date >= (${localNowExpr}::date - INTERVAL '29 days')::date`;
-      } else if (activeFilter === 'all') {
+      } else if (activeFilter === "all") {
         dateCondition = `${localTimeExpr}::date >= (${localNowExpr}::date - INTERVAL '60 days')::date`;
       } else {
         const numDays = Math.min(Math.max(Number(days) || 7, 1), 60);

@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-import Board from "@/components/pages/Employee-dasboard/board/Board";
+import type { ProjectItem } from "@/components/dashboard/ProjectCard";
+import Board from "@/components/dashboard/employee/board/Board";
 import { apiFetch } from "@/lib/api";
-import { ProjectItem } from "@/components/dashboard/ProjectCard";
-import { Task, TaskStatus } from "./MyProjectTasksSection";
+import type { Task, TaskStatus } from "./MyProjectTasksSection";
 
 const statusColumns = [
   { id: "pending", label: "Pending" },
@@ -81,8 +80,6 @@ export default function TaskDragDrop({ project }: Props) {
 
   return (
     <div className="flex h-full min-h-0 flex-col rounded-2xl bg-white p-4 shadow-sm sm:p-6">
-     
-
       <div className="w-full min-h-0 flex-1">
         <Board
           mode="tasks"

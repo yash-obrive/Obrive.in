@@ -1,19 +1,19 @@
-'use client'
+"use client";
 
-import { ChevronUp, ChevronDown, Clock } from 'lucide-react'
+import { ChevronDown, ChevronUp, Clock } from "lucide-react";
 
 interface EventItem {
-  id: string
-  title: string
-  time: string
-  priority: 'high' | 'medium' | 'low'
-  duration?: string
-  borderColor: string
+  id: string;
+  title: string;
+  time: string;
+  priority: "high" | "medium" | "low";
+  duration?: string;
+  borderColor: string;
 }
 
 interface NearestEventsProps {
-  events?: EventItem[]
-  setActiveSection: (key: string) => void
+  events?: EventItem[];
+  setActiveSection: (key: string) => void;
 }
 
 export default function NearestEvents({
@@ -21,11 +21,11 @@ export default function NearestEvents({
   setActiveSection,
 }: NearestEventsProps) {
   const getPriorityIcon = (priority: string) => {
-    if (priority === 'high') {
-      return <ChevronUp className="w-4 h-4 text-green-500" />
+    if (priority === "high") {
+      return <ChevronUp className="w-4 h-4 text-green-500" />;
     }
-    return <ChevronDown className="w-4 h-4 text-green-500" />
-  }
+    return <ChevronDown className="w-4 h-4 text-green-500" />;
+  };
 
   return (
     <div className="flex h-full w-full flex-col">
@@ -33,7 +33,7 @@ export default function NearestEvents({
         <h3 className="text-sm font-bold text-gray-900">Nearest Events</h3>
 
         <button
-          onClick={() => setActiveSection('events')}
+          onClick={() => setActiveSection("events")}
           className="flex items-center gap-1 text-xs font-semibold text-teal-600 transition hover:text-teal-700"
         >
           View all
@@ -60,7 +60,8 @@ export default function NearestEvents({
             className="cursor-pointer overflow-hidden rounded-lg border border-[#e8f0fb] bg-white shadow-sm transition hover:bg-gray-50"
             style={{
               borderLeftWidth: "4px",
-              borderLeftColor: event.borderColor === "bg-blue-500" ? "#3b82f6" : "#a855f7",
+              borderLeftColor:
+                event.borderColor === "bg-blue-500" ? "#3b82f6" : "#a855f7",
             }}
           >
             <div className="flex items-start gap-3 p-3">
@@ -74,7 +75,9 @@ export default function NearestEvents({
                     <p className="text-xs font-bold text-gray-900 line-clamp-2">
                       {event.title}
                     </p>
-                    <p className="mt-0.5 text-[10px] text-gray-500">{event.time}</p>
+                    <p className="mt-0.5 text-[10px] text-gray-500">
+                      {event.time}
+                    </p>
                   </div>
 
                   <div className="mt-0.5 flex-shrink-0">
@@ -94,5 +97,5 @@ export default function NearestEvents({
         ))}
       </div>
     </div>
-  )
+  );
 }

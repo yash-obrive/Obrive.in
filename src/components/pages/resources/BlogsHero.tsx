@@ -13,9 +13,10 @@ const BlogsHero = () => {
           </h1>
           <p className="text-sm sm:text-base text-center max-w-3xl px-4 font-medium">
             Stay ahead in the world of AR, VR, MR, and Spatial Computing with
-            Obrive’s knowledge hub. Explore insightful articles, industry updates,
-            and expert case studies covering retail, real estate, healthcare,
-            manufacturing, and enterprise spatial computing solutions.
+            Obrive’s knowledge hub. Explore insightful articles, industry
+            updates, and expert case studies covering retail, real estate,
+            healthcare, manufacturing, and enterprise spatial computing
+            solutions.
           </p>
         </div>
       </FullWidthSection>

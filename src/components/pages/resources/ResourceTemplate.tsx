@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "@/components/shared/LocalizedLink";
+import type { ReactNode } from "react";
 import FONTS from "@/assets/fonts";
 import {
   CASE_STUDIES_AVATAR,
@@ -8,12 +11,9 @@ import {
 } from "@/assets/images";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { Button, buttonVariants } from "@/components/ui/button";
-import Image from "next/image";
-import { ReactNode } from "react";
-import { CaseStudyMetadata } from "@/lib/mdx";
-import ResourceWorkflowSteps from "./ResourceWorkflowSteps";
-import Link from "next/link";
+import type { CaseStudyMetadata } from "@/lib/mdx";
 import BlogRecommendations from "./BlogRecommendations";
+import ResourceWorkflowSteps from "./ResourceWorkflowSteps";
 
 interface ResourceTemplateProps {
   metadata: CaseStudyMetadata;

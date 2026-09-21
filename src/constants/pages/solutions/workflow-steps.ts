@@ -1,5 +1,5 @@
+import type { StaticImageData } from "next/image";
 import { IMAGES, IMAGES_META } from "@/assets/images";
-import { StaticImageData } from "next/image";
 
 export const WORKFLOW_STEPS = [
   {
@@ -68,8 +68,8 @@ export type WORKFLOW_STEPS_TYPE = {
   step: string;
   title: string;
   description: string;
-  src: StaticImageData;
-  srcMeta: {
+  src: StaticImageData | string;
+  srcMeta?: {
     alt: string;
     width: number;
     height: number;

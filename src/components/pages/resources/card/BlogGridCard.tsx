@@ -1,7 +1,7 @@
-import FONTS from "@/assets/fonts";
-import { BlogCardContentType } from "@/constants/pages/resources/blog-card";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
+import FONTS from "@/assets/fonts";
+import type { BlogCardContentType } from "@/constants/pages/resources/blog-card";
 
 const BlogGridCard = ({
   src,

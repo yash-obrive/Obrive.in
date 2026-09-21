@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useState, useRef, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import { Check, Upload } from 'lucide-react';
-import Image from 'next/image';
-import CustomToast from '@/components/pages/resources/components/Toast';
-import { apiFetch } from '@/lib/api';
-import SkeletonLoading from '@/components/SkelitonLoading';
+import { Check, Upload } from "lucide-react";
+import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import CustomToast from "@/components/pages/resources/components/Toast";
+import SkeletonLoading from "@/components/SkelitonLoading";
+import { apiFetch } from "@/lib/api";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default function ProfilePage() {
   const params = useParams();
@@ -21,17 +21,17 @@ export default function ProfilePage() {
   const [saving, setSaving] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
+  const [toastMessage, setToastMessage] = useState("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    department: '',
-    jobTitle: '',
-    phoneNumber: '',
-    joinDate: '',
-    biography: '',
+    fullName: "",
+    email: "",
+    department: "",
+    jobTitle: "",
+    phoneNumber: "",
+    joinDate: "",
+    biography: "",
   });
 
   useEffect(() => {
@@ -49,22 +49,24 @@ export default function ProfilePage() {
             setIsUploaded(true);
           }
           setFormData({
-            fullName: profile.name || '',
-            email: profile.email || '',
-            jobTitle: profile.job_title || '',
-            department: profile.department || '',
-            phoneNumber: profile.phone_number || '',
-            joinDate: profile.join_date ? new Date(profile.join_date).toISOString().split('T')[0] : '',
-            biography: profile.biography || '',
+            fullName: profile.name || "",
+            email: profile.email || "",
+            jobTitle: profile.job_title || "",
+            department: profile.department || "",
+            phoneNumber: profile.phone_number || "",
+            joinDate: profile.join_date
+              ? new Date(profile.join_date).toISOString().split("T")[0]
+              : "",
+            biography: profile.biography || "",
           });
         } else {
-          setToastMessage(result?.message || 'Profile not found');
+          setToastMessage(result?.message || "Profile not found");
           setShowToast(true);
           setTimeout(() => setShowToast(false), 3000);
         }
       } catch (error) {
-        console.error('Failed to load profile:', error);
-        setToastMessage('Error loading profile');
+        console.error("Failed to load profile:", error);
+        setToastMessage("Error loading profile");
         setShowToast(true);
         setTimeout(() => setShowToast(false), 3000);
       } finally {
@@ -80,13 +82,16 @@ export default function ProfilePage() {
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
-    if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    if (!formData.department.trim()) newErrors.department = 'Department is required';
-    if (!formData.jobTitle.trim()) newErrors.jobTitle = 'Job title is required';
-    if (!formData.phoneNumber.trim()) newErrors.phoneNumber = 'Phone number is required';
-    if (!formData.joinDate.trim()) newErrors.joinDate = 'Join date is required';
-    if (!formData.biography.trim()) newErrors.biography = 'Biography is required';
+    if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.department.trim())
+      newErrors.department = "Department is required";
+    if (!formData.jobTitle.trim()) newErrors.jobTitle = "Job title is required";
+    if (!formData.phoneNumber.trim())
+      newErrors.phoneNumber = "Phone number is required";
+    if (!formData.joinDate.trim()) newErrors.joinDate = "Join date is required";
+    if (!formData.biography.trim())
+      newErrors.biography = "Biography is required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -109,12 +114,12 @@ export default function ProfilePage() {
             width = Math.round((width * maxDim) / height);
             height = maxDim;
           }
-          const canvas = document.createElement('canvas');
+          const canvas = document.createElement("canvas");
           canvas.width = width;
           canvas.height = height;
-          const ctx = canvas.getContext('2d');
+          const ctx = canvas.getContext("2d");
           ctx?.drawImage(img, 0, 0, width, height);
-          const compressed = canvas.toDataURL('image/jpeg', 0.85);
+          const compressed = canvas.toDataURL("image/jpeg", 0.85);
           setAvatar(compressed);
           setIsUploaded(true);
         };
@@ -129,7 +134,7 @@ export default function ProfilePage() {
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -140,7 +145,7 @@ export default function ProfilePage() {
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
-        [name]: '',
+        [name]: "",
       }));
     }
   };
@@ -155,7 +160,7 @@ export default function ProfilePage() {
     try {
       setSaving(true);
       const response = await apiFetch(`/profile/${userId}`, {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify({
           ...formData,
           avatar: avatar || undefined,
@@ -164,24 +169,27 @@ export default function ProfilePage() {
       const result = await response.json();
 
       if (response.ok && result?.success) {
-        if (typeof window !== 'undefined' && result.data) {
-          const stored = localStorage.getItem('user');
+        if (typeof window !== "undefined" && result.data) {
+          const stored = localStorage.getItem("user");
           const parsed = stored ? JSON.parse(stored) : {};
-          localStorage.setItem('user', JSON.stringify({ ...parsed, ...result.data }));
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ ...parsed, ...result.data }),
+          );
         }
-        setToastMessage('Profile saved successfully!');
+        setToastMessage("Profile saved successfully!");
         setShowToast(true);
         setTimeout(() => {
-          router.push('/dashboard/employee');
+          router.push("/dashboard/employee");
         }, 1500);
       } else {
-        setToastMessage(result?.message || 'Error saving profile');
+        setToastMessage(result?.message || "Error saving profile");
         setShowToast(true);
         setTimeout(() => setShowToast(false), 3000);
       }
     } catch (error) {
-      console.error('Save error:', error);
-      setToastMessage('Connection error');
+      console.error("Save error:", error);
+      setToastMessage("Connection error");
       setShowToast(true);
       setTimeout(() => setShowToast(false), 3000);
     } finally {
@@ -190,9 +198,7 @@ export default function ProfilePage() {
   };
 
   if (loading) {
-    return (
-     <SkeletonLoading/>
-    );
+    return <SkeletonLoading />;
   }
 
   return (
@@ -200,7 +206,9 @@ export default function ProfilePage() {
       <div className="mx-auto max-w-5xl p-8">
         <div className="mb-12">
           <h1 className="text-3xl font-bold text-slate-900">Profile</h1>
-          <p className="text-slate-600 mt-2">Please fill in all required fields to continue</p>
+          <p className="text-slate-600 mt-2">
+            Please fill in all required fields to continue
+          </p>
         </div>
 
         <div className="w-full grid grid-cols-1 gap-12 lg:grid-cols-3">
@@ -271,10 +279,12 @@ export default function ProfilePage() {
                   onChange={handleInputChange}
                   placeholder="Full Name"
                   className={`text-xs w-full rounded-lg bg-slate-100 px-4 py-3 text-slate-700 placeholder-slate-400 transition-colors focus:bg-slate-200 focus:outline-none ${
-                    errors.fullName ? 'border-2 border-red-500' : ''
+                    errors.fullName ? "border-2 border-red-500" : ""
                   }`}
                 />
-                {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>}
+                {errors.fullName && (
+                  <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>
+                )}
               </div>
 
               <div>
@@ -288,10 +298,12 @@ export default function ProfilePage() {
                   onChange={handleInputChange}
                   placeholder="email@example.com"
                   className={`text-xs w-full rounded-lg bg-slate-100 px-4 py-3 text-slate-700 placeholder-slate-400 transition-colors focus:bg-slate-200 focus:outline-none ${
-                    errors.email ? 'border-2 border-red-500' : ''
+                    errors.email ? "border-2 border-red-500" : ""
                   }`}
                 />
-                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                {errors.email && (
+                  <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                )}
               </div>
             </div>
           </div>
@@ -311,10 +323,14 @@ export default function ProfilePage() {
                       onChange={handleInputChange}
                       placeholder="Senior Strategy Lead"
                       className={`text-xs w-full rounded-lg bg-slate-100 px-4 py-3 text-slate-700 placeholder-slate-400 transition-colors focus:bg-slate-200 focus:outline-none ${
-                        errors.jobTitle ? 'border-2 border-red-500' : ''
+                        errors.jobTitle ? "border-2 border-red-500" : ""
                       }`}
                     />
-                    {errors.jobTitle && <p className="text-red-500 text-xs mt-1">{errors.jobTitle}</p>}
+                    {errors.jobTitle && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.jobTitle}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label className="block text-xs font-semibold uppercase text-slate-600 mb-3">
@@ -327,10 +343,14 @@ export default function ProfilePage() {
                       onChange={handleInputChange}
                       placeholder="Product Design"
                       className={`text-xs w-full rounded-lg bg-slate-100 px-4 py-3 text-slate-700 placeholder-slate-400 transition-colors focus:bg-slate-200 focus:outline-none ${
-                        errors.department ? 'border-2 border-red-500' : ''
+                        errors.department ? "border-2 border-red-500" : ""
                       }`}
                     />
-                    {errors.department && <p className="text-red-500 text-xs mt-1">{errors.department}</p>}
+                    {errors.department && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.department}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -346,10 +366,14 @@ export default function ProfilePage() {
                       onChange={handleInputChange}
                       placeholder="+91 (555) 000-0000"
                       className={`text-xs w-full rounded-lg bg-slate-100 px-4 py-3 text-slate-700 placeholder-slate-400 transition-colors focus:bg-slate-200 focus:outline-none ${
-                        errors.phoneNumber ? 'border-2 border-red-500' : ''
+                        errors.phoneNumber ? "border-2 border-red-500" : ""
                       }`}
                     />
-                    {errors.phoneNumber && <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>}
+                    {errors.phoneNumber && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.phoneNumber}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label className="block text-xs font-semibold uppercase text-slate-600 mb-3">
@@ -361,10 +385,14 @@ export default function ProfilePage() {
                       value={formData.joinDate}
                       onChange={handleInputChange}
                       className={`text-xs w-full rounded-lg bg-slate-100 px-4 py-3 text-slate-700 placeholder-slate-400 transition-colors focus:bg-slate-200 focus:outline-none ${
-                        errors.joinDate ? 'border-2 border-red-500' : ''
+                        errors.joinDate ? "border-2 border-red-500" : ""
                       }`}
                     />
-                    {errors.joinDate && <p className="text-red-500 text-xs mt-1">{errors.joinDate}</p>}
+                    {errors.joinDate && (
+                      <p className="text-red-500 text-xs mt-1">
+                        {errors.joinDate}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -379,10 +407,14 @@ export default function ProfilePage() {
                     placeholder="Briefly describe your expertise and professional trajectory..."
                     rows={6}
                     className={`text-xs w-full rounded-lg bg-slate-100 px-4 py-3 text-slate-700 placeholder-slate-400 transition-colors focus:bg-slate-200 focus:outline-none resize-none ${
-                      errors.biography ? 'border-2 border-red-500' : ''
+                      errors.biography ? "border-2 border-red-500" : ""
                     }`}
                   />
-                  {errors.biography && <p className="text-red-500 text-xs mt-1">{errors.biography}</p>}
+                  {errors.biography && (
+                    <p className="text-red-500 text-xs mt-1">
+                      {errors.biography}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -392,7 +424,7 @@ export default function ProfilePage() {
                   disabled={saving}
                   className="rounded-lg bg-blue-600 px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700 active:scale-95 disabled:opacity-50"
                 >
-                  {saving ? 'Saving...' : 'Complete Profile'}
+                  {saving ? "Saving..." : "Complete Profile"}
                 </button>
               </div>
             </div>

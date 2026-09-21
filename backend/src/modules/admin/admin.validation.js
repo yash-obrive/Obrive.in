@@ -1,13 +1,13 @@
-const { z } = require('zod');
+const { z } = require("zod");
 
 const UserIdParamSchema = z.object({
   id: z.coerce.number().int().positive(),
 });
 
 const CreateEmployeeBodySchema = z.object({
-  email: z.string().email('Valid email required'),
-  password: z.string().min(6, 'Min 6 characters'),
-  fullName: z.string().min(1, 'Full name required'),
+  email: z.string().email("Valid email required"),
+  password: z.string().min(6, "Min 6 characters"),
+  fullName: z.string().min(1, "Full name required"),
   phone: z.string().optional(),
   department: z.string().optional(),
   designation: z.string().optional(),
@@ -15,17 +15,17 @@ const CreateEmployeeBodySchema = z.object({
 });
 
 const CreateHrBodySchema = z.object({
-  email: z.string().email('Valid email required'),
-  password: z.string().min(6, 'Min 6 characters'),
-  fullName: z.string().min(1, 'Full name required'),
+  email: z.string().email("Valid email required"),
+  password: z.string().min(6, "Min 6 characters"),
+  fullName: z.string().min(1, "Full name required"),
   phone: z.string().optional(),
 });
 
 const CreateClientBodySchema = z.object({
-  email: z.string().email('Valid email required'),
-  password: z.string().min(6, 'Min 6 characters'),
-  companyName: z.string().min(1, 'Company name required'),
-  contactName: z.string().min(1, 'Contact name required'),
+  email: z.string().email("Valid email required"),
+  password: z.string().min(6, "Min 6 characters"),
+  companyName: z.string().min(1, "Company name required"),
+  contactName: z.string().min(1, "Contact name required"),
   phone: z.string().optional(),
   industry: z.string().optional(),
 });

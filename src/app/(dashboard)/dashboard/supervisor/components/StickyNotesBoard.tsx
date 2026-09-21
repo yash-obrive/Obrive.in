@@ -1,54 +1,54 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { X } from 'lucide-react'
+import { motion } from "framer-motion";
+import { X } from "lucide-react";
 
 interface StickyNote {
-  id: number
-  user_id: number
-  content?: string
-  color?: string
-  note_date: string
-  position: number
+  id: number;
+  user_id: number;
+  content?: string;
+  color?: string;
+  note_date: string;
+  position: number;
 }
 
 interface StickyNotesBoardProps {
-  notes: StickyNote[]
-  onDeleteNote: (noteId: number) => void
+  notes: StickyNote[];
+  onDeleteNote: (noteId: number) => void;
 }
 
 const colors: Record<string, { bg: string; text: string; border: string }> = {
   yellow: {
-    bg: 'bg-yellow-100',
-    text: 'text-yellow-900',
-    border: 'border-yellow-300',
+    bg: "bg-yellow-100",
+    text: "text-yellow-900",
+    border: "border-yellow-300",
   },
   pink: {
-    bg: 'bg-pink-100',
-    text: 'text-pink-900',
-    border: 'border-pink-300',
+    bg: "bg-pink-100",
+    text: "text-pink-900",
+    border: "border-pink-300",
   },
   blue: {
-    bg: 'bg-blue-100',
-    text: 'text-blue-900',
-    border: 'border-blue-300',
+    bg: "bg-blue-100",
+    text: "text-blue-900",
+    border: "border-blue-300",
   },
   green: {
-    bg: 'bg-green-100',
-    text: 'text-green-900',
-    border: 'border-green-300',
+    bg: "bg-green-100",
+    text: "text-green-900",
+    border: "border-green-300",
   },
   purple: {
-    bg: 'bg-purple-100',
-    text: 'text-purple-900',
-    border: 'border-purple-300',
+    bg: "bg-purple-100",
+    text: "text-purple-900",
+    border: "border-purple-300",
   },
   orange: {
-    bg: 'bg-orange-100',
-    text: 'text-orange-900',
-    border: 'border-orange-300',
+    bg: "bg-orange-100",
+    text: "text-orange-900",
+    border: "border-orange-300",
   },
-}
+};
 
 export default function StickyNotesBoard({
   notes,
@@ -57,16 +57,18 @@ export default function StickyNotesBoard({
   if (notes.length === 0) {
     return (
       <div className="rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 p-8 text-center">
-        <p className="text-sm text-gray-500">No notes for this date. Create one to get started!</p>
+        <p className="text-sm text-gray-500">
+          No notes for this date. Create one to get started!
+        </p>
       </div>
-    )
+    );
   }
 
   return (
     <div className="flex-1 overflow-y-auto">
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {notes.map((note, index) => {
-          const colorScheme = colors[note.color || 'yellow']
+          const colorScheme = colors[note.color || "yellow"];
 
           return (
             <motion.div
@@ -76,8 +78,8 @@ export default function StickyNotesBoard({
               transition={{ delay: index * 0.05 }}
               className={`group relative rounded-lg border-2 p-4 shadow-md transition hover:shadow-lg ${colorScheme.bg} ${colorScheme.border} ${colorScheme.text}`}
               style={{
-                minHeight: '160px',
-                transform: `rotate(${(index % 3 - 1) * 2}deg)`,
+                minHeight: "160px",
+                transform: `rotate(${((index % 3) - 1) * 2}deg)`,
               }}
             >
               <button
@@ -92,9 +94,9 @@ export default function StickyNotesBoard({
                 {note.content}
               </p>
             </motion.div>
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }

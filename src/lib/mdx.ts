@@ -1,7 +1,10 @@
 import fs from "fs";
-import path from "path";
 import matter from "gray-matter";
-import { CASE_STUDIES_IMAGES, CASE_STUDIES_AVATAR } from "@/assets/images";
+import path from "path";
+import remarkGfm from "remark-gfm";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import type { CASE_STUDIES_AVATAR, CASE_STUDIES_IMAGES } from "@/assets/images";
 
 const caseStudiesDirectory = path.join(process.cwd(), "src/content/resources");
 
@@ -102,7 +105,7 @@ export interface CareerData {
 }
 
 export async function getCaseStudyBySlug(
-  slug: string
+  slug: string,
 ): Promise<CaseStudyData | null> {
   try {
     const fullPath = path.join(caseStudiesDirectory, `${slug}.mdx`);
@@ -143,7 +146,7 @@ export async function getAllCaseStudies(country?: string): Promise<CaseStudyData
     slugs.map(async (slug) => {
       const caseStudy = await getCaseStudyBySlug(slug);
       return caseStudy;
-    })
+    }),
   );
 
   const validCaseStudies = caseStudies.filter(
@@ -165,7 +168,7 @@ export async function getAllCaseStudies(country?: string): Promise<CaseStudyData
 // Company Info functions
 export async function getCompanyInfoBySlug(
   slug: string,
-  type: "legal" | "support" | "security"
+  type: "legal" | "support" | "security",
 ): Promise<CompanyInfoData | null> {
   try {
     const directory =
@@ -195,7 +198,7 @@ export async function getCompanyInfoBySlug(
 }
 
 export async function getAllCompanyInfoSlugs(
-  type: "legal" | "support" | "security"
+  type: "legal" | "support" | "security",
 ): Promise<string[]> {
   try {
     const directory =
@@ -220,18 +223,18 @@ export async function getAllCompanyInfoSlugs(
 }
 
 export async function getAllCompanyInfo(
-  type: "legal" | "support" | "security"
+  type: "legal" | "support" | "security",
 ): Promise<CompanyInfoData[]> {
   const slugs = await getAllCompanyInfoSlugs(type);
   const companyInfos = await Promise.all(
     slugs.map(async (slug) => {
       const companyInfo = await getCompanyInfoBySlug(slug, type);
       return companyInfo;
-    })
+    }),
   );
 
   return companyInfos.filter(
-    (companyInfo): companyInfo is CompanyInfoData => companyInfo !== null
+    (companyInfo): companyInfo is CompanyInfoData => companyInfo !== null,
   );
 }
 
@@ -280,7 +283,7 @@ export async function getAllFAQs(): Promise<FAQData[]> {
     slugs.map(async (slug) => {
       const faq = await getFAQBySlug(slug);
       return faq;
-    })
+    }),
   );
 
   return faqs.filter((faq): faq is FAQData => faq !== null);
@@ -288,7 +291,7 @@ export async function getAllFAQs(): Promise<FAQData[]> {
 
 // Career functions
 export async function getCareerBySlug(
-  slug: string
+  slug: string,
 ): Promise<CareerData | null> {
   try {
     const fullPath = path.join(careerDirectory, `${slug}.mdx`);
@@ -333,8 +336,17 @@ export async function getAllCareers(): Promise<CareerData[]> {
     slugs.map(async (slug) => {
       const career = await getCareerBySlug(slug);
       return career;
-    })
+    }),
   );
 
   return careers.filter((career): career is CareerData => career !== null);
 }
+
+export const sharedMdxOptions = {
+  blockJS: true,
+  blockDangerousJS: true,
+  mdxOptions: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
+  },
+};

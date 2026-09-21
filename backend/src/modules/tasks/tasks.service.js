@@ -1,6 +1,5 @@
 // backend/src/modules/tasks/tasks.service.js
-const { prisma } = require('../../../db');
-
+const { prisma } = require("../../../prisma");
 class TaskService {
   async createTask(projectId, taskData, creatorId) {
     try {
@@ -15,19 +14,25 @@ class TaskService {
         },
       });
 
-      if (!projectAssignment && user.role !== 'supervisor' && user.role !== 'hr') {
-        throw new Error('You do not have permission to create tasks for this project');
+      if (
+        !projectAssignment &&
+        user.role !== "supervisor" &&
+        user.role !== "hr"
+      ) {
+        throw new Error(
+          "You do not have permission to create tasks for this project",
+        );
       }
 
       // Generate task number
       const lastTask = await prisma.tasks.findFirst({
         where: { project_id: projectId },
-        orderBy: { id: 'desc' },
+        orderBy: { id: "desc" },
       });
 
       const taskNumber = lastTask
-        ? `TASK-${Number(lastTask.task_number.split('-')[1]) + 1}`
-        : 'TASK-1';
+        ? `TASK-${Number(lastTask.task_number.split("-")[1]) + 1}`
+        : "TASK-1";
 
       // Create task
       const task = await prisma.tasks.create({
@@ -37,7 +42,7 @@ class TaskService {
           title: taskData.title,
           description: taskData.description || null,
           deadline: taskData.deadline ? new Date(taskData.deadline) : null,
-          status: taskData.status || 'pending',
+          status: taskData.status || "pending",
           assigned_to: taskData.assigned_to || null,
           created_by: creatorId,
         },
@@ -70,17 +75,17 @@ class TaskService {
       });
 
       if (!task) {
-        throw new Error('Task not found');
+        throw new Error("Task not found");
       }
 
       // Allow if user is creator, assigned person, OR supervisor/hr
       if (
         task.created_by !== userId &&
         task.assigned_to !== userId &&
-        user.role !== 'supervisor' &&
-        user.role !== 'hr'
+        user.role !== "supervisor" &&
+        user.role !== "hr"
       ) {
-        throw new Error('You do not have permission to update this task');
+        throw new Error("You do not have permission to update this task");
       }
 
       // Update task
@@ -91,9 +96,13 @@ class TaskService {
           ...(updateData.description !== undefined && {
             description: updateData.description,
           }),
-          ...(updateData.deadline && { deadline: new Date(updateData.deadline) }),
+          ...(updateData.deadline && {
+            deadline: new Date(updateData.deadline),
+          }),
           ...(updateData.status && { status: updateData.status }),
-          ...(updateData.assigned_to && { assigned_to: updateData.assigned_to }),
+          ...(updateData.assigned_to && {
+            assigned_to: updateData.assigned_to,
+          }),
           updated_at: new Date(),
         },
         include: {
@@ -128,7 +137,7 @@ class TaskService {
             select: { id: true, name: true, email: true },
           },
         },
-        orderBy: { created_at: 'desc' },
+        orderBy: { created_at: "desc" },
       });
 
       return tasks;
@@ -155,14 +164,12 @@ class TaskService {
       });
 
       if (!task) {
-        throw new Error('Task not found');
+        throw new Error("Task not found");
       }
 
       // Verify user has access to this task
       if (task.created_by !== userId && task.assigned_to !== userId) {
-        throw new Error(
-          'You do not have permission to view this task'
-        );
+        throw new Error("You do not have permission to view this task");
       }
 
       return task;
@@ -179,19 +186,23 @@ class TaskService {
       });
 
       if (!task) {
-        throw new Error('Task not found');
+        throw new Error("Task not found");
       }
 
       // Only creator, supervisor, or hr can delete task
-      if (task.created_by !== userId && user.role !== 'supervisor' && user.role !== 'hr') {
-        throw new Error('You do not have permission to delete this task');
+      if (
+        task.created_by !== userId &&
+        user.role !== "supervisor" &&
+        user.role !== "hr"
+      ) {
+        throw new Error("You do not have permission to delete this task");
       }
 
       await prisma.tasks.delete({
         where: { id: taskId },
       });
 
-      return { message: 'Task deleted successfully' };
+      return { message: "Task deleted successfully" };
     } catch (error) {
       throw error;
     }
@@ -215,7 +226,7 @@ class TaskService {
             select: { id: true, name: true },
           },
         },
-        orderBy: { created_at: 'desc' },
+        orderBy: { created_at: "desc" },
       });
 
       return tasks;

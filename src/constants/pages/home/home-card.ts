@@ -1,11 +1,11 @@
+import type { StaticImageData } from "next/image";
+import type React from "react";
 import { HOME_IMAGES, HOME_IMAGES_META } from "@/assets/images";
 import AkarIcon from "@/components/pages/home/icons/AkarIcon";
 import SpatialIcon from "@/components/pages/home/icons/SpatialIcon";
 import ThreeDIcon from "@/components/pages/home/icons/ThreeDBoxIcon";
 import UserIcon from "@/components/pages/home/icons/UserIcon";
 import VRIcon from "@/components/pages/home/icons/VRIcon";
-import type React from "react";
-import type { StaticImageData } from "next/image";
 
 export const HOME_CARD = [
   {

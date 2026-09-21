@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import { ReactNode } from "react";
-import { CompanyInfoMetadata } from "@/lib/mdx";
+import type { CompanyInfoMetadata } from "@/lib/mdx";
 
 interface CompanyInfoTemplateProps {
   metadata: CompanyInfoMetadata;

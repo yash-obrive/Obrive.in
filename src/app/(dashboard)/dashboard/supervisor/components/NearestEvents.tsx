@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import { ChevronUp, ChevronDown, Clock, Plus } from 'lucide-react'
-import { useState } from 'react'
-import CreateEventDialog from './CreateEventDialog'
-import { apiFetch } from '@/lib/api'
+import { ChevronDown, ChevronUp, Clock, Plus } from "lucide-react";
+import { useState } from "react";
+import { apiFetch } from "@/lib/api";
+import CreateEventDialog from "./CreateEventDialog";
 
 interface EventItem {
-  id: string
-  title: string
-  time: string
-  priority: 'high' | 'medium' | 'low'
-  duration?: string
-  borderColor: string
+  id: string;
+  title: string;
+  time: string;
+  priority: "high" | "medium" | "low";
+  duration?: string;
+  borderColor: string;
 }
 
 interface NearestEventsProps {
-  events?: EventItem[]
-  setActiveSection: (key: string) => void
-  onEventCreated?: () => void
+  events?: EventItem[];
+  setActiveSection: (key: string) => void;
+  onEventCreated?: () => void;
 }
 
 export default function NearestEvents({
@@ -25,34 +25,34 @@ export default function NearestEvents({
   setActiveSection,
   onEventCreated,
 }: NearestEventsProps) {
-  const [isAddEventOpen, setIsAddEventOpen] = useState(false)
-  const [creating, setCreating] = useState(false)
+  const [isAddEventOpen, setIsAddEventOpen] = useState(false);
+  const [creating, setCreating] = useState(false);
 
   const getPriorityIcon = (priority: string) => {
-    if (priority === 'high') {
-      return <ChevronUp className="w-4 h-4 text-green-500" />
+    if (priority === "high") {
+      return <ChevronUp className="w-4 h-4 text-green-500" />;
     }
-    return <ChevronDown className="w-4 h-4 text-green-500" />
-  }
+    return <ChevronDown className="w-4 h-4 text-green-500" />;
+  };
 
   const handleCreateEvent = async (data: any) => {
     try {
-      setCreating(true)
-      const response = await apiFetch('/events', {
-        method: 'POST',
+      setCreating(true);
+      const response = await apiFetch("/events", {
+        method: "POST",
         body: JSON.stringify(data),
-      })
-      const result = await response.json()
+      });
+      const result = await response.json();
       if (result.success) {
-        setIsAddEventOpen(false)
-        if (onEventCreated) onEventCreated()
+        setIsAddEventOpen(false);
+        if (onEventCreated) onEventCreated();
       }
     } catch (error) {
-      console.error('Error creating event:', error)
+      console.error("Error creating event:", error);
     } finally {
-      setCreating(false)
+      setCreating(false);
     }
-  }
+  };
 
   return (
     <div className="flex h-full w-full flex-col">
@@ -68,7 +68,7 @@ export default function NearestEvents({
         </div>
 
         <button
-          onClick={() => setActiveSection('events')}
+          onClick={() => setActiveSection("events")}
           className="flex items-center gap-1 text-xs font-semibold text-teal-600 transition hover:text-teal-700"
         >
           View all
@@ -90,7 +90,9 @@ export default function NearestEvents({
 
       <div className="flex-1 overflow-y-auto space-y-2 pr-1">
         {events.length === 0 ? (
-          <p className="text-center text-[10px] text-gray-400 py-4">No upcoming events</p>
+          <p className="text-center text-[10px] text-gray-400 py-4">
+            No upcoming events
+          </p>
         ) : (
           events.map((event) => (
             <div
@@ -98,7 +100,8 @@ export default function NearestEvents({
               className="cursor-pointer overflow-hidden rounded-lg border border-[#e8f0fb] bg-white shadow-sm transition hover:bg-gray-50"
               style={{
                 borderLeftWidth: "4px",
-                borderLeftColor: event.borderColor === "bg-blue-500" ? "#3b82f6" : "#a855f7",
+                borderLeftColor:
+                  event.borderColor === "bg-blue-500" ? "#3b82f6" : "#a855f7",
               }}
             >
               <div className="flex items-start gap-3 p-3">
@@ -112,7 +115,9 @@ export default function NearestEvents({
                       <p className="text-xs font-bold text-gray-900 line-clamp-2">
                         {event.title}
                       </p>
-                      <p className="mt-0.5 text-[10px] text-gray-500">{event.time}</p>
+                      <p className="mt-0.5 text-[10px] text-gray-500">
+                        {event.time}
+                      </p>
                     </div>
 
                     <div className="mt-0.5 flex-shrink-0">
@@ -133,12 +138,12 @@ export default function NearestEvents({
         )}
       </div>
 
-      <CreateEventDialog 
+      <CreateEventDialog
         open={isAddEventOpen}
         onClose={() => setIsAddEventOpen(false)}
         onSubmit={handleCreateEvent}
         creating={creating}
       />
     </div>
-  )
+  );
 }

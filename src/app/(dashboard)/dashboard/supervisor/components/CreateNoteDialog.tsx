@@ -1,21 +1,21 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 
-const colors = ['yellow', 'pink', 'blue', 'green', 'purple', 'orange']
+const colors = ["yellow", "pink", "blue", "green", "purple", "orange"];
 const colorNames: Record<string, string> = {
-  yellow: 'Yellow',
-  pink: 'Pink',
-  blue: 'Blue',
-  green: 'Green',
-  purple: 'Purple',
-  orange: 'Orange',
-}
+  yellow: "Yellow",
+  pink: "Pink",
+  blue: "Blue",
+  green: "Green",
+  purple: "Purple",
+  orange: "Orange",
+};
 
 interface CreateNoteDialogProps {
-  open: boolean
-  onClose: () => void
-  onSubmit: (content: string, color: string) => void
+  open: boolean;
+  onClose: () => void;
+  onSubmit: (content: string, color: string) => void;
 }
 
 export default function CreateNoteDialog({
@@ -23,26 +23,26 @@ export default function CreateNoteDialog({
   onClose,
   onSubmit,
 }: CreateNoteDialogProps) {
-  const [content, setContent] = useState('')
-  const [selectedColor, setSelectedColor] = useState('yellow')
-  const [submitting, setSubmitting] = useState(false)
+  const [content, setContent] = useState("");
+  const [selectedColor, setSelectedColor] = useState("yellow");
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!content.trim()) return
+    e.preventDefault();
+    if (!content.trim()) return;
 
     try {
-      setSubmitting(true)
-      await onSubmit(content.trim(), selectedColor)
-      setContent('')
-      setSelectedColor('yellow')
-      onClose()
+      setSubmitting(true);
+      await onSubmit(content.trim(), selectedColor);
+      setContent("");
+      setSelectedColor("yellow");
+      onClose();
     } finally {
-      setSubmitting(false)
+      setSubmitting(false);
     }
-  }
+  };
 
-  if (!open) return null
+  if (!open) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-3 backdrop-blur-sm">
@@ -61,7 +61,10 @@ export default function CreateNoteDialog({
 
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="content" className="mb-2 block text-sm text-gray-500">
+            <label
+              htmlFor="content"
+              className="mb-2 block text-sm text-gray-500"
+            >
               Note Content
             </label>
             <textarea
@@ -87,20 +90,20 @@ export default function CreateNoteDialog({
                   title={colorNames[color]}
                   className={`h-10 rounded-lg border-2 transition ${
                     selectedColor === color
-                      ? 'border-gray-800 scale-105'
-                      : 'border-gray-200'
+                      ? "border-gray-800 scale-105"
+                      : "border-gray-200"
                   } ${
-                    color === 'yellow'
-                      ? 'bg-yellow-100'
-                      : color === 'pink'
-                        ? 'bg-pink-100'
-                        : color === 'blue'
-                          ? 'bg-blue-100'
-                          : color === 'green'
-                            ? 'bg-green-100'
-                            : color === 'purple'
-                              ? 'bg-purple-100'
-                              : 'bg-orange-100'
+                    color === "yellow"
+                      ? "bg-yellow-100"
+                      : color === "pink"
+                        ? "bg-pink-100"
+                        : color === "blue"
+                          ? "bg-blue-100"
+                          : color === "green"
+                            ? "bg-green-100"
+                            : color === "purple"
+                              ? "bg-purple-100"
+                              : "bg-orange-100"
                   }`}
                 />
               ))}
@@ -112,10 +115,10 @@ export default function CreateNoteDialog({
             disabled={submitting || !content.trim()}
             className="w-full rounded-xl bg-[#073933] py-3 font-medium text-white transition hover:bg-[#0a4a42] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {submitting ? 'Creating...' : 'Create Note'}
+            {submitting ? "Creating..." : "Create Note"}
           </button>
         </form>
       </div>
     </div>
-  )
+  );
 }

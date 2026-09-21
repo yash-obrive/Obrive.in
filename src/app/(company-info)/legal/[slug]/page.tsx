@@ -1,10 +1,10 @@
-import { getCompanyInfoBySlug, getAllCompanyInfoSlugs } from "@/lib/mdx";
-import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCompanyInfoMDXComponents } from "@/components/pages/company-info/CompanyInfoMDXComponents";
-import { Metadata } from "next";
-import Script from "next/script";
+import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
+import { getAllCompanyInfoSlugs, getCompanyInfoBySlug, sharedMdxOptions } from "@/lib/mdx";
 
 interface LegalPageProps {
   params: Promise<{ slug: string }>;
@@ -45,7 +45,8 @@ export async function generateMetadata({
       openGraph: {
         type: "website",
         url: "https://obrive.com/legal/accessibility",
-        title: "Accessibility | Making AR/VR Experiences Inclusive for Everyone",
+        title:
+          "Accessibility | Making AR/VR Experiences Inclusive for Everyone",
         description:
           "At Obrive, we design AR, VR, and spatial solutions that empower people of all abilities. Innovation should be accessible to everyone, everywhere.",
         siteName: "Obrive",
@@ -53,7 +54,8 @@ export async function generateMetadata({
       },
       twitter: {
         card: "summary",
-        title: "Accessibility | Making AR/VR Experiences Inclusive for Everyone",
+        title:
+          "Accessibility | Making AR/VR Experiences Inclusive for Everyone",
         description:
           "Obrive designs AR, VR, and spatial solutions that empower people of all abilities. Learn about our commitment to accessible immersive technology.",
       },
@@ -216,9 +218,11 @@ export default async function LegalPage({ params }: LegalPageProps) {
   // Breadcrumb schema for specific pages
   const getBreadcrumbSchema = () => {
     if (
-      !["privacy-policy", "terms-of-service", "master-service-agreement"].includes(
-        slug
-      )
+      ![
+        "privacy-policy",
+        "terms-of-service",
+        "master-service-agreement",
+      ].includes(slug)
     ) {
       return null;
     }
@@ -278,6 +282,7 @@ export default async function LegalPage({ params }: LegalPageProps) {
         <MDXRemote
           source={legalDoc.content}
           components={createCompanyInfoMDXComponents(legalDoc.metadata)}
+          options={sharedMdxOptions}
         />
       </CompanyInfoTemplate>
     </>

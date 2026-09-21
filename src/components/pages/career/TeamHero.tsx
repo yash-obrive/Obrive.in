@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import { TEAM_IMAGES, TEAM_IMAGES_META } from "@/assets/images";
-import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
+import { TEAM_IMAGES, TEAM_IMAGES_META } from "@/assets/images";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -106,7 +106,7 @@ export default function TeamHero() {
         // Apply parallax effect - each image moves at different speed
         teamCards.forEach((card) => {
           const parallaxSpeed = parseFloat(
-            (card as HTMLElement).getAttribute("data-parallax") || "1"
+            (card as HTMLElement).getAttribute("data-parallax") || "1",
           );
           const translateX = -progress * PARALLAX_MULTIPLIER * parallaxSpeed;
 
@@ -124,10 +124,7 @@ export default function TeamHero() {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative mx-auto overflow-hidden"
-    >
+    <div ref={containerRef} className="relative mx-auto overflow-hidden">
       {/* mobile simple grid */}
       <div className="grid grid-cols-3 gap-3 sm:hidden px-6">
         {[

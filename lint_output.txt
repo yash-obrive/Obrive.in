@@ -1,0 +1,624 @@
+
+> obrive-project@0.1.0 lint
+> biome check
+
+analyze_mdx.js:1:20 lint/style/useNodejsImportProtocol  FIXABLE  ━━━━━━━━━━━━━━━
+
+  i A Node.js builtin module should be imported with the node: protocol.
+  
+  > 1 │ const fs = require('fs');
+      │                    ^^^^
+    2 │ const path = require('path');
+    3 │ const matter = require('gray-matter');
+  
+  i Using the node: protocol is more explicit and signals that the imported module belongs to Node.js.
+  
+  i Unsafe fix: Add the node: protocol.
+  
+     1    │ - const·fs·=·require('fs');
+        1 │ + const·fs·=·require('node:fs');
+     2  2 │   const path = require('path');
+     3  3 │   const matter = require('gray-matter');
+  
+
+analyze_mdx.js:2:22 lint/style/useNodejsImportProtocol  FIXABLE  ━━━━━━━━━━━━━━━
+
+  i A Node.js builtin module should be imported with the node: protocol.
+  
+    1 │ const fs = require('fs');
+  > 2 │ const path = require('path');
+      │                      ^^^^^^
+    3 │ const matter = require('gray-matter');
+    4 │ 
+  
+  i Using the node: protocol is more explicit and signals that the imported module belongs to Node.js.
+  
+  i Unsafe fix: Add the node: protocol.
+  
+     1  1 │   const fs = require('fs');
+     2    │ - const·path·=·require('path');
+        2 │ + const·path·=·require('node:path');
+     3  3 │   const matter = require('gray-matter');
+     4  4 │   
+  
+
+ast_inventory_batch_4.mjs:1:16 lint/style/useNodejsImportProtocol  FIXABLE  ━━━━━━━━━━
+
+  i A Node.js builtin module should be imported with the node: protocol.
+  
+  > 1 │ import fs from 'fs';
+      │                ^^^^
+    2 │ import ts from 'typescript';
+    3 │ 
+  
+  i Using the node: protocol is more explicit and signals that the imported module belongs to Node.js.
+  
+  i Unsafe fix: Add the node: protocol.
+  
+     1    │ - import·fs·from·'fs';
+        1 │ + import·fs·from·'node:fs';
+     2  2 │   import ts from 'typescript';
+     3  3 │   
+  
+
+backend/server.js:17:22 lint/style/useNodejsImportProtocol  FIXABLE  ━━━━━━━━━━━
+
+  i A Node.js builtin module should be imported with the node: protocol.
+  
+    15 │ const startWorkSessionCron = require("./src/jobs/workSessionCron");
+    16 │ const startAudioRoomCron = require("./src/jobs/audioRoomCron");
+  > 17 │ const http = require("http");
+       │                      ^^^^^^
+    18 │ const { initializeSocket } = require("./src/socket");
+    19 │ 
+  
+  i Using the node: protocol is more explicit and signals that the imported module belongs to Node.js.
+  
+  i Unsafe fix: Add the node: protocol.
+  
+     15  15 │   const startWorkSessionCron = require("./src/jobs/workSessionCron");
+     16  16 │   const startAudioRoomCron = require("./src/jobs/audioRoomCron");
+     17     │ - const·http·=·require("http");
+         17 │ + const·http·=·require("node:http");
+     18  18 │   const { initializeSocket } = require("./src/socket");
+     19  19 │   
+  
+
+backend/src/middleware/errorHandler.js:9:18 lint/style/useTemplate  FIXABLE  ━━━━━━━━━━
+
+  i Template literals are preferred over string concatenation.
+  
+     7 │       .json({
+     8 │         success: false,
+   > 9 │         message: "Duplicate entry: " + err.meta?.target,
+       │                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    10 │       });
+    11 │ 
+  
+  i Unsafe fix: Use a template literal.
+  
+     7  7 │         .json({
+     8  8 │           success: false,
+     9    │ - ········message:·"Duplicate·entry:·"·+·err.meta?.target,
+        9 │ + ········message:·`Duplicate·entry:·${err.meta?.target}`,
+    10 10 │         });
+    11 11 │   
+  
+
+analyze_mdx.js:6:1 lint/style/useConst  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! This let declares a variable that is only assigned once.
+  
+    5 │ const contentDir = path.join(__dirname, 'src/content');
+  > 6 │ let mdxFiles = [];
+      │ ^^^
+    7 │ 
+    8 │ function findMdx(dir) {
+  
+  i 'mdxFiles' is never reassigned.
+  
+    5 │ const contentDir = path.join(__dirname, 'src/content');
+  > 6 │ let mdxFiles = [];
+      │     ^^^^^^^^
+    7 │ 
+    8 │ function findMdx(dir) {
+  
+  i Safe fix: Use const instead.
+  
+     4  4 │   
+     5  5 │   const contentDir = path.join(__dirname, 'src/content');
+     6    │ - let·mdxFiles·=·[];
+        6 │ + const·mdxFiles·=·[];
+     7  7 │   
+     8  8 │   function findMdx(dir) {
+  
+
+analyze_mdx.js:23:13 lint/correctness/noUnusedVariables ━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ! This variable data is unused.
+  
+    21 │ const analysis = mdxFiles.map(file => {
+    22 │     const content = fs.readFileSync(file, 'utf8');
+  > 23 │     const { data, content: body } = matter(content);
+       │             ^^^^
+    24 │     
+    25 │     const components = new Set();
+  
+  i Unused variables are often the result of an incomplete refactoring, typos, or other sources of bugs.
+  
+
+ast_inventory_batch_4.mjs:13:1 lint/style/useConst  FIXABLE  ━━━━━━━━━━━━━━━━━━━
+
+  ! This let declares a variable that is only assigned once.
+  
+    11 │ ];
+    12 │ 
+  > 13 │ let inventory = {};
+       │ ^^^
+    14 │ 
+    15 │ for (const filePath of mdxFiles) {
+  
+  i 'inventory' is never reassigned.
+  
+    11 │ ];
+    12 │ 
+  > 13 │ let inventory = {};
+       │     ^^^^^^^^^
+    14 │ 
+    15 │ for (const filePath of mdxFiles) {
+  
+  i Safe fix: Use const instead.
+  
+    11 11 │   ];
+    12 12 │   
+    13    │ - let·inventory·=·{};
+       13 │ + const·inventory·=·{};
+    14 14 │   
+    15 15 │   for (const filePath of mdxFiles) {
+  
+
+ast_inventory_batch_4.mjs:21:3 lint/style/useConst  FIXABLE  ━━━━━━━━━━━━━━━━━━━
+
+  ! This let declares a variable that is only assigned once.
+  
+    19 │   const sourceFile = ts.createSourceFile('temp.tsx', pseudoCode, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+    20 │   
+  > 21 │   let tablesInFile = [];
+       │   ^^^
+    22 │ 
+    23 │   function visit(node) {
+  
+  i 'tablesInFile' is never reassigned.
+  
+    19 │   const sourceFile = ts.createSourceFile('temp.tsx', pseudoCode, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+    20 │   
+  > 21 │   let tablesInFile = [];
+       │       ^^^^^^^^^^^^
+    22 │ 
+    23 │   function visit(node) {
+  
+  i Safe fix: Use const instead.
+  
+    19 19 │     const sourceFile = ts.createSourceFile('temp.tsx', pseudoCode, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+    20 20 │     
+    21    │ - ··let·tablesInFile·=·[];
+       21 │ + ··const·tablesInFile·=·[];
+    22 22 │   
+    23 23 │     function visit(node) {
+  
+
+ast_inventory_batch_4.mjs:34:9 lint/style/useConst  FIXABLE  ━━━━━━━━━━━━━━━━━━━
+
+  ! This let declares a variable that is only assigned once.
+  
+    32 │           : node.attributes.properties;
+    33 │           
+  > 34 │         let tableData = {
+       │         ^^^
+    35 │           mode: 'unknown',
+    36 │           title: '',
+  
+  i 'tableData' is never reassigned.
+  
+    32 │           : node.attributes.properties;
+    33 │           
+  > 34 │         let tableData = {
+       │             ^^^^^^^^^
+    35 │           mode: 'unknown',
+    36 │           title: '',
+  
+  i Safe fix: Use const instead.
+  
+    32 32 │             : node.attributes.properties;
+    33 33 │             
+    34    │ - ········let·tableData·=·{
+       34 │ + ········const·tableData·=·{
+    35 35 │             mode: 'unknown',
+    36 36 │             title: '',
+  
+
+backend/server.js:13:7 lint/correctness/noUnusedVariables  FIXABLE  ━━━━━━━━━━━━
+
+  ! This variable bcrypt is unused.
+  
+    11 │ const morgan = require("morgan");
+    12 │ const { prisma, connectWithRetry } = require("./prisma");
+  > 13 │ const bcrypt = require("bcrypt");
+       │       ^^^^^^
+    14 │ const jwt = require("jsonwebtoken");
+    15 │ const startWorkSessionCron = require("./src/jobs/workSessionCron");
+  
+  i Unused variables are often the result of an incomplete refactoring, typos, or other sources of bugs.
+  
+  i Unsafe fix: If this is intentional, prepend bcrypt with an underscore.
+  
+     11  11 │   const morgan = require("morgan");
+     12  12 │   const { prisma, connectWithRetry } = require("./prisma");
+     13     │ - const·bcrypt·=·require("bcrypt");
+         13 │ + const·_bcrypt·=·require("bcrypt");
+     14  14 │   const jwt = require("jsonwebtoken");
+     15  15 │   const startWorkSessionCron = require("./src/jobs/workSessionCron");
+  
+
+backend/server.js:14:7 lint/correctness/noUnusedVariables  FIXABLE  ━━━━━━━━━━━━
+
+  ! This variable jwt is unused.
+  
+    12 │ const { prisma, connectWithRetry } = require("./prisma");
+    13 │ const bcrypt = require("bcrypt");
+  > 14 │ const jwt = require("jsonwebtoken");
+       │       ^^^
+    15 │ const startWorkSessionCron = require("./src/jobs/workSessionCron");
+    16 │ const startAudioRoomCron = require("./src/jobs/audioRoomCron");
+  
+  i Unused variables are often the result of an incomplete refactoring, typos, or other sources of bugs.
+  
+  i Unsafe fix: If this is intentional, prepend jwt with an underscore.
+  
+     12  12 │   const { prisma, connectWithRetry } = require("./prisma");
+     13  13 │   const bcrypt = require("bcrypt");
+     14     │ - const·jwt·=·require("jsonwebtoken");
+         14 │ + const·_jwt·=·require("jsonwebtoken");
+     15  15 │   const startWorkSessionCron = require("./src/jobs/workSessionCron");
+     16  16 │   const startAudioRoomCron = require("./src/jobs/audioRoomCron");
+  
+
+backend/src/middleware/errorHandler.js:1:24 lint/correctness/noUnusedFunctionParameters  FIXABLE  ━━━━━━━━━━
+
+  ! This parameter is unused.
+  
+  > 1 │ module.exports = (err, req, res, next) => {
+      │                        ^^^
+    2 │   console.error("❌ Error:", err);
+    3 │ 
+  
+  i Unused parameters might be the result of an incomplete refactoring.
+  
+  i Unsafe fix: If this is intentional, prepend req with an underscore.
+  
+     1    │ - module.exports·=·(err,·req,·res,·next)·=>·{
+        1 │ + module.exports·=·(err,·_req,·res,·next)·=>·{
+     2  2 │     console.error("❌ Error:", err);
+     3  3 │   
+  
+
+backend/src/middleware/errorHandler.js:1:34 lint/correctness/noUnusedFunctionParameters  FIXABLE  ━━━━━━━━━━
+
+  ! This parameter is unused.
+  
+  > 1 │ module.exports = (err, req, res, next) => {
+      │                                  ^^^^
+    2 │   console.error("❌ Error:", err);
+    3 │ 
+  
+  i Unused parameters might be the result of an incomplete refactoring.
+  
+  i Unsafe fix: If this is intentional, prepend next with an underscore.
+  
+     1    │ - module.exports·=·(err,·req,·res,·next)·=>·{
+        1 │ + module.exports·=·(err,·req,·res,·_next)·=>·{
+     2  2 │     console.error("❌ Error:", err);
+     3  3 │   
+  
+
+analyze_mdx.js:28:13 lint/suspicious/noAssignInExpressions ━━━━━━━━━━━━━━━━━━━━━
+
+  × The assignment should not be in an expression.
+  
+    26 │     const componentRegex = /<([A-Z][a-zA-Z0-9]*)/g;
+    27 │     let match;
+  > 28 │     while ((match = componentRegex.exec(body)) !== null) {
+       │             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    29 │         components.add(match[1]);
+    30 │     }
+  
+  i The use of assignments in expressions is confusing.
+    Expressions are often considered as side-effect free.
+  
+
+analyze_mdx.js format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+     1    │ - const·fs·=·require('fs');
+     2    │ - const·path·=·require('path');
+     3    │ - const·matter·=·require('gray-matter');
+        1 │ + const·fs·=·require("fs");
+        2 │ + const·path·=·require("path");
+        3 │ + const·matter·=·require("gray-matter");
+     4  4 │   
+     5    │ - const·contentDir·=·path.join(__dirname,·'src/content');
+        5 │ + const·contentDir·=·path.join(__dirname,·"src/content");
+     6  6 │   let mdxFiles = [];
+     7  7 │   
+     8  8 │   function findMdx(dir) {
+     9    │ - ····const·files·=·fs.readdirSync(dir);
+    10    │ - ····for·(const·file·of·files)·{
+    11    │ - ········const·fullPath·=·path.join(dir,·file);
+    12    │ - ········if·(fs.statSync(fullPath).isDirectory())·{
+    13    │ - ············findMdx(fullPath);
+    14    │ - ········}·else·if·(fullPath.endsWith('.mdx'))·{
+    15    │ - ············mdxFiles.push(fullPath);
+    16    │ - ········}
+    17    │ - ····}
+        9 │ + ··const·files·=·fs.readdirSync(dir);
+       10 │ + ··for·(const·file·of·files)·{
+       11 │ + ····const·fullPath·=·path.join(dir,·file);
+       12 │ + ····if·(fs.statSync(fullPath).isDirectory())·{
+       13 │ + ······findMdx(fullPath);
+       14 │ + ····}·else·if·(fullPath.endsWith(".mdx"))·{
+       15 │ + ······mdxFiles.push(fullPath);
+       16 │ + ····}
+       17 │ + ··}
+    18 18 │   }
+    19 19 │   findMdx(contentDir);
+    20 20 │   
+    21    │ - const·analysis·=·mdxFiles.map(file·=>·{
+    22    │ - ····const·content·=·fs.readFileSync(file,·'utf8');
+    23    │ - ····const·{·data,·content:·body·}·=·matter(content);
+    24    │ - ····
+    25    │ - ····const·components·=·new·Set();
+    26    │ - ····const·componentRegex·=·/<([A-Z][a-zA-Z0-9]*)/g;
+    27    │ - ····let·match;
+    28    │ - ····while·((match·=·componentRegex.exec(body))·!==·null)·{
+    29    │ - ········components.add(match[1]);
+    30    │ - ····}
+    31    │ - ····
+    32    │ - ····const·hasHtml·=·/<[a-z]+[^>]*>/i.test(body);
+    33    │ - ····const·hasMarkdownTable·=·/\|.*\|/.test(body);
+    34    │ - ····
+    35    │ - ····return·{
+    36    │ - ········file:·file.replace(__dirname,·''),
+    37    │ - ········components:·Array.from(components),
+    38    │ - ········hasHtml,
+    39    │ - ········hasMarkdownTable
+    40    │ - ····};
+       21 │ + const·analysis·=·mdxFiles.map((file)·=>·{
+       22 │ + ··const·content·=·fs.readFileSync(file,·"utf8");
+       23 │ + ··const·{·data,·content:·body·}·=·matter(content);
+       24 │ + 
+       25 │ + ··const·components·=·new·Set();
+       26 │ + ··const·componentRegex·=·/<([A-Z][a-zA-Z0-9]*)/g;
+       27 │ + ··let·match;
+       28 │ + ··while·((match·=·componentRegex.exec(body))·!==·null)·{
+       29 │ + ····components.add(match[1]);
+       30 │ + ··}
+       31 │ + 
+       32 │ + ··const·hasHtml·=·/<[a-z]+[^>]*>/i.test(body);
+       33 │ + ··const·hasMarkdownTable·=·/\|.*\|/.test(body);
+       34 │ + 
+       35 │ + ··return·{
+       36 │ + ····file:·file.replace(__dirname,·""),
+       37 │ + ····components:·Array.from(components),
+       38 │ + ····hasHtml,
+       39 │ + ····hasMarkdownTable,
+       40 │ + ··};
+    41 41 │   });
+    42 42 │   
+  
+
+ast_inventory_batch_4.mjs format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+     1     │ - import·fs·from·'fs';
+     2     │ - import·ts·from·'typescript';
+         1 │ + import·fs·from·"fs";
+         2 │ + import·ts·from·"typescript";
+     3   3 │   
+     4   4 │   const mdxFiles = [
+     5     │ - ··'src/content/resources/client-immersive-onboarding.mdx',
+     6     │ - ··'src/content/resources/spatial-flow.mdx',
+     7     │ - ··'src/content/resources/web-vr-vs-app-vr-enterprises.mdx',
+     8     │ - ··'src/content/resources/ar-vr-mr-differences-business-use-cases-2025.mdx',
+     9     │ - ··'src/content/resources/webar-vs-app-ar-business-solution.mdx',
+    10     │ - ··'src/content/resources/ar-onboarding.mdx'
+         5 │ + ··"src/content/resources/client-immersive-onboarding.mdx",
+         6 │ + ··"src/content/resources/spatial-flow.mdx",
+         7 │ + ··"src/content/resources/web-vr-vs-app-vr-enterprises.mdx",
+         8 │ + ··"src/content/resources/ar-vr-mr-differences-business-use-cases-2025.mdx",
+         9 │ + ··"src/content/resources/webar-vs-app-ar-business-solution.mdx",
+        10 │ + ··"src/content/resources/ar-onboarding.mdx",
+    11  11 │   ];
+    12  12 │   
+    ······ │ 
+    14  14 │   
+    15  15 │   for (const filePath of mdxFiles) {
+    16     │ - ··const·content·=·fs.readFileSync(filePath,·'utf-8');
+        16 │ + ··const·content·=·fs.readFileSync(filePath,·"utf-8");
+    17  17 │     const pseudoCode = `export default function MDX() { return (<>\n${content}\n</>); }`;
+    18     │ - ··
+    19     │ - ··const·sourceFile·=·ts.createSourceFile('temp.tsx',·pseudoCode,·ts.ScriptTarget.Latest,·true,·ts.ScriptKind.TSX);
+    20     │ - ··
+        18 │ + 
+        19 │ + ··const·sourceFile·=·ts.createSourceFile(
+        20 │ + ····"temp.tsx",
+        21 │ + ····pseudoCode,
+        22 │ + ····ts.ScriptTarget.Latest,
+        23 │ + ····true,
+        24 │ + ····ts.ScriptKind.TSX,
+        25 │ + ··);
+        26 │ + 
+    21  27 │     let tablesInFile = [];
+    22  28 │   
+    23  29 │     function visit(node) {
+    24  30 │       if (ts.isJsxElement(node) || ts.isJsxSelfClosingElement(node)) {
+    25     │ - ······const·tagName·=·ts.isJsxElement(node)·
+        31 │ + ······const·tagName·=·ts.isJsxElement(node)
+    26  32 │           ? node.openingElement.tagName.getText(sourceFile)
+    27  33 │           : node.tagName.getText(sourceFile);
+    28     │ - ········
+    29     │ - ······if·(tagName·===·'TheImpactTable'·||·tagName·===·'ResourceTheImpactTable')·{
+        34 │ + 
+        35 │ + ······if·(
+        36 │ + ········tagName·===·"TheImpactTable"·||
+        37 │ + ········tagName·===·"ResourceTheImpactTable"
+        38 │ + ······)·{
+    30  39 │           const attributes = ts.isJsxElement(node)
+    31  40 │             ? node.openingElement.attributes.properties
+    32  41 │             : node.attributes.properties;
+    33     │ - ··········
+        42 │ + 
+    34  43 │           let tableData = {
+    35     │ - ··········mode:·'unknown',
+    36     │ - ··········title:·'',
+        44 │ + ··········mode:·"unknown",
+        45 │ + ··········title:·"",
+    37  46 │             metrics: [],
+    38  47 │             columns: [],
+    39     │ - ··········data:·[]
+        48 │ + ··········data:·[],
+    40  49 │           };
+    41     │ - ········
+        50 │ + 
+    42  51 │           for (const attr of attributes) {
+    43  52 │             if (!ts.isJsxAttribute(attr)) continue;
+    ······ │ 
+    45  54 │             const initializer = attr.initializer;
+    46  55 │             if (!initializer) continue;
+    47     │ - ··········
+    48     │ - ··········if·(name·===·'title'·&&·ts.isStringLiteral(initializer))·{
+        56 │ + 
+        57 │ + ··········if·(name·===·"title"·&&·ts.isStringLiteral(initializer))·{
+    49  58 │               tableData.title = initializer.text;
+    50  59 │             }
+    51     │ - ··········
+    52     │ - ··········if·((name·===·'metrics'·||·name·===·'columns'·||·name·===·'data')·&&·ts.isJsxExpression(initializer))·{
+        60 │ + 
+        61 │ + ··········if·(
+        62 │ + ············(name·===·"metrics"·||·name·===·"columns"·||·name·===·"data")·&&
+        63 │ + ············ts.isJsxExpression(initializer)
+        64 │ + ··········)·{
+    53  65 │               const arrayLiteral = initializer.expression;
+    54  66 │               if (arrayLiteral && ts.isArrayLiteralExpression(arrayLiteral)) {
+    ······ │ 
+    68  80 │                   }
+    69  81 │                 }
+    70     │ - ··············if·(name·===·'metrics')·tableData.metrics·=·parsedArray;
+    71     │ - ··············if·(name·===·'columns')·tableData.columns·=·parsedArray;
+    72     │ - ··············if·(name·===·'data')·tableData.data·=·parsedArray;
+        82 │ + ··············if·(name·===·"metrics")·tableData.metrics·=·parsedArray;
+        83 │ + ··············if·(name·===·"columns")·tableData.columns·=·parsedArray;
+        84 │ + ··············if·(name·===·"data")·tableData.data·=·parsedArray;
+    73  85 │               }
+    74  86 │             }
+    75  87 │           }
+    76     │ - ········
+        88 │ + 
+    77  89 │           if (tableData.metrics.length > 0) {
+    78     │ - ··········tableData.mode·=·'legacy';
+        90 │ + ··········tableData.mode·=·"legacy";
+    79  91 │           } else if (tableData.columns.length > 0) {
+    80     │ - ··········tableData.mode·=·'dynamic';
+        92 │ + ··········tableData.mode·=·"dynamic";
+    81  93 │           }
+    82     │ - ········
+        94 │ + 
+    83  95 │           tablesInFile.push(tableData);
+    84  96 │         }
+    ······ │ 
+    86  98 │       ts.forEachChild(node, visit);
+    87  99 │     }
+    88     │ - ··
+       100 │ + 
+    89 101 │     visit(sourceFile);
+    90     │ - ··
+       102 │ + 
+    91 103 │     if (tablesInFile.length > 0) {
+    92 104 │       inventory[filePath] = tablesInFile;
+    ······ │ 
+    94 106 │   }
+    95 107 │   
+    96     │ - fs.writeFileSync('batch4_inventory.json',·JSON.stringify(inventory,·null,·2));
+    97     │ - console.log('Inventory·saved·to·batch4_inventory.json');
+       108 │ + fs.writeFileSync("batch4_inventory.json",·JSON.stringify(inventory,·null,·2));
+       109 │ + console.log("Inventory·saved·to·batch4_inventory.json");
+    98 110 │   
+  
+
+test_mdx3.js format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+     1    │ - import·{·compile·}·from·'@mdx-js/mdx';
+        1 │ + import·{·compile·}·from·"@mdx-js/mdx";
+     2  2 │   
+     3  3 │   async function run() {
+    ····· │ 
+     8  8 │       const result = await compile(mdx, { development: false });
+     9  9 │       console.log(result.value);
+    10    │ - ··}·catch(e)·{
+       10 │ + ··}·catch·(e)·{
+    11 11 │       console.error("COMPILER ERROR:", e.message);
+    12 12 │     }
+  
+
+test_mdx4.js format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+     1    │ - import·{·compile·}·from·'@mdx-js/mdx';
+        1 │ + import·{·compile·}·from·"@mdx-js/mdx";
+     2  2 │   
+     3  3 │   async function run() {
+    ····· │ 
+     8  8 │       const result = await compile(mdx, { development: false });
+     9  9 │       console.log(result.value);
+    10    │ - ··}·catch(e)·{
+       10 │ + ··}·catch·(e)·{
+    11 11 │       console.error("COMPILER ERROR:", e.message);
+    12 12 │     }
+  
+
+test_react_style.js format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+     1    │ - import·React·from·'react';
+     2    │ - import·{·renderToString·}·from·'react-dom/server';
+        1 │ + import·React·from·"react";
+        2 │ + import·{·renderToString·}·from·"react-dom/server";
+     3  3 │   
+     4  4 │   function Test() {
+     5    │ - ··return·React.createElement('div',·{·style:·{·"--grid-columns":·"25%·35%·30%"·}·},·
+     6    │ - ····React.createElement('div',·{·style:·{·gridTemplateColumns:·"var(--grid-columns)"·}·})
+        5 │ + ··return·React.createElement(
+        6 │ + ····"div",
+        7 │ + ····{·style:·{·"--grid-columns":·"25%·35%·30%"·}·},
+        8 │ + ····React.createElement("div",·{
+        9 │ + ······style:·{·gridTemplateColumns:·"var(--grid-columns)"·},
+       10 │ + ····}),
+     7 11 │     );
+     8 12 │   }
+  
+
+The number of diagnostics exceeds the limit allowed. Use --max-diagnostics to increase it.
+Diagnostics not shown: 1241.
+Checked 580 files in 268ms. No fixes applied.
+Found 507 errors.
+Found 643 warnings.
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+  
+

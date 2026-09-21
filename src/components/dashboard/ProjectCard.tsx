@@ -1,48 +1,54 @@
-'use client'
+"use client";
 
-import { CalendarDays, ChevronDown, ChevronRight, ChevronUp, Calendar } from 'lucide-react'
-import Image from 'next/image'
+import {
+  Calendar,
+  CalendarDays,
+  ChevronDown,
+  ChevronRight,
+  ChevronUp,
+} from "lucide-react";
+import Image from "next/image";
 
-export type ProjectPriority = 'Low' | 'Medium' | 'High'
-type ProjectCardVariant = 'dashboard' | 'projects'
+export type ProjectPriority = "Low" | "Medium" | "High";
+type ProjectCardVariant = "dashboard" | "projects";
 
 export interface ProjectAssignee {
-  id: string
-  name: string
-  avatarUrl?: string
-  role?: string
+  id: string;
+  name: string;
+  avatarUrl?: string;
+  role?: string;
 }
 
 export interface ProjectItem {
-  id: string
-  code: string
-  name: string
-  createdAtLabel: string
-  priority: ProjectPriority
-  allTasks: number
-  activeTasks: number
-  assignees: ProjectAssignee[]
-  extraAssigneesCount?: number
+  id: string;
+  code: string;
+  name: string;
+  createdAtLabel: string;
+  priority: ProjectPriority;
+  allTasks: number;
+  activeTasks: number;
+  assignees: ProjectAssignee[];
+  extraAssigneesCount?: number;
 }
 
 function initials(name: string) {
   return name
-    .split(' ')
+    .split(" ")
     .filter(Boolean)
     .slice(0, 2)
     .map((p) => p[0]!.toUpperCase())
-    .join('')
+    .join("");
 }
 
 function priorityUI(priority: ProjectPriority) {
   switch (priority) {
-    case 'High':
-      return { label: 'High', icon: ChevronUp, color: 'text-red-500' }
-    case 'Medium':
-      return { label: 'Medium', icon: ChevronUp, color: 'text-amber-500' }
-    case 'Low':
+    case "High":
+      return { label: "High", icon: ChevronUp, color: "text-red-500" };
+    case "Medium":
+      return { label: "Medium", icon: ChevronUp, color: "text-amber-500" };
+    case "Low":
     default:
-      return { label: 'Low', icon: ChevronDown, color: 'text-green-500' }
+      return { label: "Low", icon: ChevronDown, color: "text-green-500" };
   }
 }
 
@@ -51,27 +57,25 @@ export default function ProjectCard({
   variant,
   onSelectProject,
 }: {
-  project: ProjectItem
-  variant: ProjectCardVariant
-  onSelectProject?: (project: ProjectItem) => void
+  project: ProjectItem;
+  variant: ProjectCardVariant;
+  onSelectProject?: (project: ProjectItem) => void;
 }) {
-  const p = priorityUI(project.priority)
-  const PriorityIcon = p.icon
+  const p = priorityUI(project.priority);
+  const PriorityIcon = p.icon;
 
-  const visibleAssignees = project.assignees.slice(0, 3)
+  const visibleAssignees = project.assignees.slice(0, 3);
   const extra =
     (project.extraAssigneesCount ?? 0) +
-    Math.max(0, project.assignees.length - visibleAssignees.length)
+    Math.max(0, project.assignees.length - visibleAssignees.length);
 
-  if (variant === 'dashboard') {
+  if (variant === "dashboard") {
     return (
       <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden mb-3">
         <div className="flex flex-col md:flex-row">
-
           {/* LEFT SECTION */}
           <div className="flex-[1.2] p-4 sm:p-5">
             <div className="flex items-start gap-3 sm:gap-4">
-
               {/* ICON */}
               <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-50 flex items-center justify-center overflow-hidden flex-shrink-0 border border-slate-100">
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-white opacity-50" />
@@ -83,7 +87,6 @@ export default function ProjectCard({
               </div>
 
               <div className="min-w-0 flex-1">
-
                 {/* KEEP SAME SIZE */}
                 <p className="text-xs md:text-[10px] font-medium text-slate-400 tracking-wider mb-1 uppercase">
                   {project.code}
@@ -114,13 +117,11 @@ export default function ProjectCard({
 
           {/* RIGHT SECTION */}
           <div className="flex-1 p-4 sm:p-5 flex flex-col justify-center">
-
             <h4 className="text-sm sm:text-sm font-medium text-[#073933] mb-4">
               Project Data
             </h4>
 
             <div className="flex items-center justify-between gap-4">
-
               <div>
                 <p className="text-xs text-slate-400">All tasks</p>
                 <p className="text-lg sm:text-sm font-bold text-[#073933]">
@@ -146,7 +147,12 @@ export default function ProjectCard({
                       style={{ marginLeft: idx === 0 ? 0 : -8 }}
                     >
                       {a.avatarUrl ? (
-                        <Image src={a.avatarUrl} alt={a.name} fill className="object-cover" />
+                        <Image
+                          src={a.avatarUrl}
+                          alt={a.name}
+                          fill
+                          className="object-cover"
+                        />
                       ) : (
                         <div className="w-full h-full bg-slate-100 flex items-center justify-center text-[9px] font-bold text-slate-500">
                           {initials(a.name)}
@@ -165,15 +171,14 @@ export default function ProjectCard({
                   )}
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 
-  if (variant === 'projects') {
+  if (variant === "projects") {
     return (
       <div
         onClick={() => onSelectProject?.(project)}
@@ -183,21 +188,19 @@ export default function ProjectCard({
       >
         <div>
           <p className="text-xs text-gray-400">{project.code}</p>
-          <p className="text-sm font-semibold text-[#1a1a1a]">
-            {project.name}
-          </p>
+          <p className="text-sm font-semibold text-[#1a1a1a]">{project.name}</p>
         </div>
 
         <button
           onClick={(e) => {
-            e.stopPropagation()
-            onSelectProject?.(project)
+            e.stopPropagation();
+            onSelectProject?.(project);
           }}
           className="text-[11px] font-semibold hover:text-teal-800 flex items-center gap-1 mt-2"
         >
           View details <ChevronRight className="w-4 h-4" />
         </button>
       </div>
-    )
+    );
   }
 }

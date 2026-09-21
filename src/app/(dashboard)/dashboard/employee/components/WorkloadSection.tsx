@@ -1,22 +1,22 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import { ChevronRight } from 'lucide-react'
-import Image from 'next/image'
+import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
+import type React from "react";
 
 interface WorkloadMember {
-  id: number
-  name: string
-  job_title?: string
-  department?: string
-  status?: string
-  avatar_url?: string
-  pfp?: string
+  id: number;
+  name: string;
+  job_title?: string;
+  department?: string;
+  status?: string;
+  avatar_url?: string;
+  pfp?: string;
 }
 
 interface WorkloadSectionProps {
-  members?: WorkloadMember[]
+  members?: WorkloadMember[];
 }
 
 const WorkloadSection: React.FC<WorkloadSectionProps> = ({ members = [] }) => {
@@ -41,12 +41,20 @@ const WorkloadSection: React.FC<WorkloadSectionProps> = ({ members = [] }) => {
           >
             {/* Avatar with status circle */}
             <div className="relative mb-2">
-              <div className={`relative h-14 w-14 overflow-hidden rounded-full p-0.5 border-2 ${
-                member.status === 'online' ? 'border-emerald-500' : 'border-slate-300'
-              }`}>
+              <div
+                className={`relative h-14 w-14 overflow-hidden rounded-full p-0.5 border-2 ${
+                  member.status === "online"
+                    ? "border-emerald-500"
+                    : "border-slate-300"
+                }`}
+              >
                 <div className="relative h-full w-full overflow-hidden rounded-full bg-slate-200">
                   <Image
-                    src={member.pfp || member.avatar_url || `https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`}
+                    src={
+                      member.pfp ||
+                      member.avatar_url ||
+                      `https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`
+                    }
                     alt={member.name}
                     fill
                     className="object-cover"
@@ -59,16 +67,16 @@ const WorkloadSection: React.FC<WorkloadSectionProps> = ({ members = [] }) => {
               {member.name}
             </h3>
             <p className="mb-2 text-[11px] font-medium text-slate-400 truncate w-full px-1">
-              {member.job_title || 'Team Member'}
+              {member.job_title || "Team Member"}
             </p>
 
             <div className="rounded-lg bg-white px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-slate-400 shadow-sm border border-slate-50">
               {(() => {
-                const title = (member.job_title || '').toLowerCase()
-                if (title.includes('junior')) return 'Junior'
-                if (title.includes('senior')) return 'Senior'
-                if (title.includes('lead')) return 'Lead'
-                return member.department || 'Middle'
+                const title = (member.job_title || "").toLowerCase();
+                if (title.includes("junior")) return "Junior";
+                if (title.includes("senior")) return "Senior";
+                if (title.includes("lead")) return "Lead";
+                return member.department || "Middle";
               })()}
             </div>
           </motion.div>
@@ -81,7 +89,7 @@ const WorkloadSection: React.FC<WorkloadSectionProps> = ({ members = [] }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WorkloadSection
+export default WorkloadSection;

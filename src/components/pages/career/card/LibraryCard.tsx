@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { JOIN_TEAM_LIBRARY_CARD_TYPE } from "@/constants/pages/career/library-card";
 import FONTS from "@/assets/fonts";
+import type { JOIN_TEAM_LIBRARY_CARD_TYPE } from "@/constants/pages/career/library-card";
 
 export default function LibraryCard({
   src,

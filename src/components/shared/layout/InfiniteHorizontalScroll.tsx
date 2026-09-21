@@ -1,14 +1,14 @@
 "use client";
 
+import Autoplay from "embla-carousel-autoplay";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
-  type CarouselApi,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface InfiniteHorizontalScrollProps {
   children: React.ReactNode;
@@ -51,13 +51,13 @@ export const InfiniteHorizontalScroll =
             stopOnFocusIn: false,
             playOnInit: true,
           }),
-        [autoplayDelay, pauseOnHover]
+        [autoplayDelay, pauseOnHover],
       );
 
       // Memoize children array to prevent unnecessary re-renders
       const childrenArray = useMemo(
         () => React.Children.toArray(children),
-        [children]
+        [children],
       );
 
       // Carousel configuration memoized
@@ -69,7 +69,7 @@ export const InfiniteHorizontalScroll =
           duration: Math.max(10, Math.min(100, 100 - speed)), // Convert speed to duration
           containScroll: "trimSnaps" as const,
         }),
-        [speed]
+        [speed],
       );
 
       // Handle mouse events
@@ -93,7 +93,7 @@ export const InfiniteHorizontalScroll =
             plugin.reset();
           }
         },
-        [api, plugin]
+        [api, plugin],
       );
 
       // Handle navigation buttons
@@ -124,7 +124,7 @@ export const InfiniteHorizontalScroll =
         };
 
         api.on("select", onSelect);
-        
+
         // Explicitly start the autoplay plugin once the API is ready
         // This resolves issues with playOnInit failing in React StrictMode
         plugin.play();
@@ -168,7 +168,7 @@ export const InfiniteHorizontalScroll =
           window.removeEventListener("blur", handlePause);
           document.removeEventListener(
             "visibilitychange",
-            handleVisibilityChange
+            handleVisibilityChange,
           );
         };
       }, [plugin]);
@@ -235,7 +235,7 @@ export const InfiniteHorizontalScroll =
                 </CarouselItem>
               ))}
             </CarouselContent>
-            
+
             {showNavigation && (
               <>
                 <button
@@ -261,7 +261,7 @@ export const InfiniteHorizontalScroll =
           {indicatorPosition === "bottom" && indicators}
         </div>
       );
-    }
+    },
   );
 
 InfiniteHorizontalScroll.displayName = "InfiniteHorizontalScroll";

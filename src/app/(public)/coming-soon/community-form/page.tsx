@@ -1,8 +1,8 @@
+import { HomeIcon, Sparkles } from "lucide-react";
+import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { FadeInOnLoad } from "@/components/shared/motion/GsapMotion";
 import { buttonVariants } from "@/components/ui/button";
-import { HomeIcon, Sparkles } from "lucide-react";
-import Link from "next/link";
 
 export default function communityFormComingSoon() {
   return (
@@ -20,9 +20,9 @@ export default function communityFormComingSoon() {
         </h2>
 
         <p className="mt-3 text-sm text-center max-w-xl mx-auto">
-            We're creating a vibrant community platform to connect users,
-          share ideas, and collaborate on projects. Stay tuned for updates
-          and early access opportunities!
+          We're creating a vibrant community platform to connect users, share
+          ideas, and collaborate on projects. Stay tuned for updates and early
+          access opportunities!
         </p>
       </FadeInOnLoad>
       <Link

@@ -1,8 +1,8 @@
+import { HomeIcon, Sparkles } from "lucide-react";
+import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { FadeInOnLoad } from "@/components/shared/motion/GsapMotion";
 import { buttonVariants } from "@/components/ui/button";
-import { HomeIcon, Sparkles } from "lucide-react";
-import Link from "next/link";
 
 export default function MixedRealityComingSoon() {
   return (

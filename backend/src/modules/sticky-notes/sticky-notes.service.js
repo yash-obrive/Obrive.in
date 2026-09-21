@@ -1,14 +1,13 @@
-const { prisma } = require('../../../db');
-
+const { prisma } = require("../../../prisma");
 // ── Get all sticky notes ──────────────────────────
 exports.getAllStickyNotes = async (_userId) => {
   return await prisma.sticky_notes.findMany({
     include: {
       users: {
-        select: { name: true }
-      }
+        select: { name: true },
+      },
     },
-    orderBy: [{ note_date: 'desc' }, { position: 'asc' }],
+    orderBy: [{ note_date: "desc" }, { position: "asc" }],
   });
 };
 
@@ -29,10 +28,10 @@ exports.getStickyNotesByDate = async (_userId, date) => {
     },
     include: {
       users: {
-        select: { name: true }
-      }
+        select: { name: true },
+      },
     },
-    orderBy: { position: 'asc' },
+    orderBy: { position: "asc" },
   });
 };
 
@@ -53,10 +52,10 @@ exports.getStickyNotesByDateRange = async (_userId, startDate, endDate) => {
     },
     include: {
       users: {
-        select: { name: true }
-      }
+        select: { name: true },
+      },
     },
-    orderBy: [{ note_date: 'desc' }, { position: 'asc' }],
+    orderBy: [{ note_date: "desc" }, { position: "asc" }],
   });
 };
 
@@ -68,10 +67,10 @@ exports.getStickyNotesByColor = async (_userId, color) => {
     },
     include: {
       users: {
-        select: { name: true }
-      }
+        select: { name: true },
+      },
     },
-    orderBy: [{ note_date: 'desc' }, { position: 'asc' }],
+    orderBy: [{ note_date: "desc" }, { position: "asc" }],
   });
 };
 
@@ -81,15 +80,16 @@ exports.getStickyNoteById = async (noteId, userId) => {
     where: { id: noteId },
   });
 
-  if (!note) throw { status: 404, message: 'Sticky note not found' };
-  if (note.user_id !== userId) throw { status: 403, message: 'Unauthorized access' };
+  if (!note) throw { status: 404, message: "Sticky note not found" };
+  if (note.user_id !== userId)
+    throw { status: 403, message: "Unauthorized access" };
 
   return note;
 };
 
 // ── Create a sticky note ─────────────────────────────────────
 exports.createStickyNote = async (userId, data) => {
-  const { content, color = 'yellow', note_date, position = 0 } = data;
+  const { content, color = "yellow", note_date, position = 0 } = data;
 
   const noteDate = new Date(`${note_date}T00:00:00`);
 
@@ -103,9 +103,9 @@ exports.createStickyNote = async (userId, data) => {
     },
     include: {
       users: {
-        select: { name: true }
-      }
-    }
+        select: { name: true },
+      },
+    },
   });
 };
 
@@ -115,8 +115,9 @@ exports.updateStickyNote = async (noteId, userId, data) => {
     where: { id: noteId },
   });
 
-  if (!note) throw { status: 404, message: 'Sticky note not found' };
-  if (note.user_id !== userId) throw { status: 403, message: 'Unauthorized access' };
+  if (!note) throw { status: 404, message: "Sticky note not found" };
+  if (note.user_id !== userId)
+    throw { status: 403, message: "Unauthorized access" };
 
   const updateData = {};
 
@@ -143,12 +144,13 @@ exports.deleteStickyNote = async (noteId, userId) => {
     where: { id: noteId },
   });
 
-  if (!note) throw { status: 404, message: 'Sticky note not found' };
-  if (note.user_id !== userId) throw { status: 403, message: 'Unauthorized access' };
+  if (!note) throw { status: 404, message: "Sticky note not found" };
+  if (note.user_id !== userId)
+    throw { status: 403, message: "Unauthorized access" };
 
   await prisma.sticky_notes.delete({
     where: { id: noteId },
   });
 
-  return { message: 'Sticky note deleted successfully' };
+  return { message: "Sticky note deleted successfully" };
 };

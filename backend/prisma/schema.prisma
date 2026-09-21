@@ -105,38 +105,38 @@ model tasks {
 }
 
 model users {
-  id                  Int                   @id @default(autoincrement())
-  userid              String                @unique(map: "unique_employee_id") @db.VarChar(50)
-  email               String                @unique @db.VarChar(255)
-  name                String                @db.VarChar(100)
-  role                String                @db.VarChar(50)
-  password            String                @db.VarChar(255)
-  status              String                @default("offline") @db.VarChar(50)
-  created_at          DateTime              @default(now())
-  updated_at          DateTime
-  department          String?               @db.VarChar(255)
-  biography           String?
-  is_active           Boolean               @default(true)
-  job_title           String?               @db.VarChar(255)
-  join_date           DateTime?
-  phone_number        String?               @db.VarChar(25)
-  date_of_birth       DateTime?             @db.Date
-  bio                 String?
-  avatar_url          String?               @db.Text
-  events              events[]
-  login_logs          login_logs[]
-  leave_requests      leave_requests[]
-  project_assignments project_assignments[]
-  sticky_notes        sticky_notes[]
-  tasks_assigned      tasks[]               @relation("TaskAssignedTo")
-  tasks_created       tasks[]               @relation("TaskCreatedBy")
-  projects_led        projects[]            @relation("ProjectLeader")
-  work_sessions       work_sessions[]
+  id                           Int                   @id @default(autoincrement())
+  userid                       String                @unique(map: "unique_employee_id") @db.VarChar(50)
+  email                        String                @unique @db.VarChar(255)
+  name                         String                @db.VarChar(100)
+  role                         String                @db.VarChar(50)
+  password                     String                @db.VarChar(255)
+  status                       String                @default("offline") @db.VarChar(50)
+  created_at                   DateTime              @default(now())
+  updated_at                   DateTime
+  department                   String?               @db.VarChar(255)
+  biography                    String?
+  is_active                    Boolean               @default(true)
+  job_title                    String?               @db.VarChar(255)
+  join_date                    DateTime?
+  phone_number                 String?               @db.VarChar(25)
+  date_of_birth                DateTime?             @db.Date
+  bio                          String?
+  avatar_url                   String?               @db.Text
+  events                       events[]
+  login_logs                   login_logs[]
+  leave_requests               leave_requests[]
+  project_assignments          project_assignments[]
+  sticky_notes                 sticky_notes[]
+  tasks_assigned               tasks[]               @relation("TaskAssignedTo")
+  tasks_created                tasks[]               @relation("TaskCreatedBy")
+  projects_led                 projects[]            @relation("ProjectLeader")
+  work_sessions                work_sessions[]
   leaves                       leaves[]
   approved_leaves              leaves[]              @relation("LeaveApprovedBy")
   room_configs                 room_configs[]
   handRaises                   room_hand_raises[]
-  is_location_tracking_enabled Boolean              @default(false)
+  is_location_tracking_enabled Boolean               @default(false)
   employee_locations           employee_locations[]
 
   // Chat relations
@@ -147,11 +147,11 @@ model users {
   roomParticipants      room_participants[]
 
   //community
-  communityPosts        CommunityPost[]         @relation("CommunityPostAuthor")
-  communityComments     CommunityComment[]      @relation("CommunityCommentAuthor")
-  communityPostLikes    CommunityPostLike[]     @relation("CommunityPostLikeUser")
-  communityCommentLikes CommunityCommentLike[]  @relation("CommunityCommentLikeUser")
-  communitySavedPosts   CommunitySavedPost[]    @relation("CommunitySavedPostUser")
+  communityPosts        CommunityPost[]        @relation("CommunityPostAuthor")
+  communityComments     CommunityComment[]     @relation("CommunityCommentAuthor")
+  communityPostLikes    CommunityPostLike[]    @relation("CommunityPostLikeUser")
+  communityCommentLikes CommunityCommentLike[] @relation("CommunityCommentLikeUser")
+  communitySavedPosts   CommunitySavedPost[]   @relation("CommunitySavedPostUser")
 
   //Room relations
   room_role_assignments room_role_assignments[] @relation("RoomRoleAssignmentUser")
@@ -522,40 +522,39 @@ enum CommunityReportType {
 
 // 2. Community Posts Table ===================================================================== 
 model CommunityPost {
-  id             String                @id @default(uuid())
+  id String @id @default(uuid())
 
-  title          String                @db.VarChar(300)
-  content        String                @db.Text
-  slug           String?               @unique
+  title   String  @db.VarChar(300)
+  content String  @db.Text
+  slug    String? @unique
 
-  postType       CommunityPostType     @default(DISCUSSION)
-  visibility     CommunityVisibility   @default(PUBLIC)
-  status         CommunityPostStatus   @default(PUBLISHED)
+  postType   CommunityPostType   @default(DISCUSSION)
+  visibility CommunityVisibility @default(PUBLIC)
+  status     CommunityPostStatus @default(PUBLISHED)
 
-  isPinned       Boolean               @default(false)
-  isLocked       Boolean               @default(false)
+  isPinned Boolean @default(false)
+  isLocked Boolean @default(false)
 
-  likeCount      Int                   @default(0)
-  commentCount   Int                   @default(0)
-  shareCount     Int                   @default(0)
-  saveCount      Int                   @default(0)
-  viewCount      Int                   @default(0)
+  likeCount    Int @default(0)
+  commentCount Int @default(0)
+  shareCount   Int @default(0)
+  saveCount    Int @default(0)
+  viewCount    Int @default(0)
 
-  author_id      Int
+  author_id Int
 
-  createdAt      DateTime              @default(now())
-  updatedAt      DateTime              @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  author         users                 @relation("CommunityPostAuthor", fields: [author_id], references: [id])
+  author users @relation("CommunityPostAuthor", fields: [author_id], references: [id])
 
-  media          CommunityPostMedia[]
-  comments       CommunityComment[]
-  likes          CommunityPostLike[]
-  savedBy        CommunitySavedPost[]
+  media    CommunityPostMedia[]
+  comments CommunityComment[]
+  likes    CommunityPostLike[]
+  savedBy  CommunitySavedPost[]
 
   @@index([author_id])
   @@index([createdAt])
-
   @@map("community_posts")
 }
 
@@ -586,33 +585,32 @@ model CommunityPostMedia {
 //This is the correct self-relation syntax.
 
 model CommunityComment {
-  id            String               @id @default(uuid())
+  id String @id @default(uuid())
 
-  content       String               @db.Text
+  content String @db.Text
 
-  postId        String
-  author_id     Int
-  parentId      String?
+  postId    String
+  author_id Int
+  parentId  String?
 
-  likeCount     Int                  @default(0)
-  replyCount    Int                  @default(0)
+  likeCount  Int @default(0)
+  replyCount Int @default(0)
 
-  createdAt     DateTime             @default(now())
-  updatedAt     DateTime             @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  post          CommunityPost        @relation(fields: [postId], references: [id], onDelete: Cascade)
+  post CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
 
-  author        users                @relation("CommunityCommentAuthor", fields: [author_id], references: [id])
+  author users @relation("CommunityCommentAuthor", fields: [author_id], references: [id])
 
-  parent        CommunityComment?    @relation("CommentReplies", fields: [parentId], references: [id])
-  replies       CommunityComment[]   @relation("CommentReplies")
+  parent  CommunityComment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies CommunityComment[] @relation("CommentReplies")
 
-  likes         CommunityCommentLike[]
+  likes CommunityCommentLike[]
 
   @@index([postId])
   @@index([author_id])
   @@index([parentId])
-
   @@map("community_comments")
 }
 
@@ -621,13 +619,16 @@ model CommunityComment {
 //Prevents duplicate likes.
 
 model CommunityPostLike {
-  id           String            @id @default(uuid())
-  user_id      Int
-  postId       String
-  createdAt    DateTime          @default(now())
-  user         users             @relation("CommunityPostLikeUser", fields: [user_id], references: [id])
-  post         CommunityPost     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  id String @id @default(uuid())
 
+  user_id Int
+  postId  String
+
+  createdAt DateTime @default(now())
+
+  user users @relation("CommunityPostLikeUser", fields: [user_id], references: [id])
+
+  post CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
   @@unique([user_id, postId])
   @@map("community_post_likes")
 }
@@ -635,13 +636,16 @@ model CommunityPostLike {
 // 6. Comment Likes Table  ===================================================================== 
 
 model CommunityCommentLike {
-  id           String               @id @default(uuid())
-  user_id      Int
-  commentId    String
-  createdAt    DateTime             @default(now())
-  user         users                @relation("CommunityCommentLikeUser", fields: [user_id], references: [id])
-  comment      CommunityComment     @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  id String @id @default(uuid())
 
+  user_id   Int
+  commentId String
+
+  createdAt DateTime @default(now())
+
+  user users @relation("CommunityCommentLikeUser", fields: [user_id], references: [id])
+
+  comment CommunityComment @relation(fields: [commentId], references: [id], onDelete: Cascade)
   @@unique([user_id, commentId])
   @@map("community_comment_likes")
 }
@@ -649,13 +653,16 @@ model CommunityCommentLike {
 // 7. Saved Posts Table ===================================================================== 
 
 model CommunitySavedPost {
-  id           String            @id @default(uuid())
-  user_id      Int
-  postId       String
-  createdAt    DateTime          @default(now())
-  user         users             @relation("CommunitySavedPostUser", fields: [user_id], references: [id])
-  post         CommunityPost     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  id String @id @default(uuid())
 
+  user_id Int
+  postId  String
+
+  createdAt DateTime @default(now())
+
+  user users @relation("CommunitySavedPostUser", fields: [user_id], references: [id])
+
+  post CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
   @@unique([user_id, postId])
   @@map("community_saved_posts")
 }
@@ -672,4 +679,47 @@ model employee_locations {
 
   @@index([userId, recordedAt])
   @@map("employee_locations")
+}
+
+model PaymentOrder {
+  id                  Int       @id @default(autoincrement())
+  packageId           String    @db.VarChar(100)
+  packageName         String    @db.VarChar(255)
+
+  // ── Financial breakdown (all values in integer PAISE) ────────────────────
+  // Nullable for backward compatibility with orders created before this schema
+  // update. All NEW PaymentOrders MUST populate every financial field.
+  //
+  // BUSINESS/TAX NOTE: serviceGst assumes 18% GST on applicable Obrive services.
+  // gatewayFee and gatewayFeeGst model a customer-facing payment convenience
+  // charge. Confirm tax treatment with a qualified advisor before production.
+  // Refund treatment of these components requires separate business confirmation.
+  baseAmount          Int?                          // Base service price in paise
+  serviceGst          Int?                          // GST on service (default 18%) in paise
+  gatewayFee          Int?                          // Gateway convenience fee (default 2%) in paise
+  gatewayFeeGst       Int?                          // GST on gateway fee (default 18%) in paise
+  gatewayCharges      Int?                          // gatewayFee + gatewayFeeGst in paise
+  totalAmount         Int?                          // Final customer total in paise (= Razorpay order amount)
+
+  // Legacy field kept for backward compatibility. For new records equals totalAmount.
+  amount              Int
+  currency            String    @default("INR") @db.VarChar(10)
+  razorpayOrderId     String    @unique @db.VarChar(255)
+  razorpayPaymentId   String?   @unique @db.VarChar(255)
+  status              String    @default("CREATED") @db.VarChar(50)
+  customerName        String?   @db.VarChar(255)
+  customerEmail       String?   @db.VarChar(255)
+  customerPhone       String?   @db.VarChar(50)
+  company             String?   @db.VarChar(255)
+  gst                 String?   @db.VarChar(50)
+  address             String?   @db.Text
+  customerEmailSentAt DateTime?
+  adminEmailSentAt    DateTime?
+  createdAt           DateTime  @default(now()) @db.Timestamp(6)
+  updatedAt           DateTime  @updatedAt @db.Timestamp(6)
+
+  @@index([razorpayOrderId])
+  @@index([razorpayPaymentId])
+  @@index([status])
+  @@map("payment_orders")
 }

@@ -1,12 +1,12 @@
+import Image from "next/image";
+import Link from "@/components/shared/LocalizedLink";
+import { ICONS, NAV_ICONS, NAV_ICONS_META } from "@/assets/images";
+import { buttonVariants } from "@/components/ui/button";
 import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { ICONS, NAV_ICONS, NAV_ICONS_META } from "@/assets/images";
-import Image from "next/image";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
 import AnimatedNavLabel from "../AnimatedNavLabel";
 
 export function SolutionsDropdown() {
@@ -106,6 +106,27 @@ export function SolutionsDropdown() {
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
                   >
                     Spatial Computing App Development
+                  </Link>
+                </div>
+              </AnimatedNavLabel>
+            </div>
+            <div className="flex items-center gap-3 py-4 px-2">
+              <AnimatedNavLabel iconSize={16}>
+                <div className="flex items-center gap-3">
+                  <Image
+                    src={NAV_ICONS.THREE_D_ICON_NAV}
+                    width={NAV_ICONS_META.THREE_D_ICON_NAV.width}
+                    height={NAV_ICONS_META.THREE_D_ICON_NAV.height}
+                    alt={NAV_ICONS_META.THREE_D_ICON_NAV.alt}
+                    className="flex-shrink-0"
+                  />
+                  <Link
+                    href="/solutions/mixed-reality-development"
+                    className={`${buttonVariants({
+                      variant: "link",
+                    })} !text-white !p-0 text-xs h-auto relative z-10`}
+                  >
+                    Mixed Reality Development
                   </Link>
                 </div>
               </AnimatedNavLabel>

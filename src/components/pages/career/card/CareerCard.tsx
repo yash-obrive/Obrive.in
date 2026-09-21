@@ -1,6 +1,6 @@
+import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
-import { CAREER_CARD_TYPE } from "@/constants/pages/career/career-card";
-import Link from "next/link";
+import type { CAREER_CARD_TYPE } from "@/constants/pages/career/career-card";
 
 const CareerCard = ({ title, date, slug }: CAREER_CARD_TYPE) => {
   return (

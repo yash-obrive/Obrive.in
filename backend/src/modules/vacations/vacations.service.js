@@ -1,9 +1,8 @@
-const { prisma } = require('../../../db');
-
+const { prisma } = require("../../../prisma");
 class VacationsService {
   async getAllEmployeesWithLeaves() {
     return await prisma.users.findMany({
-      where: { role: 'employee' },
+      where: { role: "employee" },
       select: {
         id: true,
         name: true,
@@ -23,12 +22,12 @@ class VacationsService {
                 id: true,
                 name: true,
                 email: true,
-                userid: true
-              }
-            }
-          }
-        }
-      }
+                userid: true,
+              },
+            },
+          },
+        },
+      },
     });
   }
 
@@ -40,8 +39,8 @@ class VacationsService {
         start_date: new Date(data.start_date),
         end_date: new Date(data.end_date),
         reason: data.reason,
-        status: 'pending' // As per request, user can only request holiday
-      }
+        status: "pending", // As per request, user can only request holiday
+      },
     });
   }
 }

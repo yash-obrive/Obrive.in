@@ -1,7 +1,6 @@
-const { prisma } = require('../../../db');
-
+const { prisma } = require("../../../prisma");
 const LEAVE_LIMITS = { vacation: 6, sick: 2 };
-const ACTIVE_STATUSES = ['approved', 'pending'];
+const ACTIVE_STATUSES = ["approved", "pending"];
 
 class LeavesService {
   // Helper to calculate total days in a range (inclusive)
@@ -28,47 +27,71 @@ class LeavesService {
   }
 
   async getDashboard(userId, selectedDate) {
-    const referenceDate = selectedDate && selectedDate !== 'undefined' ? new Date(selectedDate) : new Date();
-
+    const referenceDate =
+      selectedDate && selectedDate !== "undefined"
+        ? new Date(selectedDate)
+        : new Date();
     // Get month bounds
-    const startOfMonth = new Date(referenceDate.getFullYear(), referenceDate.getMonth(), 1);
-    const endOfMonth = new Date(referenceDate.getFullYear(), referenceDate.getMonth() + 1, 0);
+    const startOfMonth = new Date(
+      referenceDate.getFullYear(),
+      referenceDate.getMonth(),
+      1,
+    );
+    const endOfMonth = new Date(
+      referenceDate.getFullYear(),
+      referenceDate.getMonth() + 1,
+      0,
+    );
 
     // Fetch leaves that overlap with the current month
     const userRequests = await prisma.leaves.findMany({
       where: {
         user_id: userId,
         OR: [
-          { start_date: { lte: endOfMonth }, end_date: { gte: startOfMonth } }
-        ]
+          { start_date: { lte: endOfMonth }, end_date: { gte: startOfMonth } },
+        ],
       },
-      orderBy: { start_date: 'asc' },
+      orderBy: { start_date: "asc" },
     });
 
     // Calculate Balance (Logic: Sum days of approved/pending requests that fall within this month)
     const usage = { vacation: 0, sick: 0 };
-    userRequests.forEach(req => {
-      const type = req.leave_type.toLowerCase().includes('sick') ? 'sick' : 'vacation';
+    userRequests.forEach((req) => {
+      const type = req.leave_type.toLowerCase().includes("sick")
+        ? "sick"
+        : "vacation";
       if (ACTIVE_STATUSES.includes(req.status) && usage[type] !== undefined) {
-        usage[type] += this.calculateDaysInMonth(req.start_date, req.end_date, startOfMonth, endOfMonth);
-      }
+        usage[type] += this.calculateDaysInMonth(
+          req.start_date,
+          req.end_date,
+          startOfMonth,
+          endOfMonth,
+        );      }
     });
 
     return {
-      selectedDate: referenceDate.toISOString().split('T')[0],
+      selectedDate: referenceDate.toISOString().split("T")[0],
       allowances: {
-        vacation: { total: LEAVE_LIMITS.vacation, used: usage.vacation, remaining: Math.max(LEAVE_LIMITS.vacation - usage.vacation, 0) },
-        sick: { total: LEAVE_LIMITS.sick, used: usage.sick, remaining: Math.max(LEAVE_LIMITS.sick - usage.sick, 0) }
+        vacation: {
+          total: LEAVE_LIMITS.vacation,
+          used: usage.vacation,
+          remaining: Math.max(LEAVE_LIMITS.vacation - usage.vacation, 0),
+        },
+        sick: {
+          total: LEAVE_LIMITS.sick,
+          used: usage.sick,
+          remaining: Math.max(LEAVE_LIMITS.sick - usage.sick, 0),
+        },
       },
-      requests: userRequests.map(r => ({
+      requests: userRequests.map((r) => ({
         id: r.id,
         leaveType: r.leave_type,
         startDate: r.start_date,
         endDate: r.end_date,
         leaveDate: r.start_date, // Added for frontend compatibility
         status: r.status,
-        reason: r.reason
-      }))
+        reason: r.reason,
+      })),
     };
   }
 
@@ -82,15 +105,13 @@ class LeavesService {
       where: {
         user_id: userId,
         status: { in: ACTIVE_STATUSES },
-        NOT: { status: 'rejected' },
-        AND: [
-          { start_date: { lte: end } },
-          { end_date: { gte: start } }
-        ]
-      }
+        NOT: { status: "rejected" },
+        AND: [{ start_date: { lte: end } }, { end_date: { gte: start } }],
+      },
     });
 
-    if (overlap) throw new Error('You already have a leave request covering these dates');
+    if (overlap)
+      throw new Error("You already have a leave request covering these dates");
 
     // Create the record in the unified 'leaves' table
     return await prisma.leaves.create({
@@ -100,8 +121,8 @@ class LeavesService {
         start_date: start,
         end_date: end,
         reason: reason || null,
-        status: 'pending'
-      }
+        status: "pending",
+      },
     });
   }
 
@@ -109,24 +130,23 @@ class LeavesService {
     const id = parseInt(leaveId, 10);
 
     const leave = await prisma.leaves.findUnique({
-      where: { id }
+      where: { id },
     });
 
-    if (!leave) throw new Error('Leave request not found');
-
+    if (!leave) throw new Error("Leave request not found");
     // Check if it belongs to the user
     if (leave.user_id !== userId) {
-      throw new Error('Unauthorized to delete this leave request');
+      throw new Error("Unauthorized to delete this leave request");
     }
 
     // Optional: Only allow deleting pending or rejected requests?
     // For now, let's just allow deleting their own requests as requested.
 
     await prisma.leaves.delete({
-      where: { id }
+      where: { id },
     });
 
-    return { message: 'Leave request deleted successfully' };
+    return { message: "Leave request deleted successfully" };
   }
 }
 

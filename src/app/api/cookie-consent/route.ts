@@ -5,7 +5,10 @@ export async function POST(req: Request) {
     const { value } = await req.json();
 
     if (typeof value !== "string") {
-      return NextResponse.json({ success: false, error: "Invalid value" }, { status: 400 });
+      return NextResponse.json(
+        { success: false, error: "Invalid value" },
+        { status: 400 },
+      );
     }
 
     const response = NextResponse.json({ success: true });
@@ -22,6 +25,9 @@ export async function POST(req: Request) {
 
     return response;
   } catch (err) {
-    return NextResponse.json({ success: false, error: "Invalid JSON" }, { status: 400 });
+    return NextResponse.json(
+      { success: false, error: "Invalid JSON" },
+      { status: 400 },
+    );
   }
 }

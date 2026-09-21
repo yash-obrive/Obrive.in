@@ -1,66 +1,66 @@
-'use client'
+"use client";
 
-import { ChevronDown, User, Calendar } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { apiFetch } from '@/lib/api'
-import Image from 'next/image'
-import UserPfp from '@/assets/images/employee/photo.png'
-import Timer from './Timer'
-import { useRouter } from 'next/navigation'
+import { AnimatePresence, motion } from "framer-motion";
+import { Calendar, ChevronDown, User } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import UserPfp from "@/assets/images/employee/photo.png";
+import { apiFetch } from "@/lib/api";
+import Timer from "./Timer";
 
 type ProfileDropdownProps = {
-  notificationCount?: number
+  notificationCount?: number;
   dateRange?: {
-    start: string
-    end: string
-  }
-}
+    start: string;
+    end: string;
+  };
+};
 
 type UserData = {
-  id?: string | number
-  name?: string
-  avatar_url?: string
-}
+  id?: string | number;
+  name?: string;
+  avatar_url?: string;
+};
 
 export default function ProfileDropdown({
   notificationCount = 3,
   dateRange = {
-    start: 'Nov 16, 2020',
-    end: 'Dec 16, 2020',
+    start: "Nov 16, 2020",
+    end: "Dec 16, 2020",
   },
 }: ProfileDropdownProps) {
-  const [user, setUser] = useState<UserData | null>(null)
-  const [isOpen, setIsOpen] = useState(false)
-  const router = useRouter()
+  const [user, setUser] = useState<UserData | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const res = await apiFetch('/auth/me')
+        const res = await apiFetch("/auth/me");
 
         if (res.ok) {
-          const data = await res.json()
+          const data = await res.json();
           if (data?.success) {
-            setUser(data.data)
+            setUser(data.data);
           }
         }
       } catch (error) {
-        console.error('Error fetching user data:', error)
+        console.error("Error fetching user data:", error);
       }
-    }
+    };
 
-    fetchUserData()
-  }, [])
+    fetchUserData();
+  }, []);
 
   const handleRouting = () => {
     if (user?.id) {
-      router.push(`/profile/${user.id}`)
-      return
+      router.push(`/profile/${user.id}`);
+      return;
     }
 
-    router.push('/dashboard/employee')
-  }
+    router.push("/dashboard/employee");
+  };
 
   return (
     <div className="relative">
@@ -70,7 +70,7 @@ export default function ProfileDropdown({
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="flex items-center gap-2 rounded-lg px-2 py-1 transition hover:bg-gray-100"
-            aria-label={`Open profile menu${notificationCount > 0 ? ` with ${notificationCount} notifications` : ''}`}
+            aria-label={`Open profile menu${notificationCount > 0 ? ` with ${notificationCount} notifications` : ""}`}
           >
             <div className="h-8 w-8 flex-shrink-0 overflow-hidden rounded-full">
               <Image
@@ -83,7 +83,7 @@ export default function ProfileDropdown({
             </div>
             <div className="flex min-w-0 flex-col items-start">
               <span className="truncate text-xs font-semibold text-gray-900">
-                {user?.name || 'Employee'}
+                {user?.name || "Employee"}
               </span>
             </div>
             <ChevronDown className="h-3 w-3 flex-shrink-0 text-gray-600" />
@@ -121,7 +121,7 @@ export default function ProfileDropdown({
 
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">
-                    {user?.name || 'Employee'}
+                    {user?.name || "Employee"}
                   </h3>
                 </div>
               </div>
@@ -159,5 +159,5 @@ export default function ProfileDropdown({
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }

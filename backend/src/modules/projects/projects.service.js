@@ -1,14 +1,13 @@
 // backend/src/modules/projects/projects.service.js
-const { prisma } = require('../../../db');
+const { prisma } = require("../../../prisma");
 
 class ProjectService {
-
   async getProjectsByRole(userId, role) {
     let projects;
 
-    if (role === 'hr' || role === 'supervisor' || role === 'admin') {
+    if (role === "hr" || role === "supervisor" || role === "admin") {
       projects = await this.getAllProjects();
-    } else if (role === 'employee') {
+    } else if (role === "employee") {
       projects = await this.getEmployeeProjects(userId);
     } else {
       projects = [];
@@ -18,13 +17,16 @@ class ProjectService {
     //   projects = await this.getClientProjects(userId);
     // }
 
-
     // Convert BigInt to Number for JSON serialization
-    return projects.map(project => ({
+    return projects.map((project) => ({
       ...project,
       total_tasks: project.total_tasks ? Number(project.total_tasks) : 0,
-      completed_tasks: project.completed_tasks ? Number(project.completed_tasks) : 0,
-      assignees_count: project.assignees_count ? Number(project.assignees_count) : 0
+      completed_tasks: project.completed_tasks
+        ? Number(project.completed_tasks)
+        : 0,
+      assignees_count: project.assignees_count
+        ? Number(project.assignees_count)
+        : 0,
     }));
   }
 
@@ -48,15 +50,16 @@ class ProjectService {
             GROUP BY p.id, p.name, p.description, p.priority, p.created_at`;
 
     // Convert BigInt to Number for JSON serialization
-    const convertedProjects = projects.map(project => ({
+    const convertedProjects = projects.map((project) => ({
       ...project,
       id: Number(project.id),
-      team_members: project.team_members && project.team_members.length > 0
-        ? project.team_members.map(member => ({
-          ...member,
-          id: Number(member.id)
-        }))
-        : []
+      team_members:
+        project.team_members && project.team_members.length > 0
+          ? project.team_members.map((member) => ({
+              ...member,
+              id: Number(member.id),
+            }))
+          : [],
     }));
 
     // Fetch tasks for each project with visibility filtering
@@ -90,15 +93,15 @@ class ProjectService {
 
         return {
           ...project,
-          tasks: tasks.map(task => ({
+          tasks: tasks.map((task) => ({
             ...task,
             id: Number(task.id),
             project_id: Number(task.project_id),
             assigned_to: task.assigned_to ? Number(task.assigned_to) : null,
-            created_by: task.created_by ? Number(task.created_by) : null
-          }))
+            created_by: task.created_by ? Number(task.created_by) : null,
+          })),
         };
-      })
+      }),
     );
 
     return projectsWithTasks;
@@ -123,14 +126,14 @@ class ProjectService {
       ORDER BY p.created_at DESC
     `;
 
-    return result.map(p => ({
+    return result.map((p) => ({
       ...p,
       id: Number(p.id),
       leader_id: p.leader_id ? Number(p.leader_id) : null,
       progress: p.progress ? Number(p.progress) : 0,
       total_tasks: Number(p.total_tasks),
       completed_tasks: Number(p.completed_tasks),
-      assignees_count: Number(p.assignees_count)
+      assignees_count: Number(p.assignees_count),
     }));
   }
 
@@ -158,14 +161,14 @@ class ProjectService {
       ORDER BY p.created_at DESC
     `;
 
-    return result.map(p => ({
+    return result.map((p) => ({
       ...p,
       id: Number(p.id),
       leader_id: p.leader_id ? Number(p.leader_id) : null,
       progress: p.progress ? Number(p.progress) : 0,
       total_tasks: Number(p.total_tasks || 0),
       completed_tasks: Number(p.completed_tasks || 0),
-      assignees_count: Number(p.assignees_count || 0)
+      assignees_count: Number(p.assignees_count || 0),
     }));
   }
 
@@ -190,17 +193,17 @@ class ProjectService {
       ORDER BY p.created_at DESC
     `;
 
-    return result.map(p => ({ // returns an array so that we can map through it and convert BigInt to Number for JSON serialization
+    return result.map((p) => ({
+      // returns an array so that we can map through it and convert BigInt to Number for JSON serialization
       ...p,
       id: Number(p.id),
       leader_id: p.leader_id ? Number(p.leader_id) : null,
       progress: p.progress ? Number(p.progress) : 0,
       total_tasks: Number(p.total_tasks),
       completed_tasks: Number(p.completed_tasks),
-      assignees_count: Number(p.assignees_count)
+      assignees_count: Number(p.assignees_count),
     }));
   }
-
 
   async getProjectById(projectId) {
     const project = await prisma.$queryRaw`
@@ -228,27 +231,31 @@ class ProjectService {
     `;
 
     // Convert BigInt in tasks as well
-    const convertedTasks = tasks.map(task => ({
+    const convertedTasks = tasks.map((task) => ({
       ...task,
       id: Number(task.id),
       project_id: Number(task.project_id),
-      assigned_to: task.assigned_to ? Number(task.assigned_to) : null
+      assigned_to: task.assigned_to ? Number(task.assigned_to) : null,
     }));
 
-    const convertedTeamMembers = teamMembers.map(member => ({
+    const convertedTeamMembers = teamMembers.map((member) => ({
       ...member,
-      id: Number(member.id)
+      id: Number(member.id),
     }));
 
     return {
-      project: project[0] ? {
-        ...project[0],
-        id: Number(project[0].id),
-        leader_id: project[0].leader_id ? Number(project[0].leader_id) : null,
-        progress: project[0].progress ? Number(project[0].progress) : 0
-      } : null,
+      project: project[0]
+        ? {
+            ...project[0],
+            id: Number(project[0].id),
+            leader_id: project[0].leader_id
+              ? Number(project[0].leader_id)
+              : null,
+            progress: project[0].progress ? Number(project[0].progress) : 0,
+          }
+        : null,
       tasks: convertedTasks,
-      team_members: convertedTeamMembers
+      team_members: convertedTeamMembers,
     };
   }
 
@@ -262,8 +269,8 @@ class ProjectService {
       });
       return assignment;
     } catch (error) {
-      if (error.code === 'P2002') {
-        throw new Error('Employee is already assigned to this project');
+      if (error.code === "P2002") {
+        throw new Error("Employee is already assigned to this project");
       }
       throw error;
     }
@@ -277,22 +284,31 @@ class ProjectService {
       },
     });
     if (result.count === 0) {
-      throw new Error('Employee is not assigned to this project');
+      throw new Error("Employee is not assigned to this project");
     }
   }
 
   async createProject(data) {
-    const { name, description, priority, project_id, team_members, deadline, client_id } = data;
+    const {
+      name,
+      description,
+      priority,
+      project_id,
+      team_members,
+      deadline,
+      client_id,
+    } = data;
 
     return await prisma.$transaction(async (tx) => {
-      const normalizedClientId = client_id == null || client_id === '' ? null : String(client_id).trim();
+      const normalizedClientId =
+        client_id == null || client_id === "" ? null : String(client_id).trim();
 
       // 1. Create the project
       const project = await tx.projects.create({
         data: {
           name,
           description,
-          priority: priority || 'medium',
+          priority: priority || "medium",
           project_id: project_id || `PROJ-${Date.now()}`,
           deadline: deadline ? new Date(deadline) : null,
           progress: 0,
@@ -301,8 +317,12 @@ class ProjectService {
       });
 
       // 2. Assign team members if any
-      if (team_members && Array.isArray(team_members) && team_members.length > 0) {
-        const assignments = team_members.map(employeeId => ({
+      if (
+        team_members &&
+        Array.isArray(team_members) &&
+        team_members.length > 0
+      ) {
+        const assignments = team_members.map((employeeId) => ({
           project_id: project.id,
           employee_id: Number(employeeId),
         }));
@@ -323,7 +343,7 @@ class ProjectService {
     });
 
     if (!targetProject) {
-      throw new Error('Project not found');
+      throw new Error("Project not found");
     }
 
     const requestingUser = await prisma.users.findUnique({
@@ -331,15 +351,15 @@ class ProjectService {
     });
 
     if (!requestingUser) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     if (
-      requestingUser.role !== 'supervisor' &&
-      requestingUser.role !== 'hr' &&
-      requestingUser.role !== 'admin'
+      requestingUser.role !== "supervisor" &&
+      requestingUser.role !== "hr" &&
+      requestingUser.role !== "admin"
     ) {
-      throw new Error('Only supervisors, HR, or admins can delete projects');
+      throw new Error("Only supervisors, HR, or admins can delete projects");
     }
 
     await prisma.$transaction(async (tx) => {
@@ -356,31 +376,33 @@ class ProjectService {
       });
     });
 
-    return { message: 'Project deleted successfully' };
+    return { message: "Project deleted successfully" };
   }
 
   async updateProjectProgress(projectId, progress, userId) {
     const project = await prisma.projects.findUnique({
       where: { id: parseInt(projectId) },
       include: {
-        project_assignments: true
-      }
+        project_assignments: true,
+      },
     });
 
-    if (!project) throw new Error('Project not found');
+    if (!project) throw new Error("Project not found");
 
     // Check if user is leader or supervisor
     const user = await prisma.users.findUnique({ where: { id: userId } });
     const isLeader = project.leader_id === userId;
-    const isSupervisor = user.role === 'supervisor' || user.role === 'hr';
+    const isSupervisor = user.role === "supervisor" || user.role === "hr";
 
     if (!isLeader && !isSupervisor) {
-      throw new Error('Only the project leader or supervisor can update progress');
+      throw new Error(
+        "Only the project leader or supervisor can update progress",
+      );
     }
 
     return await prisma.projects.update({
       where: { id: parseInt(projectId) },
-      data: { progress: parseInt(progress) }
+      data: { progress: parseInt(progress) },
     });
   }
 
@@ -388,27 +410,26 @@ class ProjectService {
     const project = await prisma.projects.findUnique({
       where: { id: parseInt(projectId) },
       include: {
-        project_assignments: true
-      }
+        project_assignments: true,
+      },
     });
 
-    if (!project) throw new Error('Project not found');
+    if (!project) throw new Error("Project not found");
 
     // Check if user is leader or supervisor
     const user = await prisma.users.findUnique({ where: { id: userId } });
     const isClient = project.client_id === userId;
-    const isSupervisor = user.role === 'supervisor' || user.role === 'hr';
+    const isSupervisor = user.role === "supervisor" || user.role === "hr";
 
     if (!isClient && !isSupervisor) {
-      throw new Error('Only client or supervisor can view progress');
+      throw new Error("Only client or supervisor can view progress");
     }
 
     return await prisma.projects.update({
       where: { id: parseInt(projectId) },
-      data: { progress: parseInt(progress) }
+      data: { progress: parseInt(progress) },
     });
   }
-
 
   async updateProject(id, projectData, userId) {
     // 1. Check if project exists
@@ -417,7 +438,7 @@ class ProjectService {
     });
 
     if (!targetProject) {
-      throw new Error('Project not found');
+      throw new Error("Project not found");
     }
 
     // 2. Check User Role
@@ -426,11 +447,15 @@ class ProjectService {
     });
 
     if (!requestingUser) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
-    if (requestingUser.role !== 'supervisor' && requestingUser.role !== 'hr' && requestingUser.role !== 'admin') {
-      throw new Error('Only supervisors, HR, or admins can update projects');
+    if (
+      requestingUser.role !== "supervisor" &&
+      requestingUser.role !== "hr" &&
+      requestingUser.role !== "admin"
+    ) {
+      throw new Error("Only supervisors, HR, or admins can update projects");
     }
 
     // 3. STRICT CLEANING: Jo fields schema me nahi hain ya relational hain unhe nikalein
@@ -497,16 +522,15 @@ class ProjectService {
     return result;
   }
 
-
   async assignProjectLeader(projectId, leaderId, userId) {
     const user = await prisma.users.findUnique({ where: { id: userId } });
-    if (user.role !== 'supervisor' && user.role !== 'hr') {
-      throw new Error('Only supervisors can assign project leaders');
+    if (user.role !== "supervisor" && user.role !== "hr") {
+      throw new Error("Only supervisors can assign project leaders");
     }
 
     return await prisma.projects.update({
       where: { id: parseInt(projectId) },
-      data: { leader_id: parseInt(leaderId) }
+      data: { leader_id: parseInt(leaderId) },
     });
   }
 
@@ -519,11 +543,11 @@ class ProjectService {
       ORDER BY name ASC
     `;
 
-    return result.map(client => ({
+    return result.map((client) => ({
       id: Number(client.id),
       userid: client.userid,
       email: client.email,
-      name: client.name
+      name: client.name,
     }));
   }
 }

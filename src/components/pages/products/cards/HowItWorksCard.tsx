@@ -1,8 +1,8 @@
+import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import { IMAGES, IMAGES_META } from "@/assets/images";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { HOW_IT_WORK_TYPE } from "@/constants/pages/products/how-it-work";
+import type { HOW_IT_WORK_TYPE } from "@/constants/pages/products/how-it-work";
 
 type HowItWorksCardProps = HOW_IT_WORK_TYPE & {
   variant?: "default" | "right";
@@ -19,7 +19,9 @@ export default function HowItWorksCard({
     variant === "right" ? "" : `border-y border-primary/40 py-8`;
 
   return (
-    <div className={`${titleClasses} flex gap-8 items-center max-md:flex-col max-md:gap-4`}>
+    <div
+      className={`${titleClasses} flex gap-8 items-center max-md:flex-col max-md:gap-4`}
+    >
       {image && (
         <Image
           src={image}

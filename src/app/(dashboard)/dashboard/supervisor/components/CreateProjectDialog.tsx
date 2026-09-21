@@ -1,41 +1,41 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import supportImg from '@/assets/images/employee/illustration.png'
-import { useState, useEffect } from 'react'
-import { apiFetch } from '@/lib/api'
-import { User, Check } from 'lucide-react'
+import { Check, User } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import supportImg from "@/assets/images/employee/illustration.png";
+import { apiFetch } from "@/lib/api";
 
 interface Employee {
-  id: number
-  name: string
-  email: string
+  id: number;
+  name: string;
+  email: string;
 }
 
 interface Client {
-  id: number
-  userid: string // This is the string identifier you want to save
-  name: string
-  email: string
-  status: string
+  id: number;
+  userid: string; // This is the string identifier you want to save
+  name: string;
+  email: string;
+  status: string;
 }
 
 interface CreateProjectDialogProps {
-  open: boolean
-  onClose: () => void
+  open: boolean;
+  onClose: () => void;
   onSubmit: (data: {
-    name: string
-    project_id: string
-    description?: string
-    priority?: string
-    deadline?: string
-    team_members: number[]
-    client_id?: string // 1. CHANGED FROM number TO string
-    status?: string
-  }) => void
-  creating?: boolean
-  project?: any
-  isEdit?: boolean
+    name: string;
+    project_id: string;
+    description?: string;
+    priority?: string;
+    deadline?: string;
+    team_members: number[];
+    client_id?: string; // 1. CHANGED FROM number TO string
+    status?: string;
+  }) => void;
+  creating?: boolean;
+  project?: any;
+  isEdit?: boolean;
 }
 
 export default function CreateProjectDialog({
@@ -46,77 +46,87 @@ export default function CreateProjectDialog({
   project,
   isEdit,
 }: CreateProjectDialogProps) {
-  const [name, setName] = useState('')
-  const [projectId, setProjectId] = useState('')
-  const [description, setDescription] = useState('')
-  const [status, setStatus] = useState('')
-  const [priority, setPriority] = useState('medium')
-  const [deadline, setDeadline] = useState('')
-  const [employees, setEmployees] = useState<Employee[]>([])
-  const [selectedEmployees, setSelectedEmployees] = useState<number[]>([])
-  const [clients, setClients] = useState<Client[]>([])
-  const [selectedClient, setSelectedClient] = useState<string | null>(null) // 2. CHANGED FROM number TO string
+  const [name, setName] = useState("");
+  const [projectId, setProjectId] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("");
+  const [priority, setPriority] = useState("medium");
+  const [deadline, setDeadline] = useState("");
+  const [employees, setEmployees] = useState<Employee[]>([]);
+  const [selectedEmployees, setSelectedEmployees] = useState<number[]>([]);
+  const [clients, setClients] = useState<Client[]>([]);
+  const [selectedClient, setSelectedClient] = useState<string | null>(null); // 2. CHANGED FROM number TO string
 
   useEffect(() => {
     if (open) {
-      fetchEmployees()
-      fetchClients()
+      fetchEmployees();
+      fetchClients();
 
       if (isEdit && project) {
-        setName(project.name || '')
-        setDescription(project.description || '')
-        setPriority(project.priority || 'medium')
-        setDeadline(project.deadline ? project.deadline.split('T')[0] : '')
-        setStatus(project.project_status || project.status || '')
-        setProjectId(project.project_id || `PRJ-${Date.now().toString().slice(-6)}`)
-        setSelectedEmployees(project.team_members ? project.team_members.map((m: any) => m.id) : [])
-        setSelectedClient(project.client_id || null)
+        setName(project.name || "");
+        setDescription(project.description || "");
+        setPriority(project.priority || "medium");
+        setDeadline(project.deadline ? project.deadline.split("T")[0] : "");
+        setStatus(project.project_status || project.status || "");
+        setProjectId(
+          project.project_id || `PRJ-${Date.now().toString().slice(-6)}`,
+        );
+        setSelectedEmployees(
+          project.team_members
+            ? project.team_members.map((m: any) => m.id)
+            : [],
+        );
+        setSelectedClient(project.client_id || null);
       } else {
-        setProjectId(`PRJ-${Date.now().toString().slice(-6)}`)
-        setName('')
-        setDescription('')
-        setPriority('medium')
-        setDeadline('')
-        setStatus('')
-        setSelectedEmployees([])
-        setSelectedClient(null)
+        setProjectId(`PRJ-${Date.now().toString().slice(-6)}`);
+        setName("");
+        setDescription("");
+        setPriority("medium");
+        setDeadline("");
+        setStatus("");
+        setSelectedEmployees([]);
+        setSelectedClient(null);
       }
     }
-  }, [open, isEdit, project])
+  }, [open, isEdit, project]);
 
   const fetchEmployees = async () => {
     try {
-      const response = await apiFetch('/supervisor/employees', { method: 'GET' })
-      const result = await response.json()
+      const response = await apiFetch("/supervisor/employees", {
+        method: "GET",
+      });
+      const result = await response.json();
       if (result.success) {
-        setEmployees(result.data || [])
+        setEmployees(result.data || []);
       }
     } catch (error) {
-      console.error('Error fetching employees:', error)
+      console.error("Error fetching employees:", error);
     }
-  }
+  };
 
   const fetchClients = async () => {
     try {
-      const response = await apiFetch('/projects/clients/list', { method: 'GET' })
-      const result = await response.json() 
+      const response = await apiFetch("/projects/clients/list", {
+        method: "GET",
+      });
+      const result = await response.json();
       if (result.success) {
-        setClients(result.data || [])
+        setClients(result.data || []);
       }
     } catch (error) {
-      console.error('Error fetching clients:', error)
+      console.error("Error fetching clients:", error);
     }
-  }
+  };
 
   const toggleEmployee = (id: number) => {
-    setSelectedEmployees(prev => 
-      prev.includes(id) ? prev.filter(eId => eId !== id) : [...prev, id]
-    )
-  }
+    setSelectedEmployees((prev) =>
+      prev.includes(id) ? prev.filter((eId) => eId !== id) : [...prev, id],
+    );
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!name.trim() || !projectId.trim()) return
+    e.preventDefault();
+    if (!name.trim() || !projectId.trim()) return;
 
     onSubmit({
       name: name.trim(),
@@ -127,19 +137,19 @@ export default function CreateProjectDialog({
       deadline: deadline || undefined,
       team_members: selectedEmployees,
       client_id: selectedClient || undefined, // 3. Submits the selected string directly
-    })
+    });
 
-    setName('')
-    setProjectId('')
-    setStatus('') // 7. Reset status field
-    setDescription('')
-    setPriority('medium')
-    setDeadline('')
-    setSelectedEmployees([])
-    setSelectedClient(null)
-  }
+    setName("");
+    setProjectId("");
+    setStatus(""); // 7. Reset status field
+    setDescription("");
+    setPriority("medium");
+    setDeadline("");
+    setSelectedEmployees([]);
+    setSelectedClient(null);
+  };
 
-  if (!open) return null
+  if (!open) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-3 backdrop-blur-sm overflow-y-auto">
@@ -153,13 +163,16 @@ export default function CreateProjectDialog({
         </button>
 
         <h2 className="mb-4 text-center text-xl font-semibold text-[#073933]">
-          {isEdit ? 'Edit Project' : 'Create New Project'}
+          {isEdit ? "Edit Project" : "Create New Project"}
         </h2>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="projectId" className="mb-1 block text-sm text-gray-500">
+              <label
+                htmlFor="projectId"
+                className="mb-1 block text-sm text-gray-500"
+              >
                 Project ID *
               </label>
               <input
@@ -173,7 +186,10 @@ export default function CreateProjectDialog({
               />
             </div>
             <div>
-              <label htmlFor="name" className="mb-1 block text-sm text-gray-500">
+              <label
+                htmlFor="name"
+                className="mb-1 block text-sm text-gray-500"
+              >
                 Project Name *
               </label>
               <input
@@ -204,7 +220,6 @@ export default function CreateProjectDialog({
             />
           </div>
 
-
           <div>
             <label
               htmlFor="Status"
@@ -223,7 +238,10 @@ export default function CreateProjectDialog({
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="priority" className="mb-1 block text-sm text-gray-500">
+              <label
+                htmlFor="priority"
+                className="mb-1 block text-sm text-gray-500"
+              >
                 Priority
               </label>
               <select
@@ -238,7 +256,10 @@ export default function CreateProjectDialog({
               </select>
             </div>
             <div>
-              <label htmlFor="deadline" className="mb-1 block text-sm text-gray-500">
+              <label
+                htmlFor="deadline"
+                className="mb-1 block text-sm text-gray-500"
+              >
                 Deadline
               </label>
               <input
@@ -252,12 +273,15 @@ export default function CreateProjectDialog({
           </div>
 
           <div>
-            <label htmlFor="client" className="mb-1 block text-sm text-gray-500">
+            <label
+              htmlFor="client"
+              className="mb-1 block text-sm text-gray-500"
+            >
               Select Client (Optional)
             </label>
             <select
               id="client"
-              value={selectedClient || ''}
+              value={selectedClient || ""}
               // 4. CHANGED: Simply set the string value without parsing it into a Number
               onChange={(e) => setSelectedClient(e.target.value || null)}
               className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#073933]"
@@ -266,7 +290,7 @@ export default function CreateProjectDialog({
               {clients.length === 0 ? (
                 <option disabled>No clients available</option>
               ) : (
-                clients.map(client => (
+                clients.map((client) => (
                   // 5. CHANGED: Replaced value={client.id} with value={client.userid}
                   <option key={client.id} value={client.userid}>
                     {client.name} ({client.userid})
@@ -282,23 +306,34 @@ export default function CreateProjectDialog({
             </label>
             <div className="max-h-40 overflow-y-auto rounded-lg border p-2 space-y-1">
               {employees.length === 0 ? (
-                <p className="text-xs text-gray-400 text-center py-2">No employees available</p>
+                <p className="text-xs text-gray-400 text-center py-2">
+                  No employees available
+                </p>
               ) : (
-                employees.map(employee => (
-                  <div 
+                employees.map((employee) => (
+                  <div
                     key={employee.id}
                     onClick={() => toggleEmployee(employee.id)}
                     className={`flex items-center justify-between gap-2 p-2 rounded-lg cursor-pointer transition ${
-                      selectedEmployees.includes(employee.id) ? 'bg-[#eef7ff]' : 'hover:bg-gray-50'
+                      selectedEmployees.includes(employee.id)
+                        ? "bg-[#eef7ff]"
+                        : "hover:bg-gray-50"
                     }`}
                   >
                     <div className="flex items-center gap-2 min-w-0">
                       <div className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center text-[10px] font-bold">
-                        {employee.name.split(' ').map(n => n[0]).join('')}
+                        {employee.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")}
                       </div>
                       <div className="min-w-0">
-                        <p className="text-xs font-medium truncate">{employee.name}</p>
-                        <p className="text-[10px] text-gray-500 truncate">{employee.email}</p>
+                        <p className="text-xs font-medium truncate">
+                          {employee.name}
+                        </p>
+                        <p className="text-[10px] text-gray-500 truncate">
+                          {employee.email}
+                        </p>
                       </div>
                     </div>
                     {selectedEmployees.includes(employee.id) && (
@@ -315,10 +350,16 @@ export default function CreateProjectDialog({
             disabled={creating || !name.trim() || !projectId.trim()}
             className="w-full rounded-xl bg-[#073933] py-3 font-medium text-white transition hover:bg-[#0a4a42] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {creating ? (isEdit ? 'Updating...' : 'Creating...') : (isEdit ? 'Update Project' : 'Create Project')}
+            {creating
+              ? isEdit
+                ? "Updating..."
+                : "Creating..."
+              : isEdit
+                ? "Update Project"
+                : "Create Project"}
           </button>
         </form>
       </div>
     </div>
-  )
+  );
 }

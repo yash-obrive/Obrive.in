@@ -1,4 +1,4 @@
-const { prisma } = require("../../../../db");
+const { prisma } = require("../../../../prisma");
 
 const endRoomService = async (payload, userId, userRole) => {
   const { roomId } = payload;
@@ -13,14 +13,14 @@ const endRoomService = async (payload, userId, userRole) => {
     throw new Error("Room target parameters not found.");
   }
 
-
   const hasGlobalPrivileges = userRole === "admin" || userRole === "supervisor";
   const isRoomHost = room.createdBy === userId;
 
   if (!hasGlobalPrivileges && !isRoomHost) {
-    throw new Error("Only the active host creator or an administrator can end this session.");
+    throw new Error(
+      "Only the active host creator or an administrator can end this session.",
+    );
   }
-
 
   const updatedRoom = await prisma.room_configs.update({
     where: {

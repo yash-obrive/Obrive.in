@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import FAQAccordionSection from "@/components/pages/faq/sections/FAQAccordionSection";
+import FAQAccordionSection, { FAQItem } from "@/components/pages/faq/sections/FAQAccordionSection";
 import FAQWorkflowSteps from "@/components/pages/faq/FAQWorkflowSteps";
 import FONTS from "@/assets/fonts";
 import { SolutionFAQCategory } from "@/lib/solutions";
@@ -100,8 +100,11 @@ export default function SolutionFAQSection({
                 <FAQAccordionSection
                   key={category.title}
                   title={category.title}
-                  items={category.items}
-                />
+                >
+                  {category.items.map((item: any, i: number) => (
+                    <FAQItem key={i} question={item.question} answer={item.answer} />
+                  ))}
+                </FAQAccordionSection>
               ))}
             </div>
           </div>

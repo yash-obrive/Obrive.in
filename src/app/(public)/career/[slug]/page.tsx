@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getCareerBySlug, getAllCareerSlugs } from "@/lib/mdx";
-import CareerTemplate from "@/components/pages/career/CareerTemplate";
 import { createCareerMDXComponents } from "@/components/pages/career/CareerMDXComponents";
+import CareerTemplate from "@/components/pages/career/CareerTemplate";
+import { getAllCareerSlugs, getCareerBySlug, sharedMdxOptions } from "@/lib/mdx";
 
 export async function generateStaticParams() {
   const slugs = await getAllCareerSlugs();
@@ -16,9 +16,9 @@ export const dynamicParams = false;
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const career = await getCareerBySlug(slug);
 
   if (!career) {
@@ -58,9 +58,9 @@ export async function generateMetadata({
 export default async function CareerPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const career = await getCareerBySlug(slug);
 
   if (!career) {
@@ -71,7 +71,7 @@ export default async function CareerPage({
 
   return (
     <CareerTemplate metadata={career.metadata}>
-      <MDXRemote source={career.content} components={components} />
+      <MDXRemote source={career.content} components={components} options={sharedMdxOptions} />
     </CareerTemplate>
   );
 }

@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "@/components/shared/LocalizedLink";
 import { NAV_ICONS, NAV_ICONS_META } from "@/assets/images";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -5,8 +7,6 @@ import {
   NavigationMenuItem,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import Image from "next/image";
-import Link from "next/link";
 import AnimatedNavLabel from "../AnimatedNavLabel";
 
 export function CaseStudiesDropdown() {

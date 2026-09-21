@@ -1,11 +1,11 @@
-const projectService = require('./projects.service');
-const { successResponse, errorResponse } = require('../../utils/apiResponse');
+const projectService = require("./projects.service");
+const { successResponse, errorResponse } = require("../../utils/apiResponse");
 
 exports.getUserProjects = async (req, res) => {
   try {
     const userId = req.user.id;
     const projects = await projectService.getUserProjects(userId);
-    successResponse(res, projects, 'User projects retrieved');
+    successResponse(res, projects, "User projects retrieved");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }
@@ -15,9 +15,9 @@ exports.getProjects = async (req, res) => {
   try {
     const userId = req.user.id;
     const userRole = req.user.role;
-    
+
     const projects = await projectService.getProjectsByRole(userId, userRole);
-    successResponse(res, projects, 'Projects retrieved');
+    successResponse(res, projects, "Projects retrieved");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }
@@ -27,7 +27,7 @@ exports.getProjectById = async (req, res) => {
   try {
     const projectId = parseInt(req.params.id);
     const project = await projectService.getProjectById(projectId);
-    successResponse(res, project, 'Project details retrieved');
+    successResponse(res, project, "Project details retrieved");
   } catch (err) {
     errorResponse(res, err.message, 404);
   }
@@ -37,8 +37,11 @@ exports.assignEmployeeToProject = async (req, res) => {
   try {
     const projectId = parseInt(req.params.id);
     const { employeeId } = req.body;
-    const assignment = await projectService.assignEmployeeToProject(projectId, employeeId);
-    successResponse(res, assignment, 'Employee assigned to project');
+    const assignment = await projectService.assignEmployeeToProject(
+      projectId,
+      employeeId,
+    );
+    successResponse(res, assignment, "Employee assigned to project");
   } catch (err) {
     errorResponse(res, err.message, 400);
   }
@@ -49,7 +52,7 @@ exports.removeEmployeeFromProject = async (req, res) => {
     const projectId = parseInt(req.params.id);
     const employeeId = parseInt(req.params.employeeId);
     await projectService.removeEmployeeFromProject(projectId, employeeId);
-    successResponse(res, null, 'Employee removed from project');
+    successResponse(res, null, "Employee removed from project");
   } catch (err) {
     errorResponse(res, err.message, 400);
   }
@@ -58,7 +61,7 @@ exports.removeEmployeeFromProject = async (req, res) => {
 exports.createProject = async (req, res) => {
   try {
     const project = await projectService.createProject(req.body);
-    successResponse(res, project, 'Project created successfully', 201);
+    successResponse(res, project, "Project created successfully", 201);
   } catch (err) {
     errorResponse(res, err.message, 400);
   }
@@ -71,9 +74,9 @@ exports.deleteProject = async (req, res) => {
 
     await projectService.deleteProject(id, userId);
 
-    successResponse(res, null, 'Project deleted successfully');
+    successResponse(res, null, "Project deleted successfully");
   } catch (err) {
-    const statusCode = err.message.includes('permission') ? 403 : 404;
+    const statusCode = err.message.includes("permission") ? 403 : 404;
     errorResponse(res, err.message, statusCode);
   }
 };
@@ -82,8 +85,12 @@ exports.updateProjectProgress = async (req, res) => {
   try {
     const { id } = req.params;
     const { progress } = req.body;
-    const project = await projectService.updateProjectProgress(id, progress, req.user.id);
-    successResponse(res, project, 'Project progress updated');
+    const project = await projectService.updateProjectProgress(
+      id,
+      progress,
+      req.user.id,
+    );
+    successResponse(res, project, "Project progress updated");
   } catch (err) {
     errorResponse(res, err.message, 400);
   }
@@ -93,37 +100,45 @@ exports.getProjectStatus = async (req, res) => {
   try {
     const { id } = req.params;
     const { progress } = req.body;
-    const project = await projectService.getProjectStatus(id, progress, req.user.id);
-    successResponse(res, project, 'Project progress updated');
+    const project = await projectService.getProjectStatus(
+      id,
+      progress,
+      req.user.id,
+    );
+    successResponse(res, project, "Project progress updated");
   } catch (err) {
     errorResponse(res, err.message, 400);
   }
 };
 
-      exports.updateProject = async (req, res) => {
-        try {
-          const { id } = req.params;
-          const projectData = req.body;
-          
-          // req.user.id aapke authentication middleware se aana chahiye
-          const userId = req.user.id; 
+exports.updateProject = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const projectData = req.body;
 
-          const project = await projectService.updateProject(id, projectData, userId);
-          
-          return successResponse(res, project, 'Project updated successfully');
-        } catch (err) {
-          // Agar authorization fail hui toh 403 (Forbidden), warna 400 (Bad Request)
-          const statusCode = err.message.includes('can update projects') ? 403 : 400;
-          return errorResponse(res, err.message, statusCode);
-        }
-      };
+    // req.user.id aapke authentication middleware se aana chahiye
+    const userId = req.user.id;
+
+    const project = await projectService.updateProject(id, projectData, userId);
+
+    return successResponse(res, project, "Project updated successfully");
+  } catch (err) {
+    // Agar authorization fail hui toh 403 (Forbidden), warna 400 (Bad Request)
+    const statusCode = err.message.includes("can update projects") ? 403 : 400;
+    return errorResponse(res, err.message, statusCode);
+  }
+};
 
 exports.assignProjectLeader = async (req, res) => {
   try {
     const { id } = req.params;
     const { leaderId } = req.body;
-    const project = await projectService.assignProjectLeader(id, leaderId, req.user.id);
-    successResponse(res, project, 'Project leader assigned');
+    const project = await projectService.assignProjectLeader(
+      id,
+      leaderId,
+      req.user.id,
+    );
+    successResponse(res, project, "Project leader assigned");
   } catch (err) {
     errorResponse(res, err.message, 400);
   }
@@ -132,9 +147,9 @@ exports.assignProjectLeader = async (req, res) => {
 exports.getClientProjects = async (req, res) => {
   try {
     // Prefer numeric user id from token (set during client login), fall back to any provided clientId
-    const clientId =  req.user.clientId; // 
+    const clientId = req.user.clientId; //
     const projects = await projectService.getClientProjects(clientId);
-    successResponse(res, projects, 'Client projects retrieved');
+    successResponse(res, projects, "Client projects retrieved");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }
@@ -143,7 +158,7 @@ exports.getClientProjects = async (req, res) => {
 exports.getAllClients = async (req, res) => {
   try {
     const clients = await projectService.getAllClients();
-    successResponse(res, clients, 'Clients retrieved');
+    successResponse(res, clients, "Clients retrieved");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }

@@ -1,15 +1,21 @@
-import { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 import { IMAGES } from "@/assets/images";
 import {
   AR_PRODUCT_VISUALIZATION,
-  VIRTUAL_TRAINING,
   DIGITAL_TWINS,
-  VIRTUAL_SHOWROOMS,
   INDOOR_NAVIGATION,
+  REMOTE_ASSISTANCE,
   THREE_D_PRODUCT_CONFIGURATION,
   VIRTUAL_PROPERTY_TOURS,
-  REMOTE_ASSISTANCE,
+  VIRTUAL_SHOWROOMS,
+  VIRTUAL_TRAINING,
 } from "@/constants/pages/use-cases";
+
+import type {
+  ServiceSection,
+  SidebarLink,
+  WorkflowStep,
+} from "@/types/solutions";
 
 // Reusing identical structure as SolutionHero for compatibility
 export interface UseCaseHero {
@@ -28,9 +34,12 @@ export interface UseCaseHero {
 export interface UseCaseData {
   slug: string;
   hero: UseCaseHero;
-  howItWorks: readonly any[];
+  howItWorks?: readonly any[];
   keyBenefits: readonly any[];
-  workflowStepsSidebar: readonly string[];
+  workflowStepsSidebar?: readonly string[];
+  sidebarLinks?: readonly SidebarLink[];
+  serviceSections?: readonly ServiceSection[];
+  processSteps?: readonly WorkflowStep[];
 }
 
 const USE_CASES_DATA: Record<string, UseCaseData> = {
@@ -43,6 +52,8 @@ const USE_CASES_DATA: Record<string, UseCaseData> = {
     howItWorks: AR_PRODUCT_VISUALIZATION.howItWorks,
     keyBenefits: AR_PRODUCT_VISUALIZATION.keyBenefits,
     workflowStepsSidebar: AR_PRODUCT_VISUALIZATION.workflowStepsSidebar,
+    sidebarLinks: AR_PRODUCT_VISUALIZATION.sidebarLinks,
+    serviceSections: AR_PRODUCT_VISUALIZATION.serviceSections,
   },
   "virtual-training": {
     slug: "virtual-training",
@@ -53,6 +64,8 @@ const USE_CASES_DATA: Record<string, UseCaseData> = {
     howItWorks: VIRTUAL_TRAINING.howItWorks,
     keyBenefits: VIRTUAL_TRAINING.keyBenefits,
     workflowStepsSidebar: VIRTUAL_TRAINING.workflowStepsSidebar,
+    sidebarLinks: VIRTUAL_TRAINING.sidebarLinks,
+    serviceSections: VIRTUAL_TRAINING.serviceSections,
   },
   "digital-twins": {
     slug: "digital-twins",
@@ -63,6 +76,8 @@ const USE_CASES_DATA: Record<string, UseCaseData> = {
     howItWorks: DIGITAL_TWINS.howItWorks,
     keyBenefits: DIGITAL_TWINS.keyBenefits,
     workflowStepsSidebar: DIGITAL_TWINS.workflowStepsSidebar,
+    sidebarLinks: DIGITAL_TWINS.sidebarLinks,
+    serviceSections: DIGITAL_TWINS.serviceSections,
   },
   "virtual-showrooms": {
     slug: "virtual-showrooms",
@@ -73,6 +88,8 @@ const USE_CASES_DATA: Record<string, UseCaseData> = {
     howItWorks: VIRTUAL_SHOWROOMS.howItWorks,
     keyBenefits: VIRTUAL_SHOWROOMS.keyBenefits,
     workflowStepsSidebar: VIRTUAL_SHOWROOMS.workflowStepsSidebar,
+    sidebarLinks: VIRTUAL_SHOWROOMS.sidebarLinks,
+    serviceSections: VIRTUAL_SHOWROOMS.serviceSections,
   },
   "indoor-navigation": {
     slug: "indoor-navigation",
@@ -83,6 +100,8 @@ const USE_CASES_DATA: Record<string, UseCaseData> = {
     howItWorks: INDOOR_NAVIGATION.howItWorks,
     keyBenefits: INDOOR_NAVIGATION.keyBenefits,
     workflowStepsSidebar: INDOOR_NAVIGATION.workflowStepsSidebar,
+    sidebarLinks: INDOOR_NAVIGATION.sidebarLinks,
+    serviceSections: INDOOR_NAVIGATION.serviceSections,
   },
   "3d-product-configuration": {
     slug: "3d-product-configuration",
@@ -93,6 +112,8 @@ const USE_CASES_DATA: Record<string, UseCaseData> = {
     howItWorks: THREE_D_PRODUCT_CONFIGURATION.howItWorks,
     keyBenefits: THREE_D_PRODUCT_CONFIGURATION.keyBenefits,
     workflowStepsSidebar: THREE_D_PRODUCT_CONFIGURATION.workflowStepsSidebar,
+    sidebarLinks: THREE_D_PRODUCT_CONFIGURATION.sidebarLinks,
+    serviceSections: THREE_D_PRODUCT_CONFIGURATION.serviceSections,
   },
   "virtual-property-tours": {
     slug: "virtual-property-tours",
@@ -103,6 +124,8 @@ const USE_CASES_DATA: Record<string, UseCaseData> = {
     howItWorks: VIRTUAL_PROPERTY_TOURS.howItWorks,
     keyBenefits: VIRTUAL_PROPERTY_TOURS.keyBenefits,
     workflowStepsSidebar: VIRTUAL_PROPERTY_TOURS.workflowStepsSidebar,
+    sidebarLinks: VIRTUAL_PROPERTY_TOURS.sidebarLinks,
+    serviceSections: VIRTUAL_PROPERTY_TOURS.serviceSections,
   },
   "remote-assistance": {
     slug: "remote-assistance",
@@ -113,6 +136,8 @@ const USE_CASES_DATA: Record<string, UseCaseData> = {
     howItWorks: REMOTE_ASSISTANCE.howItWorks,
     keyBenefits: REMOTE_ASSISTANCE.keyBenefits,
     workflowStepsSidebar: REMOTE_ASSISTANCE.workflowStepsSidebar,
+    sidebarLinks: REMOTE_ASSISTANCE.sidebarLinks,
+    serviceSections: REMOTE_ASSISTANCE.serviceSections,
   },
 };
 

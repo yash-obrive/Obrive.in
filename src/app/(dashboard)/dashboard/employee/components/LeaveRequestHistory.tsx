@@ -14,11 +14,13 @@ type LeaveRequestHistoryProps = {
 };
 
 const formatDate = (value?: string) =>
-  value ? new Date(`${value}T00:00:00`).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  }) : "N/A";
+  value
+    ? new Date(`${value}T00:00:00`).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      })
+    : "N/A";
 
 export default function LeaveRequestHistory({
   requests,
@@ -52,7 +54,7 @@ export default function LeaveRequestHistory({
                     {formatDate(request.leaveDate)}
                   </p>
                   <p className="text-sm capitalize text-gray-500">
-                    {request.leaveType || 'N/A'} leave
+                    {request.leaveType || "N/A"} leave
                   </p>
                   {request.reason ? (
                     <p className="mt-2 text-sm text-gray-600">
@@ -61,12 +63,16 @@ export default function LeaveRequestHistory({
                   ) : null}
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className={`rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
-                    request.status === 'approved' ? 'bg-green-100 text-green-700' :
-                    request.status === 'rejected' ? 'bg-red-100 text-red-700' :
-                    'bg-[#e2f5f1] text-[#0f766e]'
-                  }`}>
-                    {request.status || 'pending'}
+                  <span
+                    className={`rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${
+                      request.status === "approved"
+                        ? "bg-green-100 text-green-700"
+                        : request.status === "rejected"
+                          ? "bg-red-100 text-red-700"
+                          : "bg-[#e2f5f1] text-[#0f766e]"
+                    }`}
+                  >
+                    {request.status || "pending"}
                   </span>
                   {onDelete && (
                     <button

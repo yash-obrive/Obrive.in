@@ -1,10 +1,10 @@
-import { getCompanyInfoBySlug } from "@/lib/mdx";
-import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCompanyInfoMDXComponents } from "@/components/pages/company-info/CompanyInfoMDXComponents";
-import { Metadata } from "next";
-import Script from "next/script";
+import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
+import { getCompanyInfoBySlug, sharedMdxOptions } from "@/lib/mdx";
 
 export const metadata: Metadata = {
   title: "Obrive Industries — Legal & Compliance | Terms, Privacy & Policies",
@@ -60,6 +60,7 @@ export default async function LegalPage() {
         <MDXRemote
           source={legalDoc.content}
           components={createCompanyInfoMDXComponents(legalDoc.metadata)}
+          options={sharedMdxOptions}
         />
       </CompanyInfoTemplate>
     </>

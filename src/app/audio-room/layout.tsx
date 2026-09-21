@@ -1,13 +1,13 @@
 "use client";
 
-import { ReactNode, useState } from "react";
-import { SocketProvider } from "@/context/SocketContext";
-import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { Michroma } from "next/font/google";
-import { apiFetch } from "@/lib/api";
+import { type ReactNode, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { SocketProvider } from "@/context/SocketContext";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { apiFetch } from "@/lib/api";
 
 const michroma = Michroma({
   subsets: ["latin"],
@@ -20,9 +20,7 @@ interface AudioRoomLayoutProps {
   children: ReactNode;
 }
 
-export default function AudioRoomLayout({
-  children,
-}: AudioRoomLayoutProps) {
+export default function AudioRoomLayout({ children }: AudioRoomLayoutProps) {
   const { me, loading, refetch } = useCurrentUser();
   const isBlocked = me?.is_active === false || me?.status === "inactive";
   const [email, setEmail] = useState("");
@@ -67,7 +65,7 @@ export default function AudioRoomLayout({
 
   if (loading) {
     return (
-      <div className={`${michroma.className} bg-gradient text-slate-950`} >
+      <div className={`${michroma.className} bg-gradient text-slate-950`}>
         <div className="flex min-h-screen items-center justify-center">
           <div className=" px-8 py-10  ">
             <div className="text-lg font-semibold tracking-tight">
@@ -93,7 +91,8 @@ export default function AudioRoomLayout({
               Your account is inactive
             </h1>
             <p className="mt-3 text-sm leading-6 text-slate-600">
-              Please contact an administrator before trying to join audio rooms again.
+              Please contact an administrator before trying to join audio rooms
+              again.
             </p>
           </div>
         </div>
@@ -117,7 +116,8 @@ export default function AudioRoomLayout({
             </h1>
 
             <p className="mt-3 text-sm leading-6 text-slate-600">
-              Sign in to continue to the audio room. You will stay on this page after login.
+              Sign in to continue to the audio room. You will stay on this page
+              after login.
             </p>
 
             <div className="mt-6 space-y-4">
@@ -173,7 +173,9 @@ export default function AudioRoomLayout({
 
   return (
     <SocketProvider>
-      <div className={`${michroma.className} min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(7,109,71,0.08),transparent_28%),radial-gradient(circle_at_top_right,rgba(15,23,42,0.06),transparent_24%),linear-gradient(180deg,#f8fafc_0%,#f1f5f9_100%)] text-slate-950`}>
+      <div
+        className={`${michroma.className} min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(7,109,71,0.08),transparent_28%),radial-gradient(circle_at_top_right,rgba(15,23,42,0.06),transparent_24%),linear-gradient(180deg,#f8fafc_0%,#f1f5f9_100%)] text-slate-950`}
+      >
         {children}
       </div>
     </SocketProvider>

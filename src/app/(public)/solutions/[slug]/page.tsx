@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Script from "next/script";
 import { SolutionTemplate } from "@/components/pages/solutions/SolutionTemplate";
 import { getSolutionData, getSolutionSlugs } from "@/lib/solutions";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import Script from "next/script";
 
 interface SolutionPageProps {
   params: Promise<{
@@ -33,27 +33,19 @@ export async function generateMetadata({
       metadataBase: new URL("https://obrive.com"),
 
       title:
-        "Augmented Reality Development FAQs | AR Services & Solutions | Obrive",
+        "Augmented Reality (AR) Development Services in India | AR App Solutions | Obrive",
 
       description:
-        "Explore Obrive's Augmented Reality development FAQs covering WebAR, mobile AR, enterprise AR, industrial AR, AR commerce, AI-powered AR, 3D visualization, spatial computing, AR glasses, integrations, security, industries, pricing, development timelines and global deployment.",
+        "Obrive offers professional Augmented Reality (AR) development services in India including AR apps, AR solutions for enterprise, retail, real estate & industrial use cases. Build engaging AR experiences with spatial computing expertise.",
 
       keywords: [
-        "Augmented Reality Development Services",
-        "AR Development Company",
-        "Augmented Reality Development Company",
-        "AR Solutions",
-        "WebAR Development",
-        "Mobile AR Development",
-        "Enterprise AR Development",
-        "Industrial AR Solutions",
-        "AR Commerce",
-        "AI-powered AR",
-        "Spatial Computing",
-        "3D AR Development",
-        "AR Training",
-        "AR Remote Assistance",
-        "Digital Twin AR",
+        "augmented reality development India",
+        "AR app development Bangalore",
+        "AR solutions for enterprise",
+        "augmented reality for retail",
+        "industrial AR services",
+        "spatial computing apps",
+        "Obrive AR development services",
       ],
 
       alternates: {
@@ -71,23 +63,22 @@ export async function generateMetadata({
         title:
           "Augmented Reality Development FAQs | AR Services & Solutions | Obrive",
         description:
-          "Explore Obrive's Augmented Reality development FAQs covering WebAR, mobile AR, enterprise AR, industrial AR, AR commerce, AI-powered AR, 3D visualization, spatial computing, AR glasses, integrations, security, industries, pricing, development timelines and global deployment.",
+          "Professional AR app development and enterprise augmented reality solutions built with spatial computing expertise.",
         siteName: "Obrive",
         locale: "en_IN",
       },
 
       twitter: {
         card: "summary_large_image",
-        title:
-          "Augmented Reality Development FAQs | AR Services & Solutions | Obrive",
+        title: "Augmented Reality (AR) Development Services | Obrive",
         description:
-          "Explore Obrive's Augmented Reality development FAQs covering WebAR, mobile AR, enterprise AR, industrial AR, AR commerce, AI-powered AR, 3D visualization, spatial computing, AR glasses, integrations, security, industries, pricing, development timelines and global deployment.",
+          "Custom AR app development and enterprise AR solutions for retail, real estate and industrial use cases.",
       },
 
       other: {
         "geo.region": "IN-KA",
         "geo.placename": "Bangalore, Karnataka, India",
-        "ICBM": "12.9716, 77.5946",
+        ICBM: "12.9716, 77.5946",
       },
     } satisfies Metadata;
   }
@@ -97,27 +88,19 @@ export async function generateMetadata({
       metadataBase: new URL("https://obrive.com"),
 
       title:
-        "Virtual Reality Development FAQs | VR Services & Solutions | Obrive",
+        "Virtual Reality (VR) Development Services in India | Immersive VR Apps | Obrive",
 
       description:
-        "Explore Obrive's Virtual Reality development FAQs covering VR applications, enterprise VR, industrial simulation, training, virtual showrooms, AI-powered VR, 3D environments, OpenXR, integrations, security, industries, pricing, timelines and global deployment.",
+        "Obrive offers professional Virtual Reality (VR) development services in India including VR apps, enterprise VR solutions, 360° immersive experiences and interactive 3D simulations for training, marketing, education & industrial use cases.",
 
       keywords: [
-        "Virtual Reality Development Services",
-        "VR Development Company",
-        "Virtual Reality Development Company",
-        "VR Solutions",
-        "Enterprise VR Development",
-        "VR Training & Simulation",
-        "Industrial VR",
-        "VR Application Development",
-        "Virtual Showroom Development",
-        "AI-powered VR",
-        "Immersive Simulation",
-        "3D VR Development",
-        "Digital Twin VR",
-        "OpenXR Development",
-        "Multi-user VR",
+        "virtual reality development India",
+        "VR app development Bangalore",
+        "immersive VR solutions",
+        "enterprise VR experiences",
+        "3D VR training apps",
+        "VR simulation services",
+        "Obrive VR development",
       ],
 
       alternates: {
@@ -135,23 +118,22 @@ export async function generateMetadata({
         title:
           "Virtual Reality Development FAQs | VR Services & Solutions | Obrive",
         description:
-          "Explore Obrive's Virtual Reality development FAQs covering VR applications, enterprise VR, industrial simulation, training, virtual showrooms, AI-powered VR, 3D environments, OpenXR, integrations, security, industries, pricing, timelines and global deployment.",
+          "Professional VR app development and immersive simulation solutions for enterprise, training and marketing.",
         siteName: "Obrive",
         locale: "en_IN",
       },
 
       twitter: {
         card: "summary_large_image",
-        title:
-          "Virtual Reality Development FAQs | VR Services & Solutions | Obrive",
+        title: "Virtual Reality (VR) Development Services | Obrive",
         description:
-          "Explore Obrive's Virtual Reality development FAQs covering VR applications, enterprise VR, industrial simulation, training, virtual showrooms, AI-powered VR, 3D environments, OpenXR, integrations, security, industries, pricing, timelines and global deployment.",
+          "Immersive VR applications and enterprise VR solutions built for training and engagement.",
       },
 
       other: {
         "geo.region": "IN-KA",
         "geo.placename": "Bangalore, Karnataka, India",
-        "ICBM": "12.9716, 77.5946",
+        ICBM: "12.9716, 77.5946",
       },
     } satisfies Metadata;
   }
@@ -161,35 +143,19 @@ export async function generateMetadata({
       metadataBase: new URL("https://obrive.com"),
 
       title:
-        "3D Design & Development FAQs | 3D Services & Solutions | Obrive",
+        "3D Design & Visualization Services | Architectural & Product 3D Development | Obrive",
 
       description:
-        "Explore Obrive's 3D Design & Development FAQs covering 3D modeling, photorealistic rendering, architectural visualization, product configurators, CAD-to-3D conversion, digital twins, real-time 3D, and immersive asset development.",
+        "Obrive provides professional 3D design and visualization services including architectural modeling, product 3D rendering, digital twin creation, and immersive 3D experiences for real estate, manufacturing & enterprise projects.",
 
       keywords: [
-        "3D Design & Development",
-        "3D Design & Development Services",
-        "3D Design & Development Company",
-        "3D Modeling Services",
-        "3D Visualization Services",
-        "3D Development Company",
-        "3D Design Company in India",
-        "3D Design Company in Bangalore",
-        "3D Development Services Bangalore",
-        "3D Product Visualization",
-        "3D Architectural Visualization",
-        "3D Rendering Services",
-        "3D Product Design",
-        "Interactive 3D",
-        "3D Configurator",
-        "CAD to 3D",
-        "Digital Twin Development",
-        "Real-Time 3D",
-        "Enterprise 3D Solutions",
-        "3D Assets for AR/VR/MR",
-        "3D Design Software",
-        "3D Modeling Company",
-        "3D Design Services India",
+        "3D design services India",
+        "3D visualization Bangalore",
+        "architectural 3D modeling",
+        "product 3D rendering",
+        "digital twin services",
+        "immersive 3D visualization solutions",
+        "Obrive 3D design",
       ],
 
       alternates: {
@@ -207,23 +173,22 @@ export async function generateMetadata({
         title:
           "3D Design & Development FAQs | 3D Services & Solutions | Obrive",
         description:
-          "Explore Obrive's 3D Design & Development FAQs covering 3D modeling, photorealistic rendering, architectural visualization, product configurators, CAD-to-3D conversion, digital twins, real-time 3D, and immersive asset development.",
+          "Professional architectural 3D modeling, product rendering and immersive visualization services.",
         siteName: "Obrive",
         locale: "en_IN",
       },
 
       twitter: {
         card: "summary_large_image",
-        title:
-          "3D Design & Development FAQs | 3D Services & Solutions | Obrive",
+        title: "3D Design & Visualization Services | Obrive",
         description:
-          "Explore Obrive's 3D Design & Development FAQs covering 3D modeling, photorealistic rendering, architectural visualization, product configurators, CAD-to-3D conversion, digital twins, real-time 3D, and immersive asset development.",
+          "Architectural modeling, product rendering and immersive 3D visualization solutions.",
       },
 
       other: {
         "geo.region": "IN-KA",
         "geo.placename": "Bangalore, Karnataka, India",
-        "ICBM": "12.9716, 77.5946",
+        ICBM: "12.9716, 77.5946",
       },
     } satisfies Metadata;
   }
@@ -233,28 +198,19 @@ export async function generateMetadata({
       metadataBase: new URL("https://obrive.com"),
 
       title:
-        "Spatial Computing App Development FAQs | Spatial Services & Solutions | Obrive",
+        "Spatial Computing App Development Services | AR/VR & Immersive Experiences | Obrive",
 
       description:
-        "Explore Obrive's Spatial Computing App Development FAQs covering Apple Vision Pro, visionOS, AR/VR/MR integration, spatial UX design, enterprise spatial apps, digital twins, and immersive software in Bangalore, India.",
+        "Obrive offers spatial computing app development services to build immersive applications using AR/VR, 3D spatial interactions and mixed reality for enterprise, retail, real estate, healthcare and industrial solutions.",
 
       keywords: [
-        "Spatial Computing Development",
-        "Spatial Computing App Development",
-        "Spatial Computing App Development Company",
-        "Spatial Computing Development Services",
-        "Spatial Computing Development Company",
-        "Enterprise Spatial Computing",
-        "Spatial Computing Solutions",
-        "Apple Vision Pro App Development",
-        "visionOS App Development",
-        "Immersive App Development",
-        "Spatial UX Design",
-        "Digital Twin Development",
-        "Spatial Data Visualization",
-        "Spatial Computing Services India",
-        "Spatial Computing Development Bangalore",
-        "AR VR MR Development",
+        "spatial computing app development",
+        "AR app development",
+        "VR immersive app solutions",
+        "mixed reality spatial development",
+        "immersive experiences design Bangalore",
+        "spatial UX apps India",
+        "Obrive spatial computing services",
       ],
 
       alternates: {
@@ -273,23 +229,22 @@ export async function generateMetadata({
         title:
           "Spatial Computing App Development FAQs | Spatial Services & Solutions | Obrive",
         description:
-          "Explore Obrive's Spatial Computing App Development FAQs covering Apple Vision Pro, visionOS, AR/VR/MR integration, spatial UX design, enterprise spatial apps, digital twins, and immersive software in Bangalore, India.",
+          "Build immersive AR, VR and mixed reality applications with spatial computing expertise from Obrive.",
         siteName: "Obrive",
         locale: "en_IN",
       },
 
       twitter: {
         card: "summary_large_image",
-        title:
-          "Spatial Computing App Development FAQs | Spatial Services & Solutions | Obrive",
+        title: "Spatial Computing App Development Services | Obrive",
         description:
-          "Explore Obrive's Spatial Computing App Development FAQs covering Apple Vision Pro, visionOS, AR/VR/MR integration, spatial UX design, enterprise spatial apps, digital twins, and immersive software in Bangalore, India.",
+          "AR, VR and immersive spatial applications for enterprise and industry.",
       },
 
       other: {
         "geo.region": "IN-KA",
         "geo.placename": "Bangalore, Karnataka, India",
-        "ICBM": "12.9716, 77.5946",
+        ICBM: "12.9716, 77.5946",
       },
     } satisfies Metadata;
   }
@@ -350,4 +305,3 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
     </>
   );
 }
-

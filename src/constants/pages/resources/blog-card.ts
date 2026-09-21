@@ -1,8 +1,8 @@
+import type { StaticImageData } from "next/image";
 import {
   RESOURCES_BLOG_IMAGES,
   RESOURCES_BLOG_IMAGES_META,
 } from "@/assets/images";
-import { StaticImageData } from "next/image";
 
 export const BlogCardContent = [
   {

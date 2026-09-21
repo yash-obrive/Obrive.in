@@ -1,12 +1,12 @@
-import FullWidthSection from "../layout/FullWidthSection";
-import { FadeInOnView } from "../motion/GsapMotion";
-import FONTS from "@/assets/fonts";
 import Image from "next/image";
+import Link from "@/components/shared/LocalizedLink";
+import FONTS from "@/assets/fonts";
 import { OBPARK_IMAGES, OBPARK_IMAGES_META } from "@/assets/images";
 import HoverAccordion from "../accordion/HoverAccordion";
 import AnimatedButton from "../buttons/AnimatedButton";
 import ObIcon from "../icons/ObIcon";
-import Link from "next/link";
+import FullWidthSection from "../layout/FullWidthSection";
+import { FadeInOnView } from "../motion/GsapMotion";
 
 const EffortlessControl = () => {
   return (

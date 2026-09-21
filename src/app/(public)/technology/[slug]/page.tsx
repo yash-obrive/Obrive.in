@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Script from "next/script";
 import { SolutionTemplate } from "@/components/pages/solutions/SolutionTemplate";
 import { getTechnologyData, getTechnologySlugs } from "@/lib/technology";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import Script from "next/script";
 
 interface TechnologyPageProps {
   params: Promise<{
@@ -32,7 +32,7 @@ export async function generateMetadata({
     "mixed-reality",
     "extended-reality",
     "digital-twins",
-    "ai-immersive-technology"
+    "ai-immersive-technology",
   ]);
 
   // Returning baseline metadata using the exact pattern established in the Solutions/Industries fallback
@@ -75,11 +75,13 @@ export default async function TechnologyPage({ params }: TechnologyPageProps) {
         })}
       </Script>
       <SolutionTemplate
-        slug=""
+        slug={slug}
         hero={technologyData.hero}
         keyBenefits={technologyData.keyBenefits}
         howItWorks={technologyData.howItWorks}
         workflowStepsSidebar={technologyData.workflowStepsSidebar}
+        sidebarLinks={technologyData.sidebarLinks}
+        serviceSections={technologyData.serviceSections}
       />
     </>
   );

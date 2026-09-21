@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
 import BusinessBenefitsCard from "@/components/pages/products/cards/BusinessBenefitsCard";
@@ -13,14 +15,12 @@ import SectionHeader from "@/components/shared/layout/SectionHeader";
 import WhySection from "@/components/shared/layout/WhySection";
 import {
   FadeInOnView as FramerFadeIn,
-  StaggerOnView,
   StaggerItem,
+  StaggerOnView,
 } from "@/components/shared/motion/Motion";
-import { ProductData } from "@/lib/products";
-import Image from "next/image";
-import { ProductSectionIcon } from "./ProductSectionIcon";
+import type { ProductData } from "@/lib/products";
 import { AnimatedRiveSection } from "./AnimatedRiveSection";
-import Link from "next/link";
+import { ProductSectionIcon } from "./ProductSectionIcon";
 
 interface ProductTemplateProps extends ProductData {}
 

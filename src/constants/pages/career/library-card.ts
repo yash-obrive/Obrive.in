@@ -1,8 +1,8 @@
+import type { StaticImageData } from "next/image";
 import {
   JOIN_TEAM_LIBRARY_CARD_IMAGE,
   JOIN_TEAM_LIBRARY_CARD_META,
 } from "@/assets/images";
-import { StaticImageData } from "next/image";
 
 export const JOIN_TEAM_LIBRARY_CARD = [
   {

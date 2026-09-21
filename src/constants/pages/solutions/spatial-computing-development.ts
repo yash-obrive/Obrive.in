@@ -294,6 +294,162 @@ export const SPATIAL_COMPUTING_HOW_IT_WORKS = [
   },
 ] as const;
 
+export const SPATIAL_COMPUTING_INDUSTRIES: import("../../../types/solutions").SolutionIndustriesContent = {
+  "slug": "spatial-computing-development",
+  "hero": {
+    "title": "Spatial Computing Development Across Industries",
+    "description": "Spatial computing can connect digital information with three-dimensional environments, immersive devices and natural interaction. Obrive develops industry-specific spatial applications for visualization, training, collaboration, digital twins, product experiences and operational workflows."
+  },
+  "industries": [
+    {
+      "id": "automotive-mobility",
+      "title": "Automotive & Mobility",
+      "description": "Create spatial vehicle exploration, design review, product configuration, immersive showrooms, engineering visualization, training and service experiences."
+    },
+    {
+      "id": "manufacturing-industrial-engineering",
+      "title": "Manufacturing & Industrial Engineering",
+      "description": "Support factory visualization, equipment interaction, assembly training, inspection, maintenance, design review, digital twins and collaborative engineering."
+    },
+    {
+      "id": "healthcare-medical",
+      "title": "Healthcare & Medical",
+      "description": "Develop spatial anatomy visualization, medical education, training, facility experiences, procedure simulation and medical-device visualization, subject to relevant clinical, privacy, safety and regulatory requirements."
+    },
+    {
+      "id": "pharmaceuticals-life-sciences",
+      "title": "Pharmaceuticals & Life Sciences",
+      "description": "Use spatial applications for laboratory visualization, equipment training, scientific models, facility walkthroughs, manufacturing education and immersive learning."
+    },
+    {
+      "id": "retail-ecommerce",
+      "title": "Retail & eCommerce",
+      "description": "Create spatial product visualization, virtual showrooms, interactive product experiences, immersive demonstrations and spatial commerce concepts."
+    },
+    {
+      "id": "consumer-goods-brands",
+      "title": "Consumer Goods & Brands",
+      "description": "Turn products, packaging, campaigns and brand stories into interactive 3D and spatial experiences for customers and stakeholders."
+    },
+    {
+      "id": "real-estate-property",
+      "title": "Real Estate & Property",
+      "description": "Visualize properties and developments through immersive walkthroughs, spatial design review, interactive sales experiences and 3D environments."
+    },
+    {
+      "id": "architecture-engineering-construction",
+      "title": "Architecture, Engineering & Construction",
+      "description": "Support spatial design review, engineering collaboration, project visualization, immersive walkthroughs, construction communication and digital-twin interfaces."
+    },
+    {
+      "id": "education-edtech",
+      "title": "Education & EdTech",
+      "description": "Create interactive 3D lessons, virtual laboratories, simulations, spatial classrooms, scientific visualization and vocational learning environments."
+    },
+    {
+      "id": "energy-utilities-infrastructure",
+      "title": "Energy, Utilities & Infrastructure",
+      "description": "Use spatial computing for asset visualization, infrastructure models, field training, safety simulations, maintenance workflows and connected digital twins."
+    },
+    {
+      "id": "oil-gas",
+      "title": "Oil & Gas",
+      "description": "Develop spatial equipment visualization, facility models, maintenance training, safety simulations, inspection workflows and remote collaboration."
+    },
+    {
+      "id": "mining-natural-resources",
+      "title": "Mining & Natural Resources",
+      "description": "Support site visualization, equipment training, safety learning, maintenance, geological visualization and operational collaboration."
+    },
+    {
+      "id": "aerospace-aviation",
+      "title": "Aerospace & Aviation",
+      "description": "Create aircraft and component visualization, engineering review, maintenance training, cabin/cockpit environments, technical learning and collaborative design experiences."
+    },
+    {
+      "id": "logistics-warehousing-supply-chain",
+      "title": "Logistics, Warehousing & Supply Chain",
+      "description": "Build warehouse visualization, workflow simulations, equipment training, spatial navigation concepts and operational walkthroughs."
+    },
+    {
+      "id": "travel-tourism-hospitality",
+      "title": "Travel, Tourism & Hospitality",
+      "description": "Create immersive destinations, hotel and resort walkthroughs, cultural environments, virtual experiences and spatial storytelling."
+    },
+    {
+      "id": "media-entertainment-gaming",
+      "title": "Media, Entertainment & Gaming",
+      "description": "Develop immersive worlds, interactive storytelling, virtual venues, branded spatial experiences, entertainment environments and real-time 3D content."
+    },
+    {
+      "id": "sports-fitness",
+      "title": "Sports & Fitness",
+      "description": "Create spatial coaching concepts, venue experiences, training environments, equipment visualization and immersive fan engagement."
+    },
+    {
+      "id": "banking-financial-services-insurance",
+      "title": "Banking, Financial Services & Insurance",
+      "description": "Explore spatial branch concepts, financial education, property visualization, immersive workforce training and selected asset or claims visualization workflows."
+    },
+    {
+      "id": "telecommunications",
+      "title": "Telecommunications",
+      "description": "Support network visualization, infrastructure models, field training, equipment experiences, technician enablement and customer demonstrations."
+    },
+    {
+      "id": "agriculture-agritech",
+      "title": "Agriculture & AgriTech",
+      "description": "Create spatial equipment visualization, field models, training environments, agricultural education and decision-support experiences."
+    },
+    {
+      "id": "government-public-sector",
+      "title": "Government & Public Sector",
+      "description": "Develop public infrastructure visualization, emergency preparedness environments, cultural heritage experiences, training and citizen-facing immersive applications."
+    },
+    {
+      "id": "corporate-learning-professional-services",
+      "title": "Corporate Learning & Professional Services",
+      "description": "Build immersive onboarding, leadership simulations, professional training, collaborative environments, client demonstrations and scenario-based learning."
+    }
+  ],
+  "footerText": "We can adapt the same spatial foundations—3D content, spatial UX, application engineering, AI, integration, analytics and deployment—to new industries, proprietary products and specialized environments.",
+  "globalDelivery": {
+    "title": "Global Spatial Computing Delivery",
+    "subtitle": "Build Once. Localize, Integrate and Scale Worldwide.",
+    "description": "Spatial applications can be structured for multiple markets, languages, devices, sites and stakeholder groups while maintaining appropriate product, brand, security and governance standards.",
+    "items": [
+      "Multi-market spatial experiences",
+      "Localized interfaces and content",
+      "Reusable 3D asset libraries",
+      "Multi-site deployment",
+      "Cloud and API integration",
+      "Role-based access and governance",
+      "Device compatibility planning",
+      "Analytics and usage measurement",
+      "Distributed stakeholder collaboration",
+      "AR, VR and MR interoperability where appropriate"
+    ]
+  },
+  "technologyCapabilities": {
+    "title": "Spatial Computing Technology & Platform Capabilities",
+    "subtitle": "",
+    "items": [
+      "Spatial UX and 3D interaction",
+      "visionOS-oriented development where scoped",
+      "Apple Vision Pro experiences where scoped",
+      "ARKit / RealityKit where appropriate",
+      "Unity",
+      "Unreal Engine",
+      "WebXR",
+      "Real-time 3D",
+      "Computer vision",
+      "Hand, gaze and voice interaction",
+      "AI and generative AI",
+      "Digital twins",
+      "Cloud and enterprise APIs",
+      "ERP, CRM, IoT and analytics integrations"
+    ]
+  }
+};
+
 export { SPATIAL_COMPUTING_FAQS, SPATIAL_COMPUTING_FAQ_META } from "./faqs/spatial-computing-faqs";
-
-

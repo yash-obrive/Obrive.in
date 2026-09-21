@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
+import { useEffect, useRef } from "react";
 import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
 
 const RIVE_SRC = "/animations/goodbye-card.riv";
@@ -43,7 +43,7 @@ function GoodbyeCardRive({ className }: GoodbyeCardRiveProps) {
           rive.pause();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     observer.observe(node);
@@ -84,9 +84,9 @@ const GoodByeCard = () => {
               size={"lg"}
               className="uppercase z-10 text-xs cursor-pointer"
               iconSize={16}
-              href="/faq/ob-services-faq"
+              href="/faqs"
             >
-              SERVICES FAQ
+              EXPLORE FAQS
             </AnimatedButton>
           </div>
         </div>
@@ -109,9 +109,9 @@ const GoodByeCard = () => {
               size={"lg"}
               className="uppercase text-xs cursor-pointer"
               iconSize={16}
-              href="/faq/ob-services-faq"
+              href="/faqs"
             >
-              SERVICES FAQ
+              EXPLORE FAQS
             </AnimatedButton>
           </div>
           <div className="sm:hidden w-full px-4 mt-4">

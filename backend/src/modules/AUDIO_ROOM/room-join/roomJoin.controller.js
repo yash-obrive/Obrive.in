@@ -1,22 +1,21 @@
-const { joinRoomService,} = require("./roomJoin.service");
+const { joinRoomService } = require("./roomJoin.service");
 
 const joinRoomController = async (req, res, next) => {
-    try {
-      const result = await joinRoomService({
-        ...req.body,
-        userId: req.user.id,
-      });
+  try {
+    const result = await joinRoomService({
+      ...req.body,
+      userId: req.user.id,
+    });
 
-      return res.status(200).json({
-        success: true,
-        data: result,
-      });
-    } catch (error) {
-      next(error);
-    }
-  };
+    return res.status(200).json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   joinRoomController,
 };
-

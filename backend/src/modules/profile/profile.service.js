@@ -1,5 +1,4 @@
-const { prisma } = require('../../../db');
-
+const { prisma } = require("../../../prisma");
 class ProfileService {
   async getProfileById(id) {
     const profile = await prisma.users.findUnique({
@@ -7,7 +6,7 @@ class ProfileService {
     });
 
     if (!profile) {
-      const err = new Error('Profile not found');
+      const err = new Error("Profile not found");
       err.status = 404;
       throw err;
     }
@@ -22,8 +21,7 @@ class ProfileService {
     });
 
     if (!existing) {
-      const err = new Error('Profile not found');
-      err.status = 404;
+      const err = new Error("Profile not found");      err.status = 404;
       throw err;
     }
 
@@ -41,7 +39,10 @@ class ProfileService {
         department: data.department ?? existing.department,
         job_title: data.jobTitle ?? existing.job_title,
         phone_number: formattedPhoneNumber,
-        join_date: (data.joinDate && !isNaN(new Date(data.joinDate).getTime())) ? new Date(data.joinDate) : existing.join_date,
+        join_date:
+          data.joinDate && !isNaN(new Date(data.joinDate).getTime())
+            ? new Date(data.joinDate)
+            : existing.join_date,
         biography: data.biography ?? existing.biography,
         // ponytail: store base64/url directly in db, move to s3 when db size matters
         avatar_url: data.avatar_url ?? data.avatar ?? existing.avatar_url,

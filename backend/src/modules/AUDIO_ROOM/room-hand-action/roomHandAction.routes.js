@@ -1,8 +1,6 @@
-const express =
-  require("express");
+const express = require("express");
 
-const router =
-  express.Router();
+const router = express.Router();
 
 const {
   handleHandRequestActionController,
@@ -17,8 +15,7 @@ router.post(
   auth,
   requireRoomRoles(["host", "moderator", "admin"]),
   zodValidate({ part: "body", schema: RoomHandActionBodySchema }),
-  handleHandRequestActionController
+  handleHandRequestActionController,
 );
 
-module.exports =
-  router;
+module.exports = router;

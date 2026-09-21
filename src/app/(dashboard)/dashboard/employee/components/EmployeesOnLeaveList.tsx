@@ -85,7 +85,7 @@ export default function EmployeesOnLeaveList({
   // Using the template literal can sometimes fail depending on the input format.
   // This approach is generally safer for YYYY-MM-DD strings.
   const current = new Date(`${selectedDate}T00:00:00`);
-  
+
   // Check if the date is actually valid before calling methods on it
   if (isNaN(current.getTime())) {
     return <p className="text-sm text-red-500">Invalid date selected.</p>;

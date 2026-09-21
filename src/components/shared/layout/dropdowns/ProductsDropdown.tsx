@@ -1,3 +1,4 @@
+import Link from "@/components/shared/LocalizedLink";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenuContent,
@@ -5,7 +6,6 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import ImmersiveIcon from "../../icons/ImmersiveIcon";
-import Link from "next/link";
 import ObIcon from "../../icons/ObIcon";
 import AnimatedNavLabel from "../AnimatedNavLabel";
 

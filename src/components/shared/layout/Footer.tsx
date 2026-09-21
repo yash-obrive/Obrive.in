@@ -1,11 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { IMAGES, IMAGES_META } from "@/assets/images";
-import { GROUPS, PRIMARY_FOOTER_CARD, SOCIAL_LINKS } from "@/constants/Footer";
-import DynamicFooterCard from "./DynamicFooterCard";
 import {
   HoverCard,
   HoverCardContent,
@@ -37,6 +35,7 @@ export default function Footer() {
               alt={IMAGES_META.MAIN_LOGO.alt}
               width={IMAGES_META.MAIN_LOGO.width}
               height={IMAGES_META.MAIN_LOGO.height}
+              unoptimized
             />
           </div>
 
@@ -131,15 +130,23 @@ export default function Footer() {
           </div>
 
           {/* bottom bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-primary/60">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-primary/60 mt-4">
             <div className="flex gap-6">
-              <Link href="/legal" className="hover:text-primary">
+              <Link href="/legal" className="hover:text-primary transition-colors">
                 Legal Notice
               </Link>
-              <Link href="/terms-accessibility" className="hover:text-primary">
+              <Link href="/terms-accessibility" className="hover:text-primary transition-colors">
                 Terms & Accessibility
               </Link>
             </div>
+            
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-primary/80">Our Brands:</span>
+              <a href="https://www.obnov.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors hover:underline">www.obnov.in</a>
+              <span>/</span>
+              <a href="https://www.obzor.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors hover:underline">www.obzor.in</a>
+            </div>
+
             <div className="flex items-center gap-4">
               {/* Apple-style Country Selector */}
               <div className="flex items-center gap-2 border border-primary/30 rounded-lg px-2.5 py-1 text-xs text-primary/80 bg-transparent hover:border-primary/60 transition-colors">

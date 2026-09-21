@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle, XCircle, AlertCircle, Info, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { AlertCircle, CheckCircle, Info, X, XCircle } from "lucide-react";
 
 type AlertType = "success" | "error" | "info" | "warning";
 
@@ -82,14 +82,14 @@ export default function ConfirmationAlert({
         >
           <div className="p-6">
             <div className="flex items-start gap-4">
-              <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl ${config.light}`}>
+              <div
+                className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl ${config.light}`}
+              >
                 <IconComponent className="h-6 w-6" />
               </div>
-              
+
               <div className="flex-1 pt-1">
-                <h3 className="text-lg font-bold text-slate-900">
-                  {title}
-                </h3>
+                <h3 className="text-lg font-bold text-slate-900">{title}</h3>
                 {description && (
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
                     {description}

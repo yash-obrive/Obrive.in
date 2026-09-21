@@ -1,16 +1,46 @@
-import { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 import {
   IMAGES,
   OBMOVE_IMAGES,
-  OBPARK_IMAGES,
   OBNAVI_IMAGES,
   OBNEST_IMAGES,
+  OBPARK_IMAGES,
 } from "@/assets/images";
 import {
+  OBMOVE_KEY_BENEFITS,
+  OBNAVI_KEY_BENEFITS,
+  OBNEST_KEY_BENEFITS,
+  OBPARK_KEY_BENEFITS,
+} from "@/constants/pages/key-benefits";
+import {
+  OBMOVE_HOW_IT_WORK,
+  OBNAVI_HOW_IT_WORK,
+  OBNEST_HOW_IT_WORK,
+  OBPARK_HOW_IT_WORK,
+} from "@/constants/pages/products/how-it-work";
+import {
+  OBMOVE_BUSINESS_BENEFIT,
+  OBMOVE_FOR_CONSUMERS,
+  OBMOVE_OTHER_BENEFITS,
+  OBMOVE_WHY,
+} from "@/constants/pages/products/obmove/business-benefits";
+import {
+  OBNAVI_FOR_BUSINESS,
+  OBNAVI_FOR_CONSUMERS,
+  OBNAVI_OTHER_BENEFITS,
+  OBNAVI_WHY,
+} from "@/constants/pages/products/obnavi/business-benefits";
+import {
+  OBNEST_BUSINESS_BENEFIT,
+  OBNEST_OTHER_BENEFITS,
+  OBNEST_WHY,
+  PARKING_WITH_OBNEST,
+} from "@/constants/pages/products/obnest/business-benefit";
+import {
   OBPARK_BUSINESS_BENEFIT,
+  OBPARK_OTHER_BENEFITS,
   OBPARK_WHY,
   PARKING_WITH_OBPARK,
-  OBPARK_OTHER_BENEFITS,
 } from "@/constants/pages/products/obpark/business-benefit";
 import {
   OBMOVE_WHAT_MAKES_DIFFERENT,
@@ -19,48 +49,18 @@ import {
   OBPARK_WHAT_MAKES_DIFFERENT,
 } from "@/constants/pages/products/obpark/makes-difference";
 import {
-  WHY_SECTION_OBMOVE,
-  WHY_SECTION_OBNAVI,
-  WHY_SECTION_OBNEST,
-  WHY_SECTION_OBPARK,
-} from "@/constants/pages/why-section";
-import {
-  OBMOVE_HOW_IT_WORK,
-  OBNAVI_HOW_IT_WORK,
-  OBNEST_HOW_IT_WORK,
-  OBPARK_HOW_IT_WORK,
-} from "@/constants/pages/products/how-it-work";
-import {
   OBMOVE_QUOTES,
   OBNAVI_QUOTES,
   OBNEST_QUOTES,
   OBPARK_QUOTES,
 } from "@/constants/pages/products/quotes";
 import {
-  OBMOVE_KEY_BENEFITS,
-  OBNAVI_KEY_BENEFITS,
-  OBNEST_KEY_BENEFITS,
-  OBPARK_KEY_BENEFITS,
-} from "@/constants/pages/key-benefits";
-import {
-  OBNEST_BUSINESS_BENEFIT,
-  OBNEST_OTHER_BENEFITS,
-  OBNEST_WHY,
-  PARKING_WITH_OBNEST,
-} from "@/constants/pages/products/obnest/business-benefit";
-import {
-  OBNAVI_FOR_BUSINESS,
-  OBNAVI_FOR_CONSUMERS,
-  OBNAVI_OTHER_BENEFITS,
-  OBNAVI_WHY,
-} from "@/constants/pages/products/obnavi/business-benefits";
-import {
-  OBMOVE_BUSINESS_BENEFIT,
-  OBMOVE_FOR_CONSUMERS,
-  OBMOVE_OTHER_BENEFITS,
-  OBMOVE_WHY,
-} from "@/constants/pages/products/obmove/business-benefits";
-import { IconName } from "@/lib/iconMap";
+  WHY_SECTION_OBMOVE,
+  WHY_SECTION_OBNAVI,
+  WHY_SECTION_OBNEST,
+  WHY_SECTION_OBPARK,
+} from "@/constants/pages/why-section";
+import type { IconName } from "@/lib/iconMap";
 
 export interface ProductHero {
   title: string;
@@ -160,8 +160,7 @@ const PRODUCTS_DATA: Record<string, ProductData> = {
         title: "Extended Features Beyond Parking",
         items: OBPARK_OTHER_BENEFITS,
         image: OBPARK_IMAGES.OBPARK_BUSINESS_4,
-        bottomNote:
-          "Request or manage valet parking directly through the app.",
+        bottomNote: "Request or manage valet parking directly through the app.",
         variant: "right",
       },
     ],

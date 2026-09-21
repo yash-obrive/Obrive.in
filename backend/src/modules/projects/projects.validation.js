@@ -1,4 +1,4 @@
-const { z } = require('zod');
+const { z } = require("zod");
 
 const ProjectIdParamSchema = z.object({
   id: z.coerce.number().int().positive(),
@@ -10,14 +10,14 @@ const ProjectAssignmentParamSchema = z.object({
 });
 
 const ProjectBodyBaseSchema = z.object({
-  name: z.string().trim().min(1, 'Project name is required'),
+  name: z.string().trim().min(1, "Project name is required"),
   description: z.string().optional(),
   priority: z.string().optional(),
   project_id: z.string().optional(),
   deadline: z.string().optional(),
   client_id: z.preprocess(
-    (value) => (value === '' || value == null ? undefined : String(value)),
-    z.string().trim().min(1).optional()
+    (value) => (value === "" || value == null ? undefined : String(value)),
+    z.string().trim().min(1).optional(),
   ),
   leader_id: z.coerce.number().int().positive().nullable().optional(),
   progress: z.coerce.number().int().min(0).max(100).optional(),
@@ -30,7 +30,7 @@ const CreateProjectBodySchema = ProjectBodyBaseSchema;
 
 const UpdateProjectBodySchema = ProjectBodyBaseSchema.partial().refine(
   (data) => Object.keys(data).length > 0,
-  { message: 'At least one field is required' }
+  { message: "At least one field is required" },
 );
 
 const AssignProjectLeaderBodySchema = z.object({

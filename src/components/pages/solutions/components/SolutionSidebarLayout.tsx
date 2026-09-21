@@ -1,12 +1,18 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import SolutionServiceSection from "./SolutionServiceSection";
-import SolutionProcessSteps from "./SolutionProcessSteps";
+import { useEffect, useRef, useState } from "react";
+import Link from "@/components/shared/LocalizedLink";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
-import { SidebarLink, ServiceSection, WorkflowStep } from "@/types/solutions";
+import type {
+  ServiceSection,
+  SidebarLink,
+  WorkflowStep,
+} from "@/types/solutions";
+import SolutionProcessSteps from "./SolutionProcessSteps";
+import SolutionServiceSection from "./SolutionServiceSection";
 
 interface SolutionSidebarLayoutProps {
+  slug: string;
   sidebarLinks: SidebarLink[];
   serviceSections: ServiceSection[];
   processSteps: WorkflowStep[];
@@ -14,31 +20,32 @@ interface SolutionSidebarLayoutProps {
 }
 
 const SolutionSidebarLayout = ({
+  slug,
   sidebarLinks,
   serviceSections,
   processSteps,
   serviceLabel = "Our Services",
 }: SolutionSidebarLayoutProps) => {
-  const [activeId, setActiveId] = useState<string>(
-    sidebarLinks[0]?.id || ""
-  );
+  const [activeId, setActiveId] = useState<string>(sidebarLinks[0]?.id || "");
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   // Intersection observer — highlight active sidebar link on scroll
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
-    serviceSections.forEach((section) => {
-      const el = sectionRefs.current[section.id];
+    const sectionsToObserve = [...serviceSections.map(s => s.id)];
+
+    sectionsToObserve.forEach((id) => {
+      const el = sectionRefs.current[id];
       if (!el) return;
 
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setActiveId(section.id);
+            setActiveId(id);
           }
         },
-        { rootMargin: "-20% 0px -70% 0px", threshold: 0 }
+        { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
       );
       observer.observe(el);
       observers.push(observer);
@@ -57,31 +64,45 @@ const SolutionSidebarLayout = ({
   return (
     <div>
       {/* ── Sidebar + Content ────────────────────────────────────────────── */}
-      <div className="flex items-start gap-10 my-20 max-xl:gap-8 max-lg:flex-col max-lg:items-stretch max-lg:gap-12 max-md:my-14 max-sm:my-10">
+      <div className="flex items-start gap-12 lg:gap-24 xl:gap-32 my-20 max-xl:gap-16 max-lg:flex-col max-lg:items-stretch max-md:my-14 max-sm:my-10">
         {/* Sticky Sidebar */}
-        <div className="sticky top-20 self-start max-lg:hidden">
-          <div className="w-56">
-            <p className="text-xs py-4 px-2 text-zinc-500">{serviceLabel}</p>
+        <div className="sticky top-20 self-start max-lg:hidden flex-shrink-0">
+          <div className="w-sm">
+            <p className="text-xs py-4 px-2">{serviceLabel}</p>
             {sidebarLinks.map((link, index) => (
-              <button
+              <div
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className={`w-full text-left flex items-center gap-3 py-3 px-2 cursor-pointer transition-colors text-xs leading-5
+                className={`flex items-center gap-3 py-4 px-2 cursor-pointer hover:bg-primary/10 transition-colors text-xs
                   ${index === 0 ? "border-y" : "border-b"} border-primary/80
-                  ${
-                    activeId === link.id
-                      ? "bg-primary/10 text-primary font-medium"
-                      : "hover:bg-primary/5 text-zinc-700"
-                  }`}
+                  ${activeId === link.id ? "text-primary font-semibold" : ""}
+                `}
               >
-                {link.label}
-              </button>
+                <span>{link.label}</span>
+              </div>
             ))}
+            <div
+              onClick={() => {
+                const element = document.getElementById("our-process");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="flex items-center gap-3 py-4 px-2 cursor-pointer hover:bg-primary/10 transition-colors text-xs border-b border-primary/80"
+            >
+              <span>Our Process</span>
+            </div>
+            <Link
+              href={`/solutions/${slug}/industries`}
+              className="flex items-center gap-3 py-4 px-2 cursor-pointer hover:bg-primary/10 transition-colors text-xs border-b border-primary/80"
+            >
+              Industries We Serve
+            </Link>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="flex flex-col gap-16 flex-1 max-xl:gap-14 max-md:gap-12">
+        <div className="flex flex-col gap-32 md:gap-48 lg:gap-64 flex-1">
           {serviceSections.map((section) => (
             <FadeInOnView key={section.id}>
               <div
@@ -93,6 +114,7 @@ const SolutionSidebarLayout = ({
               </div>
             </FadeInOnView>
           ))}
+          
         </div>
       </div>
 

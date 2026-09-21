@@ -1,8 +1,9 @@
 "use client";
 
+import type React from "react";
+import { useState } from "react";
 import FONTS from "@/assets/fonts";
 import { Input } from "@/components/ui/input";
-import React, { useState } from "react";
 
 const ResumeSubmit = ({
   props,

@@ -1,11 +1,11 @@
 "use client";
 
-import { ProjectItem } from "@/components/dashboard/ProjectCard";
-import SkeletonLoading from "@/components/SkelitonLoading";
-import { apiFetch } from "@/lib/api";
+import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle2, Circle, Clock3, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import type { ProjectItem } from "@/components/dashboard/ProjectCard";
+import SkeletonLoading from "@/components/SkelitonLoading";
+import { apiFetch } from "@/lib/api";
 
 export type TaskStatus = "pending" | "in-progress" | "completed";
 
@@ -107,7 +107,7 @@ const MyProjectTasksSection = ({ project }: Props) => {
     const previousTasks = tasks;
 
     setTasks((current) =>
-      current.map((task) => (task.id === taskId ? { ...task, status } : task))
+      current.map((task) => (task.id === taskId ? { ...task, status } : task)),
     );
     setUpdatingTaskId(taskId);
 
@@ -124,8 +124,8 @@ const MyProjectTasksSection = ({ project }: Props) => {
       if (json?.data) {
         setTasks((current) =>
           current.map((task) =>
-            task.id === taskId ? { ...task, ...json.data } : task
-          )
+            task.id === taskId ? { ...task, ...json.data } : task,
+          ),
         );
       }
     } catch (err) {
@@ -139,19 +139,15 @@ const MyProjectTasksSection = ({ project }: Props) => {
   if (!project) {
     return (
       <div className="flex h-full items-center justify-center rounded-2xl bg-white p-6 shadow-sm">
-        <p className="text-gray-400 text-sm">
-          Select a project to view tasks
-        </p>
+        <p className="text-gray-400 text-sm">Select a project to view tasks</p>
       </div>
     );
   }
 
   return (
     <div className="flex h-full min-h-0 w-full gap-4 overflow-hidden">
-
       {/* MAIN */}
       <div className="flex-1 rounded-2xl bg-[#f5f9ff] p-4 sm:p-6  min-h-0 overflow-y-auto scrollbar-hide">
-
         <h2 className="mb-5 text-xl font-bold text-[#1a472a]">
           {project.name}
         </h2>
@@ -163,13 +159,11 @@ const MyProjectTasksSection = ({ project }: Props) => {
 
             return (
               <motion.div layout key={task.id}>
-
                 <div
                   onClick={() => setSelectedTask(task)}
                   className="cursor-pointer rounded-2xl bg-white px-4 py-4 sm:px-5 scrollbar-hide"
                 >
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 ">
-
                     <div>
                       <p className="text-[10px] text-gray-400">Task Title</p>
                       <p className="text-xs font-medium text-gray-800">
@@ -200,7 +194,9 @@ const MyProjectTasksSection = ({ project }: Props) => {
 
                     <div>
                       <p className="text-[10px] text-gray-400">Status</p>
-                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${status.pill}`}>
+                      <span
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${status.pill}`}
+                      >
                         {status.label}
                       </span>
                     </div>
@@ -216,7 +212,9 @@ const MyProjectTasksSection = ({ project }: Props) => {
                       exit={{ height: 0, opacity: 0 }}
                       className="bg-white px-4 pb-4 rounded-b-2xl"
                     >
-                      <label htmlFor="" className="font-bold text-[]">Description</label>
+                      <label htmlFor="" className="font-bold text-[]">
+                        Description
+                      </label>
                       <p className="text-sm text-gray-600 mt-3">
                         {task.description}
                       </p>
@@ -228,30 +226,42 @@ const MyProjectTasksSection = ({ project }: Props) => {
                         </p>
 
                         <div className="space-y-3">
-
                           {/* dummy users */}
                           {[
-                            { name: "Oscar Holloway", role: "UI/UX", text: "Updated task UI", img: "https://i.pravatar.cc/40?img=1" },
-                            { name: "Emily Tyler", role: "Copywriter", text: "Added content changes", img: "https://i.pravatar.cc/40?img=2" },
+                            {
+                              name: "Oscar Holloway",
+                              role: "UI/UX",
+                              text: "Updated task UI",
+                              img: "https://i.pravatar.cc/40?img=1",
+                            },
+                            {
+                              name: "Emily Tyler",
+                              role: "Copywriter",
+                              text: "Added content changes",
+                              img: "https://i.pravatar.cc/40?img=2",
+                            },
                           ].map((u, i) => (
                             <div key={i} className="flex gap-3 items-start">
-                              <img src={u.img} className="w-8 h-8 rounded-full" />
+                              <img
+                                src={u.img}
+                                className="w-8 h-8 rounded-full"
+                              />
                               <div>
                                 <p className="text-sm font-medium">{u.name}</p>
-                                <p className="text-[11px] text-gray-400">{u.role}</p>
+                                <p className="text-[11px] text-gray-400">
+                                  {u.role}
+                                </p>
                                 <p className="text-sm bg-gray-100 px-3 py-1 rounded mt-1">
                                   {u.text}
                                 </p>
                               </div>
                             </div>
                           ))}
-
                         </div>
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-
               </motion.div>
             );
           })}
@@ -283,7 +293,10 @@ const MyProjectTasksSection = ({ project }: Props) => {
             <select
               value={selectedTask.status}
               onChange={(e) =>
-                handleStatusChange(selectedTask.id, e.target.value as TaskStatus)
+                handleStatusChange(
+                  selectedTask.id,
+                  e.target.value as TaskStatus,
+                )
               }
               className={`w-full mb-4 border rounded-lg px-2 py-2 text-sm ${
                 statusStyles[selectedTask.status].select

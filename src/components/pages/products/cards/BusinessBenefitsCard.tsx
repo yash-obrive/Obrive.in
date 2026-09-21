@@ -1,6 +1,6 @@
+import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import { ICONS, ICONS_META } from "@/assets/images";
-import Image from "next/image";
 
 type BenefitItem = {
   title: string;

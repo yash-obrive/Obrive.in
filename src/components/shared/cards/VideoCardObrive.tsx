@@ -1,9 +1,9 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { FadeInOnView } from "../motion/GsapMotion";
 import { Play, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { FadeInOnView } from "../motion/GsapMotion";
 
 const VideoCardObrive = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -63,7 +63,7 @@ const VideoCardObrive = () => {
       };
       startRAF();
     },
-    [startRAF]
+    [startRAF],
   );
 
   const handlePointerEnter = useCallback(() => {
@@ -158,7 +158,7 @@ const VideoCardObrive = () => {
           type="button"
           className={cn(
             "pointer-events-auto absolute top-0 left-0 hidden md:inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition-opacity duration-150 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 z-10",
-            isPointerActive ? "opacity-100" : "opacity-0"
+            isPointerActive ? "opacity-100" : "opacity-0",
           )}
           style={{ willChange: "transform" }}
           onClick={handlePlayClick}
@@ -167,7 +167,12 @@ const VideoCardObrive = () => {
           <Play className="h-4 w-4" />
           Play Video
         </Button>
-        <Button className="sm:hidden max-sm:flex mt-4" size={"lg"} type="button" onClick={handlePlayClick}>
+        <Button
+          className="sm:hidden max-sm:flex mt-4"
+          size={"lg"}
+          type="button"
+          onClick={handlePlayClick}
+        >
           <Play className="h-4 w-4" />
           Watch Video
         </Button>

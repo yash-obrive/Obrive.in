@@ -3,9 +3,15 @@ import { KeyBenefitsCard } from "@/components/shared/cards/KeyBenefitsCard";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { InfiniteHorizontalScroll } from "@/components/shared/layout/InfiniteHorizontalScroll";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
-import WorkflowSection from "./components/WorkflowSection";
+import type {
+  ServiceSection,
+  SidebarLink,
+  WorkflowStep,
+} from "@/types/solutions";
+import Link from "@/components/shared/LocalizedLink";
+import { ArrowRight } from "lucide-react";
 import SolutionSidebarLayout from "./components/SolutionSidebarLayout";
-import { SidebarLink, ServiceSection, WorkflowStep } from "@/types/solutions";
+import WorkflowSection from "./components/WorkflowSection";
 
 interface SolutionTemplateProps {
   slug: string;
@@ -15,8 +21,8 @@ interface SolutionTemplateProps {
     description2: string;
   };
   keyBenefits: readonly any[];
-  howItWorks: readonly any[];
-  workflowStepsSidebar: readonly string[];
+  howItWorks?: readonly any[];
+  workflowStepsSidebar?: readonly string[];
   sidebarLinks?: readonly SidebarLink[];
   serviceSections?: readonly ServiceSection[];
   processSteps?: readonly WorkflowStep[];
@@ -88,20 +94,40 @@ export function SolutionTemplate({
       </FadeInOnView>
 
       <FullWidthSection backgroundColor="none">
-        {sidebarLinks && serviceSections && processSteps ? (
+        {howItWorks ? (
+          <WorkflowSection
+            howItWorks={howItWorks}
+            workflowStepsSidebar={workflowStepsSidebar}
+            sidebarLinks={sidebarLinks as SidebarLink[]}
+            serviceSections={serviceSections as ServiceSection[]}
+          />
+        ) : (
           <SolutionSidebarLayout
+            slug={slug}
             sidebarLinks={sidebarLinks as SidebarLink[]}
             serviceSections={serviceSections as ServiceSection[]}
             processSteps={processSteps as WorkflowStep[]}
             serviceLabel={serviceLabel}
           />
-        ) : (
-          <WorkflowSection
-            howItWorks={howItWorks}
-            workflowStepsSidebar={workflowStepsSidebar}
-          />
         )}
       </FullWidthSection>
+
+      {/* FAQ Link CTA */}
+      <section className="py-16 md:py-24 px-4 md:px-8 text-center bg-gradient">
+        <h2 className={`${FONTS.microgrammaBold.className} text-[#073933] text-3xl md:text-4xl uppercase tracking-widest mb-6`}>
+          Have Questions?
+        </h2>
+        <p className="text-[#073933]/80 text-lg max-w-2xl mx-auto mb-10">
+          Find answers to common questions about {serviceLabel || "our services"} and our process.
+        </p>
+        <Link 
+          href={`/solutions/${slug}/faqs`}
+          className="inline-flex items-center gap-2 bg-[#073933] text-white px-8 py-4 rounded-full font-medium hover:bg-[#073933]/90 transition-all shadow-lg hover:shadow-xl"
+        >
+          View Frequently Asked Questions
+          <ArrowRight className="w-5 h-5" />
+        </Link>
+      </section>
     </div>
   );
 }

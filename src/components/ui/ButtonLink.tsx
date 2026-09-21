@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 
 interface ButtonLinkProps {
   href: string;
@@ -6,7 +6,11 @@ interface ButtonLinkProps {
   className?: string;
 }
 
-export function ButtonLink({ href, children, className = "" }: ButtonLinkProps) {
+export function ButtonLink({
+  href,
+  children,
+  className = "",
+}: ButtonLinkProps) {
   return (
     <Link
       href={href}

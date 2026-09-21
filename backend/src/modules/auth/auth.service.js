@@ -1,5 +1,5 @@
 // backend/src/modules/auth/auth.service.js
-const { prisma } = require("../../../db");
+const { prisma } = require("../../../prisma");
 const bcrypt = require("bcrypt");
 const {
   signAccessToken,
@@ -8,7 +8,8 @@ const {
 } = require("../../utils/jwt");
 
 // Employee / HR / Admin / Supervisor login
-exports.loginUser = async ({ email, password, ip, userAgent }) => { //ip and userAgent are optional parameters for logging purposes
+exports.loginUser = async ({ email, password, ip, userAgent }) => {
+  //ip and userAgent are optional parameters for logging purposes
   // Use raw query to find user by email
   const result = await prisma.$queryRaw`
     SELECT id, userid, email, name, role, password, status, is_active
@@ -68,7 +69,6 @@ exports.loginUser = async ({ email, password, ip, userAgent }) => { //ip and use
   };
 };
 
-
 exports.loginClient = async ({ clientId, password }) => {
   const result = await prisma.$queryRaw`
     SELECT id, userid, email, name, role, password, status 
@@ -79,19 +79,17 @@ exports.loginClient = async ({ clientId, password }) => {
 
   const client = result[0];
 
-
-  if (!client || client.status === 'inactive') {
-    throw { status: 401, message: 'Invalid client credentials' };
+  if (!client || client.status === "inactive") {
+    throw { status: 401, message: "Invalid client credentials" };
   }
 
   const isValid = await bcrypt.compare(password, client.password);
 
   if (!isValid) {
-    throw { status: 401, message: 'Invalid client credentials' };
+    throw { status: 401, message: "Invalid client credentials" };
   }
 
-
-  const payload = { id: client.id, role: 'client', clientId: client.userid };
+  const payload = { id: client.id, role: "client", clientId: client.userid };
   const accessToken = signAccessToken(payload);
 
   return {
@@ -158,7 +156,9 @@ exports.getCurrentUserDetails = async (userId) => {
       status: user[0].status,
       is_active: user[0].is_active,
       avatar_url: user[0].avatar_url,
-      is_location_tracking_enabled: Boolean(user[0].is_location_tracking_enabled),
+      is_location_tracking_enabled: Boolean(
+        user[0].is_location_tracking_enabled,
+      ),
     };
   } catch (_err) {
     throw { status: 401, message: "Failed to fetch user details" };

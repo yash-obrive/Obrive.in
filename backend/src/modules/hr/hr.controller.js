@@ -1,6 +1,6 @@
 // backend/src/modules/hr/hr.controller.js
-const hrService = require('./hr.service');
-const { successResponse, errorResponse } = require('../../utils/apiResponse');
+const hrService = require("./hr.service");
+const { successResponse, errorResponse } = require("../../utils/apiResponse");
 
 // Get HR Dashboard
 exports.getDashboard = async (req, res, next) => {
@@ -8,12 +8,16 @@ exports.getDashboard = async (req, res, next) => {
     const stats = await hrService.getDashboardStats();
     const recentEmployees = await hrService.getAllEmployees();
     const hrProfile = await hrService.getHRProfile(req.user.id);
-    
-    successResponse(res, { 
-      profile: hrProfile,
-      stats, 
-      recentEmployees: recentEmployees.slice(0, 5)
-    }, 'HR Dashboard retrieved');
+
+    successResponse(
+      res,
+      {
+        profile: hrProfile,
+        stats,
+        recentEmployees: recentEmployees.slice(0, 5),
+      },
+      "HR Dashboard retrieved",
+    );
   } catch (err) {
     errorResponse(res, err.message, 500);
   }
@@ -23,7 +27,7 @@ exports.getDashboard = async (req, res, next) => {
 exports.getProfile = async (req, res, next) => {
   try {
     const profile = await hrService.getHRProfile(req.user.id);
-    successResponse(res, profile, 'Profile retrieved');
+    successResponse(res, profile, "Profile retrieved");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }
@@ -34,9 +38,12 @@ exports.updateProfile = async (req, res, next) => {
   try {
     const { name, bio, dateOfBirth, phone } = req.body;
     const profile = await hrService.updateHRProfile(req.user.id, {
-      name, bio, dateOfBirth, phone
+      name,
+      bio,
+      dateOfBirth,
+      phone,
     });
-    successResponse(res, profile, 'Profile updated');
+    successResponse(res, profile, "Profile updated");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }
@@ -46,7 +53,7 @@ exports.updateProfile = async (req, res, next) => {
 exports.getAllEmployees = async (req, res, next) => {
   try {
     const employees = await hrService.getAllEmployees();
-    successResponse(res, employees, 'Employees retrieved');
+    successResponse(res, employees, "Employees retrieved");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }
@@ -56,7 +63,7 @@ exports.getAllEmployees = async (req, res, next) => {
 exports.getEmployeeById = async (req, res, next) => {
   try {
     const employee = await hrService.getEmployeeById(parseInt(req.params.id));
-    successResponse(res, employee, 'Employee retrieved');
+    successResponse(res, employee, "Employee retrieved");
   } catch (err) {
     errorResponse(res, err.message, 404);
   }
@@ -65,8 +72,11 @@ exports.getEmployeeById = async (req, res, next) => {
 // Update employee
 exports.updateEmployee = async (req, res, next) => {
   try {
-    const employee = await hrService.updateEmployee(parseInt(req.params.id), req.body);
-    successResponse(res, employee, 'Employee updated');
+    const employee = await hrService.updateEmployee(
+      parseInt(req.params.id),
+      req.body,
+    );
+    successResponse(res, employee, "Employee updated");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }
@@ -76,7 +86,7 @@ exports.updateEmployee = async (req, res, next) => {
 exports.deleteEmployee = async (req, res, next) => {
   try {
     await hrService.deleteEmployee(parseInt(req.params.id));
-    successResponse(res, null, 'Employee deleted');
+    successResponse(res, null, "Employee deleted");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }
@@ -87,10 +97,10 @@ exports.searchEmployees = async (req, res, next) => {
   try {
     const { q } = req.query;
     if (!q) {
-      return errorResponse(res, 'Search term required', 400);
+      return errorResponse(res, "Search term required", 400);
     }
     const employees = await hrService.searchEmployees(q);
-    successResponse(res, employees, 'Search results');
+    successResponse(res, employees, "Search results");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }
@@ -101,8 +111,15 @@ exports.toggleLocationTracking = async (req, res, next) => {
   try {
     const employeeId = parseInt(req.params.id);
     const { enabled } = req.body;
-    const result = await hrService.toggleEmployeeLocationTracking(employeeId, enabled);
-    successResponse(res, result, `Location tracking ${enabled ? 'enabled' : 'disabled'}`);
+    const result = await hrService.toggleEmployeeLocationTracking(
+      employeeId,
+      enabled,
+    );
+    successResponse(
+      res,
+      result,
+      `Location tracking ${enabled ? "enabled" : "disabled"}`,
+    );
   } catch (err) {
     errorResponse(res, err.message, err.status || 500);
   }
@@ -112,7 +129,7 @@ exports.toggleLocationTracking = async (req, res, next) => {
 exports.getLocationOverview = async (req, res, next) => {
   try {
     const employees = await hrService.getEmployeesLocationOverview();
-    successResponse(res, employees, 'Employee locations retrieved');
+    successResponse(res, employees, "Employee locations retrieved");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }
@@ -129,7 +146,7 @@ exports.getLocationHistory = async (req, res, next) => {
       date,
       timezoneOffset,
     });
-    successResponse(res, history, 'Location history retrieved');
+    successResponse(res, history, "Location history retrieved");
   } catch (err) {
     errorResponse(res, err.message, 500);
   }

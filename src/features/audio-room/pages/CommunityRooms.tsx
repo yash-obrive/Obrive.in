@@ -1,0 +1,276 @@
+"use client";
+
+import Link from "@/components/shared/LocalizedLink";
+import { useEffect, useState } from "react";
+import FONTS from "@/assets/fonts";
+import { Button } from "@/components/ui/button";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { apiFetch } from "@/lib/api";
+
+export default function CommunityRooms() {
+  const { me, loading: userLoading } = useCurrentUser();
+  const [rooms, setRooms] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const res = await apiFetch("/audio-room/rooms");
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data?.message || "Failed to load rooms");
+        }
+
+        // only live rooms
+        const liveRooms = (data?.data || []).filter(
+          (r: any) => String(r.roomStatus).toLowerCase() === "live",
+        );
+
+        setRooms(liveRooms);
+      } catch (err: any) {
+        setError(err?.message || String(err));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRooms();
+  }, []);
+
+  const canUserJoin = (room: any) => {
+    const userId = Number(me?.id);
+    const userRole = String(me?.role || "").toLowerCase();
+
+    if (userRole === "admin") return true;
+
+    if (room?.createdBy != null && Number(room.createdBy) === userId) {
+      return true;
+    }
+
+    const perms = room?.joinPermissions || [];
+    if (room?.allowGuestUsers) return true;
+    if (!perms || perms.length === 0) return true;
+
+    return perms.some((p: any) => {
+      const crm = p?.crmRole;
+      if (!crm) return false;
+      const crmLower = String(crm).toLowerCase();
+      if (crmLower === "all" || crmLower === "everyone") return true;
+      return userRole && String(userRole).toLowerCase() === crmLower;
+    });
+  };
+
+  const filteredRooms = rooms.filter((room) => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return true;
+
+    const roomName = String(room.roomName || room.name || "").toLowerCase();
+    const roomDescription = String(room.roomDescription || "").toLowerCase();
+
+    return roomName.includes(term) || roomDescription.includes(term);
+  });
+
+  const liveCount = rooms.length;
+  const allowedCount = rooms.filter(canUserJoin).length;
+
+  if (loading || userLoading) {
+    return (
+      <div className="min-h-screen bg-gradient px-4 py-10 sm:px-8 lg:px-12 col-span-3 bg-gradient">
+        <div className="mx-auto flex max-w-6xl items-center justify-center rounded-4xl  bg-gradient px-6 py-20 ">
+          <div className="text-center">
+            <div className="mx-auto mb-4 h-14 w-14 animate-pulse rounded-full border border-black/10 bg-black/5" />
+            <div className="text-lg font-semibold tracking-tight text-slate-900">
+              Getting live rooms
+            </div>
+            <div className="mt-2 text-sm text-slate-500">Loading rooms ...</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient text-slate-950">
+      <div className="relative overflow-hidden border-b border-none">
+        <div className="absolute inset-0 opacity-40 [background:radial-gradient(circle_at_top_left,rgba(7,109,71,0.18),transparent_30%),radial-gradient(circle_at_top_right,rgba(0,0,0,0.06),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(7,109,71,0.12),transparent_28%)]" />
+        <div className="relative mx-auto max-w-6xl px-4 py-10 sm:px-8 sm:py-14 lg:px-12">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-7 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#074139] shadow-sm backdrop-blur">
+                Conversations, new ideas, trends, community live discussions and
+                more. <span className="ml-2 text-slate-400">join now</span>
+              </div>
+              <h1 className="text-4xl font-black tracking-tight sm:text-4xl lg:text-5xl">
+                Step into the room.
+                <span className="block text-[#074139]">
+                  Join conversations live.
+                </span>
+              </h1>
+              <p className="mt-4 max-w-xl text-sm leading-6 text-slate-600 sm:text-base">
+                Discover rooms for your interests. Join the people of obrive and
+                other community members. The rooms update regularly based on new
+                happenings, events, and trending topics of the time.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 sm:flex sm:gap-4">
+              <div className="min-w-30 rounded-3xl border border-black/10 bg-white/75 px-4 py-4 shadow-sm backdrop-blur">
+                <div className="text-2xl font-black">{liveCount}</div>
+                <div className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-500">
+                  Live now
+                </div>
+              </div>
+              <div className="min-w-30 rounded-3xl border border-black/10 bg-white/75 px-4 py-4 shadow-sm backdrop-blur">
+                <div className="text-2xl font-black">{allowedCount}</div>
+                <div className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-500">
+                  Available for you
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between"></div>
+
+          {error && (
+            <div className="mt-6 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 shadow-sm">
+              {error}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Main Container Area */}
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-8 lg:px-12 lg:py-10">
+        {filteredRooms.length === 0 ? (
+          <div className="rounded-4xl border border-dashed border-black/10 bg-white/70 px-6 py-16 text-center shadow-[0_30px_80px_rgba(0,0,0,0.05)] backdrop-blur">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#074139]/10 text-2xl font-black text-[#074139]">
+              0
+            </div>
+            <h2 className="text-2xl font-black tracking-tight">
+              No rooms match right now
+            </h2>
+            <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-slate-600">
+              {searchTerm.trim()
+                ? "Try a different search term or clear the filter to see every room you can join."
+                : "There are currently no live rooms available"}
+            </p>
+          </div>
+        ) : (
+          /* RESPONSIVE CARD ENGINE: 1 column on mobile, 2 columns on medium/desktop viewports */
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {filteredRooms.map((room) => {
+              const allowed = canUserJoin(room);
+              const label = room.roomName || room.name || `Room ${room.id}`;
+              const initials = label
+                .split(" ")
+                .filter(Boolean)
+                .slice(0, 2)
+                .map((part: string) => part[0]?.toUpperCase())
+                .join("");
+
+              return (
+                <div
+                  key={room.id}
+                  className="h-[220px] group bg-gradient flex flex-col justify-between rounded-xl border border-black/[0.08] bg-white/90 p-5 shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-black/[0.15]"
+                >
+                  {/* w-full sm:w-[450px] md:w-[550px] lg:w-[580px] py-6 sm:py-6 px-6 sm:px-10 lg:px-8 min-h-[320px] rounded-2xl bg-gradient cursor-default */}
+                  <div>
+                    {/* Upper Metadata Row */}
+
+                    <div className="flex items-end gap-2 leading-none">
+                      {/* The Avatar Indicator Box */}
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-[#074139] text-[9px] font-bold text-white shadow-sm">
+                        {initials || "R"}
+                      </div>
+
+                      {/* Label Wrapper - Forced to match structural bottom */}
+                      <div className="min-w-0 flex items-end h-8">
+                        <h3 className="text-base text-bold text-[15px] sm:text-[15px] md:text-[15px] lg:text-[15px] mb-1 font-medium tracking-tight transition-colors line-clamp-1 translate-y-[2px]">
+                          {label}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {room.roomDescription ? (
+                      <p
+                        className={`${FONTS.microgrammaBold.className} text-[20px] mt-4 sm:text-2xl md:text-2xl lg:text-2xl text-secondary line-clamp-3`}
+                      >
+                        {room.roomDescription}
+                      </p>
+                    ) : (
+                      <p className="mt-1.5 text-[14px] italic text-slate-400">
+                        join to explore ideas with others.
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Operational Action Footer Layer */}
+                  <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                      <span
+                        className={
+                          allowed ? "text-[#074139]" : "text-slate-500"
+                        }
+                      >
+                        {allowed ? "Open" : "Restricted"}
+                      </span>
+                      {/* Badge System Logs */}
+                      {/* <div className="mt-4 flex flex-wrap gap-1.5 items-center"> */}
+
+                      {/* <span className="rounded-md border border-black/[0.06] bg-slate-50/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                        Room #{room.id}
+                      </span>
+
+                      <span className="rounded-md border border-black/[0.06] bg-slate-50/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                        Room #{room.hostId}
+                      </span>
+
+                      {room.roomType && (
+                        <span className="rounded-md border border-black/[0.06] bg-slate-50/60 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                          {room.roomType}
+                        </span>
+
+                        
+                      )} */}
+
+                      {/* </div> */}
+                    </div>
+
+                    {allowed ? (
+                      <Link
+                        href={`/audio-room/room/${room.id}`}
+                        className="shrink-0"
+                      >
+                        <Button
+                          size="sm"
+                          className="rounded-sm cursor-pointer bg-[#074139] px-4 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#055c3c] active:scale-98"
+                        >
+                          Join Room
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        disabled
+                        className="rounded-sm border-slate-200 bg-slate-50 px-4 text-xs font-semibold text-slate-400 cursor-not-allowed"
+                      >
+                        Unavailable
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

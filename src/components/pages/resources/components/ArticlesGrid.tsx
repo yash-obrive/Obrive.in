@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import BlogGridCard from "@/components/pages/resources/card/BlogGridCard";
 import RoundedBallIcon from "@/components/shared/icons/RoundedBallIcon";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import { BlogCardContent } from "@/constants/pages/resources/blog-card";
+import type { BlogCardContent } from "@/constants/pages/resources/blog-card";
 
 interface ArticlesGridProps {
   currentBlogs: (typeof BlogCardContent)[number][];

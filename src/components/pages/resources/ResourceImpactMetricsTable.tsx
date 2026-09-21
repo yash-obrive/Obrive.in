@@ -10,15 +10,13 @@ interface ResourceImpactMetricsTableProps {
   title?: string;
 }
 
-export default function ResourceImpactMetricsTable({ 
-  metrics, 
-  title = "Impact" 
+export default function ResourceImpactMetricsTable({
+  metrics,
+  title = "Impact",
 }: ResourceImpactMetricsTableProps) {
   return (
     <section>
-      <h2 className={`${FONTS.microgrammaBold.className} text-3xl`}>
-        {title}
-      </h2>
+      <h2 className={`${FONTS.microgrammaBold.className} text-3xl`}>{title}</h2>
       <div className="mt-8 w-full">
         <div className="hidden md:inline-block">
           <div className="bg-white border border-zinc-300 rounded-lg shadow-sm overflow-hidden">

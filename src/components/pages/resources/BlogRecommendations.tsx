@@ -1,7 +1,7 @@
+import Image from "next/image";
+import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { BlogCardContent } from "@/constants/pages/resources/blog-card";
-import Image from "next/image";
-import Link from "next/link";
 
 interface BlogRecommendationsProps {
   currentSlug: string;
@@ -13,7 +13,7 @@ export default function BlogRecommendations({
   maxRecommendations = 2,
 }: BlogRecommendationsProps) {
   const currentIndex = BlogCardContent.findIndex(
-    (blog) => blog.slug === currentSlug
+    (blog) => blog.slug === currentSlug,
   );
 
   const recommendations = Array.from({ length: maxRecommendations }, (_, i) => {
@@ -31,7 +31,7 @@ export default function BlogRecommendations({
           >
             {/* img hover effect */}
             <div
-              className="hidden md:flex justify-center items-center absolute bottom-0 left-0 w-full bg-gradient overflow-hidden pointer-events-none z-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
+              className="hidden md:flex justify-center items-center absolute bottom-0 left-0 w-full h-full bg-primary overflow-hidden pointer-events-none z-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
               aria-hidden="true"
             >
               <div className="relative w-full flex items-center justify-center pt-20 max-w-[43.5rem] overflow-hidden rounded-2xl mb-5">
@@ -50,7 +50,7 @@ export default function BlogRecommendations({
             {/* Content */}
             <Link
               href={`/resources/${blog.slug}`}
-              className="flex flex-col md:flex-row justify-center w-full gap-6 md:gap-0 px-0 pt-2 pb-6 sm:pt-6 sm:pb-10 md:py-28 relative z-10"
+              className="flex flex-col md:flex-row justify-center w-full gap-6 md:gap-0 px-0 pt-2 pb-6 sm:pt-6 sm:pb-10 md:py-28 relative z-10 group-hover:text-white transition-colors duration-500"
               aria-label={`Read blog: ${blog.title}`}
             >
               <div className="md:hidden relative w-full overflow-hidden rounded-2xl bg-accent/20 aspect-[4/3]">

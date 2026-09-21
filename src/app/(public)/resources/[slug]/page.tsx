@@ -1,20 +1,20 @@
-import { getCaseStudyBySlug, getAllCaseStudySlugs } from "@/lib/mdx";
-import ResourceTemplate from "@/components/pages/resources/ResourceTemplate";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { createResourceMDXComponents } from "@/components/pages/resources/ResourceMDXComponents";
-import { Metadata } from "next";
-import { CASE_STUDIES_IMAGES } from "@/assets/images";
 import Script from "next/script";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { CASE_STUDIES_IMAGES } from "@/assets/images";
+import { createResourceMDXComponents } from "@/components/pages/resources/ResourceMDXComponents";
+import ResourceTemplate from "@/components/pages/resources/ResourceTemplate";
+import { getAllCaseStudySlugs, getCaseStudyBySlug, sharedMdxOptions } from "@/lib/mdx";
 
 interface ResourcePageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: ResourcePageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const resource = await getCaseStudyBySlug(slug);
 
   if (!resource) {
@@ -124,30 +124,42 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
     resource.metadata.seoDescription || resource.metadata.quote;
 
   // Specific case study metadata overrides if applicable
-  const caseStudySchemas: Record<string, { name: string; headline: string; description: string }> = {
+  const caseStudySchemas: Record<
+    string,
+    { name: string; headline: string; description: string }
+  > = {
     "bringing-onboarding-to-life": {
       name: "Bringing Onboarding to Life with Immersive Spatial Computing",
-      headline: "What used to take weeks now happens in days. Trainees recall protocols more reliably, and trainers stay in control from anywhere. What Obrive delivered isn't just technology it's transformation.",
-      description: "From weeks to days: Learn how one company revolutionized onboarding with virtual reality and spatial computing. Measurable results from immersive training.",
+      headline:
+        "What used to take weeks now happens in days. Trainees recall protocols more reliably, and trainers stay in control from anywhere. What Obrive delivered isn't just technology it's transformation.",
+      description:
+        "From weeks to days: Learn how one company revolutionized onboarding with virtual reality and spatial computing. Measurable results from immersive training.",
     },
     "spatial-flow": {
       name: "Case Study",
-      headline: "See how spatial computing replaced outdated field training methods with immersive 3D workflows. Real results: faster learning, fewer errors, seamless operations.",
-      description: "See how spatial computing replaced outdated field training methods with immersive 3D workflows. Real results: faster learning, fewer errors, seamless operations.",
+      headline:
+        "See how spatial computing replaced outdated field training methods with immersive 3D workflows. Real results: faster learning, fewer errors, seamless operations.",
+      description:
+        "See how spatial computing replaced outdated field training methods with immersive 3D workflows. Real results: faster learning, fewer errors, seamless operations.",
     },
     "ar-onboarding": {
       name: "AR Onboarding Success: How Augmented Reality Broke Training Barriers",
-      headline: "Breaking Onboarding Barriers with Augmented Reality A First - Person Success Story In Their Own Words",
-      description: "Discover how AR technology eliminated onboarding challenges and accelerated employee training. A real case study in augmented reality workplace transformation.",
+      headline:
+        "Breaking Onboarding Barriers with Augmented Reality A First - Person Success Story In Their Own Words",
+      description:
+        "Discover how AR technology eliminated onboarding challenges and accelerated employee training. A real case study in augmented reality workplace transformation.",
     },
     "client-immersive-onboarding": {
       name: "Immersive Onboarding Case Study: Training That Feels Real",
-      headline: "Immersive Onboarding That Feels Like Reality - Through the eyes of the client",
-      description: "Learn how immersive 3D onboarding created realistic training experiences without real-world risks. See the results: better engagement and retention rates.",
+      headline:
+        "Immersive Onboarding That Feels Like Reality - Through the eyes of the client",
+      description:
+        "Learn how immersive 3D onboarding created realistic training experiences without real-world risks. See the results: better engagement and retention rates.",
     },
   };
 
-  const isCaseStudy = resource.metadata.postType !== "BLOG" && slug in caseStudySchemas;
+  const isCaseStudy =
+    resource.metadata.postType !== "BLOG" && slug in caseStudySchemas;
   const csOverride = caseStudySchemas[slug];
 
   const structuredData = {
@@ -226,6 +238,7 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
         <MDXRemote
           source={resource.content}
           components={createResourceMDXComponents(resource.metadata)}
+          options={sharedMdxOptions}
         />
       </ResourceTemplate>
     </>

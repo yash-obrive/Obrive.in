@@ -1,7 +1,7 @@
-import FONTS from "@/assets/fonts";
-import { KEY_BENEFITS_TYPE } from "@/constants/pages/key-benefits";
 import Image from "next/image";
 import React from "react";
+import FONTS from "@/assets/fonts";
+import type { KEY_BENEFITS_TYPE } from "@/constants/pages/key-benefits";
 
 export const KeyBenefitsCard = ({
   title,
@@ -10,8 +10,8 @@ export const KeyBenefitsCard = ({
   srcMeta,
 }: KEY_BENEFITS_TYPE) => {
   return (
-    <article className="flex flex-col w-[509px] h-[433px] items-start gap-4 pl-9 pr-[20px] pb-5 relative bg-white rounded-2xl border-[0.5px] border-primary max-lg:w-[460px] max-md:w-full max-md:h-[360px] max-md:px-6 max-md:py-6">
-      <div className="flex flex-col w-[416px] h-full justify-between items-start gap-[200px] relative flex-1 max-lg:w-full max-md:w-full max-md:gap-8">
+    <article className="flex flex-col w-[509px] h-auto min-h-[433px] items-start gap-4 pl-9 pr-[20px] pb-10 pt-4 relative bg-white rounded-2xl border-[0.5px] border-primary max-lg:w-[460px] max-md:w-full max-md:min-h-[360px] max-md:px-6 max-md:py-6">
+      <div className="flex flex-col w-[416px] h-full justify-between items-start gap-[150px] relative flex-1 max-lg:w-full max-md:w-full max-md:gap-8">
         <div className="inline-flex items-center justify-center gap-2.5 top-4 relative">
           <Image
             alt={srcMeta.alt}

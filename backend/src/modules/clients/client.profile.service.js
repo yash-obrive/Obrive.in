@@ -1,9 +1,7 @@
 // backend/src/modules/client/client.profile.service.js
-const { prisma } = require('../../../db');
+const { prisma } = require("../../../prisma");
 
-class ClientProfileService {
-
-  // Get client profile
+class ClientProfileService {  // Get client profile
   async getProfile(clientId) {
     const result = await prisma.$queryRaw`
       SELECT id, userid, name, email, date_of_birth, status, created_at
@@ -13,7 +11,7 @@ class ClientProfileService {
     `;
 
     if (!result[0]) {
-      throw new Error('Client not found');
+      throw new Error("Client not found");
     }
 
     return {
@@ -23,7 +21,7 @@ class ClientProfileService {
       email: result[0].email,
       dateOfBirth: result[0].date_of_birth,
       status: result[0].status,
-      memberSince: result[0].created_at
+      memberSince: result[0].created_at,
     };
   }
 

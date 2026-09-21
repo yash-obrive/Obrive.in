@@ -1,16 +1,18 @@
-const { prisma } = require('../../../db');
-
+const { prisma } = require("../../../prisma");
 exports.getMeetings = async (userId, role) => {
-  if (role === 'EMPLOYEE') {
+  if (role === "EMPLOYEE") {
     const emp = await prisma.employee.findUnique({ where: { userId } });
     return prisma.meeting.findMany({
       where: { participants: { some: { employeeId: emp.id } } },
-      include: { participants: { include: { employee: { select: { fullName: true } } } } },
-    });
+      include: {
+        participants: { include: { employee: { select: { fullName: true } } } },
+      },    });
   }
   return prisma.meeting.findMany({
-    include: { participants: { include: { employee: { select: { fullName: true } } } } },
-    orderBy: { date: 'asc' },
+    include: {
+      participants: { include: { employee: { select: { fullName: true } } } },
+    },
+    orderBy: { date: "asc" },
   });
 };
 
@@ -20,15 +22,14 @@ exports.scheduleMeeting = async (createdBy, data) => {
     where: {
       employeeId: { in: data.participantIds },
       date: new Date(data.date),
-      slotType: 'BUSY',
-      startTime: { lt: data.endTime },
+      slotType: "BUSY",      startTime: { lt: data.endTime },
       endTime: { gt: data.startTime },
     },
     include: { employee: { select: { fullName: true } } },
   });
 
   if (conflicts.length > 0) {
-    const names = conflicts.map(c => c.employee.fullName).join(', ');
+    const names = conflicts.map((c) => c.employee.fullName).join(", ");
     throw { status: 409, message: `Scheduling conflict for: ${names}` };
   }
 
@@ -42,10 +43,12 @@ exports.scheduleMeeting = async (createdBy, data) => {
       endTime: data.endTime,
       createdBy,
       participants: {
-        create: data.participantIds.map(empId => ({ employeeId: empId })),
+        create: data.participantIds.map((empId) => ({ employeeId: empId })),
       },
     },
-    include: { participants: { include: { employee: { select: { fullName: true } } } } },
+    include: {
+      participants: { include: { employee: { select: { fullName: true } } } },
+    },
   });
 };
 

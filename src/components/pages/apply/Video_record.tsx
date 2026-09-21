@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import BgImage from "@/assets/images/backgrounds/fluent_chat-video-20-filled.png";
 import FONTS from "@/assets/fonts";
+import BgImage from "@/assets/images/backgrounds/fluent_chat-video-20-filled.png";
 
 export default function VideoRecord({
   props,

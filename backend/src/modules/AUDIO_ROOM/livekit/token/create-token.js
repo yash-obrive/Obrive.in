@@ -22,19 +22,21 @@ const createLiveKitToken = async ({
   const token = new AccessToken(apiKey, apiSecret, {
     identity: participantId.toString(),
     name: participantName,
-    metadata: JSON.stringify({ role: normalizedRole }), 
+    metadata: JSON.stringify({ role: normalizedRole }),
   });
 
   token.addGrant({
     room: roomName.toString(),
     roomJoin: true,
-    canPublish: canPublish,       
-    canPublishData: true,         
-    canSubscribe: true,           
+    canPublish: canPublish,
+    canPublishData: true,
+    canSubscribe: true,
   });
 
   // Safe logging: No secret keys or JWT strings printed
-  console.log(`[LiveKit Token] Generated initial token for Room: ${roomName} | User ID: ${participantId} | Role: ${normalizedRole} | Can Publish: ${canPublish}`);
+  console.log(
+    `[LiveKit Token] Generated initial token for Room: ${roomName} | User ID: ${participantId} | Role: ${normalizedRole} | Can Publish: ${canPublish}`,
+  );
 
   return await token.toJwt();
 };

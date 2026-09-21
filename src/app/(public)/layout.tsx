@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import CookiePopup from "@/components/shared/cookies/cookies";
 import PublicLayout from "@/components/shared/layout/PublicLayout";
 import CountrySwitcherBanner from "@/components/shared/layout/CountrySwitcherBanner";

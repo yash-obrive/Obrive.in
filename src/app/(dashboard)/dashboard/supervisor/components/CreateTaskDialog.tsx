@@ -1,19 +1,19 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import supportImg from '@/assets/images/employee/illustration.png'
-import { useState } from 'react'
+import Image from "next/image";
+import { useState } from "react";
+import supportImg from "@/assets/images/employee/illustration.png";
 
 interface CreateTaskDialogProps {
-  open: boolean
-  onClose: () => void
+  open: boolean;
+  onClose: () => void;
   onSubmit: (data: {
-    title: string
-    description?: string
-    deadline?: string
-    assigned_to?: number
-  }) => void
-  teamMembers: any[]
+    title: string;
+    description?: string;
+    deadline?: string;
+    assigned_to?: number;
+  }) => void;
+  teamMembers: any[];
 }
 
 export default function CreateTaskDialog({
@@ -22,35 +22,35 @@ export default function CreateTaskDialog({
   onSubmit,
   teamMembers,
 }: CreateTaskDialogProps) {
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [deadline, setDeadline] = useState('')
-  const [assignedTo, setAssignedTo] = useState('')
-  const [creating, setCreating] = useState(false)
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [deadline, setDeadline] = useState("");
+  const [assignedTo, setAssignedTo] = useState("");
+  const [creating, setCreating] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!title.trim()) return
+    e.preventDefault();
+    if (!title.trim()) return;
 
     try {
-      setCreating(true)
+      setCreating(true);
       await onSubmit({
         title: title.trim(),
         description: description.trim() || undefined,
         deadline: deadline || undefined,
         assigned_to: assignedTo ? Number(assignedTo) : undefined,
-      })
+      });
 
-      setTitle('')
-      setDescription('')
-      setDeadline('')
-      setAssignedTo('')
+      setTitle("");
+      setDescription("");
+      setDeadline("");
+      setAssignedTo("");
     } finally {
-      setCreating(false)
+      setCreating(false);
     }
-  }
+  };
 
-  if (!open) return null
+  if (!open) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-3 backdrop-blur-sm">
@@ -113,7 +113,10 @@ export default function CreateTaskDialog({
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label htmlFor="deadline" className="mb-1 block text-sm text-gray-500">
+              <label
+                htmlFor="deadline"
+                className="mb-1 block text-sm text-gray-500"
+              >
                 Deadline
               </label>
               <input
@@ -126,7 +129,10 @@ export default function CreateTaskDialog({
             </div>
 
             <div>
-              <label htmlFor="assigned" className="mb-1 block text-sm text-gray-500">
+              <label
+                htmlFor="assigned"
+                className="mb-1 block text-sm text-gray-500"
+              >
                 Assign To
               </label>
               <select
@@ -150,10 +156,10 @@ export default function CreateTaskDialog({
             disabled={creating || !title.trim()}
             className="w-full rounded-xl bg-[#073933] py-3 font-medium text-white transition hover:bg-[#0a4a42] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {creating ? 'Creating...' : 'Create Task'}
+            {creating ? "Creating..." : "Create Task"}
           </button>
         </form>
       </div>
     </div>
-  )
+  );
 }

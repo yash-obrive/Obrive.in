@@ -1,8 +1,8 @@
+import Image from "next/image";
+import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { CASE_STUDIES_AVATAR } from "@/assets/images";
-import { PopularCardContentType } from "@/constants/pages/resources/popular-card";
-import Image from "next/image";
-import Link from "next/link";
+import type { PopularCardContentType } from "@/constants/pages/resources/popular-card";
 
 const PopularCard = ({
   src,

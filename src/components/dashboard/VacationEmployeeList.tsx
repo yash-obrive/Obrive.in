@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 // Changed the import to match your new file name 'VacationsCalendar' if necessary
-import { Employee } from './Vacations'; 
+import type { Employee } from "./Vacations";
 
 interface VacationEmployeeListProps {
   employees: Employee[];
@@ -8,7 +8,11 @@ interface VacationEmployeeListProps {
   getLeaveCount: (employeeId: number, leaveType: string) => number;
 }
 
-export default function VacationEmployeeList({ employees, loading, getLeaveCount }: VacationEmployeeListProps) {
+export default function VacationEmployeeList({
+  employees,
+  loading,
+  getLeaveCount,
+}: VacationEmployeeListProps) {
   return (
     <div className="h-full flex-1 bg-white rounded-xl shadow-sm overflow-auto border border-gray-100">
       {loading ? (
@@ -50,21 +54,27 @@ export default function VacationEmployeeList({ employees, loading, getLeaveCount
               {/* Right: Leave Stats */}
               <div className="flex items-center gap-10 ml-4 flex-shrink-0">
                 <div className="flex flex-col items-center min-w-[80px]">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Vacations</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    Vacations
+                  </span>
                   <span className="text-lg font-black text-cyan-600">
-                    {getLeaveCount(employee.id, 'vacation')}d
+                    {getLeaveCount(employee.id, "vacation")}d
                   </span>
                 </div>
                 <div className="flex flex-col items-center min-w-[80px]">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Sick Leave</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    Sick Leave
+                  </span>
                   <span className="text-lg font-black text-red-500">
-                    {getLeaveCount(employee.id, 'sick_leave')}d
+                    {getLeaveCount(employee.id, "sick_leave")}d
                   </span>
                 </div>
                 <div className="flex flex-col items-center min-w-[80px]">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Remote</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    Remote
+                  </span>
                   <span className="text-lg font-black text-purple-600">
-                    {getLeaveCount(employee.id, 'work_remotely')}d
+                    {getLeaveCount(employee.id, "work_remotely")}d
                   </span>
                 </div>
               </div>

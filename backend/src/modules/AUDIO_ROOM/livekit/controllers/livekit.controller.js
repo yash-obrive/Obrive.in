@@ -1,4 +1,6 @@
-const { createLiveKitTokenForRoom } = require("../services/livekitToken.service");
+const {
+  createLiveKitTokenForRoom,
+} = require("../services/livekitToken.service");
 
 const createLiveKitTokenController = async (req, res, next) => {
   try {

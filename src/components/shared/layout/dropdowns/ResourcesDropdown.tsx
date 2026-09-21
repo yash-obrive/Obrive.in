@@ -1,13 +1,13 @@
+import Image from "next/image";
+import Link from "@/components/shared/LocalizedLink";
+import { ICONS, ICONS_META } from "@/assets/images";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import Link from "next/link";
 import AnimatedNavLabel from "../AnimatedNavLabel";
-import Image from "next/image";
-import { ICONS, ICONS_META } from "@/assets/images";
 
 export function ResourcesDropdown() {
   return (

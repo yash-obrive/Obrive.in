@@ -31,7 +31,9 @@ export default function FAQWorkflowSteps({
                 key={step + index}
                 type="button"
                 className={`flex w-full items-center gap-2 py-4 border-b border-zinc-400 transition-all duration-200 text-left text-sm ${
-                  targetId ? "cursor-pointer hover:bg-primary/10 px-3" : "px-3 cursor-default"
+                  targetId
+                    ? "cursor-pointer hover:bg-primary/10 px-3"
+                    : "px-3 cursor-default"
                 }`}
                 onClick={() => handleScrollToSection(targetId)}
                 aria-label={`Jump to ${step}`}

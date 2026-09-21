@@ -1,9 +1,9 @@
 import React from "react";
 import FONTS from "@/assets/fonts";
 import { StyledText } from "@/components/shared/StyledText";
-import FAQAccordionSection from "./sections/FAQAccordionSection";
+import FAQAccordionSection, { FAQItem } from "./sections/FAQAccordionSection";
 
-export { FAQAccordionSection };
+export { FAQAccordionSection, FAQItem };
 
 export const createFAQMDXComponents = (metadata: any) => ({
   h1: (props: any) => (
@@ -41,9 +41,9 @@ export const createFAQMDXComponents = (metadata: any) => ({
     </li>
   ),
   strong: (props: any) => (
-    <span className="text-gray-700" {...props}>
+    <strong className="text-gray-900 font-bold" {...props}>
       {props.children}
-    </span>
+    </strong>
   ),
   blockquote: (props: any) => (
     <div className="pr-30">
@@ -58,6 +58,7 @@ export const createFAQMDXComponents = (metadata: any) => ({
   ),
 
   FAQAccordionSection: (props: any) => <FAQAccordionSection {...props} />,
+  FAQItem: (props: any) => <FAQItem {...props} />,
 
   StyledText,
 });
