@@ -6,6 +6,7 @@ import { z } from "zod";
 import FONTS from "@/assets/fonts";
 import { PRICING_SERVICES_MAP } from "@/constants/pages/pricingData";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
+import { useCountry } from "@/context/CountryContext";
 
 // Simple Zod schema for form validation
 const contactSchema = z.object({
@@ -238,6 +239,8 @@ function ContactFormContent() {
 }
 
 export default function ContactForm() {
+  const { countryConfig } = useCountry();
+
   return (
     <FullWidthSection backgroundColor="white" className="py-20 relative overflow-hidden">
       <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
@@ -259,17 +262,35 @@ export default function ContactForm() {
 
             <div className="space-y-8">
               <div>
-                <h4 className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}>Headquarters</h4>
-                <p className="text-primary/70">
-                  Obrive Industries Private Limited<br />
-                  Bangalore, Karnataka, India
-                </p>
+                <h4 className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}>
+                  {countryConfig.code === "in" ? "Headquarters" : `${countryConfig.name} Hub`}
+                </h4>
+                {countryConfig.code === "in" ? (
+                  <p className="text-primary/70 leading-relaxed">
+                    Obrive Industries Private Limited<br />
+                    Bangalore, Karnataka, India
+                  </p>
+                ) : (
+                  <p className="text-primary/70 leading-relaxed">
+                    {countryConfig.offices.join(" · ")}
+                  </p>
+                )}
+                {countryConfig.code !== "in" && (
+                  <p className="text-primary/50 text-xs mt-2">
+                    Global HQ: Bangalore, Karnataka, India
+                  </p>
+                )}
               </div>
               
               <div>
                 <h4 className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}>Direct Contact</h4>
-                <p className="text-primary/70 flex flex-col gap-1">
-                  <a href="mailto:info@obrive.com" className="hover:text-secondary transition-colors">info@obrive.com</a>
+                <p className="text-primary/70 flex flex-col gap-1.5">
+                  <a href={`mailto:${countryConfig.contactEmail}`} className="hover:text-secondary transition-colors font-medium">
+                    {countryConfig.contactEmail}
+                  </a>
+                  <a href={`tel:${countryConfig.phone}`} className="hover:text-secondary transition-colors">
+                    {countryConfig.phone}
+                  </a>
                 </p>
               </div>
             </div>

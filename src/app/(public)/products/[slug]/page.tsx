@@ -5,9 +5,9 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export const dynamicParams = false;
@@ -24,10 +24,10 @@ export async function generateMetadata({
 
   if (slug === "obpark") {
   return {
-    metadataBase: new URL("https://www.obrive.in"),
+    metadataBase: new URL("https://obrive.com"),
 
     title:
-      "Obpark – AR Parking Navigation & Smart Parking Solution | Obrive Bangalore",
+      "Obpark – AR Parking Navigation & Smart Parking Solution | Obrive",
 
     description:
       "Obpark by Obrive is an AR-powered smart parking navigation system that helps drivers find, navigate, and reserve parking spaces with augmented reality guidance. Ideal for malls, commercial complexes and city parking in Bangalore & beyond.",
@@ -42,7 +42,7 @@ export async function generateMetadata({
     ],
 
     alternates: {
-      canonical: "https://www.obrive.in/products/obpark",
+      canonical: "https://obrive.com/products/obpark",
     },
 
     robots: {
@@ -52,16 +52,16 @@ export async function generateMetadata({
 
     openGraph: {
       type: "website",
-      url: "https://www.obrive.in/products/obpark",
+      url: "https://obrive.com/products/obpark",
       title:
-        "Obpark – AR Parking Navigation & Smart Parking Solution | Obrive Bangalore",
+        "Obpark – AR Parking Navigation & Smart Parking Solution | Obrive",
       description:
         "AR-powered smart parking navigation system helping drivers find and reserve parking spaces with real-time augmented reality guidance.",
       siteName: "Obrive",
       locale: "en_IN",
       images: [
         {
-          url: "https://www.obrive.in/_next/static/media/obpark-hero.webp",
+          url: "https://obrive.com/_next/static/media/obpark-hero.webp",
           alt: "Obpark AR Smart Parking Navigation System",
         },
       ],
@@ -87,10 +87,10 @@ export async function generateMetadata({
 
   if (slug === "obnest") {
   return {
-    metadataBase: new URL("https://www.obrive.in"),
+    metadataBase: new URL("https://obrive.com"),
 
     title:
-      "Obnest – 3D Property Visualization & Immersive Walkthrough | Obrive Bangalore",
+      "Obnest – 3D Property Visualization & Immersive Walkthrough | Obrive",
 
     description:
       "Obnest by Obrive is a 3D property visualization and immersive walkthrough solution that enables interactive viewing of real estate, architectural designs, and building layouts. Enhance engagement with photoreal 3D experiences.",
@@ -105,7 +105,7 @@ export async function generateMetadata({
     ],
 
     alternates: {
-      canonical: "https://www.obrive.in/products/obnest",
+      canonical: "https://obrive.com/products/obnest",
     },
 
     robots: {
@@ -115,7 +115,7 @@ export async function generateMetadata({
 
     openGraph: {
       type: "website",
-      url: "https://www.obrive.in/products/obnest",
+      url: "https://obrive.com/products/obnest",
       title:
         "Obnest – 3D Property Visualization & Immersive Walkthrough | Obrive Bangalore",
       description:
@@ -124,7 +124,7 @@ export async function generateMetadata({
       locale: "en_IN",
       images: [
         {
-          url: "https://www.obrive.in/_next/static/media/obnest-hero.webp",
+          url: "https://obrive.com/_next/static/media/obnest-hero.webp",
           alt: "Obnest 3D Property Visualization & Walkthrough",
         },
       ],
@@ -150,7 +150,7 @@ export async function generateMetadata({
 
   if (slug === "obnavi") {
   return {
-    metadataBase: new URL("https://www.obrive.in"),
+    metadataBase: new URL("https://obrive.com"),
 
     title:
       "Obnavi – AR Spatial Navigation & Immersive Wayfinding | Obrive",
@@ -168,7 +168,7 @@ export async function generateMetadata({
     ],
 
     alternates: {
-      canonical: "https://www.obrive.in/products/obnavi",
+      canonical: "https://obrive.com/products/obnavi",
     },
 
     robots: {
@@ -178,7 +178,7 @@ export async function generateMetadata({
 
     openGraph: {
       type: "website",
-      url: "https://www.obrive.in/products/obnavi",
+      url: "https://obrive.com/products/obnavi",
       title:
         "Obnavi – AR Spatial Navigation & Immersive Wayfinding",
       description:
@@ -187,7 +187,7 @@ export async function generateMetadata({
       locale: "en_IN",
       images: [
         {
-          url: "https://www.obrive.in/images/obnavi-hero.webp",
+          url: "https://obrive.com/images/obnavi-hero.webp",
           width: 1200,
           height: 630,
           alt: "Obnavi AR Spatial Navigation Solution",
@@ -200,7 +200,7 @@ export async function generateMetadata({
       title: "Obnavi – AR Spatial Navigation Solution",
       description:
         "Immersive AR wayfinding and spatial navigation system.",
-      images: ["https://www.obrive.in/images/obnavi-hero.webp"],
+      images: ["https://obrive.com/images/obnavi-hero.webp"],
     },
 
     other: {
@@ -213,7 +213,7 @@ export async function generateMetadata({
 
   if (slug === "obmove") {
   return {
-    metadataBase: new URL("https://www.obrive.in"),
+    metadataBase: new URL("https://obrive.com"),
 
     title:
       "Obmove – AR/VR Car Showroom & Immersive 3D Vehicle Experience | Obrive",
@@ -232,7 +232,7 @@ export async function generateMetadata({
     ],
 
     alternates: {
-      canonical: "https://www.obrive.in/products/obmove",
+      canonical: "https://obrive.com/products/obmove",
     },
 
     robots: {
@@ -242,7 +242,7 @@ export async function generateMetadata({
 
     openGraph: {
       type: "website",
-      url: "https://www.obrive.in/products/obmove",
+      url: "https://obrive.com/products/obmove",
       title:
         "Obmove – AR/VR Car Showroom & Immersive 3D Vehicle Experience | Obrive",
       description:
@@ -251,7 +251,7 @@ export async function generateMetadata({
       locale: "en_IN",
       images: [
         {
-          url: "https://www.obrive.in/_next/static/media/obmove-hero.webp",
+          url: "https://obrive.com/_next/static/media/obmove-hero.webp",
           alt: "Obmove AR/VR Car Showroom Experience",
         },
       ],

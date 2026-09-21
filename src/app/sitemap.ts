@@ -36,6 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/site-map",
     "/servicecharges",
     "/contact",
+    "/global",
   ];
   const localizedStaticPages: MetadataRoute.Sitemap = activeCountries.flatMap(
     (country) =>

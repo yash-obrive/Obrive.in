@@ -18,11 +18,12 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      * - robots.txt, sitemap.xml
-     * - public asset extensions (svg, png, jpg, jpeg, webp, mp4, etc.)
+     * - public assets and media folders (animations, audio, images, videos, certificates, ai)
+     * - public asset extensions (svg, png, jpg, jpeg, webp, avif, ico, mp4, webm, ogg, mp3, wav, riv, woff, woff2, ttf, otf, eot, css, js, json, pdf, txt, xml)
      * - /api routes
-     * - Portal routes: client-login, employee-login, dashboard, audio-room, client, community-forum, profile, apply.career.obrive.com
+     * - Portal and global routes: client-login, employee-login, dashboard, audio-room, client, community-forum, profile, apply.career.obrive.com, legal, security, support
      */
-    "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|api/|client-login|employee-login|dashboard|audio-room|client/|community-forum|profile|apply\\.career\\.obrive\\.com|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|mp4|webm|woff|woff2|ttf|css|js)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|animations/|audio/|images/|videos/|certificates/|ai/|api/|client-login|employee-login|dashboard|audio-room|client/|community-forum|profile|legal|security|support|apply\\.career\\.obrive\\.com|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif|ico|mp4|webm|ogg|mp3|wav|riv|woff|woff2|ttf|otf|eot|css|js|json|pdf|txt|xml)$).*)",
   ],
 };
 
@@ -44,9 +45,18 @@ export function middleware(req: NextRequest) {
   const segments = pathname.split("/").filter(Boolean);
   const firstSegment = segments[0]?.toLowerCase();
 
-  // 1. Check if the path already starts with a supported country code
+  // 1. Check if the path starts with a supported country code (e.g. /in, /us/about, /ae/products/obpark)
   if (isValidCountryCode(firstSegment)) {
-    const countryConfig = COUNTRIES[firstSegment];
+    const countryCode = firstSegment;
+
+    // Canonicalize uppercase/mixed-case country in URL (e.g. /IN -> /in)
+    if (segments[0] !== countryCode) {
+      const canonicalUrl = req.nextUrl.clone();
+      canonicalUrl.pathname = `/${countryCode}${segments.length > 1 ? `/${segments.slice(1).join("/")}` : ""}`;
+      return NextResponse.redirect(canonicalUrl, { status: 301 });
+    }
+
+    const countryConfig = COUNTRIES[countryCode];
 
     // If country is not production ready (and not in preview mode), fallback to default
     if (
@@ -58,28 +68,35 @@ export function middleware(req: NextRequest) {
       return NextResponse.redirect(fallbackUrl);
     }
 
-    // Pass the country in custom headers for server components
+    // Pass the country in custom headers for server components and layout
     const requestHeaders = new Headers(req.headers);
-    requestHeaders.set("x-obrive-country", firstSegment);
+    requestHeaders.set("x-obrive-country", countryCode);
 
     // Pass geo-detected country as suggested country if different
     const rawGeo =
       req.headers.get("x-vercel-ip-country") || req.headers.get("cf-ipcountry");
     const detected = mapGeoCountryToSupported(rawGeo);
-    if (detected && detected !== firstSegment) {
+    if (detected && detected !== countryCode) {
       requestHeaders.set("x-obrive-suggested-country", detected);
     }
 
-    const response = NextResponse.next({
+    // Determine the internal underlying path (e.g. /in -> /, /in/about -> /about, /in/global -> /global)
+    const subpath = segments.slice(1).join("/");
+    const rewriteUrl = req.nextUrl.clone();
+    rewriteUrl.pathname = subpath ? `/${subpath}` : "/";
+    rewriteUrl.search = search;
+
+    // Rewrite internally to the public route while keeping the country prefix in the browser URL
+    const response = NextResponse.rewrite(rewriteUrl, {
       request: {
         headers: requestHeaders,
       },
     });
 
-    // Ensure cookie is synced with the explicit URL country
+    // Ensure cookie is synced with the active URL country
     const existingCookie = req.cookies.get("preferred_country")?.value;
-    if (existingCookie !== firstSegment) {
-      response.cookies.set("preferred_country", firstSegment, {
+    if (existingCookie !== countryCode) {
+      response.cookies.set("preferred_country", countryCode, {
         path: "/",
         maxAge: 31536000,
         sameSite: "lax",
@@ -89,7 +106,7 @@ export function middleware(req: NextRequest) {
     return response;
   }
 
-  // 2. Path does NOT have a country prefix (e.g., '/', '/products/obpark', '/contact')
+  // 2. Path does NOT have a country prefix (e.g., '/', '/about', '/products/obpark', '/global')
   // Check user's preferred cookie first
   const cookieCountry = req.cookies.get("preferred_country")?.value;
   let targetCountry: CountryCode = DEFAULT_COUNTRY;
@@ -106,7 +123,7 @@ export function middleware(req: NextRequest) {
     }
   }
 
-  // Redirect to localized subpath
+  // Redirect to localized subpath (e.g. / -> /in, /about -> /in/about)
   const redirectUrl = req.nextUrl.clone();
   const subpath = pathname === "/" ? "" : pathname;
   redirectUrl.pathname = `/${targetCountry}${subpath}`;
