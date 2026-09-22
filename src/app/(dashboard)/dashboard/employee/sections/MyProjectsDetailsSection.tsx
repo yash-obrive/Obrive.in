@@ -134,7 +134,7 @@ const MyProjectsDetailsSection = ({
       >
         <div className="mb-2 flex items-start justify-between gap-3">
           <div>
-            <p className="mb-1 text-xs text-gray-400">{project.code}</p>
+            <p className="mb-1 text-xs text-gray-500">{project.code}</p>
             <h2 className="text-2xl font-bold text-[#1a472a]">
               {project.name}
             </h2>
@@ -175,7 +175,7 @@ const MyProjectsDetailsSection = ({
           currentUser?.id &&
           Number(details.leader_id) === Number(currentUser.id) && (
             <div className="mt-4">
-              <label className="text-[10px] text-gray-400 font-medium block mb-1 uppercase tracking-wider">
+              <label className="text-[11px] text-gray-500 font-medium block mb-1 uppercase tracking-wider">
                 Update Project Progress
               </label>
               <input
@@ -197,7 +197,7 @@ const MyProjectsDetailsSection = ({
         animate="visible"
       >
         <motion.div variants={itemVariants}>
-          <p className="mb-1 text-xs text-gray-400">Total Tasks</p>
+          <p className="mb-1 text-xs text-gray-500">Total Tasks</p>
           <p className="text-xl font-bold text-[#1a472a]">
             {details.allTasks || 0}
           </p>
@@ -206,13 +206,13 @@ const MyProjectsDetailsSection = ({
           </p>
         </motion.div>
         <motion.div variants={itemVariants}>
-          <p className="mb-1 text-xs text-gray-400">Active Tasks</p>
+          <p className="mb-1 text-xs text-gray-500">Active Tasks</p>
           <p className="text-xl font-bold text-[#1a472a]">
             {details.activeTasks || 0}
           </p>
         </motion.div>
         <motion.div variants={itemVariants}>
-          <p className="mb-1 text-xs text-gray-400">Priority</p>
+          <p className="mb-1 text-xs text-gray-500">Priority</p>
           <p
             className={`text-sm font-bold ${
               project.priority === "High"
@@ -300,7 +300,7 @@ const MyProjectsDetailsSection = ({
                 {details.leader_id === member.id && (
                   <div className="flex items-center gap-1.5 rounded-full bg-amber-50 px-2 py-0.5 ring-1 ring-amber-100">
                     <Crown className="h-3 w-3 text-amber-600" />
-                    <span className="text-[10px] font-bold text-amber-700 uppercase">
+                    <span className="text-[11px] font-bold text-amber-700 uppercase">
                       Leader
                     </span>
                   </div>

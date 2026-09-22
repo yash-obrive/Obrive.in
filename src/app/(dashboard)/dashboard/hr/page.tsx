@@ -317,7 +317,7 @@ export default function HRDashboard() {
             <div className="w-80 flex flex-col gap-4 h-full min-h-0">
               <div className="flex-1 min-h-0 bg-white rounded-xl flex flex-col shadow-sm border border-slate-100 overflow-hidden">
                 <div className="px-4 py-3 border-b border-slate-50 flex items-center justify-between">
-                  <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
+                  <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-slate-500">
                     Upcoming Events
                   </h3>
                   <span className="text-[9px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-bold">
@@ -334,7 +334,7 @@ export default function HRDashboard() {
 
               <div className="flex-1 min-h-0 bg-white rounded-xl flex flex-col shadow-sm border border-slate-100 overflow-hidden">
                 <div className="px-4 py-3 border-b border-slate-50">
-                  <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
+                  <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-slate-500">
                     Recent Activity
                   </h3>
                 </div>
@@ -395,7 +395,7 @@ export default function HRDashboard() {
                   <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
                     Live Employee Pins
                   </h3>
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     LIVE NOW
                   </span>
@@ -455,7 +455,7 @@ export default function HRDashboard() {
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
                   <thead>
-                    <tr className="border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider text-[10px]">
+                    <tr className="border-b border-slate-100 text-slate-500 font-bold uppercase tracking-wider text-[11px]">
                       <th className="pb-3 pl-2">Employee</th>
                       <th className="pb-3">Department & Role</th>
                       <th className="pb-3 text-center">Tracking Switch</th>
@@ -513,7 +513,7 @@ export default function HRDashboard() {
                                   <p className="font-bold text-[#073933] text-xs">
                                     {emp.name}
                                   </p>
-                                  <p className="text-slate-400 text-[10px]">
+                                  <p className="text-slate-500 text-[11px]">
                                     {emp.email}
                                   </p>
                                 </div>
@@ -525,7 +525,7 @@ export default function HRDashboard() {
                               <p className="font-semibold text-slate-800">
                                 {emp.job_title || "Employee"}
                               </p>
-                              <p className="text-slate-400 text-[10px]">
+                              <p className="text-slate-500 text-[11px]">
                                 {emp.department || "General"}
                               </p>
                             </td>
@@ -597,7 +597,7 @@ export default function HRDashboard() {
                                       </span>
                                     )}
                                   </div>
-                                  <div className="flex items-center gap-1 text-[10px] text-slate-400">
+                                  <div className="flex items-center gap-1 text-[11px] text-slate-500">
                                     <Clock className="h-2.5 w-2.5" />
                                     <span>
                                       {formatPingTimestamp(emp.last_ping_at)}
@@ -605,7 +605,7 @@ export default function HRDashboard() {
                                   </div>
                                 </div>
                               ) : (
-                                <span className="text-[11px] text-slate-400 italic">
+                                <span className="text-[11px] text-slate-500 italic">
                                   No pings recorded
                                 </span>
                               )}

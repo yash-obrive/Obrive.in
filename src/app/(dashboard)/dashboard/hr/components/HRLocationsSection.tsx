@@ -238,7 +238,7 @@ export default function HRLocationsSection() {
             <Users className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+            <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
               Total Staff
             </p>
             <p className="text-xl font-black text-slate-900">
@@ -252,7 +252,7 @@ export default function HRLocationsSection() {
             <ShieldCheck className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+            <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
               Tracking Enabled
             </p>
             <p className="text-xl font-black text-slate-900">{trackedCount}</p>
@@ -264,7 +264,7 @@ export default function HRLocationsSection() {
             <MapPin className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+            <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
               Live GPS Staff
             </p>
             <p className="text-xl font-black text-slate-900">{liveCount}</p>
@@ -280,12 +280,12 @@ export default function HRLocationsSection() {
             <h2 className="text-sm font-bold text-slate-900">
               Live Employee Map
             </h2>
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
               LIVE NOW
             </span>
           </div>
-          <span className="text-[11px] text-slate-400">
+          <span className="text-[11px] text-slate-500">
             Displaying live markers for staff currently active with GPS
           </span>
         </div>
@@ -390,7 +390,7 @@ export default function HRLocationsSection() {
                             <p className="font-bold text-slate-900 text-xs">
                               {emp.name}
                             </p>
-                            <p className="text-slate-400 text-[10px]">
+                            <p className="text-slate-500 text-[11px]">
                               {emp.email}
                             </p>
                           </div>
@@ -402,7 +402,7 @@ export default function HRLocationsSection() {
                         <p className="font-semibold text-slate-800 text-xs">
                           {emp.job_title || "Employee"}
                         </p>
-                        <p className="text-slate-400 text-[10px]">
+                        <p className="text-slate-500 text-[11px]">
                           {emp.department || "General"}
                         </p>
                       </td>
@@ -472,7 +472,7 @@ export default function HRLocationsSection() {
                                 </span>
                               )}
                             </div>
-                            <div className="flex items-center gap-1 text-[10px] text-slate-400 mt-0.5">
+                            <div className="flex items-center gap-1 text-[11px] text-slate-500 mt-0.5">
                               <Clock className="h-2.5 w-2.5" />
                               <span>
                                 {formatPingTimestamp(emp.last_ping_at)}
@@ -480,7 +480,7 @@ export default function HRLocationsSection() {
                             </div>
                           </div>
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-[11px] text-slate-400 italic">
+                          <span className="inline-flex items-center gap-1 text-[11px] text-slate-500 italic">
                             No pings recorded
                           </span>
                         )}
@@ -494,7 +494,7 @@ export default function HRLocationsSection() {
                               href={`https://www.google.com/maps?q=${emp.latitude},${emp.longitude}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2 py-1 text-[10px] font-bold text-slate-700 hover:bg-slate-50 transition"
+                              className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-50 transition"
                             >
                               Maps <ExternalLink className="h-2.5 w-2.5" />
                             </a>
@@ -508,7 +508,7 @@ export default function HRLocationsSection() {
                                 name: emp.name,
                               })
                             }
-                            className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-[10px] font-bold text-slate-700 hover:bg-slate-100 transition"
+                            className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-100 transition"
                           >
                             <History className="h-2.5 w-2.5 text-slate-500" />
                             History

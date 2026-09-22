@@ -348,7 +348,7 @@ export default function LocationHistoryModal({
                       {group.title}
                     </span>
                   </div>
-                  <span className="text-[11px] font-semibold text-slate-400">
+                  <span className="text-[11px] font-semibold text-slate-500">
                     {group.pings.length}{" "}
                     {group.pings.length === 1 ? "ping" : "pings"}
                   </span>
@@ -374,7 +374,7 @@ export default function LocationHistoryModal({
                                 })}
                               </span>
                               {ping.intervalMinutes && (
-                                <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-100/70 px-1.5 py-0.5 rounded-md">
+                                <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-100/70 px-1.5 py-0.5 rounded-md">
                                   ~{ping.intervalMinutes}m interval
                                 </span>
                               )}
@@ -396,11 +396,11 @@ export default function LocationHistoryModal({
                               {ping.longitude.toFixed(5)}
                             </span>
                             {ping.accuracy && (
-                              <span className="text-slate-400 text-[11px]">
+                              <span className="text-slate-500 text-[11px]">
                                 Accuracy: &plusmn;{Math.round(ping.accuracy)}m
                               </span>
                             )}
-                            <span className="ml-auto text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                            <span className="ml-auto text-[11px] uppercase font-bold text-slate-500 tracking-wider">
                               {ping.source || "30m Interval"}
                             </span>
                           </div>

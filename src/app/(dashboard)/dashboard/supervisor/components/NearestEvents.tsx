@@ -90,7 +90,7 @@ export default function NearestEvents({
 
       <div className="flex-1 overflow-y-auto space-y-2 pr-1">
         {events.length === 0 ? (
-          <p className="text-center text-[10px] text-gray-400 py-4">
+          <p className="text-center text-xs text-gray-500 py-4">
             No upcoming events
           </p>
         ) : (
@@ -115,7 +115,7 @@ export default function NearestEvents({
                       <p className="text-xs font-bold text-gray-900 line-clamp-2">
                         {event.title}
                       </p>
-                      <p className="mt-0.5 text-[10px] text-gray-500">
+                      <p className="mt-0.5 text-xs text-gray-500">
                         {event.time}
                       </p>
                     </div>

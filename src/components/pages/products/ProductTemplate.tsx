@@ -119,7 +119,7 @@ export function ProductTemplate({
                   >
                     What Makes Us Different.
                   </h1>
-                  <p className="text-primary text-center w-[840px] max-md:w-full max-md:px-6 text-md tracking-wider">
+                  <p className="text-primary text-center w-[840px] max-[888px]:w-full max-[888px]:px-6 text-md tracking-wider">
                     {whatMakesDifferentDescription}
                   </p>
                 </div>
@@ -148,7 +148,7 @@ export function ProductTemplate({
                         </span>
                       )}
                     </div>
-                    <div className="w-[690px] max-md:w-full flex flex-col gap-4">
+                    <div className="w-[690px] max-[722px]:w-full max-[722px]:px-4 flex flex-col gap-4">
                       <h3
                         className={`${
                           FONTS.microgrammaBold.className
@@ -223,7 +223,7 @@ export function ProductTemplate({
                 title={`Elevate Your Operations with ${hero.title}`}
                 description={`Discover how leading organizations are optimizing processes, increasing efficiency, and delivering exceptional experiences with ${hero.title}`}
                 variant="small"
-                buttonText={`${hero.title} FAQ`}
+                buttonText="Explore FAQs"
                 buttonLink={link || `/faq/${hero.title.toLowerCase()}-faq`}
               />
             </FramerFadeIn>

@@ -165,37 +165,37 @@ const MyProjectTasksSection = ({ project }: Props) => {
                 >
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 ">
                     <div>
-                      <p className="text-[10px] text-gray-400">Task Title</p>
+                      <p className="text-[11px] text-gray-500">Task Title</p>
                       <p className="text-xs font-medium text-gray-800">
                         {task.title}
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-[10px] text-gray-400">Task ID</p>
+                      <p className="text-[11px] text-gray-500">Task ID</p>
                       <p className="text-xs font-medium text-gray-800">
                         {task.task_number}
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-[10px] text-gray-400">Created At</p>
+                      <p className="text-[11px] text-gray-500">Created At</p>
                       <p className="text-xs font-medium text-gray-800">
                         {formatDateTime(task.created_at)}
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-[10px] text-gray-400">Deadline</p>
+                      <p className="text-[11px] text-gray-500">Deadline</p>
                       <p className="text-xs font-medium text-gray-800">
                         {formatDateTime(task.deadline)}
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-[10px] text-gray-400">Status</p>
+                      <p className="text-[11px] text-gray-500">Status</p>
                       <span
-                        className={`px-2 py-0.5 rounded-full text-[10px] font-medium ${status.pill}`}
+                        className={`px-2 py-0.5 rounded-full text-[11px] font-medium ${status.pill}`}
                       >
                         {status.label}
                       </span>
@@ -221,7 +221,7 @@ const MyProjectTasksSection = ({ project }: Props) => {
 
                       {/* RECENT ACTIVITY */}
                       <div className="mt-6">
-                        <p className="text-xs text-gray-400 mb-2">
+                        <p className="text-xs text-gray-500 mb-2">
                           Recent Activity
                         </p>
 
@@ -248,7 +248,7 @@ const MyProjectTasksSection = ({ project }: Props) => {
                               />
                               <div>
                                 <p className="text-sm font-medium">{u.name}</p>
-                                <p className="text-[11px] text-gray-400">
+                                <p className="text-[11px] text-gray-500">
                                   {u.role}
                                 </p>
                                 <p className="text-sm bg-gray-100 px-3 py-1 rounded mt-1">
@@ -286,10 +286,10 @@ const MyProjectTasksSection = ({ project }: Props) => {
 
             <h3 className="text-sm font-semibold mb-4">Task Info</h3>
 
-            <p className="text-xs text-gray-400">Deadline</p>
+            <p className="text-xs text-gray-500">Deadline</p>
             <p className="text-sm mb-4">{selectedTask.deadline}</p>
 
-            <p className="text-xs text-gray-400 mb-1">Update Status</p>
+            <p className="text-xs text-gray-500 mb-1">Update Status</p>
             <select
               value={selectedTask.status}
               onChange={(e) =>
@@ -308,7 +308,7 @@ const MyProjectTasksSection = ({ project }: Props) => {
             </select>
 
             {/* ADD UPDATE */}
-            <p className="text-xs text-gray-400 mb-1">Add Update</p>
+            <p className="text-xs text-gray-500 mb-1">Add Update</p>
             <textarea
               value={updateText}
               onChange={(e) => setUpdateText(e.target.value)}

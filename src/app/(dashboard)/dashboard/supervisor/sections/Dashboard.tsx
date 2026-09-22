@@ -87,7 +87,7 @@ const Dashboard = ({
                         <p className="truncate text-xs font-bold text-gray-900">
                           {person.name}
                         </p>
-                        <p className="truncate text-[10px] text-gray-500">
+                        <p className="truncate text-[11px] text-gray-500">
                           {person.job_title ||
                             person.department ||
                             "Team Member"}
@@ -98,7 +98,7 @@ const Dashboard = ({
                 ) : (
                   <div className="flex flex-col items-center justify-center h-full py-4 text-center">
                     <p className="text-xs text-gray-500">No employees online</p>
-                    <p className="text-[10px] text-gray-400 mt-1 italic">
+                    <p className="text-[11px] text-gray-500 mt-1 italic">
                       Live status from Socket.io
                     </p>
                   </div>
