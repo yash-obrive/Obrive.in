@@ -49,7 +49,7 @@ const Dashboard = ({
           {/* Top Half: Nearest Events */}
           <div className="flex-1 min-h-0 bg-white rounded-xl flex flex-col shadow-sm border border-slate-100 overflow-hidden">
             <div className="px-4 py-3 border-b border-slate-50 flex items-center justify-between">
-              <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
+              <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-slate-500">
                 Upcoming Events
               </h3>
               <span className="text-[9px] bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded font-bold">
@@ -67,7 +67,7 @@ const Dashboard = ({
           {/* Bottom Half: Activity Stream */}
           <div className="flex-1 min-h-0 bg-white rounded-xl flex flex-col shadow-sm border border-slate-100 overflow-hidden">
             <div className="px-4 py-3 border-b border-slate-50">
-              <h3 className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
+              <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-slate-500">
                 Recent Activity
               </h3>
             </div>

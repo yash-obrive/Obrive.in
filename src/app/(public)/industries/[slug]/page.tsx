@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
-import { SolutionTemplate } from "@/components/pages/solutions/SolutionTemplate";
+import { SolutionTemplate } from "@/components/pages/services/SolutionTemplate";
 import { getIndustryData, getIndustrySlugs } from "@/lib/industries";
 
 interface IndustryPageProps {
@@ -74,6 +74,11 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
           url: `https://www.obrive.in/industries/${slug}`,
           name: industryData.hero.title,
           description: industryData.hero.description,
+          provider: {
+            "@type": "Organization",
+            name: "Obrive",
+            url: "https://obrive.com",
+          },
         })}
       </Script>
       <SolutionTemplate

@@ -75,7 +75,7 @@ export default function NearestEvents({
                     <p className="text-xs font-bold text-gray-900 line-clamp-2">
                       {event.title}
                     </p>
-                    <p className="mt-0.5 text-[10px] text-gray-500">
+                    <p className="mt-0.5 text-xs text-gray-500">
                       {event.time}
                     </p>
                   </div>

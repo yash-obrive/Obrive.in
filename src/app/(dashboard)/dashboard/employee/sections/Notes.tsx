@@ -108,18 +108,18 @@ export default function Notes() {
         <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
           <h1 className="text-[12px] font-bold text-[#1a472a]">Sticky notes</h1>
           {dateRangeLabel ? (
-            <span className="text-[10px] text-gray-500 sm:text-xs">
+            <span className="text-[11px] text-gray-500 sm:text-xs">
               {dateRangeLabel}
             </span>
           ) : null}
         </div>
-        <p className="text-[10px]  text-gray-500">
+        <p className="text-xs text-gray-500">
           Yesterday through the next four days. Drag a note to another column to
           reschedule.
         </p>
         {fetchError ? (
           <p
-            className="mt-2 rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[10px] text-amber-800 sm:text-xs"
+            className="mt-2 rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] text-amber-800 sm:text-xs"
             role="alert"
           >
             {fetchError}

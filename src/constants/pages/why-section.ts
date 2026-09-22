@@ -3,28 +3,28 @@ export const WHY_SECTION_OBPARK = {
   title: "Because Parking Should Be Effortless.",
   description:
     "Every driver has faced the same frustration: circling endless lots, struggling with confusing layouts, or losing precious time before an appointment. Obpark was built to eliminate these everyday obstacles through the power of Augmented Reality (AR) and Mixed Reality (MR).",
-  button: "Product Faq",
+  button: "Explore FAQs",
 };
 export const WHY_SECTION_OBNEST = {
   why: "Why Obnest",
   title: "Because photos aren’t enough for property decisions.",
   description:
     "Every buyer has faced the same challenge: endless site visits, flat photos, and uncertainty in decision-making. Obnest was built to change this—using MR and VR to deliver immersive, true-to-life property experiences that inspire confidence and accelerate decisions.",
-  button: "Product Faq",
+  button: "Explore FAQs",
 };
 export const WHY_SECTION_OBNAVI = {
   why: "Why Obnavi",
   title: "Because Shopping Deserves More Than Aisles and Signs.",
   description:
     "Obnavi was built to transform in-store shopping—replacing confusing layouts with immersive AR/MR navigation, personalized discovery, and seamless assistance, so customers always find what they need.",
-  button: "Product Faq",
+  button: "Explore FAQs",
 };
 export const WHY_SECTION_OBMOVE = {
   why: "Why Obmove",
   title: "Because Car Buying Deserves More Than Brochures and Spec Sheets.",
   description:
     "Obmove is a next-generation MR/VR virtual showroom platform that transforms the way customers explore, customize, and purchase vehicles. From the comfort of their home—or at a dealership’s digital kiosk.",
-  button: "Product Faq",
+  button: "Explore FAQs",
 };
 
 export const WHO_WE_ARE_ABOUT = {

@@ -36,14 +36,10 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
       <section>
         <FullWidthSection
           backgroundColor="accent"
-          className="pt-20 sm:pt-28 lg:pt-38 pb-16 sm:pb-24 lg:pb-30 min-h-[80vh] sm:min-h-screen"
+          className="pt-20 sm:pt-28 lg:pt-38 pb-16 sm:pb-24 lg:pb-30"
         >
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 px-4 sm:px-8 lg:px-13 items-start justify-between">
             <div className="relative flex flex-col gap-4 w-full lg:min-w-[400px] lg:max-w-[500px]">
-              <div className="relative z-10">
-                <ResourceBackButton />
-              </div>
-
               <div className="w-full max-sm:w-[300px] max-sm:h-[300px] h-64 sm:h-80 lg:h-90 rounded-2xl sm:flex items-center justify-center sm:relative">
                 <Image
                   src={heroSrc}
@@ -100,13 +96,23 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
           {/* workflow steps sidebar */}
           {workflowSteps.length > 0 && (
             <div className="lg:sticky lg:top-24 lg:self-start">
+              <div className="mb-4">
+                <ResourceBackButton />
+              </div>
               <ResourceWorkflowSteps steps={workflowSteps} />
             </div>
           )}
 
-          <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10 flex-1">
+          {/* Back button fallback when no sidebar */}
+          {workflowSteps.length === 0 && (
+            <div>
+              <ResourceBackButton />
+            </div>
+          )}
+
+          <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8 flex-1">
             <div
-              className="max-w-none lg:pr-8 xl:pr-16 flex flex-col gap-6 sm:gap-8 lg:gap-10"
+              className="max-w-none lg:pr-8 xl:pr-16 flex flex-col gap-4 sm:gap-6 lg:gap-8"
               data-resource-content
             >
               {blog.sections.map((section, idx) => {
@@ -137,7 +143,7 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
                         ))}
                       </Accordion>
                     ) : (
-                      <div className="pl-6 max-md:pl-0 space-y-4">
+                      <div className="space-y-4">
                         {section.content.map((paragraph, pIdx) => (
                           <p
                             key={pIdx}

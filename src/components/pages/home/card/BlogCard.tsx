@@ -19,7 +19,7 @@ export default function BlogCard({
       className="group block"
       aria-label={`Read more about ${title}`}
     >
-      <div className="group bg-card rounded-2xl p-6 w-full sm:max-w-[425px] transition-colors duration-200 ease-in-out transform will-change-transform hover:-translate-y-0.5 hover:shadow-lg group-hover:bg-accent">
+      <div className="group bg-card rounded-[36px] p-6 w-full sm:max-w-[425px] transition-all duration-200 ease-in-out transform will-change-transform hover:-translate-y-0.5 hover:shadow-lg group-hover:bg-gradient-to-br group-hover:from-[#A2F1DF] group-hover:to-[#caede5]">
         <div className="relative rounded-xl overflow-hidden mb-6">
           <Image
             src={imageSrc}

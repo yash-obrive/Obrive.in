@@ -1,73 +1,17 @@
 "use client";
 
-import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
-import { useEffect, useRef } from "react";
 import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
 
-const RIVE_SRC = "/animations/goodbye-card.riv";
-const STATE_MACHINE_NAME = "talk to expert for page";
+import dynamic from "next/dynamic";
 
-type GoodbyeCardRiveProps = {
-  className?: string;
-};
-
-function GoodbyeCardRive({ className }: GoodbyeCardRiveProps) {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const { RiveComponent, rive } = useRive({
-    src: RIVE_SRC,
-    autoplay: false,
-    stateMachines: [STATE_MACHINE_NAME],
-    layout: new Layout({
-      fit: Fit.Contain,
-      alignment: Alignment.Center,
-    }),
-  });
-
-  useEffect(() => {
-    if (!rive || !containerRef.current) {
-      return;
-    }
-
-    const node = containerRef.current;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) {
-          return;
-        }
-
-        if (entry.isIntersecting) {
-          rive.resizeDrawingSurfaceToCanvas();
-          rive.play();
-        } else {
-          rive.pause();
-        }
-      },
-      { threshold: 0.2 },
-    );
-
-    observer.observe(node);
-
-    return () => {
-      observer.unobserve(node);
-      observer.disconnect();
-      rive.pause();
-    };
-  }, [rive]);
-
-  const combinedClassName = [
-    "flex items-center justify-center w-full h-full",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  return (
-    <div ref={containerRef} className={combinedClassName}>
-      <RiveComponent className="w-full h-full" />
+const GoodbyeCardRive = dynamic(() => import("./GoodbyeCardRive"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center bg-transparent animate-pulse rounded-full opacity-10">
+      <div className="w-48 h-48 rounded-full bg-primary/20 blur-3xl"></div>
     </div>
-  );
-}
+  ),
+});
 
 const GoodByeCard = () => {
   return (
@@ -78,17 +22,7 @@ const GoodByeCard = () => {
             Why Choose Obrive for AR, VR & Spatial Computing
           </h2>
 
-          <div className="max-sm:hidden">
-            <AnimatedButton
-              asChild
-              size={"lg"}
-              className="uppercase z-10 text-xs cursor-pointer"
-              iconSize={16}
-              href="/faqs"
-            >
-              EXPLORE FAQS
-            </AnimatedButton>
-          </div>
+
         </div>
         <div className="flex flex-col gap-10 sm:flex-row justify-between">
           <div className="max-sm:hidden flex-1 px-4 sm:px-0 h-full w-full">
@@ -103,17 +37,7 @@ const GoodByeCard = () => {
               matter. <br /> #FreeToImagine
             </p>
           </div>
-          <div className="sm:hidden pl-4 -mt-6">
-            <AnimatedButton
-              asChild
-              size={"lg"}
-              className="uppercase text-xs cursor-pointer"
-              iconSize={16}
-              href="/faqs"
-            >
-              EXPLORE FAQS
-            </AnimatedButton>
-          </div>
+
           <div className="sm:hidden w-full px-4 mt-4">
             <GoodbyeCardRive className="h-[280px]" />
           </div>

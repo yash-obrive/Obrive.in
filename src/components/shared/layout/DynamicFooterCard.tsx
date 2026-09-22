@@ -22,7 +22,7 @@ export default function DynamicFooterCard() {
   }
 
   if (
-    pathname?.includes("/solutions/") &&
+    pathname?.includes("/services/") &&
     !pathname.endsWith("/faqs") &&
     !pathname.endsWith("/industries")
   ) {
@@ -30,7 +30,7 @@ export default function DynamicFooterCard() {
       <PrimaryFooterCard
         title="Have Questions?"
         description="Find answers to common questions about our services and our process."
-        buttonText="View Frequently Asked Questions"
+        buttonText="Explore FAQs"
         buttonLink={`${pathname}/faqs`}
       />
     );

@@ -342,7 +342,7 @@ export default function EmployeeLocationMap({
       {liveCount === 0 && (
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-slate-900/10 backdrop-blur-[2px] pointer-events-none p-4 text-center">
           <div className="rounded-xl bg-white/95 px-5 py-3.5 shadow-lg border border-slate-200 max-w-sm space-y-1">
-            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600">
+            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-bold bg-slate-100 text-slate-600">
               LIVE TRACKING IDLE
             </div>
             <p className="text-xs font-bold text-slate-800">

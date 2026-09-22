@@ -321,7 +321,7 @@ export default function CreateProjectDialog({
                     }`}
                   >
                     <div className="flex items-center gap-2 min-w-0">
-                      <div className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center text-[10px] font-bold">
+                      <div className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center text-[11px] font-bold">
                         {employee.name
                           .split(" ")
                           .map((n) => n[0])
@@ -331,7 +331,7 @@ export default function CreateProjectDialog({
                         <p className="text-xs font-medium truncate">
                           {employee.name}
                         </p>
-                        <p className="text-[10px] text-gray-500 truncate">
+                        <p className="text-xs text-gray-500 truncate">
                           {employee.email}
                         </p>
                       </div>

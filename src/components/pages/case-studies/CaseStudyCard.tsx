@@ -14,7 +14,7 @@ const CaseStudyCard = ({ caseStudy }: CaseStudyCardProps) => {
       className="group block h-full"
       aria-label={`Read case study: ${caseStudy.title}`}
     >
-      <div className="group bg-card rounded-2xl p-6 max-w-sm transition-colors duration-200 ease-in-out transform hover:-translate-y-0.5 hover:shadow-lg group-hover:bg-accent h-full flex flex-col mx-auto w-full">
+      <div className="group bg-card rounded-2xl p-6 max-w-sm transition-all duration-200 ease-in-out transform hover:-translate-y-0.5 hover:shadow-lg group-hover:bg-gradient-to-br group-hover:from-[#A2F1DF] group-hover:to-[#caede5] h-full flex flex-col mx-auto w-full">
         {/* image */}
         <div className="relative rounded-xl overflow-hidden mb-6 flex-shrink-0">
           <Image

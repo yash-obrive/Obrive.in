@@ -57,10 +57,10 @@ export const createResourceMDXComponents = (metadata: any) => ({
     <p className="text-base leading-relaxed text-gray-700 mb-4" {...props} />
   ),
   ul: (props: any) => (
-    <ul className="list-disc pl-6 space-y-2 mb-4 text-gray-700" {...props} />
+    <ul className="list-disc list-inside pl-0 space-y-2 mb-4 text-gray-700" {...props} />
   ),
   ol: (props: any) => (
-    <ol className="list-decimal pl-6 space-y-2 mb-4 text-gray-700" {...props} />
+    <ol className="list-decimal list-inside pl-0 space-y-2 mb-4 text-gray-700" {...props} />
   ),
   li: (props: any) => (
     <li className="text-base leading-relaxed text-gray-700" {...props} />
@@ -70,15 +70,11 @@ export const createResourceMDXComponents = (metadata: any) => ({
   ),
   em: (props: any) => <em className="italic" {...props} />,
   blockquote: (props: any) => (
-    <div className="pr-30">
-      <div className="bg-primary text-accent rounded-xl p-12 my-6">
-        <p
-          className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}
-        >
-          {props.children}
-        </p>
-      </div>
-    </div>
+    <blockquote className="border-l-4 border-primary pl-6 my-6 italic text-gray-700">
+      <p className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}>
+        {props.children}
+      </p>
+    </blockquote>
   ),
 
   // Custom resource components that can be used in MDX (new names)
@@ -186,10 +182,10 @@ export default {
     <p className="text-base leading-relaxed text-gray-700 mb-4" {...props} />
   ),
   ul: (props: any) => (
-    <ul className="list-disc pl-6 space-y-2 mb-4 text-gray-700" {...props} />
+    <ul className="list-disc list-inside pl-0 space-y-2 mb-4 text-gray-700" {...props} />
   ),
   ol: (props: any) => (
-    <ol className="list-decimal pl-6 space-y-2 mb-4 text-gray-700" {...props} />
+    <ol className="list-decimal list-inside pl-0 space-y-2 mb-4 text-gray-700" {...props} />
   ),
   li: (props: any) => (
     <li className="text-base leading-relaxed text-gray-700" {...props} />
@@ -199,15 +195,11 @@ export default {
   ),
   em: (props: any) => <em className="italic" {...props} />,
   blockquote: (props: any) => (
-    <div className="pr-30">
-      <div className="bg-primary text-accent rounded-xl p-12 my-6">
-        <p
-          className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}
-        >
-          {props.children}
-        </p>
-      </div>
-    </div>
+    <blockquote className="border-l-4 border-primary pl-6 my-6 italic text-gray-700">
+      <p className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}>
+        {props.children}
+      </p>
+    </blockquote>
   ),
   Link,
   a: (props: any) => {

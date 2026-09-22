@@ -29,11 +29,11 @@ export default function UsecaseCard({
         >
           {title}
         </h3>
-        <p className="text-xs sm:text-sm text-zinc-700">{description}</p>
+        <p className="text-xs sm:text-sm text-primary/80">{description}</p>
         <AnimatedButton
           asChild
           size={"lg"}
-          className="text-[10px] mt-4 uppercase cursor-pointer w-fit"
+          className="text-xs mt-4 uppercase cursor-pointer w-fit"
           iconSize={14}
           href={url}
           aria-label={`Learn more about ${title}`}

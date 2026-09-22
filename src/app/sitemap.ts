@@ -7,7 +7,7 @@ import {
   getAllFAQSlugs,
 } from "@/lib/mdx";
 import { getProductSlugs } from "@/lib/products";
-import { getSolutionSlugs } from "@/lib/solutions";
+import { getSolutionSlugs } from "@/lib/services";
 import { getTechnologySlugs } from "@/lib/technology";
 import { getUseCaseSlugs } from "@/lib/use-cases";
 
@@ -67,11 +67,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const localizedSolutionPages: MetadataRoute.Sitemap = activeCountries.flatMap(
     (country) =>
       solutionSlugs.map((slug) => ({
-        url: `${baseUrl}/${country}/solutions/${slug}`,
+        url: `${baseUrl}/${country}/services/${slug}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 0.9,
-        alternates: makeAlternates(`/solutions/${slug}`),
+        alternates: makeAlternates(`/services/${slug}`),
       })),
   );
 

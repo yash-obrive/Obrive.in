@@ -5,6 +5,7 @@ import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
 import BlogCard from "@/components/pages/home/card/BlogCard";
+import GoodByeCard from "@/components/pages/home/card/GoodByeCard";
 import UsecaseCard from "@/components/pages/home/card/UsecaseCard";
 import { HomepageRiveAnimation } from "@/components/pages/home/HomepageRiveAnimation";
 import ObriveVideo from "@/components/pages/home/Videos/ObriveVideo";
@@ -141,7 +142,7 @@ export default function Home() {
       <SmoothScrollProvider>
         <div className="flex flex-col items-center">
           {/* hero content */}
-          <FullWidthSection backgroundColor="accent" className="py-10 pt-30">
+          <FullWidthSection backgroundColor="accent" className="py-16 pt-32">
             <div className="text-center flex flex-col items-center gap-8 mt-10">
               <FadeInOnLoad delay={0.15}>
                 <h1
@@ -164,14 +165,14 @@ export default function Home() {
           </FullWidthSection>
 
           {/*  Buttons */}
-          <FullWidthSection backgroundColor="accent" className="py-6">
+          <FullWidthSection backgroundColor="accent" className="py-16">
             <FadeInOnLoad delay={0.45}>
               <div className="flex sm:flex-row gap-4 sm:gap-6 justify-center items-center">
                 <AnimatedButton
                   asChild
                   className="text-xs uppercase"
                   size="lg"
-                  href="/kr/faqs"
+                  href="/faqs"
                   aria-label="explore faqs"
                   iconSize={16}
                 >
@@ -191,25 +192,25 @@ export default function Home() {
           </FullWidthSection>
 
           {/* homepage animation */}
-          <FullWidthSection backgroundColor="accent" className="py-10">
+          <FullWidthSection backgroundColor="accent" className="py-16">
             <div className="mx-auto flex items-center w-full">
               <HomepageRiveAnimation className="w-full aspect-[16/4] max-h-[320px] sm:max-h-[340px] lg:max-h-[380px]" />
             </div>
           </FullWidthSection>
 
           {/* brand-line */}
-          <FullWidthSection backgroundColor="accent" className="py-6">
+          <FullWidthSection backgroundColor="accent" className="py-16">
             <FadeInOnView>
               <div className="flex flex-col sm:flex-row pb-8 border-b-2 border-primary/40 sm:items-center max-sm:items-start justify-between w-full gap-4">
                 <Link href="/resources">
                   <Button
-                    className="uppercase bg-accent cursor-pointer rounded-lg text-[10px]"
+                    className="uppercase bg-accent cursor-pointer rounded-lg text-xs"
                     variant={"outline"}
                   >
                     News
                   </Button>
                 </Link>
-                <p className="uppercase text-[10px] font-semibold max-sm:text-left text-primary text-center sm:text-right">
+                <p className="uppercase text-xs font-semibold max-sm:text-left text-primary text-center sm:text-right">
                   Powering Enterprise Digital Transformation with Immersive
                   Technology
                 </p>
@@ -218,7 +219,7 @@ export default function Home() {
           </FullWidthSection>
 
           {/* mission */}
-          <FullWidthSection backgroundColor="accent" className="pt-10">
+          <FullWidthSection backgroundColor="accent" className="py-16">
             <FadeInOnView>
               <div className="flex relative w-full overflow-hidden gap-10 flex-col">
                 <div className="absolute top-20 left-80">
@@ -251,7 +252,7 @@ export default function Home() {
                   </div>
                 </FadeInOnView>
 
-                <div className="my-20">
+                <div className="my-16">
                   <FadeInOnView>
                     <ObriveVideo />
                   </FadeInOnView>
@@ -280,7 +281,10 @@ export default function Home() {
           {/* effortless control */}
           <EffortlessControl />
 
-
+          {/* goodbye card */}
+          <FadeInOnView>
+            <GoodByeCard />
+          </FadeInOnView>
 
           {/* video vard obrive */}
           <VideoCardObrive />
@@ -288,7 +292,7 @@ export default function Home() {
           {/* use cases  */}
           <FullWidthSection>
             <FadeInOnView>
-              <div className="my-20 flex flex-col justify-between w-full gap-16 px-4">
+              <div className="my-16 flex flex-col justify-between w-full gap-16 px-4">
                 <FadeInOnView>
                   <div className="flex flex-col items-center gap-14">
                     <div className="flex flex-col items-center gap-2">
@@ -344,7 +348,7 @@ export default function Home() {
           {/* immersive tech section */}
           <FullWidthSection>
             <FadeInOnView>
-              <div className="my-20 flex flex-col justify-between w-full gap-16 px-4">
+              <div className="my-16 flex flex-col justify-between w-full gap-16 px-4">
                 <FadeInOnView>
                   <div className="text-center flex flex-col items-center gap-4">
                     <h2
@@ -380,7 +384,7 @@ export default function Home() {
                     <Button
                       size={"lg"}
                       variant={"outline"}
-                      className="uppercase rounded-full bg-white! hover:bg-[#074139]! transition-all duration-300 hover:text-white text-[10px] w-full sm:w-auto cursor-pointer"
+                      className="uppercase rounded-full bg-white! hover:bg-[#074139]! transition-all duration-300 hover:text-white text-xs w-full sm:w-auto cursor-pointer"
                     >
                       Visit Library
                     </Button>

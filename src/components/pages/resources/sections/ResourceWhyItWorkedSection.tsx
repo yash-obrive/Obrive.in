@@ -21,7 +21,7 @@ export function WhyItWorkedItem({ title, children }: { title?: React.ReactNode, 
           {title}
         </h3>
       )}
-      <div className="text-sm sm:text-base leading-relaxed [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2">
+      <div className="text-sm sm:text-base leading-relaxed [&>ul]:list-disc [&>ul]:list-inside [&>ul]:pl-0 [&>ul]:space-y-2">
         {children}
       </div>
     </div>
@@ -41,7 +41,7 @@ export default function ResourceWhyItWorkedSection({
       >
         {title}
       </h2>
-      <div className="space-y-6 pl-6 max-md:pl-0">
+      <div className="space-y-6">
         {children ? (
           children
         ) : (

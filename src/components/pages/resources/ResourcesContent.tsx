@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useCallback, useMemo, useRef, useState, Suspense } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { BlogCardContent } from "@/constants/pages/resources/blog-card";
 import ArticlesGrid from "./components/ArticlesGrid";
 import CustomPagination from "./components/CustomPagination";
@@ -35,25 +35,40 @@ const filterBlogsByKeyword = (
 
 const ResourcesContentInner = () => {
   const searchParams = useSearchParams();
-  const queryFilter = searchParams.get("filter");
-  
-  const [currentFilter, setCurrentFilter] = useState(queryFilter || "All");
-  const [currentPage, setCurrentPage] = useState(1);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // Read filter and page directly from URL so back/forward navigation works
+  const queryFilter = searchParams.get("filter") || "All";
+  const queryPage = parseInt(searchParams.get("page") || "1", 10);
+
   const [isTransitioning, setIsTransitioning] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollPositionRef = useRef<number>(0);
 
-  // Sync state when URL searchParams changes
-  useEffect(() => {
-    if (queryFilter && queryFilter !== currentFilter) {
-      setCurrentFilter(queryFilter);
-      setCurrentPage(1);
-    }
-  }, [queryFilter]); // purposefully omitted currentFilter from deps so it only triggers on URL change
+  // Push filter+page into URL (enables browser back/forward to restore state)
+  const updateURL = useCallback(
+    (filter: string, page: number) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (filter === "All") {
+        params.delete("filter");
+      } else {
+        params.set("filter", filter);
+      }
+      if (page === 1) {
+        params.delete("page");
+      } else {
+        params.set("page", String(page));
+      }
+      const query = params.toString();
+      router.push(`${pathname}${query ? `?${query}` : ""}`, { scroll: false });
+    },
+    [searchParams, router, pathname],
+  );
 
   // Memoized filtered blogs for performance
   const filteredBlogs = useMemo(() => {
-    switch (currentFilter) {
+    switch (queryFilter) {
       case "All":
         return BlogCardContent;
       case "Blog":
@@ -61,11 +76,14 @@ const ResourcesContentInner = () => {
       case "Case Studies":
         return BlogCardContent.filter((blog) => blog.type === "Case Studies");
       default:
-        return filterBlogsByKeyword(BlogCardContent, currentFilter);
+        return filterBlogsByKeyword(BlogCardContent, queryFilter);
     }
-  }, [currentFilter]);
+  }, [queryFilter]);
 
   const totalPages = Math.ceil(filteredBlogs.length / BLOGS_PER_PAGE);
+
+  // Clamp page to valid range
+  const currentPage = Math.min(Math.max(queryPage, 1), totalPages || 1);
 
   // Memoized current page blogs
   const currentBlogs = useMemo(() => {
@@ -73,13 +91,13 @@ const ResourcesContentInner = () => {
     return filteredBlogs.slice(startIndex, startIndex + BLOGS_PER_PAGE);
   }, [filteredBlogs, currentPage]);
 
-  const showFeaturedAndPopular = currentFilter === "All";
+  const showFeaturedAndPopular = queryFilter === "All";
 
   // Store scroll position before filter/pagination change
   const preserveScrollPosition = useCallback(() => {
     if (contentRef.current) {
       const rect = contentRef.current.getBoundingClientRect();
-      scrollPositionRef.current = window.scrollY + rect.top - 100; // 100px offset from top
+      scrollPositionRef.current = window.scrollY + rect.top - 100;
     }
   }, []);
 
@@ -95,24 +113,21 @@ const ResourcesContentInner = () => {
 
   const handleFilterChange = useCallback(
     async (filter: string) => {
-      if (filter === currentFilter) return;
+      if (filter === queryFilter) return;
 
       preserveScrollPosition();
       setIsTransitioning(true);
 
-      // Small delay to allow scroll position capture
       await new Promise((resolve) => setTimeout(resolve, 50));
 
-      setCurrentFilter(filter);
-      setCurrentPage(1); // Reset to first page on filter change
+      updateURL(filter, 1); // Reset to page 1 on filter change
 
-      // Restore scroll position after content updates
       setTimeout(() => {
         restoreScrollPosition();
         setIsTransitioning(false);
       }, 300);
     },
-    [currentFilter, preserveScrollPosition, restoreScrollPosition],
+    [queryFilter, preserveScrollPosition, restoreScrollPosition, updateURL],
   );
 
   const handlePageChange = useCallback(
@@ -124,20 +139,20 @@ const ResourcesContentInner = () => {
 
       await new Promise((resolve) => setTimeout(resolve, 50));
 
-      setCurrentPage(page);
+      updateURL(queryFilter, page);
 
       setTimeout(() => {
         restoreScrollPosition();
         setIsTransitioning(false);
       }, 300);
     },
-    [currentPage, preserveScrollPosition, restoreScrollPosition],
+    [currentPage, queryFilter, preserveScrollPosition, restoreScrollPosition, updateURL],
   );
 
   return (
     <div ref={contentRef}>
       <ResourcesFilter
-        currentFilter={currentFilter}
+        currentFilter={queryFilter}
         onFilterChange={handleFilterChange}
         isTransitioning={isTransitioning}
       />
@@ -146,7 +161,7 @@ const ResourcesContentInner = () => {
 
       <ArticlesGrid
         currentBlogs={currentBlogs}
-        currentFilter={currentFilter}
+        currentFilter={queryFilter}
         currentPage={currentPage}
       />
 

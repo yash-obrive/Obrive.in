@@ -1,6 +1,6 @@
 import type { StaticImageData } from "next/image";
 import { IMAGES } from "@/assets/images";
-import type { ServiceSection, SidebarLink } from "@/types/solutions";
+import type { ServiceSection, SidebarLink } from "@/types/services";
 import {
   AI_IMMERSIVE_TECHNOLOGY,
   AUGMENTED_REALITY,

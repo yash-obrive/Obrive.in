@@ -80,6 +80,8 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
                       <Link
                         key={entry.href}
                         href={entry.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="group flex flex-col min-h-[165px] p-5 bg-gradient-to-br from-white to-primary/5 border border-primary/10 rounded-[18px] transition-all duration-200 hover:border-primary/30 hover:-translate-y-1 hover:shadow-lg"
                       >
                         <div className="text-secondary text-[11px] font-extrabold tracking-[0.1em]">

@@ -5,7 +5,7 @@ export const NAV_LINKS = [
   },
   {
     title: "Services",
-    href: "/solutions",
+    href: "/services",
   },
   {
     title: "Case Studies",
@@ -37,23 +37,23 @@ export const MOBILE_NAV_STRUCTURE = [
   },
   {
     title: "Services",
-    mainHref: "/solutions",
+    mainHref: "/services",
     items: [
       {
         title: "Augmented Reality Development",
-        href: "/solutions/augmented-reality-development",
+        href: "/services/augmented-reality-development",
       },
       {
         title: "Virtual Reality Development",
-        href: "/solutions/virtual-reality-development",
+        href: "/services/virtual-reality-development",
       },
       {
         title: "3D Design & Development",
-        href: "/solutions/3d-design-development",
+        href: "/services/3d-design-development",
       },
       {
         title: "Spatial Computing App Development",
-        href: "/solutions/spatial-computing-app-development",
+        href: "/services/spatial-computing-app-development",
       },
     ],
   },

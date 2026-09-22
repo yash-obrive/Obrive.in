@@ -14,14 +14,14 @@ export const HOME_CARD = [
 `,
     icon: AkarIcon,
     use: "Use Case .01",
-    url: "/solutions/augmented-reality-development",
+    url: "/services/augmented-reality-development",
   },
   {
     title: "Upskill your crew with VR training simulations",
     description: `Learning from manuals is slow and risky. Immerse employees in lifelike VR environments—practice safety protocols, navigate industrial scenarios, or complete onboarding simulations safely and effectively.`,
     icon: VRIcon,
     use: "Use Case .02",
-    url: "/solutions/virtual-reality-development",
+    url: "/services/virtual-reality-development",
   },
   {
     title: "Innovate without borders in mixed reality ",
@@ -35,14 +35,14 @@ export const HOME_CARD = [
     description: `Experience: Walk through photorealistic 3D renderings of architectural spaces—homes, offices, retail layouts—using handheld devices or headsets before they're built.`,
     icon: ThreeDIcon,
     use: "Use Case .04",
-    url: "/solutions/3d-design-development",
+    url: "/services/3d-design-development",
   },
   {
     title: "Spatial Computing for Location-Based Experiences",
     description: `Create immersive, location-aware experiences—like museum tours, retail activations, or educational overlays—triggered by user presence and context.`,
     icon: SpatialIcon,
     use: "Use Case .05",
-    url: "/solutions/spatial-computing-app-development",
+    url: "/services/spatial-computing-app-development",
   },
 ] as const;
 

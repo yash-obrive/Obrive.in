@@ -37,7 +37,7 @@ export function SolutionsDropdown() {
                     className="flex-shrink-0"
                   />
                   <Link
-                    href="/solutions/augmented-reality-development"
+                    href="/services/augmented-reality-development"
                     className={`${buttonVariants({
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
@@ -58,7 +58,7 @@ export function SolutionsDropdown() {
                     className="flex-shrink-0"
                   />
                   <Link
-                    href="/solutions/virtual-reality-development"
+                    href="/services/virtual-reality-development"
                     className={`${buttonVariants({
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
@@ -79,7 +79,7 @@ export function SolutionsDropdown() {
                     className="flex-shrink-0"
                   />
                   <Link
-                    href="/solutions/3d-design-development"
+                    href="/services/3d-design-development"
                     className={`${buttonVariants({
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
@@ -100,7 +100,7 @@ export function SolutionsDropdown() {
                     className="flex-shrink-0"
                   />
                   <Link
-                    href="/solutions/spatial-computing-app-development"
+                    href="/services/spatial-computing-app-development"
                     className={`${buttonVariants({
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
@@ -121,7 +121,7 @@ export function SolutionsDropdown() {
                     className="flex-shrink-0"
                   />
                   <Link
-                    href="/solutions/mixed-reality-development"
+                    href="/services/mixed-reality-development"
                     className={`${buttonVariants({
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}

@@ -55,7 +55,7 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     currencySymbol: "₹",
     phone: "+91-888-477-4300",
     contactEmail: "info@obrive.com",
-    offices: ["Bengaluru", "Mumbai", "Delhi NCR", "Hyderabad", "Ahmedabad", "Pune", "Chennai"],
+    offices: ["Bengaluru, Karnataka", "Mumbai, Maharashtra", "Delhi NCR, Delhi", "Hyderabad, Telangana", "Ahmedabad, Gujarat", "Pune, Maharashtra", "Chennai, Tamil Nadu"],
     calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=in",
     hreflang: "en-IN",
     dir: "ltr",

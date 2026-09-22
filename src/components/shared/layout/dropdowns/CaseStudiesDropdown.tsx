@@ -91,6 +91,19 @@ export function CaseStudiesDropdown() {
                   </Link>
                 </AnimatedNavLabel>
               </div>
+
+              <div className="group flex items-center gap-3 py-2 border-b border-white/20">
+                <AnimatedNavLabel iconSize={14} gap={0} shiftDirection="right">
+                  <Link
+                    href="/resources?filter=Case+Studies"
+                    className={`text-white text-xs ${buttonVariants({
+                      variant: "link",
+                    })} !px-1`}
+                  >
+                    View More
+                  </Link>
+                </AnimatedNavLabel>
+              </div>
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ interface CountryContextType {
   suggestedCountry: CountryCode | null;
   isBannerDismissed: boolean;
   dismissBanner: () => void;
-  switchCountry: (newCountry: CountryCode) => void;
+  switchCountry: (newCountry: CountryCode, preservePath?: boolean) => void;
 }
 
 const CountryContext = createContext<CountryContextType | undefined>(undefined);
@@ -74,34 +74,34 @@ export function CountryProvider({
     }
   };
 
-  const switchCountry = (newCountry: CountryCode) => {
-    if (!isValidCountryCode(newCountry)) return;
+    const switchCountry = (newCountry: CountryCode, preservePath: boolean = true) => {
+      if (!isValidCountryCode(newCountry)) return;
 
-    // Set 1-year preference cookie
-    if (typeof document !== "undefined") {
-      document.cookie = `preferred_country=${newCountry}; path=/; max-age=31536000; SameSite=Lax`;
-    }
-
-    setCountry(newCountry);
-    dismissBanner();
-
-    // Replace country prefix in current pathname
-    if (pathname) {
-      const segments = pathname.split("/").filter(Boolean);
-      let targetPath = `/${newCountry}`;
-
-      if (segments.length > 0 && isValidCountryCode(segments[0])) {
-        const remaining = segments.slice(1).join("/");
-        targetPath = `/${newCountry}${remaining ? `/${remaining}` : ""}`;
-      } else if (segments.length > 0) {
-        targetPath = `/${newCountry}/${segments.join("/")}`;
+      // Set 1-year preference cookie
+      if (typeof document !== "undefined") {
+        document.cookie = `preferred_country=${newCountry}; path=/; max-age=31536000; SameSite=Lax`;
       }
 
-      router.push(targetPath);
-    } else {
-      router.push(`/${newCountry}`);
-    }
-  };
+      setCountry(newCountry);
+      dismissBanner();
+
+      // Get current path to append to the new domain
+      let currentPath = pathname || "/";
+      if (currentPath.startsWith(`/${country}`)) {
+        currentPath = currentPath.replace(`/${country}`, "");
+      }
+      if (!currentPath.startsWith("/")) {
+        currentPath = "/" + currentPath;
+      }
+
+      // Redirect using path-based routing architecture (e.g. /in, /us, /br)
+      // This preserves localhost during development and aligns with the SEO invariant
+      if (preservePath) {
+        window.location.href = `/${newCountry}${currentPath === "/" ? "" : currentPath}`;
+      } else {
+        window.location.href = `/${newCountry}`;
+      }
+    };
 
   const countryConfig = getCountryConfig(country);
 

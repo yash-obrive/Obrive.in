@@ -15,7 +15,7 @@ const PopularCard = ({
 }: PopularCardContentType) => {
   return (
     <Link href={`/resources/${slug}`}>
-      <div className="p-4 bg-accent rounded-xl flex gap-4 lg:gap-6 min-h-[180px] lg:min-h-[200px] cursor-pointer hover:bg-accent/80 transition-colors">
+      <div className="p-4 bg-accent rounded-xl flex gap-4 lg:gap-6 min-h-[180px] lg:min-h-[200px] cursor-pointer hover:bg-gradient-to-br hover:from-[#A2F1DF]/80 hover:to-[#caede5]/80 transition-colors">
         <div className="relative aspect-[16/10] rounded-xl overflow-hidden min-w-[140px] max-w-[180px] lg:min-w-[200px] lg:max-w-[240px] flex-shrink-0">
           <Image src={src} fill alt={alt} className="object-cover" priority />
         </div>

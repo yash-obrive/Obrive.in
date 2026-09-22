@@ -33,15 +33,11 @@ export default function ResourceTemplate({
       <section>
         <FullWidthSection
           backgroundColor="accent"
-          className="pt-20 sm:pt-28 lg:pt-38 pb-16 sm:pb-24 lg:pb-30 min-h-[80vh] sm:min-h-screen"
+          className="pt-20 sm:pt-28 lg:pt-38 pb-16 sm:pb-24 lg:pb-30"
         >
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 px-4 sm:px-8 lg:px-13 items-start justify-between">
             <div className="relative flex flex-col gap-4 w-full lg:min-w-[400px] lg:max-w-[500px]">
-              <div className="relative z-10">
-                <ResourceBackButton />
-              </div>
-
-              <div className="w-full max-sm:w-[300px] max-sm:h-[300px] h-64 sm:h-80 lg:h-90 rounded-2xl sm:flex items-center justify-center sm:relative">
+              <div className="w-full max-sm:w-[300px] max-sm:h-[300px] h-64 sm:h-80 lg:h-90 rounded-2xl overflow-hidden relative">
                 {(() => {
                   const blogImage =
                     RESOURCES_BLOG_IMAGES[
@@ -73,7 +69,7 @@ export default function ResourceTemplate({
                       src={heroSrc}
                       alt={altText}
                       fill
-                      className="object-contain pointer-events-none"
+                      className="object-cover pointer-events-none"
                       priority
                     />
                   );
@@ -147,7 +143,17 @@ export default function ResourceTemplate({
           {/* workflow steps sidebar */}
           {metadata.workflowSteps && metadata.workflowSteps.length > 0 && (
             <div className="lg:sticky lg:top-24 lg:self-start">
+              <div className="mb-4">
+                <ResourceBackButton />
+              </div>
               <ResourceWorkflowSteps steps={metadata.workflowSteps} />
+            </div>
+          )}
+
+          {/* Back button fallback when no sidebar */}
+          {(!metadata.workflowSteps || metadata.workflowSteps.length === 0) && (
+            <div>
+              <ResourceBackButton />
             </div>
           )}
 

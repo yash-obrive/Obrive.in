@@ -2,7 +2,8 @@
 
 import { Calendar, CircleUser } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
+import { motion, useInView, Variants } from "framer-motion";
 import FONTS from "@/assets/fonts";
 
 const pageHeader = {
@@ -19,12 +20,65 @@ const partnerImages = Array.from({ length: 13 }, (_, i) => ({
   alt: `Partner Recognition ${i + 1}`,
 }));
 
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 40, scale: 0.92 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: i * 0.08,
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
+function ClientCard({ img, index }: { img: { id: string; url: string; alt: string }; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      key={img.id}
+      custom={index}
+      variants={cardVariants}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      whileHover={{
+        y: -8,
+        scale: 1.04,
+        transition: { duration: 0.25, ease: "easeOut" },
+      }}
+      className="group relative w-[200px] sm:w-[260px] flex items-center justify-center cursor-pointer"
+    >
+      {/* Glow ring on hover */}
+      <span className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none ring-2 ring-primary/30 shadow-[0_0_24px_4px_rgba(7,57,51,0.12)]" />
+
+      {/* Card */}
+      <div className="w-full bg-white border border-primary/10 rounded-2xl p-4 shadow-sm group-hover:shadow-xl transition-shadow duration-300 flex items-center justify-center">
+        <img
+          src={img.url}
+          alt={img.alt}
+          className="w-full h-auto object-contain drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+    </motion.div>
+  );
+}
+
 export default function PartnersPage() {
   return (
     <div className="min-h-screen bg-white font-sans py-12 px-4 sm:px-8 mt-10">
       <main className="max-w-5xl mx-auto flex flex-col space-y-12">
         {/* Page Header */}
-        <header className="border-b pb-6">
+        <motion.header
+          className="border-b pb-6"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <h1
             className={`${FONTS.microgrammaBold.className} text-[#074139] text-2xl sm:text-3xl tracking-wide`}
           >
@@ -47,22 +101,13 @@ export default function PartnersPage() {
           >
             {pageHeader.subtitle}
           </p>
-        </header>
+        </motion.header>
 
-        {/* Partners Grid */}
+        {/* Clients Grid */}
         <section className="flex flex-col items-center text-center mt-10">
-          <div className="flex flex-wrap justify-center items-center gap-12 sm:gap-16 w-full px-4">
-            {partnerImages.map((img) => (
-              <div
-                key={img.id}
-                className="w-[220px] sm:w-[280px] flex items-center justify-center transition-transform hover:-translate-y-2 duration-300"
-              >
-                <img
-                  src={img.url}
-                  alt={img.alt}
-                  className="w-full h-auto object-contain drop-shadow-lg"
-                />
-              </div>
+          <div className="flex flex-wrap justify-center items-center gap-10 sm:gap-14 w-full px-4">
+            {partnerImages.map((img, i) => (
+              <ClientCard key={img.id} img={img} index={i} />
             ))}
           </div>
         </section>

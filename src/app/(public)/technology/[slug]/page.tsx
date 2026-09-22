@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
-import { SolutionTemplate } from "@/components/pages/solutions/SolutionTemplate";
+import { SolutionTemplate } from "@/components/pages/services/SolutionTemplate";
 import { getTechnologyData, getTechnologySlugs } from "@/lib/technology";
 
 interface TechnologyPageProps {

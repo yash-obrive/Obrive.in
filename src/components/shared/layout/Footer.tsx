@@ -45,7 +45,7 @@ export default function Footer() {
                   {group.title}
                 </div>
                 {group.items.map((item) => (
-                  <Link key={item.label} href={item.href} className={cell}>
+                  <Link key={item.label} href={item.href} className={cell} target="_blank" rel="noopener noreferrer">
                     {item.label}
                   </Link>
                 ))}
@@ -62,13 +62,13 @@ export default function Footer() {
           {/* bottom bar */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-primary/60 mt-4">
             <div className="flex items-center gap-6">
-              <Link href="/legal" className="hover:text-primary transition-colors">
+              <Link href="/legal" className="hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                 Legal Notice
               </Link>
-              <Link href="/terms-accessibility" className="hover:text-primary transition-colors">
+              <Link href="/terms-accessibility" className="hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                 Terms & Accessibility
               </Link>
-              <Link href="/global" className="hover:text-primary transition-colors">
+              <Link href="/global" className="hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">
                 Global Market
               </Link>
             </div>

@@ -15,7 +15,7 @@ export const GROUPS = [
     items: [
       { label: "About Obrive", href: "/about" },
       { label: "Join The Otters", href: "/career" },
-      { label: "Obrive partners", href: "/about#featured-in" },
+      { label: "White Label Partner", href: "/partners" },
       { label: "Site Map", href: "/site-map" },
     ],
   },
@@ -24,16 +24,16 @@ export const GROUPS = [
     items: [
       {
         label: "AR Development",
-        href: "/solutions/augmented-reality-development",
+        href: "/services/augmented-reality-development",
       },
       {
         label: "VR Development",
-        href: "/solutions/virtual-reality-development",
+        href: "/services/virtual-reality-development",
       },
-      { label: "3D Modelling", href: "/solutions/3d-design-development" },
+      { label: "3D Modelling", href: "/services/3d-design-development" },
       {
         label: "Spatial Computing",
-        href: "/solutions/spatial-computing-app-development",
+        href: "/services/spatial-computing-app-development",
       },
     ],
   },

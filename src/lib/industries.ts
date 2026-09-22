@@ -14,7 +14,7 @@ import type {
   ServiceSection,
   SidebarLink,
   WorkflowStep,
-} from "@/types/solutions";
+} from "@/types/services";
 
 // Reusing identical structure as SolutionHero for compatibility
 export interface IndustryHero {

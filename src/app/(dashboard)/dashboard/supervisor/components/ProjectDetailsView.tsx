@@ -557,7 +557,7 @@ export default function ProjectDetailsView({
                     )}
                     <div className="flex flex-wrap items-center gap-2 mt-2">
                       <span
-                        className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${getTaskStatusStyle(task.status)}`}
+                        className={`text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${getTaskStatusStyle(task.status)}`}
                       >
                         {task.status || "pending"}
                       </span>

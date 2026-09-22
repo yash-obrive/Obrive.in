@@ -10,13 +10,15 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { useCountry } from "@/context/CountryContext";
+import { COUNTRIES, DEFAULT_COUNTRY } from "@/config/countries";
 
 const contactCellBase =
   "relative overflow-hidden border border-primary/30 rounded-lg text-xs text-primary/80 transition-colors duration-500 hover:text-white before:content-[''] before:absolute before:inset-0 before:bg-primary before:scale-y-0 before:origin-center hover:before:scale-y-100 before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.19,1,0.22,1)] before:-z-10 z-10";
 
 export default function FooterContact() {
-  const { countryConfig } = useCountry();
-  const offices = countryConfig.offices || [];
+  const { countryConfig: _ } = useCountry();
+  const defaultCountryConfig = COUNTRIES[DEFAULT_COUNTRY];
+  const offices = defaultCountryConfig.offices || [];
 
   return (
     <div className="flex flex-col">
@@ -25,18 +27,18 @@ export default function FooterContact() {
       >
         Contact
       </div>
-      <div className={`${contactCellBase} p-3`}>{countryConfig.phone}</div>
+      <div className={`${contactCellBase} p-3`}>{defaultCountryConfig.phone}</div>
       <a
-        href={`mailto:${countryConfig.contactEmail}`}
+        href={`mailto:${defaultCountryConfig.contactEmail}`}
         className={`${contactCellBase} p-3`}
       >
-        {countryConfig.contactEmail}
+        {defaultCountryConfig.contactEmail}
       </a>
 
       {/* Display up to 2 offices */}
       {offices.slice(0, 2).map((office, idx) => (
         <div key={idx} className={`${contactCellBase} p-3`}>
-          {office}, {countryConfig.name}
+          {office}, {defaultCountryConfig.name}
         </div>
       ))}
 
@@ -55,6 +57,8 @@ export default function FooterContact() {
           <Link
             href="/client-login"
             className={`${contactCellBase} py-3 px-6 uppercase tracking-wide text-xs`}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Log In
           </Link>
@@ -69,12 +73,16 @@ export default function FooterContact() {
             <Link
               href="/client-login"
               className="uppercase text-xs tracking-wide hover:text-accent transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Client Login
             </Link>
             <Link
               href="/employee-login"
               className="uppercase text-xs tracking-wide hover:text-accent transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Employee Login
             </Link>
