@@ -56,6 +56,34 @@ export default function CreateProjectDialog({
   const [selectedClient, setSelectedClient] = useState<string | null>(null); // 2. CHANGED FROM number TO string
 
   useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const response = await apiFetch("/supervisor/employees", {
+          method: "GET",
+        });
+        const result = await response.json();
+        if (result.success) {
+          setEmployees(result.data || []);
+        }
+      } catch (error) {
+        console.error("Error fetching employees:", error);
+      }
+    };
+
+    const fetchClients = async () => {
+      try {
+        const response = await apiFetch("/projects/clients/list", {
+          method: "GET",
+        });
+        const result = await response.json();
+        if (result.success) {
+          setClients(result.data || []);
+        }
+      } catch (error) {
+        console.error("Error fetching clients:", error);
+      }
+    };
+
     if (open) {
       fetchEmployees();
       fetchClients();
@@ -86,35 +114,7 @@ export default function CreateProjectDialog({
         setSelectedClient(null);
       }
     }
-  }, [open, isEdit, project, fetchClients, fetchEmployees]);
-
-  const fetchEmployees = async () => {
-    try {
-      const response = await apiFetch("/supervisor/employees", {
-        method: "GET",
-      });
-      const result = await response.json();
-      if (result.success) {
-        setEmployees(result.data || []);
-      }
-    } catch (error) {
-      console.error("Error fetching employees:", error);
-    }
-  };
-
-  const fetchClients = async () => {
-    try {
-      const response = await apiFetch("/projects/clients/list", {
-        method: "GET",
-      });
-      const result = await response.json();
-      if (result.success) {
-        setClients(result.data || []);
-      }
-    } catch (error) {
-      console.error("Error fetching clients:", error);
-    }
-  };
+  }, [open, isEdit, project]);
 
   const toggleEmployee = (id: number) => {
     setSelectedEmployees((prev) =>
