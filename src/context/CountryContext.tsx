@@ -97,8 +97,13 @@ export function CountryProvider({
       currentPath = `/${currentPath}`;
     }
 
-    // Redirect using path-based routing architecture (e.g. /in, /us, /br)
-    // This preserves localhost during development and aligns with the SEO invariant
+    // Redirect using domain for India, path-based routing architecture for others
+    if (newCountry === "in") {
+      const targetUrl = "https://obrive.in/coming-soon";
+      window.location.href = targetUrl;
+      return;
+    }
+
     if (preservePath) {
       window.location.href = `/${newCountry}${currentPath === "/" ? "" : currentPath}`;
     } else {

@@ -28,23 +28,9 @@ export async function generateMetadata({
     };
   }
 
-  const blockedSlugs = new Set([
-    "mixed-reality",
-    "extended-reality",
-    "digital-twins",
-    "ai-immersive-technology",
-  ]);
-
-  // Returning baseline metadata using the exact pattern established in the Solutions/Industries fallback
   return {
     title: `${technologyData.hero.title} | Obrive`,
     description: technologyData.hero.description,
-    ...(blockedSlugs.has(slug) && {
-      robots: {
-        index: false,
-        follow: true,
-      },
-    }),
   };
 }
 

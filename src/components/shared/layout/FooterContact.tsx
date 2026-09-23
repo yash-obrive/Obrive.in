@@ -22,11 +22,12 @@ export default function FooterContact() {
 
   return (
     <div className="flex flex-col">
-      <div
-        className={`border border-primary/40 py-2 px-3 font-semibold text-primary rounded-lg ${FONTS.microgrammaBold.className}`}
+      <Link
+        href="/contact"
+        className={`border border-primary/40 py-2 px-3 font-semibold text-primary rounded-lg ${FONTS.microgrammaBold.className} hover:bg-primary/5 transition-colors duration-200 block text-center`}
       >
         Contact
-      </div>
+      </Link>
       <div className={`${contactCellBase} p-3`}>
         {defaultCountryConfig.phone}
       </div>

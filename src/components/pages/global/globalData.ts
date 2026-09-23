@@ -32,7 +32,7 @@ export const MARKETS_DATA: MarketItem[] = (
     name: country.name,
     region: country.region,
     code: country.code,
-    href: `/${country.code}`,
+    href: country.code === "in" ? "https://obrive.in/coming-soon" : `/${country.code}`,
     cities: country.offices.join(" · "),
   };
 });

@@ -51,13 +51,9 @@ export default async function SolutionIndustriesPage({
 
   const content = industriesContentMap[slug];
 
-  // If the page doesn't have industries content yet, just fallback or notFound
+  // If the page doesn't have industries content yet, return 404
   if (!content) {
-    return (
-      <main className="min-h-screen flex items-center justify-center">
-        <h1 className="text-xl">Content coming soon</h1>
-      </main>
-    );
+    notFound();
   }
 
   return (

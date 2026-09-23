@@ -87,7 +87,7 @@ export default function PrimaryFooterCard({
   const titleClasses =
     variant === "small"
       ? "text-xl sm:text-2xl"
-      : `${FONTS.microgrammaBold.className} sm:w-2xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight sm:leading-14`;
+      : `${FONTS.microgrammaBold.className} text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight sm:leading-14`;
 
   const isExternal = buttonLink.startsWith("http");
 
@@ -96,7 +96,7 @@ export default function PrimaryFooterCard({
       <div className="bg-primary overflow-hidden relative text-white flex flex-col max-sm:-space-y-10 sm:gap-10 justify-between w-full max-w-[90%] sm:max-w-[95%] lg:max-w-[1238px] rounded-xl min-h-[300px] sm:min-h-[361px]">
         <div className="flex px-4 sm:px-10 py-6 sm:py-6 flex-col sm:flex-row items-center sm:items-start justify-between gap-4 sm:gap-0">
           <h2
-            className={`${titleClasses} w-full text-center sm:text-left max-sm:text-left`}
+            className={`${titleClasses} w-full text-center sm:text-left max-sm:text-left whitespace-pre-line`}
           >
             {title}
           </h2>
