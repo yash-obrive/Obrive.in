@@ -1,32 +1,92 @@
-import { IMAGES, IMAGES_META, ICONS, ICONS_META } from "@/assets/images";
+import { ICONS, ICONS_META } from "@/assets/images";
 
 import type { SolutionIndustriesContent } from "@/types/services";
 
 export const WEB_APP_SAAS_MVP_DEVELOPMENT_HERO = {
-  title: "Web App & SaaS MVP Development Services Across Industries — For the AI Era",
-  description: "Our Web App & SaaS MVP Development services combine product strategy, UX/UI collaboration, web engineering, backend architecture, APIs, databases, cloud infrastructure, security, analytics and AI to turn business ideas into usable digital products. From SaaS platforms and B2B applications to marketplaces, customer portals, workflow systems, internal tools, data products and AI-enabled web applications, Obrive helps organizations move from concept to a focused MVP and then toward a scalable production platform.",
-  description2: "We develop web applications around real users, business models, workflows, integrations and measurable outcomes. The objective is not to build the largest first release; it is to validate the highest-value product assumptions with a strong technical foundation for future growth. In the AI era, an MVP can be designed from the beginning to support intelligent search, recommendations, copilots, document retrieval, workflow assistance, automation and natural-language interaction where these capabilities create genuine value.",
+  title:
+    "Web App & SaaS MVP Development Services Across Industries — For the AI Era",
+  description:
+    "Our Web App & SaaS MVP Development services combine product strategy, UX/UI collaboration, web engineering, backend architecture, APIs, databases, cloud infrastructure, security, analytics and AI to turn business ideas into usable digital products. From SaaS platforms and B2B applications to marketplaces, customer portals, workflow systems, internal tools, data products and AI-enabled web applications, Obrive helps organizations move from concept to a focused MVP and then toward a scalable production platform.",
+  description2:
+    "We develop web applications around real users, business models, workflows, integrations and measurable outcomes. The objective is not to build the largest first release; it is to validate the highest-value product assumptions with a strong technical foundation for future growth. In the AI era, an MVP can be designed from the beginning to support intelligent search, recommendations, copilots, document retrieval, workflow assistance, automation and natural-language interaction where these capabilities create genuine value.",
   ctaButtons: { primary: "Explore Solutions", secondary: "SCHEDULE A DEMO" },
 };
 
 export const WEB_APP_SAAS_MVP_DEVELOPMENT_KEY_BENEFITS = [
-  { title: "Turn a Product Idea Into a Working Digital Business", description: "A strong SaaS or web-app idea needs more than screens. It needs a clear customer problem, viable product scope, reliable architecture, usable workflows and a path from early validation to scalable software.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Business-First MVP Strategy", description: "We identify the problem, target users, value proposition, business model, critical workflow and validation metrics before deciding what belongs in the first release.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Human-Centered Product Experience", description: "We design clear information architecture, onboarding, navigation, dashboards, forms, workflows, permissions and responsive experiences so users can understand and complete important tasks efficiently.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "AI-Ready Product Architecture", description: "We can architect the product so AI services can be introduced through controlled data flows, APIs and product experiences rather than bolting on disconnected AI features later.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Scalable SaaS Foundations", description: "MVP does not have to mean throwaway software. We design architecture, data models, authentication, deployment and observability with the next stage of the product in mind.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Integration-Ready Web Applications", description: "Connect applications to payments, CRM, ERP, communication tools, analytics, cloud services, external APIs and other systems that make the product useful in its real operating environment.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
+  {
+    title: "Turn a Product Idea Into a Working Digital Business",
+    description:
+      "A strong SaaS or web-app idea needs more than screens. It needs a clear customer problem, viable product scope, reliable architecture, usable workflows and a path from early validation to scalable software.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Business-First MVP Strategy",
+    description:
+      "We identify the problem, target users, value proposition, business model, critical workflow and validation metrics before deciding what belongs in the first release.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Human-Centered Product Experience",
+    description:
+      "We design clear information architecture, onboarding, navigation, dashboards, forms, workflows, permissions and responsive experiences so users can understand and complete important tasks efficiently.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "AI-Ready Product Architecture",
+    description:
+      "We can architect the product so AI services can be introduced through controlled data flows, APIs and product experiences rather than bolting on disconnected AI features later.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Scalable SaaS Foundations",
+    description:
+      "MVP does not have to mean throwaway software. We design architecture, data models, authentication, deployment and observability with the next stage of the product in mind.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Integration-Ready Web Applications",
+    description:
+      "Connect applications to payments, CRM, ERP, communication tools, analytics, cloud services, external APIs and other systems that make the product useful in its real operating environment.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
 ];
 
 export const WEB_APP_SAAS_MVP_DEVELOPMENT_SIDEBAR_LINKS = [
   { id: "our-services", label: "Our Services" },
-  { id: "ai-era-web-app-saas-development", label: "AI-Era Web App & SaaS Development" },
-  { id: "global-web-app-saas-delivery", label: "Global Web App & SaaS Delivery" },
-  { id: "technology-platform-capabilities", label: "Technology & Platform Capabilities" },
-  { id: "what-makes-a-web-app-saas-mvp-successful", label: "What Makes a Web App & SaaS MVP Successful?" },
-  { id: "why-choose-obrive-for-web-app-saas-mvp-development", label: "Why Choose Obrive for Web App & SaaS MVP Development?" },
-  { id: "global-product-delivery-mindset", label: "Global product delivery mindset" },
-  { id: "business-outcomes-web-apps-saas-can-support", label: "Business Outcomes Web Apps & SaaS Can Support" },
+  {
+    id: "ai-era-web-app-saas-development",
+    label: "AI-Era Web App & SaaS Development",
+  },
+  {
+    id: "global-web-app-saas-delivery",
+    label: "Global Web App & SaaS Delivery",
+  },
+  {
+    id: "technology-platform-capabilities",
+    label: "Technology & Platform Capabilities",
+  },
+  {
+    id: "what-makes-a-web-app-saas-mvp-successful",
+    label: "What Makes a Web App & SaaS MVP Successful?",
+  },
+  {
+    id: "why-choose-obrive-for-web-app-saas-mvp-development",
+    label: "Why Choose Obrive for Web App & SaaS MVP Development?",
+  },
+  {
+    id: "global-product-delivery-mindset",
+    label: "Global product delivery mindset",
+  },
+  {
+    id: "business-outcomes-web-apps-saas-can-support",
+    label: "Business Outcomes Web Apps & SaaS Can Support",
+  },
 ] as const;
 
 export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
@@ -40,7 +100,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "SaaS MVP Development",
-        description: "Build a focused first version of a software-as-a-service product around its highest-value customer problem and core workflow.",
+        description:
+          "Build a focused first version of a software-as-a-service product around its highest-value customer problem and core workflow.",
         items: [
           "B2B SaaS MVPs",
           "B2C SaaS products",
@@ -54,7 +115,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Custom Web Application Development",
-        description: "Develop browser-based applications for complex workflows, data interaction and business processes that require custom engineering.",
+        description:
+          "Develop browser-based applications for complex workflows, data interaction and business processes that require custom engineering.",
         items: [
           "Customer portals",
           "Operational platforms",
@@ -68,7 +130,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "MVP Product Strategy & Scope Definition",
-        description: "Translate an idea into a practical MVP roadmap by separating must-have validation capabilities from later-stage features.",
+        description:
+          "Translate an idea into a practical MVP roadmap by separating must-have validation capabilities from later-stage features.",
         items: [
           "Problem definition",
           "User and persona modeling",
@@ -82,7 +145,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "AI-Powered Web App & SaaS Development",
-        description: "Integrate AI where it improves discovery, productivity, personalization, analysis or workflow completion.",
+        description:
+          "Integrate AI where it improves discovery, productivity, personalization, analysis or workflow completion.",
         items: [
           "AI copilots",
           "Natural-language search",
@@ -97,7 +161,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Multi-Tenant SaaS Development",
-        description: "Architect SaaS products for multiple customers, organizations, roles and permission models with appropriate isolation and governance.",
+        description:
+          "Architect SaaS products for multiple customers, organizations, roles and permission models with appropriate isolation and governance.",
         items: [
           "Tenant management",
           "Role-based access",
@@ -110,7 +175,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "API-First & Integration Development",
-        description: "Create the APIs and integration layer required to connect the web application with external and enterprise systems.",
+        description:
+          "Create the APIs and integration layer required to connect the web application with external and enterprise systems.",
         items: [
           "REST APIs",
           "Authentication and identity",
@@ -124,7 +190,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Cloud & Backend Development",
-        description: "Build reliable backend services, data models and cloud infrastructure to support the product's functional and operational requirements.",
+        description:
+          "Build reliable backend services, data models and cloud infrastructure to support the product's functional and operational requirements.",
         items: [
           "Backend services",
           "Databases",
@@ -138,7 +205,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "SaaS Subscription, Billing & Payments",
-        description: "Implement product monetization foundations where required, including subscription, billing and payment workflows.",
+        description:
+          "Implement product monetization foundations where required, including subscription, billing and payment workflows.",
         items: [
           "Plans and pricing",
           "Trials",
@@ -152,7 +220,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Dashboards, Portals & Workflow Applications",
-        description: "Create role-specific interfaces that help customers, employees, partners and administrators manage information and complete business processes.",
+        description:
+          "Create role-specific interfaces that help customers, employees, partners and administrators manage information and complete business processes.",
         items: [
           "Admin dashboards",
           "Customer portals",
@@ -165,7 +234,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Web App Modernization & Rebuild",
-        description: "Assess and modernize existing web applications when architecture, usability, performance, security or product requirements have changed.",
+        description:
+          "Assess and modernize existing web applications when architecture, usability, performance, security or product requirements have changed.",
         items: [
           "Legacy assessment",
           "Architecture modernization",
@@ -178,7 +248,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Security, Testing & Quality Engineering",
-        description: "Build quality into the product lifecycle through security-aware architecture, testing, observability and release discipline.",
+        description:
+          "Build quality into the product lifecycle through security-aware architecture, testing, observability and release discipline.",
         items: [
           "Authentication",
           "Authorization",
@@ -192,7 +263,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Analytics & Continuous Product Optimization",
-        description: "Instrument the application to understand activation, engagement, feature usage, conversion, retention and operational performance.",
+        description:
+          "Instrument the application to understand activation, engagement, feature usage, conversion, retention and operational performance.",
         items: [
           "Product analytics",
           "Event instrumentation",
@@ -211,7 +283,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
     id: "ai-era-web-app-saas-development",
     title: "AI-Era Web App & SaaS Development",
     subtitle: "",
-    description: "AI is changing how software is discovered and used. Users can increasingly ask questions, describe goals, retrieve knowledge, summarize information and complete assisted workflows. Obrive designs these interactions around the product's users, data permissions, business rules and risk level.",
+    description:
+      "AI is changing how software is discovered and used. Users can increasingly ask questions, describe goals, retrieve knowledge, summarize information and complete assisted workflows. Obrive designs these interactions around the product's users, data permissions, business rules and risk level.",
     label: "",
     items: [
       "AI copilots and contextual assistance",
@@ -233,7 +306,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
     id: "global-web-app-saas-delivery",
     title: "Global Web App & SaaS Delivery",
     subtitle: "",
-    description: "We can support SaaS products and web applications for local, national and global markets, including localization, multiple languages, regional rules, currencies, role-based governance and scalable cloud deployment.",
+    description:
+      "We can support SaaS products and web applications for local, national and global markets, including localization, multiple languages, regional rules, currencies, role-based governance and scalable cloud deployment.",
     label: "",
     items: [],
     footer: "",
@@ -307,7 +381,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
     id: "global-product-delivery-mindset",
     title: "Global product delivery mindset",
     subtitle: "",
-    description: "We do not treat an MVP as a disposable prototype. We aim to create a focused first product that can generate real learning while establishing a credible foundation for future users, features, integrations and intelligent capabilities.",
+    description:
+      "We do not treat an MVP as a disposable prototype. We aim to create a focused first product that can generate real learning while establishing a credible foundation for future users, features, integrations and intelligent capabilities.",
     label: "",
     items: [
       "Ability to connect web products with mobile, AI, 3D and immersive technologies",
@@ -318,7 +393,8 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
     id: "business-outcomes-web-apps-saas-can-support",
     title: "Business Outcomes Web Apps & SaaS Can Support",
     subtitle: "",
-    description: "A focused MVP can evolve into a broader SaaS platform through additional workflows, integrations, billing, analytics, personalization, AI capabilities, mobile experiences, enterprise governance and global deployment. Obrive can help define the roadmap as real product evidence accumulates.",
+    description:
+      "A focused MVP can evolve into a broader SaaS platform through additional workflows, integrations, billing, analytics, personalization, AI capabilities, mobile experiences, enterprise governance and global deployment. Obrive can help define the roadmap as real product evidence accumulates.",
     label: "",
     items: [
       "Faster validation of product assumptions",
@@ -338,129 +414,206 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
 ];
 
 export const WEB_APP_SAAS_MVP_DEVELOPMENT_PROCESS_STEPS = [
-  { step: "01", title: "Discover", description: "Understand the business problem, users, market, workflow, data, constraints and success criteria." },
-  { step: "02", title: "Define", description: "Prioritize the MVP around the highest-value product assumptions and measurable outcomes." },
-  { step: "03", title: "Research", description: "Validate users, workflows, market context, competitors and technical feasibility." },
-  { step: "04", title: "Architect", description: "Define product architecture, data models, APIs, security, tenancy, integrations and AI boundaries." },
-  { step: "05", title: "Design", description: "Create UX/UI, information architecture, responsive flows and design-system foundations." },
-  { step: "06", title: "Prototype", description: "Validate key journeys, workflows and intelligent interactions before full development." },
-  { step: "07", title: "Develop", description: "Build the web application, backend services and required infrastructure." },
-  { step: "08", title: "Integrate", description: "Connect payments, APIs, CRM, ERP, analytics, cloud and AI services as required." },
-  { step: "09", title: "Test", description: "Validate functionality, security, performance, accessibility, integrations and reliability." },
-  { step: "10", title: "Deploy", description: "Release the MVP with appropriate environments, monitoring and operational controls." },
-  { step: "11", title: "Measure & Improve", description: "Learn from real usage and continuously evolve the product toward product-market and operational fit." },
+  {
+    step: "01",
+    title: "Discover",
+    description:
+      "Understand the business problem, users, market, workflow, data, constraints and success criteria.",
+  },
+  {
+    step: "02",
+    title: "Define",
+    description:
+      "Prioritize the MVP around the highest-value product assumptions and measurable outcomes.",
+  },
+  {
+    step: "03",
+    title: "Research",
+    description:
+      "Validate users, workflows, market context, competitors and technical feasibility.",
+  },
+  {
+    step: "04",
+    title: "Architect",
+    description:
+      "Define product architecture, data models, APIs, security, tenancy, integrations and AI boundaries.",
+  },
+  {
+    step: "05",
+    title: "Design",
+    description:
+      "Create UX/UI, information architecture, responsive flows and design-system foundations.",
+  },
+  {
+    step: "06",
+    title: "Prototype",
+    description:
+      "Validate key journeys, workflows and intelligent interactions before full development.",
+  },
+  {
+    step: "07",
+    title: "Develop",
+    description:
+      "Build the web application, backend services and required infrastructure.",
+  },
+  {
+    step: "08",
+    title: "Integrate",
+    description:
+      "Connect payments, APIs, CRM, ERP, analytics, cloud and AI services as required.",
+  },
+  {
+    step: "09",
+    title: "Test",
+    description:
+      "Validate functionality, security, performance, accessibility, integrations and reliability.",
+  },
+  {
+    step: "10",
+    title: "Deploy",
+    description:
+      "Release the MVP with appropriate environments, monitoring and operational controls.",
+  },
+  {
+    step: "11",
+    title: "Measure & Improve",
+    description:
+      "Learn from real usage and continuously evolve the product toward product-market and operational fit.",
+  },
 ];
 
 export const WEB_APP_SAAS_MVP_DEVELOPMENT_INDUSTRIES = [
   {
     id: "automotive-mobility",
     title: "Automotive & Mobility",
-    description: "Build customer, fleet, vehicle-service, dealership, mobility and connected-vehicle platforms with real-time data, location services and intelligent assistance where appropriate.",
+    description:
+      "Build customer, fleet, vehicle-service, dealership, mobility and connected-vehicle platforms with real-time data, location services and intelligent assistance where appropriate.",
   },
   {
     id: "manufacturing-industrial-engineering",
     title: "Manufacturing & Industrial Engineering",
-    description: "Develop production, quality, maintenance, asset, workforce, supplier and operational web applications with enterprise integrations and role-based workflows.",
+    description:
+      "Develop production, quality, maintenance, asset, workforce, supplier and operational web applications with enterprise integrations and role-based workflows.",
   },
   {
     id: "healthcare-medical",
     title: "Healthcare & Medical",
-    description: "Create patient portals, provider workflows, scheduling, records access, education and healthcare-service platforms. Products can be designed around applicable clinical, privacy, safety and regulatory requirements.",
+    description:
+      "Create patient portals, provider workflows, scheduling, records access, education and healthcare-service platforms. Products can be designed around applicable clinical, privacy, safety and regulatory requirements.",
   },
   {
     id: "pharmaceuticals-life-sciences",
     title: "Pharmaceuticals & Life Sciences",
-    description: "Support research, laboratory, field, training, knowledge, product-information and regulated workflows through secure SaaS and web applications.",
+    description:
+      "Support research, laboratory, field, training, knowledge, product-information and regulated workflows through secure SaaS and web applications.",
   },
   {
     id: "retail-ecommerce",
     title: "Retail & eCommerce",
-    description: "Build commerce platforms, marketplaces, catalogs, subscriptions, loyalty, personalization, order management and customer-service applications.",
+    description:
+      "Build commerce platforms, marketplaces, catalogs, subscriptions, loyalty, personalization, order management and customer-service applications.",
   },
   {
     id: "consumer-goods-brands",
     title: "Consumer Goods & Brands",
-    description: "Create digital product platforms, customer portals, brand ecosystems, campaign platforms and data-driven customer experiences.",
+    description:
+      "Create digital product platforms, customer portals, brand ecosystems, campaign platforms and data-driven customer experiences.",
   },
   {
     id: "real-estate-property",
     title: "Real Estate & Property",
-    description: "Develop property marketplaces, listing platforms, lead management, tenant portals, property operations and real-estate SaaS products.",
+    description:
+      "Develop property marketplaces, listing platforms, lead management, tenant portals, property operations and real-estate SaaS products.",
   },
   {
     id: "architecture-engineering-construction",
     title: "Architecture, Engineering & Construction",
-    description: "Build project collaboration, document, estimation, field reporting, approvals, asset and project-information applications.",
+    description:
+      "Build project collaboration, document, estimation, field reporting, approvals, asset and project-information applications.",
   },
   {
     id: "education-edtech",
     title: "Education & EdTech",
-    description: "Develop learning platforms, assessments, student portals, content systems, collaboration tools and AI-assisted education workflows.",
+    description:
+      "Develop learning platforms, assessments, student portals, content systems, collaboration tools and AI-assisted education workflows.",
   },
   {
     id: "energy-utilities-infrastructure",
     title: "Energy, Utilities & Infrastructure",
-    description: "Create asset management, field operations, monitoring, customer service, work-order and infrastructure-management platforms.",
+    description:
+      "Create asset management, field operations, monitoring, customer service, work-order and infrastructure-management platforms.",
   },
   {
     id: "oil-gas",
     title: "Oil & Gas",
-    description: "Support asset, inspection, maintenance, operations, documentation, safety and workforce workflows through secure web applications.",
+    description:
+      "Support asset, inspection, maintenance, operations, documentation, safety and workforce workflows through secure web applications.",
   },
   {
     id: "mining-natural-resources",
     title: "Mining & Natural Resources",
-    description: "Develop site operations, equipment, maintenance, inspection, field-data, reporting and workforce platforms.",
+    description:
+      "Develop site operations, equipment, maintenance, inspection, field-data, reporting and workforce platforms.",
   },
   {
     id: "aerospace-aviation",
     title: "Aerospace & Aviation",
-    description: "Build maintenance, operations, technical information, workforce, passenger-service and compliance-oriented web applications.",
+    description:
+      "Build maintenance, operations, technical information, workforce, passenger-service and compliance-oriented web applications.",
   },
   {
     id: "logistics-warehousing-supply-chain",
     title: "Logistics, Warehousing & Supply Chain",
-    description: "Develop order, inventory, warehouse, route, delivery, fleet, supplier and workforce management applications.",
+    description:
+      "Develop order, inventory, warehouse, route, delivery, fleet, supplier and workforce management applications.",
   },
   {
     id: "travel-tourism-hospitality",
     title: "Travel, Tourism & Hospitality",
-    description: "Create booking, property operations, guest services, itinerary, loyalty, marketplace and travel-management platforms.",
+    description:
+      "Create booking, property operations, guest services, itinerary, loyalty, marketplace and travel-management platforms.",
   },
   {
     id: "media-entertainment-gaming",
     title: "Media, Entertainment & Gaming",
-    description: "Build content platforms, subscription products, communities, creator tools, fan experiences and gaming-related SaaS products.",
+    description:
+      "Build content platforms, subscription products, communities, creator tools, fan experiences and gaming-related SaaS products.",
   },
   {
     id: "sports-fitness",
     title: "Sports & Fitness",
-    description: "Develop membership, coaching, booking, performance, analytics, facility and fan-engagement platforms.",
+    description:
+      "Develop membership, coaching, booking, performance, analytics, facility and fan-engagement platforms.",
   },
   {
     id: "banking-financial-services-insurance",
     title: "Banking, Financial Services & Insurance",
-    description: "Build customer portals, financial workflows, onboarding, claims, policy, payment and analytics applications with strong security and trust foundations.",
+    description:
+      "Build customer portals, financial workflows, onboarding, claims, policy, payment and analytics applications with strong security and trust foundations.",
   },
   {
     id: "telecommunications",
     title: "Telecommunications",
-    description: "Develop customer self-service, provisioning, billing, service management, network operations and technician platforms.",
+    description:
+      "Develop customer self-service, provisioning, billing, service management, network operations and technician platforms.",
   },
   {
     id: "agriculture-agritech",
     title: "Agriculture & AgriTech",
-    description: "Create farm management, field data, marketplace, equipment, advisory, supply-chain and connected-agriculture applications.",
+    description:
+      "Create farm management, field data, marketplace, equipment, advisory, supply-chain and connected-agriculture applications.",
   },
   {
     id: "government-public-sector",
     title: "Government & Public Sector",
-    description: "Develop citizen portals, case management, permits, appointments, information services and workforce platforms with accessibility and governance in mind.",
+    description:
+      "Develop citizen portals, case management, permits, appointments, information services and workforce platforms with accessibility and governance in mind.",
   },
   {
     id: "corporate-learning-professional-services",
     title: "Corporate Learning & Professional Services",
-    description: "Build knowledge, training, project, workflow, client-service, collaboration and professional productivity SaaS applications. AI-Era Web App & SaaS Development Across Industries AI can change web software from a set of screens into a more adaptive product experience. Users can ask questions, search naturally, retrieve business knowledge, receive recommendations, generate content and complete assisted workflows. Obrive applies these capabilities according to user needs, data permissions, business rules and risk.",
+    description:
+      "Build knowledge, training, project, workflow, client-service, collaboration and professional productivity SaaS applications. AI-Era Web App & SaaS Development Across Industries AI can change web software from a set of screens into a more adaptive product experience. Users can ask questions, search naturally, retrieve business knowledge, receive recommendations, generate content and complete assisted workflows. Obrive applies these capabilities according to user needs, data permissions, business rules and risk.",
   },
   {
     id: "conversational-product-assistance",
@@ -519,23 +672,42 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_INDUSTRIES = [
   },
 ];
 
-export const WEB_APP_SAAS_MVP_DEVELOPMENT_INDUSTRIES_CONTENT: SolutionIndustriesContent = {
-  slug: "web-app-saas-mvp-development",
-  hero: {
-    title: "Web App & SaaS MVP Development Across Industries — AI-Era Industry Solutions",
-    description: "Obrive develops web applications and SaaS MVPs around industry-specific users, workflows, data environments and business models. We combine product strategy, UX/UI, web engineering, backend services, APIs, cloud, security, analytics and AI-ready architecture. Web App & SaaS MVP Development Across Industries",
-  },
-  industries: WEB_APP_SAAS_MVP_DEVELOPMENT_INDUSTRIES,
-  globalDelivery: {
-    title: "Global Web App & SaaS Delivery",
-    subtitle: "",
-    description: "We can support products for local, national and international markets, including localization, multiple languages, regional content, currencies, role-based governance, distributed teams and scalable cloud deployment.",
-    items: [],
-  },
-  technologyCapabilities: {
-    title: "Technology & Platform Capabilities",
-    subtitle: "",
-    items: ["Modern front-end frameworks", "Backend and API development", "SaaS and multi-tenant architecture", "Databases and data platforms", "Cloud infrastructure", "Authentication and access control", "Payments and subscription billing", "ERP, CRM and third-party integrations", "Analytics and monitoring", "AI and intelligent services", "File and content systems", "CI/CD and deployment", "Testing and performance engineering"],
-  },
-  footerText: "Our industry solutions are not limited to these sectors. We can adapt the same product and engineering foundations to specialized workflows, data models, customer journeys, operational environments and emerging digital business models.",
-};
+export const WEB_APP_SAAS_MVP_DEVELOPMENT_INDUSTRIES_CONTENT: SolutionIndustriesContent =
+  {
+    slug: "web-app-saas-mvp-development",
+    hero: {
+      title:
+        "Web App & SaaS MVP Development Across Industries — AI-Era Industry Solutions",
+      description:
+        "Obrive develops web applications and SaaS MVPs around industry-specific users, workflows, data environments and business models. We combine product strategy, UX/UI, web engineering, backend services, APIs, cloud, security, analytics and AI-ready architecture. Web App & SaaS MVP Development Across Industries",
+    },
+    industries: WEB_APP_SAAS_MVP_DEVELOPMENT_INDUSTRIES,
+    globalDelivery: {
+      title: "Global Web App & SaaS Delivery",
+      subtitle: "",
+      description:
+        "We can support products for local, national and international markets, including localization, multiple languages, regional content, currencies, role-based governance, distributed teams and scalable cloud deployment.",
+      items: [],
+    },
+    technologyCapabilities: {
+      title: "Technology & Platform Capabilities",
+      subtitle: "",
+      items: [
+        "Modern front-end frameworks",
+        "Backend and API development",
+        "SaaS and multi-tenant architecture",
+        "Databases and data platforms",
+        "Cloud infrastructure",
+        "Authentication and access control",
+        "Payments and subscription billing",
+        "ERP, CRM and third-party integrations",
+        "Analytics and monitoring",
+        "AI and intelligent services",
+        "File and content systems",
+        "CI/CD and deployment",
+        "Testing and performance engineering",
+      ],
+    },
+    footerText:
+      "Our industry solutions are not limited to these sectors. We can adapt the same product and engineering foundations to specialized workflows, data models, customer journeys, operational environments and emerging digital business models.",
+  };

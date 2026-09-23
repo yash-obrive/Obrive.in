@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, ChevronRight, ChevronUp, User } from "lucide-react";
+import { ChevronDown, ChevronRight, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
 interface Event {
@@ -68,7 +68,7 @@ export default function RightPanel({
     },
   ],
 }: RightPanelProps) {
-  const [dateRange, setDateRange] = useState({
+  const [dateRange, _setDateRange] = useState({
     start: "Nov 16, 2020",
     end: "Dec 16, 2020",
   });

@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Calendar,
-  FolderOpen,
-  LayoutDashboard,
-  List,
-  Menu,
-  Palmtree,
-} from "lucide-react";
+import { FolderOpen } from "lucide-react";
 import { useState } from "react";
 import supportImg from "@/assets/images/employee/illustration.png";
 import Sidebar from "@/components/dashboard/Sidebar";

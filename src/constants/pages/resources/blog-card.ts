@@ -1,10 +1,10 @@
 import type { StaticImageData } from "next/image";
-import { getAllBlogs } from "@/lib/blogs";
 import {
   CASE_STUDIES_IMAGES,
   RESOURCES_BLOG_IMAGES,
   RESOURCES_BLOG_IMAGES_META,
 } from "@/assets/images";
+import { getAllBlogs } from "@/lib/blogs";
 
 const hardcodedContent: BlogCardContentType[] = [
   {
@@ -228,13 +228,13 @@ const jsonCaseStudies: BlogCardContentType[] = caseStudiesData.map((cs) => ({
   date: "25.07.2025",
   title: cs.title,
   slug: cs.slug,
-  description: cs.overview.slice(0, 150) + "...",
+  description: `${cs.overview.slice(0, 150)}...`,
   type: "Case Studies" as const,
 }));
 
 const navbarCaseStudies: BlogCardContentType[] = [
   {
-    src: CASE_STUDIES_IMAGES["HERO_IMAGE_ONE"],
+    src: CASE_STUDIES_IMAGES.HERO_IMAGE_ONE,
     alt: "Bringing Onboarding to Life with Immersive Spatial Computing",
     date: "04.05.2025",
     title: "Bringing Onboarding to Life with Immersive Spatial Computing",
@@ -244,7 +244,7 @@ const navbarCaseStudies: BlogCardContentType[] = [
     type: "Case Studies",
   },
   {
-    src: CASE_STUDIES_IMAGES["HERO_IMAGE_TWO"],
+    src: CASE_STUDIES_IMAGES.HERO_IMAGE_TWO,
     alt: "From Field Friction to Spatial Flow",
     date: "04.05.2025",
     title: "From Field Friction to Spatial Flow A Real Transformation Story",
@@ -254,7 +254,7 @@ const navbarCaseStudies: BlogCardContentType[] = [
     type: "Case Studies",
   },
   {
-    src: CASE_STUDIES_IMAGES["HERO_IMAGE_THREE"],
+    src: CASE_STUDIES_IMAGES.HERO_IMAGE_THREE,
     alt: "Breaking Onboarding Barriers with Augmented Reality",
     date: "08.04.2025",
     title: "Breaking Onboarding Barriers with Augmented Reality",
@@ -264,7 +264,7 @@ const navbarCaseStudies: BlogCardContentType[] = [
     type: "Case Studies",
   },
   {
-    src: CASE_STUDIES_IMAGES["HERO_IMAGE_FOUR"],
+    src: CASE_STUDIES_IMAGES.HERO_IMAGE_FOUR,
     alt: "Immersive Onboarding That Feels Like Reality",
     date: "08.04.2025",
     title:
@@ -282,7 +282,7 @@ const jsonBlogs: BlogCardContentType[] = getAllBlogs().map((blog) => ({
   date: "25.07.2025",
   title: blog.title,
   slug: blog.slug,
-  description: (blog.sections?.[0]?.content?.[0] || "").slice(0, 150) + "...",
+  description: `${(blog.sections?.[0]?.content?.[0] || "").slice(0, 150)}...`,
   type: "Blog" as const,
 }));
 

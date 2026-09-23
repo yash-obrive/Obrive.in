@@ -67,7 +67,7 @@ const getCurrentMonthBounds = () => {
   const year = now.getFullYear();
   const month = now.getMonth();
   const start = new Date(year, month, 1);
-  const end = new Date(year, month + 1, 0);
+  const _end = new Date(year, month + 1, 0);
 
   const pad = (n: number) => String(n).padStart(2, "0");
   const toLocalDateString = (d: Date) =>

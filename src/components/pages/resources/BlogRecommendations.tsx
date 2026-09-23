@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
+import Link from "@/components/shared/LocalizedLink";
 import { BlogCardContent } from "@/constants/pages/resources/blog-card";
 
 interface BlogRecommendationsProps {
@@ -16,13 +16,13 @@ export default function BlogRecommendations({
   const currentType = currentItem?.type || "Blog";
 
   const sameTypeItems = BlogCardContent.filter(
-    (blog) => (blog.type || "Blog") === currentType
+    (blog) => (blog.type || "Blog") === currentType,
   );
 
   const currentIndex = sameTypeItems.findIndex(
-    (blog) => blog.slug === currentSlug
+    (blog) => blog.slug === currentSlug,
   );
-  
+
   const safeIndex = currentIndex >= 0 ? currentIndex : 0;
 
   const recommendations = Array.from({ length: maxRecommendations }, (_, i) => {

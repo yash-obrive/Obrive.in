@@ -1,20 +1,19 @@
-import Image from "next/image";
-import Link from "@/components/shared/LocalizedLink";
-import FONTS from "@/assets/fonts";
-import { Blog } from "@/lib/blogs";
-import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import { Button, buttonVariants } from "@/components/ui/button";
-import BlogRecommendations from "@/components/pages/resources/BlogRecommendations";
-import ResourceWorkflowSteps from "@/components/pages/resources/ResourceWorkflowSteps";
-import ResourceBackButton from "@/components/pages/resources/ResourceBackButton";
 import { UserIcon } from "lucide-react";
-import { BlogCardContent } from "@/constants/pages/resources/blog-card";
+import Image from "next/image";
+import FONTS from "@/assets/fonts";
+import BlogRecommendations from "@/components/pages/resources/BlogRecommendations";
+import ResourceBackButton from "@/components/pages/resources/ResourceBackButton";
+import ResourceWorkflowSteps from "@/components/pages/resources/ResourceWorkflowSteps";
+import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { BlogCardContent } from "@/constants/pages/resources/blog-card";
+import type { Blog } from "@/lib/blogs";
 
 interface BlogDetailProps {
   blog: Blog;
@@ -116,7 +115,9 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
               data-resource-content
             >
               {blog.sections.map((section, idx) => {
-                const isFaq = section.title?.toLowerCase().includes("faq") || section.title?.toLowerCase().includes("frequently asked");
+                const isFaq =
+                  section.title?.toLowerCase().includes("faq") ||
+                  section.title?.toLowerCase().includes("frequently asked");
                 return (
                   <section key={idx}>
                     {section.title && (
@@ -128,19 +129,30 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
                     )}
                     {isFaq ? (
                       <Accordion type="single" collapsible className="w-full">
-                        {section.content.reduce<{q: string, a: string}[]>((acc, curr, i) => {
-                          if (i % 2 === 0) acc.push({ q: curr, a: section.content[i+1] || "" });
-                          return acc;
-                        }, []).map((faq, fIdx) => (
-                          <AccordionItem key={fIdx} value={`item-${fIdx}`}>
-                            <AccordionTrigger className={`${FONTS.microgrammaBold.className} text-left text-primary text-base md:text-lg hover:no-underline py-4`}>
-                              {faq.q}
-                            </AccordionTrigger>
-                            <AccordionContent className="text-secondary/80 text-base leading-relaxed pb-4">
-                              {faq.a}
-                            </AccordionContent>
-                          </AccordionItem>
-                        ))}
+                        {section.content
+                          .reduce<{ q: string; a: string }[]>(
+                            (acc, curr, i) => {
+                              if (i % 2 === 0)
+                                acc.push({
+                                  q: curr,
+                                  a: section.content[i + 1] || "",
+                                });
+                              return acc;
+                            },
+                            [],
+                          )
+                          .map((faq, fIdx) => (
+                            <AccordionItem key={fIdx} value={`item-${fIdx}`}>
+                              <AccordionTrigger
+                                className={`${FONTS.microgrammaBold.className} text-left text-primary text-base md:text-lg hover:no-underline py-4`}
+                              >
+                                {faq.q}
+                              </AccordionTrigger>
+                              <AccordionContent className="text-secondary/80 text-base leading-relaxed pb-4">
+                                {faq.a}
+                              </AccordionContent>
+                            </AccordionItem>
+                          ))}
                       </Accordion>
                     ) : (
                       <div className="space-y-4">

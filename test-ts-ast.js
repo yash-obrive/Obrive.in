@@ -1,4 +1,4 @@
-const ts = require('typescript');
+const ts = require("typescript");
 
 const code = `
 <WhyItWorkedSection
@@ -19,44 +19,67 @@ const code = `
 />
 `;
 
-const sourceFile = ts.createSourceFile('test.tsx', code, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+const sourceFile = ts.createSourceFile(
+  "test.tsx",
+  code,
+  ts.ScriptTarget.Latest,
+  true,
+  ts.ScriptKind.TSX,
+);
 
 function visit(node) {
   if (ts.isJsxElement(node) || ts.isJsxSelfClosingElement(node)) {
-    const tagName = ts.isJsxElement(node) ? node.openingElement.tagName.getText() : node.tagName.getText();
-    if (tagName === 'WhyItWorkedSection') {
-      const attributes = ts.isJsxElement(node) ? node.openingElement.attributes : node.attributes;
-      let newAttributes = [];
-      let newChildren = [];
+    const tagName = ts.isJsxElement(node)
+      ? node.openingElement.tagName.getText()
+      : node.tagName.getText();
+    if (tagName === "WhyItWorkedSection") {
+      const attributes = ts.isJsxElement(node)
+        ? node.openingElement.attributes
+        : node.attributes;
+      const newAttributes = [];
+      const newChildren = [];
       let itemsPropFound = false;
 
-      attributes.properties.forEach(attr => {
-        if (ts.isJsxAttribute(attr) && attr.name.getText() === 'items') {
+      attributes.properties.forEach((attr) => {
+        if (ts.isJsxAttribute(attr) && attr.name.getText() === "items") {
           itemsPropFound = true;
           const initializer = attr.initializer;
-          if (ts.isJsxExpression(initializer) && ts.isArrayLiteralExpression(initializer.expression)) {
-            initializer.expression.elements.forEach(element => {
+          if (
+            ts.isJsxExpression(initializer) &&
+            ts.isArrayLiteralExpression(initializer.expression)
+          ) {
+            initializer.expression.elements.forEach((element) => {
               if (ts.isObjectLiteralExpression(element)) {
-                let itemProps = [];
-                let itemChildren = [];
-                element.properties.forEach(prop => {
+                const itemProps = [];
+                const itemChildren = [];
+                element.properties.forEach((prop) => {
                   if (ts.isPropertyAssignment(prop)) {
                     const propName = prop.name.getText();
                     const propValue = prop.initializer;
-                    
-                    if (propName === 'description') {
-                      if (ts.isJsxElement(propValue) || ts.isJsxFragment(propValue)) {
+
+                    if (propName === "description") {
+                      if (
+                        ts.isJsxElement(propValue) ||
+                        ts.isJsxFragment(propValue)
+                      ) {
                         // Extract children of fragment or element
                         if (ts.isJsxFragment(propValue)) {
-                           itemChildren.push(...propValue.children);
+                          itemChildren.push(...propValue.children);
                         } else {
-                           itemChildren.push(propValue);
+                          itemChildren.push(propValue);
                         }
-                      } else if (ts.isStringLiteral(propValue) || ts.isNoSubstitutionTemplateLiteral(propValue)) {
-                        itemChildren.push(ts.factory.createJsxText(propValue.text));
+                      } else if (
+                        ts.isStringLiteral(propValue) ||
+                        ts.isNoSubstitutionTemplateLiteral(propValue)
+                      ) {
+                        itemChildren.push(
+                          ts.factory.createJsxText(propValue.text),
+                        );
                       } else {
                         // fallback for other expressions
-                        itemChildren.push(ts.factory.createJsxExpression(undefined, propValue));
+                        itemChildren.push(
+                          ts.factory.createJsxExpression(undefined, propValue),
+                        );
                       }
                     } else {
                       // other props like title become JSX attributes
@@ -64,17 +87,31 @@ function visit(node) {
                       if (ts.isStringLiteral(propValue)) {
                         attrValue = propValue;
                       } else {
-                        attrValue = ts.factory.createJsxExpression(undefined, propValue);
+                        attrValue = ts.factory.createJsxExpression(
+                          undefined,
+                          propValue,
+                        );
                       }
-                      itemProps.push(ts.factory.createJsxAttribute(ts.factory.createIdentifier(propName), attrValue));
+                      itemProps.push(
+                        ts.factory.createJsxAttribute(
+                          ts.factory.createIdentifier(propName),
+                          attrValue,
+                        ),
+                      );
                     }
                   }
                 });
-                
+
                 const itemElement = ts.factory.createJsxElement(
-                  ts.factory.createJsxOpeningElement(ts.factory.createIdentifier('WhyItWorkedItem'), undefined, ts.factory.createJsxAttributes(itemProps)),
+                  ts.factory.createJsxOpeningElement(
+                    ts.factory.createIdentifier("WhyItWorkedItem"),
+                    undefined,
+                    ts.factory.createJsxAttributes(itemProps),
+                  ),
                   itemChildren,
-                  ts.factory.createJsxClosingElement(ts.factory.createIdentifier('WhyItWorkedItem'))
+                  ts.factory.createJsxClosingElement(
+                    ts.factory.createIdentifier("WhyItWorkedItem"),
+                  ),
                 );
                 newChildren.push(itemElement);
               }
@@ -88,9 +125,15 @@ function visit(node) {
       if (itemsPropFound) {
         // Create new node
         const newNode = ts.factory.createJsxElement(
-          ts.factory.createJsxOpeningElement(ts.factory.createIdentifier(tagName), undefined, ts.factory.createJsxAttributes(newAttributes)),
+          ts.factory.createJsxOpeningElement(
+            ts.factory.createIdentifier(tagName),
+            undefined,
+            ts.factory.createJsxAttributes(newAttributes),
+          ),
           [...newChildren],
-          ts.factory.createJsxClosingElement(ts.factory.createIdentifier(tagName))
+          ts.factory.createJsxClosingElement(
+            ts.factory.createIdentifier(tagName),
+          ),
         );
         return newNode;
       }

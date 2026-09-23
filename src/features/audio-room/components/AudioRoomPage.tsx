@@ -4,8 +4,8 @@
 import { RoomEvent } from "livekit-client";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import livekitService from "@/features/audio-room/livekit/services/livekit.service";
 import { useSocket } from "@/context/SocketContext";
+import livekitService from "@/features/audio-room/livekit/services/livekit.service";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { apiFetch } from "@/lib/api";
 import BottomControls from "./BottomControls";
@@ -150,7 +150,7 @@ const AudioRoomPage = () => {
           },
         );
       }
-    } catch (error) {
+    } catch (_error) {
       console.error("[LiveKit Error] Realtime connection fallback triggered.");
     }
   };
@@ -178,7 +178,7 @@ const AudioRoomPage = () => {
       }
 
       setRoomData(data.data);
-    } catch (error) {
+    } catch (_error) {
       console.error("[App Fetch] Error parsing current view bounds.");
     } finally {
       setLoading(false);
@@ -207,7 +207,7 @@ const AudioRoomPage = () => {
       }
 
       return data.data;
-    } catch (error) {
+    } catch (_error) {
       console.error("[App Fetch] Server authentication handshake rejected.");
       router.replace("/community-forum/rooms");
     }
@@ -278,7 +278,7 @@ const AudioRoomPage = () => {
       }
     });
 
-    socket.on("role_changed", async (data) => {
+    socket.on("role_changed", async (_data) => {
       console.log("[Socket Sync] Workspace role state matrix shifted.");
       await fetchRoomDetails();
     });
@@ -299,7 +299,7 @@ const AudioRoomPage = () => {
       socket.off("role_changed");
       socket.off("participant_removed");
     };
-  }, [socket]);
+  }, [socket, fetchRoomDetails, roomId, router.replace]);
 
   // ==========================================
   // INITIALIZE ROOM
@@ -325,7 +325,7 @@ const AudioRoomPage = () => {
 
         joinSocketRoom();
         await fetchRoomDetails();
-      } catch (error) {
+      } catch (_error) {
         console.error("[Lifecycle] Initialization error handled.");
       } finally {
         setLoading(false);
@@ -351,7 +351,17 @@ const AudioRoomPage = () => {
       }
       hasJoinedRoom.current = false;
     };
-  }, [currentUserId, roomId, socket, userLoading]);
+  }, [
+    currentUserId,
+    roomId,
+    socket,
+    userLoading,
+    connectLiveKit,
+    fetchRoomDetails,
+    joinRoom,
+    joinSocketRoom,
+    requestLiveKitToken,
+  ]);
 
   // ==========================================
   // REALTIME PARTICIPANTS
@@ -392,7 +402,7 @@ const AudioRoomPage = () => {
     return () => {
       socket.off("participant_updated", handleParticipantUpdate);
     };
-  }, [socket, roomId, currentUserId]);
+  }, [socket, roomId, currentUserId, fetchRoomDetails]);
 
   if (loading || userLoading) {
     return (

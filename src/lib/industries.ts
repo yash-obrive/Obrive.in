@@ -110,7 +110,8 @@ const INDUSTRIES_DATA: Record<string, IndustryData> = {
     },
     howItWorks: ARCHITECTURE_ENGINEERING_INDUSTRY.howItWorks,
     keyBenefits: ARCHITECTURE_ENGINEERING_INDUSTRY.keyBenefits,
-    workflowStepsSidebar: ARCHITECTURE_ENGINEERING_INDUSTRY.workflowStepsSidebar,
+    workflowStepsSidebar:
+      ARCHITECTURE_ENGINEERING_INDUSTRY.workflowStepsSidebar,
     sidebarLinks: ARCHITECTURE_ENGINEERING_INDUSTRY.sidebarLinks,
     serviceSections: ARCHITECTURE_ENGINEERING_INDUSTRY.serviceSections,
   },

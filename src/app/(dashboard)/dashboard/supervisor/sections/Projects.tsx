@@ -2,12 +2,11 @@
 
 import { motion } from "framer-motion";
 import { ArrowLeft, Menu, Plus, Trash2, X } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ConfirmationAlert from "@/components/ConfirmationAlert";
 import SkeletonLoading from "@/components/SkelitonLoading";
 import { apiFetch } from "@/lib/api";
 import CreateProjectDialog from "../components/CreateProjectDialog";
-import ProjectCard from "../components/ProjectCard";
 import ProjectDetailsView from "../components/ProjectDetailsView";
 
 interface Project {
@@ -38,7 +37,7 @@ const Projects = () => {
   // Fetch all supervisor projects
   useEffect(() => {
     fetchProjects();
-  }, []);
+  }, [fetchProjects]);
 
   const fetchProjects = async () => {
     try {

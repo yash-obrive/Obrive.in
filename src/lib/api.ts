@@ -78,7 +78,7 @@ async function refreshAccessToken(): Promise<boolean> {
     }
 
     return true;
-  } catch (error) {
+  } catch (_error) {
     return false;
   }
 }

@@ -1,5 +1,4 @@
 import { CalendarMinus2, CircleUserRound } from "lucide-react";
-import React from "react";
 import FONTS from "@/assets/fonts";
 
 interface CompanyInfoHeaderProps {

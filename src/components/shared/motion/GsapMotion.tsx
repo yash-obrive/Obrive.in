@@ -160,7 +160,7 @@ export function StaggerTiltLeftOnView({
     });
 
     return () => ctx.revert();
-  }, [delay]);
+  }, []);
 
   return (
     <div ref={ref} className={className}>
@@ -184,7 +184,7 @@ export function StaggerTiltBottomLeftOnScroll({
 
     const items = Array.from(el.children) as HTMLElement[];
     const ctx = gsap.context(() => {
-      items.forEach((item, index) => {
+      items.forEach((item, _index) => {
         gsap.set(item, {
           transformOrigin: "left bottom",
           willChange: "transform, opacity",
@@ -265,7 +265,7 @@ export function StaggerTiltBottomLeftOnScroll({
     });
 
     return () => ctx.revert();
-  }, [delay, scrollStart]);
+  }, [scrollStart]);
 
   return (
     <div

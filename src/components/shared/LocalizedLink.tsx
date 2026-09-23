@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { isValidCountryCode, type CountryCode } from "@/config/countries";
 import type { ComponentProps } from "react";
-import React from "react";
+import { type CountryCode, isValidCountryCode } from "@/config/countries";
 
 /**
  * A wrapper around Next.js <Link> that automatically preserves the
@@ -14,7 +13,10 @@ import React from "react";
  * this component automatically routes them to /ca/contact instead of dropping them
  * back to the global /contact route.
  */
-export default function LocalizedLink({ href, ...props }: ComponentProps<typeof Link>) {
+export default function LocalizedLink({
+  href,
+  ...props
+}: ComponentProps<typeof Link>) {
   const pathname = usePathname();
   let finalHref = href;
 
@@ -24,7 +26,10 @@ export default function LocalizedLink({ href, ...props }: ComponentProps<typeof 
     if (segments.length > 0) {
       const currentPrefix = segments[0] as CountryCode;
 
-      if (isValidCountryCode(currentPrefix) && (currentPrefix as string) !== "global") {
+      if (
+        isValidCountryCode(currentPrefix) &&
+        (currentPrefix as string) !== "global"
+      ) {
         // User is currently inside a country-prefixed route.
         // Only prefix if href is an absolute path (starts with /) and doesn't already have a country prefix
         if (href.startsWith("/")) {

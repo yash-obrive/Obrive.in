@@ -1,7 +1,5 @@
 import Image from "next/image";
-import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
-import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
 import BusinessBenefitsCard from "@/components/pages/products/cards/BusinessBenefitsCard";
 import HowItWorksCard from "@/components/pages/products/cards/HowItWorksCard";
 import ProductPageCard from "@/components/pages/products/cards/ProductPageCard";
@@ -9,6 +7,7 @@ import WhatMakesUsDifferent from "@/components/pages/products/cards/WhatMakesUsD
 import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
 import { KeyBenefitsCard } from "@/components/shared/cards/KeyBenefitsCard";
 import PrimaryFooterCard from "@/components/shared/cards/PrimaryFooterCard";
+import Link from "@/components/shared/LocalizedLink";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { InfiniteHorizontalScroll } from "@/components/shared/layout/InfiniteHorizontalScroll";
 import SectionHeader from "@/components/shared/layout/SectionHeader";

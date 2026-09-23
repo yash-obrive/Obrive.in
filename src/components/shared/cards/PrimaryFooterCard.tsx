@@ -1,7 +1,6 @@
 "use client";
 
 import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
-import Link from "@/components/shared/LocalizedLink";
 import { useEffect, useRef } from "react";
 import FONTS from "@/assets/fonts";
 import AnimatedButton from "../buttons/AnimatedButton";

@@ -1,7 +1,6 @@
 "use client";
 
-import { Bell, RotateCcw, Search } from "lucide-react";
-import { useState } from "react";
+import { RotateCcw, Search } from "lucide-react";
 import ProfileNotifications from "./ProfileNotifications";
 
 interface HeaderProps {

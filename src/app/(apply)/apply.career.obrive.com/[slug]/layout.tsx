@@ -1,5 +1,5 @@
-import Link from "@/components/shared/LocalizedLink";
 import type { ReactNode } from "react";
+import Link from "@/components/shared/LocalizedLink";
 import PrimaryLogo from "@/components/shared/logo/PrimaryLogo";
 
 export default function LayoutPublic({ children }: { children: ReactNode }) {

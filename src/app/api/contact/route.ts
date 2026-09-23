@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
 import { BrevoClient } from "@getbrevo/brevo";
+import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     if (!result.success) {
       return NextResponse.json(
         { error: "Invalid form data", details: result.error.format() },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -32,23 +32,26 @@ export async function POST(req: NextRequest) {
 
     if (!brevoApiKey) {
       if (process.env.NODE_ENV === "production") {
-        console.error("Contact Form Submission Error: BREVO_API_KEY is missing in production.");
+        console.error(
+          "Contact Form Submission Error: BREVO_API_KEY is missing in production.",
+        );
         return NextResponse.json(
-          { 
-            success: false, 
-            error: "Contact service is not configured." 
+          {
+            success: false,
+            error: "Contact service is not configured.",
           },
-          { status: 500 }
+          { status: 500 },
         );
       }
       console.log("New Contact Form Submission (Mock DB save):", data);
-      
+
       return NextResponse.json(
-        { 
-          success: true, 
-          message: "Enquiry saved successfully. (Brevo API Key not configured, email was skipped.)" 
+        {
+          success: true,
+          message:
+            "Enquiry saved successfully. (Brevo API Key not configured, email was skipped.)",
         },
-        { status: 200 }
+        { status: 200 },
       );
     }
 
@@ -58,7 +61,7 @@ export async function POST(req: NextRequest) {
 
     // 1. Email to Admin (Beautiful layout for Lead Data)
     await brevo.transactionalEmails.sendTransacEmail({
-      subject: `New Enquiry: ${data.name} - ${data.company || 'N/A'}`,
+      subject: `New Enquiry: ${data.name} - ${data.company || "N/A"}`,
       htmlContent: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f4f9fd; padding: 20px; border-radius: 8px;">
           <div style="background-color: #073933; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
@@ -73,7 +76,7 @@ export async function POST(req: NextRequest) {
                 </td>
                 <td style="padding: 12px 0; border-bottom: 1px solid #eef7ff;">
                   <span style="color: #666666; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Company</span><br/>
-                  <strong style="color: #073933; font-size: 16px;">${data.company || 'N/A'}</strong>
+                  <strong style="color: #073933; font-size: 16px;">${data.company || "N/A"}</strong>
                 </td>
               </tr>
               <tr>
@@ -83,7 +86,7 @@ export async function POST(req: NextRequest) {
                 </td>
                 <td style="padding: 12px 0; border-bottom: 1px solid #eef7ff;">
                   <span style="color: #666666; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Phone</span><br/>
-                  <strong style="color: #073933; font-size: 16px;">${data.phone || 'N/A'}</strong>
+                  <strong style="color: #073933; font-size: 16px;">${data.phone || "N/A"}</strong>
                 </td>
               </tr>
               <tr>
@@ -95,7 +98,7 @@ export async function POST(req: NextRequest) {
               <tr>
                 <td colspan="2" style="padding: 12px 0; border-bottom: 1px solid #eef7ff;">
                   <span style="color: #666666; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Project / Requirement</span><br/>
-                  <strong style="color: #073933; font-size: 16px;">${data.projectRequirement || 'N/A'}</strong>
+                  <strong style="color: #073933; font-size: 16px;">${data.projectRequirement || "N/A"}</strong>
                 </td>
               </tr>
             </table>
@@ -103,7 +106,7 @@ export async function POST(req: NextRequest) {
             <div style="margin-top: 25px; padding: 20px; background-color: #f8fafc; border-left: 4px solid #073933; border-radius: 4px;">
               <span style="color: #666666; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Message</span><br/>
               <p style="color: #333333; font-size: 15px; line-height: 1.6; margin-top: 8px;">
-                ${data.message.replace(/\n/g, '<br/>')}
+                ${data.message.replace(/\n/g, "<br/>")}
               </p>
             </div>
           </div>
@@ -183,14 +186,17 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json(
-      { success: true, message: "Enquiry submitted and email sent successfully." },
-      { status: 200 }
+      {
+        success: true,
+        message: "Enquiry submitted and email sent successfully.",
+      },
+      { status: 200 },
     );
   } catch (error) {
     console.error("Contact Form Submission Error:", error);
     return NextResponse.json(
       { error: "Failed to process enquiry. Please try again later." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

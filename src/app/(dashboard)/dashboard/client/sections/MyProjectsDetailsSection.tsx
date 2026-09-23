@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { AlertCircle, Calendar, CheckCircle, Crown, Users } from "lucide-react";
+import { Calendar } from "lucide-react";
 import React from "react";
 import type { ProjectItem } from "@/components/dashboard/ProjectCard";
 import { apiFetch } from "@/lib/api";
@@ -36,7 +36,7 @@ const MyProjectsDetailsSection = ({
   project: ProjectItem | null;
   onUpdate?: () => void;
 }) => {
-  const [updatingProgress, setUpdatingProgress] = React.useState(false);
+  const [_updatingProgress, setUpdatingProgress] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState<any>(null);
 
   React.useEffect(() => {
@@ -92,8 +92,8 @@ const MyProjectsDetailsSection = ({
           Number.isFinite(Number(details.progress))
         ? Math.max(0, Math.min(100, Number(details.progress)))
         : 0;
-  const completedTasks = details.completedTasks || 0;
-  const assignees = details.assignees || [];
+  const _completedTasks = details.completedTasks || 0;
+  const _assignees = details.assignees || [];
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -175,7 +175,9 @@ const MyProjectsDetailsSection = ({
                 min="0"
                 max="100"
                 value={progress}
-                onChange={(e) => handleUpdateProgress(parseInt(e.target.value))}
+                onChange={(e) =>
+                  handleUpdateProgress(parseInt(e.target.value, 10))
+                }
                 className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-500"
               />
             </div>

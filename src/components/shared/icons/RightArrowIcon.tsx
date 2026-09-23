@@ -1,9 +1,5 @@
 import { ArrowRight } from "lucide-react";
 
 export default function RightArrowIcon() {
-  return (
-    <>
-      <ArrowRight className="size-5" />
-    </>
-  );
+  return <ArrowRight className="size-5" />;
 }

@@ -60,7 +60,7 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
         clearInterval(sessionRefreshRef.current);
       }
     };
-  }, []);
+  }, [initializeSession]);
 
   // ===================================================
   // INIT
@@ -84,7 +84,7 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
           sessionData = existingJson.data;
         }
         // If 401 or any error, just continue to create new session
-      } catch (err) {
+      } catch (_err) {
         console.log("Continuing to create new session...");
       }
 

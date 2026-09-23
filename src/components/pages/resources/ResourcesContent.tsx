@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState, Suspense } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useCallback, useMemo, useRef, useState } from "react";
 import { BlogCardContent } from "@/constants/pages/resources/blog-card";
 import ArticlesGrid from "./components/ArticlesGrid";
 import CustomPagination from "./components/CustomPagination";
@@ -146,7 +146,13 @@ const ResourcesContentInner = () => {
         setIsTransitioning(false);
       }, 300);
     },
-    [currentPage, queryFilter, preserveScrollPosition, restoreScrollPosition, updateURL],
+    [
+      currentPage,
+      queryFilter,
+      preserveScrollPosition,
+      restoreScrollPosition,
+      updateURL,
+    ],
   );
 
   return (

@@ -10,7 +10,7 @@ const ResumeSubmit = ({
 }: {
   props: { setStage: React.Dispatch<React.SetStateAction<number>> };
 }) => {
-  const [loading, setLoading] = useState(false);
+  const [_loading, setLoading] = useState(false);
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();

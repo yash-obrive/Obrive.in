@@ -4,12 +4,12 @@ import { useSearchParams } from "next/navigation";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { z } from "zod";
-import { apiFetch } from "@/lib/api";
 import FONTS from "@/assets/fonts";
 import {
   PRICING_STREAMS,
   type PricingPackage,
 } from "@/constants/pages/pricingData";
+import { apiFetch } from "@/lib/api";
 
 // Razorpay types
 declare global {
@@ -150,11 +150,18 @@ export default function CheckoutForm() {
 
   // Preview breakdown shown before server responds (from frontend pricing data, in rupees).
   // These are for display only — Razorpay uses the server-authoritative totalAmount.
-  const previewGst = packageDetails ? Math.round(packageDetails.priceINR * 1800 / 10000) : 0;
-  const previewGatewayFee = packageDetails ? Math.round(packageDetails.priceINR * 200 / 10000) : 0;
-  const previewGatewayFeeGst = Math.round(previewGatewayFee * 1800 / 10000);
+  const previewGst = packageDetails
+    ? Math.round((packageDetails.priceINR * 1800) / 10000)
+    : 0;
+  const previewGatewayFee = packageDetails
+    ? Math.round((packageDetails.priceINR * 200) / 10000)
+    : 0;
+  const previewGatewayFeeGst = Math.round((previewGatewayFee * 1800) / 10000);
   const previewTotal = packageDetails
-    ? packageDetails.priceINR + previewGst + previewGatewayFee + previewGatewayFeeGst
+    ? packageDetails.priceINR +
+      previewGst +
+      previewGatewayFee +
+      previewGatewayFeeGst
     : 0;
 
   const handleSubmit = async (e?: React.FormEvent) => {
@@ -219,12 +226,12 @@ export default function CheckoutForm() {
 
       // Store server breakdown for display — client does NOT recalculate
       setBreakdown({
-        baseAmount:     order.baseAmount,
-        serviceGst:     order.serviceGst,
-        gatewayFee:     order.gatewayFee,
-        gatewayFeeGst:  order.gatewayFeeGst,
+        baseAmount: order.baseAmount,
+        serviceGst: order.serviceGst,
+        gatewayFee: order.gatewayFee,
+        gatewayFeeGst: order.gatewayFeeGst,
         gatewayCharges: order.gatewayCharges,
-        totalAmount:    order.totalAmount,
+        totalAmount: order.totalAmount,
       });
     } catch (err) {
       setSubmitState("error");
@@ -612,7 +619,10 @@ export default function CheckoutForm() {
                 {/* Financial breakdown — always uses server-returned values when available */}
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between items-center text-primary/80">
-                    <span>Service Price ({packageDetails.isMonthly ? "Monthly" : "One-time"})</span>
+                    <span>
+                      Service Price (
+                      {packageDetails.isMonthly ? "Monthly" : "One-time"})
+                    </span>
                     <span className="font-bold">
                       {breakdown
                         ? formatINR(breakdown.baseAmount / 100)

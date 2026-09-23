@@ -1,7 +1,5 @@
 "use client";
 
-import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
-
 import dynamic from "next/dynamic";
 
 const GoodbyeCardRive = dynamic(() => import("./GoodbyeCardRive"), {
@@ -21,8 +19,6 @@ const GoodByeCard = () => {
           <h2 className="text-xl sm:text-2xl">
             Why Choose Obrive for AR, VR & Spatial Computing
           </h2>
-
-
         </div>
         <div className="flex flex-col gap-10 sm:flex-row justify-between">
           <div className="max-sm:hidden flex-1 px-4 sm:px-0 h-full w-full">

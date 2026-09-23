@@ -1,20 +1,35 @@
 "use client";
 
-import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import FONTS from "@/assets/fonts";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useRef, useState } from "react";
+import FONTS from "@/assets/fonts";
 
 const CLIENT_FILENAMES = [
   "Goldman_Sachs.png",
-  "Frame_1000008285.png", "Frame_1000008286.png", "Frame_1561531430.png",
-  "Frame_1561531431.png", "Frame_1561531432.png", "Frame_1561531433.png",
-  "Frame_1561531435.png", "Frame_1561531436.png",
-  "Frame_1561531437.png", "Frame_1561531438.png", "Frame_1561531439.png",
-  "Frame_1561531440.png", "Frame_1561531441.png", "Frame_1561531442.png",
-  "Frame_1561531443.png", "Frame_1561531444.png", "Frame_1561531446.png",
-  "Frame_1561531447.png", "Frame_1561531448.png", "Frame_1561531449.png",
-  "Frame_1561531450.png", "Frame_1561531451.png", "Frame_1561531453.png"
+  "Frame_1000008285.png",
+  "Frame_1000008286.png",
+  "Frame_1561531430.png",
+  "Frame_1561531431.png",
+  "Frame_1561531432.png",
+  "Frame_1561531433.png",
+  "Frame_1561531435.png",
+  "Frame_1561531436.png",
+  "Frame_1561531437.png",
+  "Frame_1561531438.png",
+  "Frame_1561531439.png",
+  "Frame_1561531440.png",
+  "Frame_1561531441.png",
+  "Frame_1561531442.png",
+  "Frame_1561531443.png",
+  "Frame_1561531444.png",
+  "Frame_1561531446.png",
+  "Frame_1561531447.png",
+  "Frame_1561531448.png",
+  "Frame_1561531449.png",
+  "Frame_1561531450.png",
+  "Frame_1561531451.png",
+  "Frame_1561531453.png",
 ];
 
 const CLIENT_IMAGES = CLIENT_FILENAMES.map((filename, i) => ({
@@ -25,7 +40,13 @@ const CLIENT_IMAGES = CLIENT_FILENAMES.map((filename, i) => ({
 
 const ITEMS_PER_PAGE = 20;
 
-function ClientCard({ img, index }: { img: { id: string; url: string; alt: string }; index: number }) {
+function ClientCard({
+  img,
+  index,
+}: {
+  img: { id: string; url: string; alt: string };
+  index: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -34,7 +55,11 @@ function ClientCard({ img, index }: { img: { id: string; url: string; alt: strin
       ref={ref}
       key={img.id}
       initial={{ opacity: 0, y: 36, scale: 0.93 }}
-      animate={inView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 36, scale: 0.93 }}
+      animate={
+        inView
+          ? { opacity: 1, y: 0, scale: 1 }
+          : { opacity: 0, y: 36, scale: 0.93 }
+      }
       transition={{
         delay: (index % 8) * 0.07,
         duration: 0.55,
@@ -72,7 +97,7 @@ export default function ClientsPage() {
 
   const paginatedImages = CLIENT_IMAGES.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
   const handlePrev = () => {
@@ -86,10 +111,9 @@ export default function ClientsPage() {
   return (
     <div className="bg-white min-h-screen">
       <main className="w-full flex flex-col items-center pt-24 md:pt-32 pb-24 md:pb-32">
-
         {/* Hero Title */}
         <motion.h1
-          className={`${FONTS.microgrammaBold.className} text-primary text-4xl md:text-5xl lg:text-[64px] text-center uppercase tracking-wide mb-16 md:mb-24`}
+          className={`${FONTS.microgrammaBold.className} text-primary text-4xl md:text-5xl lg:text-[64px] text-center uppercase tracking-wide mb-10 md:mb-12`}
           initial={{ opacity: 0, y: -24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}

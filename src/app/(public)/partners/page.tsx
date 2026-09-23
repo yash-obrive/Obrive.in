@@ -1,9 +1,8 @@
 "use client";
 
+import { motion, useInView, type Variants } from "framer-motion";
 import { Calendar, CircleUser } from "lucide-react";
-import Image from "next/image";
-import React, { useRef } from "react";
-import { motion, useInView, Variants } from "framer-motion";
+import { useRef } from "react";
 import FONTS from "@/assets/fonts";
 
 const pageHeader = {
@@ -34,7 +33,13 @@ const cardVariants: Variants = {
   }),
 };
 
-function ClientCard({ img, index }: { img: { id: string; url: string; alt: string }; index: number }) {
+function ClientCard({
+  img,
+  index,
+}: {
+  img: { id: string; url: string; alt: string };
+  index: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 

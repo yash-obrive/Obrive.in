@@ -1,9 +1,9 @@
 "use client";
-import { Icon, LogOut, MessageCircle, X } from "lucide-react";
-import Link from "@/components/shared/LocalizedLink";
+import { LogOut, MessageCircle, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import supportImg from "@/assets/images/sidebar/support.png";
+import Link from "@/components/shared/LocalizedLink";
 import PrimaryLogo from "@/components/shared/logo/PrimaryLogo";
 import { apiFetch, clearAuthStorage } from "@/lib/api";
 

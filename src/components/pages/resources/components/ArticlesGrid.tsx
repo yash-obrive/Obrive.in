@@ -24,7 +24,9 @@ const ArticlesGrid = ({
           <div className="flex flex-col items-center gap-2 sm:gap-3">
             <RoundedBallIcon />
             <h2 className="uppercase text-xs sm:text-sm font-medium text-center">
-              {currentFilter?.toLowerCase() === "all" ? "All Articles" : currentFilter}
+              {currentFilter?.toLowerCase() === "all"
+                ? "All Articles"
+                : currentFilter}
             </h2>
           </div>
 

@@ -1,5 +1,4 @@
 import { notFound, redirect } from "next/navigation";
-import React from "react";
 import FONTS from "@/assets/fonts";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,7 +14,11 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false;
 
-const DetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
+const DetailsPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
   const { slug } = await params;
   const career = await getCareerBySlug(slug);
 
@@ -26,8 +29,8 @@ const DetailsPage = async ({ params }: { params: Promise<{ slug: string }> }) =>
   async function handleSubmit(formData: FormData) {
     "use server";
 
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
+    const _name = formData.get("name") as string;
+    const _email = formData.get("email") as string;
 
     redirect(`/apply.career.obrive.com/${slug}/more`);
   }

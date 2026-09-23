@@ -1,4 +1,3 @@
-import React from "react";
 import FONTS from "@/assets/fonts";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 
@@ -6,7 +5,7 @@ export default function CheckoutHero() {
   return (
     <FullWidthSection
       backgroundColor="accent"
-      className="pt-32 pb-20 md:pt-40 md:pb-24 relative overflow-hidden"
+      className="pt-32 pb-8 md:pt-32 md:pb-12 relative overflow-hidden"
     >
       {/* Decorative background elements consistent with Obrive branding */}
       <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-accent/5 blur-[120px] pointer-events-none" />

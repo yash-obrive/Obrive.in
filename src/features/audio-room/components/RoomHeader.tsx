@@ -1,7 +1,6 @@
 "use client";
 
 import { Radio, Users } from "lucide-react";
-import React from "react";
 
 interface RoomHeaderProps {
   title?: string;

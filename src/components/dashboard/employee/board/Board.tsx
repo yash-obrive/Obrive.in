@@ -36,7 +36,7 @@ type BoardProps = {
   onTaskDrop?: (
     task: BoardTask,
     columnId: string,
-  ) => Promise<BoardTask | void> | BoardTask | void;
+  ) => Promise<BoardTask | undefined> | BoardTask | undefined;
   showAddTask?: boolean;
   addButtonLabel?: string;
 };
@@ -79,7 +79,7 @@ export default function Board({
           const fetchedUserId = json.data.id || json.data.userid;
           setUserId(String(fetchedUserId));
         }
-      } catch (err) {
+      } catch (_err) {
         console.error("Failed to fetch user ID");
       }
     };
@@ -150,7 +150,7 @@ export default function Board({
           body: JSON.stringify({ note_date: nextColumnId }),
         });
       }
-    } catch (error) {
+    } catch (_error) {
       setTasks(previousTasks);
     } finally {
       setDraggedTask(null);

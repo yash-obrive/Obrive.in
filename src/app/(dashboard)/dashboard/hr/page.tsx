@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import {
   Calendar,
   Clock,
-  ExternalLink,
   FolderOpen,
   History,
   LayoutDashboard,
@@ -14,11 +13,9 @@ import {
   Palmtree,
   RefreshCw,
   Search,
-  ShieldCheck,
-  Users,
 } from "lucide-react";
 import nextDynamic from "next/dynamic";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Messenger from "@/components/chat/Messenger";
 import ActivityStream from "@/components/dashboard/ActivityStream";
 import Calender from "@/components/dashboard/Calender";
@@ -88,7 +85,7 @@ export default function HRDashboard() {
   } = useDashboardData("hr");
 
   const [activeSection, setActiveSection] = useState("dashboard");
-  const [supportOpen, setSupportOpen] = useState(false);
+  const [_supportOpen, setSupportOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // Location Tracking State
@@ -226,10 +223,8 @@ export default function HRDashboard() {
   const filteredEmployees = trackedEmployees.filter((emp) => {
     const matchesSearch =
       emp.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (emp.department &&
-        emp.department.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (emp.job_title &&
-        emp.job_title.toLowerCase().includes(searchTerm.toLowerCase()));
+      emp.department?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      emp.job_title?.toLowerCase().includes(searchTerm.toLowerCase());
 
     if (filterTracking === "enabled")
       return matchesSearch && emp.is_location_tracking_enabled;

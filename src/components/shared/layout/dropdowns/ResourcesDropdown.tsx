@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "@/components/shared/LocalizedLink";
 import { ICONS, ICONS_META } from "@/assets/images";
+import Link from "@/components/shared/LocalizedLink";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenuContent,

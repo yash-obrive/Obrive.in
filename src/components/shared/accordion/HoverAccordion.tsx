@@ -54,7 +54,7 @@ export default function HoverAccordion({
   React.useLayoutEffect(() => {
     const h = contentRefs.current.map((el) => (el ? el.scrollHeight : 0));
     setHeights(h);
-  }, [items]);
+  }, []);
 
   React.useEffect(() => {
     const onResize = () => {

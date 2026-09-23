@@ -15,19 +15,22 @@ export const THREE_D_PRODUCT_CONFIGURATION_HERO = {
 export const THREE_D_PRODUCT_CONFIGURATION_KEY_BENEFITS = [
   {
     title: "Interactive Experiences",
-    description: "Let customers actively explore products instead of relying on static images.",
+    description:
+      "Let customers actively explore products instead of relying on static images.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
   {
     title: "Real-Time Customization",
-    description: "Update colours, materials, components, and accessories instantly.",
+    description:
+      "Update colours, materials, components, and accessories instantly.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
   {
     title: "Higher Confidence",
-    description: "Show the configured product clearly before a customer commits.",
+    description:
+      "Show the configured product clearly before a customer commits.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
@@ -39,7 +42,8 @@ export const THREE_D_PRODUCT_CONFIGURATION_KEY_BENEFITS = [
   },
   {
     title: "Multi-Channel Reach",
-    description: "Deploy the same product experience across web, mobile, AR/VR, and retail.",
+    description:
+      "Deploy the same product experience across web, mobile, AR/VR, and retail.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
@@ -56,21 +60,24 @@ export const THREE_D_PRODUCT_CONFIGURATION_HOW_IT_WORKS = [
   {
     step: "02",
     title: "Photorealistic Rendering",
-    description: "Show materials, finishes, textures, and lighting with high visual fidelity.",
+    description:
+      "Show materials, finishes, textures, and lighting with high visual fidelity.",
     src: "/images/use-cases/product_config_2.jpg",
     srcMeta: { alt: "Photorealistic Rendering", width: 720, height: 405 },
   },
   {
     step: "03",
     title: "Rule-Based Configuration",
-    description: "Manage compatible options, dependencies, packages, and product logic.",
+    description:
+      "Manage compatible options, dependencies, packages, and product logic.",
     src: "/images/use-cases/product_config_3.jpg",
     srcMeta: { alt: "Rule-Based Configuration", width: 720, height: 405 },
   },
   {
     step: "04",
     title: "AR/VR Visualization",
-    description: "Let customers experience products in real or immersive environments.",
+    description:
+      "Let customers experience products in real or immersive environments.",
     src: "/images/use-cases/product_config_4.jpg",
     srcMeta: { alt: "AR/VR Visualization", width: 720, height: 405 },
   },
@@ -99,28 +106,60 @@ export const THREE_D_PRODUCT_CONFIGURATION_SERVICE_SECTIONS = [
     items: [],
     footer: "",
     subSections: [
-      { title: "Automotive", description: "Automotive and vehicle configurators." },
+      {
+        title: "Automotive",
+        description: "Automotive and vehicle configurators.",
+      },
       { title: "Furniture", description: "Furniture and modular interiors." },
-      { title: "Consumer Electronics", description: "Consumer product visualization." },
-      { title: "Industrial Machinery", description: "Industrial machinery configurators." },
-      { title: "Luxury Goods", description: "Luxury and lifestyle product experiences." }
-    ]
+      {
+        title: "Consumer Electronics",
+        description: "Consumer product visualization.",
+      },
+      {
+        title: "Industrial Machinery",
+        description: "Industrial machinery configurators.",
+      },
+      {
+        title: "Luxury Goods",
+        description: "Luxury and lifestyle product experiences.",
+      },
+    ],
   },
   {
     id: "why-choose",
     title: "Why Choose Obrive",
     subtitle: "",
-    description: "Create immersive product experiences that help customers understand, personalize, and act with confidence.",
+    description:
+      "Create immersive product experiences that help customers understand, personalize, and act with confidence.",
     label: "Why Choose Obrive",
     items: [],
     footer: "",
     subSections: [
-      { title: "Photorealistic Rendering", description: "Accurate materials, finishes, lighting, and textures." },
-      { title: "Rule-Based Configuration", description: "Supports dependent options, compatibility, pricing, and product variants." },
-      { title: "AR-Ready Visualization", description: "Lets customers place or preview products in real environments." },
-      { title: "Seamless Integration", description: "Integration with ecommerce, CRM, ERP, CPQ, dealer, and lead-management systems." },
-      { title: "Reusable 3D Assets", description: "Work across websites, sales teams, exhibitions, kiosks, and campaigns." }
-    ]
+      {
+        title: "Photorealistic Rendering",
+        description: "Accurate materials, finishes, lighting, and textures.",
+      },
+      {
+        title: "Rule-Based Configuration",
+        description:
+          "Supports dependent options, compatibility, pricing, and product variants.",
+      },
+      {
+        title: "AR-Ready Visualization",
+        description:
+          "Lets customers place or preview products in real environments.",
+      },
+      {
+        title: "Seamless Integration",
+        description:
+          "Integration with ecommerce, CRM, ERP, CPQ, dealer, and lead-management systems.",
+      },
+      {
+        title: "Reusable 3D Assets",
+        description:
+          "Work across websites, sales teams, exhibitions, kiosks, and campaigns.",
+      },
+    ],
   },
   {
     id: "scope",
@@ -131,13 +170,21 @@ export const THREE_D_PRODUCT_CONFIGURATION_SERVICE_SECTIONS = [
     items: [],
     footer: "",
     subSections: [
-      { title: "Automotive", description: "Automotive and vehicle configurators." },
+      {
+        title: "Automotive",
+        description: "Automotive and vehicle configurators.",
+      },
       { title: "Furniture", description: "Furniture and modular interiors." },
-      { title: "Machinery", description: "Industrial machinery configurators." },
+      {
+        title: "Machinery",
+        description: "Industrial machinery configurators.",
+      },
       { title: "Consumer", description: "Consumer product visualization." },
-      { title: "Luxury", description: "Luxury and lifestyle product experiences." },
-      { title: "Discovery", description: "AR-enabled product discovery." }
-    ]
-  }
+      {
+        title: "Luxury",
+        description: "Luxury and lifestyle product experiences.",
+      },
+      { title: "Discovery", description: "AR-enabled product discovery." },
+    ],
+  },
 ] as const;
-

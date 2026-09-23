@@ -1,9 +1,7 @@
 "use client";
 
-import { Check, User } from "lucide-react";
-import Image from "next/image";
+import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
-import supportImg from "@/assets/images/employee/illustration.png";
 import { apiFetch } from "@/lib/api";
 
 interface Employee {
@@ -88,7 +86,7 @@ export default function CreateProjectDialog({
         setSelectedClient(null);
       }
     }
-  }, [open, isEdit, project]);
+  }, [open, isEdit, project, fetchClients, fetchEmployees]);
 
   const fetchEmployees = async () => {
     try {

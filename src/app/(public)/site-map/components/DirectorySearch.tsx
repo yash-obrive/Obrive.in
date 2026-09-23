@@ -1,7 +1,7 @@
 "use client";
-import Link from "@/components/shared/LocalizedLink";
-import React, { useState } from "react";
+import { useState } from "react";
 import FONTS from "@/assets/fonts";
+import Link from "@/components/shared/LocalizedLink";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import type { DirectoryCategory } from "../directoryData";
@@ -15,17 +15,16 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
   const normalizedQuery = query.toLowerCase().trim();
 
   // Filter logic
-  let visiblePagesCount = 0;
-  const filteredCategories = categories
-    .map((cat) => {
-      const filteredEntries = cat.entries.filter((entry) => {
-        const isMatch =
-          !normalizedQuery || entry.searchKeywords.includes(normalizedQuery);
-        if (isMatch) visiblePagesCount++;
-        return isMatch;
-      });
-      return { ...cat, entries: filteredEntries };
-    })
+  let _visiblePagesCount = 0;
+  const filteredCategories = categories.map((cat) => {
+    const filteredEntries = cat.entries.filter((entry) => {
+      const isMatch =
+        !normalizedQuery || entry.searchKeywords.includes(normalizedQuery);
+      if (isMatch) _visiblePagesCount++;
+      return isMatch;
+    });
+    return { ...cat, entries: filteredEntries };
+  });
   return (
     <div className="w-full relative min-h-screen">
       {/* Sticky Search Bar */}

@@ -40,7 +40,7 @@ const MyProjectsDetailsSection = ({
   project: ProjectItem | null;
   onUpdate?: () => void;
 }) => {
-  const [updatingProgress, setUpdatingProgress] = React.useState(false);
+  const [_updatingProgress, setUpdatingProgress] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState<any>(null);
 
   React.useEffect(() => {
@@ -183,7 +183,9 @@ const MyProjectsDetailsSection = ({
                 min="0"
                 max="100"
                 value={progress}
-                onChange={(e) => handleUpdateProgress(parseInt(e.target.value))}
+                onChange={(e) =>
+                  handleUpdateProgress(parseInt(e.target.value, 10))
+                }
                 className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-500"
               />
             </div>

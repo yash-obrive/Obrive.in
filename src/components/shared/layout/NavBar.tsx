@@ -1,7 +1,7 @@
 "use client";
 import { Menu, X } from "lucide-react";
-import Link from "@/components/shared/LocalizedLink";
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "@/components/shared/LocalizedLink";
 import { FadeInOnLoad } from "@/components/shared/motion/GsapMotion";
 import {
   Accordion,
@@ -20,6 +20,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { MOBILE_NAV_STRUCTURE } from "@/constants/navigation";
+import { useCountry } from "@/context/CountryContext";
 import AnimatedButton from "../buttons/AnimatedButton";
 import PrimaryLogo from "../logo/PrimaryLogo";
 import { CaseStudiesDropdown } from "./dropdowns/CaseStudiesDropdown";
@@ -27,7 +28,6 @@ import { CompanyDropdown } from "./dropdowns/CompanyDropdown";
 import { ProductsDropdown } from "./dropdowns/ProductsDropdown";
 import { ResourcesDropdown } from "./dropdowns/ResourcesDropdown";
 import { SolutionsDropdown } from "./dropdowns/SolutionsDropdown";
-import { useCountry } from "@/context/CountryContext";
 
 // Breakpoint constants
 const BREAKPOINTS = {
@@ -97,12 +97,13 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [windowWidth, setWindowWidth] = useState(0);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [_isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const { countryConfig } = useCountry();
   const calendlyUrl =
-    countryConfig?.calendlyUrl || "https://calendly.com/obrive-inc/talk-to-ob-experts";
+    countryConfig?.calendlyUrl ||
+    "https://calendly.com/obrive-inc/talk-to-ob-experts";
 
   // Use the custom hook for device detection
   const { isMobile, isTablet } = useDeviceType(windowWidth, isMounted);

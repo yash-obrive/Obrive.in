@@ -147,9 +147,9 @@ export default function Products() {
       />
 
       <section className="flex flex-col">
-        <FullWidthSection backgroundColor="accent" className="py-10 pt-30">
+        <FullWidthSection backgroundColor="accent" className="pt-32 pb-8">
           <FadeInOnView>
-            <div className="text-center flex flex-col items-center gap-8">
+            <div className="text-center flex flex-col items-center gap-6 mt-4">
               <h1
                 className={`${FONTS.microgrammaBold.className} text-secondary sm:leading-20 text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-[90vw] sm:max-w-3xl md:max-w-4xl break-words text-balance`}
               >

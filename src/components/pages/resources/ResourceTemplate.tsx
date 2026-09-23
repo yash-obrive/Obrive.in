@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "@/components/shared/LocalizedLink";
 import type { ReactNode } from "react";
 import FONTS from "@/assets/fonts";
 import {
@@ -10,7 +9,7 @@ import {
   RESOURCES_BLOG_IMAGES_META,
 } from "@/assets/images";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import type { CaseStudyMetadata } from "@/lib/mdx";
 import BlogRecommendations from "./BlogRecommendations";
 import ResourceBackButton from "./ResourceBackButton";
@@ -50,11 +49,17 @@ export default function ResourceTemplate({
                   const heroKey = metadata?.heroImage as
                     | keyof typeof CASE_STUDIES_IMAGES
                     | undefined;
-                  
-                  let fallbackHero: string | typeof CASE_STUDIES_IMAGES[keyof typeof CASE_STUDIES_IMAGES] | undefined = undefined;
+
+                  let fallbackHero:
+                    | string
+                    | (typeof CASE_STUDIES_IMAGES)[keyof typeof CASE_STUDIES_IMAGES]
+                    | undefined;
                   if (heroKey && CASE_STUDIES_IMAGES[heroKey]) {
                     fallbackHero = CASE_STUDIES_IMAGES[heroKey];
-                  } else if (typeof metadata?.heroImage === "string" && metadata.heroImage.startsWith("/")) {
+                  } else if (
+                    typeof metadata?.heroImage === "string" &&
+                    metadata.heroImage.startsWith("/")
+                  ) {
                     fallbackHero = metadata.heroImage;
                   }
 

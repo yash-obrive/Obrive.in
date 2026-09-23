@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Michroma } from "next/font/google";
-import { TimerProvider } from "@/context/TimerContext";
 import "./globals.css";
 import Script from "next/script";
 

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
@@ -7,7 +7,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 async function proxy(
   req: NextRequest,
-  context: { params: Promise<{ path: string[] }> }
+  context: { params: Promise<{ path: string[] }> },
 ) {
   try {
     const params = await Promise.resolve(context.params);
@@ -62,7 +62,7 @@ async function proxy(
     console.error("Proxy error:", error);
     return NextResponse.json(
       { success: false, message: error.message || "Proxy error" },
-      { status: 502 }
+      { status: 502 },
     );
   }
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import type { Employee, Leave } from "./Vacations";
 
 interface VacationCalendarViewProps {

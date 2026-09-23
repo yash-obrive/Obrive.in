@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { ICONS, ICONS_META } from "@/assets/images";
 import FONTS from "@/assets/fonts";
 import { KeyBenefitsCard } from "@/components/shared/cards/KeyBenefitsCard";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
@@ -10,8 +8,6 @@ import type {
   SidebarLink,
   WorkflowStep,
 } from "@/types/services";
-import Link from "@/components/shared/LocalizedLink";
-import { ArrowRight } from "lucide-react";
 import SolutionSidebarLayout from "./components/SolutionSidebarLayout";
 import WorkflowSection from "./components/WorkflowSection";
 
@@ -46,7 +42,7 @@ export function SolutionTemplate({
     <div>
       <FadeInOnView>
         <FullWidthSection backgroundColor="none">
-          <div className="flex mt-40 items-center flex-col gap-26 max-xl:mt-32 max-lg:mt-28 max-md:mt-20 max-sm:mt-26 max-md:gap-16">
+          <div className="flex mt-24 items-center flex-col gap-12 max-xl:mt-20 max-lg:mt-16 max-md:mt-12 max-sm:mt-16 max-md:gap-8">
             <div className="w-4xl max-xl:w-full">
               <h1
                 className={`${FONTS.microgrammaBold.className} text-center text-primary text-7xl max-xl:text-6xl max-lg:text-5xl max-md:text-4xl max-sm:text-3xl`}
@@ -113,8 +109,6 @@ export function SolutionTemplate({
           />
         )}
       </FullWidthSection>
-
     </div>
   );
 }
-

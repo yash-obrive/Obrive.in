@@ -142,10 +142,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Case study/resource/blog pages per country
   const caseStudySlugs = await getAllCaseStudySlugs();
   const { getAllBlogs } = await import("@/lib/blogs");
-  const { getAllCaseStudySlugs: getAllJsonCaseStudySlugs } = await import("@/lib/case-studies");
+  const { getAllCaseStudySlugs: getAllJsonCaseStudySlugs } = await import(
+    "@/lib/case-studies"
+  );
   const blogSlugs = getAllBlogs().map((b) => b.slug);
   const jsonCaseStudySlugs = getAllJsonCaseStudySlugs();
-  const allResourceSlugs = [...caseStudySlugs, ...blogSlugs, ...jsonCaseStudySlugs];
+  const allResourceSlugs = [
+    ...caseStudySlugs,
+    ...blogSlugs,
+    ...jsonCaseStudySlugs,
+  ];
 
   const localizedCaseStudyPages: MetadataRoute.Sitemap =
     activeCountries.flatMap((country) =>

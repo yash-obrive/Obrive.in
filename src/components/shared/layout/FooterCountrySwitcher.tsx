@@ -1,8 +1,12 @@
 "use client";
 
 import { Globe } from "lucide-react";
+import {
+  COUNTRIES,
+  type CountryCode,
+  SUPPORTED_COUNTRIES,
+} from "@/config/countries";
 import { useCountry } from "@/context/CountryContext";
-import { SUPPORTED_COUNTRIES, COUNTRIES, type CountryCode } from "@/config/countries";
 
 export default function FooterCountrySwitcher() {
   const { country, switchCountry } = useCountry();

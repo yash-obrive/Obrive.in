@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import CheckoutForm from "./components/CheckoutForm";
 import CheckoutHero from "./components/CheckoutHero";
 

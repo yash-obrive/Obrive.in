@@ -9,7 +9,7 @@ import {
   RefreshCw,
   X,
 } from "lucide-react";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { apiFetch } from "@/lib/api";
 
 interface LocationPing {
@@ -101,7 +101,7 @@ export default function LocationHistoryModal({
       if (!map.has(dateKey)) {
         map.set(dateKey, []);
       }
-      map.get(dateKey)!.push(ping);
+      map.get(dateKey)?.push(ping);
     });
 
     const todayDate = new Date();

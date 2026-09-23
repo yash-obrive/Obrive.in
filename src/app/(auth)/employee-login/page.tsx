@@ -45,7 +45,10 @@ export default function EmployeeLogin() {
       const data = await res.json().catch(() => null);
 
       if (!res.ok) {
-        throw new Error(data?.message || (res.status === 404 ? "API service unreachable" : "Login failed"));
+        throw new Error(
+          data?.message ||
+            (res.status === 404 ? "API service unreachable" : "Login failed"),
+        );
       }
 
       if (data?.data?.accessToken) {

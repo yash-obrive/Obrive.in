@@ -1,11 +1,11 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { CaseStudy } from "@/lib/case-studies";
-import CaseStudyCard from "./CaseStudyCard";
+import { useCallback, useMemo, useRef, useState } from "react";
 import RoundedBallIcon from "@/components/shared/icons/RoundedBallIcon";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
+import type { CaseStudy } from "@/lib/case-studies";
+import CaseStudyCard from "./CaseStudyCard";
 
 interface CaseStudyListProps {
   caseStudies: CaseStudy[];
@@ -75,7 +75,7 @@ const CaseStudyList = ({ caseStudies }: CaseStudyListProps) => {
         setIsTransitioning(false);
       }, 300);
     },
-    [currentFilter, preserveScrollPosition, restoreScrollPosition]
+    [currentFilter, preserveScrollPosition, restoreScrollPosition],
   );
 
   const handlePageChange = useCallback(
@@ -94,7 +94,7 @@ const CaseStudyList = ({ caseStudies }: CaseStudyListProps) => {
         setIsTransitioning(false);
       }, 300);
     },
-    [currentPage, preserveScrollPosition, restoreScrollPosition, totalPages]
+    [currentPage, preserveScrollPosition, restoreScrollPosition, totalPages],
   );
 
   return (
@@ -154,7 +154,7 @@ const CaseStudyList = ({ caseStudies }: CaseStudyListProps) => {
               </motion.div>
             ))}
           </motion.div>
-          
+
           {currentCaseStudies.length === 0 && (
             <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
               <p>No case studies found for this category.</p>
@@ -171,7 +171,18 @@ const CaseStudyList = ({ caseStudies }: CaseStudyListProps) => {
               className="w-10 h-10 rounded-full flex items-center justify-center bg-card text-foreground disabled:opacity-50 hover:bg-accent transition-colors shadow-sm"
               aria-label="Previous page"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="m15 18-6-6 6-6" />
+              </svg>
             </button>
             <span className="text-sm font-medium">
               Page {currentPage} of {totalPages}
@@ -182,7 +193,18 @@ const CaseStudyList = ({ caseStudies }: CaseStudyListProps) => {
               className="w-10 h-10 rounded-full flex items-center justify-center bg-card text-foreground disabled:opacity-50 hover:bg-accent transition-colors shadow-sm"
               aria-label="Next page"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="m9 18 6-6-6-6" />
+              </svg>
             </button>
           </div>
         )}

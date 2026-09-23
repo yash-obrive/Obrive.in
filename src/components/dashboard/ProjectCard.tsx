@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Calendar,
-  CalendarDays,
-  ChevronDown,
-  ChevronRight,
-  ChevronUp,
-} from "lucide-react";
+import { Calendar, ChevronDown, ChevronRight, ChevronUp } from "lucide-react";
 import Image from "next/image";
 
 export type ProjectPriority = "Low" | "Medium" | "High";
@@ -36,7 +30,7 @@ function initials(name: string) {
     .split(" ")
     .filter(Boolean)
     .slice(0, 2)
-    .map((p) => p[0]!.toUpperCase())
+    .map((p) => p[0]?.toUpperCase())
     .join("");
 }
 
@@ -46,7 +40,6 @@ function priorityUI(priority: ProjectPriority) {
       return { label: "High", icon: ChevronUp, color: "text-red-500" };
     case "Medium":
       return { label: "Medium", icon: ChevronUp, color: "text-amber-500" };
-    case "Low":
     default:
       return { label: "Low", icon: ChevronDown, color: "text-green-500" };
   }

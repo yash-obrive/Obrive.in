@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import { IMAGES, IMAGES_META } from "@/assets/images";
 
 interface PrimaryLogoProps {

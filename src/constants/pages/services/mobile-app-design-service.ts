@@ -1,27 +1,71 @@
-import { IMAGES, IMAGES_META, ICONS, ICONS_META } from "@/assets/images";
+import { ICONS, ICONS_META } from "@/assets/images";
 
 import type { SolutionIndustriesContent } from "@/types/services";
 
 export const MOBILE_APP_DESIGN_SERVICE_HERO = {
   title: "Mobile App Design Services for the AI Era — Across Industries",
-  description: "Our mobile app design services combine product strategy, user research, UX architecture, UI design, interaction design, design systems, prototyping, accessibility and AI-era experience thinking to create mobile products people can understand, trust and use. From consumer apps and enterprise mobility to commerce, financial services, healthcare, field operations, connected products and AI-powered mobile experiences, Obrive designs applications around business objectives, user needs and the realities of mobile behavior.",
-  description2: "We design for iOS and Android experiences across smartphones, tablets and connected mobile ecosystems, with a platform-aware approach that considers native conventions, responsive behavior, performance, privacy, accessibility and the product roadmap. In the AI Era, a mobile app is more than a collection of screens. It can become an intelligent product interface—helping users discover information, complete tasks, make decisions, personalize experiences and interact with AI capabilities without compromising clarity or human control.",
+  description:
+    "Our mobile app design services combine product strategy, user research, UX architecture, UI design, interaction design, design systems, prototyping, accessibility and AI-era experience thinking to create mobile products people can understand, trust and use. From consumer apps and enterprise mobility to commerce, financial services, healthcare, field operations, connected products and AI-powered mobile experiences, Obrive designs applications around business objectives, user needs and the realities of mobile behavior.",
+  description2:
+    "We design for iOS and Android experiences across smartphones, tablets and connected mobile ecosystems, with a platform-aware approach that considers native conventions, responsive behavior, performance, privacy, accessibility and the product roadmap. In the AI Era, a mobile app is more than a collection of screens. It can become an intelligent product interface—helping users discover information, complete tasks, make decisions, personalize experiences and interact with AI capabilities without compromising clarity or human control.",
   ctaButtons: { primary: "Explore Solutions", secondary: "SCHEDULE A DEMO" },
 };
 
 export const MOBILE_APP_DESIGN_SERVICE_KEY_BENEFITS = [
-  { title: "Design Mobile Products People Want to Open, Use and Trust", description: "Your mobile app competes for attention in an environment where users expect speed, simplicity, personalization and immediate value. Obrive designs mobile experiences that reduce friction and turn complex products, services and workflows into clear, useful journeys. We combine human-centered design with AI-era product thinking so the app can evolve as user expectations and intelligent capabilities change.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Business-First Product Strategy", description: "We begin with the business challenge, target users, product goals, operating model, technical constraints and desired outcomes before designing screens. The objective is not to add features for novelty; it is to identify the experiences that should exist and make every important interaction purposeful.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Human-Centered Mobile UX", description: "Mobile experiences are shaped by small screens, touch interaction, context switching, notifications, connectivity, device capabilities and short attention windows. We design navigation, task flows, information hierarchy, gestures, forms and feedback around real user behavior.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "AI-Ready Mobile Experiences", description: "We design mobile products that can accommodate intelligent search, recommendations, conversational interfaces, contextual assistance, personalization, automation and AI-generated content where these capabilities create genuine user or business value. AI is treated as part of the product experience—not as a decorative feature. We define where AI assists, where users remain in control, how outputs are explained, and how the experience handles uncertainty or errors.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Cross-Platform Product Thinking", description: "We design experiences for iOS, Android and cross-platform products while respecting platform conventions and product requirements. The design system can establish shared brand behavior while allowing platform-specific interaction patterns where they improve usability.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Design Systems That Scale", description: "We create reusable components, tokens, patterns, interaction rules and documentation that help product teams ship consistently across features, devices and future releases.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
+  {
+    title: "Design Mobile Products People Want to Open, Use and Trust",
+    description:
+      "Your mobile app competes for attention in an environment where users expect speed, simplicity, personalization and immediate value. Obrive designs mobile experiences that reduce friction and turn complex products, services and workflows into clear, useful journeys. We combine human-centered design with AI-era product thinking so the app can evolve as user expectations and intelligent capabilities change.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Business-First Product Strategy",
+    description:
+      "We begin with the business challenge, target users, product goals, operating model, technical constraints and desired outcomes before designing screens. The objective is not to add features for novelty; it is to identify the experiences that should exist and make every important interaction purposeful.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Human-Centered Mobile UX",
+    description:
+      "Mobile experiences are shaped by small screens, touch interaction, context switching, notifications, connectivity, device capabilities and short attention windows. We design navigation, task flows, information hierarchy, gestures, forms and feedback around real user behavior.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "AI-Ready Mobile Experiences",
+    description:
+      "We design mobile products that can accommodate intelligent search, recommendations, conversational interfaces, contextual assistance, personalization, automation and AI-generated content where these capabilities create genuine user or business value. AI is treated as part of the product experience—not as a decorative feature. We define where AI assists, where users remain in control, how outputs are explained, and how the experience handles uncertainty or errors.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Cross-Platform Product Thinking",
+    description:
+      "We design experiences for iOS, Android and cross-platform products while respecting platform conventions and product requirements. The design system can establish shared brand behavior while allowing platform-specific interaction patterns where they improve usability.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Design Systems That Scale",
+    description:
+      "We create reusable components, tokens, patterns, interaction rules and documentation that help product teams ship consistently across features, devices and future releases.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
 ];
 
 export const MOBILE_APP_DESIGN_SERVICE_SIDEBAR_LINKS = [
   { id: "our-services", label: "Our Services" },
-  { id: "what-makes-a-mobile-app-design-successful", label: "What Makes a Mobile App Design Successful?" },
-  { id: "why-choose-obrive-for-mobile-app-design", label: "Why Choose Obrive for Mobile App Design?" },
+  {
+    id: "what-makes-a-mobile-app-design-successful",
+    label: "What Makes a Mobile App Design Successful?",
+  },
+  {
+    id: "why-choose-obrive-for-mobile-app-design",
+    label: "Why Choose Obrive for Mobile App Design?",
+  },
   { id: "global-delivery-mindset", label: "Global delivery mindset" },
   { id: "business-outcomes", label: "Business Outcomes" },
 ] as const;
@@ -37,7 +81,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Mobile App UX Strategy & Product Discovery",
-        description: "Before visual design, Obrive helps clarify what the mobile product should accomplish and how users should move through it.",
+        description:
+          "Before visual design, Obrive helps clarify what the mobile product should accomplish and how users should move through it.",
         items: [
           "Product and business goal definition",
           "User and stakeholder research",
@@ -53,7 +98,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Mobile App UI/UX Design",
-        description: "We transform product requirements into intuitive mobile interfaces with clear hierarchy, purposeful interaction and a visual language aligned to the brand.",
+        description:
+          "We transform product requirements into intuitive mobile interfaces with clear hierarchy, purposeful interaction and a visual language aligned to the brand.",
         items: [
           "iOS and Android UI design",
           "Mobile information architecture",
@@ -70,7 +116,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "AI-Powered Mobile App Experience Design",
-        description: "AI can change how people interact with an app—from navigating menus toward asking, describing, speaking, scanning or receiving contextual assistance. Obrive designs the experience layer around those new interaction models.",
+        description:
+          "AI can change how people interact with an app—from navigating menus toward asking, describing, speaking, scanning or receiving contextual assistance. Obrive designs the experience layer around those new interaction models.",
         items: [
           "AI assistants and conversational mobile flows",
           "Natural-language search and discovery",
@@ -86,7 +133,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Mobile App Redesign & Digital Transformation",
-        description: "An existing app may have strong functionality but still suffer from confusing navigation, inconsistent UI, outdated patterns, weak onboarding or poor conversion. Obrive can audit and redesign mobile products around current business goals and user expectations.",
+        description:
+          "An existing app may have strong functionality but still suffer from confusing navigation, inconsistent UI, outdated patterns, weak onboarding or poor conversion. Obrive can audit and redesign mobile products around current business goals and user expectations.",
         items: [
           "UX and usability audits",
           "Navigation redesign",
@@ -101,7 +149,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Consumer Mobile App Design",
-        description: "We design consumer applications around fast comprehension, repeat use, trust and frictionless task completion.",
+        description:
+          "We design consumer applications around fast comprehension, repeat use, trust and frictionless task completion.",
         items: [
           "On-demand services",
           "Lifestyle and utility apps",
@@ -115,7 +164,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Enterprise Mobile App Design",
-        description: "Enterprise mobile products need to make complex workflows understandable without overwhelming employees. We design role-based mobile experiences that connect people to the information and actions they need in context.",
+        description:
+          "Enterprise mobile products need to make complex workflows understandable without overwhelming employees. We design role-based mobile experiences that connect people to the information and actions they need in context.",
         items: [
           "Field-service applications",
           "Employee and workforce apps",
@@ -130,7 +180,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "eCommerce & Mobile Commerce Design",
-        description: "Mobile commerce should make discovery, evaluation, purchase and post-purchase support feel connected.",
+        description:
+          "Mobile commerce should make discovery, evaluation, purchase and post-purchase support feel connected.",
         items: [
           "Product discovery and category navigation",
           "Personalized recommendations",
@@ -145,7 +196,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Mobile Banking, FinTech & Insurance UX",
-        description: "Financial mobile experiences require clarity, trust and careful handling of sensitive actions.",
+        description:
+          "Financial mobile experiences require clarity, trust and careful handling of sensitive actions.",
         items: [
           "Account and financial dashboards",
           "Payments and transfers",
@@ -158,11 +210,13 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Personalized financial insights where appropriate",
-        description: "Designs for regulated or sensitive environments should be reviewed against applicable security, privacy, accessibility and regulatory requirements.",
+        description:
+          "Designs for regulated or sensitive environments should be reviewed against applicable security, privacy, accessibility and regulatory requirements.",
       },
       {
         title: "Healthcare & Wellness Mobile App Design",
-        description: "We design healthcare and wellness experiences around understandable information, accessible interactions, privacy-conscious journeys and appropriate user safeguards.",
+        description:
+          "We design healthcare and wellness experiences around understandable information, accessible interactions, privacy-conscious journeys and appropriate user safeguards.",
         items: [
           "Patient and member experiences",
           "Appointment and service discovery",
@@ -175,11 +229,13 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "AI-assisted information experiences where appropriate",
-        description: "Healthcare products may require additional clinical, privacy, safety and regulatory review depending on the intended use.",
+        description:
+          "Healthcare products may require additional clinical, privacy, safety and regulatory review depending on the intended use.",
       },
       {
         title: "Mobile App Design for Connected & Intelligent Products",
-        description: "Mobile apps increasingly act as control surfaces for connected products, devices and intelligent systems. We design experiences that make device status, setup, controls, alerts and insights understandable.",
+        description:
+          "Mobile apps increasingly act as control surfaces for connected products, devices and intelligent systems. We design experiences that make device status, setup, controls, alerts and insights understandable.",
         items: [
           "Connected-device onboarding",
           "Device setup and pairing",
@@ -193,7 +249,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Prototyping, Usability Testing & Design Validation",
-        description: "Interactive prototypes allow teams to test important journeys before development. We use prototypes to validate navigation, interaction, content hierarchy, AI behaviors and stakeholder expectations.",
+        description:
+          "Interactive prototypes allow teams to test important journeys before development. We use prototypes to validate navigation, interaction, content hierarchy, AI behaviors and stakeholder expectations.",
         items: [
           "Low-fidelity wireframes",
           "High-fidelity interactive prototypes",
@@ -206,7 +263,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Design Systems & Product UI Libraries",
-        description: "A scalable mobile product needs more than individual screens. Obrive can establish reusable design foundations that support consistent product evolution.",
+        description:
+          "A scalable mobile product needs more than individual screens. Obrive can establish reusable design foundations that support consistent product evolution.",
         items: [
           "Design tokens",
           "Typography and color systems",
@@ -226,7 +284,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
     id: "what-makes-a-mobile-app-design-successful",
     title: "What Makes a Mobile App Design Successful?",
     subtitle: "",
-    description: "Users can understand the product quickly. The most important tasks are easy to complete. Navigation is predictable and context-appropriate. The interface feels consistent across the product. AI features solve real problems rather than add complexity. Accessibility is considered from the beginning. The design system can scale as features grow. The experience supports business goals without sacrificing usability. Design decisions can be validated through research, testing and product data.",
+    description:
+      "Users can understand the product quickly. The most important tasks are easy to complete. Navigation is predictable and context-appropriate. The interface feels consistent across the product. AI features solve real problems rather than add complexity. Accessibility is considered from the beginning. The design system can scale as features grow. The experience supports business goals without sacrificing usability. Design decisions can be validated through research, testing and product data.",
     label: "",
     items: [],
     footer: "",
@@ -262,7 +321,8 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
     id: "business-outcomes",
     title: "Business Outcomes",
     subtitle: "",
-    description: "A mobile product can start with a focused MVP and evolve into a broader platform. Obrive can help establish the experience foundations first, then expand the product through new journeys, design-system growth, integrations, personalization and purposeful AI capabilities. The goal is to create a product that can evolve without losing clarity, trust or consistency.",
+    description:
+      "A mobile product can start with a focused MVP and evolve into a broader platform. Obrive can help establish the experience foundations first, then expand the product through new journeys, design-system growth, integrations, personalization and purposeful AI capabilities. The goal is to create a product that can evolve without losing clarity, trust or consistency.",
     label: "",
     items: [
       "Clearer product positioning and user journeys",
@@ -281,160 +341,264 @@ export const MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS = [
 ];
 
 export const MOBILE_APP_DESIGN_SERVICE_PROCESS_STEPS = [
-  { step: "01", title: "Discover", description: "Understand business objectives, users, product context and constraints." },
-  { step: "02", title: "Define", description: "Establish product scope, priorities, journeys and success criteria." },
-  { step: "03", title: "Research", description: "Study users, competitors, existing analytics and relevant workflows." },
-  { step: "04", title: "Architect", description: "Create information architecture, navigation and task flows." },
-  { step: "05", title: "Wireframe", description: "Define structure and interaction before detailed visual design." },
-  { step: "06", title: "Design", description: "Build high-fidelity UI, components, states and interaction patterns." },
-  { step: "07", title: "Prototype", description: "Connect key journeys into testable interactive experiences." },
-  { step: "08", title: "Validate", description: "Test usability, accessibility, comprehension and product assumptions." },
-  { step: "09", title: "Systemize", description: "Establish reusable design components and developer-ready specifications." },
-  { step: "10", title: "Handoff", description: "Collaborate with engineering through implementation." },
-  { step: "11", title: "Measure & Improve", description: "Use product feedback, analytics and research to prioritize future improvements." },
+  {
+    step: "01",
+    title: "Discover",
+    description:
+      "Understand business objectives, users, product context and constraints.",
+  },
+  {
+    step: "02",
+    title: "Define",
+    description:
+      "Establish product scope, priorities, journeys and success criteria.",
+  },
+  {
+    step: "03",
+    title: "Research",
+    description:
+      "Study users, competitors, existing analytics and relevant workflows.",
+  },
+  {
+    step: "04",
+    title: "Architect",
+    description: "Create information architecture, navigation and task flows.",
+  },
+  {
+    step: "05",
+    title: "Wireframe",
+    description:
+      "Define structure and interaction before detailed visual design.",
+  },
+  {
+    step: "06",
+    title: "Design",
+    description:
+      "Build high-fidelity UI, components, states and interaction patterns.",
+  },
+  {
+    step: "07",
+    title: "Prototype",
+    description: "Connect key journeys into testable interactive experiences.",
+  },
+  {
+    step: "08",
+    title: "Validate",
+    description:
+      "Test usability, accessibility, comprehension and product assumptions.",
+  },
+  {
+    step: "09",
+    title: "Systemize",
+    description:
+      "Establish reusable design components and developer-ready specifications.",
+  },
+  {
+    step: "10",
+    title: "Handoff",
+    description: "Collaborate with engineering through implementation.",
+  },
+  {
+    step: "11",
+    title: "Measure & Improve",
+    description:
+      "Use product feedback, analytics and research to prioritize future improvements.",
+  },
 ];
 
 export const MOBILE_APP_DESIGN_SERVICE_INDUSTRIES = [
   {
     id: "automotive-mobility",
     title: "Automotive & Mobility",
-    description: "Design vehicle-owner apps, mobility platforms, dealership experiences, service journeys, connected-car controls, roadside assistance and AI-assisted vehicle information.",
+    description:
+      "Design vehicle-owner apps, mobility platforms, dealership experiences, service journeys, connected-car controls, roadside assistance and AI-assisted vehicle information.",
   },
   {
     id: "manufacturing-industrial-engineering",
     title: "Manufacturing & Industrial Engineering",
-    description: "Design workforce, maintenance, inspection, asset, production and field-service apps that simplify complex operational workflows and connect employees to relevant data.",
+    description:
+      "Design workforce, maintenance, inspection, asset, production and field-service apps that simplify complex operational workflows and connect employees to relevant data.",
   },
   {
     id: "healthcare-medical",
     title: "Healthcare & Medical",
-    description: "Create patient, provider, wellness and healthcare-service experiences with clear information architecture, accessible interactions and privacy-conscious journeys.",
+    description:
+      "Create patient, provider, wellness and healthcare-service experiences with clear information architecture, accessible interactions and privacy-conscious journeys.",
   },
   {
     id: "pharmaceuticals-life-sciences",
     title: "Pharmaceuticals & Life Sciences",
-    description: "Design medical information, field-force, training, research-support and product-information experiences with appropriate governance and regulatory review.",
+    description:
+      "Design medical information, field-force, training, research-support and product-information experiences with appropriate governance and regulatory review.",
   },
   {
     id: "retail-ecommerce",
     title: "Retail & eCommerce",
-    description: "Design mobile shopping, product discovery, personalization, loyalty, checkout, order tracking and AI-assisted commerce experiences.",
+    description:
+      "Design mobile shopping, product discovery, personalization, loyalty, checkout, order tracking and AI-assisted commerce experiences.",
   },
   {
     id: "consumer-goods-brands",
     title: "Consumer Goods & Brands",
-    description: "Create branded mobile experiences for product discovery, loyalty, campaigns, community, customer support and connected-product engagement.",
+    description:
+      "Create branded mobile experiences for product discovery, loyalty, campaigns, community, customer support and connected-product engagement.",
   },
   {
     id: "real-estate-property",
     title: "Real Estate & Property",
-    description: "Design property discovery, virtual tours, lead management, site information, booking and customer-service experiences for buyers, tenants and teams.",
+    description:
+      "Design property discovery, virtual tours, lead management, site information, booking and customer-service experiences for buyers, tenants and teams.",
   },
   {
     id: "architecture-engineering-construction",
     title: "Architecture, Engineering & Construction",
-    description: "Design field workflows, project dashboards, inspections, documentation, approvals, site communication and mobile access to project information.",
+    description:
+      "Design field workflows, project dashboards, inspections, documentation, approvals, site communication and mobile access to project information.",
   },
   {
     id: "education-edtech",
     title: "Education & EdTech",
-    description: "Design learning, assessment, course discovery, student services, instructor workflows and AI-assisted learning experiences with appropriate human oversight.",
+    description:
+      "Design learning, assessment, course discovery, student services, instructor workflows and AI-assisted learning experiences with appropriate human oversight.",
   },
   {
     id: "energy-utilities-infrastructure",
     title: "Energy, Utilities & Infrastructure",
-    description: "Design field-service, asset, inspection, outage, workforce and customer-service applications that make operational information easier to access in context.",
+    description:
+      "Design field-service, asset, inspection, outage, workforce and customer-service applications that make operational information easier to access in context.",
   },
   {
     id: "oil-gas",
     title: "Oil & Gas",
-    description: "Support field operations, inspection, maintenance, safety, technical information, workforce communication and enterprise workflows through mobile experiences.",
+    description:
+      "Support field operations, inspection, maintenance, safety, technical information, workforce communication and enterprise workflows through mobile experiences.",
   },
   {
     id: "mining-natural-resources",
     title: "Mining & Natural Resources",
-    description: "Design applications for field teams, equipment, inspections, reporting, safety, asset tracking and operational knowledge.",
+    description:
+      "Design applications for field teams, equipment, inspections, reporting, safety, asset tracking and operational knowledge.",
   },
   {
     id: "aerospace-aviation",
     title: "Aerospace & Aviation",
-    description: "Design technical, maintenance, training, crew, passenger and operational mobile experiences where accuracy, workflow clarity and controlled information matter.",
+    description:
+      "Design technical, maintenance, training, crew, passenger and operational mobile experiences where accuracy, workflow clarity and controlled information matter.",
   },
   {
     id: "logistics-warehousing-supply-chain",
     title: "Logistics, Warehousing & Supply Chain",
-    description: "Design inventory, picking, delivery, route, fleet, warehouse, proof-of-delivery and workforce applications optimized for real-world conditions.",
+    description:
+      "Design inventory, picking, delivery, route, fleet, warehouse, proof-of-delivery and workforce applications optimized for real-world conditions.",
   },
   {
     id: "travel-tourism-hospitality",
     title: "Travel, Tourism & Hospitality",
-    description: "Create booking, discovery, itinerary, concierge, loyalty, destination and location-aware experiences that reduce friction throughout the guest journey.",
+    description:
+      "Create booking, discovery, itinerary, concierge, loyalty, destination and location-aware experiences that reduce friction throughout the guest journey.",
   },
   {
     id: "media-entertainment-gaming",
     title: "Media, Entertainment & Gaming",
-    description: "Design content discovery, streaming, community, creator, fan and interactive experiences with personalization and engagement at the center.",
+    description:
+      "Design content discovery, streaming, community, creator, fan and interactive experiences with personalization and engagement at the center.",
   },
   {
     id: "sports-fitness",
     title: "Sports & Fitness",
-    description: "Design coaching, training, memberships, fan, venue, performance and wellness experiences with dashboards and personalized journeys where appropriate.",
+    description:
+      "Design coaching, training, memberships, fan, venue, performance and wellness experiences with dashboards and personalized journeys where appropriate.",
   },
   {
     id: "banking-financial-services-insurance",
     title: "Banking, Financial Services & Insurance",
-    description: "Design secure, understandable financial journeys covering onboarding, payments, accounts, claims, policies, service and financial insights.",
+    description:
+      "Design secure, understandable financial journeys covering onboarding, payments, accounts, claims, policies, service and financial insights.",
   },
   {
     id: "telecommunications",
     title: "Telecommunications",
-    description: "Design customer self-service, plan management, device setup, network information, support and field-technician experiences.",
+    description:
+      "Design customer self-service, plan management, device setup, network information, support and field-technician experiences.",
   },
   {
     id: "agriculture-agritech",
     title: "Agriculture & AgriTech",
-    description: "Design farm-management, equipment, crop, field, weather, supply and workforce experiences that make complex information actionable in the field.",
+    description:
+      "Design farm-management, equipment, crop, field, weather, supply and workforce experiences that make complex information actionable in the field.",
   },
   {
     id: "government-public-sector",
     title: "Government & Public Sector",
-    description: "Design citizen services, applications, information access, appointments, public communication and workforce applications with accessibility and trust in mind.",
+    description:
+      "Design citizen services, applications, information access, appointments, public communication and workforce applications with accessibility and trust in mind.",
   },
   {
     id: "corporate-learning-professional-services",
     title: "Corporate Learning & Professional Services",
-    description: "Design knowledge, training, client-service, workflow, project and professional productivity applications for distributed teams and organizations.",
+    description:
+      "Design knowledge, training, client-service, workflow, project and professional productivity applications for distributed teams and organizations.",
   },
 ];
 
-export const MOBILE_APP_DESIGN_SERVICE_INDUSTRIES_CONTENT: SolutionIndustriesContent = {
-  slug: "mobile-app-design-service",
-  hero: {
-    title: "Mobile App Design Services Across Industries — AI-Era Industry Solutions",
-    description: "Obrive designs mobile products around the operating realities of different industries. The same mobile design principles—clarity, usability, accessibility, trust and consistency—must be adapted to the workflows, users, regulations, data and business models of each sector. Our AI-era approach adds another layer: mobile experiences should be structured so intelligent search, recommendations, assistance, automation and personalization can be introduced where they genuinely improve outcomes.",
-  },
-  industries: MOBILE_APP_DESIGN_SERVICE_INDUSTRIES,
-  extraBlocks: [
-    {
-      id: "ai-era-mobile-app-design-across-industries",
-      title: "AI-Era Mobile App Design Across Industries",
-      subtitle: "",
-      description: "AI changes the mobile interaction model from simply navigating screens toward asking, describing, scanning, speaking, receiving recommendations and completing assisted tasks. Obrive designs these capabilities around a clear user purpose.",
-      label: "",
-      items: ["Conversational assistance for complex information", "Natural-language search and discovery", "Personalized recommendations", "Contextual guidance and next-best-action concepts", "Summarization of long or complex information", "AI-assisted content or workflow creation", "Intelligent notifications where appropriate", "Human review and approval for consequential decisions", "Transparent states for uncertainty and AI limitations", "Privacy-aware handling of user and business data"],
-      footer: "",
+export const MOBILE_APP_DESIGN_SERVICE_INDUSTRIES_CONTENT: SolutionIndustriesContent =
+  {
+    slug: "mobile-app-design-service",
+    hero: {
+      title:
+        "Mobile App Design Services Across Industries — AI-Era Industry Solutions",
+      description:
+        "Obrive designs mobile products around the operating realities of different industries. The same mobile design principles—clarity, usability, accessibility, trust and consistency—must be adapted to the workflows, users, regulations, data and business models of each sector. Our AI-era approach adds another layer: mobile experiences should be structured so intelligent search, recommendations, assistance, automation and personalization can be introduced where they genuinely improve outcomes.",
     },
-  ],
-  globalDelivery: {
-    title: "Global Mobile App Design Delivery",
-    subtitle: "",
-    description: "We can support products intended for local, national or global markets, including localization, multiple languages, regional content, accessibility, different currencies and enterprise governance. Product architecture and design systems can be structured for controlled evolution across markets.",
-    items: [],
-  },
-  technologyCapabilities: {
-    title: "Technology & Platform Capabilities",
-    subtitle: "",
-    items: ["iOS product design", "Android product design", "Cross-platform mobile product design", "Tablet and responsive mobile experiences", "Design systems and component libraries", "Prototype and usability testing workflows", "Analytics-informed product improvement", "API/data-driven experience planning", "AI and intelligent-service experience design", "Connected-device and IoT mobile interfaces", "Accessibility-aware design", "Developer handoff and design-to-development collaboration"],
-  },
-  footerText: "Our industry solutions are not limited to these sectors. We can adapt mobile design foundations to specialized workflows, customer journeys, operational environments and emerging business models.",
-};
+    industries: MOBILE_APP_DESIGN_SERVICE_INDUSTRIES,
+    extraBlocks: [
+      {
+        id: "ai-era-mobile-app-design-across-industries",
+        title: "AI-Era Mobile App Design Across Industries",
+        subtitle: "",
+        description:
+          "AI changes the mobile interaction model from simply navigating screens toward asking, describing, scanning, speaking, receiving recommendations and completing assisted tasks. Obrive designs these capabilities around a clear user purpose.",
+        label: "",
+        items: [
+          "Conversational assistance for complex information",
+          "Natural-language search and discovery",
+          "Personalized recommendations",
+          "Contextual guidance and next-best-action concepts",
+          "Summarization of long or complex information",
+          "AI-assisted content or workflow creation",
+          "Intelligent notifications where appropriate",
+          "Human review and approval for consequential decisions",
+          "Transparent states for uncertainty and AI limitations",
+          "Privacy-aware handling of user and business data",
+        ],
+        footer: "",
+      },
+    ],
+    globalDelivery: {
+      title: "Global Mobile App Design Delivery",
+      subtitle: "",
+      description:
+        "We can support products intended for local, national or global markets, including localization, multiple languages, regional content, accessibility, different currencies and enterprise governance. Product architecture and design systems can be structured for controlled evolution across markets.",
+      items: [],
+    },
+    technologyCapabilities: {
+      title: "Technology & Platform Capabilities",
+      subtitle: "",
+      items: [
+        "iOS product design",
+        "Android product design",
+        "Cross-platform mobile product design",
+        "Tablet and responsive mobile experiences",
+        "Design systems and component libraries",
+        "Prototype and usability testing workflows",
+        "Analytics-informed product improvement",
+        "API/data-driven experience planning",
+        "AI and intelligent-service experience design",
+        "Connected-device and IoT mobile interfaces",
+        "Accessibility-aware design",
+        "Developer handoff and design-to-development collaboration",
+      ],
+    },
+    footerText:
+      "Our industry solutions are not limited to these sectors. We can adapt mobile design foundations to specialized workflows, customer journeys, operational environments and emerging business models.",
+  };

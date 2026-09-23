@@ -59,7 +59,7 @@ export const useHeartbeat = () => {
         clearInterval(heartbeatIntervalRef.current);
       if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
     };
-  }, []);
+  }, [startHeartbeat, startLocalTimer]);
 
   // LOCAL TIMER - updates every 1 second for smooth UI
   const startLocalTimer = () => {

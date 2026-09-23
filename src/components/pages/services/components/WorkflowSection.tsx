@@ -5,9 +5,9 @@ import { useRef } from "react";
 import FONTS from "@/assets/fonts";
 import { IMAGES, IMAGES_META } from "@/assets/images";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
+import type { ServiceSection, SidebarLink } from "@/types/services";
 import BenefitsTable from "../cards/BenefitsTable";
 import WorkflowSteps from "../cards/WorkflowSteps";
-import type { SidebarLink, ServiceSection } from "@/types/services";
 import SolutionServiceSection from "./SolutionServiceSection";
 
 interface WorkflowSectionProps {
@@ -61,7 +61,9 @@ const WorkflowSection = ({
                   className={`flex items-center gap-3 py-4 px-2 cursor-pointer hover:bg-primary/10 transition-colors ${
                     index === 0 ? "border-y" : "border-b"
                   } border-primary/80`}
-                  onClick={() => scrollToStep((howItWorks?.length || 0) + index)}
+                  onClick={() =>
+                    scrollToStep((howItWorks?.length || 0) + index)
+                  }
                 >
                   <span className="text-xs">{link.label}</span>
                 </div>
@@ -98,28 +100,28 @@ const WorkflowSection = ({
         {(!serviceSections || serviceSections.length === 0) && (
           <FadeInOnView>
             <div className="bg-accent flex items-center justify-center px-14 py-8 border border-primary/80 rounded-xl max-xl:px-12 max-lg:px-10 max-md:px-8 max-sm:px-5 max-sm:py-6">
-            <div className="flex flex-col gap-6 max-md:gap-5 max-sm:gap-4 w-full max-w-[720px]">
-              <h1
-                className={`${FONTS.microgrammaBold.className} text-primary text-5xl max-xl:text-4xl max-lg:text-3xl max-md:text-2xl max-sm:text-xl`}
-              >
-                Why Choose Obrive
-              </h1>
+              <div className="flex flex-col gap-6 max-md:gap-5 max-sm:gap-4 w-full max-w-[720px]">
+                <h1
+                  className={`${FONTS.microgrammaBold.className} text-primary text-5xl max-xl:text-4xl max-lg:text-3xl max-md:text-2xl max-sm:text-xl`}
+                >
+                  Why Choose Obrive
+                </h1>
 
-              <Image
-                src={IMAGES.SOLUTION_FIRST_IMAGE}
-                alt={IMAGES_META.SOLUTION_FIRST_IMAGE.alt}
-                width={IMAGES_META.SOLUTION_FIRST_IMAGE.width}
-                height={IMAGES_META.SOLUTION_FIRST_IMAGE.height}
-                className="w-full h-auto"
-                sizes="(max-width: 768px) 100vw, 560px"
-              />
+                <Image
+                  src={IMAGES.SOLUTION_FIRST_IMAGE}
+                  alt={IMAGES_META.SOLUTION_FIRST_IMAGE.alt}
+                  width={IMAGES_META.SOLUTION_FIRST_IMAGE.width}
+                  height={IMAGES_META.SOLUTION_FIRST_IMAGE.height}
+                  className="w-full h-auto"
+                  sizes="(max-width: 768px) 100vw, 560px"
+                />
 
-              <div className="overflow-x-auto">
-                <BenefitsTable />
+                <div className="overflow-x-auto">
+                  <BenefitsTable />
+                </div>
               </div>
             </div>
-          </div>
-        </FadeInOnView>
+          </FadeInOnView>
         )}
       </div>
     </div>

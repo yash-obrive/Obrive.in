@@ -1,16 +1,16 @@
 "use client";
 
-import Link from "@/components/shared/LocalizedLink";
 import Image from "next/image";
 import FONTS from "@/assets/fonts";
-import { SOCIAL_LINKS } from "@/constants/Footer";
+import Link from "@/components/shared/LocalizedLink";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { useCountry } from "@/context/CountryContext";
 import { COUNTRIES, DEFAULT_COUNTRY } from "@/config/countries";
+import { SOCIAL_LINKS } from "@/constants/Footer";
+import { useCountry } from "@/context/CountryContext";
 
 const contactCellBase =
   "relative overflow-hidden border border-primary/30 rounded-lg text-xs text-primary/80 transition-colors duration-500 hover:text-white before:content-[''] before:absolute before:inset-0 before:bg-primary before:scale-y-0 before:origin-center hover:before:scale-y-100 before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.19,1,0.22,1)] before:-z-10 z-10";
@@ -27,7 +27,9 @@ export default function FooterContact() {
       >
         Contact
       </div>
-      <div className={`${contactCellBase} p-3`}>{defaultCountryConfig.phone}</div>
+      <div className={`${contactCellBase} p-3`}>
+        {defaultCountryConfig.phone}
+      </div>
       <a
         href={`mailto:${defaultCountryConfig.contactEmail}`}
         className={`${contactCellBase} p-3`}
@@ -43,12 +45,8 @@ export default function FooterContact() {
       ))}
 
       {/* Fill remaining slots to maintain layout height if there are less than 2 offices */}
-      {offices.length < 2 && (
-        <div className={`${contactCellBase} p-3`}></div>
-      )}
-      {offices.length === 0 && (
-        <div className={`${contactCellBase} p-3`}></div>
-      )}
+      {offices.length < 2 && <div className={`${contactCellBase} p-3`}></div>}
+      {offices.length === 0 && <div className={`${contactCellBase} p-3`}></div>}
 
       <div className={`${contactCellBase} p-5`}></div>
 

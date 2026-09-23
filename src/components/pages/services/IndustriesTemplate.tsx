@@ -4,7 +4,6 @@ import FONTS from "@/assets/fonts";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import type { SolutionIndustriesContent } from "@/types/services";
-import React from "react";
 import SolutionServiceSection from "./components/SolutionServiceSection";
 
 export function IndustriesTemplate({
@@ -28,7 +27,7 @@ export function IndustriesTemplate({
                 {hero.title}
               </h1>
             </div>
-            
+
             <div className="flex w-full items-center justify-center p-2.5 relative max-lg:w-full max-lg:p-0">
               <div className="inline-flex flex-col items-center justify-center gap-2.5 pl-6 pr-[90px] pt-4 pb-6 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] rounded-2xl border-[0.5px] border-solid border-primary/40 max-lg:w-full max-lg:px-6 max-lg:py-6 max-md:px-4 max-md:py-5 max-sm:px-3">
                 <div className="flex w-full max-w-[804px] items-center justify-center gap-2.5 p-2.5 relative flex-[0_0_auto] max-lg:max-w-none max-lg:p-0">
@@ -50,7 +49,9 @@ export function IndustriesTemplate({
               <div className="group flex flex-col gap-3 py-6 px-6 hover:bg-zinc-50/80 border-l-[3px] border-transparent hover:border-primary hover:-translate-y-0.5 motion-reduce:transform-none transition-all duration-300 h-full rounded-r-xl">
                 <div className="flex items-center gap-4 mb-1">
                   <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-colors flex-shrink-0"></div>
-                  <h3 className={`${FONTS.microgrammaBold.className} text-primary text-[22px] max-md:text-xl`}>
+                  <h3
+                    className={`${FONTS.microgrammaBold.className} text-primary text-[22px] max-md:text-xl`}
+                  >
                     {ind.title}
                   </h3>
                 </div>
@@ -92,14 +93,15 @@ export function IndustriesTemplate({
       {(technologyCapabilities || globalDelivery) && (
         <FullWidthSection backgroundColor="none">
           <div className="flex flex-col lg:flex-row gap-16 py-24 max-md:py-16 border-t border-zinc-200/60">
-            
             {/* Technology Capabilities */}
             {technologyCapabilities && (
               <div className="flex-1 w-full">
                 <FadeInOnView>
                   <div className="flex flex-col gap-8">
                     <div>
-                      <h2 className={`${FONTS.microgrammaBold.className} text-primary text-4xl max-md:text-3xl mb-4`}>
+                      <h2
+                        className={`${FONTS.microgrammaBold.className} text-primary text-4xl max-md:text-3xl mb-4`}
+                      >
                         {technologyCapabilities.title}
                       </h2>
                       {technologyCapabilities.subtitle && (
@@ -108,10 +110,13 @@ export function IndustriesTemplate({
                         </p>
                       )}
                     </div>
-                    
+
                     <ul className="flex flex-wrap gap-2.5 mt-2">
                       {technologyCapabilities.items?.map((item, i) => (
-                        <li key={i} className="flex items-center justify-center gap-2 px-4 py-2 border border-zinc-200/80 rounded-full bg-zinc-50/50 hover:bg-zinc-100/80 hover:border-primary/30 transition-colors max-w-full">
+                        <li
+                          key={i}
+                          className="flex items-center justify-center gap-2 px-4 py-2 border border-zinc-200/80 rounded-full bg-zinc-50/50 hover:bg-zinc-100/80 hover:border-primary/30 transition-colors max-w-full"
+                        >
                           <span className="text-[11px] sm:text-xs text-zinc-600 font-medium leading-snug text-center break-words">
                             {item}
                           </span>
@@ -129,7 +134,9 @@ export function IndustriesTemplate({
                 <FadeInOnView>
                   <div className="flex flex-col gap-8">
                     <div>
-                      <h2 className={`${FONTS.microgrammaBold.className} text-primary text-4xl max-md:text-3xl mb-4`}>
+                      <h2
+                        className={`${FONTS.microgrammaBold.className} text-primary text-4xl max-md:text-3xl mb-4`}
+                      >
                         {globalDelivery.title}
                       </h2>
                       {globalDelivery.subtitle && (
@@ -143,10 +150,13 @@ export function IndustriesTemplate({
                         </p>
                       )}
                     </div>
-                    
+
                     <ul className="flex flex-wrap gap-2.5 mt-2">
                       {globalDelivery.items?.map((item, i) => (
-                        <li key={i} className="flex items-center justify-center gap-2 px-4 py-2 border border-zinc-200/80 rounded-full bg-zinc-50/50 hover:bg-zinc-100/80 hover:border-primary/30 transition-colors max-w-full">
+                        <li
+                          key={i}
+                          className="flex items-center justify-center gap-2 px-4 py-2 border border-zinc-200/80 rounded-full bg-zinc-50/50 hover:bg-zinc-100/80 hover:border-primary/30 transition-colors max-w-full"
+                        >
                           <span className="text-[11px] sm:text-xs text-zinc-600 font-medium leading-snug text-center break-words">
                             {item}
                           </span>
@@ -157,7 +167,6 @@ export function IndustriesTemplate({
                 </FadeInOnView>
               </div>
             )}
-
           </div>
         </FullWidthSection>
       )}

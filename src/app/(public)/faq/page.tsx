@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import mainFaqs from "@/data/main-faqs.json";
 import FAQMainClientLayout from "@/components/pages/faq/FAQMainClientLayout";
+import mainFaqs from "@/data/main-faqs.json";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions (FAQs) | Obrive",

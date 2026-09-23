@@ -17,7 +17,19 @@ interface CompanyInfoApproachTableProps {
   children?: React.ReactNode;
 }
 
-export function CompanyInfoApproachPhaseItem({ phase, action, children, header1 = "Phase", header2 = "Action" }: { phase: React.ReactNode, action?: React.ReactNode, children?: React.ReactNode, header1?: string, header2?: string }) {
+export function CompanyInfoApproachPhaseItem({
+  phase,
+  action,
+  children,
+  header1 = "Phase",
+  header2 = "Action",
+}: {
+  phase: React.ReactNode;
+  action?: React.ReactNode;
+  children?: React.ReactNode;
+  header1?: string;
+  header2?: string;
+}) {
   const content = children || action;
   return (
     <>
@@ -30,11 +42,15 @@ export function CompanyInfoApproachPhaseItem({ phase, action, children, header1 
         </div>
       </div>
       <div className="md:hidden bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden">
-        <div className={`px-4 py-3 border-b border-gray-200 text-primary ${FONTS.microgrammaBold.className}`}>
+        <div
+          className={`px-4 py-3 border-b border-gray-200 text-primary ${FONTS.microgrammaBold.className}`}
+        >
           {header1}: {phase}
         </div>
         <div className="px-4 py-3">
-          <div className={`text-xs uppercase tracking-wide text-gray-500 ${FONTS.microgrammaBold.className}`}>
+          <div
+            className={`text-xs uppercase tracking-wide text-gray-500 ${FONTS.microgrammaBold.className}`}
+          >
             {header2}
           </div>
           <div className="mt-2 text-sm leading-snug text-gray-700">
@@ -46,11 +62,25 @@ export function CompanyInfoApproachPhaseItem({ phase, action, children, header1 
   );
 }
 
-export function CompanyInfoApproachTableTitle({ children }: { children: React.ReactNode }) {
-  return <h2 className={`${FONTS.microgrammaBold.className} text-primary text-3xl mb-2`}>{children}</h2>;
+export function CompanyInfoApproachTableTitle({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <h2
+      className={`${FONTS.microgrammaBold.className} text-primary text-3xl mb-2`}
+    >
+      {children}
+    </h2>
+  );
 }
 
-export function CompanyInfoApproachTableDescription({ children }: { children: React.ReactNode }) {
+export function CompanyInfoApproachTableDescription({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return <p className="-mt-3 text-sm mb-8">{children}</p>;
 }
 
@@ -68,29 +98,37 @@ export default function CompanyInfoApproachTable({
     return (
       <section>
         {typeof title === "string" && title && (
-          <h2 className={`${FONTS.microgrammaBold.className} text-primary text-3xl mb-2`}>
+          <h2
+            className={`${FONTS.microgrammaBold.className} text-primary text-3xl mb-2`}
+          >
             {title}
           </h2>
         )}
         {subtitle && (
-          <h3 className={`${FONTS.microgrammaBold.className} text-xl mb-6 text-gray-700`}>
+          <h3
+            className={`${FONTS.microgrammaBold.className} text-xl mb-6 text-gray-700`}
+          >
             {subtitle}
           </h3>
         )}
-        {typeof description === "string" && description && <p className="-mt-3 text-sm mb-8">{description}</p>}
+        {typeof description === "string" && description && (
+          <p className="-mt-3 text-sm mb-8">{description}</p>
+        )}
 
         <div className="md:rounded-lg md:border md:border-gray-300 md:overflow-hidden">
           <div className="hidden md:grid text-primary grid-cols-[26%_62%] bg-gray-100">
-            <div className={`${FONTS.microgrammaBold.className} p-3 pr-4 text-lg font-semibold`}>
+            <div
+              className={`${FONTS.microgrammaBold.className} p-3 pr-4 text-lg font-semibold`}
+            >
               {header1}
             </div>
-            <div className={`${FONTS.microgrammaBold.className} p-3 text-lg font-semibold`}>
+            <div
+              className={`${FONTS.microgrammaBold.className} p-3 text-lg font-semibold`}
+            >
               {header2}
             </div>
           </div>
-          <div className="flex flex-col space-y-4 md:space-y-0">
-            {children}
-          </div>
+          <div className="flex flex-col space-y-4 md:space-y-0">{children}</div>
         </div>
 
         {footerContent && (

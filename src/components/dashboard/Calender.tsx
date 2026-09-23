@@ -73,7 +73,7 @@ export default function Calendar() {
   useEffect(() => {
     fetchUser();
     fetchCalendarTasks();
-  }, []);
+  }, [fetchCalendarTasks, fetchUser]);
   const openAddEventModal = (dateStr?: string) => {
     setSelectedDate(dateStr || new Date().toISOString().split("T")[0]);
     setNewEventTitle("");
@@ -412,7 +412,6 @@ export default function Calendar() {
                   onChange={(e) => setNewEventTitle(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6]/20 focus:border-[#3b82f6] outline-none transition-all"
                   placeholder="e.g. Design Sync"
-                  autoFocus
                 />
               </div>
 

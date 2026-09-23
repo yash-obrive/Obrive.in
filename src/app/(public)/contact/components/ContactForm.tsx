@@ -1,15 +1,15 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import type React from "react";
 import { Suspense, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { z } from "zod";
 import FONTS from "@/assets/fonts";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import { useCountry } from "@/context/CountryContext";
 import { COUNTRIES, DEFAULT_COUNTRY } from "@/config/countries";
 import { PRICING_SERVICES_MAP } from "@/constants/pages/pricingData";
+import { useCountry } from "@/context/CountryContext";
 
 // Simple Zod schema for form validation
 const contactSchema = z.object({
@@ -140,193 +140,193 @@ function ContactFormContent() {
   return (
     <div className="relative w-full">
       <form onSubmit={handleSubmit} className="w-full space-y-6">
-      {/* Alert for Payment Intent */}
-      {intentParam === "payment" && (
-        <div className="bg-amber-500/10 border border-amber-500/20 text-amber-600 rounded-lg p-4 mb-6 text-sm">
-          <strong>Note:</strong> Razorpay payment checkout is currently
-          unconfigured. Please submit your request and our team will securely
-          process your transaction manually.
-        </div>
-      )}
-
-      {/* Submission State Alert */}
-      {submitState === "unconfigured" && (
-        <div className="bg-primary/5 border border-primary/20 text-primary p-6 rounded-xl mb-8 flex items-start gap-4">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shrink-0 mt-0.5">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-              <line x1="12" y1="9" x2="12" y2="13" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
+        {/* Alert for Payment Intent */}
+        {intentParam === "payment" && (
+          <div className="bg-amber-500/10 border border-amber-500/20 text-amber-600 rounded-lg p-4 mb-6 text-sm">
+            <strong>Note:</strong> Razorpay payment checkout is currently
+            unconfigured. Please submit your request and our team will securely
+            process your transaction manually.
           </div>
+        )}
+
+        {/* Submission State Alert */}
+        {submitState === "unconfigured" && (
+          <div className="bg-primary/5 border border-primary/20 text-primary p-6 rounded-xl mb-8 flex items-start gap-4">
+            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shrink-0 mt-0.5">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                <line x1="12" y1="9" x2="12" y2="13" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+              </svg>
+            </div>
+            <div>
+              <h4 className={`${FONTS.microgrammaBold.className} text-lg mb-1`}>
+                Backend Not Configured
+              </h4>
+              <p className="text-primary/70 text-sm leading-relaxed">
+                Your enquiry form is ready, but submissions are not currently
+                connected to an email or CRM backend.
+                <br />
+                No lead was saved and no email was sent. Please configure your
+                notification service.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {submitState === "error" && (
+          <div className="bg-red-500/10 border border-red-500/20 text-red-600 rounded-lg p-4 mb-6 text-sm">
+            <strong>Error:</strong> Failed to submit your request. Please try
+            again later.
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h4 className={`${FONTS.microgrammaBold.className} text-lg mb-1`}>
-              Backend Not Configured
-            </h4>
-            <p className="text-primary/70 text-sm leading-relaxed">
-              Your enquiry form is ready, but submissions are not currently
-              connected to an email or CRM backend.
-              <br />
-              No lead was saved and no email was sent. Please configure your
-              notification service.
-            </p>
+            <label className="block text-primary/80 text-sm font-bold mb-2">
+              Full Name *
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className={`w-full bg-white border ${errors.name ? "border-red-500" : "border-primary/20"} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors`}
+              placeholder="John Doe"
+            />
+            {errors.name && (
+              <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-primary/80 text-sm font-bold mb-2">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={`w-full bg-white border ${errors.email ? "border-red-500" : "border-primary/20"} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors`}
+              placeholder="john@example.com"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-primary/80 text-sm font-bold mb-2">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors"
+              placeholder="+1 (555) 000-0000"
+            />
+          </div>
+
+          <div>
+            <label className="block text-primary/80 text-sm font-bold mb-2">
+              Company Name
+            </label>
+            <input
+              type="text"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              className="w-full bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors"
+              placeholder="Acme Corp"
+            />
           </div>
         </div>
-      )}
 
-      {submitState === "error" && (
-        <div className="bg-red-500/10 border border-red-500/20 text-red-600 rounded-lg p-4 mb-6 text-sm">
-          <strong>Error:</strong> Failed to submit your request. Please try again later.
-        </div>
-      )}
-
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-primary/80 text-sm font-bold mb-2">
-            Full Name *
+            Service of Interest *
           </label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
+          <select
+            name="service"
+            value={formData.service}
             onChange={handleChange}
-            className={`w-full bg-white border ${errors.name ? "border-red-500" : "border-primary/20"} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors`}
-            placeholder="John Doe"
-          />
-          {errors.name && (
-            <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+            className={`w-full bg-white border ${errors.service ? "border-red-500" : "border-primary/20"} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors appearance-none`}
+          >
+            <option value="">Select a service...</option>
+            {Object.values(PRICING_SERVICES_MAP).map((serviceName) => (
+              <option key={serviceName} value={serviceName}>
+                {serviceName}
+              </option>
+            ))}
+            <option value="Other">Other / General Enquiry</option>
+          </select>
+          {errors.service && (
+            <p className="text-red-500 text-xs mt-1">{errors.service}</p>
           )}
         </div>
 
         <div>
           <label className="block text-primary/80 text-sm font-bold mb-2">
-            Email Address *
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className={`w-full bg-white border ${errors.email ? "border-red-500" : "border-primary/20"} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors`}
-            placeholder="john@example.com"
-          />
-          {errors.email && (
-            <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-          )}
-        </div>
-
-        <div>
-          <label className="block text-primary/80 text-sm font-bold mb-2">
-            Phone Number
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors"
-            placeholder="+1 (555) 000-0000"
-          />
-        </div>
-
-        <div>
-          <label className="block text-primary/80 text-sm font-bold mb-2">
-            Company Name
+            Project / Requirement Scope
           </label>
           <input
             type="text"
-            name="company"
-            value={formData.company}
+            name="projectRequirement"
+            value={formData.projectRequirement}
             onChange={handleChange}
             className="w-full bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors"
-            placeholder="Acme Corp"
+            placeholder="e.g., E-commerce AR Viewer, Corporate Website Redesign"
           />
         </div>
-      </div>
 
-      <div>
-        <label className="block text-primary/80 text-sm font-bold mb-2">
-          Service of Interest *
-        </label>
-        <select
-          name="service"
-          value={formData.service}
-          onChange={handleChange}
-          className={`w-full bg-white border ${errors.service ? "border-red-500" : "border-primary/20"} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors appearance-none`}
+        <div>
+          <label className="block text-primary/80 text-sm font-bold mb-2">
+            Message *
+          </label>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            rows={5}
+            className={`w-full bg-white border ${errors.message ? "border-red-500" : "border-primary/20"} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors resize-y`}
+            placeholder="Tell us about your goals, timeline, and any specific requirements..."
+          />
+          {errors.message && (
+            <p className="text-red-500 text-xs mt-1">{errors.message}</p>
+          )}
+        </div>
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full bg-primary text-white py-4 px-6 rounded-xl font-bold hover:bg-primary/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center gap-2"
         >
-          <option value="">Select a service...</option>
-          {Object.values(PRICING_SERVICES_MAP).map((serviceName) => (
-            <option key={serviceName} value={serviceName}>
-              {serviceName}
-            </option>
-          ))}
-          <option value="Other">Other / General Enquiry</option>
-        </select>
-        {errors.service && (
-          <p className="text-red-500 text-xs mt-1">{errors.service}</p>
-        )}
-      </div>
+          {isSubmitting ? (
+            <>
+              <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              Processing...
+            </>
+          ) : (
+            "Submit Enquiry"
+          )}
+        </button>
 
-      <div>
-        <label className="block text-primary/80 text-sm font-bold mb-2">
-          Project / Requirement Scope
-        </label>
-        <input
-          type="text"
-          name="projectRequirement"
-          value={formData.projectRequirement}
-          onChange={handleChange}
-          className="w-full bg-white border border-primary/20 text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors"
-          placeholder="e.g., E-commerce AR Viewer, Corporate Website Redesign"
-        />
-      </div>
-
-      <div>
-        <label className="block text-primary/80 text-sm font-bold mb-2">
-          Message *
-        </label>
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          rows={5}
-          className={`w-full bg-white border ${errors.message ? "border-red-500" : "border-primary/20"} text-primary px-4 py-3.5 rounded-xl outline-none focus:border-primary/40 transition-colors resize-y`}
-          placeholder="Tell us about your goals, timeline, and any specific requirements..."
-        />
-        {errors.message && (
-          <p className="text-red-500 text-xs mt-1">{errors.message}</p>
-        )}
-      </div>
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full bg-primary text-white py-4 px-6 rounded-xl font-bold hover:bg-primary/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center gap-2"
-      >
-        {isSubmitting ? (
-          <>
-            <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-            Processing...
-          </>
-        ) : (
-          "Submit Enquiry"
-        )}
-      </button>
-
-      <p className="text-center text-primary/50 text-xs mt-4">
-        By submitting this form, you agree to our Privacy Policy and Terms of
-        Service.
-      </p>
+        <p className="text-center text-primary/50 text-xs mt-4">
+          By submitting this form, you agree to our Privacy Policy and Terms of
+          Service.
+        </p>
       </form>
 
       <AnimatePresence>
@@ -353,12 +353,14 @@ function ContactFormContent() {
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
               </div>
-              <h3 className={`${FONTS.microgrammaBold.className} text-2xl mb-4`}>
+              <h3
+                className={`${FONTS.microgrammaBold.className} text-2xl mb-4`}
+              >
                 Message Sent Successfully!
               </h3>
               <p className="text-primary/70 text-lg leading-relaxed max-w-md mx-auto">
-                Thank you for reaching out. Our team has received your enquiry and
-                will get back to you shortly.
+                Thank you for reaching out. Our team has received your enquiry
+                and will get back to you shortly.
               </p>
               <button
                 onClick={() => setSubmitState("idle")}
@@ -405,12 +407,17 @@ export default function ContactForm() {
 
             <div className="space-y-8">
               <div>
-                <h4 className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}>
-                  {defaultCountryConfig.code === "in" ? "Headquarters" : `${defaultCountryConfig.name} Hub`}
+                <h4
+                  className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}
+                >
+                  {defaultCountryConfig.code === "in"
+                    ? "Headquarters"
+                    : `${defaultCountryConfig.name} Hub`}
                 </h4>
                 {defaultCountryConfig.code === "in" ? (
                   <p className="text-primary/70 leading-relaxed">
-                    Obrive Industries Private Limited<br />
+                    Obrive Industries Private Limited
+                    <br />
                     Bangalore, Karnataka, India
                   </p>
                 ) : (
@@ -426,12 +433,22 @@ export default function ContactForm() {
               </div>
 
               <div>
-                <h4 className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}>Direct Contact</h4>
+                <h4
+                  className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}
+                >
+                  Direct Contact
+                </h4>
                 <p className="text-primary/70 flex flex-col gap-1.5">
-                  <a href={`mailto:${defaultCountryConfig.contactEmail}`} className="hover:text-secondary transition-colors font-medium">
+                  <a
+                    href={`mailto:${defaultCountryConfig.contactEmail}`}
+                    className="hover:text-secondary transition-colors font-medium"
+                  >
                     {defaultCountryConfig.contactEmail}
                   </a>
-                  <a href={`tel:${defaultCountryConfig.phone}`} className="hover:text-secondary transition-colors">
+                  <a
+                    href={`tel:${defaultCountryConfig.phone}`}
+                    className="hover:text-secondary transition-colors"
+                  >
                     {defaultCountryConfig.phone}
                   </a>
                 </p>

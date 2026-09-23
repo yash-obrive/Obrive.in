@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import React from "react";
-import ActivityStream from "@/components/dashboard/ActivityStream";
 import SkeletonLoading from "@/components/SkelitonLoading";
 import { useSocket } from "@/context/SocketContext";
 import { useDashboardData } from "../../useDashboardData";

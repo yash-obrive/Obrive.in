@@ -1,5 +1,5 @@
-import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
+import Link from "@/components/shared/LocalizedLink";
 import type { CAREER_CARD_TYPE } from "@/constants/pages/career/career-card";
 
 const CareerCard = ({ title, date, slug }: CAREER_CARD_TYPE) => {

@@ -1,5 +1,5 @@
-import Link from "@/components/shared/LocalizedLink";
 import type { ReactNode } from "react";
+import Link from "@/components/shared/LocalizedLink";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import RightAnimateIcon from "../icons/RightAnimateIcon";

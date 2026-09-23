@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import ParticipantCard from "./ParticipantCard";
 
 interface Participant {

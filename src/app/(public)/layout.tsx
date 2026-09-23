@@ -1,14 +1,14 @@
+import { headers } from "next/headers";
 import type { ReactNode } from "react";
 import CookiePopup from "@/components/shared/cookies/cookies";
-import PublicLayout from "@/components/shared/layout/PublicLayout";
 import CountrySwitcherBanner from "@/components/shared/layout/CountrySwitcherBanner";
-import { CountryProvider } from "@/context/CountryContext";
+import PublicLayout from "@/components/shared/layout/PublicLayout";
 import {
-  DEFAULT_COUNTRY,
   type CountryCode,
+  DEFAULT_COUNTRY,
   isValidCountryCode,
 } from "@/config/countries";
-import { headers } from "next/headers";
+import { CountryProvider } from "@/context/CountryContext";
 
 export default async function LayoutPublic({
   children,

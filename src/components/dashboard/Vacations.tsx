@@ -1,13 +1,11 @@
 "use client";
 
 import EmployeesOnLeaveList from "@app/(dashboard)/dashboard/employee/components/EmployeesOnLeaveList";
-import LeaveApplicationDialog from "@app/(dashboard)/dashboard/employee/components/LeaveApplicationDialog";
 import LeaveBalanceRing from "@app/(dashboard)/dashboard/employee/components/LeaveBalanceRing";
 import LeaveRequestHistory from "@app/(dashboard)/dashboard/employee/components/LeaveRequestHistory";
 import { motion } from "framer-motion";
-import { Plus, RefreshCcw } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import ConfirmationAlert from "@/components/ConfirmationAlert";
 // --- Sub-Components (Assuming these paths are correct) ---
 import SkeletonLoading from "@/components/SkelitonLoading";
 import { apiFetch } from "@/lib/api";
@@ -118,7 +116,7 @@ export default function VacationsCalendar() {
         await fetchAllData(); // Refresh both the dashboard and the lists
         alert("Leave request submitted!");
       }
-    } catch (error) {
+    } catch (_error) {
       alert("Failed to submit request");
     } finally {
       setLoading(false);

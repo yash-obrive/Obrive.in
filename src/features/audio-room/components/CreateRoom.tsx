@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useRouter } from "next/navigation";
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { apiFetch } from "@/lib/api";
 
 const inputClass =
@@ -31,7 +31,7 @@ interface JoinPermission {
 }
 
 const CreateRoom = () => {
-  const router = useRouter();
+  const _router = useRouter();
 
   // ======================================================
   // FORM STATE

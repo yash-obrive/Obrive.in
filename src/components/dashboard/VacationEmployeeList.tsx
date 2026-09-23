@@ -1,4 +1,3 @@
-import React from "react";
 // Changed the import to match your new file name 'VacationsCalendar' if necessary
 import type { Employee } from "./Vacations";
 

@@ -1,13 +1,13 @@
 import { ICONS, ICONS_META, IMAGES, IMAGES_META } from "@/assets/images";
 
-const PLACEHOLDER_WORKFLOW = [
+const _PLACEHOLDER_WORKFLOW = [
   "Step 1: Evaluate Technology",
   "Step 2: Design Architecture",
   "Step 3: Develop & Integrate",
   "Step 4: Deploy & Scale",
 ] as const;
 
-const PLACEHOLDER_HOW_IT_WORKS = [
+const _PLACEHOLDER_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Placeholder Technology Step",
@@ -18,7 +18,7 @@ const PLACEHOLDER_HOW_IT_WORKS = [
   },
 ] as const;
 
-const PLACEHOLDER_KEY_BENEFITS = [
+const _PLACEHOLDER_KEY_BENEFITS = [
   {
     title: "Placeholder Benefit",
     description: "Placeholder description for key benefit of this technology.",
@@ -347,7 +347,6 @@ const THREE_D_KEY_BENEFITS = [
   },
 ] as const;
 
-
 // ── Service Sections & Sidebar Links ────────────────────────────────────────
 
 const AR_SERVICE_SECTIONS = [
@@ -355,34 +354,94 @@ const AR_SERVICE_SECTIONS = [
     id: "applications",
     title: "Key Applications",
     subSections: [
-      { title: "AR-Guided Maintenance", description: "Overlay step-by-step instructions on equipment for faster, error-free maintenance." },
-      { title: "Immersive Training", description: "Train employees in context using real-world AR overlays and interactive guidance." },
-      { title: "Remote Expert Assistance", description: "Connect field teams with specialists through live AR annotation and video." },
-      { title: "Product Visualization", description: "Let customers visualize products in their real environment before purchasing." },
-      { title: "Quality Inspection", description: "Use spatial overlays and checklists to streamline inspection workflows." },
-      { title: "Navigation & Wayfinding", description: "Guide users through complex spaces with AR indoor navigation." },
+      {
+        title: "AR-Guided Maintenance",
+        description:
+          "Overlay step-by-step instructions on equipment for faster, error-free maintenance.",
+      },
+      {
+        title: "Immersive Training",
+        description:
+          "Train employees in context using real-world AR overlays and interactive guidance.",
+      },
+      {
+        title: "Remote Expert Assistance",
+        description:
+          "Connect field teams with specialists through live AR annotation and video.",
+      },
+      {
+        title: "Product Visualization",
+        description:
+          "Let customers visualize products in their real environment before purchasing.",
+      },
+      {
+        title: "Quality Inspection",
+        description:
+          "Use spatial overlays and checklists to streamline inspection workflows.",
+      },
+      {
+        title: "Navigation & Wayfinding",
+        description:
+          "Guide users through complex spaces with AR indoor navigation.",
+      },
     ],
   },
   {
     id: "capabilities",
     title: "Core Capabilities",
     subSections: [
-      { title: "3D Overlay & Anchoring", description: "Precisely place digital content in physical space using marker and markerless tracking." },
-      { title: "Real-Time Collaboration", description: "Share AR sessions and annotations across teams and locations." },
-      { title: "Device Flexibility", description: "Deploy on smartphones, tablets, smart glasses and headsets." },
-      { title: "Enterprise Integration", description: "Connect AR experiences with ERP, CRM and IoT systems." },
-      { title: "Analytics & Reporting", description: "Track usage, performance and outcomes across AR deployments." },
+      {
+        title: "3D Overlay & Anchoring",
+        description:
+          "Precisely place digital content in physical space using marker and markerless tracking.",
+      },
+      {
+        title: "Real-Time Collaboration",
+        description:
+          "Share AR sessions and annotations across teams and locations.",
+      },
+      {
+        title: "Device Flexibility",
+        description:
+          "Deploy on smartphones, tablets, smart glasses and headsets.",
+      },
+      {
+        title: "Enterprise Integration",
+        description: "Connect AR experiences with ERP, CRM and IoT systems.",
+      },
+      {
+        title: "Analytics & Reporting",
+        description:
+          "Track usage, performance and outcomes across AR deployments.",
+      },
     ],
   },
   {
     id: "why-choose",
     title: "Why Choose Obrive",
     subSections: [
-      { title: "End-to-End AR Expertise", description: "From concept and UX through 3D development, integration and deployment." },
-      { title: "Industry-Focused Solutions", description: "Built around real operational and customer workflows." },
-      { title: "Scalable & Secure", description: "Enterprise-ready architecture from pilot to full rollout." },
-      { title: "Cross-Platform Delivery", description: "Web, mobile, wearables and supported XR devices." },
-      { title: "Ongoing Support", description: "Expert guidance throughout delivery and beyond." },
+      {
+        title: "End-to-End AR Expertise",
+        description:
+          "From concept and UX through 3D development, integration and deployment.",
+      },
+      {
+        title: "Industry-Focused Solutions",
+        description: "Built around real operational and customer workflows.",
+      },
+      {
+        title: "Scalable & Secure",
+        description:
+          "Enterprise-ready architecture from pilot to full rollout.",
+      },
+      {
+        title: "Cross-Platform Delivery",
+        description: "Web, mobile, wearables and supported XR devices.",
+      },
+      {
+        title: "Ongoing Support",
+        description: "Expert guidance throughout delivery and beyond.",
+      },
     ],
   },
 ];
@@ -397,34 +456,93 @@ const VR_SERVICE_SECTIONS = [
     id: "applications",
     title: "Key Applications",
     subSections: [
-      { title: "VR Training & Simulation", description: "Create immersive, repeatable training environments for high-stakes workflows." },
-      { title: "Virtual Product Development", description: "Review and iterate on 3D product designs in an immersive environment." },
-      { title: "Virtual Showrooms", description: "Let customers explore products and spaces in a fully interactive VR environment." },
-      { title: "Collaborative Design Reviews", description: "Bring distributed teams into shared virtual design and review sessions." },
-      { title: "Therapy & Rehabilitation", description: "Support clinical applications with immersive VR experiences." },
-      { title: "Virtual Events & Experiences", description: "Create branded virtual spaces for events, launches and engagement." },
+      {
+        title: "VR Training & Simulation",
+        description:
+          "Create immersive, repeatable training environments for high-stakes workflows.",
+      },
+      {
+        title: "Virtual Product Development",
+        description:
+          "Review and iterate on 3D product designs in an immersive environment.",
+      },
+      {
+        title: "Virtual Showrooms",
+        description:
+          "Let customers explore products and spaces in a fully interactive VR environment.",
+      },
+      {
+        title: "Collaborative Design Reviews",
+        description:
+          "Bring distributed teams into shared virtual design and review sessions.",
+      },
+      {
+        title: "Therapy & Rehabilitation",
+        description:
+          "Support clinical applications with immersive VR experiences.",
+      },
+      {
+        title: "Virtual Events & Experiences",
+        description:
+          "Create branded virtual spaces for events, launches and engagement.",
+      },
     ],
   },
   {
     id: "capabilities",
     title: "Core Capabilities",
     subSections: [
-      { title: "Immersive 3D Environments", description: "High-fidelity environments built for training, collaboration and visualization." },
-      { title: "Interactive Simulations", description: "Repeatable, scenario-based training and decision-making workflows." },
-      { title: "Multi-User VR", description: "Collaborative spaces for distributed teams and stakeholders." },
-      { title: "AI-Guided Feedback", description: "Contextual guidance and performance analytics within VR sessions." },
-      { title: "Cross-Device Deployment", description: "Deploy on major VR headsets and desktop platforms." },
+      {
+        title: "Immersive 3D Environments",
+        description:
+          "High-fidelity environments built for training, collaboration and visualization.",
+      },
+      {
+        title: "Interactive Simulations",
+        description:
+          "Repeatable, scenario-based training and decision-making workflows.",
+      },
+      {
+        title: "Multi-User VR",
+        description:
+          "Collaborative spaces for distributed teams and stakeholders.",
+      },
+      {
+        title: "AI-Guided Feedback",
+        description:
+          "Contextual guidance and performance analytics within VR sessions.",
+      },
+      {
+        title: "Cross-Device Deployment",
+        description: "Deploy on major VR headsets and desktop platforms.",
+      },
     ],
   },
   {
     id: "why-choose",
     title: "Why Choose Obrive",
     subSections: [
-      { title: "Full-Stack VR Development", description: "3D, UX, development, integration and deployment under one roof." },
-      { title: "Industry-Specific Expertise", description: "Solutions designed around real operational workflows." },
-      { title: "Scalable Deployments", description: "From single-site pilots to global enterprise rollouts." },
-      { title: "Measurable Outcomes", description: "Track adoption, performance and return on investment." },
-      { title: "Ongoing Partnership", description: "Continuous support and content updates post-launch." },
+      {
+        title: "Full-Stack VR Development",
+        description:
+          "3D, UX, development, integration and deployment under one roof.",
+      },
+      {
+        title: "Industry-Specific Expertise",
+        description: "Solutions designed around real operational workflows.",
+      },
+      {
+        title: "Scalable Deployments",
+        description: "From single-site pilots to global enterprise rollouts.",
+      },
+      {
+        title: "Measurable Outcomes",
+        description: "Track adoption, performance and return on investment.",
+      },
+      {
+        title: "Ongoing Partnership",
+        description: "Continuous support and content updates post-launch.",
+      },
     ],
   },
 ];
@@ -445,36 +563,72 @@ const MR_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Understand the Environment",
-    description: "Map physical workflows, spatial constraints, users and information needs.",
+    description:
+      "Map physical workflows, spatial constraints, users and information needs.",
     src: "/technology/mr_1.jpg",
   },
   {
     step: "02",
     title: "2. Design the Experience",
-    description: "Create spatial interfaces, 3D content, anchors and interaction models.",
+    description:
+      "Create spatial interfaces, 3D content, anchors and interaction models.",
     src: "/technology/mr_2.jpg",
   },
   {
     step: "03",
     title: "3. Connect & Integrate",
-    description: "Connect relevant operational, IoT, product or enterprise data into the MR experience.",
+    description:
+      "Connect relevant operational, IoT, product or enterprise data into the MR experience.",
     src: "/technology/mr_3.jpg",
   },
   {
     step: "04",
     title: "4. Deploy & Optimize",
-    description: "Test across devices and environments, measure usage and continuously improve.",
+    description:
+      "Test across devices and environments, measure usage and continuously improve.",
     src: "/technology/mr_4.jpg",
   },
 ] as const;
 
 const MR_KEY_BENEFITS = [
-  { title: "Enhanced Visualization", description: "Bring digital models into real spaces for richer context.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Real-Time Interaction", description: "Interact naturally with spatial content in your environment.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Improved Collaboration", description: "Share 3D experiences across distributed teams and stakeholders.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Greater Efficiency", description: "Reduce ambiguity and errors in complex operational workflows.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Reduced Costs", description: "Reuse digital training and review experiences across teams.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Safer Operations", description: "Practice and guide complex workflows without physical risk.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
+  {
+    title: "Enhanced Visualization",
+    description: "Bring digital models into real spaces for richer context.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Real-Time Interaction",
+    description: "Interact naturally with spatial content in your environment.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Improved Collaboration",
+    description:
+      "Share 3D experiences across distributed teams and stakeholders.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Greater Efficiency",
+    description:
+      "Reduce ambiguity and errors in complex operational workflows.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Reduced Costs",
+    description: "Reuse digital training and review experiences across teams.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Safer Operations",
+    description: "Practice and guide complex workflows without physical risk.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
 ] as const;
 
 const MR_SERVICE_SECTIONS = [
@@ -482,34 +636,88 @@ const MR_SERVICE_SECTIONS = [
     id: "applications",
     title: "Key Applications",
     subSections: [
-      { title: "MR-Assisted Maintenance", description: "Overlay work instructions and diagnostics onto real equipment." },
-      { title: "Spatial Design Reviews", description: "Review and iterate on 3D designs overlaid on physical spaces." },
-      { title: "Collaborative MR Sessions", description: "Multi-user MR experiences for distributed teams." },
-      { title: "Medical Visualization", description: "Overlay anatomical or procedural content for clinical guidance." },
-      { title: "Construction Planning", description: "Visualize building models overlaid on real construction sites." },
-      { title: "MR Product Demos", description: "Show products in context within customer environments." },
+      {
+        title: "MR-Assisted Maintenance",
+        description:
+          "Overlay work instructions and diagnostics onto real equipment.",
+      },
+      {
+        title: "Spatial Design Reviews",
+        description:
+          "Review and iterate on 3D designs overlaid on physical spaces.",
+      },
+      {
+        title: "Collaborative MR Sessions",
+        description: "Multi-user MR experiences for distributed teams.",
+      },
+      {
+        title: "Medical Visualization",
+        description:
+          "Overlay anatomical or procedural content for clinical guidance.",
+      },
+      {
+        title: "Construction Planning",
+        description:
+          "Visualize building models overlaid on real construction sites.",
+      },
+      {
+        title: "MR Product Demos",
+        description: "Show products in context within customer environments.",
+      },
     ],
   },
   {
     id: "capabilities",
     title: "Core Capabilities",
     subSections: [
-      { title: "Spatial Anchoring", description: "Precisely place and lock digital content in physical space." },
-      { title: "Real-World Understanding", description: "Surface detection, occlusion and environment mapping." },
-      { title: "Multi-User MR", description: "Shared spatial experiences across teams and locations." },
-      { title: "Enterprise Integration", description: "Connect MR to operational and enterprise data systems." },
-      { title: "Cross-Device Support", description: "Deploy on HoloLens, Magic Leap, mobile and compatible devices." },
+      {
+        title: "Spatial Anchoring",
+        description:
+          "Precisely place and lock digital content in physical space.",
+      },
+      {
+        title: "Real-World Understanding",
+        description: "Surface detection, occlusion and environment mapping.",
+      },
+      {
+        title: "Multi-User MR",
+        description: "Shared spatial experiences across teams and locations.",
+      },
+      {
+        title: "Enterprise Integration",
+        description: "Connect MR to operational and enterprise data systems.",
+      },
+      {
+        title: "Cross-Device Support",
+        description:
+          "Deploy on HoloLens, Magic Leap, mobile and compatible devices.",
+      },
     ],
   },
   {
     id: "why-choose",
     title: "Why Choose Obrive",
     subSections: [
-      { title: "End-to-End MR Development", description: "Spatial UX through to full deployment." },
-      { title: "Industry-Focused Solutions", description: "Designed around real-world operational workflows." },
-      { title: "Modern Technology Stack", description: "Spatial computing, 3D and enterprise integration." },
-      { title: "Scalable & Secure", description: "Built for enterprise rollout from pilot to scale." },
-      { title: "Expert Support", description: "Ongoing guidance and support throughout delivery." },
+      {
+        title: "End-to-End MR Development",
+        description: "Spatial UX through to full deployment.",
+      },
+      {
+        title: "Industry-Focused Solutions",
+        description: "Designed around real-world operational workflows.",
+      },
+      {
+        title: "Modern Technology Stack",
+        description: "Spatial computing, 3D and enterprise integration.",
+      },
+      {
+        title: "Scalable & Secure",
+        description: "Built for enterprise rollout from pilot to scale.",
+      },
+      {
+        title: "Expert Support",
+        description: "Ongoing guidance and support throughout delivery.",
+      },
     ],
   },
 ];
@@ -530,36 +738,76 @@ const XR_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Discover the Use Case",
-    description: "Identify where AR, VR or MR can improve experiences, training or operations.",
+    description:
+      "Identify where AR, VR or MR can improve experiences, training or operations.",
     src: "/technology/xr_1.jpg",
   },
   {
     step: "02",
     title: "2. Design the XR Experience",
-    description: "Create the 3D environment, interaction model and complete user journey.",
+    description:
+      "Create the 3D environment, interaction model and complete user journey.",
     src: "/technology/xr_2.jpg",
   },
   {
     step: "03",
     title: "3. Develop & Integrate",
-    description: "Build the application and connect required content, data and enterprise systems.",
+    description:
+      "Build the application and connect required content, data and enterprise systems.",
     src: "/technology/xr3.png",
   },
   {
     step: "04",
     title: "4. Deploy & Measure",
-    description: "Test on target devices, launch to users and measure outcomes continuously.",
+    description:
+      "Test on target devices, launch to users and measure outcomes continuously.",
     src: "/technology/xr4.jpeg",
   },
 ] as const;
 
 const XR_KEY_BENEFITS = [
-  { title: "Immersive Experiences", description: "Create deeper, more meaningful interactions across AR, VR and MR.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Higher Engagement", description: "Turn passive content into interactive, memorable experiences.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Faster Learning", description: "Support experiential training that improves retention and performance.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Better Collaboration", description: "Bring distributed teams together in shared immersive environments.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Increased Productivity", description: "Put visual tools and guidance in the right context at the right time.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Real Business Impact", description: "Connect XR experiences directly to operational workflows and outcomes.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
+  {
+    title: "Immersive Experiences",
+    description:
+      "Create deeper, more meaningful interactions across AR, VR and MR.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Higher Engagement",
+    description:
+      "Turn passive content into interactive, memorable experiences.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Faster Learning",
+    description:
+      "Support experiential training that improves retention and performance.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Better Collaboration",
+    description:
+      "Bring distributed teams together in shared immersive environments.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Increased Productivity",
+    description:
+      "Put visual tools and guidance in the right context at the right time.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Real Business Impact",
+    description:
+      "Connect XR experiences directly to operational workflows and outcomes.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
 ] as const;
 
 const XR_SERVICE_SECTIONS = [
@@ -567,34 +815,91 @@ const XR_SERVICE_SECTIONS = [
     id: "applications",
     title: "Key Applications",
     subSections: [
-      { title: "Enterprise XR Training", description: "Immersive training across AR, VR and MR for any industry or workflow." },
-      { title: "XR Product Visualization", description: "Showcase products in AR, navigate them in VR or review them in MR." },
-      { title: "Spatial Collaboration", description: "Multi-user XR sessions for design review, planning and teamwork." },
-      { title: "Customer XR Experiences", description: "Engage customers with immersive retail, real estate and marketing experiences." },
-      { title: "XR Simulation", description: "Safe, repeatable scenario-based simulations for complex operations." },
-      { title: "XR Data Visualization", description: "Understand complex datasets spatially in AR and VR environments." },
+      {
+        title: "Enterprise XR Training",
+        description:
+          "Immersive training across AR, VR and MR for any industry or workflow.",
+      },
+      {
+        title: "XR Product Visualization",
+        description:
+          "Showcase products in AR, navigate them in VR or review them in MR.",
+      },
+      {
+        title: "Spatial Collaboration",
+        description:
+          "Multi-user XR sessions for design review, planning and teamwork.",
+      },
+      {
+        title: "Customer XR Experiences",
+        description:
+          "Engage customers with immersive retail, real estate and marketing experiences.",
+      },
+      {
+        title: "XR Simulation",
+        description:
+          "Safe, repeatable scenario-based simulations for complex operations.",
+      },
+      {
+        title: "XR Data Visualization",
+        description:
+          "Understand complex datasets spatially in AR and VR environments.",
+      },
     ],
   },
   {
     id: "capabilities",
     title: "Core Capabilities",
     subSections: [
-      { title: "Full-Spectrum XR", description: "AR, VR and MR development under one platform." },
-      { title: "Creative & Technical", description: "UX design, 3D content creation and engineering." },
-      { title: "Scalable & Secure", description: "Architecture that supports pilots through enterprise scale." },
-      { title: "Industry-Focused", description: "Adapt experiences to specific users and operational workflows." },
-      { title: "Ongoing Support", description: "Deployment, optimization and continuous improvement." },
+      {
+        title: "Full-Spectrum XR",
+        description: "AR, VR and MR development under one platform.",
+      },
+      {
+        title: "Creative & Technical",
+        description: "UX design, 3D content creation and engineering.",
+      },
+      {
+        title: "Scalable & Secure",
+        description:
+          "Architecture that supports pilots through enterprise scale.",
+      },
+      {
+        title: "Industry-Focused",
+        description:
+          "Adapt experiences to specific users and operational workflows.",
+      },
+      {
+        title: "Ongoing Support",
+        description: "Deployment, optimization and continuous improvement.",
+      },
     ],
   },
   {
     id: "why-choose",
     title: "Why Choose Obrive",
     subSections: [
-      { title: "Full-Spectrum XR", description: "AR, VR and MR expertise in a single partner." },
-      { title: "Creative & Technical Excellence", description: "UX, 3D and engineering capabilities combined." },
-      { title: "Scalable from Pilot to Enterprise", description: "Solutions that grow with your business." },
-      { title: "Industry-Adapted Solutions", description: "Tailored to specific users, workflows and environments." },
-      { title: "Ongoing Partnership", description: "Continuous support, optimization and future-ready updates." },
+      {
+        title: "Full-Spectrum XR",
+        description: "AR, VR and MR expertise in a single partner.",
+      },
+      {
+        title: "Creative & Technical Excellence",
+        description: "UX, 3D and engineering capabilities combined.",
+      },
+      {
+        title: "Scalable from Pilot to Enterprise",
+        description: "Solutions that grow with your business.",
+      },
+      {
+        title: "Industry-Adapted Solutions",
+        description: "Tailored to specific users, workflows and environments.",
+      },
+      {
+        title: "Ongoing Partnership",
+        description:
+          "Continuous support, optimization and future-ready updates.",
+      },
     ],
   },
 ];
@@ -615,36 +920,73 @@ const DT_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Capture Real-World Data",
-    description: "Bring together asset, sensor, BIM, IoT and operational data from your environment.",
+    description:
+      "Bring together asset, sensor, BIM, IoT and operational data from your environment.",
     src: "/technology/dt_1.jpg",
   },
   {
     step: "02",
     title: "2. Create the 3D Twin",
-    description: "Build a structured digital representation of your asset, space or operational system.",
+    description:
+      "Build a structured digital representation of your asset, space or operational system.",
     src: "/technology/dt_2.jpg",
   },
   {
     step: "03",
     title: "3. Integrate & Analyze",
-    description: "Connect live and historical data streams for real-time monitoring and simulation.",
+    description:
+      "Connect live and historical data streams for real-time monitoring and simulation.",
     src: "/technology/dt_3.jpg",
   },
   {
     step: "04",
     title: "4. Optimize Operations",
-    description: "Use insights and scenarios to improve maintenance, planning and lifecycle performance.",
+    description:
+      "Use insights and scenarios to improve maintenance, planning and lifecycle performance.",
     src: "/technology/dt_4.jpg",
   },
 ] as const;
 
 const DT_KEY_BENEFITS = [
-  { title: "Real-Time Monitoring", description: "See asset conditions in contextual 3D with live data overlays.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Predictive Insights", description: "Identify patterns and potential issues before they impact operations.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Better Decisions", description: "Simulate scenarios and evaluate options before making costly changes.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Reduced Costs", description: "Optimize maintenance scheduling and resource allocation.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Enhanced Asset Lifecycle", description: "Connect design intent through operational performance.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Sustainable Operations", description: "Improve resource utilization and reduce operational waste.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
+  {
+    title: "Real-Time Monitoring",
+    description:
+      "See asset conditions in contextual 3D with live data overlays.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Predictive Insights",
+    description:
+      "Identify patterns and potential issues before they impact operations.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Better Decisions",
+    description:
+      "Simulate scenarios and evaluate options before making costly changes.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Reduced Costs",
+    description: "Optimize maintenance scheduling and resource allocation.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Enhanced Asset Lifecycle",
+    description: "Connect design intent through operational performance.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Sustainable Operations",
+    description: "Improve resource utilization and reduce operational waste.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
 ] as const;
 
 const DT_SERVICE_SECTIONS = [
@@ -652,34 +994,95 @@ const DT_SERVICE_SECTIONS = [
     id: "applications",
     title: "Key Applications",
     subSections: [
-      { title: "Asset Digital Twins", description: "Create live replicas of machinery, equipment and infrastructure." },
-      { title: "Building & Facility Twins", description: "Monitor and manage built environments with real-time data." },
-      { title: "Manufacturing Process Twins", description: "Simulate and optimize production lines and factory operations." },
-      { title: "Infrastructure Twins", description: "Manage roads, utilities and urban systems through connected models." },
-      { title: "Supply Chain Twins", description: "Visualize and optimize logistics, inventory and distribution flows." },
-      { title: "Product Lifecycle Twins", description: "Connect design, manufacturing and service into a unified model." },
+      {
+        title: "Asset Digital Twins",
+        description:
+          "Create live replicas of machinery, equipment and infrastructure.",
+      },
+      {
+        title: "Building & Facility Twins",
+        description:
+          "Monitor and manage built environments with real-time data.",
+      },
+      {
+        title: "Manufacturing Process Twins",
+        description:
+          "Simulate and optimize production lines and factory operations.",
+      },
+      {
+        title: "Infrastructure Twins",
+        description:
+          "Manage roads, utilities and urban systems through connected models.",
+      },
+      {
+        title: "Supply Chain Twins",
+        description:
+          "Visualize and optimize logistics, inventory and distribution flows.",
+      },
+      {
+        title: "Product Lifecycle Twins",
+        description:
+          "Connect design, manufacturing and service into a unified model.",
+      },
     ],
   },
   {
     id: "capabilities",
     title: "Core Capabilities",
     subSections: [
-      { title: "Advanced 3D Modeling", description: "BIM, CAD and spatial data converted into interactive digital twins." },
-      { title: "Real-Time Analytics", description: "Live operational monitoring with visual dashboards and alerts." },
-      { title: "IoT & Sensor Integration", description: "Connect physical sensors and data streams to the digital model." },
-      { title: "Simulation & Scenario Planning", description: "Test changes and predict outcomes in a safe digital environment." },
-      { title: "Scalable Platforms", description: "Support multiple assets and sites from a single platform." },
+      {
+        title: "Advanced 3D Modeling",
+        description:
+          "BIM, CAD and spatial data converted into interactive digital twins.",
+      },
+      {
+        title: "Real-Time Analytics",
+        description:
+          "Live operational monitoring with visual dashboards and alerts.",
+      },
+      {
+        title: "IoT & Sensor Integration",
+        description:
+          "Connect physical sensors and data streams to the digital model.",
+      },
+      {
+        title: "Simulation & Scenario Planning",
+        description:
+          "Test changes and predict outcomes in a safe digital environment.",
+      },
+      {
+        title: "Scalable Platforms",
+        description:
+          "Support multiple assets and sites from a single platform.",
+      },
     ],
   },
   {
     id: "why-choose",
     title: "Why Choose Obrive",
     subSections: [
-      { title: "Advanced 3D & BIM Expertise", description: "CAD, BIM and spatial data at the foundation of every twin." },
-      { title: "Real-Time Analytics", description: "Live visual monitoring and insight generation." },
-      { title: "Industry Use Cases", description: "Assets, buildings, infrastructure and industrial environments." },
-      { title: "Scalable Platforms", description: "Support multiple sites and asset portfolios." },
-      { title: "Expert Support", description: "3D modeling, integration and ongoing platform expertise." },
+      {
+        title: "Advanced 3D & BIM Expertise",
+        description:
+          "CAD, BIM and spatial data at the foundation of every twin.",
+      },
+      {
+        title: "Real-Time Analytics",
+        description: "Live visual monitoring and insight generation.",
+      },
+      {
+        title: "Industry Use Cases",
+        description:
+          "Assets, buildings, infrastructure and industrial environments.",
+      },
+      {
+        title: "Scalable Platforms",
+        description: "Support multiple sites and asset portfolios.",
+      },
+      {
+        title: "Expert Support",
+        description: "3D modeling, integration and ongoing platform expertise.",
+      },
     ],
   },
 ];
@@ -694,34 +1097,95 @@ const SC_SERVICE_SECTIONS = [
     id: "applications",
     title: "Key Applications",
     subSections: [
-      { title: "Spatial App Development", description: "Build applications that understand and interact with physical space." },
-      { title: "Immersive Workspaces", description: "Create persistent digital environments for collaboration and productivity." },
-      { title: "Spatial Commerce", description: "Enable product discovery and purchase in 3D spatial environments." },
-      { title: "Smart Building Interfaces", description: "Control and interact with building systems through spatial interfaces." },
-      { title: "Spatial Training Platforms", description: "Develop training applications that adapt to real-world environments." },
-      { title: "Location-Based Experiences", description: "Create geo-aware spatial experiences for retail, tourism and events." },
+      {
+        title: "Spatial App Development",
+        description:
+          "Build applications that understand and interact with physical space.",
+      },
+      {
+        title: "Immersive Workspaces",
+        description:
+          "Create persistent digital environments for collaboration and productivity.",
+      },
+      {
+        title: "Spatial Commerce",
+        description:
+          "Enable product discovery and purchase in 3D spatial environments.",
+      },
+      {
+        title: "Smart Building Interfaces",
+        description:
+          "Control and interact with building systems through spatial interfaces.",
+      },
+      {
+        title: "Spatial Training Platforms",
+        description:
+          "Develop training applications that adapt to real-world environments.",
+      },
+      {
+        title: "Location-Based Experiences",
+        description:
+          "Create geo-aware spatial experiences for retail, tourism and events.",
+      },
     ],
   },
   {
     id: "capabilities",
     title: "Core Capabilities",
     subSections: [
-      { title: "Immersive Pipeline Management", description: "Track every stage of your spatial computing project from concept to deployment." },
-      { title: "Intelligent Progress Forecasting", description: "Real-time analytics that forecast delivery and highlight bottlenecks." },
-      { title: "AI-Driven Guidance", description: "Automatically detect engagement drops and optimize spatial experiences." },
-      { title: "Auto-Triggered Deployments", description: "Launch tests and live deployments automatically as milestones are reached." },
-      { title: "Instant Interactive Demos", description: "Share immersive previews without installs for rapid client feedback." },
+      {
+        title: "Immersive Pipeline Management",
+        description:
+          "Track every stage of your spatial computing project from concept to deployment.",
+      },
+      {
+        title: "Intelligent Progress Forecasting",
+        description:
+          "Real-time analytics that forecast delivery and highlight bottlenecks.",
+      },
+      {
+        title: "AI-Driven Guidance",
+        description:
+          "Automatically detect engagement drops and optimize spatial experiences.",
+      },
+      {
+        title: "Auto-Triggered Deployments",
+        description:
+          "Launch tests and live deployments automatically as milestones are reached.",
+      },
+      {
+        title: "Instant Interactive Demos",
+        description:
+          "Share immersive previews without installs for rapid client feedback.",
+      },
     ],
   },
   {
     id: "why-choose",
     title: "Why Choose Obrive",
     subSections: [
-      { title: "Spatial Computing Expertise", description: "Deep experience across AR, VR, MR and spatial platforms." },
-      { title: "Full-Stack Development", description: "3D, UX, backend and integration in one team." },
-      { title: "Enterprise-Ready Architecture", description: "Secure, scalable platforms from pilot to rollout." },
-      { title: "Cross-Platform Delivery", description: "Deploy to Apple Vision Pro, Quest, HoloLens, mobile and web." },
-      { title: "Innovation-Led Approach", description: "Constantly exploring new spatial computing workflows and capabilities." },
+      {
+        title: "Spatial Computing Expertise",
+        description: "Deep experience across AR, VR, MR and spatial platforms.",
+      },
+      {
+        title: "Full-Stack Development",
+        description: "3D, UX, backend and integration in one team.",
+      },
+      {
+        title: "Enterprise-Ready Architecture",
+        description: "Secure, scalable platforms from pilot to rollout.",
+      },
+      {
+        title: "Cross-Platform Delivery",
+        description:
+          "Deploy to Apple Vision Pro, Quest, HoloLens, mobile and web.",
+      },
+      {
+        title: "Innovation-Led Approach",
+        description:
+          "Constantly exploring new spatial computing workflows and capabilities.",
+      },
     ],
   },
 ];
@@ -736,34 +1200,93 @@ const THREE_D_SERVICE_SECTIONS = [
     id: "applications",
     title: "Key Applications",
     subSections: [
-      { title: "Product Visualization", description: "Create photorealistic 3D renders and interactive product models." },
-      { title: "Architectural Visualization", description: "Explore buildings, interiors and developments in interactive 3D." },
-      { title: "Industrial 3D Models", description: "Visualize machinery, equipment and manufacturing assets in detail." },
-      { title: "Marketing & Brand Content", description: "Create compelling 3D visuals for campaigns, launches and brand storytelling." },
-      { title: "3D for AR & VR", description: "Create optimized assets for use in immersive AR and VR experiences." },
-      { title: "Animation & Motion", description: "Bring products, spaces and concepts to life with 3D animation." },
+      {
+        title: "Product Visualization",
+        description:
+          "Create photorealistic 3D renders and interactive product models.",
+      },
+      {
+        title: "Architectural Visualization",
+        description:
+          "Explore buildings, interiors and developments in interactive 3D.",
+      },
+      {
+        title: "Industrial 3D Models",
+        description:
+          "Visualize machinery, equipment and manufacturing assets in detail.",
+      },
+      {
+        title: "Marketing & Brand Content",
+        description:
+          "Create compelling 3D visuals for campaigns, launches and brand storytelling.",
+      },
+      {
+        title: "3D for AR & VR",
+        description:
+          "Create optimized assets for use in immersive AR and VR experiences.",
+      },
+      {
+        title: "Animation & Motion",
+        description:
+          "Bring products, spaces and concepts to life with 3D animation.",
+      },
     ],
   },
   {
     id: "capabilities",
     title: "Core Capabilities",
     subSections: [
-      { title: "Structured Project Pipeline", description: "Monitor every design stage with clarity and precision." },
-      { title: "Auto-Launch Iterations", description: "Trigger revised renders automatically when assets move to production." },
-      { title: "Instant Collaborative Reviews", description: "Share interactive previews for real-time client feedback." },
-      { title: "Intelligent Progress Forecasting", description: "Identify bottlenecks and forecast timelines from data signals." },
-      { title: "AI-Driven Design Feedback", description: "Detect inconsistencies and recommend optimizations automatically." },
+      {
+        title: "Structured Project Pipeline",
+        description: "Monitor every design stage with clarity and precision.",
+      },
+      {
+        title: "Auto-Launch Iterations",
+        description:
+          "Trigger revised renders automatically when assets move to production.",
+      },
+      {
+        title: "Instant Collaborative Reviews",
+        description:
+          "Share interactive previews for real-time client feedback.",
+      },
+      {
+        title: "Intelligent Progress Forecasting",
+        description:
+          "Identify bottlenecks and forecast timelines from data signals.",
+      },
+      {
+        title: "AI-Driven Design Feedback",
+        description:
+          "Detect inconsistencies and recommend optimizations automatically.",
+      },
     ],
   },
   {
     id: "why-choose",
     title: "Why Choose Obrive",
     subSections: [
-      { title: "End-to-End 3D Expertise", description: "Modeling, rendering, animation and XR-ready asset production." },
-      { title: "Industry-Specific Content", description: "Products, spaces and environments across any sector." },
-      { title: "Scalable Workflows", description: "From single assets to large-scale content libraries." },
-      { title: "AR & VR-Ready Output", description: "Optimized assets designed for immersive deployment." },
-      { title: "Quality & Consistency", description: "Rigorous review workflows and iterative refinement." },
+      {
+        title: "End-to-End 3D Expertise",
+        description:
+          "Modeling, rendering, animation and XR-ready asset production.",
+      },
+      {
+        title: "Industry-Specific Content",
+        description: "Products, spaces and environments across any sector.",
+      },
+      {
+        title: "Scalable Workflows",
+        description: "From single assets to large-scale content libraries.",
+      },
+      {
+        title: "AR & VR-Ready Output",
+        description: "Optimized assets designed for immersive deployment.",
+      },
+      {
+        title: "Quality & Consistency",
+        description: "Rigorous review workflows and iterative refinement.",
+      },
     ],
   },
 ];
@@ -784,36 +1307,74 @@ const AI_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Define the Business Goal",
-    description: "Identify tasks and decisions where AI and immersive technology can work together to create value.",
+    description:
+      "Identify tasks and decisions where AI and immersive technology can work together to create value.",
     src: "/technology/ai1.jpeg",
   },
   {
     step: "02",
     title: "2. Design the Intelligent Experience",
-    description: "Combine spatial interfaces with conversational, vision or predictive AI models.",
+    description:
+      "Combine spatial interfaces with conversational, vision or predictive AI models.",
     src: "/technology/ai2.png",
   },
   {
     step: "03",
     title: "3. Develop & Integrate",
-    description: "Connect AI models, data pipelines, workflows and enterprise systems into the immersive experience.",
+    description:
+      "Connect AI models, data pipelines, workflows and enterprise systems into the immersive experience.",
     src: "/technology/ai3.jpeg",
   },
   {
     step: "04",
     title: "4. Learn & Improve",
-    description: "Monitor quality and user outcomes, then continuously refine and evolve the experience.",
+    description:
+      "Monitor quality and user outcomes, then continuously refine and evolve the experience.",
     src: "/technology/ai4.png",
   },
 ] as const;
 
 const AI_KEY_BENEFITS = [
-  { title: "Personalized Experiences", description: "Adapt content, guidance and interactions to individual users.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Intelligent Automation", description: "Accelerate immersive workflows with AI-driven decision-making.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Real-Time Insights", description: "Combine spatial context with AI analysis for deeper understanding.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Greater Engagement", description: "Make experiences responsive and adaptive to user behavior.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Improved Decisions", description: "Visualize AI outputs in context for faster, more confident choices.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Future-Ready Solutions", description: "Evolve as AI models improve and new capabilities emerge.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
+  {
+    title: "Personalized Experiences",
+    description:
+      "Adapt content, guidance and interactions to individual users.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Intelligent Automation",
+    description:
+      "Accelerate immersive workflows with AI-driven decision-making.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Real-Time Insights",
+    description:
+      "Combine spatial context with AI analysis for deeper understanding.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Greater Engagement",
+    description: "Make experiences responsive and adaptive to user behavior.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Improved Decisions",
+    description:
+      "Visualize AI outputs in context for faster, more confident choices.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Future-Ready Solutions",
+    description: "Evolve as AI models improve and new capabilities emerge.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
 ] as const;
 
 const AI_SERVICE_SECTIONS = [
@@ -821,34 +1382,96 @@ const AI_SERVICE_SECTIONS = [
     id: "applications",
     title: "Key Applications",
     subSections: [
-      { title: "AI-Powered Training", description: "Immersive training experiences that adapt to individual learner performance." },
-      { title: "Intelligent Remote Assistance", description: "AI-enhanced expert support with real-time guidance and object recognition." },
-      { title: "Conversational XR Interfaces", description: "Voice and language AI embedded in spatial experiences." },
-      { title: "Predictive Maintenance", description: "AI analysis combined with AR overlays for proactive asset management." },
-      { title: "AI Product Configurators", description: "Intelligent 3D configurators that recommend options based on user behavior." },
-      { title: "Spatial Data Analytics", description: "Visualize and explore AI-generated insights in immersive 3D environments." },
+      {
+        title: "AI-Powered Training",
+        description:
+          "Immersive training experiences that adapt to individual learner performance.",
+      },
+      {
+        title: "Intelligent Remote Assistance",
+        description:
+          "AI-enhanced expert support with real-time guidance and object recognition.",
+      },
+      {
+        title: "Conversational XR Interfaces",
+        description: "Voice and language AI embedded in spatial experiences.",
+      },
+      {
+        title: "Predictive Maintenance",
+        description:
+          "AI analysis combined with AR overlays for proactive asset management.",
+      },
+      {
+        title: "AI Product Configurators",
+        description:
+          "Intelligent 3D configurators that recommend options based on user behavior.",
+      },
+      {
+        title: "Spatial Data Analytics",
+        description:
+          "Visualize and explore AI-generated insights in immersive 3D environments.",
+      },
     ],
   },
   {
     id: "capabilities",
     title: "Core Capabilities",
     subSections: [
-      { title: "AI + Immersive Integration", description: "Combining AI models with AR, VR, MR and spatial interfaces." },
-      { title: "Computer Vision", description: "Object detection, recognition and spatial understanding for AR applications." },
-      { title: "Conversational AI", description: "Natural language interfaces embedded into immersive experiences." },
-      { title: "Predictive Analytics", description: "AI models that surface actionable insights from operational data." },
-      { title: "Adaptive Personalization", description: "Experiences that learn and adapt to individual users over time." },
+      {
+        title: "AI + Immersive Integration",
+        description:
+          "Combining AI models with AR, VR, MR and spatial interfaces.",
+      },
+      {
+        title: "Computer Vision",
+        description:
+          "Object detection, recognition and spatial understanding for AR applications.",
+      },
+      {
+        title: "Conversational AI",
+        description:
+          "Natural language interfaces embedded into immersive experiences.",
+      },
+      {
+        title: "Predictive Analytics",
+        description:
+          "AI models that surface actionable insights from operational data.",
+      },
+      {
+        title: "Adaptive Personalization",
+        description:
+          "Experiences that learn and adapt to individual users over time.",
+      },
     ],
   },
   {
     id: "why-choose",
     title: "Why Choose Obrive",
     subSections: [
-      { title: "AI + Immersive Expertise", description: "Deep capability across AI, AR, VR, MR and spatial interfaces." },
-      { title: "Custom-Built Solutions", description: "Designed around your data, users and business goals." },
-      { title: "Scalable & Secure", description: "Enterprise-ready architecture and responsible AI practices." },
-      { title: "Cross-Industry Experience", description: "Apply AI-immersive solutions across business functions and sectors." },
-      { title: "Innovation-Driven", description: "Constantly exploring new AI-spatial workflows and capabilities." },
+      {
+        title: "AI + Immersive Expertise",
+        description:
+          "Deep capability across AI, AR, VR, MR and spatial interfaces.",
+      },
+      {
+        title: "Custom-Built Solutions",
+        description: "Designed around your data, users and business goals.",
+      },
+      {
+        title: "Scalable & Secure",
+        description:
+          "Enterprise-ready architecture and responsible AI practices.",
+      },
+      {
+        title: "Cross-Industry Experience",
+        description:
+          "Apply AI-immersive solutions across business functions and sectors.",
+      },
+      {
+        title: "Innovation-Driven",
+        description:
+          "Constantly exploring new AI-spatial workflows and capabilities.",
+      },
     ],
   },
 ];

@@ -1,9 +1,9 @@
-import fs from "fs";
+import fs from "node:fs";
+import path from "node:path";
 import matter from "gray-matter";
-import path from "path";
-import remarkGfm from "remark-gfm";
-import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 import type { CASE_STUDIES_AVATAR, CASE_STUDIES_IMAGES } from "@/assets/images";
 
 const caseStudiesDirectory = path.join(process.cwd(), "src/content/resources");
@@ -140,7 +140,9 @@ export async function getAllCaseStudySlugs(): Promise<string[]> {
   }
 }
 
-export async function getAllCaseStudies(country?: string): Promise<CaseStudyData[]> {
+export async function getAllCaseStudies(
+  country?: string,
+): Promise<CaseStudyData[]> {
   const slugs = await getAllCaseStudySlugs();
   const caseStudies = await Promise.all(
     slugs.map(async (slug) => {
@@ -150,7 +152,7 @@ export async function getAllCaseStudies(country?: string): Promise<CaseStudyData
   );
 
   const validCaseStudies = caseStudies.filter(
-    (caseStudy): caseStudy is CaseStudyData => caseStudy !== null
+    (caseStudy): caseStudy is CaseStudyData => caseStudy !== null,
   );
 
   if (!country) {

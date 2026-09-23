@@ -1,6 +1,6 @@
 "use client";
-import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
+import Link from "@/components/shared/LocalizedLink";
 import { Button } from "@/components/ui/button";
 import type { WHY_SECTION_TYPE } from "@/constants/pages/why-section";
 

@@ -1,10 +1,9 @@
-import React from "react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { headers } from "next/headers";
 import GlobalMarketExplorer from "@/components/pages/global/GlobalMarketExplorer";
 import {
-  getCountryConfig,
   DEFAULT_COUNTRY,
+  getCountryConfig,
   isValidCountryCode,
 } from "@/config/countries";
 

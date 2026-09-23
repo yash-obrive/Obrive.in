@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import Link from "@/components/shared/LocalizedLink";
-import React from "react";
 import FONTS from "@/assets/fonts";
-import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import DirectorySearch from "./components/DirectorySearch";
 import { getDirectoryData } from "./directoryData";

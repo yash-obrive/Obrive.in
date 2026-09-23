@@ -1,12 +1,12 @@
 "use client";
 
+import type React from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import React from "react";
 
 interface FAQAccordionProps {
   children: React.ReactNode;

@@ -12,7 +12,13 @@ interface CompanyInfoSectionProps {
   children?: React.ReactNode;
 }
 
-export function CompanyInfoItem({ title, children }: { title?: React.ReactNode, children: React.ReactNode }) {
+export function CompanyInfoItem({
+  title,
+  children,
+}: {
+  title?: React.ReactNode;
+  children: React.ReactNode;
+}) {
   return (
     <div>
       {title && (
@@ -44,28 +50,26 @@ export default function CompanyInfoSection({
         </h2>
       )}
       <div className="space-y-6">
-        {children ? (
-          children
-        ) : (
-          items?.map((item, index) => (
-            <div key={index}>
-              {item.title && (
-                <h3
-                  className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}
-                >
-                  {item.title}
-                </h3>
-              )}
-              {typeof item.description === "string" ? (
-                <p className="text-sm leading-relaxed">{item.description}</p>
-              ) : (
-                <div className="text-sm leading-relaxed [&>ul]:list-disc [&>ol]:list-decimal">
-                  {item.description}
-                </div>
-              )}
-            </div>
-          ))
-        )}
+        {children
+          ? children
+          : items?.map((item, index) => (
+              <div key={index}>
+                {item.title && (
+                  <h3
+                    className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}
+                  >
+                    {item.title}
+                  </h3>
+                )}
+                {typeof item.description === "string" ? (
+                  <p className="text-sm leading-relaxed">{item.description}</p>
+                ) : (
+                  <div className="text-sm leading-relaxed [&>ul]:list-disc [&>ol]:list-decimal">
+                    {item.description}
+                  </div>
+                )}
+              </div>
+            ))}
       </div>
     </section>
   );

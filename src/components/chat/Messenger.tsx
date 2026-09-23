@@ -9,12 +9,9 @@ import {
   Image as ImageIcon,
   Info,
   Link2,
-  Loader2,
   MessageSquare,
   MoreHorizontal,
   Paperclip,
-  Phone,
-  Pin,
   Plus,
   Search,
   Send,
@@ -23,7 +20,6 @@ import {
   UserMinus,
   UserPlus,
   Users,
-  Video,
   X,
   XCircle,
 } from "lucide-react";
@@ -102,7 +98,7 @@ export default function Messenger() {
     type: "info",
   });
 
-  const [memberToRemove, setMemberToRemove] = useState<{
+  const [_memberToRemove, _setMemberToRemove] = useState<{
     id: number;
     name: string;
   } | null>(null);
@@ -112,7 +108,7 @@ export default function Messenger() {
       "https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3",
     );
     loadInitialData();
-  }, []);
+  }, [loadInitialData]);
 
   const loadInitialData = async () => {
     setIsLoading(true);
@@ -132,7 +128,7 @@ export default function Messenger() {
         socket?.emit("leave_conversation", Number(activeConversation.id));
       }
     };
-  }, [activeConversation?.id, socket]);
+  }, [activeConversation?.id, socket, fetchMessages, markAsRead]);
 
   useEffect(() => {
     if (!socket) return;
@@ -206,7 +202,7 @@ export default function Messenger() {
       socket.off("typing_started");
       socket.off("typing_stopped");
     };
-  }, [socket, activeConversation]);
+  }, [socket, activeConversation, scrollToBottom]);
 
   const fetchConversations = async () => {
     try {
@@ -282,7 +278,7 @@ export default function Messenger() {
     }
 
     const convId = Number(activeConversation.id);
-    if (isNaN(convId)) {
+    if (Number.isNaN(convId)) {
       console.error("Invalid conversation ID:", activeConversation.id);
       return;
     }

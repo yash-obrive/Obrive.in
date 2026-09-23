@@ -11,7 +11,7 @@ html.lenis body {
 }
 
 .lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+  scroll-behavior: auto;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
@@ -53,9 +53,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
   }
 
   html {
@@ -85,7 +85,7 @@ body {
   --secondary-foreground: oklch(1 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: #A2F1DF;
+  --accent: #a2f1df;
   --accent-gradient: linear-gradient(
     to right,
     #caede5,
@@ -143,7 +143,7 @@ body {
   --secondary-foreground: oklch(0.3382 0.0575 180.8154);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: #A2F1DF;
+  --accent: #a2f1df;
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
@@ -272,12 +272,12 @@ body {
 
 /* Override bg-accent to use gradient */
 .bg-gradient {
-  background: var(--accent-gradient) !important;
+  background: var(--accent-gradient);
 }
 
 /* Support for hover states */
 .hover\:bg-gradient:hover {
-  background: var(--accent-gradient) !important;
+  background: var(--accent-gradient);
 }
 
 /* Support for opacity variants */
@@ -287,7 +287,7 @@ body {
     rgba(89, 208, 181, 0.8),
     rgba(202, 237, 229, 0.8),
     rgba(202, 237, 229, 0.8)
-  ) !important;
+  );
 }
 
 .hover\:bg-gradient\/80:hover {
@@ -296,7 +296,7 @@ body {
     rgba(89, 208, 181, 0.8),
     rgba(202, 237, 229, 0.8),
     rgba(202, 237, 229, 0.8)
-  ) !important;
+  );
 }
 
 .bg-gradient\/50 {
@@ -305,7 +305,7 @@ body {
     rgba(89, 208, 181, 0.5),
     rgba(202, 237, 229, 0.5),
     rgba(202, 237, 229, 0.5)
-  ) !important;
+  );
 }
 
 .bg-gradient\/60 {
@@ -314,7 +314,7 @@ body {
     rgba(89, 208, 181, 0.6),
     rgba(202, 237, 229, 0.6),
     rgba(202, 237, 229, 0.6)
-  ) !important;
+  );
 }
 
 @keyframes floatAvatar {

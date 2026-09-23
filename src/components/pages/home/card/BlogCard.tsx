@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
+import Link from "@/components/shared/LocalizedLink";
 import type { HomeCardBlog } from "@/constants/pages/home/home-card";
 
 export default function BlogCard({

@@ -33,7 +33,7 @@ const SolutionSidebarLayout = ({
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
-    const sectionsToObserve = [...serviceSections.map(s => s.id)];
+    const sectionsToObserve = [...serviceSections.map((s) => s.id)];
 
     sectionsToObserve.forEach((id) => {
       const el = sectionRefs.current[id];
@@ -114,7 +114,6 @@ const SolutionSidebarLayout = ({
               </div>
             </FadeInOnView>
           ))}
-          
         </div>
       </div>
 

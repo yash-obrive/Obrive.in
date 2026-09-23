@@ -1,4 +1,4 @@
-import blogsData from '@/data/blogs.json';
+import blogsData from "@/data/blogs.json";
 
 export interface BlogSection {
   title: string;
@@ -31,6 +31,6 @@ export function getBlogsByCategory(category: string): Blog[] {
 
 export function getAllCategories(): string[] {
   const blogs = getAllBlogs();
-  const categories = new Set(blogs.map(b => b.category));
+  const categories = new Set(blogs.map((b) => b.category));
   return Array.from(categories).filter(Boolean).sort();
 }

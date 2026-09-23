@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
-import Link from "@/components/shared/LocalizedLink";
-import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import FAQAccordionSection, { FAQItem } from "@/components/pages/faq/sections/FAQAccordionSection";
-import FAQWorkflowSteps from "@/components/pages/faq/FAQWorkflowSteps";
 import FONTS from "@/assets/fonts";
-import { SolutionFAQCategory } from "@/lib/services";
+import FAQWorkflowSteps from "@/components/pages/faq/FAQWorkflowSteps";
+import FAQAccordionSection, {
+  FAQItem,
+} from "@/components/pages/faq/sections/FAQAccordionSection";
+import FullWidthSection from "@/components/shared/layout/FullWidthSection";
+import type { SolutionFAQCategory } from "@/lib/services";
 
 interface SolutionFAQSectionProps {
   title?: string;
@@ -36,12 +36,11 @@ export default function SolutionFAQSection({
   const categoryStepIds = categories.map((cat) => slugify(cat.title));
 
   return (
-    <FullWidthSection
-      backgroundColor="accent"
-      className="min-h-screen"
-    >
-      <div id="faqs" className="pt-20 sm:pt-28 lg:pt-32 pb-16 sm:pb-24 lg:pb-30">
-
+    <FullWidthSection backgroundColor="accent" className="min-h-screen">
+      <div
+        id="faqs"
+        className="pt-20 sm:pt-28 lg:pt-32 pb-16 sm:pb-24 lg:pb-30"
+      >
         {/* Header */}
         <div className="flex flex-col items-center justify-center text-center px-4 sm:px-8 lg:px-13 mb-8 sm:mb-16 lg:mb-20">
           <h1
@@ -78,7 +77,11 @@ export default function SolutionFAQSection({
                   title={category.title}
                 >
                   {category.items.map((item: any, i: number) => (
-                    <FAQItem key={i} question={item.question} answer={item.answer} />
+                    <FAQItem
+                      key={i}
+                      question={item.question}
+                      answer={item.answer}
+                    />
                   ))}
                 </FAQAccordionSection>
               ))}

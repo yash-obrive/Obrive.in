@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
 import CareerCarousel from "@/components/pages/career/CareerCarousel";
@@ -9,6 +8,7 @@ import LibraryCard from "@/components/pages/career/card/LibraryCard";
 import JoinTeamCarousel from "@/components/pages/career/JoinTeamCarousel";
 import TeamHero from "@/components/pages/career/TeamHero";
 import { KeyBenefitsCard } from "@/components/shared/cards/KeyBenefitsCard";
+import Link from "@/components/shared/LocalizedLink";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { InfiniteHorizontalScroll } from "@/components/shared/layout/InfiniteHorizontalScroll";
 import SectionHeader from "@/components/shared/layout/SectionHeader";
@@ -80,8 +80,8 @@ export default function JoinTeamPage() {
     <SmoothScrollProvider>
       <div>
         <section>
-          <FullWidthSection backgroundColor="none" className="py-10 pt-30">
-            <div className="text-center flex flex-col items-center gap-8">
+          <FullWidthSection backgroundColor="none" className="pt-32 pb-4">
+            <div className="text-center flex flex-col items-center gap-6 mt-4">
               <FadeInOnLoad delay={0.15}>
                 <h1
                   className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-secondary`}

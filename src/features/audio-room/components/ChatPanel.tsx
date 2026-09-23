@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronRight, Send } from "lucide-react";
-import React, { type Dispatch, type SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 interface ChatPanelProps {
   isChatOpen: boolean;

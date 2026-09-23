@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { CASE_STUDIES_IMAGES } from "@/assets/images";
+import BlogDetail from "@/components/pages/blogs/BlogDetail";
+import CaseStudyDetail from "@/components/pages/case-studies/CaseStudyDetail";
 import { createResourceMDXComponents } from "@/components/pages/resources/ResourceMDXComponents";
 import ResourceTemplate from "@/components/pages/resources/ResourceTemplate";
-import { getAllCaseStudySlugs, getCaseStudyBySlug, sharedMdxOptions } from "@/lib/mdx";
 import { getAllBlogs, getBlogBySlug } from "@/lib/blogs";
-import BlogDetail from "@/components/pages/blogs/BlogDetail";
-import { getCaseStudyBySlug as getJsonCaseStudyBySlug, getAllCaseStudySlugs as getAllJsonCaseStudySlugs } from "@/lib/case-studies";
-import CaseStudyDetail from "@/components/pages/case-studies/CaseStudyDetail";
+import {
+  getAllCaseStudySlugs as getAllJsonCaseStudySlugs,
+  getCaseStudyBySlug as getJsonCaseStudyBySlug,
+} from "@/lib/case-studies";
+import {
+  getAllCaseStudySlugs,
+  getCaseStudyBySlug,
+  sharedMdxOptions,
+} from "@/lib/mdx";
 
 interface ResourcePageProps {
   params: Promise<{ slug: string }>;
@@ -26,7 +32,8 @@ export async function generateMetadata({
     if (blog) {
       return {
         title: `${blog.title} | Obrive`,
-        description: blog.sections[0]?.content[0] || "Read more about this topic.",
+        description:
+          blog.sections[0]?.content[0] || "Read more about this topic.",
         metadataBase: new URL("https://obrive.com"),
         alternates: {
           canonical: `https://obrive.com/resources/${slug}`,
@@ -36,7 +43,9 @@ export async function generateMetadata({
     const jsonCaseStudy = getJsonCaseStudyBySlug(slug);
     if (jsonCaseStudy) {
       const title = `${jsonCaseStudy.title} | Obrive Case Study`;
-      const description = jsonCaseStudy.outcome_snapshot || jsonCaseStudy.overview.slice(0, 155) + "...";
+      const description =
+        jsonCaseStudy.outcome_snapshot ||
+        `${jsonCaseStudy.overview.slice(0, 155)}...`;
       return {
         title,
         description,
@@ -68,11 +77,14 @@ export async function generateMetadata({
     };
   }
 
-  const heroImageKey = resource.metadata.heroImage as keyof typeof CASE_STUDIES_IMAGES;
+  const heroImageKey = resource.metadata
+    .heroImage as keyof typeof CASE_STUDIES_IMAGES;
   const heroImage = CASE_STUDIES_IMAGES[heroImageKey];
-  const heroImageSrc = typeof resource.metadata.heroImage === "string" && resource.metadata.heroImage.startsWith("/")
-    ? resource.metadata.heroImage
-    : (heroImage?.src || "/images/default-hero.png");
+  const heroImageSrc =
+    typeof resource.metadata.heroImage === "string" &&
+    resource.metadata.heroImage.startsWith("/")
+      ? resource.metadata.heroImage
+      : heroImage?.src || "/images/default-hero.png";
 
   // ensure absolute URL for social media images
   const imageUrl = heroImageSrc.startsWith("http")
@@ -183,7 +195,7 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
           },
         },
       };
-    
+
       return (
         <>
           <script
@@ -199,11 +211,14 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
     notFound();
   }
 
-  const heroImageKey = resource.metadata.heroImage as keyof typeof CASE_STUDIES_IMAGES;
+  const heroImageKey = resource.metadata
+    .heroImage as keyof typeof CASE_STUDIES_IMAGES;
   const heroImage = CASE_STUDIES_IMAGES[heroImageKey];
-  const heroImageSrc = typeof resource.metadata.heroImage === "string" && resource.metadata.heroImage.startsWith("/")
-    ? resource.metadata.heroImage
-    : (heroImage?.src || "/images/default-hero.png");
+  const heroImageSrc =
+    typeof resource.metadata.heroImage === "string" &&
+    resource.metadata.heroImage.startsWith("/")
+      ? resource.metadata.heroImage
+      : heroImage?.src || "/images/default-hero.png";
 
   const imageUrl = heroImageSrc.startsWith("http")
     ? heroImageSrc

@@ -1,13 +1,12 @@
-import React from "react";
 import FONTS from "@/assets/fonts";
 import { CareerButton } from "@/components/shared/CareerButton";
 import { StyledText } from "@/components/shared/StyledText";
-import CareerSection, { CareerItem } from "./sections/CareerSection";
 import CareerHeader from "./sections/CareerHeader";
+import CareerSection, { CareerItem } from "./sections/CareerSection";
 
 export { CareerSection, CareerItem, CareerHeader, CareerButton };
 
-export const createCareerMDXComponents = (metadata: any) => ({
+export const createCareerMDXComponents = (_metadata: any) => ({
   h1: (props: any) => (
     <h1
       className={`${FONTS.microgrammaBold.className} text-4xl mb-6 mt-8`}

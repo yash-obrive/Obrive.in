@@ -1,6 +1,6 @@
-import { HomeIcon, Sparkles } from "lucide-react";
-import Link from "@/components/shared/LocalizedLink";
+import { HomeIcon } from "lucide-react";
 import FONTS from "@/assets/fonts";
+import Link from "@/components/shared/LocalizedLink";
 import { FadeInOnLoad } from "@/components/shared/motion/GsapMotion";
 import { buttonVariants } from "@/components/ui/button";
 

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { ProjectItem } from "@/components/dashboard/ProjectCard";
 import Board from "@/components/dashboard/employee/board/Board";
+import type { ProjectItem } from "@/components/dashboard/ProjectCard";
 import { apiFetch } from "@/lib/api";
 import type { Task, TaskStatus } from "./MyProjectTasksSection";
 

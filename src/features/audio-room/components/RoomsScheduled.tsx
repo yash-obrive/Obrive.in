@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
 
 // ======================================================
@@ -9,7 +9,7 @@ import { apiFetch } from "@/lib/api";
 const sectionClass =
   "rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition-all";
 
-const buttonClass =
+const _buttonClass =
   "rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-[9px] font-semibold text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-800 cursor-pointer";
 
 // ======================================================
@@ -89,11 +89,11 @@ const ScheduledRooms = () => {
   // ======================================================
   // ACTIONS
   // ======================================================
-  const handleGenerateLink = (roomId: number) => {
+  const _handleGenerateLink = (roomId: number) => {
     console.log("Generate Link:", roomId);
   };
 
-  const handleSendNotification = (roomId: number) => {
+  const _handleSendNotification = (roomId: number) => {
     console.log("Send Notification:", roomId);
   };
 

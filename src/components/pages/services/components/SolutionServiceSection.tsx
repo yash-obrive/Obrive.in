@@ -46,7 +46,13 @@ const SolutionServiceSection = ({
         </p>
 
         {/* Tag Label */}
-        {label && <p className={`${FONTS.microgrammaBold.className} text-primary text-xl max-md:text-lg mt-4 md:mt-8`}>{label}</p>}
+        {label && (
+          <p
+            className={`${FONTS.microgrammaBold.className} text-primary text-xl max-md:text-lg mt-4 md:mt-8`}
+          >
+            {label}
+          </p>
+        )}
 
         {items && items.length > 0 && (
           <div className="flex flex-wrap gap-2.5 mt-2">
@@ -67,12 +73,11 @@ const SolutionServiceSection = ({
         {subSections && subSections.length > 0 && (
           <div className="flex flex-col gap-8 mt-4">
             {subSections.map((sub, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col gap-3"
-              >
+              <div key={idx} className="flex flex-col gap-3">
                 {sub.title && (
-                  <h3 className={`${FONTS.microgrammaBold.className} text-primary text-lg`}>
+                  <h3
+                    className={`${FONTS.microgrammaBold.className} text-primary text-lg`}
+                  >
                     {sub.title}
                   </h3>
                 )}

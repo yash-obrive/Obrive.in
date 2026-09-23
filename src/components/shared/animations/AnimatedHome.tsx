@@ -973,7 +973,7 @@ const ImageElement = ({
     });
 
     return () => ctx.revert();
-  }, [index, rotate, hoverOptions]);
+  }, [index, rotate]);
 
   return (
     <div
@@ -1144,7 +1144,7 @@ export const Box = ({
     }, container);
 
     return () => ctx.revert();
-  }, [scale, baseWidth]);
+  }, [baseWidth]);
 
   const renderImageElement = (imageData: StripeImageData, index: number) => {
     return (

@@ -2,7 +2,11 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCompanyInfoMDXComponents } from "@/components/pages/company-info/CompanyInfoMDXComponents";
 import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
-import { getAllCompanyInfoSlugs, getCompanyInfoBySlug, sharedMdxOptions } from "@/lib/mdx";
+import {
+  getAllCompanyInfoSlugs,
+  getCompanyInfoBySlug,
+  sharedMdxOptions,
+} from "@/lib/mdx";
 
 interface SecurityPageProps {
   params: Promise<{ slug: string }>;

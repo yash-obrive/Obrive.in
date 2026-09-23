@@ -2,15 +2,14 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import FONTS from "@/assets/fonts";
+import { useEffect, useState } from "react";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { API_BASE_URL } from "@/lib/api";
 import obriveLogo from "../../assets/images/logos/obrive-logo.svg";
 
 const CommunityPage = () => {
   const router = useRouter();
-  const [scrollY, setScrollY] = useState(0);
+  const [_scrollY, setScrollY] = useState(0);
   const [hasTriggered, setHasTriggered] = useState(false);
   const [showLoginDialog, setShowLoginDialog] = useState(false);
   const [email, setEmail] = useState("");
@@ -76,7 +75,7 @@ const CommunityPage = () => {
       // refresh client user cache so other hooks/pages read the up-to-date user
       try {
         await refetch();
-      } catch (e) {
+      } catch (_e) {
         // ignore errors refreshing user cache
       }
 

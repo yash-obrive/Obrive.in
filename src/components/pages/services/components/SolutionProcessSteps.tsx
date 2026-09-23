@@ -11,7 +11,9 @@ interface SolutionProcessStepsProps {
   steps: WorkflowStep[];
 }
 
-export default function SolutionProcessSteps({ steps }: SolutionProcessStepsProps) {
+export default function SolutionProcessSteps({
+  steps,
+}: SolutionProcessStepsProps) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const timeoutRef = useRef<number | null>(null);
   const [shouldAnimateGlow, setShouldAnimateGlow] = useState(false);

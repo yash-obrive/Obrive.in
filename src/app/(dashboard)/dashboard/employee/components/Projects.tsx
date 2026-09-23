@@ -6,7 +6,6 @@ import ProjectCard, {
   type ProjectItem,
 } from "@/components/dashboard/ProjectCard";
 import { apiFetch } from "@/lib/api";
-import Header from "./Header";
 
 type ProjectCardVariant = "dashboard" | "projects";
 

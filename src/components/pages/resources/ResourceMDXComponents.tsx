@@ -1,20 +1,27 @@
-import Link from "@/components/shared/LocalizedLink";
-import React from "react";
 import FONTS from "@/assets/fonts";
+import Link from "@/components/shared/LocalizedLink";
 import { StyledText } from "@/components/shared/StyledText";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import ResourceImpactMetricsTable from "./ResourceImpactMetricsTable";
 import ResourceChallengeSection from "./sections/ResourceChallengeSection";
 import ResourceCompanyOverviewSection from "./sections/ResourceCompanyOverviewSection";
-import ResourceObrivesApproachTable, { ApproachPhaseItem, ApproachTableTitle, ApproachTableDescription } from "./sections/ResourceObrivesApproachTable";
+import ResourceObrivesApproachTable, {
+  ApproachPhaseItem,
+  ApproachTableDescription,
+  ApproachTableTitle,
+} from "./sections/ResourceObrivesApproachTable";
 import ResourceOutcomeSnapshotSection from "./sections/ResourceOutcomeSnapshotSection";
-import ResourceStrategicApproachSection, { StrategicStepItem } from "./sections/ResourceStrategicApproachSection";
+import ResourceStrategicApproachSection, {
+  StrategicStepItem,
+} from "./sections/ResourceStrategicApproachSection";
 import ResourceTheImpactTable, {
-  ImpactTableRow,
   ImpactTableCell,
-  ImpactTableMetric
+  ImpactTableMetric,
+  ImpactTableRow,
 } from "./sections/ResourceTheImpactTable";
-import ResourceWhyItWorkedSection, { WhyItWorkedItem } from "./sections/ResourceWhyItWorkedSection";
+import ResourceWhyItWorkedSection, {
+  WhyItWorkedItem,
+} from "./sections/ResourceWhyItWorkedSection";
 
 export {
   ResourceChallengeSection,
@@ -57,21 +64,32 @@ export const createResourceMDXComponents = (metadata: any) => ({
     <p className="text-base leading-relaxed text-gray-700 mb-4" {...props} />
   ),
   ul: (props: any) => (
-    <ul className="list-disc list-inside pl-0 space-y-2 mb-4 text-gray-700" {...props} />
+    <ul
+      className="list-disc list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      {...props}
+    />
   ),
   ol: (props: any) => (
-    <ol className="list-decimal list-inside pl-0 space-y-2 mb-4 text-gray-700" {...props} />
+    <ol
+      className="list-decimal list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      {...props}
+    />
   ),
   li: (props: any) => (
     <li className="text-base leading-relaxed text-gray-700" {...props} />
   ),
   strong: (props: any) => (
-    <strong className={`${FONTS.microgrammaBold.className} text-gray-900`} {...props} />
+    <strong
+      className={`${FONTS.microgrammaBold.className} text-gray-900`}
+      {...props}
+    />
   ),
   em: (props: any) => <em className="italic" {...props} />,
   blockquote: (props: any) => (
     <blockquote className="border-l-4 border-primary pl-6 my-6 italic text-gray-700">
-      <p className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}>
+      <p
+        className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}
+      >
         {props.children}
       </p>
     </blockquote>
@@ -142,7 +160,9 @@ export const createResourceMDXComponents = (metadata: any) => ({
   StrategicStepItem: (props: any) => <StrategicStepItem {...props} />,
   ApproachPhaseItem: (props: any) => <ApproachPhaseItem {...props} />,
   ApproachTableTitle: (props: any) => <ApproachTableTitle {...props} />,
-  ApproachTableDescription: (props: any) => <ApproachTableDescription {...props} />,
+  ApproachTableDescription: (props: any) => (
+    <ApproachTableDescription {...props} />
+  ),
 
   // Custom generic components
   Link,
@@ -182,21 +202,32 @@ export default {
     <p className="text-base leading-relaxed text-gray-700 mb-4" {...props} />
   ),
   ul: (props: any) => (
-    <ul className="list-disc list-inside pl-0 space-y-2 mb-4 text-gray-700" {...props} />
+    <ul
+      className="list-disc list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      {...props}
+    />
   ),
   ol: (props: any) => (
-    <ol className="list-decimal list-inside pl-0 space-y-2 mb-4 text-gray-700" {...props} />
+    <ol
+      className="list-decimal list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      {...props}
+    />
   ),
   li: (props: any) => (
     <li className="text-base leading-relaxed text-gray-700" {...props} />
   ),
   strong: (props: any) => (
-    <strong className={`${FONTS.microgrammaBold.className} text-gray-900`} {...props} />
+    <strong
+      className={`${FONTS.microgrammaBold.className} text-gray-900`}
+      {...props}
+    />
   ),
   em: (props: any) => <em className="italic" {...props} />,
   blockquote: (props: any) => (
     <blockquote className="border-l-4 border-primary pl-6 my-6 italic text-gray-700">
-      <p className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}>
+      <p
+        className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}
+      >
         {props.children}
       </p>
     </blockquote>

@@ -2,9 +2,8 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { CheckCircle2, Circle, Clock3, X } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { ProjectItem } from "@/components/dashboard/ProjectCard";
-import SkeletonLoading from "@/components/SkelitonLoading";
 import { apiFetch } from "@/lib/api";
 
 export type TaskStatus = "pending" | "in-progress" | "completed";
@@ -64,8 +63,8 @@ const statusStyles = {
 
 const MyProjectTasksSection = ({ project }: Props) => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [updatingTaskId, setUpdatingTaskId] = useState<number | null>(null);
+  const [_loading, setLoading] = useState(false);
+  const [_updatingTaskId, setUpdatingTaskId] = useState<number | null>(null);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [updateText, setUpdateText] = useState("");
 

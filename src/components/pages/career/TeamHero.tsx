@@ -15,7 +15,7 @@ type CardProps = {
   parallaxSpeed?: number;
 };
 
-function Card({ k, className, priority, parallaxSpeed = 1 }: CardProps) {
+function _Card({ k, className, priority, parallaxSpeed = 1 }: CardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const img = TEAM_IMAGES[k];
   const meta = TEAM_IMAGES_META[k];

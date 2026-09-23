@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
-import { CaseStudy } from "@/lib/case-studies";
+import Link from "@/components/shared/LocalizedLink";
+import type { CaseStudy } from "@/lib/case-studies";
 
 interface CaseStudyCardProps {
   caseStudy: CaseStudy;
@@ -34,8 +34,14 @@ const CaseStudyCard = ({ caseStudy }: CaseStudyCardProps) => {
         </div>
 
         <div className="flex text-xs items-center justify-between px-3 mb-4 text-muted-foreground flex-shrink-0">
-          <span className="uppercase tracking-wide line-clamp-1 mr-2 font-medium">{caseStudy.service}</span>
-          <span className="flex-shrink-0 text-accent-foreground font-medium text-[10px]">{caseStudy.client_raw?.includes("Confidential") ? "Enterprise Client" : caseStudy.client}</span>
+          <span className="uppercase tracking-wide line-clamp-1 mr-2 font-medium">
+            {caseStudy.service}
+          </span>
+          <span className="flex-shrink-0 text-accent-foreground font-medium text-[10px]">
+            {caseStudy.client_raw?.includes("Confidential")
+              ? "Enterprise Client"
+              : caseStudy.client}
+          </span>
         </div>
 
         <div className="space-y-3 flex-grow">

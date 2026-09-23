@@ -1,9 +1,11 @@
 "use client";
 
 import FONTS from "@/assets/fonts";
-import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import FAQWorkflowSteps from "@/components/pages/faq/FAQWorkflowSteps";
-import FAQAccordionSection, { FAQItem } from "@/components/pages/faq/sections/FAQAccordionSection";
+import FAQAccordionSection, {
+  FAQItem,
+} from "@/components/pages/faq/sections/FAQAccordionSection";
+import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 
 interface FAQ {
   q: string;
@@ -33,7 +35,9 @@ export default function FAQClientLayout({
     return (
       <FullWidthSection backgroundColor="accent" className="min-h-screen">
         <div className="pt-20 sm:pt-28 lg:pt-38 pb-16 sm:pb-24 lg:pb-30 flex items-center justify-center">
-          <h1 className={`${FONTS.microgrammaBold.className} text-secondary text-2xl`}>
+          <h1
+            className={`${FONTS.microgrammaBold.className} text-secondary text-2xl`}
+          >
             No FAQs Available
           </h1>
         </div>

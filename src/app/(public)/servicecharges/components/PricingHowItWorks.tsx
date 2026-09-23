@@ -1,4 +1,3 @@
-import React from "react";
 import FONTS from "@/assets/fonts";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 

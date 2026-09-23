@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import { ICONS, ICONS_META } from "@/assets/images";
 
 export default function ThreeDIcon() {

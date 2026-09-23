@@ -1,27 +1,71 @@
-import { IMAGES, IMAGES_META, ICONS, ICONS_META } from "@/assets/images";
+import { ICONS, ICONS_META } from "@/assets/images";
 
 import type { SolutionIndustriesContent } from "@/types/services";
 
 export const WEBSITE_DEVELOPMENT_SERVICE_HERO = {
   title: "Website Development Services for the AI Era — Across Industries",
-  description: "Our website development services combine business strategy, UX/UI collaboration, front-end engineering, back-end engineering, APIs, databases, cloud infrastructure, security, performance, analytics and AI-ready architecture to create websites that function as serious digital products. From corporate websites and high-conversion marketing platforms to eCommerce, portals, content platforms, customer self-service, enterprise websites and intelligent web experiences, Obrive builds digital foundations around measurable business objectives.",
-  description2: "We develop websites for startups, SMEs and enterprises with an emphasis on secure architecture, scalability, maintainability, responsive performance and integration with the systems businesses already depend on. In the AI Era, a website is no longer only a collection of pages. It can serve as an owned source of structured business information, a customer interaction layer, a conversion engine and a foundation for AI-assisted discovery, search, personalization and intelligent services.",
+  description:
+    "Our website development services combine business strategy, UX/UI collaboration, front-end engineering, back-end engineering, APIs, databases, cloud infrastructure, security, performance, analytics and AI-ready architecture to create websites that function as serious digital products. From corporate websites and high-conversion marketing platforms to eCommerce, portals, content platforms, customer self-service, enterprise websites and intelligent web experiences, Obrive builds digital foundations around measurable business objectives.",
+  description2:
+    "We develop websites for startups, SMEs and enterprises with an emphasis on secure architecture, scalability, maintainability, responsive performance and integration with the systems businesses already depend on. In the AI Era, a website is no longer only a collection of pages. It can serve as an owned source of structured business information, a customer interaction layer, a conversion engine and a foundation for AI-assisted discovery, search, personalization and intelligent services.",
   ctaButtons: { primary: "Explore Solutions", secondary: "SCHEDULE A DEMO" },
 };
 
 export const WEBSITE_DEVELOPMENT_SERVICE_KEY_BENEFITS = [
-  { title: "Build a Website That Performs in the AI Era", description: "A modern website must do more than look good. It must load quickly, communicate clearly, work across devices, support search and answer discovery, connect to business systems and give users a reliable path toward action. Obrive builds websites as scalable digital products—combining engineering discipline with UX, content architecture, analytics and purposeful AI capabilities.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Business-First Web Strategy", description: "We begin with business objectives, audiences, content, workflows, technology constraints, integrations and success criteria before selecting the architecture. The goal is to build what the organization actually needs rather than adding technology for novelty.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Human-Centered Web Experience", description: "Development decisions should preserve the intended user experience. We build responsive interfaces, accessible interactions, clear navigation, forms, search, content structures and conversion journeys around real user behavior.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "AI-Ready Web Architecture", description: "AI is changing how people discover information and interact with digital products. We structure websites so important information is clear, contextual, reusable and connected, while enabling AI search, assistants, recommendations or automation where they create genuine value.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Performance, Security & Scalability", description: "A website needs to remain dependable as traffic, content, integrations and features grow. We consider performance, caching, asset optimization, security controls, monitoring, deployment practices and maintainable code from the beginning.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Enterprise Integration", description: "Connect websites with APIs, CRM, ERP, CMS, commerce systems, payment services, databases, cloud services, analytics, marketing platforms and AI services so the website becomes part of the broader digital ecosystem.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
+  {
+    title: "Build a Website That Performs in the AI Era",
+    description:
+      "A modern website must do more than look good. It must load quickly, communicate clearly, work across devices, support search and answer discovery, connect to business systems and give users a reliable path toward action. Obrive builds websites as scalable digital products—combining engineering discipline with UX, content architecture, analytics and purposeful AI capabilities.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Business-First Web Strategy",
+    description:
+      "We begin with business objectives, audiences, content, workflows, technology constraints, integrations and success criteria before selecting the architecture. The goal is to build what the organization actually needs rather than adding technology for novelty.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Human-Centered Web Experience",
+    description:
+      "Development decisions should preserve the intended user experience. We build responsive interfaces, accessible interactions, clear navigation, forms, search, content structures and conversion journeys around real user behavior.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "AI-Ready Web Architecture",
+    description:
+      "AI is changing how people discover information and interact with digital products. We structure websites so important information is clear, contextual, reusable and connected, while enabling AI search, assistants, recommendations or automation where they create genuine value.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Performance, Security & Scalability",
+    description:
+      "A website needs to remain dependable as traffic, content, integrations and features grow. We consider performance, caching, asset optimization, security controls, monitoring, deployment practices and maintainable code from the beginning.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Enterprise Integration",
+    description:
+      "Connect websites with APIs, CRM, ERP, CMS, commerce systems, payment services, databases, cloud services, analytics, marketing platforms and AI services so the website becomes part of the broader digital ecosystem.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
 ];
 
 export const WEBSITE_DEVELOPMENT_SERVICE_SIDEBAR_LINKS = [
   { id: "our-services", label: "Our Services" },
-  { id: "what-makes-a-website-development-project-successful", label: "What Makes a Website Development Project Successful?" },
-  { id: "why-choose-obrive-for-website-development", label: "Why Choose Obrive for Website Development?" },
+  {
+    id: "what-makes-a-website-development-project-successful",
+    label: "What Makes a Website Development Project Successful?",
+  },
+  {
+    id: "why-choose-obrive-for-website-development",
+    label: "Why Choose Obrive for Website Development?",
+  },
   { id: "global-delivery-mindset", label: "Global delivery mindset" },
   { id: "business-outcomes", label: "Business Outcomes" },
 ] as const;
@@ -37,7 +81,8 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Custom Website Development",
-        description: "We develop custom websites around business requirements rather than forcing complex needs into a fixed template.",
+        description:
+          "We develop custom websites around business requirements rather than forcing complex needs into a fixed template.",
         items: [
           "Corporate websites",
           "Enterprise websites",
@@ -51,7 +96,8 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Corporate & Enterprise Website Development",
-        description: "Enterprise websites often serve multiple audiences, business units, regions and content owners. We develop scalable foundations that support governance, reusable components, structured content and controlled publishing.",
+        description:
+          "Enterprise websites often serve multiple audiences, business units, regions and content owners. We develop scalable foundations that support governance, reusable components, structured content and controlled publishing.",
         items: [
           "Multi-region websites",
           "Multi-language architecture",
@@ -66,7 +112,8 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "AI-Ready Website Development",
-        description: "AI-ready development creates technical foundations for intelligent experiences without making AI mandatory in every interaction.",
+        description:
+          "AI-ready development creates technical foundations for intelligent experiences without making AI mandatory in every interaction.",
         items: [
           "AI-powered site search",
           "Conversational assistants",
@@ -81,7 +128,8 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "eCommerce Website Development",
-        description: "We develop commerce experiences that connect discovery, product information, checkout, payments, fulfillment and customer service.",
+        description:
+          "We develop commerce experiences that connect discovery, product information, checkout, payments, fulfillment and customer service.",
         items: [
           "Product catalogs",
           "Search and filtering",
@@ -97,7 +145,8 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Web Portals & Customer Platforms",
-        description: "We develop secure web portals that bring customers, employees, partners or administrators into focused digital workflows.",
+        description:
+          "We develop secure web portals that bring customers, employees, partners or administrators into focused digital workflows.",
         items: [
           "Customer self-service portals",
           "Employee portals",
@@ -113,7 +162,8 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "CMS & Content Platform Development",
-        description: "Content systems should help teams publish useful information consistently while preserving performance, structure and governance.",
+        description:
+          "Content systems should help teams publish useful information consistently while preserving performance, structure and governance.",
         items: [
           "CMS implementation",
           "Headless content architecture",
@@ -128,7 +178,8 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Web Application & Interactive Experience Development",
-        description: "Where a business requirement goes beyond informational pages, we can build richer web applications and interactive experiences.",
+        description:
+          "Where a business requirement goes beyond informational pages, we can build richer web applications and interactive experiences.",
         items: [
           "Dashboards",
           "Calculators and configurators",
@@ -142,7 +193,8 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "API & System Integration",
-        description: "A website becomes more valuable when it can exchange trusted information with the systems around it.",
+        description:
+          "A website becomes more valuable when it can exchange trusted information with the systems around it.",
         items: [
           "REST and GraphQL API integration",
           "CRM integration",
@@ -158,7 +210,8 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Web Security & Privacy-Aware Development",
-        description: "We consider security as part of architecture rather than a final-stage checklist.",
+        description:
+          "We consider security as part of architecture rather than a final-stage checklist.",
         items: [
           "Authentication and authorization",
           "Role-based access",
@@ -172,11 +225,13 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Privacy-aware data flows",
-        description: "Projects handling regulated, financial, healthcare or other sensitive information should be reviewed against the applicable security, privacy and regulatory requirements.",
+        description:
+          "Projects handling regulated, financial, healthcare or other sensitive information should be reviewed against the applicable security, privacy and regulatory requirements.",
       },
       {
         title: "Website Performance & Technical Optimization",
-        description: "Fast websites improve usability and create stronger foundations for discovery and conversion. Development can address front-end efficiency, image and asset optimization, caching, code delivery, database performance and monitoring.",
+        description:
+          "Fast websites improve usability and create stronger foundations for discovery and conversion. Development can address front-end efficiency, image and asset optimization, caching, code delivery, database performance and monitoring.",
         items: [
           "Responsive performance",
           "Asset optimization",
@@ -190,7 +245,8 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
       },
       {
         title: "Analytics & Conversion Instrumentation",
-        description: "We can implement measurement foundations that help teams understand how users discover, navigate and convert.",
+        description:
+          "We can implement measurement foundations that help teams understand how users discover, navigate and convert.",
         items: [
           "Analytics implementation",
           "Event tracking",
@@ -257,7 +313,8 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
     id: "business-outcomes",
     title: "Business Outcomes",
     subtitle: "",
-    description: "A website can begin as a focused business presence and evolve into a broader digital platform. Obrive can help organizations expand through portals, commerce, APIs, personalization, analytics, AI services, mobile products and connected digital experiences.",
+    description:
+      "A website can begin as a focused business presence and evolve into a broader digital platform. Obrive can help organizations expand through portals, commerce, APIs, personalization, analytics, AI services, mobile products and connected digital experiences.",
     label: "",
     items: [
       "Stronger digital presence",
@@ -277,160 +334,267 @@ export const WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS = [
 ];
 
 export const WEBSITE_DEVELOPMENT_SERVICE_PROCESS_STEPS = [
-  { step: "01", title: "Discover", description: "Understand business objectives, users, content, systems, constraints and success criteria." },
-  { step: "02", title: "Define", description: "Establish scope, architecture, priorities, integrations and measurable outcomes." },
-  { step: "03", title: "Research", description: "Review existing websites, analytics, content, competitors and technical environment." },
-  { step: "04", title: "Architect", description: "Define information architecture, application architecture, data flows and integration approach." },
-  { step: "05", title: "Design", description: "Collaborate on responsive UX/UI, components, content structures and interaction states." },
-  { step: "06", title: "Prototype", description: "Validate important journeys and technical assumptions before large-scale implementation." },
-  { step: "07", title: "Develop", description: "Build front-end, back-end, CMS, APIs and integrations using the selected architecture." },
-  { step: "08", title: "Integrate", description: "Connect business systems, analytics, payments, search, AI or other required services." },
-  { step: "09", title: "Test", description: "Validate functionality, performance, accessibility, security, responsiveness and browser/device behavior." },
-  { step: "10", title: "Deploy", description: "Release through the appropriate hosting, cloud, CI/CD and operational workflow." },
-  { step: "11", title: "Measure & Improve", description: "Monitor performance, usage, conversion and feedback and continuously evolve the product." },
+  {
+    step: "01",
+    title: "Discover",
+    description:
+      "Understand business objectives, users, content, systems, constraints and success criteria.",
+  },
+  {
+    step: "02",
+    title: "Define",
+    description:
+      "Establish scope, architecture, priorities, integrations and measurable outcomes.",
+  },
+  {
+    step: "03",
+    title: "Research",
+    description:
+      "Review existing websites, analytics, content, competitors and technical environment.",
+  },
+  {
+    step: "04",
+    title: "Architect",
+    description:
+      "Define information architecture, application architecture, data flows and integration approach.",
+  },
+  {
+    step: "05",
+    title: "Design",
+    description:
+      "Collaborate on responsive UX/UI, components, content structures and interaction states.",
+  },
+  {
+    step: "06",
+    title: "Prototype",
+    description:
+      "Validate important journeys and technical assumptions before large-scale implementation.",
+  },
+  {
+    step: "07",
+    title: "Develop",
+    description:
+      "Build front-end, back-end, CMS, APIs and integrations using the selected architecture.",
+  },
+  {
+    step: "08",
+    title: "Integrate",
+    description:
+      "Connect business systems, analytics, payments, search, AI or other required services.",
+  },
+  {
+    step: "09",
+    title: "Test",
+    description:
+      "Validate functionality, performance, accessibility, security, responsiveness and browser/device behavior.",
+  },
+  {
+    step: "10",
+    title: "Deploy",
+    description:
+      "Release through the appropriate hosting, cloud, CI/CD and operational workflow.",
+  },
+  {
+    step: "11",
+    title: "Measure & Improve",
+    description:
+      "Monitor performance, usage, conversion and feedback and continuously evolve the product.",
+  },
 ];
 
 export const WEBSITE_DEVELOPMENT_SERVICE_INDUSTRIES = [
   {
     id: "automotive-mobility",
     title: "Automotive & Mobility",
-    description: "Develop vehicle, mobility, dealership, service, product, fleet and customer platforms with integrations, product discovery and connected-service experiences.",
+    description:
+      "Develop vehicle, mobility, dealership, service, product, fleet and customer platforms with integrations, product discovery and connected-service experiences.",
   },
   {
     id: "manufacturing-industrial-engineering",
     title: "Manufacturing & Industrial Engineering",
-    description: "Build corporate, product, distributor, service, documentation and customer portals that connect industrial information with business systems.",
+    description:
+      "Build corporate, product, distributor, service, documentation and customer portals that connect industrial information with business systems.",
   },
   {
     id: "healthcare-medical",
     title: "Healthcare & Medical",
-    description: "Develop patient-facing, provider, service, education and information websites with accessibility, privacy and appropriate regulatory considerations.",
+    description:
+      "Develop patient-facing, provider, service, education and information websites with accessibility, privacy and appropriate regulatory considerations.",
   },
   {
     id: "pharmaceuticals-life-sciences",
     title: "Pharmaceuticals & Life Sciences",
-    description: "Build product, scientific, medical-information, corporate and professional portals with structured content and controlled publishing.",
+    description:
+      "Build product, scientific, medical-information, corporate and professional portals with structured content and controlled publishing.",
   },
   {
     id: "retail-ecommerce",
     title: "Retail & eCommerce",
-    description: "Develop commerce websites with product catalogs, search, personalization, checkout, customer accounts, loyalty and AI-assisted discovery.",
+    description:
+      "Develop commerce websites with product catalogs, search, personalization, checkout, customer accounts, loyalty and AI-assisted discovery.",
   },
   {
     id: "consumer-goods-brands",
     title: "Consumer Goods & Brands",
-    description: "Create brand, product, campaign, support and commerce platforms that connect storytelling with measurable customer journeys.",
+    description:
+      "Create brand, product, campaign, support and commerce platforms that connect storytelling with measurable customer journeys.",
   },
   {
     id: "real-estate-property",
     title: "Real Estate & Property",
-    description: "Build property discovery, listings, lead-generation, booking, virtual-tour and customer-service websites.",
+    description:
+      "Build property discovery, listings, lead-generation, booking, virtual-tour and customer-service websites.",
   },
   {
     id: "architecture-engineering-construction",
     title: "Architecture, Engineering & Construction",
-    description: "Develop project, portfolio, technical, documentation and client platforms with structured information and collaboration workflows.",
+    description:
+      "Develop project, portfolio, technical, documentation and client platforms with structured information and collaboration workflows.",
   },
   {
     id: "education-edtech",
     title: "Education & EdTech",
-    description: "Build institutional websites, learning platforms, course discovery, admissions, student services and knowledge experiences.",
+    description:
+      "Build institutional websites, learning platforms, course discovery, admissions, student services and knowledge experiences.",
   },
   {
     id: "energy-utilities-infrastructure",
     title: "Energy, Utilities & Infrastructure",
-    description: "Develop customer-service, asset, project, investor, outage and operational information platforms.",
+    description:
+      "Develop customer-service, asset, project, investor, outage and operational information platforms.",
   },
   {
     id: "oil-gas",
     title: "Oil & Gas",
-    description: "Build corporate, technical, project, recruitment, knowledge and customer platforms with appropriate security and content governance.",
+    description:
+      "Build corporate, technical, project, recruitment, knowledge and customer platforms with appropriate security and content governance.",
   },
   {
     id: "mining-natural-resources",
     title: "Mining & Natural Resources",
-    description: "Develop corporate, operational, investor, sustainability, project and workforce information platforms.",
+    description:
+      "Develop corporate, operational, investor, sustainability, project and workforce information platforms.",
   },
   {
     id: "aerospace-aviation",
     title: "Aerospace & Aviation",
-    description: "Build corporate, technical, training, service, passenger and operational websites with clear information architecture.",
+    description:
+      "Build corporate, technical, training, service, passenger and operational websites with clear information architecture.",
   },
   {
     id: "logistics-warehousing-supply-chain",
     title: "Logistics, Warehousing & Supply Chain",
-    description: "Develop shipment, tracking, customer, fleet, partner, booking and operations platforms that connect APIs and real-time information where appropriate.",
+    description:
+      "Develop shipment, tracking, customer, fleet, partner, booking and operations platforms that connect APIs and real-time information where appropriate.",
   },
   {
     id: "travel-tourism-hospitality",
     title: "Travel, Tourism & Hospitality",
-    description: "Build destination, booking, hotel, experience, loyalty and concierge platforms optimized for discovery and conversion.",
+    description:
+      "Build destination, booking, hotel, experience, loyalty and concierge platforms optimized for discovery and conversion.",
   },
   {
     id: "media-entertainment-gaming",
     title: "Media, Entertainment & Gaming",
-    description: "Develop content, subscription, community, fan, streaming and interactive platforms with personalization and high-performance delivery.",
+    description:
+      "Develop content, subscription, community, fan, streaming and interactive platforms with personalization and high-performance delivery.",
   },
   {
     id: "sports-fitness",
     title: "Sports & Fitness",
-    description: "Build membership, event, fan, training, booking, content and commerce websites with personalized experiences where useful.",
+    description:
+      "Build membership, event, fan, training, booking, content and commerce websites with personalized experiences where useful.",
   },
   {
     id: "banking-financial-services-insurance",
     title: "Banking, Financial Services & Insurance",
-    description: "Develop secure customer, product, education, account-service, claims and financial-information platforms with strong trust and compliance considerations.",
+    description:
+      "Develop secure customer, product, education, account-service, claims and financial-information platforms with strong trust and compliance considerations.",
   },
   {
     id: "telecommunications",
     title: "Telecommunications",
-    description: "Build plan, device, service, support, account and network-information platforms with customer self-service and system integrations.",
+    description:
+      "Build plan, device, service, support, account and network-information platforms with customer self-service and system integrations.",
   },
   {
     id: "agriculture-agritech",
     title: "Agriculture & AgriTech",
-    description: "Develop farm, equipment, product, advisory, marketplace, information and field-service platforms.",
+    description:
+      "Develop farm, equipment, product, advisory, marketplace, information and field-service platforms.",
   },
   {
     id: "government-public-sector",
     title: "Government & Public Sector",
-    description: "Build citizen-service, information, application, appointment and public-communication platforms with accessibility and clear information structures.",
+    description:
+      "Build citizen-service, information, application, appointment and public-communication platforms with accessibility and clear information structures.",
   },
   {
     id: "corporate-learning-professional-services",
     title: "Corporate Learning & Professional Services",
-    description: "Develop corporate, knowledge, training, client-service, project and resource platforms for distributed teams and professional organizations.",
+    description:
+      "Develop corporate, knowledge, training, client-service, project and resource platforms for distributed teams and professional organizations.",
   },
 ];
 
-export const WEBSITE_DEVELOPMENT_SERVICE_INDUSTRIES_CONTENT: SolutionIndustriesContent = {
-  slug: "website-development-service",
-  hero: {
-    title: "Website Development Services Across Industries — AI-Era Industry Solutions",
-    description: "Obrive develops websites around the operating realities of different industries. Each sector has different audiences, workflows, data, content, integrations, trust requirements and conversion journeys. Our AI-era approach adds a scalable foundation for intelligent search, assistance, personalization and automation where these capabilities create genuine value.",
-  },
-  industries: WEBSITE_DEVELOPMENT_SERVICE_INDUSTRIES,
-  extraBlocks: [
-    {
-      id: "ai-era-website-development-across-industries",
-      title: "AI-Era Website Development Across Industries",
-      subtitle: "",
-      description: "AI is changing how users search, compare, ask questions and complete tasks. Obrive develops websites so important information can be clearly structured and connected to useful digital services.",
-      label: "",
-      items: ["AI-powered website search", "Conversational support", "Natural-language discovery", "Personalized recommendations", "Structured product and service knowledge", "AI-assisted content workflows", "Knowledge-base and document discovery", "Intelligent forms and guided journeys", "Analytics-informed personalization", "Human review for consequential workflows"],
-      footer: "",
+export const WEBSITE_DEVELOPMENT_SERVICE_INDUSTRIES_CONTENT: SolutionIndustriesContent =
+  {
+    slug: "website-development-service",
+    hero: {
+      title:
+        "Website Development Services Across Industries — AI-Era Industry Solutions",
+      description:
+        "Obrive develops websites around the operating realities of different industries. Each sector has different audiences, workflows, data, content, integrations, trust requirements and conversion journeys. Our AI-era approach adds a scalable foundation for intelligent search, assistance, personalization and automation where these capabilities create genuine value.",
     },
-  ],
-  globalDelivery: {
-    title: "Global Website Development Delivery",
-    subtitle: "",
-    description: "We can support websites for local, national and global markets, including multi-language content, localization, regional catalogs, multiple currencies, role-based governance, distributed teams and scalable deployment.",
-    items: [],
-  },
-  technologyCapabilities: {
-    title: "Technology & Platform Capabilities",
-    subtitle: "",
-    items: ["Modern front-end frameworks", "Server-side and API development", "CMS and headless CMS", "Databases and data platforms", "Cloud infrastructure", "Authentication and access control", "API and third-party integrations", "Payments and commerce systems", "Analytics and monitoring", "AI and intelligent services", "Performance optimization", "CI/CD and deployment workflows"],
-  },
-  footerText: "Our industry solutions are not limited to these sectors. We can adapt the same web engineering foundations to specialized workflows, customer journeys, content models, data environments and emerging business models.",
-};
+    industries: WEBSITE_DEVELOPMENT_SERVICE_INDUSTRIES,
+    extraBlocks: [
+      {
+        id: "ai-era-website-development-across-industries",
+        title: "AI-Era Website Development Across Industries",
+        subtitle: "",
+        description:
+          "AI is changing how users search, compare, ask questions and complete tasks. Obrive develops websites so important information can be clearly structured and connected to useful digital services.",
+        label: "",
+        items: [
+          "AI-powered website search",
+          "Conversational support",
+          "Natural-language discovery",
+          "Personalized recommendations",
+          "Structured product and service knowledge",
+          "AI-assisted content workflows",
+          "Knowledge-base and document discovery",
+          "Intelligent forms and guided journeys",
+          "Analytics-informed personalization",
+          "Human review for consequential workflows",
+        ],
+        footer: "",
+      },
+    ],
+    globalDelivery: {
+      title: "Global Website Development Delivery",
+      subtitle: "",
+      description:
+        "We can support websites for local, national and global markets, including multi-language content, localization, regional catalogs, multiple currencies, role-based governance, distributed teams and scalable deployment.",
+      items: [],
+    },
+    technologyCapabilities: {
+      title: "Technology & Platform Capabilities",
+      subtitle: "",
+      items: [
+        "Modern front-end frameworks",
+        "Server-side and API development",
+        "CMS and headless CMS",
+        "Databases and data platforms",
+        "Cloud infrastructure",
+        "Authentication and access control",
+        "API and third-party integrations",
+        "Payments and commerce systems",
+        "Analytics and monitoring",
+        "AI and intelligent services",
+        "Performance optimization",
+        "CI/CD and deployment workflows",
+      ],
+    },
+    footerText:
+      "Our industry solutions are not limited to these sectors. We can adapt the same web engineering foundations to specialized workflows, customer journeys, content models, data environments and emerging business models.",
+  };

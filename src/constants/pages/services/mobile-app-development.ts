@@ -1,29 +1,79 @@
-import { IMAGES, IMAGES_META, ICONS, ICONS_META } from "@/assets/images";
+import { ICONS, ICONS_META } from "@/assets/images";
 
 import type { SolutionIndustriesContent } from "@/types/services";
 
 export const MOBILE_APP_DEVELOPMENT_HERO = {
   title: "Mobile App Development Services Across Industries — For the AI Era",
-  description: "Our mobile app development services combine product strategy, UX/UI collaboration, mobile engineering, cloud services, APIs, data, security, analytics and AI to create mobile products that people can rely on every day. From consumer apps and eCommerce platforms to enterprise mobility, field-service applications, connected-device experiences, financial products, healthcare services, marketplaces and AI-powered mobile products, Obrive develops applications around clear business objectives and real user needs.",
-  description2: "We build for iOS, Android and cross-platform environments, selecting the architecture and technology approach based on the product roadmap, device requirements, performance expectations, integrations, security and long-term maintainability. In the AI era, a mobile app is more than a collection of screens. It can become an intelligent customer interface, operational tool, commerce channel, data interaction layer and gateway to AI-assisted services. Obrive designs and engineers these capabilities around genuine user and business value rather than adding AI as a marketing label.",
+  description:
+    "Our mobile app development services combine product strategy, UX/UI collaboration, mobile engineering, cloud services, APIs, data, security, analytics and AI to create mobile products that people can rely on every day. From consumer apps and eCommerce platforms to enterprise mobility, field-service applications, connected-device experiences, financial products, healthcare services, marketplaces and AI-powered mobile products, Obrive develops applications around clear business objectives and real user needs.",
+  description2:
+    "We build for iOS, Android and cross-platform environments, selecting the architecture and technology approach based on the product roadmap, device requirements, performance expectations, integrations, security and long-term maintainability. In the AI era, a mobile app is more than a collection of screens. It can become an intelligent customer interface, operational tool, commerce channel, data interaction layer and gateway to AI-assisted services. Obrive designs and engineers these capabilities around genuine user and business value rather than adding AI as a marketing label.",
   ctaButtons: { primary: "Explore Solutions", secondary: "SCHEDULE A DEMO" },
 };
 
 export const MOBILE_APP_DEVELOPMENT_KEY_BENEFITS = [
-  { title: "Build Mobile Products for the AI Era", description: "Your users expect mobile experiences that are fast, intuitive, personalized and useful. They increasingly expect to search naturally, ask questions, receive recommendations, automate routine tasks and interact with digital services in context.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Business-First Product Strategy", description: "We begin with the business model, users, journeys, operating environment, constraints, data and success measures before selecting the technical approach. The objective is to build a product that supports a real business outcome.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Human-Centered Mobile UX", description: "We collaborate across product, UX/UI and engineering so navigation, onboarding, task flows, notifications, permissions, accessibility and error states work together as one experience.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "AI-Ready Mobile Architecture", description: "We design application foundations that can connect with AI services, intelligent search, recommendations, conversational interfaces, personalization, summarization and workflow assistance when those capabilities create measurable value.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Secure, Scalable Engineering", description: "Mobile products must perform across devices, networks and operating conditions. We engineer for reliability, security, observability, maintainability and controlled growth from MVP to enterprise scale.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
-  { title: "Connected Digital Ecosystems", description: "Mobile applications can connect with APIs, cloud platforms, databases, ERP, CRM, payment systems, IoT devices, analytics platforms and other digital products so the app becomes part of the wider business ecosystem.", src: ICONS.BOX_CHECK_ICON, srcMeta: ICONS_META.BOX_CHECK_ICON },
+  {
+    title: "Build Mobile Products for the AI Era",
+    description:
+      "Your users expect mobile experiences that are fast, intuitive, personalized and useful. They increasingly expect to search naturally, ask questions, receive recommendations, automate routine tasks and interact with digital services in context.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Business-First Product Strategy",
+    description:
+      "We begin with the business model, users, journeys, operating environment, constraints, data and success measures before selecting the technical approach. The objective is to build a product that supports a real business outcome.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Human-Centered Mobile UX",
+    description:
+      "We collaborate across product, UX/UI and engineering so navigation, onboarding, task flows, notifications, permissions, accessibility and error states work together as one experience.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "AI-Ready Mobile Architecture",
+    description:
+      "We design application foundations that can connect with AI services, intelligent search, recommendations, conversational interfaces, personalization, summarization and workflow assistance when those capabilities create measurable value.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Secure, Scalable Engineering",
+    description:
+      "Mobile products must perform across devices, networks and operating conditions. We engineer for reliability, security, observability, maintainability and controlled growth from MVP to enterprise scale.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
+  {
+    title: "Connected Digital Ecosystems",
+    description:
+      "Mobile applications can connect with APIs, cloud platforms, databases, ERP, CRM, payment systems, IoT devices, analytics platforms and other digital products so the app becomes part of the wider business ecosystem.",
+    src: ICONS.BOX_CHECK_ICON,
+    srcMeta: ICONS_META.BOX_CHECK_ICON,
+  },
 ];
 
 export const MOBILE_APP_DEVELOPMENT_SIDEBAR_LINKS = [
   { id: "our-services", label: "Our Services" },
-  { id: "ai-era-mobile-app-development", label: "AI-Era Mobile App Development" },
-  { id: "what-makes-a-mobile-app-development-project-successful", label: "What Makes a Mobile App Development Project Successful?" },
-  { id: "why-choose-obrive-for-mobile-app-development", label: "Why Choose Obrive for Mobile App Development?" },
-  { id: "business-outcomes-mobile-apps-can-support", label: "Business Outcomes Mobile Apps Can Support" },
+  {
+    id: "ai-era-mobile-app-development",
+    label: "AI-Era Mobile App Development",
+  },
+  {
+    id: "what-makes-a-mobile-app-development-project-successful",
+    label: "What Makes a Mobile App Development Project Successful?",
+  },
+  {
+    id: "why-choose-obrive-for-mobile-app-development",
+    label: "Why Choose Obrive for Mobile App Development?",
+  },
+  {
+    id: "business-outcomes-mobile-apps-can-support",
+    label: "Business Outcomes Mobile Apps Can Support",
+  },
 ] as const;
 
 export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
@@ -37,7 +87,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Custom Mobile App Development",
-        description: "Build purpose-designed mobile applications around differentiated products, workflows, customer journeys and business models. We develop applications where the product experience, integrations and roadmap require more than a generic template or packaged solution.",
+        description:
+          "Build purpose-designed mobile applications around differentiated products, workflows, customer journeys and business models. We develop applications where the product experience, integrations and roadmap require more than a generic template or packaged solution.",
         items: [
           "Consumer mobile applications",
           "Enterprise mobility applications",
@@ -51,7 +102,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "iOS App Development",
-        description: "Develop mobile products for Apple platforms with platform-aware interaction, performance, security and integration considerations. Product architecture can be structured for native iOS experiences or shared technology approaches where appropriate.",
+        description:
+          "Develop mobile products for Apple platforms with platform-aware interaction, performance, security and integration considerations. Product architecture can be structured for native iOS experiences or shared technology approaches where appropriate.",
         items: [
           "iPhone applications",
           "iPad applications",
@@ -64,7 +116,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Android App Development",
-        description: "Build Android applications for broad device coverage, real-world operating conditions and scalable product growth. We account for device fragmentation, permissions, connectivity, performance and platform-specific behavior.",
+        description:
+          "Build Android applications for broad device coverage, real-world operating conditions and scalable product growth. We account for device fragmentation, permissions, connectivity, performance and platform-specific behavior.",
         items: [
           "Android consumer apps",
           "Enterprise Android applications",
@@ -76,7 +129,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Cross-Platform Mobile App Development",
-        description: "Use cross-platform approaches when they provide the right balance of shared development, product consistency, performance and platform coverage. The decision is based on requirements rather than technology fashion.",
+        description:
+          "Use cross-platform approaches when they provide the right balance of shared development, product consistency, performance and platform coverage. The decision is based on requirements rather than technology fashion.",
         items: [
           "Shared application experiences",
           "Reusable component systems",
@@ -88,7 +142,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "AI-Powered Mobile App Development",
-        description: "Create mobile experiences that use AI for useful interaction and decision support. Depending on the product, AI can support natural-language search, recommendations, summarization, conversational assistance, personalization, content creation, intelligent notifications and workflow assistance.",
+        description:
+          "Create mobile experiences that use AI for useful interaction and decision support. Depending on the product, AI can support natural-language search, recommendations, summarization, conversational assistance, personalization, content creation, intelligent notifications and workflow assistance.",
         items: [
           "AI assistants",
           "Natural-language search",
@@ -103,7 +158,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Enterprise Mobile App Development",
-        description: "Develop secure, role-aware mobile products for employees, partners and operational teams. Enterprise apps can connect mobile workflows with existing systems while supporting governance, analytics and long-term maintainability.",
+        description:
+          "Develop secure, role-aware mobile products for employees, partners and operational teams. Enterprise apps can connect mobile workflows with existing systems while supporting governance, analytics and long-term maintainability.",
         items: [
           "Field-service apps",
           "Inspection and audit apps",
@@ -118,7 +174,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "eCommerce & Mobile Commerce App Development",
-        description: "Design and develop mobile commerce journeys that connect discovery, product information, search, recommendations, cart, checkout, payments, order tracking and customer support.",
+        description:
+          "Design and develop mobile commerce journeys that connect discovery, product information, search, recommendations, cart, checkout, payments, order tracking and customer support.",
         items: [
           "Retail apps",
           "B2B commerce apps",
@@ -132,7 +189,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Mobile App Modernization & Redesign",
-        description: "Modernize legacy applications where the existing product, architecture or user experience no longer supports current business needs. We can assess UX, technology, integrations, performance and AI-era opportunities before defining a modernization roadmap.",
+        description:
+          "Modernize legacy applications where the existing product, architecture or user experience no longer supports current business needs. We can assess UX, technology, integrations, performance and AI-era opportunities before defining a modernization roadmap.",
         items: [
           "Legacy app assessment",
           "UX modernization",
@@ -146,7 +204,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Mobile App Integration & API Development",
-        description: "Connect mobile applications to the systems and services that power the business. Integration planning covers APIs, authentication, data flows, error handling, observability and the mobile experience affected by each integration.",
+        description:
+          "Connect mobile applications to the systems and services that power the business. Integration planning covers APIs, authentication, data flows, error handling, observability and the mobile experience affected by each integration.",
         items: [
           "REST and API integrations",
           "Authentication and identity",
@@ -160,7 +219,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Connected Device & IoT Mobile Apps",
-        description: "Develop mobile interfaces for connected products, equipment and IoT ecosystems. Experiences can cover setup, pairing, monitoring, controls, alerts, diagnostics and intelligent assistance.",
+        description:
+          "Develop mobile interfaces for connected products, equipment and IoT ecosystems. Experiences can cover setup, pairing, monitoring, controls, alerts, diagnostics and intelligent assistance.",
         items: [
           "Device onboarding",
           "Bluetooth and connected-device flows",
@@ -174,7 +234,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Mobile App Security, Performance & Quality Engineering",
-        description: "Build quality into the application lifecycle through secure architecture, testing, performance engineering, observability and release discipline. Security and privacy requirements are considered according to the product, data and operating environment.",
+        description:
+          "Build quality into the application lifecycle through secure architecture, testing, performance engineering, observability and release discipline. Security and privacy requirements are considered according to the product, data and operating environment.",
         items: [
           "Authentication and authorization",
           "Secure data handling",
@@ -188,7 +249,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
       },
       {
         title: "Analytics, Personalization & Continuous Optimization",
-        description: "Instrument the product so teams can understand adoption, journeys, feature usage and friction. Analytics can support product decisions and, where appropriate, personalization and AI-assisted optimization.",
+        description:
+          "Instrument the product so teams can understand adoption, journeys, feature usage and friction. Analytics can support product decisions and, where appropriate, personalization and AI-assisted optimization.",
         items: [
           "Product analytics",
           "Funnel measurement",
@@ -207,7 +269,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
     id: "ai-era-mobile-app-development",
     title: "AI-Era Mobile App Development",
     subtitle: "",
-    description: "AI is changing how users interact with software. Instead of navigating only through menus, users can ask questions, describe what they need, scan information, receive recommendations and complete assisted tasks. Obrive designs AI capabilities around the product's purpose, data, risk level and user expectations. We can support mobile products intended for local, national and global markets, including localization, multiple languages, regional content, accessibility, different currencies, enterprise governance and controlled product evolution. We select the technology stack according to product requirements, platform needs, performance, security, integrations, team capabilities and roadmap.",
+    description:
+      "AI is changing how users interact with software. Instead of navigating only through menus, users can ask questions, describe what they need, scan information, receive recommendations and complete assisted tasks. Obrive designs AI capabilities around the product's purpose, data, risk level and user expectations. We can support mobile products intended for local, national and global markets, including localization, multiple languages, regional content, accessibility, different currencies, enterprise governance and controlled product evolution. We select the technology stack according to product requirements, platform needs, performance, security, integrations, team capabilities and roadmap.",
     label: "",
     items: [
       "Conversational assistance for complex information",
@@ -274,7 +337,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
     id: "why-choose-obrive-for-mobile-app-development",
     title: "Why Choose Obrive for Mobile App Development?",
     subtitle: "",
-    description: "We do not treat mobile development as simply coding screens. We bring product objectives, user experience, engineering, integrations, data, security, analytics and intelligent capabilities together so the application can perform in the environment where people actually use it.",
+    description:
+      "We do not treat mobile development as simply coding screens. We bring product objectives, user experience, engineering, integrations, data, security, analytics and intelligent capabilities together so the application can perform in the environment where people actually use it.",
     label: "",
     items: [
       "Business-first digital product thinking",
@@ -296,7 +360,8 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
     id: "business-outcomes-mobile-apps-can-support",
     title: "Business Outcomes Mobile Apps Can Support",
     subtitle: "",
-    description: "Outcomes vary by use case and implementation. We define meaningful product and business metrics during discovery rather than promising generic downloads, conversion rates or ROI before understanding the operating environment. A mobile product can begin with a focused MVP and evolve into a broader digital platform. Obrive can help organizations expand through intelligent search, personalization, AI assistance, connected devices, commerce, analytics, enterprise workflows and integrations with web, cloud and immersive technologies.",
+    description:
+      "Outcomes vary by use case and implementation. We define meaningful product and business metrics during discovery rather than promising generic downloads, conversion rates or ROI before understanding the operating environment. A mobile product can begin with a focused MVP and evolve into a broader digital platform. Obrive can help organizations expand through intelligent search, personalization, AI assistance, connected devices, commerce, analytics, enterprise workflows and integrations with web, cloud and immersive technologies.",
     label: "",
     items: [
       "Stronger customer engagement and self-service",
@@ -316,160 +381,270 @@ export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
 ];
 
 export const MOBILE_APP_DEVELOPMENT_PROCESS_STEPS = [
-  { step: "01", title: "Discover", description: "Understand the business objective, users, journeys, data, devices, systems, constraints and success criteria." },
-  { step: "02", title: "Define", description: "Prioritize product use cases, MVP scope, technical approach, platform strategy and measurable outcomes." },
-  { step: "03", title: "Research", description: "Validate user needs, market context, workflows and technology assumptions." },
-  { step: "04", title: "Architect", description: "Define application architecture, data flows, APIs, security, integrations, AI boundaries and scalability." },
-  { step: "05", title: "Design", description: "Shape UX/UI, navigation, interactions, accessibility, content and design-system foundations." },
-  { step: "06", title: "Prototype", description: "Validate important journeys, integrations, AI behaviors and stakeholder expectations before full development." },
-  { step: "07", title: "Develop", description: "Build mobile applications and supporting backend services using the selected technology approach." },
-  { step: "08", title: "Integrate", description: "Connect APIs, ERP, CRM, payments, cloud, analytics, IoT and AI services as required." },
-  { step: "09", title: "Test", description: "Validate functionality, usability, performance, security, accessibility, device compatibility and reliability." },
-  { step: "10", title: "Deploy", description: "Release through the appropriate distribution and operational workflow with monitoring and controls." },
-  { step: "11", title: "Measure & Improve", description: "Monitor adoption, performance, feedback and business outcomes, then continuously evolve the product." },
+  {
+    step: "01",
+    title: "Discover",
+    description:
+      "Understand the business objective, users, journeys, data, devices, systems, constraints and success criteria.",
+  },
+  {
+    step: "02",
+    title: "Define",
+    description:
+      "Prioritize product use cases, MVP scope, technical approach, platform strategy and measurable outcomes.",
+  },
+  {
+    step: "03",
+    title: "Research",
+    description:
+      "Validate user needs, market context, workflows and technology assumptions.",
+  },
+  {
+    step: "04",
+    title: "Architect",
+    description:
+      "Define application architecture, data flows, APIs, security, integrations, AI boundaries and scalability.",
+  },
+  {
+    step: "05",
+    title: "Design",
+    description:
+      "Shape UX/UI, navigation, interactions, accessibility, content and design-system foundations.",
+  },
+  {
+    step: "06",
+    title: "Prototype",
+    description:
+      "Validate important journeys, integrations, AI behaviors and stakeholder expectations before full development.",
+  },
+  {
+    step: "07",
+    title: "Develop",
+    description:
+      "Build mobile applications and supporting backend services using the selected technology approach.",
+  },
+  {
+    step: "08",
+    title: "Integrate",
+    description:
+      "Connect APIs, ERP, CRM, payments, cloud, analytics, IoT and AI services as required.",
+  },
+  {
+    step: "09",
+    title: "Test",
+    description:
+      "Validate functionality, usability, performance, security, accessibility, device compatibility and reliability.",
+  },
+  {
+    step: "10",
+    title: "Deploy",
+    description:
+      "Release through the appropriate distribution and operational workflow with monitoring and controls.",
+  },
+  {
+    step: "11",
+    title: "Measure & Improve",
+    description:
+      "Monitor adoption, performance, feedback and business outcomes, then continuously evolve the product.",
+  },
 ];
 
 export const MOBILE_APP_DEVELOPMENT_INDUSTRIES = [
   {
     id: "automotive-mobility",
     title: "Automotive & Mobility",
-    description: "Build vehicle discovery, ownership, service, dealership, fleet, connected-vehicle and mobility experiences with integrations, location services and intelligent assistance where appropriate.",
+    description:
+      "Build vehicle discovery, ownership, service, dealership, fleet, connected-vehicle and mobility experiences with integrations, location services and intelligent assistance where appropriate.",
   },
   {
     id: "manufacturing-industrial-engineering",
     title: "Manufacturing & Industrial Engineering",
-    description: "Develop operator, maintenance, inspection, asset, production, quality and workforce applications that work with enterprise systems and real-world operational conditions.",
+    description:
+      "Develop operator, maintenance, inspection, asset, production, quality and workforce applications that work with enterprise systems and real-world operational conditions.",
   },
   {
     id: "healthcare-medical",
     title: "Healthcare & Medical",
-    description: "Create patient, provider, appointment, education, wellness and healthcare-service applications. Products can be designed around applicable clinical, privacy, safety and regulatory requirements.",
+    description:
+      "Create patient, provider, appointment, education, wellness and healthcare-service applications. Products can be designed around applicable clinical, privacy, safety and regulatory requirements.",
   },
   {
     id: "pharmaceuticals-life-sciences",
     title: "Pharmaceuticals & Life Sciences",
-    description: "Support field teams, research workflows, training, product information, laboratory operations and knowledge access through secure mobile experiences.",
+    description:
+      "Support field teams, research workflows, training, product information, laboratory operations and knowledge access through secure mobile experiences.",
   },
   {
     id: "retail-ecommerce",
     title: "Retail & eCommerce",
-    description: "Create shopping, loyalty, product discovery, personalization, checkout, order tracking and customer-support applications across B2C and B2B journeys.",
+    description:
+      "Create shopping, loyalty, product discovery, personalization, checkout, order tracking and customer-support applications across B2C and B2B journeys.",
   },
   {
     id: "consumer-goods-brands",
     title: "Consumer Goods & Brands",
-    description: "Build branded mobile experiences, loyalty products, product education, campaigns, communities and connected customer services.",
+    description:
+      "Build branded mobile experiences, loyalty products, product education, campaigns, communities and connected customer services.",
   },
   {
     id: "real-estate-property",
     title: "Real Estate & Property",
-    description: "Develop property discovery, listings, lead management, virtual tours, property information, tenant services and field applications.",
+    description:
+      "Develop property discovery, listings, lead management, virtual tours, property information, tenant services and field applications.",
   },
   {
     id: "architecture-engineering-construction",
     title: "Architecture, Engineering & Construction",
-    description: "Support site workflows, project information, inspections, documentation, field coordination, asset tracking and workforce communication.",
+    description:
+      "Support site workflows, project information, inspections, documentation, field coordination, asset tracking and workforce communication.",
   },
   {
     id: "education-edtech",
     title: "Education & EdTech",
-    description: "Develop learning, assessment, student services, collaboration, content and skills applications with accessible and engaging mobile experiences.",
+    description:
+      "Develop learning, assessment, student services, collaboration, content and skills applications with accessible and engaging mobile experiences.",
   },
   {
     id: "energy-utilities-infrastructure",
     title: "Energy, Utilities & Infrastructure",
-    description: "Build field-service, asset, inspection, maintenance, customer-service and workforce applications for distributed operational environments.",
+    description:
+      "Build field-service, asset, inspection, maintenance, customer-service and workforce applications for distributed operational environments.",
   },
   {
     id: "oil-gas",
     title: "Oil & Gas",
-    description: "Support field operations, asset inspection, maintenance, safety, documentation, workforce communication and knowledge access.",
+    description:
+      "Support field operations, asset inspection, maintenance, safety, documentation, workforce communication and knowledge access.",
   },
   {
     id: "mining-natural-resources",
     title: "Mining & Natural Resources",
-    description: "Develop mobile applications for equipment, inspection, field data, safety, workforce operations, site information and remote support.",
+    description:
+      "Develop mobile applications for equipment, inspection, field data, safety, workforce operations, site information and remote support.",
   },
   {
     id: "aerospace-aviation",
     title: "Aerospace & Aviation",
-    description: "Create applications for maintenance, operations, training, technical information, passenger services and workforce workflows.",
+    description:
+      "Create applications for maintenance, operations, training, technical information, passenger services and workforce workflows.",
   },
   {
     id: "logistics-warehousing-supply-chain",
     title: "Logistics, Warehousing & Supply Chain",
-    description: "Build route, delivery, inventory, scanning, picking, fleet, asset and workforce applications designed for operational speed and reliability.",
+    description:
+      "Build route, delivery, inventory, scanning, picking, fleet, asset and workforce applications designed for operational speed and reliability.",
   },
   {
     id: "travel-tourism-hospitality",
     title: "Travel, Tourism & Hospitality",
-    description: "Create booking, destination, guest-service, loyalty, itinerary, navigation and personalized travel experiences.",
+    description:
+      "Create booking, destination, guest-service, loyalty, itinerary, navigation and personalized travel experiences.",
   },
   {
     id: "media-entertainment-gaming",
     title: "Media, Entertainment & Gaming",
-    description: "Develop content, community, streaming, fan engagement, interactive and gaming companion experiences.",
+    description:
+      "Develop content, community, streaming, fan engagement, interactive and gaming companion experiences.",
   },
   {
     id: "sports-fitness",
     title: "Sports & Fitness",
-    description: "Build training, coaching, membership, performance, venue, fan engagement and connected fitness applications.",
+    description:
+      "Build training, coaching, membership, performance, venue, fan engagement and connected fitness applications.",
   },
   {
     id: "banking-financial-services-insurance",
     title: "Banking, Financial Services & Insurance",
-    description: "Create onboarding, account, payment, financial-service, insurance, claims and support experiences with strong emphasis on clarity, trust and secure interaction.",
+    description:
+      "Create onboarding, account, payment, financial-service, insurance, claims and support experiences with strong emphasis on clarity, trust and secure interaction.",
   },
   {
     id: "telecommunications",
     title: "Telecommunications",
-    description: "Develop customer self-service, plan management, network-service, device, support and field-technician applications.",
+    description:
+      "Develop customer self-service, plan management, network-service, device, support and field-technician applications.",
   },
   {
     id: "agriculture-agritech",
     title: "Agriculture & AgriTech",
-    description: "Support farm operations, equipment, field data, monitoring, logistics, advisory and connected-agriculture workflows.",
+    description:
+      "Support farm operations, equipment, field data, monitoring, logistics, advisory and connected-agriculture workflows.",
   },
   {
     id: "government-public-sector",
     title: "Government & Public Sector",
-    description: "Develop citizen services, applications, appointments, information access, workforce tools and public communication experiences with accessibility and trust in mind.",
+    description:
+      "Develop citizen services, applications, appointments, information access, workforce tools and public communication experiences with accessibility and trust in mind.",
   },
   {
     id: "corporate-learning-professional-services",
     title: "Corporate Learning & Professional Services",
-    description: "Build knowledge, training, client-service, productivity, project, workflow and collaboration applications for distributed organizations.",
+    description:
+      "Build knowledge, training, client-service, productivity, project, workflow and collaboration applications for distributed organizations.",
   },
 ];
 
-export const MOBILE_APP_DEVELOPMENT_INDUSTRIES_CONTENT: SolutionIndustriesContent = {
-  slug: "mobile-app-development",
-  hero: {
-    title: "Mobile App Development Services Across Industries — AI-Era Industry Solutions",
-    description: "Obrive develops mobile applications around industry-specific users, workflows, data environments and business outcomes. We combine mobile product strategy, UX/UI collaboration, engineering, cloud services, APIs, analytics, security and AI capabilities to create applications for customer-facing and operational use cases. Our industry approach is adaptable rather than template-driven. A banking application has different trust and security needs from a warehouse application; a healthcare product has different privacy and regulatory considerations from a retail loyalty app; a field-service application has different connectivity and workflow requirements from a consumer marketplace. Mobile App Development Across Industries",
-  },
-  industries: MOBILE_APP_DEVELOPMENT_INDUSTRIES,
-  extraBlocks: [
-    {
-      id: "ai-era-mobile-app-development-across-industries",
-      title: "AI-Era Mobile App Development Across Industries",
-      subtitle: "",
-      description: "AI can change the interaction model from navigating screens toward asking, describing, scanning, speaking, receiving recommendations and completing assisted tasks. Obrive applies these capabilities only where they improve the product or business workflow.",
-      label: "",
-      items: ["Conversational assistance for customer and employee workflows", "Natural-language search across products, services and approved knowledge", "Personalized recommendations and next-best-action concepts", "Summarization of complex documents, records or activity", "AI-assisted content and workflow creation", "Contextual guidance based on user role and permitted data", "Intelligent notifications and prioritization", "Voice and multimodal interaction where useful", "Knowledge retrieval from controlled business sources", "Human review and approval for consequential actions", "Transparent handling of uncertainty and AI limitations", "Privacy-aware data and permission design"],
-      footer: "",
+export const MOBILE_APP_DEVELOPMENT_INDUSTRIES_CONTENT: SolutionIndustriesContent =
+  {
+    slug: "mobile-app-development",
+    hero: {
+      title:
+        "Mobile App Development Services Across Industries — AI-Era Industry Solutions",
+      description:
+        "Obrive develops mobile applications around industry-specific users, workflows, data environments and business outcomes. We combine mobile product strategy, UX/UI collaboration, engineering, cloud services, APIs, analytics, security and AI capabilities to create applications for customer-facing and operational use cases. Our industry approach is adaptable rather than template-driven. A banking application has different trust and security needs from a warehouse application; a healthcare product has different privacy and regulatory considerations from a retail loyalty app; a field-service application has different connectivity and workflow requirements from a consumer marketplace. Mobile App Development Across Industries",
     },
-  ],
-  globalDelivery: {
-    title: "Global Mobile App Delivery",
-    subtitle: "",
-    description: "We can support products for local, national and international markets, including multiple languages, regional content, currencies, accessibility requirements, platform governance, distributed teams and controlled product evolution.",
-    items: [],
-  },
-  technologyCapabilities: {
-    title: "Technology & Platform Capabilities",
-    subtitle: "",
-    items: ["iOS and Android application development", "Cross-platform mobile development", "Backend services and API development", "Cloud infrastructure", "Authentication and access control", "Databases and data platforms", "Payment and commerce integrations", "ERP and CRM integrations", "IoT and connected-device services", "Analytics and observability", "AI and intelligent services", "Automated testing and CI/CD", "Performance and security engineering"],
-  },
-  footerText: "Our industry solutions are not limited to these sectors. We can adapt the same mobile engineering foundations to specialized workflows, customer journeys, operational environments, data models and emerging business models.",
-};
+    industries: MOBILE_APP_DEVELOPMENT_INDUSTRIES,
+    extraBlocks: [
+      {
+        id: "ai-era-mobile-app-development-across-industries",
+        title: "AI-Era Mobile App Development Across Industries",
+        subtitle: "",
+        description:
+          "AI can change the interaction model from navigating screens toward asking, describing, scanning, speaking, receiving recommendations and completing assisted tasks. Obrive applies these capabilities only where they improve the product or business workflow.",
+        label: "",
+        items: [
+          "Conversational assistance for customer and employee workflows",
+          "Natural-language search across products, services and approved knowledge",
+          "Personalized recommendations and next-best-action concepts",
+          "Summarization of complex documents, records or activity",
+          "AI-assisted content and workflow creation",
+          "Contextual guidance based on user role and permitted data",
+          "Intelligent notifications and prioritization",
+          "Voice and multimodal interaction where useful",
+          "Knowledge retrieval from controlled business sources",
+          "Human review and approval for consequential actions",
+          "Transparent handling of uncertainty and AI limitations",
+          "Privacy-aware data and permission design",
+        ],
+        footer: "",
+      },
+    ],
+    globalDelivery: {
+      title: "Global Mobile App Delivery",
+      subtitle: "",
+      description:
+        "We can support products for local, national and international markets, including multiple languages, regional content, currencies, accessibility requirements, platform governance, distributed teams and controlled product evolution.",
+      items: [],
+    },
+    technologyCapabilities: {
+      title: "Technology & Platform Capabilities",
+      subtitle: "",
+      items: [
+        "iOS and Android application development",
+        "Cross-platform mobile development",
+        "Backend services and API development",
+        "Cloud infrastructure",
+        "Authentication and access control",
+        "Databases and data platforms",
+        "Payment and commerce integrations",
+        "ERP and CRM integrations",
+        "IoT and connected-device services",
+        "Analytics and observability",
+        "AI and intelligent services",
+        "Automated testing and CI/CD",
+        "Performance and security engineering",
+      ],
+    },
+    footerText:
+      "Our industry solutions are not limited to these sectors. We can adapt the same mobile engineering foundations to specialized workflows, customer journeys, operational environments, data models and emerging business models.",
+  };

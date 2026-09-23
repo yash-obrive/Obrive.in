@@ -12,7 +12,13 @@ interface CareerSectionProps {
   children?: React.ReactNode;
 }
 
-export function CareerItem({ title, children }: { title?: React.ReactNode, children: React.ReactNode }) {
+export function CareerItem({
+  title,
+  children,
+}: {
+  title?: React.ReactNode;
+  children: React.ReactNode;
+}) {
   return (
     <div>
       {title && (
@@ -29,7 +35,11 @@ export function CareerItem({ title, children }: { title?: React.ReactNode, child
   );
 }
 
-export default function CareerSection({ title, items, children }: CareerSectionProps) {
+export default function CareerSection({
+  title,
+  items,
+  children,
+}: CareerSectionProps) {
   return (
     <section>
       {title && (
@@ -40,28 +50,26 @@ export default function CareerSection({ title, items, children }: CareerSectionP
         </h2>
       )}
       <div className="space-y-6">
-        {children ? (
-          children
-        ) : (
-          items?.map((item, index) => (
-            <div key={index}>
-              {item.title && (
-                <h3
-                  className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}
-                >
-                  {item.title}
-                </h3>
-              )}
-              {typeof item.description === "string" ? (
-                <p className="text-sm leading-relaxed">{item.description}</p>
-              ) : (
-                <div className="text-sm leading-relaxed [&>ul]:list-disc [&>ol]:list-decimal">
-                  {item.description}
-                </div>
-              )}
-            </div>
-          ))
-        )}
+        {children
+          ? children
+          : items?.map((item, index) => (
+              <div key={index}>
+                {item.title && (
+                  <h3
+                    className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}
+                  >
+                    {item.title}
+                  </h3>
+                )}
+                {typeof item.description === "string" ? (
+                  <p className="text-sm leading-relaxed">{item.description}</p>
+                ) : (
+                  <div className="text-sm leading-relaxed [&>ul]:list-disc [&>ol]:list-decimal">
+                    {item.description}
+                  </div>
+                )}
+              </div>
+            ))}
       </div>
     </section>
   );

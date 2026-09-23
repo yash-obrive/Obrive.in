@@ -45,7 +45,7 @@ export default function AssignEmployeesDialog({
     if (open) {
       fetchEmployees();
     }
-  }, [open]);
+  }, [open, fetchEmployees]);
 
   const fetchEmployees = async () => {
     try {

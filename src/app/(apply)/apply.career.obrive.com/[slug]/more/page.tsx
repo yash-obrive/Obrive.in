@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AboutYou from "@/components/pages/apply/AboutYou";
 import FinalPage from "@/components/pages/apply/FinalPage";
 import MoreDetails from "@/components/pages/apply/MoreDetails";

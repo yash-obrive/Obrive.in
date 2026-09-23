@@ -1,4 +1,3 @@
-import React from "react";
 import FONTS from "@/assets/fonts";
 import RoundedBallIcon from "../icons/RoundedBallIcon";
 

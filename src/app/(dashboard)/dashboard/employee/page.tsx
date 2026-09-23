@@ -5,7 +5,6 @@ import {
   FolderOpen,
   LayoutDashboard,
   List,
-  Menu,
   MessageSquare,
   Palmtree,
 } from "lucide-react";

@@ -77,7 +77,8 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         description: "AEO Service solutions.",
         href: "/services/aeo-service",
         category: "solutions",
-        searchKeywords: "aeo service /services/aeo-service aeo service solutions",
+        searchKeywords:
+          "aeo service /services/aeo-service aeo service solutions",
       },
       {
         num: "07",
@@ -85,7 +86,8 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         description: "AI Consulting solutions.",
         href: "/services/ai-consulting",
         category: "solutions",
-        searchKeywords: "ai consulting /services/ai-consulting ai consulting solutions",
+        searchKeywords:
+          "ai consulting /services/ai-consulting ai consulting solutions",
       },
       {
         num: "08",
@@ -93,7 +95,8 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         description: "Content Marketing Service solutions.",
         href: "/services/content-marketing-service",
         category: "solutions",
-        searchKeywords: "content marketing service /services/content-marketing-service content marketing service solutions",
+        searchKeywords:
+          "content marketing service /services/content-marketing-service content marketing service solutions",
       },
       {
         num: "09",
@@ -101,7 +104,8 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         description: "GEO Service solutions.",
         href: "/services/geo-service",
         category: "solutions",
-        searchKeywords: "geo service /services/geo-service geo service solutions",
+        searchKeywords:
+          "geo service /services/geo-service geo service solutions",
       },
       {
         num: "10",
@@ -109,7 +113,8 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         description: "Mobile App Design Service solutions.",
         href: "/services/mobile-app-design-service",
         category: "solutions",
-        searchKeywords: "mobile app design service /services/mobile-app-design-service mobile app design service solutions",
+        searchKeywords:
+          "mobile app design service /services/mobile-app-design-service mobile app design service solutions",
       },
       {
         num: "11",
@@ -117,7 +122,8 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         description: "Mobile App Development solutions.",
         href: "/services/mobile-app-development",
         category: "solutions",
-        searchKeywords: "mobile app development /services/mobile-app-development mobile app development solutions",
+        searchKeywords:
+          "mobile app development /services/mobile-app-development mobile app development solutions",
       },
       {
         num: "12",
@@ -125,7 +131,8 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         description: "SEO Service solutions.",
         href: "/services/seo-service",
         category: "solutions",
-        searchKeywords: "seo service /services/seo-service seo service solutions",
+        searchKeywords:
+          "seo service /services/seo-service seo service solutions",
       },
       {
         num: "13",
@@ -133,7 +140,8 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         description: "Web App & SaaS MVP Development solutions.",
         href: "/services/web-app-saas-mvp-development",
         category: "solutions",
-        searchKeywords: "web app & saas mvp development /services/web-app-saas-mvp-development web app & saas mvp development solutions",
+        searchKeywords:
+          "web app & saas mvp development /services/web-app-saas-mvp-development web app & saas mvp development solutions",
       },
       {
         num: "14",
@@ -141,7 +149,8 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         description: "Website Design Service solutions.",
         href: "/services/website-design-service",
         category: "solutions",
-        searchKeywords: "website design service /services/website-design-service website design service solutions",
+        searchKeywords:
+          "website design service /services/website-design-service website design service solutions",
       },
       {
         num: "15",
@@ -149,7 +158,8 @@ export const DIRECTORY_DATA: DirectoryCategory[] = [
         description: "Website Development Service solutions.",
         href: "/services/website-development-service",
         category: "solutions",
-        searchKeywords: "website development service /services/website-development-service website development service solutions",
+        searchKeywords:
+          "website development service /services/website-development-service website development service solutions",
       },
     ],
   },

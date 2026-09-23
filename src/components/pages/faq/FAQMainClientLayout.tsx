@@ -2,9 +2,11 @@
 
 import Script from "next/script";
 import FONTS from "@/assets/fonts";
-import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import FAQWorkflowSteps from "@/components/pages/faq/FAQWorkflowSteps";
-import FAQAccordionSection, { FAQItem } from "@/components/pages/faq/sections/FAQAccordionSection";
+import FAQAccordionSection, {
+  FAQItem,
+} from "@/components/pages/faq/sections/FAQAccordionSection";
+import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 
 interface FAQ {
   q: string;
@@ -22,7 +24,9 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9\s-]/g, "")
     .replace(/\s+/g, "-");
 
-export default function FAQMainClientLayout({ faqs }: FAQMainClientLayoutProps) {
+export default function FAQMainClientLayout({
+  faqs,
+}: FAQMainClientLayoutProps) {
   const categories = Object.keys(faqs);
   const categoryIds = categories.map((cat) => slugify(cat));
 
@@ -67,7 +71,10 @@ export default function FAQMainClientLayout({ faqs }: FAQMainClientLayoutProps) 
               Frequently Asked Questions
             </h1>
             <p className="text-base sm:text-lg text-slate-700 leading-relaxed max-w-3xl">
-              Explore answers to common questions about Obrive&apos;s capabilities, digital product development, web design &amp; development, AI, AR, VR, MR, 3D design, Spatial Computing, pricing, timelines, and collaboration models.
+              Explore answers to common questions about Obrive&apos;s
+              capabilities, digital product development, web design &amp;
+              development, AI, AR, VR, MR, 3D design, Spatial Computing,
+              pricing, timelines, and collaboration models.
             </p>
           </div>
 

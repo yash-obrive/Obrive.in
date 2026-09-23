@@ -2,7 +2,7 @@
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import FONTS from "@/assets/fonts";
 import { Button } from "@/components/ui/button";
 import { FEATURED_IN } from "@/constants/pages/about/featured";

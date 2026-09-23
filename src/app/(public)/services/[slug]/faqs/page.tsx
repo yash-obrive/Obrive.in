@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import SolutionFAQSection from "@/components/pages/services/components/SolutionFAQSection";
@@ -84,7 +84,7 @@ export default async function SolutionFAQsPage({
                 "@type": "Answer",
                 text: item.answer.replace(/<[^>]+>/g, ""),
               },
-            }))
+            })),
           ),
         })}
       </Script>

@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
-import React from "react";
 import ActivityStream from "@/components/dashboard/ActivityStream";
 import SkeletonLoading from "@/components/SkelitonLoading";
 import { useDashboardData } from "../../useDashboardData";
 import NearestEvents from "../components/NearestEvents";
-import ProfileNotifications from "../components/ProfileNotifications";
 import Projects from "../components/Projects";
 import WorkloadSection from "../components/WorkloadSection";
 

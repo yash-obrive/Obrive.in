@@ -1,4 +1,4 @@
-import { IMAGES, IMAGES_META, ICONS, ICONS_META } from "@/assets/images";
+import { ICONS, ICONS_META, IMAGES, IMAGES_META } from "@/assets/images";
 
 export const THREE_D_DESIGN_HERO = {
   title: "3D Design & Development Services Across Industries.",
@@ -316,163 +316,192 @@ export const THREE_D_DESIGN_HOW_IT_WORKS = [
   },
 ] as const;
 
-export const THREE_D_DESIGN_INDUSTRIES: import("../../../types/services").SolutionIndustriesContent = {
-  "slug": "3d-design-development",
-  "hero": {
-    "title": "3D Design & Development Across Industries",
-    "description": "3D becomes more valuable when it is designed around the products, spaces, engineering realities and customer journeys of a specific industry. Obrive develops configurable 3D solutions for visualization, product communication, design review, sales, training, eCommerce, simulation, digital twins and immersive experiences."
-  },
-  "industries": [
-    {
-      "id": "automotive-mobility",
-      "title": "Automotive & Mobility",
-      "description": "Create vehicle and component models, product configurators, design-review environments, engineering visualization, dealership content, marketing renders, training assets and immersive product experiences."
+export const THREE_D_DESIGN_INDUSTRIES: import("../../../types/services").SolutionIndustriesContent =
+  {
+    slug: "3d-design-development",
+    hero: {
+      title: "3D Design & Development Across Industries",
+      description:
+        "3D becomes more valuable when it is designed around the products, spaces, engineering realities and customer journeys of a specific industry. Obrive develops configurable 3D solutions for visualization, product communication, design review, sales, training, eCommerce, simulation, digital twins and immersive experiences.",
     },
-    {
-      "id": "manufacturing-industrial-engineering",
-      "title": "Manufacturing & Industrial Engineering",
-      "description": "Support product development, machine visualization, assembly communication, technical documentation, digital work instructions, factory visualization, simulation assets and digital twin experiences."
+    industries: [
+      {
+        id: "automotive-mobility",
+        title: "Automotive & Mobility",
+        description:
+          "Create vehicle and component models, product configurators, design-review environments, engineering visualization, dealership content, marketing renders, training assets and immersive product experiences.",
+      },
+      {
+        id: "manufacturing-industrial-engineering",
+        title: "Manufacturing & Industrial Engineering",
+        description:
+          "Support product development, machine visualization, assembly communication, technical documentation, digital work instructions, factory visualization, simulation assets and digital twin experiences.",
+      },
+      {
+        id: "healthcare-medical",
+        title: "Healthcare & Medical",
+        description:
+          "Develop 3D anatomy, medical-device visualization, facility models, educational content, training assets and interactive experiences. Clinical or regulated applications should be designed with appropriate validation, privacy, safety and regulatory requirements.",
+      },
+      {
+        id: "pharmaceuticals-life-sciences",
+        title: "Pharmaceuticals & Life Sciences",
+        description:
+          "Use 3D for scientific visualization, laboratory environments, equipment training, manufacturing communication, facility walkthroughs, product education and immersive learning.",
+      },
+      {
+        id: "retail-ecommerce",
+        title: "Retail & eCommerce",
+        description:
+          "Create interactive product viewers, 3D catalogs, product configurators, virtual showrooms, product animations, material visualization and digital commerce experiences.",
+      },
+      {
+        id: "consumer-goods-brands",
+        title: "Consumer Goods & Brands",
+        description:
+          "Turn products, packaging and brand concepts into high-quality 3D assets for campaigns, product launches, digital merchandising, social content, presentations and immersive experiences.",
+      },
+      {
+        id: "real-estate-property",
+        title: "Real Estate & Property",
+        description:
+          "Visualize properties, interiors and developments with architectural models, renders, virtual staging, walkthroughs, interactive tours and stakeholder presentation experiences.",
+      },
+      {
+        id: "architecture-engineering-construction",
+        title: "Architecture, Engineering & Construction",
+        description:
+          "Use 3D for design review, architectural visualization, BIM-oriented communication, construction sequencing, stakeholder walkthroughs, technical visualization and immersive project presentations.",
+      },
+      {
+        id: "education-edtech",
+        title: "Education & EdTech",
+        description:
+          "Create interactive 3D lessons, virtual laboratories, scientific models, vocational training assets, historical environments, technical simulations and experiential learning content.",
+      },
+      {
+        id: "energy-utilities-infrastructure",
+        title: "Energy, Utilities & Infrastructure",
+        description:
+          "Support asset visualization, infrastructure models, maintenance planning, safety training, facility walkthroughs, technical communication and digital twin visualization.",
+      },
+      {
+        id: "oil-gas",
+        title: "Oil & Gas",
+        description:
+          "Develop equipment models, facility visualization, maintenance rehearsal assets, safety simulations, technical training environments and operational knowledge-transfer experiences.",
+      },
+      {
+        id: "mining-natural-resources",
+        title: "Mining & Natural Resources",
+        description:
+          "Use 3D for equipment visualization, mine-site models, safety training, maintenance simulation, geological communication, operational planning and workforce enablement.",
+      },
+      {
+        id: "aerospace-aviation",
+        title: "Aerospace & Aviation",
+        description:
+          "Create aircraft and component visualization, engineering models, assembly and maintenance training assets, cabin/cockpit environments, technical documentation visuals and immersive collaboration experiences.",
+      },
+      {
+        id: "logistics-warehousing-supply-chain",
+        title: "Logistics, Warehousing & Supply Chain",
+        description:
+          "Build warehouse models, facility layouts, workflow simulations, equipment visualization, loading and picking training environments and operational walkthroughs.",
+      },
+      {
+        id: "travel-tourism-hospitality",
+        title: "Travel, Tourism & Hospitality",
+        description:
+          "Create destinations, hotels, resorts, attractions and cultural environments for virtual tours, immersive previews, marketing, training and guest experiences.",
+      },
+      {
+        id: "media-entertainment-gaming",
+        title: "Media, Entertainment & Gaming",
+        description:
+          "Develop characters, environments, props, interactive scenes, virtual venues, immersive storytelling assets, branded experiences and real-time 3D content.",
+      },
+      {
+        id: "sports-fitness",
+        title: "Sports & Fitness",
+        description:
+          "Create athlete and equipment visualization, venue models, coaching environments, training simulations, fan experiences and branded immersive content.",
+      },
+      {
+        id: "banking-financial-services-insurance",
+        title: "Banking, Financial Services & Insurance",
+        description:
+          "Use 3D for property and asset visualization, workforce training, virtual branch concepts, customer education, claims-related visualization and selected immersive collaboration workflows.",
+      },
+      {
+        id: "telecommunications",
+        title: "Telecommunications",
+        description:
+          "Support network and infrastructure visualization, equipment models, technician training, retail demonstrations, field-service preparation and customer education.",
+      },
+      {
+        id: "agriculture-agritech",
+        title: "Agriculture & AgriTech",
+        description:
+          "Create farm and equipment visualization, agricultural machinery models, training environments, field simulations, safety education and knowledge-transfer experiences.",
+      },
+      {
+        id: "government-public-sector",
+        title: "Government & Public Sector",
+        description:
+          "Develop public infrastructure visualization, emergency-preparedness environments, workforce training, cultural heritage experiences, museums and citizen-facing immersive content.",
+      },
+      {
+        id: "corporate-learning-professional-services",
+        title: "Corporate Learning & Professional Services",
+        description:
+          "Build leadership simulations, soft-skills environments, sales training, onboarding, client demonstrations, collaborative learning spaces and scenario-based training.",
+      },
+    ],
+    footerText:
+      "We can adapt the same 3D foundations—modeling, visualization, rendering, interactive development, workflow automation, integration and immersive technology—to new industries, proprietary products and specialized environments.",
+    globalDelivery: {
+      title: "Global 3D Delivery",
+      subtitle: "Build Once. Localize, Integrate and Scale Worldwide.",
+      description:
+        "Obrive can support organizations operating across markets, products, languages, stakeholders and digital channels. We structure 3D assets and workflows for reuse while maintaining appropriate visual, technical and brand standards.",
+      items: [
+        "Multi-market product and property visualization",
+        "Localized product variants and materials",
+        "Reusable 3D asset libraries",
+        "Multi-language interfaces and presentation content",
+        "Centralized review and approval workflows",
+        "Cloud and API integration",
+        "Role-based access and governance",
+        "Web, mobile and real-time deployment",
+        "AR, VR, MR and spatial-computing readiness",
+        "Distributed stakeholder collaboration",
+      ],
     },
-    {
-      "id": "healthcare-medical",
-      "title": "Healthcare & Medical",
-      "description": "Develop 3D anatomy, medical-device visualization, facility models, educational content, training assets and interactive experiences. Clinical or regulated applications should be designed with appropriate validation, privacy, safety and regulatory requirements."
+    technologyCapabilities: {
+      title: "3D Technology & Platform Capabilities",
+      subtitle: "",
+      items: [
+        "3D modeling and texturing",
+        "Photorealistic rendering",
+        "Real-time 3D",
+        "Interactive 3D",
+        "CAD-to-3D workflows",
+        "3D configurators",
+        "Digital twins",
+        "Architectural visualization",
+        "Product visualization",
+        "Animation and technical visualization",
+        "AR/VR/MR-ready 3D assets",
+        "Unity and Unreal Engine workflows",
+        "Web-based 3D experiences",
+        "AI-assisted review and workflow automation",
+        "Enterprise and cloud integrations",
+      ],
     },
-    {
-      "id": "pharmaceuticals-life-sciences",
-      "title": "Pharmaceuticals & Life Sciences",
-      "description": "Use 3D for scientific visualization, laboratory environments, equipment training, manufacturing communication, facility walkthroughs, product education and immersive learning."
-    },
-    {
-      "id": "retail-ecommerce",
-      "title": "Retail & eCommerce",
-      "description": "Create interactive product viewers, 3D catalogs, product configurators, virtual showrooms, product animations, material visualization and digital commerce experiences."
-    },
-    {
-      "id": "consumer-goods-brands",
-      "title": "Consumer Goods & Brands",
-      "description": "Turn products, packaging and brand concepts into high-quality 3D assets for campaigns, product launches, digital merchandising, social content, presentations and immersive experiences."
-    },
-    {
-      "id": "real-estate-property",
-      "title": "Real Estate & Property",
-      "description": "Visualize properties, interiors and developments with architectural models, renders, virtual staging, walkthroughs, interactive tours and stakeholder presentation experiences."
-    },
-    {
-      "id": "architecture-engineering-construction",
-      "title": "Architecture, Engineering & Construction",
-      "description": "Use 3D for design review, architectural visualization, BIM-oriented communication, construction sequencing, stakeholder walkthroughs, technical visualization and immersive project presentations."
-    },
-    {
-      "id": "education-edtech",
-      "title": "Education & EdTech",
-      "description": "Create interactive 3D lessons, virtual laboratories, scientific models, vocational training assets, historical environments, technical simulations and experiential learning content."
-    },
-    {
-      "id": "energy-utilities-infrastructure",
-      "title": "Energy, Utilities & Infrastructure",
-      "description": "Support asset visualization, infrastructure models, maintenance planning, safety training, facility walkthroughs, technical communication and digital twin visualization."
-    },
-    {
-      "id": "oil-gas",
-      "title": "Oil & Gas",
-      "description": "Develop equipment models, facility visualization, maintenance rehearsal assets, safety simulations, technical training environments and operational knowledge-transfer experiences."
-    },
-    {
-      "id": "mining-natural-resources",
-      "title": "Mining & Natural Resources",
-      "description": "Use 3D for equipment visualization, mine-site models, safety training, maintenance simulation, geological communication, operational planning and workforce enablement."
-    },
-    {
-      "id": "aerospace-aviation",
-      "title": "Aerospace & Aviation",
-      "description": "Create aircraft and component visualization, engineering models, assembly and maintenance training assets, cabin/cockpit environments, technical documentation visuals and immersive collaboration experiences."
-    },
-    {
-      "id": "logistics-warehousing-supply-chain",
-      "title": "Logistics, Warehousing & Supply Chain",
-      "description": "Build warehouse models, facility layouts, workflow simulations, equipment visualization, loading and picking training environments and operational walkthroughs."
-    },
-    {
-      "id": "travel-tourism-hospitality",
-      "title": "Travel, Tourism & Hospitality",
-      "description": "Create destinations, hotels, resorts, attractions and cultural environments for virtual tours, immersive previews, marketing, training and guest experiences."
-    },
-    {
-      "id": "media-entertainment-gaming",
-      "title": "Media, Entertainment & Gaming",
-      "description": "Develop characters, environments, props, interactive scenes, virtual venues, immersive storytelling assets, branded experiences and real-time 3D content."
-    },
-    {
-      "id": "sports-fitness",
-      "title": "Sports & Fitness",
-      "description": "Create athlete and equipment visualization, venue models, coaching environments, training simulations, fan experiences and branded immersive content."
-    },
-    {
-      "id": "banking-financial-services-insurance",
-      "title": "Banking, Financial Services & Insurance",
-      "description": "Use 3D for property and asset visualization, workforce training, virtual branch concepts, customer education, claims-related visualization and selected immersive collaboration workflows."
-    },
-    {
-      "id": "telecommunications",
-      "title": "Telecommunications",
-      "description": "Support network and infrastructure visualization, equipment models, technician training, retail demonstrations, field-service preparation and customer education."
-    },
-    {
-      "id": "agriculture-agritech",
-      "title": "Agriculture & AgriTech",
-      "description": "Create farm and equipment visualization, agricultural machinery models, training environments, field simulations, safety education and knowledge-transfer experiences."
-    },
-    {
-      "id": "government-public-sector",
-      "title": "Government & Public Sector",
-      "description": "Develop public infrastructure visualization, emergency-preparedness environments, workforce training, cultural heritage experiences, museums and citizen-facing immersive content."
-    },
-    {
-      "id": "corporate-learning-professional-services",
-      "title": "Corporate Learning & Professional Services",
-      "description": "Build leadership simulations, soft-skills environments, sales training, onboarding, client demonstrations, collaborative learning spaces and scenario-based training."
-    }
-  ],
-  "footerText": "We can adapt the same 3D foundations—modeling, visualization, rendering, interactive development, workflow automation, integration and immersive technology—to new industries, proprietary products and specialized environments.",
-  "globalDelivery": {
-    "title": "Global 3D Delivery",
-    "subtitle": "Build Once. Localize, Integrate and Scale Worldwide.",
-    "description": "Obrive can support organizations operating across markets, products, languages, stakeholders and digital channels. We structure 3D assets and workflows for reuse while maintaining appropriate visual, technical and brand standards.",
-    "items": [
-      "Multi-market product and property visualization",
-      "Localized product variants and materials",
-      "Reusable 3D asset libraries",
-      "Multi-language interfaces and presentation content",
-      "Centralized review and approval workflows",
-      "Cloud and API integration",
-      "Role-based access and governance",
-      "Web, mobile and real-time deployment",
-      "AR, VR, MR and spatial-computing readiness",
-      "Distributed stakeholder collaboration"
-    ]
-  },
-  "technologyCapabilities": {
-    "title": "3D Technology & Platform Capabilities",
-    "subtitle": "",
-    "items": [
-      "3D modeling and texturing",
-      "Photorealistic rendering",
-      "Real-time 3D",
-      "Interactive 3D",
-      "CAD-to-3D workflows",
-      "3D configurators",
-      "Digital twins",
-      "Architectural visualization",
-      "Product visualization",
-      "Animation and technical visualization",
-      "AR/VR/MR-ready 3D assets",
-      "Unity and Unreal Engine workflows",
-      "Web-based 3D experiences",
-      "AI-assisted review and workflow automation",
-      "Enterprise and cloud integrations"
-    ]
-  }
-};
+  };
 
-export { THREE_D_DESIGN_FAQS, THREE_D_DESIGN_FAQ_META } from "./faqs/3d-design-faqs";
+export {
+  THREE_D_DESIGN_FAQ_META,
+  THREE_D_DESIGN_FAQS,
+} from "./faqs/3d-design-faqs";

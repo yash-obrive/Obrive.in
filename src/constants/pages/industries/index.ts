@@ -9,14 +9,14 @@ import {
   OBNEST_IMAGES_META,
 } from "@/assets/images";
 
-const PLACEHOLDER_WORKFLOW = [
+const _PLACEHOLDER_WORKFLOW = [
   "Step 1: Discover",
   "Step 2: Implement",
   "Step 3: Integrate",
   "Step 4: Scale",
 ] as const;
 
-const PLACEHOLDER_HOW_IT_WORKS = [
+const _PLACEHOLDER_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Placeholder Step",
@@ -26,7 +26,7 @@ const PLACEHOLDER_HOW_IT_WORKS = [
   },
 ] as const;
 
-const PLACEHOLDER_KEY_BENEFITS = [
+const _PLACEHOLDER_KEY_BENEFITS = [
   {
     title: "Placeholder Benefit",
     description: "Placeholder description for key benefit.",
@@ -238,7 +238,6 @@ const OBMOVE_KEY_BENEFITS = [
   },
 ] as const;
 
-
 const OBNEST_SERVICE_SECTIONS = [
   {
     id: "applications",
@@ -246,19 +245,23 @@ const OBNEST_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Virtual Property Tours",
-        description: "Explore properties remotely with immersive, interactive 3D walkthroughs.",
+        description:
+          "Explore properties remotely with immersive, interactive 3D walkthroughs.",
       },
       {
         title: "3D Architectural Visualization",
-        description: "Visualize off-plan developments and unbuilt spaces before construction begins.",
+        description:
+          "Visualize off-plan developments and unbuilt spaces before construction begins.",
       },
       {
         title: "Digital Staging",
-        description: "Furnish empty properties with high-fidelity digital furniture and decor.",
+        description:
+          "Furnish empty properties with high-fidelity digital furniture and decor.",
       },
       {
         title: "Remote Client Collaboration",
-        description: "Host guided virtual walkthroughs with international or remote buyers.",
+        description:
+          "Host guided virtual walkthroughs with international or remote buyers.",
       },
     ],
   },
@@ -268,11 +271,13 @@ const OBNEST_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Photorealistic 3D Environments",
-        description: "True-to-life lighting, materials, and textures for premium real estate.",
+        description:
+          "True-to-life lighting, materials, and textures for premium real estate.",
       },
       {
         title: "Real-Time Customization",
-        description: "Allow buyers to swap finishes, flooring, and layouts instantly.",
+        description:
+          "Allow buyers to swap finishes, flooring, and layouts instantly.",
       },
       {
         title: "Multi-Platform Access",
@@ -280,7 +285,8 @@ const OBNEST_SERVICE_SECTIONS = [
       },
       {
         title: "Engagement Analytics",
-        description: "Track which rooms and features capture buyer attention the most.",
+        description:
+          "Track which rooms and features capture buyer attention the most.",
       },
     ],
   },
@@ -290,15 +296,18 @@ const OBNEST_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Industry Expertise",
-        description: "Tailored immersive solutions specifically designed for real estate developers and agencies.",
+        description:
+          "Tailored immersive solutions specifically designed for real estate developers and agencies.",
       },
       {
         title: "Accelerated Sales",
-        description: "Immersive experiences that build buyer confidence and shorten the sales cycle.",
+        description:
+          "Immersive experiences that build buyer confidence and shorten the sales cycle.",
       },
       {
         title: "Scalable Deployments",
-        description: "Easily scale from single properties to entire portfolios and masterplan communities.",
+        description:
+          "Easily scale from single properties to entire portfolios and masterplan communities.",
       },
     ],
   },
@@ -317,19 +326,23 @@ const OBMOVE_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Virtual Car Showrooms",
-        description: "Step into infinite digital showrooms and explore vehicle models in life-size 3D.",
+        description:
+          "Step into infinite digital showrooms and explore vehicle models in life-size 3D.",
       },
       {
         title: "3D Vehicle Configuration",
-        description: "Customize trims, paints, and accessories on high-fidelity vehicle twins.",
+        description:
+          "Customize trims, paints, and accessories on high-fidelity vehicle twins.",
       },
       {
         title: "AR Driveway Previews",
-        description: "Use Augmented Reality to place and view a customized car in your own driveway.",
+        description:
+          "Use Augmented Reality to place and view a customized car in your own driveway.",
       },
       {
         title: "Immersive Dealership Kiosks",
-        description: "Enhance physical dealerships with interactive digital visualization screens.",
+        description:
+          "Enhance physical dealerships with interactive digital visualization screens.",
       },
     ],
   },
@@ -339,19 +352,23 @@ const OBMOVE_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "High-Fidelity 3D Models",
-        description: "Pixel-perfect automotive models reflecting real-world materials and reflections.",
+        description:
+          "Pixel-perfect automotive models reflecting real-world materials and reflections.",
       },
       {
         title: "Real-Time Rendering",
-        description: "Instant visual feedback as customers change vehicle configurations.",
+        description:
+          "Instant visual feedback as customers change vehicle configurations.",
       },
       {
         title: "AR Integration",
-        description: "Seamlessly transition from 3D web exploration to mobile AR placement.",
+        description:
+          "Seamlessly transition from 3D web exploration to mobile AR placement.",
       },
       {
         title: "Customer Analytics",
-        description: "Gain insights into the most popular configurations, colors, and interactive features.",
+        description:
+          "Gain insights into the most popular configurations, colors, and interactive features.",
       },
     ],
   },
@@ -361,15 +378,18 @@ const OBMOVE_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Automotive Focus",
-        description: "Deep understanding of OEM workflows, dealership operations, and car buyer journeys.",
+        description:
+          "Deep understanding of OEM workflows, dealership operations, and car buyer journeys.",
       },
       {
         title: "Omnichannel Delivery",
-        description: "Deploy the same 3D vehicle assets across web configurators, mobile apps, and XR devices.",
+        description:
+          "Deploy the same 3D vehicle assets across web configurators, mobile apps, and XR devices.",
       },
       {
         title: "Enhanced Buying Experience",
-        description: "Bridge the gap between digital research and physical test drives with interactive immersion.",
+        description:
+          "Bridge the gap between digital research and physical test drives with interactive immersion.",
       },
     ],
   },
@@ -419,7 +439,6 @@ export const AUTOMOTIVE_INDUSTRY = {
   serviceSections: OBMOVE_SERVICE_SECTIONS,
 };
 
-
 const ARCHITECTURE_ENGINEERING_WORKFLOW = [
   "Import Project Data",
   "Create the Spatial Model",
@@ -433,44 +452,74 @@ const ARCHITECTURE_ENGINEERING_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Import Project Data",
-    description: "Bring in BIM, CAD, floorplans, models, drawings and project information.",
+    description:
+      "Bring in BIM, CAD, floorplans, models, drawings and project information.",
     src: "/industries/architecture1.jpeg",
-    srcMeta: { alt: "Architect using AR to import project data", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Architect using AR to import project data",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "02",
     title: "2. Create the Spatial Model",
-    description: "Prepare optimized 3D environments for immersive review and visualization.",
+    description:
+      "Prepare optimized 3D environments for immersive review and visualization.",
     src: "/industries/architecture2.png",
-    srcMeta: { alt: "3D spatial model creation for architecture project", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "3D spatial model creation for architecture project",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "03",
     title: "3. Simulate the Design",
-    description: "Explore layouts, materials, lighting, circulation and selected project scenarios.",
+    description:
+      "Explore layouts, materials, lighting, circulation and selected project scenarios.",
     src: "/industries/architecture3.jpeg",
-    srcMeta: { alt: "Architecture design simulation in AR/VR", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Architecture design simulation in AR/VR",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "04",
     title: "4. Collaborate in XR",
-    description: "Invite clients, architects, engineers and stakeholders into shared design reviews.",
+    description:
+      "Invite clients, architects, engineers and stakeholders into shared design reviews.",
     src: "/industries/architecture4.png",
-    srcMeta: { alt: "XR collaboration for architecture and engineering", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "XR collaboration for architecture and engineering",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "05",
     title: "5. Validate On Site",
-    description: "Use AR to compare digital intent with the physical environment where appropriate.",
+    description:
+      "Use AR to compare digital intent with the physical environment where appropriate.",
     src: "/industries/architecture1.jpeg",
-    srcMeta: { alt: "On-site AR validation for construction", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "On-site AR validation for construction",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "06",
     title: "6. Document & Deliver",
-    description: "Capture decisions, updates and outputs for project teams and stakeholders.",
+    description:
+      "Capture decisions, updates and outputs for project teams and stakeholders.",
     src: "/industries/architecture2.png",
-    srcMeta: { alt: "Architecture documentation and delivery", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Architecture documentation and delivery",
+      width: 1200,
+      height: 800,
+    },
   },
 ] as const;
 
@@ -507,7 +556,8 @@ const ARCHITECTURE_ENGINEERING_KEY_BENEFITS = [
   },
   {
     title: "Sustainable Design",
-    description: "Explore performance and planning options through simulation and visualization.",
+    description:
+      "Explore performance and planning options through simulation and visualization.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
@@ -520,27 +570,33 @@ const ARCHITECTURE_ENGINEERING_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "3D Architectural Visualization",
-        description: "Explore buildings, interiors, developments and infrastructure in interactive 3D.",
+        description:
+          "Explore buildings, interiors, developments and infrastructure in interactive 3D.",
       },
       {
         title: "Virtual Site Tours",
-        description: "Review projects remotely and communicate spatial intent to stakeholders.",
+        description:
+          "Review projects remotely and communicate spatial intent to stakeholders.",
       },
       {
         title: "Design Collaboration in VR/MR",
-        description: "Conduct immersive design reviews and multidisciplinary discussions.",
+        description:
+          "Conduct immersive design reviews and multidisciplinary discussions.",
       },
       {
         title: "BIM & Digital Twin Integration",
-        description: "Connect spatial experiences with building and asset information.",
+        description:
+          "Connect spatial experiences with building and asset information.",
       },
       {
         title: "Construction Planning",
-        description: "Visualize sequences, spaces, logistics and selected site workflows.",
+        description:
+          "Visualize sequences, spaces, logistics and selected site workflows.",
       },
       {
         title: "Client Presentations",
-        description: "Turn conventional presentations into interactive project experiences.",
+        description:
+          "Turn conventional presentations into interactive project experiences.",
       },
     ],
   },
@@ -550,7 +606,8 @@ const ARCHITECTURE_ENGINEERING_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "BIM/CAD-to-3D",
-        description: "Convert project information into optimized immersive experiences.",
+        description:
+          "Convert project information into optimized immersive experiences.",
       },
       {
         title: "VR Walkthroughs",
@@ -566,7 +623,8 @@ const ARCHITECTURE_ENGINEERING_SERVICE_SECTIONS = [
       },
       {
         title: "Digital Twins",
-        description: "Extend building models into operational and facility contexts.",
+        description:
+          "Extend building models into operational and facility contexts.",
       },
     ],
   },
@@ -580,19 +638,23 @@ const ARCHITECTURE_ENGINEERING_SERVICE_SECTIONS = [
       },
       {
         title: "Advantage 2",
-        description: "Industry-specific solutions designed around real operational and customer workflows.",
+        description:
+          "Industry-specific solutions designed around real operational and customer workflows.",
       },
       {
         title: "Advantage 3",
-        description: "Scalable, secure and deployment-ready digital experiences.",
+        description:
+          "Scalable, secure and deployment-ready digital experiences.",
       },
       {
         title: "Advantage 4",
-        description: "Reusable 3D assets and immersive experiences across web, mobile and XR.",
+        description:
+          "Reusable 3D assets and immersive experiences across web, mobile and XR.",
       },
       {
         title: "Advantage 5",
-        description: "Integration with existing business, content, analytics and enterprise systems.",
+        description:
+          "Integration with existing business, content, analytics and enterprise systems.",
       },
     ],
   },
@@ -608,7 +670,8 @@ export const ARCHITECTURE_ENGINEERING_INDUSTRY = {
   hero: {
     title: "Architecture & Engineering Solutions",
     description: "Spatial Computing for Design, Collaboration and Construction",
-    description2: "Bring ideas to life with immersive 3D, AR and VR. Obrive helps architects, engineers, developers and construction teams visualize designs, collaborate around models, simulate real-world conditions and communicate project intent across the project lifecycle.",
+    description2:
+      "Bring ideas to life with immersive 3D, AR and VR. Obrive helps architects, engineers, developers and construction teams visualize designs, collaborate around models, simulate real-world conditions and communicate project intent across the project lifecycle.",
     ctaButtons: {
       primary: "Explore Architecture",
       secondary: "SCHEDULE A CONSULTATION",
@@ -634,69 +697,103 @@ const EDUCATION_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Define Learning Goals",
-    description: "Identify curriculum topics, skills and outcomes that benefit from immersive learning.",
+    description:
+      "Identify curriculum topics, skills and outcomes that benefit from immersive learning.",
     src: "/industries/education1.jpeg",
-    srcMeta: { alt: "Students using VR headsets for immersive learning", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Students using VR headsets for immersive learning",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "02",
     title: "2. Design the Experience",
-    description: "Create 3D models, interactive lessons, simulations and virtual environments.",
+    description:
+      "Create 3D models, interactive lessons, simulations and virtual environments.",
     src: "/industries/education2.jpeg",
-    srcMeta: { alt: "AR science experiment in an educational setting", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "AR science experiment in an educational setting",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "03",
     title: "3. Add Curriculum Content",
-    description: "Combine instructional content, assessments, narration and guided interactions.",
+    description:
+      "Combine instructional content, assessments, narration and guided interactions.",
     src: "/industries/education3.png",
-    srcMeta: { alt: "3D learning content in a university lecture hall", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "3D learning content in a university lecture hall",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "04",
     title: "4. Deploy Across Devices",
-    description: "Deliver through web, mobile, AR, VR or supported classroom hardware.",
+    description:
+      "Deliver through web, mobile, AR, VR or supported classroom hardware.",
     src: "/industries/education4.jpeg",
-    srcMeta: { alt: "Student attending virtual classroom remotely", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Student attending virtual classroom remotely",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "05",
     title: "5. Enable Active Learning",
-    description: "Let students explore, practise, collaborate and receive guided feedback.",
+    description:
+      "Let students explore, practise, collaborate and receive guided feedback.",
     src: "/industries/education1.jpeg",
-    srcMeta: { alt: "Students collaborating in an immersive learning environment", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Students collaborating in an immersive learning environment",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "06",
     title: "6. Measure & Improve",
-    description: "Use learner feedback and engagement data to improve future content.",
+    description:
+      "Use learner feedback and engagement data to improve future content.",
     src: "/industries/education2.jpeg",
-    srcMeta: { alt: "Analytics dashboard for educational outcomes", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Analytics dashboard for educational outcomes",
+      width: 1200,
+      height: 800,
+    },
   },
 ] as const;
 
 const EDUCATION_KEY_BENEFITS = [
   {
     title: "Higher Student Engagement",
-    description: "Turn abstract concepts into experiences students can explore.",
+    description:
+      "Turn abstract concepts into experiences students can explore.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
   {
     title: "Better Knowledge Retention",
-    description: "Support learning through visual and experiential interaction.",
+    description:
+      "Support learning through visual and experiential interaction.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
   {
     title: "Accessible Learning",
-    description: "Bring difficult-to-access environments and equipment into the classroom.",
+    description:
+      "Bring difficult-to-access environments and equipment into the classroom.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
   {
     title: "Safe & Cost-Effective Simulations",
-    description: "Practice experiments and procedures in controlled digital environments.",
+    description:
+      "Practice experiments and procedures in controlled digital environments.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
@@ -708,7 +805,8 @@ const EDUCATION_KEY_BENEFITS = [
   },
   {
     title: "Scalable Solutions",
-    description: "Reuse immersive content across cohorts, campuses and locations.",
+    description:
+      "Reuse immersive content across cohorts, campuses and locations.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
@@ -721,19 +819,23 @@ const EDUCATION_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Immersive Classroom Learning",
-        description: "Create interactive lessons that bring complex subjects into 3D.",
+        description:
+          "Create interactive lessons that bring complex subjects into 3D.",
       },
       {
         title: "Virtual Labs & Simulations",
-        description: "Practice science, engineering, healthcare and technical workflows safely.",
+        description:
+          "Practice science, engineering, healthcare and technical workflows safely.",
       },
       {
         title: "3D Learning Content",
-        description: "Explain objects, systems, mechanisms and environments spatially.",
+        description:
+          "Explain objects, systems, mechanisms and environments spatially.",
       },
       {
         title: "Virtual Field Trips",
-        description: "Take learners to places, facilities and environments beyond the campus.",
+        description:
+          "Take learners to places, facilities and environments beyond the campus.",
       },
       {
         title: "Skill Training & Certifications",
@@ -741,7 +843,8 @@ const EDUCATION_SERVICE_SECTIONS = [
       },
       {
         title: "Metaverse & Spatial Campuses",
-        description: "Create persistent digital spaces for collaboration and learning.",
+        description:
+          "Create persistent digital spaces for collaboration and learning.",
       },
     ],
   },
@@ -755,11 +858,13 @@ const EDUCATION_SERVICE_SECTIONS = [
       },
       {
         title: "VR Labs",
-        description: "Create repeatable simulations without requiring physical lab resources for every learner.",
+        description:
+          "Create repeatable simulations without requiring physical lab resources for every learner.",
       },
       {
         title: "AR Learning",
-        description: "Overlay contextual information onto physical objects and environments.",
+        description:
+          "Overlay contextual information onto physical objects and environments.",
       },
       {
         title: "Virtual Collaboration",
@@ -767,7 +872,8 @@ const EDUCATION_SERVICE_SECTIONS = [
       },
       {
         title: "Assessment & Analytics",
-        description: "Create measurable learning journeys and engagement insights.",
+        description:
+          "Create measurable learning journeys and engagement insights.",
       },
     ],
   },
@@ -781,19 +887,23 @@ const EDUCATION_SERVICE_SECTIONS = [
       },
       {
         title: "Advantage 2",
-        description: "Industry-specific solutions designed around real operational and customer workflows.",
+        description:
+          "Industry-specific solutions designed around real operational and customer workflows.",
       },
       {
         title: "Advantage 3",
-        description: "Scalable, secure and deployment-ready digital experiences.",
+        description:
+          "Scalable, secure and deployment-ready digital experiences.",
       },
       {
         title: "Advantage 4",
-        description: "Reusable 3D assets and immersive experiences across web, mobile and XR.",
+        description:
+          "Reusable 3D assets and immersive experiences across web, mobile and XR.",
       },
       {
         title: "Advantage 5",
-        description: "Integration with existing business, content, analytics and enterprise systems.",
+        description:
+          "Integration with existing business, content, analytics and enterprise systems.",
       },
     ],
   },
@@ -809,7 +919,8 @@ export const EDUCATION_INDUSTRY = {
   hero: {
     title: "Education Solutions",
     description: "Spatial Computing for Immersive Learning Experiences",
-    description2: "Make learning more engaging, interactive and effective with AR, VR, MR and 3D. Obrive helps schools, universities, training institutions and professional academies create immersive classrooms, virtual labs, simulations, field trips, skill training and interactive learning content.",
+    description2:
+      "Make learning more engaging, interactive and effective with AR, VR, MR and 3D. Obrive helps schools, universities, training institutions and professional academies create immersive classrooms, virtual labs, simulations, field trips, skill training and interactive learning content.",
     ctaButtons: {
       primary: "Explore Education",
       secondary: "SCHEDULE A CONSULTATION",
@@ -835,51 +946,82 @@ const ENTERPRISE_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Map Business Opportunities",
-    description: "Identify workflows, customer journeys and operational challenges where spatial computing can create value.",
+    description:
+      "Identify workflows, customer journeys and operational challenges where spatial computing can create value.",
     src: "/industries/enterprise1.png",
-    srcMeta: { alt: "Enterprise team mapping business opportunities in VR", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Enterprise team mapping business opportunities in VR",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "02",
     title: "2. Design the Experience",
-    description: "Create immersive interfaces, 3D models, simulations and collaborative environments.",
+    description:
+      "Create immersive interfaces, 3D models, simulations and collaborative environments.",
     src: "/industries/enterprise2.jpeg",
-    srcMeta: { alt: "Enterprise AR experience design", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Enterprise AR experience design",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "03",
     title: "3. Connect Enterprise Systems",
-    description: "Integrate relevant data, content, CRM, ERP, HR, service and analytics systems.",
+    description:
+      "Integrate relevant data, content, CRM, ERP, HR, service and analytics systems.",
     src: "/industries/enterprise3.png",
-    srcMeta: { alt: "Enterprise digital twin operations center", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Enterprise digital twin operations center",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "04",
     title: "4. Pilot & Validate",
-    description: "Launch targeted experiences, test adoption and refine the workflow.",
+    description:
+      "Launch targeted experiences, test adoption and refine the workflow.",
     src: "/industries/enterprise4.jpeg",
-    srcMeta: { alt: "Enterprise VR collaboration platform pilot", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Enterprise VR collaboration platform pilot",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "05",
     title: "5. Scale Across Teams",
-    description: "Standardize assets, governance and deployment across locations and business units.",
+    description:
+      "Standardize assets, governance and deployment across locations and business units.",
     src: "/industries/enterprise1.png",
-    srcMeta: { alt: "Enterprise XR scaling across global teams", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Enterprise XR scaling across global teams",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "06",
     title: "6. Measure Business Impact",
-    description: "Track adoption, engagement, workflow outcomes and opportunities for improvement.",
+    description:
+      "Track adoption, engagement, workflow outcomes and opportunities for improvement.",
     src: "/industries/enterprise2.jpeg",
-    srcMeta: { alt: "Enterprise analytics and business impact measurement", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Enterprise analytics and business impact measurement",
+      width: 1200,
+      height: 800,
+    },
   },
 ] as const;
 
 const ENTERPRISE_KEY_BENEFITS = [
   {
     title: "Increased Productivity",
-    description: "Give teams visual tools that make complex work easier to understand.",
+    description:
+      "Give teams visual tools that make complex work easier to understand.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
@@ -891,7 +1033,8 @@ const ENTERPRISE_KEY_BENEFITS = [
   },
   {
     title: "Reduced Travel Costs",
-    description: "Support remote collaboration, training and expert assistance.",
+    description:
+      "Support remote collaboration, training and expert assistance.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
@@ -903,13 +1046,15 @@ const ENTERPRISE_KEY_BENEFITS = [
   },
   {
     title: "Enhanced Employee Engagement",
-    description: "Make onboarding, training and collaboration more interactive.",
+    description:
+      "Make onboarding, training and collaboration more interactive.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
   {
     title: "Scalable Global Solutions",
-    description: "Deploy repeatable immersive experiences across teams and locations.",
+    description:
+      "Deploy repeatable immersive experiences across teams and locations.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
@@ -922,27 +1067,33 @@ const ENTERPRISE_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Immersive Workforce Training",
-        description: "Deliver onboarding, safety, technical and role-based learning.",
+        description:
+          "Deliver onboarding, safety, technical and role-based learning.",
       },
       {
         title: "Virtual Collaboration & Meetings",
-        description: "Create spatial collaboration environments for distributed teams.",
+        description:
+          "Create spatial collaboration environments for distributed teams.",
       },
       {
         title: "3D Data Visualization",
-        description: "Understand complex operational, product and business information spatially.",
+        description:
+          "Understand complex operational, product and business information spatially.",
       },
       {
         title: "Remote Assistance & Support",
-        description: "Connect experts and frontline teams for faster resolution.",
+        description:
+          "Connect experts and frontline teams for faster resolution.",
       },
       {
         title: "Virtual Showrooms & Product Demos",
-        description: "Create immersive sales, marketing and customer experiences.",
+        description:
+          "Create immersive sales, marketing and customer experiences.",
       },
       {
         title: "Metaverse-Ready Workspaces",
-        description: "Explore persistent digital environments for collaboration and engagement.",
+        description:
+          "Explore persistent digital environments for collaboration and engagement.",
       },
     ],
   },
@@ -952,7 +1103,8 @@ const ENTERPRISE_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Enterprise 3D Platforms",
-        description: "Reusable spatial assets and experiences across business functions.",
+        description:
+          "Reusable spatial assets and experiences across business functions.",
       },
       {
         title: "Immersive Training",
@@ -960,7 +1112,8 @@ const ENTERPRISE_SERVICE_SECTIONS = [
       },
       {
         title: "Digital Twins",
-        description: "Operational visualization for assets, spaces and processes.",
+        description:
+          "Operational visualization for assets, spaces and processes.",
       },
       {
         title: "Remote Assistance",
@@ -982,19 +1135,23 @@ const ENTERPRISE_SERVICE_SECTIONS = [
       },
       {
         title: "Advantage 2",
-        description: "Industry-specific solutions designed around real operational and customer workflows.",
+        description:
+          "Industry-specific solutions designed around real operational and customer workflows.",
       },
       {
         title: "Advantage 3",
-        description: "Scalable, secure and deployment-ready digital experiences.",
+        description:
+          "Scalable, secure and deployment-ready digital experiences.",
       },
       {
         title: "Advantage 4",
-        description: "Reusable 3D assets and immersive experiences across web, mobile and XR.",
+        description:
+          "Reusable 3D assets and immersive experiences across web, mobile and XR.",
       },
       {
         title: "Advantage 5",
-        description: "Integration with existing business, content, analytics and enterprise systems.",
+        description:
+          "Integration with existing business, content, analytics and enterprise systems.",
       },
     ],
   },
@@ -1010,7 +1167,8 @@ export const ENTERPRISE_INDUSTRY = {
   hero: {
     title: "Enterprise Solutions",
     description: "Spatial Computing for Smarter Workplaces and Business Growth",
-    description2: "Empower employees and customers with AR, VR, MR and 3D solutions that streamline operations, improve collaboration and create immersive business experiences. Obrive helps enterprises apply spatial computing to training, visualization, remote assistance, digital twins, customer experiences and distributed work.",
+    description2:
+      "Empower employees and customers with AR, VR, MR and 3D solutions that streamline operations, improve collaboration and create immersive business experiences. Obrive helps enterprises apply spatial computing to training, visualization, remote assistance, digital twins, customer experiences and distributed work.",
     ctaButtons: {
       primary: "Explore Enterprise",
       secondary: "SCHEDULE A CONSULTATION",
@@ -1036,44 +1194,74 @@ const HEALTHCARE_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Identify the Clinical Workflow",
-    description: "Map training, planning, patient, facility or device workflows where spatial visualization can help.",
+    description:
+      "Map training, planning, patient, facility or device workflows where spatial visualization can help.",
     src: "/industries/healthcare1.jpeg",
-    srcMeta: { alt: "Medical professional using AR for clinical workflow", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Medical professional using AR for clinical workflow",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "02",
     title: "2. Build the 3D Experience",
-    description: "Create anatomical, facility, device or procedural models and interactive environments.",
+    description:
+      "Create anatomical, facility, device or procedural models and interactive environments.",
     src: "/industries/healthcare2.png",
-    srcMeta: { alt: "3D anatomy visualization in a hospital setting", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "3D anatomy visualization in a hospital setting",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "03",
     title: "3. Connect Medical Data",
-    description: "Integrate approved datasets, clinical content, device information or operational systems as appropriate.",
+    description:
+      "Integrate approved datasets, clinical content, device information or operational systems as appropriate.",
     src: "/industries/healthcare3.jpeg",
-    srcMeta: { alt: "Medical data integration for VR training", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Medical data integration for VR training",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "04",
     title: "4. Validate the Experience",
-    description: "Review usability, clinical workflows, privacy and safety requirements with relevant stakeholders.",
+    description:
+      "Review usability, clinical workflows, privacy and safety requirements with relevant stakeholders.",
     src: "/industries/healthcare4.jpeg",
-    srcMeta: { alt: "Healthcare VR simulation validation", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Healthcare VR simulation validation",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "05",
     title: "5. Deploy for Users",
-    description: "Deliver through web, mobile, AR, VR or supported spatial devices.",
+    description:
+      "Deliver through web, mobile, AR, VR or supported spatial devices.",
     src: "/industries/healthcare1.jpeg",
-    srcMeta: { alt: "Healthcare AR deployment for clinicians", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Healthcare AR deployment for clinicians",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "06",
     title: "6. Improve Continuously",
-    description: "Use feedback, usage data and workflow insights to refine the experience.",
+    description:
+      "Use feedback, usage data and workflow insights to refine the experience.",
     src: "/industries/healthcare2.png",
-    srcMeta: { alt: "Continuous improvement of healthcare digital experiences", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Continuous improvement of healthcare digital experiences",
+      width: 1200,
+      height: 800,
+    },
   },
 ] as const;
 
@@ -1092,7 +1280,8 @@ const HEALTHCARE_KEY_BENEFITS = [
   },
   {
     title: "Reduced Operational Costs",
-    description: "Use simulation and digital workflows to reduce dependency on physical resources.",
+    description:
+      "Use simulation and digital workflows to reduce dependency on physical resources.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
@@ -1104,7 +1293,8 @@ const HEALTHCARE_KEY_BENEFITS = [
   },
   {
     title: "Safe Simulation",
-    description: "Practice scenarios without exposing patients to unnecessary risk.",
+    description:
+      "Practice scenarios without exposing patients to unnecessary risk.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
@@ -1123,27 +1313,33 @@ const HEALTHCARE_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Medical Training & Simulation",
-        description: "Immersive practice environments for students, clinicians and technical teams.",
+        description:
+          "Immersive practice environments for students, clinicians and technical teams.",
       },
       {
         title: "3D Anatomy Visualization",
-        description: "Explore anatomical structures and medical concepts interactively.",
+        description:
+          "Explore anatomical structures and medical concepts interactively.",
       },
       {
         title: "Surgical Planning & Assistance",
-        description: "Support visualization and collaboration around complex procedures.",
+        description:
+          "Support visualization and collaboration around complex procedures.",
       },
       {
         title: "Patient Education",
-        description: "Explain conditions, procedures and treatment journeys using understandable 3D experiences.",
+        description:
+          "Explain conditions, procedures and treatment journeys using understandable 3D experiences.",
       },
       {
         title: "Hospital Navigation",
-        description: "Help patients and visitors find departments, rooms and services.",
+        description:
+          "Help patients and visitors find departments, rooms and services.",
       },
       {
         title: "Remote Consultation & Guidance",
-        description: "Connect experts and frontline teams through visual remote-assistance workflows.",
+        description:
+          "Connect experts and frontline teams through visual remote-assistance workflows.",
       },
     ],
   },
@@ -1157,7 +1353,8 @@ const HEALTHCARE_SERVICE_SECTIONS = [
       },
       {
         title: "Immersive Simulation",
-        description: "Repeatable training environments and scenario-based learning.",
+        description:
+          "Repeatable training environments and scenario-based learning.",
       },
       {
         title: "AR Guidance",
@@ -1165,11 +1362,13 @@ const HEALTHCARE_SERVICE_SECTIONS = [
       },
       {
         title: "Remote Assistance",
-        description: "Live expert support with visual annotations and collaboration.",
+        description:
+          "Live expert support with visual annotations and collaboration.",
       },
       {
         title: "Spatial Navigation",
-        description: "Wayfinding experiences for hospitals and healthcare facilities.",
+        description:
+          "Wayfinding experiences for hospitals and healthcare facilities.",
       },
     ],
   },
@@ -1183,19 +1382,23 @@ const HEALTHCARE_SERVICE_SECTIONS = [
       },
       {
         title: "Advantage 2",
-        description: "Industry-specific solutions designed around real operational and customer workflows.",
+        description:
+          "Industry-specific solutions designed around real operational and customer workflows.",
       },
       {
         title: "Advantage 3",
-        description: "Scalable, secure and deployment-ready digital experiences.",
+        description:
+          "Scalable, secure and deployment-ready digital experiences.",
       },
       {
         title: "Advantage 4",
-        description: "Reusable 3D assets and immersive experiences across web, mobile and XR.",
+        description:
+          "Reusable 3D assets and immersive experiences across web, mobile and XR.",
       },
       {
         title: "Advantage 5",
-        description: "Integration with existing business, content, analytics and enterprise systems.",
+        description:
+          "Integration with existing business, content, analytics and enterprise systems.",
       },
     ],
   },
@@ -1211,7 +1414,8 @@ export const HEALTHCARE_INDUSTRY = {
   hero: {
     title: "Healthcare Solutions",
     description: "Spatial Computing for Better Care, Training and Outcomes",
-    description2: "Enable smarter healthcare experiences with AR, VR, MR and 3D. Obrive creates immersive solutions for medical training, surgical planning, patient education, hospital navigation, remote assistance and medical device visualization—helping clinicians, students and patients interact with complex information more intuitively.",
+    description2:
+      "Enable smarter healthcare experiences with AR, VR, MR and 3D. Obrive creates immersive solutions for medical training, surgical planning, patient education, hospital navigation, remote assistance and medical device visualization—helping clinicians, students and patients interact with complex information more intuitively.",
     ctaButtons: {
       primary: "Explore Healthcare",
       secondary: "SCHEDULE A CONSULTATION",
@@ -1237,44 +1441,74 @@ const MANUFACTURING_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Capture the Factory",
-    description: "Model assets, equipment, workstations, processes and production environments.",
+    description:
+      "Model assets, equipment, workstations, processes and production environments.",
     src: "/industries/manufacturing1.png",
-    srcMeta: { alt: "Factory engineer using AR glasses for assembly guidance", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Factory engineer using AR glasses for assembly guidance",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "02",
     title: "2. Create Digital Models",
-    description: "Build 3D assets, digital twins, simulations and spatial work instructions.",
+    description:
+      "Build 3D assets, digital twins, simulations and spatial work instructions.",
     src: "/industries/manufacturing2.png",
-    srcMeta: { alt: "Smart factory floor with digital twin overlay", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Smart factory floor with digital twin overlay",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "03",
     title: "3. Connect Operational Data",
-    description: "Integrate relevant IoT, MES, ERP, SCADA or service information.",
+    description:
+      "Integrate relevant IoT, MES, ERP, SCADA or service information.",
     src: "/industries/manufacturing3.jpeg",
-    srcMeta: { alt: "Worker using tablet to control robotic arms in real-time", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Worker using tablet to control robotic arms in real-time",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "04",
     title: "4. Enable the Workforce",
-    description: "Deploy AR-guided maintenance, immersive training and visual instructions.",
+    description:
+      "Deploy AR-guided maintenance, immersive training and visual instructions.",
     src: "/industries/manufacturing4.png",
-    srcMeta: { alt: "Quality control inspection with AR defect detection overlays", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Quality control inspection with AR defect detection overlays",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "05",
     title: "5. Collaborate Remotely",
-    description: "Connect field teams with engineers and experts for faster issue resolution.",
+    description:
+      "Connect field teams with engineers and experts for faster issue resolution.",
     src: "/industries/manufacturing1.png",
-    srcMeta: { alt: "Remote collaboration for manufacturing operations", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Remote collaboration for manufacturing operations",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "06",
     title: "6. Optimize Continuously",
-    description: "Use operational insights and simulation to improve processes and asset performance.",
+    description:
+      "Use operational insights and simulation to improve processes and asset performance.",
     src: "/industries/manufacturing2.png",
-    srcMeta: { alt: "Manufacturing process optimization through digital twins", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Manufacturing process optimization through digital twins",
+      width: 1200,
+      height: 800,
+    },
   },
 ] as const;
 
@@ -1293,7 +1527,8 @@ const MANUFACTURING_KEY_BENEFITS = [
   },
   {
     title: "Lower Operational Costs",
-    description: "Use simulation and digital workflows before physical changes.",
+    description:
+      "Use simulation and digital workflows before physical changes.",
     src: ICONS.BOX_CHECK_ICON,
     srcMeta: ICONS_META.BOX_CHECK_ICON,
   },
@@ -1324,27 +1559,33 @@ const MANUFACTURING_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Digital Twins of Assets",
-        description: "Create dynamic visual replicas of machinery, lines, plants and operational environments.",
+        description:
+          "Create dynamic visual replicas of machinery, lines, plants and operational environments.",
       },
       {
         title: "AR-Assisted Maintenance",
-        description: "Overlay instructions, component information and inspection guidance at the point of work.",
+        description:
+          "Overlay instructions, component information and inspection guidance at the point of work.",
       },
       {
         title: "Workforce Training & Simulation",
-        description: "Practice machine operation, safety and procedures in immersive environments.",
+        description:
+          "Practice machine operation, safety and procedures in immersive environments.",
       },
       {
         title: "Remote Expert Assistance",
-        description: "Bring engineers and specialists into field workflows without unnecessary travel.",
+        description:
+          "Bring engineers and specialists into field workflows without unnecessary travel.",
       },
       {
         title: "3D Product & Process Visualization",
-        description: "Visualize products, assemblies, factory layouts and manufacturing processes across the lifecycle.",
+        description:
+          "Visualize products, assemblies, factory layouts and manufacturing processes across the lifecycle.",
       },
       {
         title: "Quality Control & Inspection",
-        description: "Use spatial overlays and visual workflows to support inspection and quality processes.",
+        description:
+          "Use spatial overlays and visual workflows to support inspection and quality processes.",
       },
     ],
   },
@@ -1354,11 +1595,13 @@ const MANUFACTURING_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Digital Twins",
-        description: "3D representations connected to operational and asset information.",
+        description:
+          "3D representations connected to operational and asset information.",
       },
       {
         title: "Industrial AR",
-        description: "Hands-on guidance for maintenance, inspection, assembly and training.",
+        description:
+          "Hands-on guidance for maintenance, inspection, assembly and training.",
       },
       {
         title: "VR Simulation",
@@ -1366,7 +1609,8 @@ const MANUFACTURING_SERVICE_SECTIONS = [
       },
       {
         title: "3D Visualization",
-        description: "Product, factory and process visualization across the lifecycle.",
+        description:
+          "Product, factory and process visualization across the lifecycle.",
       },
       {
         title: "Remote Assistance",
@@ -1384,19 +1628,23 @@ const MANUFACTURING_SERVICE_SECTIONS = [
       },
       {
         title: "Advantage 2",
-        description: "Industry-specific solutions designed around real operational and customer workflows.",
+        description:
+          "Industry-specific solutions designed around real operational and customer workflows.",
       },
       {
         title: "Advantage 3",
-        description: "Scalable, secure and deployment-ready digital experiences.",
+        description:
+          "Scalable, secure and deployment-ready digital experiences.",
       },
       {
         title: "Advantage 4",
-        description: "Reusable 3D assets and immersive experiences across web, mobile and XR.",
+        description:
+          "Reusable 3D assets and immersive experiences across web, mobile and XR.",
       },
       {
         title: "Advantage 5",
-        description: "Integration with existing business, content, analytics and enterprise systems.",
+        description:
+          "Integration with existing business, content, analytics and enterprise systems.",
       },
     ],
   },
@@ -1412,7 +1660,8 @@ export const MANUFACTURING_INDUSTRY = {
   hero: {
     title: "Manufacturing Solutions",
     description: "Spatial Computing for Smarter, More Efficient Operations",
-    description2: "Create connected, intelligent and future-ready factories with AR, VR, MR, 3D and Digital Twins. Obrive helps manufacturers improve design, training, maintenance, quality, remote assistance and operational efficiency across the product lifecycle—from concept and engineering to production and service.",
+    description2:
+      "Create connected, intelligent and future-ready factories with AR, VR, MR, 3D and Digital Twins. Obrive helps manufacturers improve design, training, maintenance, quality, remote assistance and operational efficiency across the product lifecycle—from concept and engineering to production and service.",
     ctaButtons: {
       primary: "Explore Manufacturing",
       secondary: "SCHEDULE A CONSULTATION",
@@ -1438,44 +1687,74 @@ const RETAIL_HOW_IT_WORKS = [
   {
     step: "01",
     title: "1. Map the Customer Journey",
-    description: "Identify discovery, consideration, purchase and post-purchase moments where immersive experiences add value.",
+    description:
+      "Identify discovery, consideration, purchase and post-purchase moments where immersive experiences add value.",
     src: "/industries/retail1.png",
-    srcMeta: { alt: "Customer using AR try-on in a retail store", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Customer using AR try-on in a retail store",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "02",
     title: "2. Create 3D Experiences",
-    description: "Build product models, environments, AR interactions, virtual showrooms and digital merchandising assets.",
+    description:
+      "Build product models, environments, AR interactions, virtual showrooms and digital merchandising assets.",
     src: "/industries/retail2.jpeg",
-    srcMeta: { alt: "3D product configurator in a luxury showroom", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "3D product configurator in a luxury showroom",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "03",
     title: "3. Connect Retail Data",
-    description: "Integrate catalogues, inventory, pricing, promotions, CRM, ecommerce and analytics.",
+    description:
+      "Integrate catalogues, inventory, pricing, promotions, CRM, ecommerce and analytics.",
     src: "/industries/retail3.png",
-    srcMeta: { alt: "Virtual retail showroom environment in VR", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Virtual retail showroom environment in VR",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "04",
     title: "4. Deploy Across Channels",
-    description: "Launch experiences on web, mobile, in-store displays, AR devices and supported XR platforms.",
+    description:
+      "Launch experiences on web, mobile, in-store displays, AR devices and supported XR platforms.",
     src: "/industries/retail4.jpeg",
-    srcMeta: { alt: "Smart retail analytics dashboard with AR overlay", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Smart retail analytics dashboard with AR overlay",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "05",
     title: "5. Personalize Discovery",
-    description: "Use contextual recommendations, product comparisons, navigation and interactive content.",
+    description:
+      "Use contextual recommendations, product comparisons, navigation and interactive content.",
     src: "/industries/retail1.png",
-    srcMeta: { alt: "Personalized AR product discovery for shoppers", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Personalized AR product discovery for shoppers",
+      width: 1200,
+      height: 800,
+    },
   },
   {
     step: "06",
     title: "6. Measure & Optimize",
-    description: "Track engagement, interaction patterns and conversion signals to improve the experience.",
+    description:
+      "Track engagement, interaction patterns and conversion signals to improve the experience.",
     src: "/industries/retail2.jpeg",
-    srcMeta: { alt: "Retail experience analytics and optimization", width: 1200, height: 800 },
+    srcMeta: {
+      alt: "Retail experience analytics and optimization",
+      width: 1200,
+      height: 800,
+    },
   },
 ] as const;
 
@@ -1525,27 +1804,33 @@ const RETAIL_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "Virtual Try-On",
-        description: "Let customers preview fashion, accessories, eyewear or other products in an interactive environment.",
+        description:
+          "Let customers preview fashion, accessories, eyewear or other products in an interactive environment.",
       },
       {
         title: "3D Product Visualization",
-        description: "Explore products from every angle and understand features, finishes and configurations.",
+        description:
+          "Explore products from every angle and understand features, finishes and configurations.",
       },
       {
         title: "In-Store Navigation",
-        description: "Guide shoppers to products, departments, offers and services using spatial or AR navigation.",
+        description:
+          "Guide shoppers to products, departments, offers and services using spatial or AR navigation.",
       },
       {
         title: "Interactive Product Catalogues",
-        description: "Replace static listings with interactive 3D product experiences.",
+        description:
+          "Replace static listings with interactive 3D product experiences.",
       },
       {
         title: "AR Promotions & Gamification",
-        description: "Create location-aware campaigns, product discovery and interactive promotions.",
+        description:
+          "Create location-aware campaigns, product discovery and interactive promotions.",
       },
       {
         title: "Virtual Showrooms",
-        description: "Extend the store beyond physical locations with immersive digital spaces.",
+        description:
+          "Extend the store beyond physical locations with immersive digital spaces.",
       },
     ],
   },
@@ -1555,23 +1840,28 @@ const RETAIL_SERVICE_SECTIONS = [
     subSections: [
       {
         title: "3D Commerce",
-        description: "Photorealistic and interactive product experiences for ecommerce and retail environments.",
+        description:
+          "Photorealistic and interactive product experiences for ecommerce and retail environments.",
       },
       {
         title: "AR Experiences",
-        description: "Try-ons, product discovery, visualization, promotions and contextual interactions.",
+        description:
+          "Try-ons, product discovery, visualization, promotions and contextual interactions.",
       },
       {
         title: "Spatial Navigation",
-        description: "Indoor wayfinding and product discovery for complex retail environments.",
+        description:
+          "Indoor wayfinding and product discovery for complex retail environments.",
       },
       {
         title: "Digital Showrooms",
-        description: "Immersive brand and product environments for customers and sales teams.",
+        description:
+          "Immersive brand and product environments for customers and sales teams.",
       },
       {
         title: "Analytics",
-        description: "Measure interaction, product interest and customer journey behaviour.",
+        description:
+          "Measure interaction, product interest and customer journey behaviour.",
       },
     ],
   },
@@ -1585,19 +1875,23 @@ const RETAIL_SERVICE_SECTIONS = [
       },
       {
         title: "Advantage 2",
-        description: "Industry-specific solutions designed around real operational and customer workflows.",
+        description:
+          "Industry-specific solutions designed around real operational and customer workflows.",
       },
       {
         title: "Advantage 3",
-        description: "Scalable, secure and deployment-ready digital experiences.",
+        description:
+          "Scalable, secure and deployment-ready digital experiences.",
       },
       {
         title: "Advantage 4",
-        description: "Reusable 3D assets and immersive experiences across web, mobile and XR.",
+        description:
+          "Reusable 3D assets and immersive experiences across web, mobile and XR.",
       },
       {
         title: "Advantage 5",
-        description: "Integration with existing business, content, analytics and enterprise systems.",
+        description:
+          "Integration with existing business, content, analytics and enterprise systems.",
       },
     ],
   },
@@ -1613,7 +1907,8 @@ export const RETAIL_INDUSTRY = {
   hero: {
     title: "Retail Solutions",
     description: "Spatial Computing for Immersive Shopping Experiences",
-    description2: "Transform how people discover, compare and buy products with AR, VR, MR and 3D experiences. Obrive helps retailers create virtual try-ons, interactive product visualization, in-store navigation, immersive showrooms and personalized shopping journeys that connect digital discovery with physical retail.",
+    description2:
+      "Transform how people discover, compare and buy products with AR, VR, MR and 3D experiences. Obrive helps retailers create virtual try-ons, interactive product visualization, in-store navigation, immersive showrooms and personalized shopping journeys that connect digital discovery with physical retail.",
     ctaButtons: {
       primary: "Explore Retail",
       secondary: "SCHEDULE A CONSULTATION",
@@ -1625,4 +1920,3 @@ export const RETAIL_INDUSTRY = {
   sidebarLinks: RETAIL_SIDEBAR_LINKS,
   serviceSections: RETAIL_SERVICE_SECTIONS,
 };
-

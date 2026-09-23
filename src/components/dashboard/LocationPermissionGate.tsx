@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangle, MapPin, RefreshCw, ShieldAlert } from "lucide-react";
+import { AlertTriangle, RefreshCw, ShieldAlert } from "lucide-react";
 import type React from "react";
 import { useLocationTracker } from "@/hooks/useLocationTracker";
 

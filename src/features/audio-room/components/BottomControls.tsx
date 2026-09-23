@@ -3,20 +3,18 @@
 import {
   Hand,
   LogOut,
-  MessageCircle,
   Mic,
   MicOff,
   PhoneOff,
   Shield,
-  Smile,
   Square,
   Trash2,
   Volume2,
   VolumeX,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import livekitService from "@/features/audio-room/livekit/services/livekit.service";
 import { useSocket } from "@/context/SocketContext";
+import livekitService from "@/features/audio-room/livekit/services/livekit.service";
 import { apiFetch } from "@/lib/api";
 
 interface BottomControlsProps {
@@ -101,7 +99,7 @@ const BottomControls = ({
       console.log(
         `[Socket Broadcast] Dispatched local mute modification state. Next Muted: ${nextMuted}`,
       );
-    } catch (error) {
+    } catch (_error) {
       console.error("[Media Device] Hardware switch matrix error encountered.");
     }
   };
@@ -122,7 +120,7 @@ const BottomControls = ({
         "[Room Action] Destruction token approved. Tearing down space.",
       );
       window.location.href = "/audio-room/room-ends";
-    } catch (error) {
+    } catch (_error) {
       console.error("[Room Action] Could not dispatch end-session request.");
     }
   };
@@ -140,7 +138,7 @@ const BottomControls = ({
 
       console.log("[Room Action] Safely disconnected from tracking loops.");
       window.location.href = "/community-forum/rooms";
-    } catch (error) {
+    } catch (_error) {
       console.error(
         "[Room Action] Error executing graceful departure sequence.",
       );
@@ -161,7 +159,7 @@ const BottomControls = ({
       console.log(
         "[Socket Broadcast] Hand elevation request successfully stacked onto database.",
       );
-    } catch (error) {
+    } catch (_error) {
       console.error("[Socket Broadcast] Denied hand elevation insertion.");
     }
   };

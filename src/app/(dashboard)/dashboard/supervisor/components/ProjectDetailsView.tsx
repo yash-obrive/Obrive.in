@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  BarChart2,
   CheckCircle,
   Circle,
   Crown,
@@ -55,14 +54,14 @@ export default function ProjectDetailsView({
   onProjectUpdate,
 }: ProjectDetailsViewProps) {
   const [tasks, setTasks] = useState<Task[]>(project.tasks || []);
-  const [loading, setLoading] = useState(false);
+  const [_loading, setLoading] = useState(false);
   const [isCreateTaskOpen, setIsCreateTaskOpen] = useState(false);
   const [isEditTaskOpen, setIsEditTaskOpen] = useState(false);
   const [isEditProjectOpen, setIsEditProjectOpen] = useState(false); // 1. NEW: Project Edit Modal State
-  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+  const [_selectedTask, _setSelectedTask] = useState<Task | null>(null);
   const [taskToEdit, setTaskToEdit] = useState<Task | null>(null);
   const [isAssignEmployeesOpen, setIsAssignEmployeesOpen] = useState(false);
-  const [updatingProgress, setUpdatingProgress] = useState(false);
+  const [_updatingProgress, setUpdatingProgress] = useState(false);
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [alertConfig, setAlertConfig] = useState<{
     isOpen: boolean;
@@ -85,7 +84,7 @@ export default function ProjectDetailsView({
     }
   }, [project]);
 
-  const fetchProjectTasks = async () => {
+  const _fetchProjectTasks = async () => {
     try {
       setLoading(true);
       const response = await apiFetch(`/projects/${project.id}`, {
@@ -438,7 +437,9 @@ export default function ProjectDetailsView({
                 min="0"
                 max="100"
                 value={project.progress || 0}
-                onChange={(e) => handleUpdateProgress(parseInt(e.target.value))}
+                onChange={(e) =>
+                  handleUpdateProgress(parseInt(e.target.value, 10))
+                }
                 className="w-full mt-2 h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#073933]"
               />
             )}

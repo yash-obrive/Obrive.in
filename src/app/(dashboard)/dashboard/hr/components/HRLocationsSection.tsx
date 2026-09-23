@@ -11,7 +11,7 @@ import {
   Users,
 } from "lucide-react";
 import dynamic from "next/dynamic";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
 import { isEmployeeLive, type TrackedEmployee } from "./EmployeeLocationMap";
 import LocationHistoryModal from "./LocationHistoryModal";
@@ -157,10 +157,8 @@ export default function HRLocationsSection() {
   const filteredEmployees = employees.filter((emp) => {
     const matchesSearch =
       emp.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (emp.department &&
-        emp.department.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (emp.job_title &&
-        emp.job_title.toLowerCase().includes(searchTerm.toLowerCase()));
+      emp.department?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      emp.job_title?.toLowerCase().includes(searchTerm.toLowerCase());
 
     if (filterTracking === "enabled")
       return matchesSearch && emp.is_location_tracking_enabled;

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import Link from "@/components/shared/LocalizedLink";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
 import BlogCard from "@/components/pages/home/card/BlogCard";
@@ -12,6 +11,7 @@ import ObriveVideo from "@/components/pages/home/Videos/ObriveVideo";
 import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
 import SmoothScrollLink from "@/components/shared/buttons/SmoothScrollLink";
 import RoundedBallIcon from "@/components/shared/icons/RoundedBallIcon";
+import Link from "@/components/shared/LocalizedLink";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import {
   FadeInOnLoad,
@@ -141,9 +141,9 @@ export default function Home() {
       />
       <SmoothScrollProvider>
         <div className="flex flex-col items-center">
-          {/* hero content */}
-          <FullWidthSection backgroundColor="accent" className="py-16 pt-32">
-            <div className="text-center flex flex-col items-center gap-8 mt-10">
+          {/* hero content, buttons, and animation combined to fix spacing */}
+          <FullWidthSection backgroundColor="accent" className="pt-32 pb-16">
+            <div className="text-center flex flex-col items-center gap-6 mt-4">
               <FadeInOnLoad delay={0.15}>
                 <h1
                   className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl md:text-5xl lg:text-6xl text-secondary`}
@@ -152,7 +152,7 @@ export default function Home() {
                 </h1>
               </FadeInOnLoad>
               <FadeInOnLoad delay={0.3}>
-                <p className="text-sm sm:text-md text-center max-w-4xl px-4 font-medium leading-relaxed">
+                <p className="text-sm sm:text-base text-center max-w-3xl px-4 font-medium leading-relaxed">
                   Obrive Industries is an immersive technology company
                   delivering enterprise-grade Augmented Reality (AR), Virtual
                   Reality (VR), Mixed Reality (MR), 3D design, and spatial
@@ -161,39 +161,34 @@ export default function Home() {
                   interactive digital realities.
                 </p>
               </FadeInOnLoad>
-            </div>
-          </FullWidthSection>
 
-          {/*  Buttons */}
-          <FullWidthSection backgroundColor="accent" className="py-16">
-            <FadeInOnLoad delay={0.45}>
-              <div className="flex sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-                <AnimatedButton
-                  asChild
-                  className="text-xs uppercase"
-                  size="lg"
-                  href="/faqs"
-                  aria-label="explore faqs"
-                  iconSize={16}
-                >
-                  Explore FAQs
-                </AnimatedButton>
-                <SmoothScrollLink href="/about" offset={80}>
-                  <Button
-                    variant="outline"
+              <FadeInOnLoad delay={0.45}>
+                <div className="flex sm:flex-row gap-4 sm:gap-6 justify-center items-center mt-4">
+                  <AnimatedButton
+                    asChild
+                    className="text-xs uppercase"
                     size="lg"
-                    className="text-primary uppercase text-xs"
+                    href="/faqs"
+                    aria-label="explore faqs"
+                    iconSize={16}
                   >
-                    Learn More
-                  </Button>
-                </SmoothScrollLink>
-              </div>
-            </FadeInOnLoad>
-          </FullWidthSection>
+                    Explore FAQs
+                  </AnimatedButton>
+                  <SmoothScrollLink href="/about" offset={80}>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="text-primary uppercase text-xs"
+                    >
+                      Learn More
+                    </Button>
+                  </SmoothScrollLink>
+                </div>
+              </FadeInOnLoad>
+            </div>
 
-          {/* homepage animation */}
-          <FullWidthSection backgroundColor="accent" className="py-16">
-            <div className="mx-auto flex items-center w-full">
+            {/* homepage animation */}
+            <div className="mx-auto flex items-center w-full mt-12 sm:mt-16">
               <HomepageRiveAnimation className="w-full aspect-[16/4] max-h-[320px] sm:max-h-[340px] lg:max-h-[380px]" />
             </div>
           </FullWidthSection>

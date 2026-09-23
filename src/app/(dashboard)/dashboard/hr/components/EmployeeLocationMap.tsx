@@ -1,7 +1,7 @@
 "use client";
 
 import type * as LeafletType from "leaflet";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
 
 export interface TrackedEmployee {
@@ -183,8 +183,8 @@ export default function EmployeeLocationMap({
       (e) =>
         e.latitude != null &&
         e.longitude != null &&
-        !isNaN(e.latitude) &&
-        !isNaN(e.longitude) &&
+        !Number.isNaN(e.latitude) &&
+        !Number.isNaN(e.longitude) &&
         isEmployeeLive(e),
     );
 

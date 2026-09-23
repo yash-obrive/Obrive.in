@@ -1,6 +1,5 @@
 import type { StaticImageData } from "next/image";
 import { IMAGES } from "@/assets/images";
-import type { ServiceSection, SidebarLink } from "@/types/services";
 import {
   AI_IMMERSIVE_TECHNOLOGY,
   AUGMENTED_REALITY,
@@ -11,6 +10,7 @@ import {
   THREE_D_VISUALIZATION,
   VIRTUAL_REALITY,
 } from "@/constants/pages/technology";
+import type { ServiceSection, SidebarLink } from "@/types/services";
 
 // Reusing identical structure as SolutionHero for compatibility
 export interface TechnologyHero {
@@ -93,7 +93,10 @@ const TECHNOLOGIES_DATA: Record<string, TechnologyData> = {
   },
   "3d-visualization": {
     slug: "3d-visualization",
-    hero: { ...THREE_D_VISUALIZATION.hero, backgroundImage: IMAGES.OBMOVE_HERO },
+    hero: {
+      ...THREE_D_VISUALIZATION.hero,
+      backgroundImage: IMAGES.OBMOVE_HERO,
+    },
     howItWorks: THREE_D_VISUALIZATION.howItWorks,
     keyBenefits: THREE_D_VISUALIZATION.keyBenefits,
     workflowStepsSidebar: THREE_D_VISUALIZATION.workflowStepsSidebar,
@@ -102,7 +105,10 @@ const TECHNOLOGIES_DATA: Record<string, TechnologyData> = {
   },
   "ai-immersive-technology": {
     slug: "ai-immersive-technology",
-    hero: { ...AI_IMMERSIVE_TECHNOLOGY.hero, backgroundImage: IMAGES.OBPARK_HERO },
+    hero: {
+      ...AI_IMMERSIVE_TECHNOLOGY.hero,
+      backgroundImage: IMAGES.OBPARK_HERO,
+    },
     howItWorks: AI_IMMERSIVE_TECHNOLOGY.howItWorks,
     keyBenefits: AI_IMMERSIVE_TECHNOLOGY.keyBenefits,
     workflowStepsSidebar: AI_IMMERSIVE_TECHNOLOGY.workflowStepsSidebar,

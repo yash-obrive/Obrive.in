@@ -44,7 +44,13 @@ interface FAQItemProps {
   value?: string;
 }
 
-export function FAQItem({ question, q, answer, children, value }: FAQItemProps) {
+export function FAQItem({
+  question,
+  q,
+  answer,
+  children,
+  value,
+}: FAQItemProps) {
   const actualQuestion = question || q || "";
   const sanitizeHTML = (html: string): string => {
     if (typeof window !== "undefined") {

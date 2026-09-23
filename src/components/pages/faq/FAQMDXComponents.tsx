@@ -1,11 +1,10 @@
-import React from "react";
 import FONTS from "@/assets/fonts";
 import { StyledText } from "@/components/shared/StyledText";
 import FAQAccordionSection, { FAQItem } from "./sections/FAQAccordionSection";
 
 export { FAQAccordionSection, FAQItem };
 
-export const createFAQMDXComponents = (metadata: any) => ({
+export const createFAQMDXComponents = (_metadata: any) => ({
   h1: (props: any) => (
     <h1
       className="text-3xl font-bold text-gray-900 mb-6 leading-tight"

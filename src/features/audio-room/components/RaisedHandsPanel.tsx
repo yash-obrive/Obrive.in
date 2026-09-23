@@ -1,7 +1,7 @@
 "use client";
 
 import { Hand } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSocket } from "@/context/SocketContext";
 import { apiFetch } from "@/lib/api";
 
@@ -79,7 +79,7 @@ const RaisedHandsPanel = ({ roomId, role }: RaisedHandsPanelProps) => {
     fetchPendingRequests().catch((error) => {
       console.error("Raised hands fetch error:", error);
     });
-  }, [roomId, canModerate]);
+  }, [fetchPendingRequests]);
 
   useEffect(() => {
     if (!socket || !canModerate) {

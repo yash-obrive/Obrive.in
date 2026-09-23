@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "@/components/shared/LocalizedLink";
 import { useEffect, useState } from "react";
 import FONTS from "@/assets/fonts";
+import Link from "@/components/shared/LocalizedLink";
 import { Button } from "@/components/ui/button";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { apiFetch } from "@/lib/api";
@@ -12,7 +12,7 @@ export default function CommunityRooms() {
   const [rooms, setRooms] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, _setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchRooms = async () => {

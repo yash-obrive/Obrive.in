@@ -30,10 +30,22 @@ export interface ResourceTheImpactTableProps {
   children?: React.ReactNode;
 }
 
-export function ImpactTableRow({ children, gridTemplateColumns }: { children: React.ReactNode, gridTemplateColumns?: string }) {
+export function ImpactTableRow({
+  children,
+  gridTemplateColumns,
+}: {
+  children: React.ReactNode;
+  gridTemplateColumns?: string;
+}) {
   return (
     <>
-      <div className="hidden md:grid border-t border-gray-300" style={{ gridTemplateColumns: gridTemplateColumns || "var(--grid-columns, 1fr)" }}>
+      <div
+        className="hidden md:grid border-t border-gray-300"
+        style={{
+          gridTemplateColumns:
+            gridTemplateColumns || "var(--grid-columns, 1fr)",
+        }}
+      >
         {children}
       </div>
       <div className="md:hidden bg-white border border-gray-300 rounded-lg shadow-sm overflow-hidden mb-4 last:mb-0">
@@ -43,33 +55,43 @@ export function ImpactTableRow({ children, gridTemplateColumns }: { children: Re
   );
 }
 
-export function ImpactTableCell({ 
-  header, 
-  children, 
-  isFirst = false, 
-  isLast = false, 
-  firstColumnBold = false, 
-  bold = false 
-}: { 
-  header: React.ReactNode; 
-  children: React.ReactNode; 
-  isFirst?: boolean; 
-  isLast?: boolean; 
-  firstColumnBold?: boolean; 
-  bold?: boolean; 
+export function ImpactTableCell({
+  header,
+  children,
+  isFirst = false,
+  isLast = false,
+  firstColumnBold = false,
+  bold = false,
+}: {
+  header: React.ReactNode;
+  children: React.ReactNode;
+  isFirst?: boolean;
+  isLast?: boolean;
+  firstColumnBold?: boolean;
+  bold?: boolean;
 }) {
   return (
     <>
-      <div className={`hidden md:block p-4 ${!isLast ? "border-r border-gray-300" : ""} ${isFirst && firstColumnBold ? "bg-gray-50" : "bg-white"}`}>
-        <div className={`text-sm leading-relaxed ${bold ? FONTS.microgrammaBold.className : ""}`}>
+      <div
+        className={`hidden md:block p-4 ${!isLast ? "border-r border-gray-300" : ""} ${isFirst && firstColumnBold ? "bg-gray-50" : "bg-white"}`}
+      >
+        <div
+          className={`text-sm leading-relaxed ${bold ? FONTS.microgrammaBold.className : ""}`}
+        >
           {children}
         </div>
       </div>
-      <div className={`md:hidden px-4 py-3 ${!isLast ? "border-b border-gray-200" : ""}`}>
-        <div className={`text-xs uppercase tracking-wide text-gray-600 ${FONTS.microgrammaBold.className}`}>
+      <div
+        className={`md:hidden px-4 py-3 ${!isLast ? "border-b border-gray-200" : ""}`}
+      >
+        <div
+          className={`text-xs uppercase tracking-wide text-gray-600 ${FONTS.microgrammaBold.className}`}
+        >
           {header}
         </div>
-        <div className={`mt-2 text-sm leading-relaxed text-gray-800 ${isFirst && firstColumnBold ? FONTS.microgrammaBold.className : bold ? FONTS.microgrammaBold.className : ""}`}>
+        <div
+          className={`mt-2 text-sm leading-relaxed text-gray-800 ${isFirst && firstColumnBold ? FONTS.microgrammaBold.className : bold ? FONTS.microgrammaBold.className : ""}`}
+        >
           {children}
         </div>
       </div>
@@ -77,16 +99,21 @@ export function ImpactTableCell({
   );
 }
 
-export function ImpactTableMetric({ 
-  metric, 
-  beforeObrive, 
-  afterObrive, 
-  beforeHeader = "Before Obrive", 
-  afterHeader = "After Obrive" 
-}: ImpactMetric & { beforeHeader?: string, afterHeader?: string }) {
+export function ImpactTableMetric({
+  metric,
+  beforeObrive,
+  afterObrive,
+  beforeHeader = "Before Obrive",
+  afterHeader = "After Obrive",
+}: ImpactMetric & { beforeHeader?: string; afterHeader?: string }) {
   return (
     <ImpactTableRow gridTemplateColumns="35% 32.5% 32.5%">
-      <ImpactTableCell header="Metric" isFirst={true} isLast={false} firstColumnBold={true}>
+      <ImpactTableCell
+        header="Metric"
+        isFirst={true}
+        isLast={false}
+        firstColumnBold={true}
+      >
         {metric}
       </ImpactTableCell>
       <ImpactTableCell header={beforeHeader} isFirst={false} isLast={false}>
@@ -107,7 +134,7 @@ export default function ResourceTheImpactTable({
   metrics,
   beforeHeader = "Before Obrive",
   afterHeader = "After Obrive",
-  children
+  children,
 }: ResourceTheImpactTableProps) {
   const isLegacyMode = !columns && !data;
   const hasChildren = Boolean(children);
@@ -141,12 +168,15 @@ export default function ResourceTheImpactTable({
         </h2>
       )}
 
-      <div 
+      <div
         className="md:border md:border-gray-300 md:rounded-lg md:overflow-hidden"
         style={{ "--grid-columns": gridTemplateColumns } as React.CSSProperties}
       >
         {/* Table Header (Desktop only) */}
-        <div className="hidden md:grid bg-gray-100" style={{ gridTemplateColumns }}>
+        <div
+          className="hidden md:grid bg-gray-100"
+          style={{ gridTemplateColumns }}
+        >
           {effectiveColumns.map((column, colIndex) => (
             <div
               key={column.key}
@@ -163,8 +193,8 @@ export default function ResourceTheImpactTable({
 
         {/* Table Rows (Desktop and Mobile) */}
         <div className="flex flex-col md:space-y-0">
-          {hasChildren 
-            ? children 
+          {hasChildren
+            ? children
             : effectiveData.map((row, rowIndex) => (
                 <ImpactTableRow key={rowIndex}>
                   {effectiveColumns.map((column, colIndex) => (
@@ -180,8 +210,7 @@ export default function ResourceTheImpactTable({
                     </ImpactTableCell>
                   ))}
                 </ImpactTableRow>
-              ))
-          }
+              ))}
         </div>
       </div>
     </section>

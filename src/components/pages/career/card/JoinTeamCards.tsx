@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
 import type { JoinTeamCardType } from "@/constants/pages/career/join-team-card";

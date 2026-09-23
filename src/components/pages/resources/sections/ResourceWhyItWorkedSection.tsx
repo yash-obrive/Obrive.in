@@ -13,7 +13,13 @@ interface ResourceWhyItWorkedSectionProps {
   finalQuote?: string;
 }
 
-export function WhyItWorkedItem({ title, children }: { title?: React.ReactNode, children: React.ReactNode }) {
+export function WhyItWorkedItem({
+  title,
+  children,
+}: {
+  title?: React.ReactNode;
+  children: React.ReactNode;
+}) {
   return (
     <div>
       {title && (
@@ -42,26 +48,26 @@ export default function ResourceWhyItWorkedSection({
         {title}
       </h2>
       <div className="space-y-6">
-        {children ? (
-          children
-        ) : (
-          items?.map((item, index) => (
-            <div key={index}>
-              <h3 className={`${FONTS.microgrammaBold.className} text-lg mb-2`}>
-                {item.title}
-              </h3>
-              {typeof item.description === "string" ? (
-                <p className="text-sm sm:text-base leading-relaxed">
-                  {item.description}
-                </p>
-              ) : (
-                <div className="text-sm sm:text-base leading-relaxed [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2">
-                  {item.description}
-                </div>
-              )}
-            </div>
-          ))
-        )}
+        {children
+          ? children
+          : items?.map((item, index) => (
+              <div key={index}>
+                <h3
+                  className={`${FONTS.microgrammaBold.className} text-lg mb-2`}
+                >
+                  {item.title}
+                </h3>
+                {typeof item.description === "string" ? (
+                  <p className="text-sm sm:text-base leading-relaxed">
+                    {item.description}
+                  </p>
+                ) : (
+                  <div className="text-sm sm:text-base leading-relaxed [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2">
+                    {item.description}
+                  </div>
+                )}
+              </div>
+            ))}
       </div>
       <div className="pr-30 max-md:pr-0">
         {finalQuote && (

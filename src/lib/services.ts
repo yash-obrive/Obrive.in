@@ -1,101 +1,51 @@
-import { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 import { IMAGES } from "@/assets/images";
-import { SidebarLink, ServiceSection, WorkflowStep } from "@/types/services";
-import solutionFaqsRaw from "@/data/solution-faqs.json";
-
-
 import {
-  AEO_SERVICE_HERO,
-  AEO_SERVICE_KEY_BENEFITS,
-  AEO_SERVICE_SIDEBAR_LINKS,
-  AEO_SERVICE_SERVICE_SECTIONS,
-  AEO_SERVICE_PROCESS_STEPS
-} from "@/constants/pages/services/aeo-service";
-import {
-  AI_CONSULTING_HERO,
-  AI_CONSULTING_KEY_BENEFITS,
-  AI_CONSULTING_SIDEBAR_LINKS,
-  AI_CONSULTING_SERVICE_SECTIONS,
-  AI_CONSULTING_PROCESS_STEPS
-} from "@/constants/pages/services/ai-consulting";
-import {
-  CONTENT_MARKETING_SERVICE_HERO,
-  CONTENT_MARKETING_SERVICE_KEY_BENEFITS,
-  CONTENT_MARKETING_SERVICE_SIDEBAR_LINKS,
-  CONTENT_MARKETING_SERVICE_SERVICE_SECTIONS,
-  CONTENT_MARKETING_SERVICE_PROCESS_STEPS
-} from "@/constants/pages/services/content-marketing-service";
-import {
-  GEO_SERVICE_HERO,
-  GEO_SERVICE_KEY_BENEFITS,
-  GEO_SERVICE_SIDEBAR_LINKS,
-  GEO_SERVICE_SERVICE_SECTIONS,
-  GEO_SERVICE_PROCESS_STEPS
-} from "@/constants/pages/services/geo-service";
-import {
-  MOBILE_APP_DESIGN_SERVICE_HERO,
-  MOBILE_APP_DESIGN_SERVICE_KEY_BENEFITS,
-  MOBILE_APP_DESIGN_SERVICE_SIDEBAR_LINKS,
-  MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS,
-  MOBILE_APP_DESIGN_SERVICE_PROCESS_STEPS
-} from "@/constants/pages/services/mobile-app-design-service";
-import {
-  MOBILE_APP_DEVELOPMENT_HERO,
-  MOBILE_APP_DEVELOPMENT_KEY_BENEFITS,
-  MOBILE_APP_DEVELOPMENT_SIDEBAR_LINKS,
-  MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS,
-  MOBILE_APP_DEVELOPMENT_PROCESS_STEPS
-} from "@/constants/pages/services/mobile-app-development";
-import {
-  SEO_SERVICE_HERO,
-  SEO_SERVICE_KEY_BENEFITS,
-  SEO_SERVICE_SIDEBAR_LINKS,
-  SEO_SERVICE_SERVICE_SECTIONS,
-  SEO_SERVICE_PROCESS_STEPS
-} from "@/constants/pages/services/seo-service";
-import {
-  WEB_APP_SAAS_MVP_DEVELOPMENT_HERO,
-  WEB_APP_SAAS_MVP_DEVELOPMENT_KEY_BENEFITS,
-  WEB_APP_SAAS_MVP_DEVELOPMENT_SIDEBAR_LINKS,
-  WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS,
-  WEB_APP_SAAS_MVP_DEVELOPMENT_PROCESS_STEPS
-} from "@/constants/pages/services/web-app-saas-mvp-development";
-import {
-  WEBSITE_DESIGN_SERVICE_HERO,
-  WEBSITE_DESIGN_SERVICE_KEY_BENEFITS,
-  WEBSITE_DESIGN_SERVICE_SIDEBAR_LINKS,
-  WEBSITE_DESIGN_SERVICE_SERVICE_SECTIONS,
-  WEBSITE_DESIGN_SERVICE_PROCESS_STEPS
-} from "@/constants/pages/services/website-design-service";
-import {
-  WEBSITE_DEVELOPMENT_SERVICE_HERO,
-  WEBSITE_DEVELOPMENT_SERVICE_KEY_BENEFITS,
-  WEBSITE_DEVELOPMENT_SERVICE_SIDEBAR_LINKS,
-  WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS,
-  WEBSITE_DEVELOPMENT_SERVICE_PROCESS_STEPS
-} from "@/constants/pages/services/website-development-service";
-import {
+  THREE_D_DESIGN_FAQ_META,
+  THREE_D_DESIGN_FAQS,
   THREE_D_DESIGN_HERO,
-  THREE_D_DESIGN_HOW_IT_WORKS,
   THREE_D_DESIGN_KEY_BENEFITS,
   THREE_D_DESIGN_PROCESS_STEPS,
   THREE_D_DESIGN_SERVICE_SECTIONS,
   THREE_D_DESIGN_SIDEBAR_LINKS,
-  THREE_D_DESIGN_WORKFLOW_STEPS_SIDEBAR,
-  THREE_D_DESIGN_FAQS,
-  THREE_D_DESIGN_FAQ_META,
 } from "@/constants/pages/services/3d-design-development";
 import {
+  AEO_SERVICE_HERO,
+  AEO_SERVICE_KEY_BENEFITS,
+  AEO_SERVICE_PROCESS_STEPS,
+  AEO_SERVICE_SERVICE_SECTIONS,
+  AEO_SERVICE_SIDEBAR_LINKS,
+} from "@/constants/pages/services/aeo-service";
+import {
+  AI_CONSULTING_HERO,
+  AI_CONSULTING_KEY_BENEFITS,
+  AI_CONSULTING_PROCESS_STEPS,
+  AI_CONSULTING_SERVICE_SECTIONS,
+  AI_CONSULTING_SIDEBAR_LINKS,
+} from "@/constants/pages/services/ai-consulting";
+import {
+  AR_DEVELOPMENT_FAQS,
+  AR_DEVELOPMENT_FAQS_META,
   AR_DEVELOPMENT_HERO,
-  AR_DEVELOPMENT_HOW_IT_WORKS,
   AR_DEVELOPMENT_KEY_BENEFITS,
   AR_DEVELOPMENT_PROCESS_STEPS,
   AR_DEVELOPMENT_SERVICE_SECTIONS,
   AR_DEVELOPMENT_SIDEBAR_LINKS,
-  AR_DEVELOPMENT_WORKFLOW_STEPS_SIDEBAR,
-  AR_DEVELOPMENT_FAQS,
-  AR_DEVELOPMENT_FAQS_META,
 } from "@/constants/pages/services/ar-development";
+import {
+  CONTENT_MARKETING_SERVICE_HERO,
+  CONTENT_MARKETING_SERVICE_KEY_BENEFITS,
+  CONTENT_MARKETING_SERVICE_PROCESS_STEPS,
+  CONTENT_MARKETING_SERVICE_SERVICE_SECTIONS,
+  CONTENT_MARKETING_SERVICE_SIDEBAR_LINKS,
+} from "@/constants/pages/services/content-marketing-service";
+import {
+  GEO_SERVICE_HERO,
+  GEO_SERVICE_KEY_BENEFITS,
+  GEO_SERVICE_PROCESS_STEPS,
+  GEO_SERVICE_SERVICE_SECTIONS,
+  GEO_SERVICE_SIDEBAR_LINKS,
+} from "@/constants/pages/services/geo-service";
 import {
   MIXED_REALITY_DEVELOPMENT_HERO,
   MIXED_REALITY_DEVELOPMENT_KEY_BENEFITS,
@@ -104,27 +54,71 @@ import {
   MIXED_REALITY_DEVELOPMENT_SIDEBAR_LINKS,
 } from "@/constants/pages/services/mixed-reality-development";
 import {
+  MOBILE_APP_DESIGN_SERVICE_HERO,
+  MOBILE_APP_DESIGN_SERVICE_KEY_BENEFITS,
+  MOBILE_APP_DESIGN_SERVICE_PROCESS_STEPS,
+  MOBILE_APP_DESIGN_SERVICE_SERVICE_SECTIONS,
+  MOBILE_APP_DESIGN_SERVICE_SIDEBAR_LINKS,
+} from "@/constants/pages/services/mobile-app-design-service";
+import {
+  MOBILE_APP_DEVELOPMENT_HERO,
+  MOBILE_APP_DEVELOPMENT_KEY_BENEFITS,
+  MOBILE_APP_DEVELOPMENT_PROCESS_STEPS,
+  MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS,
+  MOBILE_APP_DEVELOPMENT_SIDEBAR_LINKS,
+} from "@/constants/pages/services/mobile-app-development";
+import {
+  SEO_SERVICE_HERO,
+  SEO_SERVICE_KEY_BENEFITS,
+  SEO_SERVICE_PROCESS_STEPS,
+  SEO_SERVICE_SERVICE_SECTIONS,
+  SEO_SERVICE_SIDEBAR_LINKS,
+} from "@/constants/pages/services/seo-service";
+import {
+  SPATIAL_COMPUTING_FAQ_META,
+  SPATIAL_COMPUTING_FAQS,
   SPATIAL_COMPUTING_HERO,
-  SPATIAL_COMPUTING_HOW_IT_WORKS,
   SPATIAL_COMPUTING_KEY_BENEFITS,
   SPATIAL_COMPUTING_PROCESS_STEPS,
   SPATIAL_COMPUTING_SERVICE_SECTIONS,
   SPATIAL_COMPUTING_SIDEBAR_LINKS,
-  SPATIAL_COMPUTING_WORKFLOW_STEPS_SIDEBAR,
-  SPATIAL_COMPUTING_FAQS,
-  SPATIAL_COMPUTING_FAQ_META,
 } from "@/constants/pages/services/spatial-computing-development";
 import {
+  VR_DEVELOPMENT_FAQS,
+  VR_DEVELOPMENT_FAQS_META,
   VR_DEVELOPMENT_HERO,
-  VR_DEVELOPMENT_HOW_IT_WORKS,
   VR_DEVELOPMENT_KEY_BENEFITS,
   VR_DEVELOPMENT_PROCESS_STEPS,
   VR_DEVELOPMENT_SERVICE_SECTIONS,
   VR_DEVELOPMENT_SIDEBAR_LINKS,
-  VR_DEVELOPMENT_WORKFLOW_STEPS_SIDEBAR,
-  VR_DEVELOPMENT_FAQS,
-  VR_DEVELOPMENT_FAQS_META,
 } from "@/constants/pages/services/vr-development";
+import {
+  WEB_APP_SAAS_MVP_DEVELOPMENT_HERO,
+  WEB_APP_SAAS_MVP_DEVELOPMENT_KEY_BENEFITS,
+  WEB_APP_SAAS_MVP_DEVELOPMENT_PROCESS_STEPS,
+  WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS,
+  WEB_APP_SAAS_MVP_DEVELOPMENT_SIDEBAR_LINKS,
+} from "@/constants/pages/services/web-app-saas-mvp-development";
+import {
+  WEBSITE_DESIGN_SERVICE_HERO,
+  WEBSITE_DESIGN_SERVICE_KEY_BENEFITS,
+  WEBSITE_DESIGN_SERVICE_PROCESS_STEPS,
+  WEBSITE_DESIGN_SERVICE_SERVICE_SECTIONS,
+  WEBSITE_DESIGN_SERVICE_SIDEBAR_LINKS,
+} from "@/constants/pages/services/website-design-service";
+import {
+  WEBSITE_DEVELOPMENT_SERVICE_HERO,
+  WEBSITE_DEVELOPMENT_SERVICE_KEY_BENEFITS,
+  WEBSITE_DEVELOPMENT_SERVICE_PROCESS_STEPS,
+  WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS,
+  WEBSITE_DEVELOPMENT_SERVICE_SIDEBAR_LINKS,
+} from "@/constants/pages/services/website-development-service";
+import solutionFaqsRaw from "@/data/solution-faqs.json";
+import type {
+  ServiceSection,
+  SidebarLink,
+  WorkflowStep,
+} from "@/types/services";
 
 export interface SolutionHero {
   title: string;
@@ -357,12 +351,14 @@ export function getSolutionData(slug: string): SolutionData | null {
   if (!result.faqs) {
     const rawFaqs = (solutionFaqsRaw as any)[slug];
     if (rawFaqs) {
-      result.faqs = Object.entries(rawFaqs).map(([title, items]) => ({
-        title,
-        items: Array.isArray(items) 
-          ? items.map(item => ({ question: item.q, answer: item.a }))
-          : []
-      })).filter(cat => cat.items.length > 0);
+      result.faqs = Object.entries(rawFaqs)
+        .map(([title, items]) => ({
+          title,
+          items: Array.isArray(items)
+            ? items.map((item) => ({ question: item.q, answer: item.a }))
+            : [],
+        }))
+        .filter((cat) => cat.items.length > 0);
     }
   }
 
@@ -370,5 +366,5 @@ export function getSolutionData(slug: string): SolutionData | null {
 }
 
 export function getAllSolutions(): SolutionData[] {
-  return getSolutionSlugs().map(slug => getSolutionData(slug)!);
+  return getSolutionSlugs().map((slug) => getSolutionData(slug)!);
 }

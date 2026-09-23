@@ -55,8 +55,17 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     currencySymbol: "₹",
     phone: "+91-888-477-4300",
     contactEmail: "info@obrive.com",
-    offices: ["Bengaluru, Karnataka", "Mumbai, Maharashtra", "Delhi NCR, Delhi", "Hyderabad, Telangana", "Ahmedabad, Gujarat", "Pune, Maharashtra", "Chennai, Tamil Nadu"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=in",
+    offices: [
+      "Bengaluru, Karnataka",
+      "Mumbai, Maharashtra",
+      "Delhi NCR, Delhi",
+      "Hyderabad, Telangana",
+      "Ahmedabad, Gujarat",
+      "Pune, Maharashtra",
+      "Chennai, Tamil Nadu",
+    ],
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=in",
     hreflang: "en-IN",
     dir: "ltr",
     isProductionReady: true,
@@ -72,8 +81,16 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     currencySymbol: "$",
     phone: "+1 (888) 477-4300",
     contactEmail: "us@obrive.com",
-    offices: ["New York", "San Francisco", "Chicago", "Seattle", "Austin", "Wilmington"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=us",
+    offices: [
+      "New York",
+      "San Francisco",
+      "Chicago",
+      "Seattle",
+      "Austin",
+      "Wilmington",
+    ],
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=us",
     hreflang: "en-US",
     dir: "ltr",
     isProductionReady: true,
@@ -88,7 +105,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+1 (888) 477-4300",
     contactEmail: "ca@obrive.com",
     offices: ["Toronto", "Vancouver", "Montreal", "Calgary", "Ottawa"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ca",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ca",
     hreflang: "en-CA",
     dir: "ltr",
     isProductionReady: true,
@@ -103,7 +121,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+52 55 4160 4300",
     contactEmail: "mx@obrive.com",
     offices: ["Mexico City", "Monterrey", "Guadalajara"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=mx",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=mx",
     hreflang: "es-MX",
     dir: "ltr",
     isProductionReady: true,
@@ -118,7 +137,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+55 11 3197 4300",
     contactEmail: "br@obrive.com",
     offices: ["São Paulo", "Rio de Janeiro", "Brasília"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=br",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=br",
     hreflang: "pt-BR",
     dir: "ltr",
     isProductionReady: true,
@@ -135,7 +155,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+971 4 888 4300",
     contactEmail: "uae@obrive.com",
     offices: ["Dubai Internet City", "Abu Dhabi", "Sharjah"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ae",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ae",
     hreflang: "en-AE",
     dir: "ltr",
     isProductionReady: true,
@@ -150,7 +171,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+966 11 888 4300",
     contactEmail: "ksa@obrive.com",
     offices: ["Riyadh", "Jeddah", "Dammam", "NEOM"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=sa",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=sa",
     hreflang: "en-SA",
     dir: "ltr",
     isProductionReady: true,
@@ -165,7 +187,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+974 4488 4300",
     contactEmail: "qatar@obrive.com",
     offices: ["Doha"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=qa",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=qa",
     hreflang: "en-QA",
     dir: "ltr",
     isProductionReady: true,
@@ -180,7 +203,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+973 1788 4300",
     contactEmail: "bahrain@obrive.com",
     offices: ["Manama"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=bh",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=bh",
     hreflang: "en-BH",
     dir: "ltr",
     isProductionReady: true,
@@ -197,7 +221,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+44 20 8884 4300",
     contactEmail: "uk@obrive.com",
     offices: ["London", "Manchester", "Birmingham", "Edinburgh", "Bristol"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=uk",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=uk",
     hreflang: "en-GB",
     dir: "ltr",
     isProductionReady: true,
@@ -212,7 +237,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+49 30 8884 4300",
     contactEmail: "eu@obrive.com",
     offices: ["Berlin", "Munich", "Frankfurt", "Hamburg", "Stuttgart"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=de",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=de",
     hreflang: "de-DE",
     dir: "ltr",
     isProductionReady: true,
@@ -227,7 +253,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+33 1 88 84 43 00",
     contactEmail: "eu@obrive.com",
     offices: ["Paris", "Lyon", "Toulouse", "Marseille"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=fr",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=fr",
     hreflang: "fr-FR",
     dir: "ltr",
     isProductionReady: true,
@@ -242,7 +269,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+31 20 888 4300",
     contactEmail: "eu@obrive.com",
     offices: ["Amsterdam", "Rotterdam", "Eindhoven"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=nl",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=nl",
     hreflang: "en-NL",
     dir: "ltr",
     isProductionReady: true,
@@ -257,7 +285,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+41 22 888 4300",
     contactEmail: "ch@obrive.com",
     offices: ["Zurich", "Geneva", "Basel"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ch",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ch",
     hreflang: "de-CH",
     dir: "ltr",
     isProductionReady: true,
@@ -272,7 +301,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+46 8 888 4300",
     contactEmail: "eu@obrive.com",
     offices: ["Stockholm", "Gothenburg", "Malmö"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=se",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=se",
     hreflang: "sv-SE",
     dir: "ltr",
     isProductionReady: true,
@@ -287,7 +317,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+34 91 888 4300",
     contactEmail: "es@obrive.com",
     offices: ["Madrid", "Barcelona", "Valencia"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=es",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=es",
     hreflang: "es-ES",
     dir: "ltr",
     isProductionReady: true,
@@ -302,7 +333,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+39 02 8884 4300",
     contactEmail: "it@obrive.com",
     offices: ["Milan", "Rome", "Turin"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=it",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=it",
     hreflang: "it-IT",
     dir: "ltr",
     isProductionReady: true,
@@ -319,7 +351,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+65 6888 4300",
     contactEmail: "apac@obrive.com",
     offices: ["Singapore"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=sg",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=sg",
     hreflang: "en-SG",
     dir: "ltr",
     isProductionReady: true,
@@ -334,7 +367,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+61 2 8884 4300",
     contactEmail: "apac@obrive.com",
     offices: ["Sydney", "Melbourne", "Brisbane", "Perth"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=au",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=au",
     hreflang: "en-AU",
     dir: "ltr",
     isProductionReady: true,
@@ -349,7 +383,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+64 9 888 4300",
     contactEmail: "apac@obrive.com",
     offices: ["Auckland", "Wellington"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=nz",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=nz",
     hreflang: "en-NZ",
     dir: "ltr",
     isProductionReady: true,
@@ -364,7 +399,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+81 3 8884 4300",
     contactEmail: "apac@obrive.com",
     offices: ["Tokyo", "Osaka", "Nagoya"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=jp",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=jp",
     hreflang: "ja-JP",
     dir: "ltr",
     isProductionReady: true,
@@ -379,7 +415,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+82 2 8884 4300",
     contactEmail: "apac@obrive.com",
     offices: ["Seoul", "Busan"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=kr",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=kr",
     hreflang: "ko-KR",
     dir: "ltr",
     isProductionReady: true,
@@ -394,7 +431,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+60 3 8884 4300",
     contactEmail: "apac@obrive.com",
     offices: ["Kuala Lumpur", "Penang"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=my",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=my",
     hreflang: "en-MY",
     dir: "ltr",
     isProductionReady: true,
@@ -409,7 +447,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+62 21 8884 4300",
     contactEmail: "apac@obrive.com",
     offices: ["Jakarta", "Bandung", "Surabaya"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=id",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=id",
     hreflang: "id-ID",
     dir: "ltr",
     isProductionReady: true,
@@ -424,7 +463,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+66 2 888 4300",
     contactEmail: "apac@obrive.com",
     offices: ["Bangkok", "Phuket"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=th",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=th",
     hreflang: "th-TH",
     dir: "ltr",
     isProductionReady: true,
@@ -441,7 +481,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     phone: "+27 11 888 4300",
     contactEmail: "za@obrive.com",
     offices: ["Johannesburg", "Cape Town", "Durban"],
-    calendlyUrl: "https://calendly.com/obrive-inc/talk-to-ob-experts?country=za",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=za",
     hreflang: "en-ZA",
     dir: "ltr",
     isProductionReady: true,
@@ -451,12 +492,12 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
 export const DEFAULT_COUNTRY: CountryCode = "in";
 
 export const SUPPORTED_COUNTRIES: CountryCode[] = Object.keys(
-  COUNTRIES
+  COUNTRIES,
 ) as CountryCode[];
 
 export function isValidCountryCode(code?: string | null): code is CountryCode {
   if (!code) return false;
-  return Object.prototype.hasOwnProperty.call(COUNTRIES, code.toLowerCase());
+  return Object.hasOwn(COUNTRIES, code.toLowerCase());
 }
 
 export function getCountryConfig(code?: string | null): CountryConfig {

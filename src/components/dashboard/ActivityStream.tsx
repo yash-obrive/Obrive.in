@@ -24,7 +24,6 @@ export default function ActivityStream({
         return <Paperclip className="w-3 h-3 text-blue-400" />;
       case "comment":
         return <MessageSquare className="w-3 h-3 text-blue-400" />;
-      case "update":
       default:
         return <CheckCircle className="w-3 h-3 text-blue-400" />;
     }
