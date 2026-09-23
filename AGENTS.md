@@ -15,6 +15,12 @@
 - **Pull Request Targeting:** When asked to create or check pull requests, always target `shivansh-006/obrive:main` as the base branch from `naman-feature`.
 - **Remote Instructions for User:** When providing git commands for the user to execute (e.g., pushes), always explicitly use the `origin` remote (e.g., `git push origin <branch-name>`), never `upstream-org` or `personal`.
 
+## Git Operations
+
+- **Explicit Commits Only:** Never execute `git commit` unless explicitly and directly requested in the user's most recent prompt.
+- **NEVER PUSH:** Absolutely NEVER execute `git push` under any circumstances. All remote pushes must be handled manually by the user in their own terminal.
+
+---
 
 ## OBRIVE PERMANENT PROJECT RULES
 
