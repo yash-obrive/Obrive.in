@@ -45,6 +45,48 @@ export function middleware(req: NextRequest) {
   const segments = pathname.split("/").filter(Boolean);
   const firstSegment = segments[0]?.toLowerCase();
 
+  // Handle /location/[city] routes
+  if (firstSegment === "location" && segments.length > 1) {
+    const citySlug = segments[1];
+    
+    const cookieCountry = req.cookies.get("preferred_country")?.value;
+    let targetCountry = DEFAULT_COUNTRY;
+    if (isValidCountryCode(cookieCountry)) {
+      targetCountry = cookieCountry as CountryCode;
+    } else {
+      const rawGeo = req.headers.get("x-vercel-ip-country") || req.headers.get("cf-ipcountry");
+      const detected = mapGeoCountryToSupported(rawGeo);
+      if (detected && COUNTRIES[detected]?.isProductionReady) {
+        targetCountry = detected;
+      }
+    }
+
+    const requestHeaders = new Headers(req.headers);
+    requestHeaders.set("x-obrive-country", targetCountry);
+    requestHeaders.set("x-obrive-city", citySlug);
+
+    const subpath = segments.slice(2).join("/");
+    const rewriteUrl = req.nextUrl.clone();
+    rewriteUrl.pathname = subpath ? `/${subpath}` : "/";
+    rewriteUrl.search = search;
+
+    const response = NextResponse.rewrite(rewriteUrl, {
+      request: {
+        headers: requestHeaders,
+      },
+    });
+
+    if (!cookieCountry) {
+      response.cookies.set("preferred_country", targetCountry, {
+        path: "/",
+        maxAge: 31536000,
+        sameSite: "lax",
+      });
+    }
+
+    return response;
+  }
+
   // 1. Check if the path starts with a supported country code (e.g. /in, /us/about, /ae/products/obpark)
   if (isValidCountryCode(firstSegment)) {
     const countryCode = firstSegment;
