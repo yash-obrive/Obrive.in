@@ -36,26 +36,12 @@ export default function LocalizedLink({
           const hrefSegments = href.split("/").filter(Boolean);
           if (hrefSegments.length > 0) {
             const hrefPrefix = hrefSegments[0] as CountryCode;
-            if (!isValidCountryCode(hrefPrefix) && hrefPrefix !== "global" && hrefPrefix !== "location") {
+            if (!isValidCountryCode(hrefPrefix) && hrefPrefix !== "global") {
               finalHref = `/${currentPrefix}${href}`;
             }
           } else {
             // href is exactly "/"
             finalHref = `/${currentPrefix}`;
-          }
-        }
-      } else if (segments[0] === "location" && segments.length > 1) {
-        // User is currently inside a location-prefixed route (e.g. /location/mumbai)
-        const citySlug = segments[1];
-        if (href.startsWith("/")) {
-          const hrefSegments = href.split("/").filter(Boolean);
-          if (hrefSegments.length > 0) {
-            const hrefPrefix = hrefSegments[0];
-            if (!isValidCountryCode(hrefPrefix as CountryCode) && hrefPrefix !== "location") {
-              finalHref = `/location/${citySlug}${href}`;
-            }
-          } else {
-            finalHref = `/location/${citySlug}`;
           }
         }
       }
