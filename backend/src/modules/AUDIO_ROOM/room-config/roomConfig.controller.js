@@ -22,7 +22,7 @@ const createRoomConfig = async (req, res) => {
   }
 };
 
-const getUsers = async (req, res) => {
+const getUsers = async (_req, res) => {
   try {
     const users = await getAllUsers();
 

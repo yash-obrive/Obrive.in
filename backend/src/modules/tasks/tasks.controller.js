@@ -13,13 +13,13 @@ exports.createTask = async (req, res) => {
     }
 
     const task = await taskService.createTask(
-      parseInt(projectId),
+      parseInt(projectId, 10),
       {
         title,
         description,
         deadline,
         status,
-        assigned_to: assigned_to ? parseInt(assigned_to) : null,
+        assigned_to: assigned_to ? parseInt(assigned_to, 10) : null,
       },
       userId,
     );
@@ -36,12 +36,12 @@ exports.updateTask = async (req, res) => {
     const userId = req.user.id;
     const { title, description, deadline, status, assigned_to } = req.body;
 
-    const task = await taskService.updateTask(parseInt(taskId), userId, {
+    const task = await taskService.updateTask(parseInt(taskId, 10), userId, {
       title,
       description,
       deadline,
       status,
-      assigned_to: assigned_to ? parseInt(assigned_to) : null,
+      assigned_to: assigned_to ? parseInt(assigned_to, 10) : null,
     });
 
     successResponse(res, task, "Task updated successfully");
@@ -60,7 +60,7 @@ exports.getTasksByProject = async (req, res) => {
     const userId = req.user.id;
 
     const tasks = await taskService.getTasksByProject(
-      parseInt(projectId),
+      parseInt(projectId, 10),
       userId,
     );
 
@@ -75,7 +75,7 @@ exports.getTaskById = async (req, res) => {
     const { taskId } = req.params;
     const userId = req.user.id;
 
-    const task = await taskService.getTaskById(parseInt(taskId), userId);
+    const task = await taskService.getTaskById(parseInt(taskId, 10), userId);
 
     successResponse(res, task, "Task details retrieved");
   } catch (err) {
@@ -92,7 +92,7 @@ exports.deleteTask = async (req, res) => {
     const { taskId } = req.params;
     const userId = req.user.id;
 
-    await taskService.deleteTask(parseInt(taskId), userId);
+    await taskService.deleteTask(parseInt(taskId, 10), userId);
 
     successResponse(res, null, "Task deleted successfully");
   } catch (err) {
@@ -121,7 +121,7 @@ exports.getProjectTeamMembers = async (req, res) => {
     const { projectId } = req.params;
 
     const members = await taskService.getProjectTeamMembers(
-      parseInt(projectId),
+      parseInt(projectId, 10),
     );
 
     successResponse(res, members, "Project team members retrieved");

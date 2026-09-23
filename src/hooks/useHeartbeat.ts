@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { apiFetch } from "@/lib/api";
 
 interface HeartbeatData {
@@ -21,6 +21,57 @@ export const useHeartbeat = () => {
   const sessionIdRef = useRef<number | null>(null);
   const lastServerDurationRef = useRef<number>(0);
   const timerStartTimeRef = useRef<number>(0);
+
+  const startLocalTimer = useCallback(() => {
+    timerIntervalRef.current = setInterval(() => {
+      const elapsedSeconds = Math.floor(
+        (Date.now() - timerStartTimeRef.current) / 1000,
+      );
+      const displayDuration = lastServerDurationRef.current + elapsedSeconds;
+
+      setHeartbeatData((prev) => ({
+        ...prev,
+        totalActiveDuration: displayDuration,
+        isSessionActive: true,
+      }));
+    }, 1000); // Update every 1 second
+  }, []);
+
+  // SERVER HEARTBEAT - every 45 seconds
+  const startHeartbeat = useCallback((sessionId: number) => {
+    heartbeatIntervalRef.current = setInterval(async () => {
+      try {
+        const response = await apiFetch("/work-sessions/heartbeat", {
+          method: "POST",
+          body: JSON.stringify({ sessionId: sessionId }),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Sync to server value and reset timer
+          lastServerDurationRef.current = data.data.totalActiveDuration;
+          timerStartTimeRef.current = Date.now();
+
+          setHeartbeatData((prev) => ({
+            ...prev,
+            totalActiveDuration: data.data.totalActiveDuration,
+            isSessionActive: data.data.status === "active",
+          }));
+        } else if (response.status === 410) {
+          setHeartbeatData((prev) => ({
+            ...prev,
+            isSessionActive: false,
+          }));
+          if (heartbeatIntervalRef.current)
+            clearInterval(heartbeatIntervalRef.current);
+          if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+        }
+      } catch (err) {
+        console.error("Heartbeat error:", err);
+      }
+    }, 45000); // Every 45 seconds
+  }, []);
 
   // START SESSION on mount
   useEffect(() => {
@@ -62,56 +113,7 @@ export const useHeartbeat = () => {
   }, [startHeartbeat, startLocalTimer]);
 
   // LOCAL TIMER - updates every 1 second for smooth UI
-  const startLocalTimer = () => {
-    timerIntervalRef.current = setInterval(() => {
-      const elapsedSeconds = Math.floor(
-        (Date.now() - timerStartTimeRef.current) / 1000,
-      );
-      const displayDuration = lastServerDurationRef.current + elapsedSeconds;
 
-      setHeartbeatData((prev) => ({
-        ...prev,
-        totalActiveDuration: displayDuration,
-        isSessionActive: true,
-      }));
-    }, 1000); // Update every 1 second
-  };
-
-  // SERVER HEARTBEAT - every 45 seconds
-  const startHeartbeat = (sessionId: number) => {
-    heartbeatIntervalRef.current = setInterval(async () => {
-      try {
-        const response = await apiFetch("/work-sessions/heartbeat", {
-          method: "POST",
-          body: JSON.stringify({ sessionId: sessionId }),
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-          // Sync to server value and reset timer
-          lastServerDurationRef.current = data.data.totalActiveDuration;
-          timerStartTimeRef.current = Date.now();
-
-          setHeartbeatData((prev) => ({
-            ...prev,
-            totalActiveDuration: data.data.totalActiveDuration,
-            isSessionActive: data.data.status === "active",
-          }));
-        } else if (response.status === 410) {
-          setHeartbeatData((prev) => ({
-            ...prev,
-            isSessionActive: false,
-          }));
-          if (heartbeatIntervalRef.current)
-            clearInterval(heartbeatIntervalRef.current);
-          if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
-        }
-      } catch (err) {
-        console.error("Heartbeat error:", err);
-      }
-    }, 45000); // Every 45 seconds
-  };
 
   const endSession = async () => {
     if (!sessionIdRef.current) return;

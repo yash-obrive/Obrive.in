@@ -21,7 +21,8 @@ class ProfileService {
     });
 
     if (!existing) {
-      const err = new Error("Profile not found");      err.status = 404;
+      const err = new Error("Profile not found");
+      err.status = 404;
       throw err;
     }
 
@@ -40,7 +41,7 @@ class ProfileService {
         job_title: data.jobTitle ?? existing.job_title,
         phone_number: formattedPhoneNumber,
         join_date:
-          data.joinDate && !isNaN(new Date(data.joinDate).getTime())
+          data.joinDate && !Number.isNaN(new Date(data.joinDate).getTime())
             ? new Date(data.joinDate)
             : existing.join_date,
         biography: data.biography ?? existing.biography,

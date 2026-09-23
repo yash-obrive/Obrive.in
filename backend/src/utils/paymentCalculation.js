@@ -95,15 +95,21 @@ function calculatePaymentBreakdown(baseAmountPaise) {
     baseAmountPaise <= 0
   ) {
     throw new Error(
-      `calculatePaymentBreakdown: baseAmountPaise must be a positive integer (got ${baseAmountPaise})`
+      `calculatePaymentBreakdown: baseAmountPaise must be a positive integer (got ${baseAmountPaise})`,
     );
   }
 
-  const serviceGst    = Math.round((baseAmountPaise * SERVICE_GST_RATE_BP) / 10000);
-  const gatewayFee    = Math.round((baseAmountPaise * PAYMENT_GATEWAY_FEE_RATE_BP) / 10000);
-  const gatewayFeeGst = Math.round((gatewayFee * PAYMENT_GATEWAY_FEE_GST_RATE_BP) / 10000);
+  const serviceGst = Math.round(
+    (baseAmountPaise * SERVICE_GST_RATE_BP) / 10000,
+  );
+  const gatewayFee = Math.round(
+    (baseAmountPaise * PAYMENT_GATEWAY_FEE_RATE_BP) / 10000,
+  );
+  const gatewayFeeGst = Math.round(
+    (gatewayFee * PAYMENT_GATEWAY_FEE_GST_RATE_BP) / 10000,
+  );
   const gatewayCharges = gatewayFee + gatewayFeeGst;
-  const totalAmount   = baseAmountPaise + serviceGst + gatewayCharges;
+  const totalAmount = baseAmountPaise + serviceGst + gatewayCharges;
 
   return {
     baseAmount: baseAmountPaise,
@@ -117,12 +123,12 @@ function calculatePaymentBreakdown(baseAmountPaise) {
 
 // Expose rate config read-only for display/documentation purposes
 const RATE_CONFIG = Object.freeze({
-  serviceGstRateBp:    SERVICE_GST_RATE_BP,
-  gatewayFeeRateBp:    PAYMENT_GATEWAY_FEE_RATE_BP,
+  serviceGstRateBp: SERVICE_GST_RATE_BP,
+  gatewayFeeRateBp: PAYMENT_GATEWAY_FEE_RATE_BP,
   gatewayFeeGstRateBp: PAYMENT_GATEWAY_FEE_GST_RATE_BP,
-  serviceGstPct:       SERVICE_GST_RATE_BP / 100,
-  gatewayFeePct:       PAYMENT_GATEWAY_FEE_RATE_BP / 100,
-  gatewayFeeGstPct:    PAYMENT_GATEWAY_FEE_GST_RATE_BP / 100,
+  serviceGstPct: SERVICE_GST_RATE_BP / 100,
+  gatewayFeePct: PAYMENT_GATEWAY_FEE_RATE_BP / 100,
+  gatewayFeeGstPct: PAYMENT_GATEWAY_FEE_GST_RATE_BP / 100,
 });
 
 module.exports = { calculatePaymentBreakdown, RATE_CONFIG };

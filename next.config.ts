@@ -72,11 +72,11 @@ const nextConfig: NextConfig = {
     // Keep your other bundling optimizations for prod unchanged:
     if (!isServer && !dev) {
       config.target = ["web", "es2020"];
-      if (config.module && config.module.rules) {
+      if (config.module?.rules) {
         config.module.rules.forEach((rule: any) => {
           if (rule.use && Array.isArray(rule.use)) {
             rule.use.forEach((loader: any) => {
-              if (loader.loader && loader.loader.includes("swc-loader")) {
+              if (loader.loader?.includes("swc-loader")) {
                 if (!loader.options) loader.options = {};
                 loader.options.jsc = {
                   ...loader.options.jsc,
@@ -175,8 +175,9 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Content-Security-Policy-Report-Only",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://images.unsplash.com https://api.dicebear.com https://randomuser.me; connect-src 'self' wss: https:; frame-src 'self' https://calendly.com;"
-          }
+            value:
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://images.unsplash.com https://api.dicebear.com https://randomuser.me; connect-src 'self' wss: https:; frame-src 'self' https://calendly.com;",
+          },
         ],
       },
       {

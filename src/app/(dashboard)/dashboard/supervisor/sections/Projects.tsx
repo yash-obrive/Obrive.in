@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowLeft, Menu, Plus, Trash2, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import ConfirmationAlert from "@/components/ConfirmationAlert";
 import SkeletonLoading from "@/components/SkelitonLoading";
 import { apiFetch } from "@/lib/api";
@@ -34,12 +34,7 @@ const Projects = () => {
     projectId: null,
   });
 
-  // Fetch all supervisor projects
-  useEffect(() => {
-    fetchProjects();
-  }, [fetchProjects]);
-
-  const fetchProjects = async () => {
+  const fetchProjects = useCallback(async () => {
     try {
       setLoading(true);
       const response = await apiFetch("/supervisor/projects", {
@@ -60,7 +55,14 @@ const Projects = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  // Fetch all supervisor projects
+  useEffect(() => {
+    fetchProjects();
+  }, [fetchProjects]);
+
+
 
   const handleCreateProject = async (formData: {
     name: string;

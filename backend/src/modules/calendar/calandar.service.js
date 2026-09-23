@@ -98,7 +98,7 @@ const updateTask = async (taskId, updateData) => {
 
   // Update the task
   const updatedTask = await prisma.tasks.update({
-    where: { id: parseInt(taskId) },
+    where: { id: parseInt(taskId, 10) },
     data: dataToUpdate,
   });
 
@@ -112,7 +112,7 @@ const updateTask = async (taskId, updateData) => {
  */
 const deleteTask = async (taskId) => {
   const deletedTask = await prisma.tasks.delete({
-    where: { id: parseInt(taskId) },
+    where: { id: parseInt(taskId, 10) },
   });
 
   return deletedTask;

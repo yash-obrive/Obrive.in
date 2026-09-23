@@ -86,7 +86,7 @@ const updateCalendarTask = async (req, res) => {
     const updateData = req.body;
 
     // Validate task ID
-    if (!id || isNaN(id)) {
+    if (!id || Number.isNaN(id)) {
       return res.status(400).json({
         success: false,
         message: "Valid task ID is required",
@@ -129,7 +129,7 @@ const deleteCalendarTask = async (req, res) => {
     const { id } = req.params;
 
     // Validate task ID
-    if (!id || isNaN(id)) {
+    if (!id || Number.isNaN(id)) {
       return res.status(400).json({
         success: false,
         message: "Valid task ID is required",

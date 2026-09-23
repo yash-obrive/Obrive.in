@@ -1,4 +1,4 @@
-const blogCard = require('./src/constants/pages/resources/blog-card');
+const blogCard = require("./src/constants/pages/resources/blog-card");
 const all = blogCard.BlogCardContent;
 const slugCounts = {};
 for (const item of all) {
@@ -7,6 +7,6 @@ for (const item of all) {
 }
 for (const [slug, types] of Object.entries(slugCounts)) {
   if (types.length > 1) {
-    console.log(`DUPLICATE: ${slug} -> ${types.join(', ')}`);
+    console.log(`DUPLICATE: ${slug} -> ${types.join(", ")}`);
   }
 }

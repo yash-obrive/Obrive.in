@@ -25,7 +25,7 @@ exports.getProjects = async (req, res) => {
 
 exports.getProjectById = async (req, res) => {
   try {
-    const projectId = parseInt(req.params.id);
+    const projectId = parseInt(req.params.id, 10);
     const project = await projectService.getProjectById(projectId);
     successResponse(res, project, "Project details retrieved");
   } catch (err) {
@@ -35,7 +35,7 @@ exports.getProjectById = async (req, res) => {
 
 exports.assignEmployeeToProject = async (req, res) => {
   try {
-    const projectId = parseInt(req.params.id);
+    const projectId = parseInt(req.params.id, 10);
     const { employeeId } = req.body;
     const assignment = await projectService.assignEmployeeToProject(
       projectId,
@@ -49,8 +49,8 @@ exports.assignEmployeeToProject = async (req, res) => {
 
 exports.removeEmployeeFromProject = async (req, res) => {
   try {
-    const projectId = parseInt(req.params.id);
-    const employeeId = parseInt(req.params.employeeId);
+    const projectId = parseInt(req.params.id, 10);
+    const employeeId = parseInt(req.params.employeeId, 10);
     await projectService.removeEmployeeFromProject(projectId, employeeId);
     successResponse(res, null, "Employee removed from project");
   } catch (err) {
@@ -155,7 +155,7 @@ exports.getClientProjects = async (req, res) => {
   }
 };
 
-exports.getAllClients = async (req, res) => {
+exports.getAllClients = async (_req, res) => {
   try {
     const clients = await projectService.getAllClients();
     successResponse(res, clients, "Clients retrieved");

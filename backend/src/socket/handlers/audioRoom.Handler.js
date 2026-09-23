@@ -33,7 +33,7 @@ exports.registerAudioRoomHandler = (io, socket) => {
   // ==========================
   // JOIN AUDIO ROOM
   // ==========================
-  socket.on("join_audio_room", async (payload, legacyUserId) => {
+  socket.on("join_audio_room", async (payload, _legacyUserId) => {
     try {
       const roomId = typeof payload === "object" ? payload.roomId : payload;
       const userId = Number(socket.user?.id);
@@ -57,7 +57,7 @@ exports.registerAudioRoomHandler = (io, socket) => {
   // ==========================
   // LEAVE AUDIO ROOM
   // ==========================
-  socket.on("leave_audio_room", async (payload, legacyUserId) => {
+  socket.on("leave_audio_room", async (payload, _legacyUserId) => {
     try {
       const roomId = typeof payload === "object" ? payload.roomId : payload;
       const userId = Number(socket.user?.id);

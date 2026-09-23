@@ -4,7 +4,7 @@ const profileService = require("./client.profile.service");
 const { successResponse, errorResponse } = require("../../utils/apiResponse");
 
 // ========== LOGIN CONTROLLER ==========
-exports.login = async (req, res, next) => {
+exports.login = async (req, res, _next) => {
   try {
     const { clientId } = req.body;
     if (!clientId) {
@@ -19,7 +19,7 @@ exports.login = async (req, res, next) => {
 };
 
 // ========== DASHBOARD CONTROLLER (NEW) ==========
-exports.getDashboard = async (req, res, next) => {
+exports.getDashboard = async (req, res, _next) => {
   //here next means next middleware function which in this case is error handling middleware provided by express and default error handler of express will be used if next is not called with an error. wherever next is called with an error it will be passed to the error handling middleware and it will handle the error and send the response to the client.
   try {
     const clientId = req.user.clientId;
@@ -38,7 +38,7 @@ exports.getDashboard = async (req, res, next) => {
 };
 
 // ========== PROFILE CONTROLLERS (NEW) ==========
-exports.getProfile = async (req, res, next) => {
+exports.getProfile = async (req, res, _next) => {
   try {
     const clientId = req.user.clientId;
     const profile = await profileService.getProfile(clientId);
@@ -52,7 +52,7 @@ exports.getProfile = async (req, res, next) => {
   }
 };
 
-exports.updateProfile = async (req, res, next) => {
+exports.updateProfile = async (req, res, _next) => {
   try {
     const clientId = req.user.clientId;
     const { name, dateOfBirth } = req.body;
@@ -72,7 +72,7 @@ exports.updateProfile = async (req, res, next) => {
   }
 };
 
-exports.getMyProfile = async (req, res, next) => {
+exports.getMyProfile = async (req, res, _next) => {
   try {
     const data = await service.getMyProfile(req.user.id);
     successResponse(res, data, "Profile retrieved successfully");
@@ -85,7 +85,7 @@ exports.getMyProfile = async (req, res, next) => {
   }
 };
 
-exports.getMyProjects = async (req, res, next) => {
+exports.getMyProjects = async (req, res, _next) => {
   try {
     const data = await service.getMyProjects(req.user.id);
     successResponse(res, data, "Projects retrieved successfully");
@@ -98,7 +98,7 @@ exports.getMyProjects = async (req, res, next) => {
   }
 };
 
-exports.getProjectById = async (req, res, next) => {
+exports.getProjectById = async (req, res, _next) => {
   try {
     const data = await service.getProjectById(req.user.id, req.params.id);
     successResponse(res, data, "Project retrieved successfully");
@@ -111,7 +111,7 @@ exports.getProjectById = async (req, res, next) => {
   }
 };
 
-exports.requestProject = async (req, res, next) => {
+exports.requestProject = async (req, res, _next) => {
   try {
     const data = await service.requestProject(req.user.id, req.body);
     successResponse(res, data, "Project requested successfully", 201);

@@ -36,7 +36,7 @@ exports.socketAuthMiddleware = async (socket, next) => {
 
     socket.user = user;
     next();
-  } catch (err) {
+  } catch (_err) {
     next(new Error("Authentication error: Invalid token"));
   }
 };

@@ -1,4 +1,4 @@
-import { compile } from '@mdx-js/mdx';
+import { compile } from "@mdx-js/mdx";
 
 async function run() {
   const mdx = `
@@ -14,7 +14,7 @@ async function run() {
   try {
     const result = await compile(mdx, { development: false });
     console.log(result.value);
-  } catch(e) {
+  } catch (e) {
     console.error(e);
   }
 }

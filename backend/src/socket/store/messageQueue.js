@@ -11,7 +11,7 @@ setInterval(async () => {
   if (messageQueue.length === 0) return;
 
   const messagesToInsert = messageQueue.filter(
-    (msg) => !isNaN(msg.conversation_id),
+    (msg) => !Number.isNaN(msg.conversation_id),
   );
   messageQueue.length = 0;
 
@@ -32,7 +32,7 @@ setInterval(async () => {
     }, {});
 
     for (const [convId, senderIds] of Object.entries(updates)) {
-      const conversationId = parseInt(convId);
+      const conversationId = parseInt(convId, 10);
 
       // Increment unread_count and UNHIDE for everyone in the conversation who is NOT the sender(s)
       await prisma.conversation_participants.updateMany({

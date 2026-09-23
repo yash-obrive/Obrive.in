@@ -3,7 +3,7 @@ const eventsService = require("./events.service");
 const { successResponse, errorResponse } = require("../../utils/apiResponse");
 
 // Get all events (for calendar)
-exports.getAllEvents = async (req, res) => {
+exports.getAllEvents = async (_req, res) => {
   try {
     const events = await eventsService.getAllEvents();
     successResponse(res, events, "Events retrieved successfully");
@@ -15,7 +15,7 @@ exports.getAllEvents = async (req, res) => {
 // Get nearest events (for dashboard)
 exports.getNearestEvents = async (req, res) => {
   try {
-    const limit = req.query.limit ? parseInt(req.query.limit) : 4;
+    const limit = req.query.limit ? parseInt(req.query.limit, 10) : 4;
     const events = await eventsService.getNearestEvents(limit);
     successResponse(res, events, "Nearest events retrieved");
   } catch (err) {
@@ -74,7 +74,7 @@ exports.createEvent = async (req, res) => {
 // Update event (HR only)
 exports.updateEvent = async (req, res) => {
   try {
-    const eventId = parseInt(req.params.id);
+    const eventId = parseInt(req.params.id, 10);
     const result = await eventsService.updateEvent(
       eventId,
       req.body,
@@ -93,7 +93,7 @@ exports.updateEvent = async (req, res) => {
 // Delete event (HR only)
 exports.deleteEvent = async (req, res) => {
   try {
-    const eventId = parseInt(req.params.id);
+    const eventId = parseInt(req.params.id, 10);
     const result = await eventsService.deleteEvent(eventId, req.user.id);
     successResponse(res, result, "Event deleted successfully");
   } catch (err) {

@@ -68,7 +68,7 @@ exports.getStickyNoteById = async (req, res, next) => {
   try {
     successResponse(
       res,
-      await service.getStickyNoteById(parseInt(req.params.id), req.user.id),
+      await service.getStickyNoteById(parseInt(req.params.id, 10), req.user.id),
     );
   } catch (err) {
     next(err);
@@ -95,7 +95,7 @@ exports.updateStickyNote = async (req, res, next) => {
     successResponse(
       res,
       await service.updateStickyNote(
-        parseInt(req.params.id),
+        parseInt(req.params.id, 10),
         req.user.id,
         req.body,
       ),
@@ -111,7 +111,7 @@ exports.deleteStickyNote = async (req, res, next) => {
   try {
     successResponse(
       res,
-      await service.deleteStickyNote(parseInt(req.params.id), req.user.id),
+      await service.deleteStickyNote(parseInt(req.params.id, 10), req.user.id),
       "Sticky note deleted",
     );
   } catch (err) {

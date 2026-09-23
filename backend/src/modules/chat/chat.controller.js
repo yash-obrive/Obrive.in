@@ -65,7 +65,7 @@ exports.removeParticipant = async (req, res, next) => {
       const io = getIO();
       io.to(`conversation:${conversationId}`).emit("message_received", {
         ...data.systemMessage,
-        conversation_id: parseInt(conversationId),
+        conversation_id: parseInt(conversationId, 10),
       });
 
       // Also notify the removed user to leave the room (if they are connected)

@@ -3,7 +3,7 @@ const hrService = require("./hr.service");
 const { successResponse, errorResponse } = require("../../utils/apiResponse");
 
 // Get HR Dashboard
-exports.getDashboard = async (req, res, next) => {
+exports.getDashboard = async (req, res, _next) => {
   try {
     const stats = await hrService.getDashboardStats();
     const recentEmployees = await hrService.getAllEmployees();
@@ -24,7 +24,7 @@ exports.getDashboard = async (req, res, next) => {
 };
 
 // Get HR Profile
-exports.getProfile = async (req, res, next) => {
+exports.getProfile = async (req, res, _next) => {
   try {
     const profile = await hrService.getHRProfile(req.user.id);
     successResponse(res, profile, "Profile retrieved");
@@ -34,7 +34,7 @@ exports.getProfile = async (req, res, next) => {
 };
 
 // Update HR Profile
-exports.updateProfile = async (req, res, next) => {
+exports.updateProfile = async (req, res, _next) => {
   try {
     const { name, bio, dateOfBirth, phone } = req.body;
     const profile = await hrService.updateHRProfile(req.user.id, {
@@ -50,7 +50,7 @@ exports.updateProfile = async (req, res, next) => {
 };
 
 // Get all employees
-exports.getAllEmployees = async (req, res, next) => {
+exports.getAllEmployees = async (_req, res, _next) => {
   try {
     const employees = await hrService.getAllEmployees();
     successResponse(res, employees, "Employees retrieved");
@@ -60,9 +60,11 @@ exports.getAllEmployees = async (req, res, next) => {
 };
 
 // Get employee by ID
-exports.getEmployeeById = async (req, res, next) => {
+exports.getEmployeeById = async (req, res, _next) => {
   try {
-    const employee = await hrService.getEmployeeById(parseInt(req.params.id));
+    const employee = await hrService.getEmployeeById(
+      parseInt(req.params.id, 10),
+    );
     successResponse(res, employee, "Employee retrieved");
   } catch (err) {
     errorResponse(res, err.message, 404);
@@ -70,10 +72,10 @@ exports.getEmployeeById = async (req, res, next) => {
 };
 
 // Update employee
-exports.updateEmployee = async (req, res, next) => {
+exports.updateEmployee = async (req, res, _next) => {
   try {
     const employee = await hrService.updateEmployee(
-      parseInt(req.params.id),
+      parseInt(req.params.id, 10),
       req.body,
     );
     successResponse(res, employee, "Employee updated");
@@ -83,9 +85,9 @@ exports.updateEmployee = async (req, res, next) => {
 };
 
 // Delete employee
-exports.deleteEmployee = async (req, res, next) => {
+exports.deleteEmployee = async (req, res, _next) => {
   try {
-    await hrService.deleteEmployee(parseInt(req.params.id));
+    await hrService.deleteEmployee(parseInt(req.params.id, 10));
     successResponse(res, null, "Employee deleted");
   } catch (err) {
     errorResponse(res, err.message, 500);
@@ -93,7 +95,7 @@ exports.deleteEmployee = async (req, res, next) => {
 };
 
 // Search employees
-exports.searchEmployees = async (req, res, next) => {
+exports.searchEmployees = async (req, res, _next) => {
   try {
     const { q } = req.query;
     if (!q) {
@@ -107,9 +109,9 @@ exports.searchEmployees = async (req, res, next) => {
 };
 
 // Toggle location tracking for employee
-exports.toggleLocationTracking = async (req, res, next) => {
+exports.toggleLocationTracking = async (req, res, _next) => {
   try {
-    const employeeId = parseInt(req.params.id);
+    const employeeId = parseInt(req.params.id, 10);
     const { enabled } = req.body;
     const result = await hrService.toggleEmployeeLocationTracking(
       employeeId,
@@ -126,7 +128,7 @@ exports.toggleLocationTracking = async (req, res, next) => {
 };
 
 // Get all employee locations overview
-exports.getLocationOverview = async (req, res, next) => {
+exports.getLocationOverview = async (_req, res, _next) => {
   try {
     const employees = await hrService.getEmployeesLocationOverview();
     successResponse(res, employees, "Employee locations retrieved");
@@ -136,9 +138,9 @@ exports.getLocationOverview = async (req, res, next) => {
 };
 
 // Get employee location history
-exports.getLocationHistory = async (req, res, next) => {
+exports.getLocationHistory = async (req, res, _next) => {
   try {
-    const employeeId = parseInt(req.params.id);
+    const employeeId = parseInt(req.params.id, 10);
     const { days, filter, date, timezoneOffset } = req.query;
     const history = await hrService.getEmployeeLocationHistory(employeeId, {
       days,

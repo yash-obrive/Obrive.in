@@ -11,7 +11,8 @@ exports.getAllUsers = async () => {
         createdAt: true,
         employee: {
           select: { fullName: true, department: true, designation: true },
-        },        hr: { select: { fullName: true } },
+        },
+        hr: { select: { fullName: true } },
       },
       orderBy: { createdAt: "desc" },
     }),
@@ -136,7 +137,8 @@ exports.getDashboardStats = async () => {
     prisma.project.count({ where: { status: "IN_PROGRESS" } }),
     prisma.loginLog.findMany({
       take: 10,
-      orderBy: { loginTime: "desc" },      include: { user: { select: { email: true, role: true } } },
+      orderBy: { loginTime: "desc" },
+      include: { user: { select: { email: true, role: true } } },
     }),
   ]);
 

@@ -1,7 +1,7 @@
 const service = require("./admin.service");
 const { successResponse } = require("../../utils/apiResponse");
 
-exports.getAllUsers = async (req, res, next) => {
+exports.getAllUsers = async (_req, res, next) => {
   try {
     successResponse(res, await service.getAllUsers());
   } catch (err) {
@@ -60,7 +60,7 @@ exports.getAllLogs = async (req, res, next) => {
     next(err);
   }
 };
-exports.getDashboardStats = async (req, res, next) => {
+exports.getDashboardStats = async (_req, res, next) => {
   try {
     successResponse(res, await service.getDashboardStats());
   } catch (err) {

@@ -24,7 +24,8 @@ exports.updateMyProfile = async (userId, data) => {
       fullName: data.fullName,
       phone: data.phone,
       department: data.department,
-    },  });
+    },
+  });
 };
 
 // ── Availability ─────────────────────────────────────────────
@@ -80,7 +81,8 @@ exports.updateAvailabilitySlot = async (slotId, userId, data) => {
       endTime: data.endTime,
       slotType: data.slotType,
       note: data.note,
-    },  });
+    },
+  });
 };
 
 exports.deleteAvailabilitySlot = async (slotId, userId) => {
@@ -108,14 +110,16 @@ exports.getMyProjects = async (userId) => {
           client: { select: { companyName: true, contactName: true } },
         },
       },
-    },  });
+    },
+  });
 };
 
 // ── Login Logs ───────────────────────────────────────────────
 exports.getMyLogs = async (userId) => {
   return prisma.loginLog.findMany({
     where: { userId },
-    orderBy: { loginTime: "desc" },    take: 50,
+    orderBy: { loginTime: "desc" },
+    take: 50,
   });
 };
 

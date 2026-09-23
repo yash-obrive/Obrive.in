@@ -1,5 +1,5 @@
 const Razorpay = require("razorpay");
-const crypto = require("crypto");
+const crypto = require("node:crypto");
 const { getPackageDetails } = require("../../utils/pricing");
 const { calculatePaymentBreakdown } = require("../../utils/paymentCalculation");
 const { sendPaymentConfirmationEmails } = require("./payment.email");
@@ -19,15 +19,27 @@ exports.createOrder = async (req, res) => {
     // NOTE: Only packageId is trusted from the client.
     // All amounts are calculated server-side from the trusted pricing source.
     // Client-submitted amount/serviceGst/gatewayFee/totalAmount are IGNORED.
-    const { packageId, customerName, customerEmail, customerPhone, company, gst, address } = req.body;
+    const {
+      packageId,
+      customerName,
+      customerEmail,
+      customerPhone,
+      company,
+      gst,
+      address,
+    } = req.body;
 
     if (!packageId) {
-      return res.status(400).json({ success: false, error: "Package ID is required" });
+      return res
+        .status(400)
+        .json({ success: false, error: "Package ID is required" });
     }
 
     const packageDetails = getPackageDetails(packageId);
     if (!packageDetails) {
-      return res.status(400).json({ success: false, error: "Invalid package ID" });
+      return res
+        .status(400)
+        .json({ success: false, error: "Invalid package ID" });
     }
 
     // Server-side authoritative price calculation.
@@ -44,7 +56,10 @@ exports.createOrder = async (req, res) => {
       razorpay = getRazorpayInstance();
     } catch (err) {
       console.error(err);
-      return res.status(503).json({ success: false, error: "Payment service is temporarily unavailable." });
+      return res.status(503).json({
+        success: false,
+        error: "Payment service is temporarily unavailable.",
+      });
     }
 
     // Razorpay order uses totalAmount (base + GST + gateway charges)
@@ -70,84 +85,99 @@ exports.createOrder = async (req, res) => {
           // Legacy field kept for backward compat — equals totalAmount for new records
           amount: breakdown.totalAmount,
           // Financial breakdown fields
-          baseAmount:     breakdown.baseAmount,
-          serviceGst:     breakdown.serviceGst,
-          gatewayFee:     breakdown.gatewayFee,
-          gatewayFeeGst:  breakdown.gatewayFeeGst,
+          baseAmount: breakdown.baseAmount,
+          serviceGst: breakdown.serviceGst,
+          gatewayFee: breakdown.gatewayFee,
+          gatewayFeeGst: breakdown.gatewayFeeGst,
           gatewayCharges: breakdown.gatewayCharges,
-          totalAmount:    breakdown.totalAmount,
+          totalAmount: breakdown.totalAmount,
           currency,
           razorpayOrderId: order.id,
           status: "CREATED",
-          customerName:  customerName  || "",
+          customerName: customerName || "",
           customerEmail: customerEmail || "",
           customerPhone: customerPhone || "",
-          company:       company       || "",
-          gst:           gst           || "",
-          address:       address       || "",
-        }
+          company: company || "",
+          gst: gst || "",
+          address: address || "",
+        },
       });
     } catch (dbError) {
       console.error("Failed to persist order to database:", dbError);
-      return res.status(500).json({ success: false, error: "Internal database error" });
+      return res
+        .status(500)
+        .json({ success: false, error: "Internal database error" });
     }
 
     // Return server-calculated breakdown to frontend for display.
     // Secrets are never included. Client MUST use these values — not recalculate.
     return res.status(200).json({
-      success:        true,
-      orderId:        order.id,
-      keyId:          process.env.RAZORPAY_KEY_ID,
+      success: true,
+      orderId: order.id,
+      keyId: process.env.RAZORPAY_KEY_ID,
       currency,
-      packageId:      packageDetails.id,
-      packageName:    packageDetails.name,
-      baseAmount:     breakdown.baseAmount,
-      serviceGst:     breakdown.serviceGst,
-      gatewayFee:     breakdown.gatewayFee,
-      gatewayFeeGst:  breakdown.gatewayFeeGst,
+      packageId: packageDetails.id,
+      packageName: packageDetails.name,
+      baseAmount: breakdown.baseAmount,
+      serviceGst: breakdown.serviceGst,
+      gatewayFee: breakdown.gatewayFee,
+      gatewayFeeGst: breakdown.gatewayFeeGst,
       gatewayCharges: breakdown.gatewayCharges,
-      totalAmount:    breakdown.totalAmount,
+      totalAmount: breakdown.totalAmount,
     });
   } catch (error) {
     console.error("Payment create order error:", error);
-    return res.status(500).json({ success: false, error: "Unable to create payment order." });
+    return res
+      .status(500)
+      .json({ success: false, error: "Unable to create payment order." });
   }
 };
 
 exports.verifyPayment = async (req, res) => {
   try {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+      req.body;
 
     if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
-      return res.status(400).json({ success: false, error: "Missing verification parameters" });
+      return res
+        .status(400)
+        .json({ success: false, error: "Missing verification parameters" });
     }
 
     const key_secret = process.env.RAZORPAY_KEY_SECRET;
     if (!key_secret) {
-      return res.status(503).json({ success: false, error: "Payment service is temporarily unavailable." });
+      return res.status(503).json({
+        success: false,
+        error: "Payment service is temporarily unavailable.",
+      });
     }
 
-    const body = razorpay_order_id + "|" + razorpay_payment_id;
+    const body = `${razorpay_order_id}|${razorpay_payment_id}`;
     const expectedSignature = crypto
       .createHmac("sha256", key_secret)
       .update(body.toString())
       .digest("hex");
 
     if (expectedSignature !== razorpay_signature) {
-      return res.status(400).json({ success: false, error: "Payment verification failed." });
+      return res
+        .status(400)
+        .json({ success: false, error: "Payment verification failed." });
     }
 
     // Process payment in a transaction for idempotency
     const result = await prisma.$transaction(async (tx) => {
       const existingOrder = await tx.paymentOrder.findUnique({
-        where: { razorpayOrderId: razorpay_order_id }
+        where: { razorpayOrderId: razorpay_order_id },
       });
 
       if (!existingOrder) {
         throw new Error("Order not found in database");
       }
 
-      if (existingOrder.status === "AUTHORIZED" || existingOrder.status === "CAPTURED") {
+      if (
+        existingOrder.status === "AUTHORIZED" ||
+        existingOrder.status === "CAPTURED"
+      ) {
         return { existingOrder, alreadyProcessed: true };
       }
 
@@ -156,7 +186,7 @@ exports.verifyPayment = async (req, res) => {
         data: {
           status: "AUTHORIZED",
           razorpayPaymentId: razorpay_payment_id,
-        }
+        },
       });
 
       return { existingOrder: updatedOrder, alreadyProcessed: false };
@@ -178,23 +208,30 @@ exports.verifyPayment = async (req, res) => {
         };
 
         await sendPaymentConfirmationEmails(orderData);
-        
+
         await prisma.paymentOrder.update({
           where: { id: result.existingOrder.id },
           data: {
             customerEmailSentAt: new Date(),
             adminEmailSentAt: new Date(),
-          }
+          },
         });
       } catch (err) {
-        console.error("Failed to send confirmation emails during verification:", err);
+        console.error(
+          "Failed to send confirmation emails during verification:",
+          err,
+        );
       }
     }
 
-    return res.status(200).json({ success: true, message: "Payment verified successfully" });
+    return res
+      .status(200)
+      .json({ success: true, message: "Payment verified successfully" });
   } catch (error) {
     console.error("Payment verify error:", error);
-    return res.status(500).json({ success: false, error: "Payment verification failed." });
+    return res
+      .status(500)
+      .json({ success: false, error: "Payment verification failed." });
   }
 };
 
@@ -212,7 +249,7 @@ exports.webhook = async (req, res) => {
     }
 
     const rawBody = req.rawBody || JSON.stringify(req.body);
-    
+
     const expectedSignature = crypto
       .createHmac("sha256", webhookSecret)
       .update(rawBody)
@@ -232,18 +269,20 @@ exports.webhook = async (req, res) => {
 
     const paymentEntity = payload.payment?.entity;
     const orderEntity = payload.order?.entity;
-    
+
     const razorpayOrderId = paymentEntity?.order_id || orderEntity?.id;
     const razorpayPaymentId = paymentEntity?.id;
 
     if (!razorpayOrderId) {
-      return res.status(200).json({ success: true, message: "Irrelevant event" });
+      return res
+        .status(200)
+        .json({ success: true, message: "Irrelevant event" });
     }
 
     if (event === "payment.captured" || event === "order.paid") {
       const result = await prisma.$transaction(async (tx) => {
         const existingOrder = await tx.paymentOrder.findUnique({
-          where: { razorpayOrderId: razorpayOrderId }
+          where: { razorpayOrderId: razorpayOrderId },
         });
 
         if (!existingOrder) {
@@ -258,8 +297,9 @@ exports.webhook = async (req, res) => {
           where: { id: existingOrder.id },
           data: {
             status: "CAPTURED",
-            razorpayPaymentId: razorpayPaymentId || existingOrder.razorpayPaymentId,
-          }
+            razorpayPaymentId:
+              razorpayPaymentId || existingOrder.razorpayPaymentId,
+          },
         });
 
         return { existingOrder: updatedOrder, alreadyProcessed: false };
@@ -280,13 +320,13 @@ exports.webhook = async (req, res) => {
           };
 
           await sendPaymentConfirmationEmails(orderData);
-          
+
           await prisma.paymentOrder.update({
             where: { id: result.existingOrder.id },
             data: {
               customerEmailSentAt: new Date(),
               adminEmailSentAt: new Date(),
-            }
+            },
           });
         } catch (err) {
           console.error("Failed to send emails from webhook:", err);
@@ -294,14 +334,14 @@ exports.webhook = async (req, res) => {
       }
     } else if (event === "payment.failed") {
       await prisma.paymentOrder.updateMany({
-        where: { 
+        where: {
           razorpayOrderId: razorpayOrderId,
-          status: { notIn: ["CAPTURED", "AUTHORIZED", "FAILED"] } 
+          status: { notIn: ["CAPTURED", "AUTHORIZED", "FAILED"] },
         },
-        data: { 
+        data: {
           status: "FAILED",
-          razorpayPaymentId: razorpayPaymentId 
-        }
+          razorpayPaymentId: razorpayPaymentId,
+        },
       });
     }
 

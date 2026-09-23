@@ -39,7 +39,7 @@ exports.getConversationById = async (conversationId, userId) => {
         WHERE cp.conversation_id = c.id
       ) as participants
     FROM conversations c
-    WHERE c.id = ${parseInt(conversationId)}
+    WHERE c.id = ${parseInt(conversationId, 10)}
     LIMIT 1
   `;
   return result[0];
@@ -105,7 +105,7 @@ exports.getMessages = async (conversationId, userId, page = 1, limit = 50) => {
 
   // Verify participant
   const cp = await prisma.conversation_participants.findFirst({
-    where: { conversation_id: parseInt(conversationId), user_id: userId },
+    where: { conversation_id: parseInt(conversationId, 10), user_id: userId },
   });
 
   if (!cp) {
@@ -123,11 +123,11 @@ exports.getMessages = async (conversationId, userId, page = 1, limit = 50) => {
       u.name as sender_name
     FROM messages m
     LEFT JOIN users u ON m.sender_id = u.id
-    WHERE m.conversation_id = ${parseInt(conversationId)}
+    WHERE m.conversation_id = ${parseInt(conversationId, 10)}
     AND (${cp.deleted_until}::timestamp IS NULL OR m.created_at > ${cp.deleted_until}::timestamp)
     ORDER BY m.created_at DESC
-    LIMIT ${parseInt(limit)}
-    OFFSET ${parseInt(offset)}
+    LIMIT ${parseInt(limit, 10)}
+    OFFSET ${parseInt(offset, 10)}
   `;
 
   return result.reverse(); // Newest messages last for the UI
@@ -180,7 +180,7 @@ exports.createConversation = async (userId, { type, name, participantIds }) => {
       name: type === "group" ? name : null,
       created_by: userId,
       participants: {
-        create: allParticipantIds.map((id) => ({ user_id: parseInt(id) })),
+        create: allParticipantIds.map((id) => ({ user_id: parseInt(id, 10) })),
       },
     },
     include: {
@@ -197,7 +197,7 @@ exports.createConversation = async (userId, { type, name, participantIds }) => {
   // Initialize unread counts
   await prisma.conversation_unread.createMany({
     data: allParticipantIds.map((id) => ({
-      user_id: parseInt(id),
+      user_id: parseInt(id, 10),
       conversation_id: conversation.id,
       unread_count: 0,
     })),
@@ -208,7 +208,7 @@ exports.createConversation = async (userId, { type, name, participantIds }) => {
 
 exports.addParticipants = async (conversationId, adminId, participantIds) => {
   const conversation = await prisma.conversations.findUnique({
-    where: { id: parseInt(conversationId) },
+    where: { id: parseInt(conversationId, 10) },
   });
 
   if (!conversation || conversation.type !== "group") {
@@ -220,8 +220,8 @@ exports.addParticipants = async (conversationId, adminId, participantIds) => {
   }
 
   const newParticipants = participantIds.map((id) => ({
-    conversation_id: parseInt(conversationId),
-    user_id: parseInt(id),
+    conversation_id: parseInt(conversationId, 10),
+    user_id: parseInt(id, 10),
   }));
 
   await prisma.conversation_participants.createMany({
@@ -231,8 +231,8 @@ exports.addParticipants = async (conversationId, adminId, participantIds) => {
 
   await prisma.conversation_unread.createMany({
     data: participantIds.map((id) => ({
-      user_id: parseInt(id),
-      conversation_id: parseInt(conversationId),
+      user_id: parseInt(id, 10),
+      conversation_id: parseInt(conversationId, 10),
       unread_count: 0,
     })),
     skipDuplicates: true,
@@ -243,7 +243,7 @@ exports.addParticipants = async (conversationId, adminId, participantIds) => {
 
 exports.removeParticipant = async (conversationId, adminId, userIdToRemove) => {
   const conversation = await prisma.conversations.findUnique({
-    where: { id: parseInt(conversationId) },
+    where: { id: parseInt(conversationId, 10) },
   });
 
   if (!conversation || conversation.type !== "group") {
@@ -259,29 +259,29 @@ exports.removeParticipant = async (conversationId, adminId, userIdToRemove) => {
   }
 
   const userToRemove = await prisma.users.findUnique({
-    where: { id: parseInt(userIdToRemove) },
+    where: { id: parseInt(userIdToRemove, 10) },
   });
 
   await prisma.conversation_participants.delete({
     where: {
       conversation_id_user_id: {
-        conversation_id: parseInt(conversationId),
-        user_id: parseInt(userIdToRemove),
+        conversation_id: parseInt(conversationId, 10),
+        user_id: parseInt(userIdToRemove, 10),
       },
     },
   });
 
   await prisma.conversation_unread.deleteMany({
     where: {
-      conversation_id: parseInt(conversationId),
-      user_id: parseInt(userIdToRemove),
+      conversation_id: parseInt(conversationId, 10),
+      user_id: parseInt(userIdToRemove, 10),
     },
   });
 
   // Create system message
   const systemMessage = await prisma.messages.create({
     data: {
-      conversation_id: parseInt(conversationId),
+      conversation_id: parseInt(conversationId, 10),
       content: `${userToRemove?.name || "User"} was removed from the group`,
       type: "system",
     },
@@ -299,7 +299,7 @@ exports.removeParticipant = async (conversationId, adminId, userIdToRemove) => {
 
 exports.deleteConversation = async (conversationId, userId, type) => {
   const conversation = await prisma.conversations.findUnique({
-    where: { id: parseInt(conversationId) },
+    where: { id: parseInt(conversationId, 10) },
   });
 
   if (!conversation) throw { status: 404, message: "Conversation not found" };
@@ -314,7 +314,7 @@ exports.deleteConversation = async (conversationId, userId, type) => {
     }
 
     await prisma.conversations.delete({
-      where: { id: parseInt(conversationId) },
+      where: { id: parseInt(conversationId, 10) },
     });
     return { message: "Conversation deleted for everyone" };
   } else {
@@ -322,7 +322,7 @@ exports.deleteConversation = async (conversationId, userId, type) => {
     await prisma.conversation_participants.update({
       where: {
         conversation_id_user_id: {
-          conversation_id: parseInt(conversationId),
+          conversation_id: parseInt(conversationId, 10),
           user_id: userId,
         },
       },
@@ -340,7 +340,7 @@ exports.markAsRead = async (conversationId, userId) => {
     where: {
       user_id_conversation_id: {
         user_id: userId,
-        conversation_id: parseInt(conversationId),
+        conversation_id: parseInt(conversationId, 10),
       },
     },
     data: { unread_count: 0 },

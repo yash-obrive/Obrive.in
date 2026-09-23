@@ -22,7 +22,8 @@ exports.getMyProfile = async (req, res, next) => {
     successResponse(res, await service.getMyProfile(req.user.id));
   } catch (err) {
     next(err);
-  }  console.log("USER:", req.user);
+  }
+  console.log("USER:", req.user);
 };
 
 exports.updateMyProfile = async (req, res, next) => {
@@ -30,13 +31,15 @@ exports.updateMyProfile = async (req, res, next) => {
     successResponse(res, await service.updateMyProfile(req.user.id, req.body));
   } catch (err) {
     next(err);
-  }};
+  }
+};
 
 exports.getMyAvailability = async (req, res, next) => {
   try {
     const emp = await require("../../../prisma").prisma.employee.findUnique({
       where: { userId: req.user.id },
-    });    successResponse(res, await service.getAvailability(emp.id, req.query.date));
+    });
+    successResponse(res, await service.getAvailability(emp.id, req.query.date));
   } catch (err) {
     next(err);
   }
@@ -52,7 +55,8 @@ exports.addAvailabilitySlot = async (req, res, next) => {
     );
   } catch (err) {
     next(err);
-  }};
+  }
+};
 
 exports.updateAvailabilitySlot = async (req, res, next) => {
   try {

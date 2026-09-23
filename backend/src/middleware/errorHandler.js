@@ -1,13 +1,11 @@
-module.exports = (err, req, res, next) => {
+module.exports = (err, _req, res, _next) => {
   console.error("❌ Error:", err);
 
   if (err.code === "P2002")
-    return res
-      .status(409)
-      .json({
-        success: false,
-        message: "Duplicate entry: " + err.meta?.target,
-      });
+    return res.status(409).json({
+      success: false,
+      message: `Duplicate entry: ${err.meta?.target}`,
+    });
 
   if (err.code === "P2025")
     return res

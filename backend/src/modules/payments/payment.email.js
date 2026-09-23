@@ -79,13 +79,16 @@ const TAX_DISCLAIMER_NOTE = `
   </p>`;
 
 const sendPaymentConfirmationEmails = async (orderData) => {
-  const brevoApiKey      = process.env.BREVO_API_KEY;
-  const senderEmail      = process.env.BREVO_SENDER_EMAIL || "no-reply@obrive.in";
-  const senderName       = process.env.BREVO_SENDER_NAME  || "Obrive Payments";
-  const notificationEmail = process.env.PAYMENT_NOTIFICATION_EMAIL || "account@obrive.com";
+  const brevoApiKey = process.env.BREVO_API_KEY;
+  const senderEmail = process.env.BREVO_SENDER_EMAIL || "no-reply@obrive.in";
+  const senderName = process.env.BREVO_SENDER_NAME || "Obrive Payments";
+  const notificationEmail =
+    process.env.PAYMENT_NOTIFICATION_EMAIL || "account@obrive.com";
 
   if (!brevoApiKey) {
-    console.error("Payment Email Error: BREVO_API_KEY is not configured. Skipping emails.");
+    console.error(
+      "Payment Email Error: BREVO_API_KEY is not configured. Skipping emails.",
+    );
     return;
   }
 
@@ -129,10 +132,17 @@ const sendPaymentConfirmationEmails = async (orderData) => {
             <p style="font-size:12px;color:#888;text-align:center;margin-top:20px;">Obrive Industries Private Limited</p>
           </div>`,
         sender: { name: senderName, email: senderEmail },
-        to: [{ email: orderData.customerEmail, name: orderData.customerName || "Customer" }],
+        to: [
+          {
+            email: orderData.customerEmail,
+            name: orderData.customerName || "Customer",
+          },
+        ],
         replyTo: { email: notificationEmail, name: "Obrive Support" },
       });
-      console.log(`Payment confirmation email sent to ${orderData.customerEmail}`);
+      console.log(
+        `Payment confirmation email sent to ${orderData.customerEmail}`,
+      );
     }
 
     // 2. Admin notification email
@@ -177,12 +187,18 @@ const sendPaymentConfirmationEmails = async (orderData) => {
       sender: { name: "Obrive System", email: senderEmail },
       to: [{ email: notificationEmail, name: "Obrive Admin" }],
       replyTo: orderData.customerEmail
-        ? { email: orderData.customerEmail, name: orderData.customerName || "Customer" }
+        ? {
+            email: orderData.customerEmail,
+            name: orderData.customerName || "Customer",
+          }
         : undefined,
     });
     console.log(`Admin payment notification sent to ${notificationEmail}`);
   } catch (error) {
-    console.error("Error sending payment confirmation emails via Brevo:", error);
+    console.error(
+      "Error sending payment confirmation emails via Brevo:",
+      error,
+    );
     // Do not throw — payment is verified regardless of email failure.
   }
 };

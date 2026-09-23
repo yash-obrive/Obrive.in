@@ -1,4 +1,4 @@
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 async function main() {
@@ -27,12 +27,24 @@ async function main() {
         CONSTRAINT "payment_orders_pkey" PRIMARY KEY ("id")
     );
   `);
-  await prisma.$executeRawUnsafe(`CREATE UNIQUE INDEX "payment_orders_razorpayOrderId_key" ON "payment_orders"("razorpayOrderId");`);
-  await prisma.$executeRawUnsafe(`CREATE UNIQUE INDEX "payment_orders_razorpayPaymentId_key" ON "payment_orders"("razorpayPaymentId");`);
-  await prisma.$executeRawUnsafe(`CREATE INDEX "payment_orders_razorpayOrderId_idx" ON "payment_orders"("razorpayOrderId");`);
-  await prisma.$executeRawUnsafe(`CREATE INDEX "payment_orders_razorpayPaymentId_idx" ON "payment_orders"("razorpayPaymentId");`);
-  await prisma.$executeRawUnsafe(`CREATE INDEX "payment_orders_status_idx" ON "payment_orders"("status");`);
+  await prisma.$executeRawUnsafe(
+    `CREATE UNIQUE INDEX "payment_orders_razorpayOrderId_key" ON "payment_orders"("razorpayOrderId");`,
+  );
+  await prisma.$executeRawUnsafe(
+    `CREATE UNIQUE INDEX "payment_orders_razorpayPaymentId_key" ON "payment_orders"("razorpayPaymentId");`,
+  );
+  await prisma.$executeRawUnsafe(
+    `CREATE INDEX "payment_orders_razorpayOrderId_idx" ON "payment_orders"("razorpayOrderId");`,
+  );
+  await prisma.$executeRawUnsafe(
+    `CREATE INDEX "payment_orders_razorpayPaymentId_idx" ON "payment_orders"("razorpayPaymentId");`,
+  );
+  await prisma.$executeRawUnsafe(
+    `CREATE INDEX "payment_orders_status_idx" ON "payment_orders"("status");`,
+  );
   console.log("Migration completed successfully!");
 }
 
-main().catch(console.error).finally(() => prisma.$disconnect());
+main()
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());

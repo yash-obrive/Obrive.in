@@ -1,7 +1,8 @@
 // backend/src/modules/client/client.profile.service.js
 const { prisma } = require("../../../prisma");
 
-class ClientProfileService {  // Get client profile
+class ClientProfileService {
+  // Get client profile
   async getProfile(clientId) {
     const result = await prisma.$queryRaw`
       SELECT id, userid, name, email, date_of_birth, status, created_at

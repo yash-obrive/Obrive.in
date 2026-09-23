@@ -1,6 +1,6 @@
 const { getRoomsService } = require("./getRooms.service");
 
-const getRoomsController = async (req, res, next) => {
+const getRoomsController = async (_req, res, next) => {
   try {
     const result = await getRoomsService();
 

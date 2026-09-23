@@ -2,7 +2,7 @@ const vacationsService = require("./vacations.service");
 const { successResponse, errorResponse } = require("../../utils/apiResponse");
 
 class VacationsController {
-  async getEmployeesWithLeaves(req, res, next) {
+  async getEmployeesWithLeaves(_req, res, next) {
     try {
       const employees = await vacationsService.getAllEmployeesWithLeaves();
       return successResponse(res, employees, "Vacations fetched successfully");

@@ -24,7 +24,7 @@ import {
   XCircle,
 } from "lucide-react";
 import type React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useDashboardData } from "@/app/(dashboard)/dashboard/useDashboardData";
 import ConfirmationAlert from "@/components/ConfirmationAlert";
 import { useSocket } from "@/context/SocketContext";
@@ -103,18 +103,92 @@ export default function Messenger() {
     name: string;
   } | null>(null);
 
+  const fetchConversations = useCallback(async () => {
+    try {
+      const response = await apiFetch("/chat/conversations");
+      if (response.ok) {
+        const res = await response.json();
+        setConversations(Array.isArray(res.data) ? res.data : []);
+      } else {
+        setConversations([]);
+      }
+    } catch (error) {
+      console.error("Failed to fetch conversations", error);
+      setConversations([]);
+    }
+  }, []);
+
+  const fetchAllUsers = useCallback(async () => {
+    try {
+      const response = await apiFetch("/auth/users");
+      if (response.ok) {
+        const res = await response.json();
+        setAllUsers(Array.isArray(res.data) ? res.data : []);
+      } else {
+        setAllUsers([]);
+      }
+    } catch (error) {
+      console.error("Failed to fetch users", error);
+      setAllUsers([]);
+    }
+  }, []);
+
+  const loadInitialData = useCallback(async () => {
+    setIsLoading(true);
+    await Promise.all([fetchConversations(), fetchAllUsers()]);
+    setIsLoading(false);
+  }, [fetchConversations, fetchAllUsers]);
+
+  const scrollToBottom = useCallback(() => {
+    setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }, []);
+
+  const fetchMessages = useCallback(async (convId: number) => {
+    try {
+      const response = await apiFetch(`/chat/conversations/${convId}/messages`);
+      if (response.ok) {
+        const res = await response.json();
+        setMessages(Array.isArray(res.data) ? res.data : []);
+        scrollToBottom();
+      } else {
+        setMessages([]);
+      }
+    } catch (error) {
+      console.error("Failed to fetch messages", error);
+      setMessages([]);
+    }
+  }, [scrollToBottom]);
+
+  const markAsRead = useCallback(async (convId: number) => {
+    try {
+      await apiFetch(`/chat/conversations/${convId}/read`, { method: "POST" });
+      setConversations((prev) =>
+        (prev || []).map((c) =>
+          c.id === convId ? { ...c, unread_count: 0 } : c,
+        ),
+      );
+    } catch (error) {
+      console.error("Failed to mark as read", error);
+    }
+  }, []);
+
+
+
+
+
+
+
+
+
+
   useEffect(() => {
     notificationSound.current = new Audio(
       "https://assets.mixkit.co/active_storage/sfx/2354/2354-preview.mp3",
     );
     loadInitialData();
   }, [loadInitialData]);
-
-  const loadInitialData = async () => {
-    setIsLoading(true);
-    await Promise.all([fetchConversations(), fetchAllUsers()]);
-    setIsLoading(false);
-  };
 
   useEffect(() => {
     if (activeConversation?.id) {
@@ -204,65 +278,6 @@ export default function Messenger() {
     };
   }, [socket, activeConversation, scrollToBottom]);
 
-  const fetchConversations = async () => {
-    try {
-      const response = await apiFetch("/chat/conversations");
-      if (response.ok) {
-        const res = await response.json();
-        setConversations(Array.isArray(res.data) ? res.data : []);
-      } else {
-        setConversations([]);
-      }
-    } catch (error) {
-      console.error("Failed to fetch conversations", error);
-      setConversations([]);
-    }
-  };
-
-  const fetchAllUsers = async () => {
-    try {
-      const response = await apiFetch("/auth/users");
-      if (response.ok) {
-        const res = await response.json();
-        setAllUsers(Array.isArray(res.data) ? res.data : []);
-      } else {
-        setAllUsers([]);
-      }
-    } catch (error) {
-      console.error("Failed to fetch users", error);
-      setAllUsers([]);
-    }
-  };
-
-  const fetchMessages = async (convId: number) => {
-    try {
-      const response = await apiFetch(`/chat/conversations/${convId}/messages`);
-      if (response.ok) {
-        const res = await response.json();
-        setMessages(Array.isArray(res.data) ? res.data : []);
-        scrollToBottom();
-      } else {
-        setMessages([]);
-      }
-    } catch (error) {
-      console.error("Failed to fetch messages", error);
-      setMessages([]);
-    }
-  };
-
-  const markAsRead = async (convId: number) => {
-    try {
-      await apiFetch(`/chat/conversations/${convId}/read`, { method: "POST" });
-      setConversations((prev) =>
-        (prev || []).map((c) =>
-          c.id === convId ? { ...c, unread_count: 0 } : c,
-        ),
-      );
-    } catch (error) {
-      console.error("Failed to mark as read", error);
-    }
-  };
-
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newMessage.trim() || !activeConversation?.id) return;
@@ -311,11 +326,6 @@ export default function Messenger() {
     }
   };
 
-  const scrollToBottom = () => {
-    setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  };
 
   const handleStartDirectMessage = async (userId: number) => {
     try {

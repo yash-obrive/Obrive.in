@@ -97,7 +97,7 @@ exports.getCurrentUser = async (req, res, next) => {
   }
 };
 
-exports.getAllUsers = async (req, res, next) => {
+exports.getAllUsers = async (_req, res, next) => {
   try {
     const result = await service.getAllUsers();
     successResponse(res, result, "Users fetched successfully");

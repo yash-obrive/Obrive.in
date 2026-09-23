@@ -66,7 +66,8 @@ class LeavesService {
           req.end_date,
           startOfMonth,
           endOfMonth,
-        );      }
+        );
+      }
     });
 
     return {

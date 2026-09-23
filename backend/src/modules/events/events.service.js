@@ -212,6 +212,7 @@ class EventsService {
       ...event,
       id: Number(event.id),
     }));
-  }}
+  }
+}
 
 module.exports = new EventsService();

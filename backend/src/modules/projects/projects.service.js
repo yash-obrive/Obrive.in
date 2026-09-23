@@ -339,7 +339,7 @@ class ProjectService {
 
   async deleteProject(projectId, userId) {
     const targetProject = await prisma.projects.findUnique({
-      where: { id: parseInt(projectId) },
+      where: { id: parseInt(projectId, 10) },
     });
 
     if (!targetProject) {
@@ -347,7 +347,7 @@ class ProjectService {
     }
 
     const requestingUser = await prisma.users.findUnique({
-      where: { id: parseInt(userId) },
+      where: { id: parseInt(userId, 10) },
     });
 
     if (!requestingUser) {
@@ -364,15 +364,15 @@ class ProjectService {
 
     await prisma.$transaction(async (tx) => {
       await tx.tasks.deleteMany({
-        where: { project_id: parseInt(projectId) },
+        where: { project_id: parseInt(projectId, 10) },
       });
 
       await tx.project_assignments.deleteMany({
-        where: { project_id: parseInt(projectId) },
+        where: { project_id: parseInt(projectId, 10) },
       });
 
       await tx.projects.delete({
-        where: { id: parseInt(projectId) },
+        where: { id: parseInt(projectId, 10) },
       });
     });
 
@@ -381,7 +381,7 @@ class ProjectService {
 
   async updateProjectProgress(projectId, progress, userId) {
     const project = await prisma.projects.findUnique({
-      where: { id: parseInt(projectId) },
+      where: { id: parseInt(projectId, 10) },
       include: {
         project_assignments: true,
       },
@@ -401,14 +401,14 @@ class ProjectService {
     }
 
     return await prisma.projects.update({
-      where: { id: parseInt(projectId) },
-      data: { progress: parseInt(progress) },
+      where: { id: parseInt(projectId, 10) },
+      data: { progress: parseInt(progress, 10) },
     });
   }
 
   async getProjectStatus(projectId, progress, userId) {
     const project = await prisma.projects.findUnique({
-      where: { id: parseInt(projectId) },
+      where: { id: parseInt(projectId, 10) },
       include: {
         project_assignments: true,
       },
@@ -426,15 +426,15 @@ class ProjectService {
     }
 
     return await prisma.projects.update({
-      where: { id: parseInt(projectId) },
-      data: { progress: parseInt(progress) },
+      where: { id: parseInt(projectId, 10) },
+      data: { progress: parseInt(progress, 10) },
     });
   }
 
   async updateProject(id, projectData, userId) {
     // 1. Check if project exists
     const targetProject = await prisma.projects.findUnique({
-      where: { id: parseInt(id) },
+      where: { id: parseInt(id, 10) },
     });
 
     if (!targetProject) {
@@ -443,7 +443,7 @@ class ProjectService {
 
     // 2. Check User Role
     const requestingUser = await prisma.users.findUnique({
-      where: { id: parseInt(userId) },
+      where: { id: parseInt(userId, 10) },
     });
 
     if (!requestingUser) {
@@ -480,10 +480,10 @@ class ProjectService {
 
     // Data Types Validation
     if (cleanData.leader_id) {
-      cleanData.leader_id = parseInt(cleanData.leader_id);
+      cleanData.leader_id = parseInt(cleanData.leader_id, 10);
     }
     if (cleanData.progress) {
-      cleanData.progress = parseInt(cleanData.progress);
+      cleanData.progress = parseInt(cleanData.progress, 10);
     }
     if (cleanData.deadline) {
       cleanData.deadline = new Date(cleanData.deadline);
@@ -492,13 +492,13 @@ class ProjectService {
     // 5. Final Prisma Query
     const result = await prisma.$transaction(async (tx) => {
       const updatedProject = await tx.projects.update({
-        where: { id: parseInt(id) },
+        where: { id: parseInt(id, 10) },
         data: cleanData,
       });
 
       if (Array.isArray(team_members)) {
         await tx.project_assignments.deleteMany({
-          where: { project_id: parseInt(id) },
+          where: { project_id: parseInt(id, 10) },
         });
 
         const normalizedTeamMembers = team_members
@@ -508,7 +508,7 @@ class ProjectService {
         if (normalizedTeamMembers.length > 0) {
           await tx.project_assignments.createMany({
             data: normalizedTeamMembers.map((employeeId) => ({
-              project_id: parseInt(id),
+              project_id: parseInt(id, 10),
               employee_id: employeeId,
             })),
             skipDuplicates: true,
@@ -529,8 +529,8 @@ class ProjectService {
     }
 
     return await prisma.projects.update({
-      where: { id: parseInt(projectId) },
-      data: { leader_id: parseInt(leaderId) },
+      where: { id: parseInt(projectId, 10) },
+      data: { leader_id: parseInt(leaderId, 10) },
     });
   }
 

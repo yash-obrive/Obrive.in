@@ -1,99 +1,183 @@
-import fs from 'fs';
-import path from 'path';
-import ts from 'typescript';
-import MagicString from 'magic-string';
-import { fromMarkdown } from 'mdast-util-from-markdown';
-import { mdxFromMarkdown } from 'mdast-util-mdx';
-import { mdxjs } from 'micromark-extension-mdxjs';
+import fs from "node:fs";
+import path from "node:path";
+import MagicString from "magic-string";
+import { fromMarkdown } from "mdast-util-from-markdown";
+import { mdxFromMarkdown } from "mdast-util-mdx";
+import { mdxjs } from "micromark-extension-mdxjs";
+import ts from "typescript";
 
 const MIGRATION_MAP = {
-  'ResourceObrivesApproachTable': { targetItemTag: 'ApproachPhaseItem', arrayProp: 'phases', contentProp: 'action', isArray: true, jsxPropsToChildren: { title: 'ApproachTableTitle', description: 'ApproachTableDescription' } },
-  'ObrivesApproachTable': { targetItemTag: 'ApproachPhaseItem', arrayProp: 'phases', contentProp: 'action', isArray: true, jsxPropsToChildren: { title: 'ApproachTableTitle', description: 'ApproachTableDescription' } },
-  'CompanyInfoApproachTable': { targetItemTag: 'ApproachPhaseItem', arrayProp: 'phases', contentProp: 'action', isArray: true, jsxPropsToChildren: { title: 'ApproachTableTitle', description: 'ApproachTableDescription' } },
-  'ApproachTable': { targetItemTag: 'ApproachPhaseItem', arrayProp: 'phases', contentProp: 'action', isArray: true, jsxPropsToChildren: { title: 'ApproachTableTitle', description: 'ApproachTableDescription' } },
+  ResourceObrivesApproachTable: {
+    targetItemTag: "ApproachPhaseItem",
+    arrayProp: "phases",
+    contentProp: "action",
+    isArray: true,
+    jsxPropsToChildren: {
+      title: "ApproachTableTitle",
+      description: "ApproachTableDescription",
+    },
+  },
+  ObrivesApproachTable: {
+    targetItemTag: "ApproachPhaseItem",
+    arrayProp: "phases",
+    contentProp: "action",
+    isArray: true,
+    jsxPropsToChildren: {
+      title: "ApproachTableTitle",
+      description: "ApproachTableDescription",
+    },
+  },
+  CompanyInfoApproachTable: {
+    targetItemTag: "ApproachPhaseItem",
+    arrayProp: "phases",
+    contentProp: "action",
+    isArray: true,
+    jsxPropsToChildren: {
+      title: "ApproachTableTitle",
+      description: "ApproachTableDescription",
+    },
+  },
+  ApproachTable: {
+    targetItemTag: "ApproachPhaseItem",
+    arrayProp: "phases",
+    contentProp: "action",
+    isArray: true,
+    jsxPropsToChildren: {
+      title: "ApproachTableTitle",
+      description: "ApproachTableDescription",
+    },
+  },
 };
 
-function transformJsxSnippet(jsxString, config) {
-  const sourceFile = ts.createSourceFile('snippet.tsx', jsxString, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+function transformJsxSnippet(jsxString, _config) {
+  const sourceFile = ts.createSourceFile(
+    "snippet.tsx",
+    jsxString,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TSX,
+  );
   let modified = false;
 
   function extractContent(expr) {
     while (ts.isParenthesizedExpression(expr)) expr = expr.expression;
     if (ts.isJsxFragment(expr)) {
-      return expr.children.map(c => {
+      return expr.children.map((c) => {
         if (ts.isJsxText(c)) {
-          const dedented = c.text.split('\n').map(line => line.replace(/^[ \t]+/, '')).join('\n');
+          const dedented = c.text
+            .split("\n")
+            .map((line) => line.replace(/^[ \t]+/, ""))
+            .join("\n");
           return ts.factory.createJsxText(dedented);
         }
         return c;
       });
     } else if (ts.isJsxElement(expr)) return [expr];
-    else if (ts.isStringLiteral(expr) || ts.isNoSubstitutionTemplateLiteral(expr)) return [ts.factory.createJsxText(expr.text)];
+    else if (
+      ts.isStringLiteral(expr) ||
+      ts.isNoSubstitutionTemplateLiteral(expr)
+    )
+      return [ts.factory.createJsxText(expr.text)];
     else return [ts.factory.createJsxExpression(undefined, expr)];
   }
 
   function visit(node) {
     if (ts.isJsxElement(node) || ts.isJsxSelfClosingElement(node)) {
-      const tagName = ts.isJsxElement(node) ? node.openingElement.tagName.getText() : node.tagName.getText();
+      const tagName = ts.isJsxElement(node)
+        ? node.openingElement.tagName.getText()
+        : node.tagName.getText();
       const cfg = MIGRATION_MAP[tagName];
-      
+
       if (cfg) {
-        const attributes = ts.isJsxElement(node) ? node.openingElement.attributes : node.attributes;
-        let newAttributes = [];
+        const attributes = ts.isJsxElement(node)
+          ? node.openingElement.attributes
+          : node.attributes;
+        const newAttributes = [];
         let newChildren = ts.isJsxElement(node) ? [...node.children] : [];
         let transformed = false;
 
-        let extraChildren = []; // for title/description
+        const extraChildren = []; // for title/description
 
-        attributes.properties.forEach(attr => {
-          if (cfg.isArray && ts.isJsxAttribute(attr) && attr.name.getText() === cfg.arrayProp) {
+        attributes.properties.forEach((attr) => {
+          if (
+            cfg.isArray &&
+            ts.isJsxAttribute(attr) &&
+            attr.name.getText() === cfg.arrayProp
+          ) {
             transformed = true;
             const initializer = attr.initializer;
             let expr = initializer;
             if (ts.isJsxExpression(initializer)) expr = initializer.expression;
-            
+
             if (ts.isArrayLiteralExpression(expr)) {
-              expr.elements.forEach((element, index) => {
+              expr.elements.forEach((element, _index) => {
                 if (ts.isObjectLiteralExpression(element)) {
-                  let itemProps = [];
-                  let itemChildren = [];
-                  
-                  element.properties.forEach(prop => {
+                  const itemProps = [];
+                  const itemChildren = [];
+
+                  element.properties.forEach((prop) => {
                     if (ts.isPropertyAssignment(prop)) {
                       const propName = prop.name.getText();
                       if (propName === cfg.contentProp) {
                         itemChildren.push(...extractContent(prop.initializer));
                       } else {
-                        let attrValue = ts.isStringLiteral(prop.initializer) ? prop.initializer : ts.factory.createJsxExpression(undefined, prop.initializer);
-                        itemProps.push(ts.factory.createJsxAttribute(ts.factory.createIdentifier(propName), attrValue));
+                        const attrValue = ts.isStringLiteral(prop.initializer)
+                          ? prop.initializer
+                          : ts.factory.createJsxExpression(
+                              undefined,
+                              prop.initializer,
+                            );
+                        itemProps.push(
+                          ts.factory.createJsxAttribute(
+                            ts.factory.createIdentifier(propName),
+                            attrValue,
+                          ),
+                        );
                       }
                     }
                   });
                   const itemElement = ts.factory.createJsxElement(
-                    ts.factory.createJsxOpeningElement(ts.factory.createIdentifier(cfg.targetItemTag), undefined, ts.factory.createJsxAttributes(itemProps)),
+                    ts.factory.createJsxOpeningElement(
+                      ts.factory.createIdentifier(cfg.targetItemTag),
+                      undefined,
+                      ts.factory.createJsxAttributes(itemProps),
+                    ),
                     itemChildren,
-                    ts.factory.createJsxClosingElement(ts.factory.createIdentifier(cfg.targetItemTag))
+                    ts.factory.createJsxClosingElement(
+                      ts.factory.createIdentifier(cfg.targetItemTag),
+                    ),
                   );
-                  newChildren.push(ts.factory.createJsxText('\n'));
+                  newChildren.push(ts.factory.createJsxText("\n"));
                   newChildren.push(itemElement);
-                  newChildren.push(ts.factory.createJsxText('\n'));
+                  newChildren.push(ts.factory.createJsxText("\n"));
                 }
               });
             }
-          } else if (cfg.jsxPropsToChildren && ts.isJsxAttribute(attr) && cfg.jsxPropsToChildren[attr.name.getText()] && ts.isJsxExpression(attr.initializer)) {
+          } else if (
+            cfg.jsxPropsToChildren &&
+            ts.isJsxAttribute(attr) &&
+            cfg.jsxPropsToChildren[attr.name.getText()] &&
+            ts.isJsxExpression(attr.initializer)
+          ) {
             // It's a JS expression like title={<>...</>}
             transformed = true;
             const tag = cfg.jsxPropsToChildren[attr.name.getText()];
             const content = extractContent(attr.initializer.expression);
-            
+
             const itemElement = ts.factory.createJsxElement(
-              ts.factory.createJsxOpeningElement(ts.factory.createIdentifier(tag), undefined, ts.factory.createJsxAttributes([])),
+              ts.factory.createJsxOpeningElement(
+                ts.factory.createIdentifier(tag),
+                undefined,
+                ts.factory.createJsxAttributes([]),
+              ),
               content,
-              ts.factory.createJsxClosingElement(ts.factory.createIdentifier(tag))
+              ts.factory.createJsxClosingElement(
+                ts.factory.createIdentifier(tag),
+              ),
             );
-            extraChildren.push(ts.factory.createJsxText('\n'));
+            extraChildren.push(ts.factory.createJsxText("\n"));
             extraChildren.push(itemElement);
-            extraChildren.push(ts.factory.createJsxText('\n'));
+            extraChildren.push(ts.factory.createJsxText("\n"));
           } else {
             newAttributes.push(attr);
           }
@@ -104,9 +188,15 @@ function transformJsxSnippet(jsxString, config) {
           // Prepend the extra children (title, description) before the rows
           newChildren = [...extraChildren, ...newChildren];
           return ts.factory.createJsxElement(
-            ts.factory.createJsxOpeningElement(ts.factory.createIdentifier(tagName), undefined, ts.factory.createJsxAttributes(newAttributes)),
+            ts.factory.createJsxOpeningElement(
+              ts.factory.createIdentifier(tagName),
+              undefined,
+              ts.factory.createJsxAttributes(newAttributes),
+            ),
             newChildren,
-            ts.factory.createJsxClosingElement(ts.factory.createIdentifier(tagName))
+            ts.factory.createJsxClosingElement(
+              ts.factory.createIdentifier(tagName),
+            ),
           );
         }
       }
@@ -117,17 +207,22 @@ function transformJsxSnippet(jsxString, config) {
   const result = ts.visitNode(sourceFile, visit);
   if (modified) {
     const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
-    return printer.printNode(ts.EmitHint.Unspecified, result.statements[0], sourceFile).replace(/;$/, '');
+    return printer
+      .printNode(ts.EmitHint.Unspecified, result.statements[0], sourceFile)
+      .replace(/;$/, "");
   }
   return null;
 }
 
 function processFile(filePath) {
-  const code = fs.readFileSync(filePath, 'utf8');
+  const code = fs.readFileSync(filePath, "utf8");
   let ast;
   try {
-    ast = fromMarkdown(code, { extensions: [mdxjs()], mdastExtensions: [mdxFromMarkdown()] });
-  } catch(e) {
+    ast = fromMarkdown(code, {
+      extensions: [mdxjs()],
+      mdastExtensions: [mdxFromMarkdown()],
+    });
+  } catch (e) {
     console.error("Error parsing", filePath, e);
     return;
   }
@@ -136,13 +231,26 @@ function processFile(filePath) {
   let changed = false;
 
   const traverse = (node) => {
-    if (node.type === 'mdxJsxFlowElement' || node.type === 'mdxJsxTextElement') {
+    if (
+      node.type === "mdxJsxFlowElement" ||
+      node.type === "mdxJsxTextElement"
+    ) {
       if (MIGRATION_MAP[node.name]) {
-        const snippet = code.substring(node.position.start.offset, node.position.end.offset);
-        const transformedSnippet = transformJsxSnippet(snippet, MIGRATION_MAP[node.name]);
+        const snippet = code.substring(
+          node.position.start.offset,
+          node.position.end.offset,
+        );
+        const transformedSnippet = transformJsxSnippet(
+          snippet,
+          MIGRATION_MAP[node.name],
+        );
         if (transformedSnippet) {
           changed = true;
-          ms.overwrite(node.position.start.offset, node.position.end.offset, transformedSnippet);
+          ms.overwrite(
+            node.position.start.offset,
+            node.position.end.offset,
+            transformedSnippet,
+          );
         }
       }
     }
@@ -164,7 +272,7 @@ function scanDirectory(dir, fileList = []) {
     const filePath = path.join(dir, file);
     if (fs.statSync(filePath).isDirectory()) {
       scanDirectory(filePath, fileList);
-    } else if (filePath.endsWith('.mdx')) {
+    } else if (filePath.endsWith(".mdx")) {
       fileList.push(filePath);
     }
   }
@@ -172,16 +280,17 @@ function scanDirectory(dir, fileList = []) {
 }
 
 const contentDirs = [
-  'src/content/resources',
-  'src/content/career',
-  'src/content/security',
-  'src/content/support',
-  'src/content/faq',
-  'src/content/legal'
+  "src/content/resources",
+  "src/content/career",
+  "src/content/security",
+  "src/content/support",
+  "src/content/faq",
+  "src/content/legal",
 ];
 
-let mdxFiles = [];
-for (const dir of contentDirs) scanDirectory(path.resolve(process.cwd(), dir), mdxFiles);
+const mdxFiles = [];
+for (const dir of contentDirs)
+  scanDirectory(path.resolve(process.cwd(), dir), mdxFiles);
 
 mdxFiles.forEach(processFile);
 console.log("Batch 3 migration completed.");
