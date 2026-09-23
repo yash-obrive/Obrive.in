@@ -79,12 +79,10 @@ export default function Footer() {
                 Terms & Accessibility
               </Link>
               <Link
-                href="/global"
+                href="/location"
                 className="hover:text-primary transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
               >
-                Global Market
+                Pan India
               </Link>
             </div>
 
