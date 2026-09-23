@@ -42,27 +42,27 @@ export default function AssignEmployeesDialog({
   const currentMembers = project?.team_members || [];
 
   useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        setLoading(true);
+        const response = await apiFetch("/supervisor/employees", {
+          method: "GET",
+        });
+        const result = await response.json();
+        if (result.success) {
+          setEmployees(result.data || []);
+        }
+      } catch (error) {
+        console.error("Error fetching employees:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     if (open) {
       fetchEmployees();
     }
-  }, [open, fetchEmployees]);
-
-  const fetchEmployees = async () => {
-    try {
-      setLoading(true);
-      const response = await apiFetch("/supervisor/employees", {
-        method: "GET",
-      });
-      const result = await response.json();
-      if (result.success) {
-        setEmployees(result.data || []);
-      }
-    } catch (error) {
-      console.error("Error fetching employees:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [open]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
