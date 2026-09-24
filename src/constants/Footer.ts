@@ -56,7 +56,7 @@ export const GROUPS = [
       { label: "Community Forum", href: "/community-forum" },
       { label: "Site Map", href: "/site-map" },
     ],
-    bottomLink: { label: "Global Market", href: "/global" },
+    bottomLink: { label: "Pan India", href: "/location" },
   },
 ] as const;
 

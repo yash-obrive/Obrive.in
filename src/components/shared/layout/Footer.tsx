@@ -89,12 +89,6 @@ export default function Footer() {
               >
                 Terms & Accessibility
               </Link>
-              <Link
-                href="/location"
-                className="hover:text-primary transition-colors"
-              >
-                Pan India
-              </Link>
             </div>
 
             <div className="flex items-center gap-4">
