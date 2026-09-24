@@ -28,25 +28,9 @@ export async function generateMetadata({
     };
   }
 
-  const blockedSlugs = new Set([
-    "retail",
-    "healthcare",
-    "manufacturing",
-    "architecture-engineering",
-    "education",
-    "enterprise",
-  ]);
-
-  // Returning baseline metadata using the exact pattern established in the Solutions fallback
   return {
     title: `${industryData.hero.title} | Obrive`,
     description: industryData.hero.description,
-    ...(blockedSlugs.has(slug) && {
-      robots: {
-        index: false,
-        follow: true,
-      },
-    }),
   };
 }
 

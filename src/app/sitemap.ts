@@ -76,17 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   // Industries pages per country
-  const blockedIndustrySlugs = new Set([
-    "retail",
-    "healthcare",
-    "manufacturing",
-    "architecture-engineering",
-    "education",
-    "enterprise",
-  ]);
-  const industrySlugs = getIndustrySlugs().filter(
-    (slug) => !blockedIndustrySlugs.has(slug),
-  );
+  const industrySlugs = getIndustrySlugs();
   const localizedIndustryPages: MetadataRoute.Sitemap = activeCountries.flatMap(
     (country) =>
       industrySlugs.map((slug) => ({
@@ -99,14 +89,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   // Use Cases pages per country
-  const blockedUseCaseSlugs = new Set([
-    "3d-product-configuration",
-    "digital-twins",
-    "remote-assistance",
-  ]);
-  const useCaseSlugs = getUseCaseSlugs().filter(
-    (slug) => !blockedUseCaseSlugs.has(slug),
-  );
+  const useCaseSlugs = getUseCaseSlugs();
   const localizedUseCasePages: MetadataRoute.Sitemap = activeCountries.flatMap(
     (country) =>
       useCaseSlugs.map((slug) => ({
@@ -119,15 +102,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
 
   // Technology pages per country
-  const blockedTechnologySlugs = new Set([
-    "mixed-reality",
-    "extended-reality",
-    "digital-twins",
-    "ai-immersive-technology",
-  ]);
-  const technologySlugs = getTechnologySlugs().filter(
-    (slug) => !blockedTechnologySlugs.has(slug),
-  );
+  const technologySlugs = getTechnologySlugs();
   const localizedTechnologyPages: MetadataRoute.Sitemap =
     activeCountries.flatMap((country) =>
       technologySlugs.map((slug) => ({

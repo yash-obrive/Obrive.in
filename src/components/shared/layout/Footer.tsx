@@ -9,6 +9,7 @@ import DynamicFooterCard from "./DynamicFooterCard";
 import FooterContact from "./FooterContact";
 
 export default function Footer() {
+  const maxItems = Math.max(...GROUPS.map((g) => g.items.length)) + 1;
   const cell =
     "border border-primary/30 rounded-lg text-xs p-3 text-sm hover:text-white transition-colors duration-500 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-primary before:scale-y-0 before:origin-center hover:before:scale-y-100 before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.19,1,0.22,1)] before:-z-10 z-10";
 
@@ -42,16 +43,26 @@ export default function Footer() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={cell}
+                    className={`${cell}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {item.label}
                   </Link>
                 ))}
-                <div className="border border-primary/30 rounded-lg p-5  text-xs text-primary/80"></div>
-                <div className="border border-primary/30 rounded-lg p-5  text-xs text-primary/80"></div>
-                <div className="border border-primary/30 rounded-lg p-5  text-xs text-primary/80"></div>
+                {Array.from({ length: maxItems - group.items.length - (group.bottomLink ? 1 : 0) }).map((_, i) => (
+                  <div key={i} className="border border-primary/30 rounded-lg p-5 text-xs text-primary/80"></div>
+                ))}
+                {group.bottomLink && (
+                  <Link
+                    href={group.bottomLink.href}
+                    className={`${cell}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {group.bottomLink.label}
+                  </Link>
+                )}
               </div>
             ))}
 

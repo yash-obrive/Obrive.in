@@ -5,23 +5,20 @@ export const GROUPS = [
     title: "Products",
     items: [
       { label: "Obpark", href: "/products/obpark" },
-      { label: "Obnest", href: "/products/obnest" },
+      { label: "Obcrew", href: "/products/obcrew" },
       { label: "Obnavi", href: "/products/obnavi" },
+      { label: "Obnest", href: "/products/obnest" },
       { label: "Obmove", href: "/products/obmove" },
     ],
+    bottomLink: { label: "Obrive Resources", href: "/resources" },
   },
   {
-    title: "Company",
+    title: "What We Build",
     items: [
-      { label: "About Obrive", href: "/about" },
-      { label: "Join The Otters", href: "/career" },
-      { label: "White Label Partner", href: "/partners" },
-      { label: "Site Map", href: "/site-map" },
-    ],
-  },
-  {
-    title: "Our Services",
-    items: [
+      {
+        label: "Spatial Computing",
+        href: "/services/spatial-computing-app-development",
+      },
       {
         label: "AR Development",
         href: "/services/augmented-reality-development",
@@ -30,21 +27,36 @@ export const GROUPS = [
         label: "VR Development",
         href: "/services/virtual-reality-development",
       },
-      { label: "3D Modelling", href: "/services/3d-design-development" },
       {
-        label: "Spatial Computing",
-        href: "/services/spatial-computing-app-development",
+        label: "MR Development",
+        href: "/services/mixed-reality-development",
       },
+      { label: "3D Development", href: "/services/3d-design-development" },
     ],
+    bottomLink: { label: "Obrive Help Desk", href: "/support/help-center" },
   },
   {
-    title: "Resources",
+    title: "Industries",
     items: [
-      { label: "Obrive Resources", href: "/resources" },
-      { label: "Obrive Help Desk", href: "/support/help-center" },
-      { label: "Community Forum", href: "/community-forum" },
-      { label: "Obrive Legal", href: "/legal" },
+      { label: "Real Estate", href: "/industries/real-estate" },
+      { label: "Automotive", href: "/industries/automotive" },
+      { label: "Retail", href: "/industries/retail" },
+      { label: "Manufacturing", href: "/industries/manufacturing" },
+      { label: "Healthcare", href: "/industries/healthcare" },
+      { label: "Education", href: "/industries/education" },
     ],
+    bottomLink: { label: "Obrive Legal", href: "/legal" },
+  },
+  {
+    title: "Company",
+    items: [
+      { label: "About Obrive", href: "/about" },
+      { label: "White Label Partners", href: "/partners" },
+      { label: "Join the Otters", href: "/career" },
+      { label: "Community Forum", href: "/community-forum" },
+      { label: "Site Map", href: "/site-map" },
+    ],
+    bottomLink: { label: "Global Market", href: "/global" },
   },
 ] as const;
 
@@ -77,7 +89,7 @@ export const SOCIAL_LINKS = [
 ] as const;
 
 export const PRIMARY_FOOTER_CARD = {
-  title: "Automate Your Immersive Workflow",
+  title: "THE FUTURE ISN'T FLAT.\nIT'S SPATIAL.",
   description:
     "Simplify the creation and deployment of Augmented Reality, Virtual Reality, Mixed Reality, 3D design, and Spatial Computing projects through automated asset integration, real-time rendering, and seamless collaboration—all designed to bring your vision to life faster and smarter.",
 } as const;

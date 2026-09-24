@@ -142,7 +142,7 @@ export default function Home() {
       <SmoothScrollProvider>
         <div className="flex flex-col items-center">
           {/* hero content, buttons, and animation combined to fix spacing */}
-          <FullWidthSection backgroundColor="accent" className="pt-32 pb-16">
+          <FullWidthSection backgroundColor="accent" className="pt-28 pb-10">
             <div className="text-center flex flex-col items-center gap-6 mt-4">
               <FadeInOnLoad delay={0.15}>
                 <h1
@@ -152,13 +152,8 @@ export default function Home() {
                 </h1>
               </FadeInOnLoad>
               <FadeInOnLoad delay={0.3}>
-                <p className="text-sm sm:text-base text-center max-w-3xl px-4 font-medium leading-relaxed">
-                  Obrive Industries is an immersive technology company
-                  delivering enterprise-grade Augmented Reality (AR), Virtual
-                  Reality (VR), Mixed Reality (MR), 3D design, and spatial
-                  computing solutions. We help forward-thinking organizations
-                  modernize operations, elevate client experiences, and unlock
-                  interactive digital realities.
+                <p className="text-sm sm:text-md text-center max-w-4xl px-4 font-medium leading-relaxed">
+                  We build the spatial layer between the physical and digital worlds. We combine Spatial Computing, Artificial Intelligence, Augmented Reality, Virtual Reality, Mixed Reality, 3D, Digital Twins, Computer Vision and intelligent software to transform how people experience places, products, services and information. The future isn't something we wait for. It's something we build.
                 </p>
               </FadeInOnLoad>
 
@@ -194,7 +189,7 @@ export default function Home() {
           </FullWidthSection>
 
           {/* brand-line */}
-          <FullWidthSection backgroundColor="accent" className="py-16">
+          <FullWidthSection backgroundColor="accent" className="py-6">
             <FadeInOnView>
               <div className="flex flex-col sm:flex-row pb-8 border-b-2 border-primary/40 sm:items-center max-sm:items-start justify-between w-full gap-4">
                 <Link href="/resources">
@@ -206,15 +201,14 @@ export default function Home() {
                   </Button>
                 </Link>
                 <p className="uppercase text-xs font-semibold max-sm:text-left text-primary text-center sm:text-right">
-                  Powering Enterprise Digital Transformation with Immersive
-                  Technology
+                  TURNING COMPLEX BUSINESS CHALLENGES INTO INTELLIGENT EXPERIENCES.
                 </p>
               </div>
             </FadeInOnView>
           </FullWidthSection>
 
           {/* mission */}
-          <FullWidthSection backgroundColor="accent" className="py-16">
+          <FullWidthSection backgroundColor="accent" className="pt-10">
             <FadeInOnView>
               <div className="flex relative w-full overflow-hidden gap-10 flex-col">
                 <div className="absolute top-20 left-80">
@@ -230,10 +224,7 @@ export default function Home() {
                     <h2
                       className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl lg:text-4xl leading-tight`}
                     >
-                      Empower teams. Captivate audiences. Obrive enables
-                      enterprises to transform operations through immersive
-                      technology—turning complex concepts into interactive
-                      realities.
+                      THE WORLD IS BECOMING SPATIAL. Screens are becoming environments. Products are becoming experiences. Buildings are becoming intelligent. Cities are becoming interactive. And businesses are moving beyond the flat digital world.
                     </h2>
                     <Link href="/about">
                       <Button
@@ -247,21 +238,17 @@ export default function Home() {
                   </div>
                 </FadeInOnView>
 
-                <div className="my-16">
+                <div className="my-10">
                   <FadeInOnView>
                     <ObriveVideo />
                   </FadeInOnView>
                   <FadeInOnView>
                     <div
-                      className="mt-6 max-w-4xl w-full text-sm px-4 sm:px-14"
+                      className="mt-6 max-w-3xl w-full text-sm px-4 sm:px-14"
                       id="mission"
                     >
                       <p>
-                        Stay ahead of the future—create immersive Augmented
-                        Reality, Virtual Reality, and Mixed Reality experiences,
-                        design stunning 3D environments, and harness the power
-                        of spatial computing—all from one innovative platform
-                        with Obrive Industries.
+                        Obrive brings Augmented Reality, Virtual Reality, Mixed Reality, 3D, Artificial Intelligence and Spatial Computing together to help businesses create experiences that people can see, explore, understand and interact with.
                       </p>
                     </div>
                   </FadeInOnView>
@@ -293,14 +280,14 @@ export default function Home() {
                     <div className="flex flex-col items-center gap-2">
                       <RoundedBallIcon />
                       <span className="uppercase text-xs font-medium">
-                        Use cases
+                        USE CASES
                       </span>
                     </div>
-                    <div>
+                    <div className="w-full flex justify-center">
                       <h2
-                        className={`${FONTS.microgrammaBold.className} text-center w-full sm:w-4xl lg:w-5xl text-3xl sm:text-4xl lg:text-5xl px-4 sm:px-8`}
+                        className={`${FONTS.microgrammaBold.className} text-center w-full max-w-none text-3xl sm:text-4xl lg:text-5xl px-2 sm:px-4`}
                       >
-                        Transforming Real-World Challenges with Immersive Tech
+                        WHAT CAN YOU BUILD WHEN <br className="hidden lg:block" /> THE WORLD BECOMES YOUR INTERFACE?
                       </h2>
                     </div>
                   </div>
@@ -347,14 +334,12 @@ export default function Home() {
                 <FadeInOnView>
                   <div className="text-center flex flex-col items-center gap-4">
                     <h2
-                      className={`${FONTS.microgrammaBold.className} w-full sm:w-3xl leading-tight sm:leading-14 px-4 sm:px-10 text-primary text-3xl sm:text-4xl lg:text-5xl`}
+                      className={`${FONTS.microgrammaBold.className} w-full leading-tight sm:leading-14 px-4 sm:px-10 text-primary text-3xl sm:text-4xl lg:text-5xl`}
                     >
-                      Immersive Tech Resource Library
+                      THE FUTURE IS ALREADY BEING BUILT.
                     </h2>
-                    <p className="text-md w-full sm:w-3xl lg:w-4xl px-4 sm:px-10 text-center">
-                      Learn and lead with confidence through blogs, case
-                      studies, and insights shaping the future of AR, VR, MR, 3D
-                      Design, and Spatial Computing.
+                    <p className="text-md w-full max-w-4xl lg:max-w-5xl px-4 sm:px-10 text-center">
+                      Ideas, technologies and perspectives shaping the spatial era. Explore the technologies transforming industries—and the ideas that will define what comes next.
                     </p>
                   </div>
                 </FadeInOnView>
