@@ -202,8 +202,11 @@ export default function CheckoutForm() {
     let orderId: string;
     let orderAmount: number;
     try {
-      const res = await apiFetch("/payments/create-order", {
+      const res = await fetch("/api/payments/create-order", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           packageId: packageDetails.id,
           customerName: `${formData.firstName} ${formData.lastName}`,
@@ -271,8 +274,11 @@ export default function CheckoutForm() {
         setSubmitState("verifying");
         // Step 4: Verify payment signature
         try {
-          const verifyRes = await apiFetch("/payments/verify", {
+          const verifyRes = await fetch("/api/payments/verify", {
             method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify({
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
