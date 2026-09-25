@@ -38,18 +38,18 @@ export default function FooterContact() {
         {defaultCountryConfig.contactEmail}
       </a>
 
-      {/* Display up to 2 offices */}
-      {offices.slice(0, 2).map((office, idx) => (
+      {/* Display up to 3 offices */}
+      {offices.slice(0, 3).map((office, idx) => (
         <div key={idx} className={`${contactCellBase} p-3`}>
           {office}, {defaultCountryConfig.name}
         </div>
       ))}
 
-      {/* Fill remaining slots to maintain layout height if there are less than 2 offices */}
+      {/* Fill remaining slots to maintain layout height if there are less than 3 offices */}
+      {offices.length < 3 && <div className={`${contactCellBase} p-3`}></div>}
       {offices.length < 2 && <div className={`${contactCellBase} p-3`}></div>}
       {offices.length === 0 && <div className={`${contactCellBase} p-3`}></div>}
 
-      <div className={`${contactCellBase} p-5`}></div>
       <div className={`${contactCellBase} p-5`}></div>
 
       <div className="border border-primary/30 flex items-center gap-2 justify-between rounded-lg py-3 px-6 text-xs text-primary/80">

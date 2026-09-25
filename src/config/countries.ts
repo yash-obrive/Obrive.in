@@ -58,9 +58,9 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     offices: [
       "Bengaluru, Karnataka",
       "Mumbai, Maharashtra",
+      "Ahmedabad, Gujarat",
       "Delhi NCR, Delhi",
       "Hyderabad, Telangana",
-      "Ahmedabad, Gujarat",
       "Pune, Maharashtra",
       "Chennai, Tamil Nadu",
     ],
