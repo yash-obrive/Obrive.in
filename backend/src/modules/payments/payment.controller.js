@@ -351,3 +351,32 @@ exports.webhook = async (req, res) => {
     return res.status(500).json({ error: "Internal server error" });
   }
 };
+
+exports.testEmail = async (req, res) => {
+  try {
+    const orderData = {
+      razorpayOrderId: "order_test_12345",
+      razorpayPaymentId: "pay_test_67890",
+      amount: 12000,
+      baseAmount: 10000,
+      serviceGst: 1800,
+      gatewayFee: 200,
+      gatewayFeeGst: 36,
+      gatewayCharges: 236,
+      totalAmount: 12036,
+      currency: "INR",
+      packageId: "live-testing-100",
+      packageName: "Live Testing Package",
+      customerName: "Obrive Admin Test",
+      customerEmail: "yashveer@obrive.com", 
+      customerPhone: "8873394750",
+    };
+
+    await sendPaymentConfirmationEmails(orderData);
+    
+    return res.status(200).json({ success: true, message: "Test email triggered successfully!" });
+  } catch (error) {
+    console.error("Test email error:", error);
+    return res.status(500).json({ success: false, error: error.message });
+  }
+};
