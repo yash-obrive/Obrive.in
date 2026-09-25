@@ -32,7 +32,7 @@ export function ProductsDropdown() {
             <div>
               <h3 className="text-xs text-white mb-2">OBPARK</h3>
               <p className="text-[10px] text-white mb-2">
-                Navigate Smarter. Park Faster. Move Better.
+                NAVIGATE SMARTER. PARK FASTER. MOVE BETTER.
               </p>
               <div className="flex items-center">
                 <Button
@@ -68,7 +68,7 @@ export function ProductsDropdown() {
             <div>
               <h3 className="text-xs text-white mb-2">OBNEST</h3>
               <p className="text-[10px] text-white mb-2">
-                Explore Properties. Experience Spaces. Find Your Future.
+                EXPLORE PROPERTIES. EXPERIENCE SPACES. FIND YOUR FUTURE.
               </p>
               <div className="flex items-center">
                 <Button
