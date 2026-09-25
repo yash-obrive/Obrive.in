@@ -20,7 +20,7 @@ const ImmersiveExperience = () => {
               </div>
               <div className="text-center w-full">
                 <h2
-                  className={`${FONTS.microgrammaBold.className} text-3xl sm:text-4xl text-center lg:text-5xl`}
+                  className={`${FONTS.microgrammaBold.className} text-3xl sm:text-4xl text-center lg:text-[43px]`}
                 >
                   BUILD EXPERIENCES THAT LIVE BEYOND <br /> THE SCREEN.
                 </h2>
