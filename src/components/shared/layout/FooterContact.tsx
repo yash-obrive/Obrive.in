@@ -13,7 +13,7 @@ import { SOCIAL_LINKS } from "@/constants/Footer";
 import { useCountry } from "@/context/CountryContext";
 
 const contactCellBase =
-  "relative overflow-hidden border border-primary/30 rounded-lg text-xs text-primary/80 transition-colors duration-500 hover:text-white before:content-[''] before:absolute before:inset-0 before:bg-primary before:scale-y-0 before:origin-center hover:before:scale-y-100 before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.19,1,0.22,1)] before:-z-10 z-10";
+  "border border-primary/30 rounded-lg text-xs text-sm hover:text-white transition-colors duration-500 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-primary before:scale-y-0 before:origin-center hover:before:scale-y-100 before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.19,1,0.22,1)] before:-z-10 z-10";
 
 export default function FooterContact() {
   const { countryConfig: _ } = useCountry();
