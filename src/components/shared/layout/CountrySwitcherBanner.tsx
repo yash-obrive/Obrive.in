@@ -24,7 +24,7 @@ export default function CountrySwitcherBanner() {
   return (
     <section
       aria-label="Regional website suggestion"
-      className="bg-primary text-[#F4F9FD] border-b border-primary/20 px-4 py-2.5 sm:px-6 relative z-50 transition-all duration-300"
+      className="bg-primary text-[#F4F9FD] border-b border-primary/20 px-4 py-2 sm:px-6 fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4 text-xs">
         <div className="flex items-center gap-2 text-center sm:text-left">

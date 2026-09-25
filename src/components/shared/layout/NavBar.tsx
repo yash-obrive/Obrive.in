@@ -100,7 +100,8 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
   const [_isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const { countryConfig } = useCountry();
+  const { countryConfig, suggestedCountry, isBannerDismissed, country } = useCountry();
+  const isBannerVisible = Boolean(suggestedCountry && !isBannerDismissed && suggestedCountry !== country);
   const calendlyUrl =
     countryConfig?.calendlyUrl ||
     "https://calendly.com/obrive-inc/talk-to-ob-experts";
@@ -274,7 +275,10 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
     <>
       {/* Mobile Fixed Toggle Button - only render after mount */}
       {isMounted && isMobile && (
-        <div className="fixed top-4 right-4 z-[110] md:hidden">
+        <div 
+          className="fixed right-4 z-[110] md:hidden transition-all duration-300"
+          style={{ top: isBannerVisible ? '60px' : '16px' }}
+        >
           <button
             className="flex items-center justify-center p-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-gray-200"
             onClick={toggleMenu}
@@ -288,10 +292,11 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
       )}
 
       <header
+        style={{ top: isBannerVisible ? '44px' : '0px' }}
         className={`${
           isMobile
-            ? "absolute top-0 left-0 right-0 w-full"
-            : `fixed top-0 container mx-auto left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+            ? "absolute left-0 right-0 w-full z-50"
+            : `fixed container mx-auto left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
                 shouldHideNavbar ? "-translate-y-full" : "translate-y-0"
               }`
         }`}
