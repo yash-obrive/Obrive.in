@@ -15,7 +15,7 @@ const EffortlessControl = () => {
           <FadeInOnView>
             <div className="text-center">
               <h2
-                className={`${FONTS.microgrammaBold.className} text-3xl sm:text-4xl max-sm:text-center lg:text-[43px]`}
+                className={`${FONTS.microgrammaBold.className} text-3xl sm:text-4xl max-sm:text-center lg:text-[40px]`}
               >
                 THE FUTURE OF MOBILITY IS SPATIAL.
               </h2>

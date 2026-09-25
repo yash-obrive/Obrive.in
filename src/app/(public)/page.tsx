@@ -285,7 +285,7 @@ export default function Home() {
                     </div>
                     <div className="w-full flex justify-center">
                       <h2
-                        className={`${FONTS.microgrammaBold.className} text-center w-full max-w-none text-3xl sm:text-4xl lg:text-[43px] px-2 sm:px-4`}
+                        className={`${FONTS.microgrammaBold.className} text-center w-full max-w-none text-3xl sm:text-4xl lg:text-[40px] px-2 sm:px-4`}
                       >
                         WHAT CAN YOU BUILD WHEN <br className="hidden lg:block" /> THE WORLD BECOMES YOUR INTERFACE?
                       </h2>
@@ -334,7 +334,7 @@ export default function Home() {
                 <FadeInOnView>
                   <div className="text-center flex flex-col items-center gap-4">
                     <h2
-                      className={`${FONTS.microgrammaBold.className} w-full leading-tight sm:leading-14 px-4 sm:px-10 text-primary text-3xl sm:text-4xl lg:text-[43px]`}
+                      className={`${FONTS.microgrammaBold.className} w-full leading-tight sm:leading-14 px-4 sm:px-10 text-primary text-3xl sm:text-4xl lg:text-[40px]`}
                     >
                       THE FUTURE IS ALREADY BEING BUILT.
                     </h2>
