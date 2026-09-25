@@ -24,7 +24,7 @@ export default function FooterContact() {
     <div className="flex flex-col">
       <Link
         href="/contact"
-        className={`border border-primary/40 py-2 px-3 font-semibold text-primary rounded-lg ${FONTS.microgrammaBold.className} hover:bg-primary/5 transition-colors duration-200 block text-center`}
+        className={`border border-primary/40 py-2 px-3 font-semibold text-primary rounded-lg ${FONTS.microgrammaBold.className}`}
       >
         Contact
       </Link>
@@ -50,44 +50,7 @@ export default function FooterContact() {
       {offices.length === 0 && <div className={`${contactCellBase} p-3`}></div>}
 
       <div className={`${contactCellBase} p-5`}></div>
-
-      <HoverCard>
-        <HoverCardTrigger asChild>
-          <Link
-            href="/client-login"
-            className={`${contactCellBase} py-3 px-6 uppercase tracking-wide text-xs`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Log In
-          </Link>
-        </HoverCardTrigger>
-        <HoverCardContent
-          side="top"
-          align="start"
-          sideOffset={12}
-          className="bg-primary text-white border-none rounded-2xl p-4 w-[220px] shadow-lg"
-        >
-          <div className="flex flex-col gap-2">
-            <Link
-              href="/client-login"
-              className="uppercase text-xs tracking-wide hover:text-accent transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Client Login
-            </Link>
-            <Link
-              href="/employee-login"
-              className="uppercase text-xs tracking-wide hover:text-accent transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Employee Login
-            </Link>
-          </div>
-        </HoverCardContent>
-      </HoverCard>
+      <div className={`${contactCellBase} p-5`}></div>
 
       <div className="border border-primary/30 flex items-center gap-2 justify-between rounded-lg py-3 px-6 text-xs text-primary/80">
         {SOCIAL_LINKS.map(({ href, icon, meta }) => (
