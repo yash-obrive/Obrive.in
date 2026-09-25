@@ -27,6 +27,28 @@ export interface ServiceStream {
 
 export const PRICING_STREAMS: ServiceStream[] = [
   {
+    id: "live-testing-stream",
+    number: "00",
+    title: "Live Testing",
+    subtitle: "System Testing & Validation",
+    packages: [
+      {
+        id: "live-testing-100",
+        category: "Testing",
+        name: "Live Testing Package",
+        description: "A 100 INR package for live testing Razorpay webhooks, Brevo emails, and database interconnectivity.",
+        priceINR: 100,
+        priceUSD: 1.5,
+        features: [
+          { text: "Razorpay Webhook Validation" },
+          { text: "Brevo Email Notification" },
+          { text: "Database Transaction Logging" },
+        ],
+        ctaText: "Test Payment",
+      }
+    ]
+  },
+  {
     id: "immersive-spatial",
     number: "01",
     title: "Immersive & Spatial",
