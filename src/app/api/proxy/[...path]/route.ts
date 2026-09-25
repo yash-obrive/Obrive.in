@@ -51,6 +51,13 @@ async function proxy(
       }
     });
 
+    // Enforce CORS to avoid cross-origin blocks when proxying
+    const origin = req.headers.get("origin");
+    if (origin) {
+      responseHeaders.set("Access-Control-Allow-Origin", origin);
+      responseHeaders.set("Access-Control-Allow-Credentials", "true");
+    }
+
     const responseBody = await response.arrayBuffer();
 
     return new NextResponse(responseBody, {
