@@ -32,7 +32,7 @@ export function ProductsDropdown() {
             <div>
               <h3 className="text-xs text-white mb-2">OBPARK</h3>
               <p className="text-[10px] text-white mb-2">
-                SERVICES TAILORED FOR INDUSTRIES. ENGINEERED FOR IMMERSION.
+                Navigate Smarter. Park Faster. Move Better.
               </p>
               <div className="flex items-center">
                 <Button
@@ -68,7 +68,7 @@ export function ProductsDropdown() {
             <div>
               <h3 className="text-xs text-white mb-2">OBNEST</h3>
               <p className="text-[10px] text-white mb-2">
-                SERVICES TAILORED FOR INDUSTRIES. ENGINEERED FOR IMMERSION.
+                Explore Properties. Experience Spaces. Find Your Future.
               </p>
               <div className="flex items-center">
                 <Button
