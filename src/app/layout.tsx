@@ -12,15 +12,14 @@ const michroma = Michroma({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://obrive.com"),
   title:
     "Obrive | Global Leader in AR · VR · MR & 3D Design – Enterprise-Grade Immersive Solutions",
   description:
     "Obrive Industries delivers cutting-edge AR, VR, MR and spatial computing solutions across industries. From immersive 3D visualisation to bespoke XR applications, we turn ideas into interactive realities.",
   keywords:
     "AR development global, VR development global, MR solutions enterprise, spatial computing studio, 3D design services international, immersive technology company, enterprise XR applications global, mixed reality development services, 3D visualization design studio, virtual showroom solutions global, digital twin services, immersive business solutions worldwide",
-  alternates: {
-    canonical: "https://obrive.com",
-  },
+
   openGraph: {
     type: "website",
     url: "https://obrive.com",
@@ -79,10 +78,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org/",
               "@type": "Organization",
-              "@id": "#Organization",
-              url: "https://www.obrive.com",
+              "@id": "https://obrive.com/#Organization",
+              url: "https://obrive.com",
               legalName: "Obrive Industries",
-              name: "Obrive",
+              name: "Obrive Industries",
               description:
                 "Obrive Industries delivers cutting-edge AR, VR, MR and spatial computing solutions across industries. From immersive 3D visualisation to bespoke XR applications, we turn ideas into interactive realities.",
               image:

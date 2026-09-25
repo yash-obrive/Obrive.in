@@ -116,6 +116,10 @@ export const MIXED_REALITY_DEVELOPMENT_SERVICE_SECTIONS = [
       "Prototype-to-production MR products",
     ],
     footer: "",
+    relatedLinks: [
+      { label: "Enterprise Solutions", href: "/industries/enterprise" },
+      { label: "AR Product Visualization", href: "/use-cases/ar-product-visualization" }
+    ],
   },
   {
     id: "enterprise-mixed-reality-solutions",

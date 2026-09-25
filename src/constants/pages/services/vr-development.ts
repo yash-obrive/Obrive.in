@@ -76,6 +76,10 @@ export const VR_DEVELOPMENT_SERVICE_SECTIONS = [
     ],
     footer:
       "Our VR training solutions incorporate realistic physics, interactive instructions, performance analytics, and immersive environments to create highly engaging learning scenarios.",
+    relatedLinks: [
+      { label: "Virtual Training Use Case", href: "/use-cases/virtual-training" },
+      { label: "Education & EdTech", href: "/industries/education" }
+    ],
   },
   {
     id: "enterprise-vr-solutions",

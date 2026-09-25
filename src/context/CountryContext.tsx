@@ -71,6 +71,7 @@ export function CountryProvider({
     if (typeof document !== "undefined") {
       document.cookie =
         "dismissed_country_banner=true; path=/; max-age=2592000; SameSite=Lax";
+      document.cookie = `preferred_country=${country}; path=/; max-age=31536000; SameSite=Lax`;
     }
   };
 
@@ -95,13 +96,6 @@ export function CountryProvider({
     }
     if (!currentPath.startsWith("/")) {
       currentPath = `/${currentPath}`;
-    }
-
-    // Redirect using domain for India, path-based routing architecture for others
-    if (newCountry === "in") {
-      const targetUrl = "https://obrive.in/coming-soon";
-      window.location.href = targetUrl;
-      return;
     }
 
     if (preservePath) {

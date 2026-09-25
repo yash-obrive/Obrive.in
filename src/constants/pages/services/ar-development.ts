@@ -89,6 +89,10 @@ export const AR_DEVELOPMENT_SERVICE_SECTIONS = [
     ],
     footer:
       "We architect enterprise AR platforms with scalability, security, integration and long term maintainability in mind. From a single business unit to a globally distributed workforce, our enterprise AR development approach can be designed to scale with your organization.",
+    relatedLinks: [
+      { label: "Enterprise Solutions", href: "/industries/enterprise" },
+      { label: "Remote Assistance Use Case", href: "/use-cases/remote-assistance" }
+    ],
   },
   {
     id: "industrial-ar",

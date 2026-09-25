@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 
 const GoodbyeCardRive = dynamic(() => import("./GoodbyeCardRive"), {
   ssr: false,
@@ -17,9 +18,14 @@ const GoodByeCard = () => {
       <div className="bg-gradient overflow-hidden relative flex flex-col max-sm:-space-y-10 justify-between w-full sm:min-w-[1238px] rounded-xl min-h-[250px] sm:min-h-[300px] md:min-h-[361px]">
         <div className="flex px-4 sm:px-10 py-6 sm:py-6 flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
           <h2 className="text-xl sm:text-2xl">
-            #FreeToImagine<br />
-            FREE TO IMAGINE.BUILT TO EXPERIENCE
+            FREE TO IMAGINE. BUILT TO EXPERIENCE
           </h2>
+          <FadeInOnView delay={0.2}>
+            <div className="px-4 py-1.5 rounded-full border border-primary/30 text-xs font-semibold tracking-wide transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 hover:shadow-lg hover:border-primary/60 hover:bg-primary/5 cursor-default relative overflow-hidden group">
+              <span className="relative z-10 transition-colors duration-300">#FreeToImagine</span>
+              <div className="absolute inset-0 bg-primary/10 transform -translate-x-full skew-x-12 group-hover:translate-x-[200%] transition-transform duration-1000 ease-out z-0" />
+            </div>
+          </FadeInOnView>
         </div>
         <div className="flex flex-col gap-10 sm:flex-row justify-between">
           <div className="max-sm:hidden flex-1 px-4 sm:px-0 h-full w-full">

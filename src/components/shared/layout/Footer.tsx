@@ -50,7 +50,7 @@ export default function Footer() {
                     {item.label}
                   </Link>
                 ))}
-                {Array.from({ length: maxItems - group.items.length - (group.bottomLink ? 1 : 0) }).map((_, i) => (
+                {Array.from({ length: maxItems - group.items.length - (group.bottomLink ? 1 : 0) + 1 }).map((_, i) => (
                   <div key={i} className="border border-primary/30 rounded-lg p-5 text-xs text-primary/80"></div>
                 ))}
                 {group.bottomLink && (

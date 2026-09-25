@@ -75,6 +75,10 @@ export const SPATIAL_COMPUTING_SERVICE_SECTIONS = [
     ],
     footer:
       "Our MR solutions utilize spatial anchors, plane detection, and scene understanding to create truly immersive computing experiences.",
+    relatedLinks: [
+      { label: "Mixed Reality Development", href: "/services/mixed-reality-development" },
+      { label: "Healthcare & Medical", href: "/industries/healthcare" }
+    ],
   },
   {
     id: "spatial-web-webxr",

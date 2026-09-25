@@ -2,7 +2,25 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import { ProductTemplate } from "@/components/pages/products/ProductTemplate";
+import { COUNTRIES, SUPPORTED_COUNTRIES } from "@/config/countries";
 import { getProductData, getProductSlugs } from "@/lib/products";
+
+function getAlternates(slug: string) {
+  const activeCountries = SUPPORTED_COUNTRIES.filter(
+    (code) => COUNTRIES[code].isProductionReady
+  );
+  const langs: Record<string, string> = {
+    "x-default": `https://obrive.com/products/${slug}`,
+  };
+  for (const code of activeCountries) {
+    langs[COUNTRIES[code].hreflang] = `https://obrive.com/${code}/products/${slug}`;
+  }
+  return {
+    canonical: `https://obrive.com/products/${slug}`,
+    languages: langs,
+  };
+}
+
 
 interface ProductPageProps {
   params: Promise<{
@@ -40,9 +58,7 @@ export async function generateMetadata({
         "Obrive Obpark product",
       ],
 
-      alternates: {
-        canonical: "https://obrive.com/products/obpark",
-      },
+      alternates: getAlternates(slug),
 
       robots: {
         index: true,
@@ -102,9 +118,7 @@ export async function generateMetadata({
         "spatial 3D design services",
       ],
 
-      alternates: {
-        canonical: "https://obrive.com/products/obnest",
-      },
+      alternates: getAlternates(slug),
 
       robots: {
         index: true,
@@ -163,9 +177,7 @@ export async function generateMetadata({
         "Obrive Obnavi",
       ],
 
-      alternates: {
-        canonical: "https://obrive.com/products/obnavi",
-      },
+      alternates: getAlternates(slug),
 
       robots: {
         index: true,
@@ -225,9 +237,7 @@ export async function generateMetadata({
         "interactive vehicle visualization",
       ],
 
-      alternates: {
-        canonical: "https://obrive.com/products/obmove",
-      },
+      alternates: getAlternates(slug),
 
       robots: {
         index: true,
@@ -277,8 +287,9 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${productData.hero.title} | Obrive`,
+    title: `${productData.hero.title} | Obrive Industries`,
     description: productData.hero.description,
+    alternates: getAlternates(slug),
   };
 }
 
@@ -298,9 +309,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
           type="application/ld+json"
           strategy="afterInteractive"
         >
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Product",
             name: "OBPARK",
             description:
               "Make parking effortless for your customers with AR wayfinding. Increase in revenues, visits and customer satisfaction guaranteed with OBPARK | Obrive Products",
@@ -311,9 +323,34 @@ export default async function ProductPage({ params }: ProductPageProps) {
             ],
             brand: {
               "@type": "Brand",
-              name: "Obrive",
+              name: "Obrive Industries",
             },
-          })}
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://obrive.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Products",
+                "item": "https://obrive.com/products"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "OBPARK",
+                "item": `https://obrive.com/products/${slug}`
+              }
+            ]
+          }
+          ])}
         </Script>
       )}
       {slug === "obnavi" && (
@@ -322,9 +359,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
           type="application/ld+json"
           strategy="afterInteractive"
         >
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Product",
             name: "OBNAVI",
             description:
               "Shopping just got smarter. Get real-time AR navigation, find products instantly, and get personalized recommendations. OBNAVI guides you everywhere.",
@@ -334,9 +372,34 @@ export default async function ProductPage({ params }: ProductPageProps) {
             ],
             brand: {
               "@type": "Brand",
-              name: "Obrive",
+              name: "Obrive Industries",
             },
-          })}
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://obrive.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Products",
+                "item": "https://obrive.com/products"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "OBNAVI",
+                "item": `https://obrive.com/products/${slug}`
+              }
+            ]
+          }
+          ])}
         </Script>
       )}
       {slug === "obmove" && (
@@ -345,9 +408,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
           type="application/ld+json"
           strategy="afterInteractive"
         >
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Product",
             name: "OBMOVE",
             description:
               "Explore, customize, and test drive any vehicle in VR before committing to one product. OBMOVE makes it happen. See how.",
@@ -358,9 +422,34 @@ export default async function ProductPage({ params }: ProductPageProps) {
             ],
             brand: {
               "@type": "Brand",
-              name: "Obrive",
+              name: "Obrive Industries",
             },
-          })}
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://obrive.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Products",
+                "item": "https://obrive.com/products"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "OBMOVE",
+                "item": `https://obrive.com/products/${slug}`
+              }
+            ]
+          }
+          ])}
         </Script>
       )}
       {slug === "obnest" && (
@@ -369,9 +458,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
           type="application/ld+json"
           strategy="afterInteractive"
         >
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
+          {JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Product",
             name: "OBNEST",
             description:
               "Channeling MR/VR technology to deliver the property of your dreams at your doorstep. Get a Demo Now! | OBNEST",
@@ -382,9 +472,34 @@ export default async function ProductPage({ params }: ProductPageProps) {
             ],
             brand: {
               "@type": "Brand",
-              name: "Obrive",
+              name: "Obrive Industries",
             },
-          })}
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://obrive.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Products",
+                "item": "https://obrive.com/products"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "OBNEST",
+                "item": `https://obrive.com/products/${slug}`
+              }
+            ]
+          }
+          ])}
         </Script>
       )}
       <ProductTemplate {...productData} />

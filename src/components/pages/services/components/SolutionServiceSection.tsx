@@ -1,4 +1,5 @@
 import FONTS from "@/assets/fonts";
+import Link from "next/link";
 
 import type { ServiceSubSection } from "@/types/services";
 
@@ -11,6 +12,7 @@ interface SolutionServiceSectionProps {
   items?: readonly string[];
   subSections?: readonly ServiceSubSection[];
   footer?: string;
+  relatedLinks?: readonly { label: string; href: string }[];
 }
 
 const SolutionServiceSection = ({
@@ -22,6 +24,7 @@ const SolutionServiceSection = ({
   items,
   subSections,
   footer,
+  relatedLinks,
 }: SolutionServiceSectionProps) => {
   return (
     <div id={id} className="flex flex-col gap-4 md:gap-6 scroll-mt-24">
@@ -108,6 +111,21 @@ const SolutionServiceSection = ({
           <p className="text-xs leading-6 text-zinc-500 max-w-[660px] mt-6 md:mt-10">
             {footer}
           </p>
+        )}
+
+        {/* Related Internal Links */}
+        {relatedLinks && relatedLinks.length > 0 && (
+          <div className="flex flex-wrap items-center gap-4 mt-6">
+            {relatedLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="flex items-center text-xs font-medium text-primary hover:opacity-80 transition-opacity"
+              >
+                {link.label} →
+              </Link>
+            ))}
+          </div>
         )}
       </div>
     </div>
