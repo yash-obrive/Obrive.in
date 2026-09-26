@@ -1,11 +1,12 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import FeaturedCard from "@/components/pages/resources/card/FeaturedCard";
 import PopularCard from "@/components/pages/resources/card/PopularCard";
 import TwoDotIcons from "@/components/shared/icons/TwoDotIcons";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { PopularCardContent } from "@/constants/pages/resources/popular-card";
+import Translate from "@/components/shared/Translate";
 
 interface FeaturedPopularSectionProps {
   showFeaturedAndPopular: boolean;
@@ -28,14 +29,14 @@ const FeaturedPopularSection = ({
               <div className="w-full lg:flex-1">
                 <div className="flex items-center gap-3 pl-8 mb-4">
                   <TwoDotIcons />
-                  <h2 className="uppercase text-sm font-medium">Featured</h2>
+                  <h2 className="uppercase text-sm font-medium"> <Translate text="Featured" /> </h2>
                 </div>
                 <FeaturedCard />
               </div>
               <div className="w-full lg:max-w-lg xl:max-w-xl">
                 <div className="flex items-center gap-3 mb-4 pl-8">
                   <TwoDotIcons />
-                  <h2 className="uppercase text-sm font-medium">Popular</h2>
+                  <h2 className="uppercase text-sm font-medium"> <Translate text="Popular" /> </h2>
                 </div>
                 <div className="flex flex-col gap-6 lg:gap-8">
                   {PopularCardContent.map((item) => (

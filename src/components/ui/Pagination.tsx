@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
 import { cn } from "@/lib/utils";
 
 interface PaginationProps {
@@ -27,7 +27,7 @@ export default function Pagination({
         "w-12 h-12 rounded-full border-2 flex items-center justify-center text-sm font-medium transition-colors",
         isActive
           ? "bg-primary text-white border-primary"
-          : "bg-white text-gray-600 border-gray-300 hover:border-primary hover:text-primary"
+          : "bg-white text-gray-600 border-gray-300 hover:border-primary hover:text-primary",
       )}
     >
       {page}
@@ -43,7 +43,7 @@ export default function Pagination({
       pages.push(
         <span key="ellipsis1" className="px-2 text-gray-400">
           ...
-        </span>
+        </span>,
       );
     }
   }
@@ -63,7 +63,7 @@ export default function Pagination({
       pages.push(
         <span key="ellipsis2" className="px-2 text-gray-400">
           ...
-        </span>
+        </span>,
       );
     }
     pages.push(renderPageButton(totalPages));

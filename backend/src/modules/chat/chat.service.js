@@ -39,7 +39,7 @@ exports.getConversationById = async (conversationId, userId) => {
         WHERE cp.conversation_id = c.id
       ) as participants
     FROM conversations c
-    WHERE c.id = ${parseInt(conversationId)}
+    WHERE c.id = ${parseInt(conversationId, 10)}
     LIMIT 1
   `;
   return result[0];
@@ -105,7 +105,7 @@ exports.getMessages = async (conversationId, userId, page = 1, limit = 50) => {
 
   // Verify participant
   const cp = await prisma.conversation_participants.findFirst({
-    where: { conversation_id: parseInt(conversationId), user_id: userId }
+    where: { conversation_id: parseInt(conversationId, 10), user_id: userId },
   });
 
   if (!cp) {
@@ -123,11 +123,11 @@ exports.getMessages = async (conversationId, userId, page = 1, limit = 50) => {
       u.name as sender_name
     FROM messages m
     LEFT JOIN users u ON m.sender_id = u.id
-    WHERE m.conversation_id = ${parseInt(conversationId)}
+    WHERE m.conversation_id = ${parseInt(conversationId, 10)}
     AND (${cp.deleted_until}::timestamp IS NULL OR m.created_at > ${cp.deleted_until}::timestamp)
     ORDER BY m.created_at DESC
-    LIMIT ${parseInt(limit)}
-    OFFSET ${parseInt(offset)}
+    LIMIT ${parseInt(limit, 10)}
+    OFFSET ${parseInt(offset, 10)}
   `;
 
   return result.reverse(); // Newest messages last for the UI
@@ -137,12 +137,15 @@ exports.createConversation = async (userId, { type, name, participantIds }) => {
   // Add creator to participants
   const allParticipantIds = Array.from(new Set([...participantIds, userId]));
 
-  if (type === 'direct' && allParticipantIds.length !== 2) {
-    throw { status: 400, message: "Direct chat must have exactly 2 participants" };
+  if (type === "direct" && allParticipantIds.length !== 2) {
+    throw {
+      status: 400,
+      message: "Direct chat must have exactly 2 participants",
+    };
   }
 
   // For direct chats, check if it already exists
-  if (type === 'direct') {
+  if (type === "direct") {
     const existing = await prisma.$queryRaw`
       SELECT c.id
       FROM conversations c
@@ -159,10 +162,10 @@ exports.createConversation = async (userId, { type, name, participantIds }) => {
         where: {
           conversation_id_user_id: {
             conversation_id: existing[0].id,
-            user_id: userId
-          }
+            user_id: userId,
+          },
         },
-        data: { is_hidden: false }
+        data: { is_hidden: false },
       });
 
       // Fetch full formatted object
@@ -174,30 +177,30 @@ exports.createConversation = async (userId, { type, name, participantIds }) => {
   const conversation = await prisma.conversations.create({
     data: {
       type,
-      name: type === 'group' ? name : null,
+      name: type === "group" ? name : null,
       created_by: userId,
       participants: {
-        create: allParticipantIds.map(id => ({ user_id: parseInt(id) }))
-      }
+        create: allParticipantIds.map((id) => ({ user_id: parseInt(id, 10) })),
+      },
     },
     include: {
       participants: {
         include: {
           user: {
-            select: { id: true, name: true, status: true, job_title: true }
-          }
-        }
-      }
-    }
+            select: { id: true, name: true, status: true, job_title: true },
+          },
+        },
+      },
+    },
   });
 
   // Initialize unread counts
   await prisma.conversation_unread.createMany({
-    data: allParticipantIds.map(id => ({
-      user_id: parseInt(id),
+    data: allParticipantIds.map((id) => ({
+      user_id: parseInt(id, 10),
       conversation_id: conversation.id,
-      unread_count: 0
-    }))
+      unread_count: 0,
+    })),
   });
 
   return await this.getConversationById(conversation.id, userId);
@@ -205,10 +208,10 @@ exports.createConversation = async (userId, { type, name, participantIds }) => {
 
 exports.addParticipants = async (conversationId, adminId, participantIds) => {
   const conversation = await prisma.conversations.findUnique({
-    where: { id: parseInt(conversationId) }
+    where: { id: parseInt(conversationId, 10) },
   });
 
-  if (!conversation || conversation.type !== 'group') {
+  if (!conversation || conversation.type !== "group") {
     throw { status: 400, message: "Not a group conversation" };
   }
 
@@ -216,23 +219,23 @@ exports.addParticipants = async (conversationId, adminId, participantIds) => {
     throw { status: 403, message: "Only group admin can add people" };
   }
 
-  const newParticipants = participantIds.map(id => ({
-    conversation_id: parseInt(conversationId),
-    user_id: parseInt(id)
+  const newParticipants = participantIds.map((id) => ({
+    conversation_id: parseInt(conversationId, 10),
+    user_id: parseInt(id, 10),
   }));
 
   await prisma.conversation_participants.createMany({
     data: newParticipants,
-    skipDuplicates: true
+    skipDuplicates: true,
   });
 
   await prisma.conversation_unread.createMany({
-    data: participantIds.map(id => ({
-      user_id: parseInt(id),
-      conversation_id: parseInt(conversationId),
-      unread_count: 0
+    data: participantIds.map((id) => ({
+      user_id: parseInt(id, 10),
+      conversation_id: parseInt(conversationId, 10),
+      unread_count: 0,
     })),
-    skipDuplicates: true
+    skipDuplicates: true,
   });
 
   return { message: "Participants added successfully" };
@@ -240,10 +243,10 @@ exports.addParticipants = async (conversationId, adminId, participantIds) => {
 
 exports.removeParticipant = async (conversationId, adminId, userIdToRemove) => {
   const conversation = await prisma.conversations.findUnique({
-    where: { id: parseInt(conversationId) }
+    where: { id: parseInt(conversationId, 10) },
   });
 
-  if (!conversation || conversation.type !== 'group') {
+  if (!conversation || conversation.type !== "group") {
     throw { status: 400, message: "Not a group conversation" };
   }
 
@@ -255,31 +258,33 @@ exports.removeParticipant = async (conversationId, adminId, userIdToRemove) => {
     throw { status: 400, message: "Admin cannot be removed" };
   }
 
-  const userToRemove = await prisma.users.findUnique({ where: { id: parseInt(userIdToRemove) } });
+  const userToRemove = await prisma.users.findUnique({
+    where: { id: parseInt(userIdToRemove, 10) },
+  });
 
   await prisma.conversation_participants.delete({
     where: {
       conversation_id_user_id: {
-        conversation_id: parseInt(conversationId),
-        user_id: parseInt(userIdToRemove)
-      }
-    }
+        conversation_id: parseInt(conversationId, 10),
+        user_id: parseInt(userIdToRemove, 10),
+      },
+    },
   });
 
   await prisma.conversation_unread.deleteMany({
     where: {
-      conversation_id: parseInt(conversationId),
-      user_id: parseInt(userIdToRemove)
-    }
+      conversation_id: parseInt(conversationId, 10),
+      user_id: parseInt(userIdToRemove, 10),
+    },
   });
 
   // Create system message
   const systemMessage = await prisma.messages.create({
     data: {
-      conversation_id: parseInt(conversationId),
-      content: `${userToRemove?.name || 'User'} was removed from the group`,
-      type: 'system'
-    }
+      conversation_id: parseInt(conversationId, 10),
+      content: `${userToRemove?.name || "User"} was removed from the group`,
+      type: "system",
+    },
   });
 
   return {
@@ -287,26 +292,29 @@ exports.removeParticipant = async (conversationId, adminId, userIdToRemove) => {
     systemMessage: {
       ...systemMessage,
       id: systemMessage.id.toString(),
-      sender_name: 'System'
-    }
+      sender_name: "System",
+    },
   };
 };
 
 exports.deleteConversation = async (conversationId, userId, type) => {
   const conversation = await prisma.conversations.findUnique({
-    where: { id: parseInt(conversationId) }
+    where: { id: parseInt(conversationId, 10) },
   });
 
   if (!conversation) throw { status: 404, message: "Conversation not found" };
 
-  if (type === 'permanent') {
+  if (type === "permanent") {
     // Only admin can delete permanently
     if (conversation.created_by !== userId) {
-      throw { status: 403, message: "Only group creator can delete permanently" };
+      throw {
+        status: 403,
+        message: "Only group creator can delete permanently",
+      };
     }
 
     await prisma.conversations.delete({
-      where: { id: parseInt(conversationId) }
+      where: { id: parseInt(conversationId, 10) },
     });
     return { message: "Conversation deleted for everyone" };
   } else {
@@ -314,14 +322,14 @@ exports.deleteConversation = async (conversationId, userId, type) => {
     await prisma.conversation_participants.update({
       where: {
         conversation_id_user_id: {
-          conversation_id: parseInt(conversationId),
-          user_id: userId
-        }
+          conversation_id: parseInt(conversationId, 10),
+          user_id: userId,
+        },
       },
       data: {
         is_hidden: true,
-        deleted_until: new Date()
-      }
+        deleted_until: new Date(),
+      },
     });
     return { message: "Conversation deleted from your end" };
   }
@@ -332,10 +340,10 @@ exports.markAsRead = async (conversationId, userId) => {
     where: {
       user_id_conversation_id: {
         user_id: userId,
-        conversation_id: parseInt(conversationId)
-      }
+        conversation_id: parseInt(conversationId, 10),
+      },
     },
-    data: { unread_count: 0 }
+    data: { unread_count: 0 },
   });
 
   return { success: true };
@@ -345,53 +353,54 @@ exports.seedDummyChats = async (userId) => {
   // Find Karn and Yatin
   const dummyUsers = await prisma.users.findMany({
     where: {
-      name: { in: ['Karn', 'Yatin'] }
-    }
+      name: { in: ["Karn", "Yatin"] },
+    },
   });
 
   if (dummyUsers.length === 0) {
     // If not found, create them
     const karn = await prisma.users.create({
       data: {
-        userid: 'karn_dummy',
-        email: 'karn@obrive.com',
-        name: 'Karn',
-        role: 'employee',
-        password: 'dummy_password',
-        status: 'online',
+        userid: "karn_dummy",
+        email: "karn@obrive.com",
+        name: "Karn",
+        role: "employee",
+        password: "dummy_password",
+        status: "online",
         updated_at: new Date(),
-        job_title: 'Developer'
-      }
+        job_title: "Developer",
+      },
     });
     const yatin = await prisma.users.create({
       data: {
-        userid: 'yatin_dummy',
-        email: 'yatin@obrive.com',
-        name: 'Yatin',
-        role: 'employee',
-        password: 'dummy_password',
-        status: 'online',
+        userid: "yatin_dummy",
+        email: "yatin@obrive.com",
+        name: "Yatin",
+        role: "employee",
+        password: "dummy_password",
+        status: "online",
         updated_at: new Date(),
-        job_title: 'Designer'
-      }
+        job_title: "Designer",
+      },
     });
     dummyUsers.push(karn, yatin);
   }
 
   // Create group with them
   const group = await this.createConversation(userId, {
-    type: 'group',
-    name: 'Obrive Core Team',
-    participantIds: dummyUsers.map(u => u.id)
+    type: "group",
+    name: "Obrive Core Team",
+    participantIds: dummyUsers.map((u) => u.id),
   });
 
   // Create direct chats with each
-  const directChats = await Promise.all(dummyUsers.map(u =>
-    this.createConversation(userId, {
-      type: 'direct',
-      participantIds: [u.id]
-    })
-  ));
-
+  const directChats = await Promise.all(
+    dummyUsers.map((u) =>
+      this.createConversation(userId, {
+        type: "direct",
+        participantIds: [u.id],
+      }),
+    ),
+  );
   return { group, directChats };
 };

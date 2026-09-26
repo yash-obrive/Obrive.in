@@ -1,16 +1,34 @@
-import React from "react";
 import FONTS from "@/assets/fonts";
-import { ButtonLink } from "@/components/ui/ButtonLink";
 import { StyledText } from "@/components/shared/StyledText";
-import CompanyInfoSection from "./sections/CompanyInfoSection";
-import CompanyInfoApproachTable from "./sections/CompanyInfoApproachTable";
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import FAQAccordionSection, {
+  FAQItem,
+} from "../faq/sections/FAQAccordionSection";
+import CompanyInfoApproachTable, {
+  CompanyInfoApproachPhaseItem,
+  CompanyInfoApproachTableDescription,
+  CompanyInfoApproachTableTitle,
+} from "./sections/CompanyInfoApproachTable";
 import CompanyInfoHeader from "./sections/CompanyInfoHeader";
+import CompanyInfoSection, {
+  CompanyInfoItem,
+} from "./sections/CompanyInfoSection";
 
 // Export components for direct import in MDX files
-export { CompanyInfoSection, CompanyInfoApproachTable, CompanyInfoHeader };
+export {
+  CompanyInfoSection,
+  CompanyInfoItem,
+  CompanyInfoApproachTable,
+  CompanyInfoHeader,
+  FAQAccordionSection,
+  FAQItem,
+  CompanyInfoApproachPhaseItem,
+  CompanyInfoApproachTableTitle,
+  CompanyInfoApproachTableDescription,
+};
 
 // Create a function that returns MDX components with access to metadata
-export const createCompanyInfoMDXComponents = (metadata: any) => ({
+export const createCompanyInfoMDXComponents = (_metadata: any) => ({
   h1: (props: any) => (
     <h1
       className={`${FONTS.microgrammaBold.className} text-4xl mb-6 mt-8`}
@@ -65,19 +83,41 @@ export const createCompanyInfoMDXComponents = (metadata: any) => ({
 
   // Custom company-info components
   CompanyInfoSection: (props: any) => <CompanyInfoSection {...props} />,
+  CompanyInfoItem: (props: any) => <CompanyInfoItem {...props} />,
   CompanyInfoApproachTable: (props: any) => (
     <CompanyInfoApproachTable {...props} />
+  ),
+  CompanyInfoApproachPhaseItem: (props: any) => (
+    <CompanyInfoApproachPhaseItem {...props} />
+  ),
+  CompanyInfoApproachTableTitle: (props: any) => (
+    <CompanyInfoApproachTableTitle {...props} />
+  ),
+  CompanyInfoApproachTableDescription: (props: any) => (
+    <CompanyInfoApproachTableDescription {...props} />
   ),
   CompanyInfoHeader: (props: any) => <CompanyInfoHeader {...props} />,
 
   // Backward compatibility - shorter names
   InfoSection: (props: any) => <CompanyInfoSection {...props} />,
   ApproachTable: (props: any) => <CompanyInfoApproachTable {...props} />,
+  ApproachPhaseItem: (props: any) => (
+    <CompanyInfoApproachPhaseItem {...props} />
+  ),
+  ApproachTableTitle: (props: any) => (
+    <CompanyInfoApproachTableTitle {...props} />
+  ),
+  ApproachTableDescription: (props: any) => (
+    <CompanyInfoApproachTableDescription {...props} />
+  ),
   PageHeader: (props: any) => <CompanyInfoHeader {...props} />,
 
   // Custom components
   ButtonLink,
   StyledText,
+  FAQAccordionSection,
+  FAQAccordion: (props: any) => <FAQAccordionSection {...props} />,
+  FAQItem,
 });
 
 export default {
@@ -134,4 +174,8 @@ export default {
   em: (props: any) => <em className="italic" {...props} />,
   StyledText,
   ButtonLink,
+  FAQAccordionSection,
+  FAQAccordion: (props: any) => <FAQAccordionSection {...props} />,
+  FAQItem,
+  CompanyInfoItem,
 };

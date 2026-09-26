@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
 
 const options = [
   "Strongly Disagree",
@@ -21,7 +22,7 @@ export default function MoreDetails({
 
   const handleChange = async (e: number) => {
     if (loading) return; // Prevent duplicate clicks
-    
+
     setSelected(e);
     setLoading(true);
 

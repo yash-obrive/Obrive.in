@@ -1,8 +1,7 @@
+import type { Metadata } from "next";
 import BlogsHero from "@/components/pages/resources/BlogsHero";
 import ResourcesContent from "@/components/pages/resources/ResourcesContent";
 import { BlogCardContent } from "@/constants/pages/resources/blog-card";
-
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://obrive.com"),

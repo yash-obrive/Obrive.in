@@ -1,29 +1,29 @@
+import FONTS from "@/assets/fonts";
+import { IMAGES_META } from "@/assets/images";
+import HoverAccordion from "../accordion/HoverAccordion";
+import AnimatedButton from "../buttons/AnimatedButton";
+import ImmersiveIcon from "../icons/ImmersiveIcon";
+import RoundedBallIcon from "../icons/RoundedBallIcon";
 import FullWidthSection from "../layout/FullWidthSection";
 import { FadeInOnView } from "../motion/GsapMotion";
-import RoundedBallIcon from "../icons/RoundedBallIcon";
-import FONTS from "@/assets/fonts";
-import ImmersiveIcon from "../icons/ImmersiveIcon";
-import HoverAccordion from "../accordion/HoverAccordion";
-import { IMAGES_META } from "@/assets/images";
-import AnimatedButton from "../buttons/AnimatedButton";
+import Translate from "@/components/shared/Translate";
 
 const ImmersiveExperience = () => {
   return (
     <FullWidthSection>
       <FadeInOnView>
-        <div className="my-20 flex flex-col justify-between w-full gap-16 px-4">
+        <div className="my-10 flex flex-col justify-between w-full gap-16 px-4">
           <FadeInOnView>
             <div className="flex flex-col items-center gap-14">
               <div className="flex flex-col items-center gap-2">
                 <RoundedBallIcon />
-                <span className="uppercase text-xs font-medium">Services</span>
+                <span className="uppercase text-xs font-medium"> <Translate text="What Can Obrive Help In" /> </span>
               </div>
-              <div>
+              <div className="text-center w-full">
                 <h2
-                  className={`${FONTS.microgrammaBold.className} text-3xl sm:text-4xl max-sm:text-center lg:text-5xl`}
+                  className={`${FONTS.microgrammaBold.className} text-3xl sm:text-4xl text-center lg:text-[40px]`}
                 >
-                  Immersive Experience
-                </h2>
+                   <Translate text="BUILD EXPERIENCES THAT LIVE BEYOND" /> <br />  <Translate text="THE SCREEN." /> </h2>
               </div>
             </div>
           </FadeInOnView>
@@ -33,10 +33,7 @@ const ImmersiveExperience = () => {
                 <div className="flex flex-col gap-5">
                   <ImmersiveIcon />
                   <h4 className="text-lg sm:text-xl leading-8">
-                    Revolutionize client engagement with one intelligent
-                    platform—seamlessly managing AR, VR, MR, 3D design, and
-                    spatial computing experiences.
-                  </h4>
+                     <Translate text="One ecosystem. Infinite possibilities. Obrive brings immersive technology, 3D environments and spatial intelligence together to help organizations design, deploy and scale next-generation digital experiences." /> </h4>
                   <HoverAccordion
                     className="mt-4"
                     defaultOpen={0}
@@ -72,15 +69,12 @@ const ImmersiveExperience = () => {
                           <h3
                             className={`${FONTS.microgrammaBold.className} text-md`}
                           >
-                            Design & Deploy with Ease
-                          </h3>
+                             <Translate text="CREATE" /> </h3>
                         ),
                         content: (
                           <p className="text-xs max-w-md leading-6">
-                            Launch complex immersive experiences—be it AR
-                            marketing campaigns, VR training worlds, MR product
-                            demos, or 3D visualizations—through an intuitive,
-                            unified platform
+                             <Translate text="Design AR, VR, MR and 3D experiences around real business objectives—from product visualization and virtual environments to interactive customer experiences and immersive training." /> <br /><br />
+                            <strong> <Translate text="Imagine it. Design it. Experience it." /> </strong>
                           </p>
                         ),
                       },
@@ -92,15 +86,12 @@ const ImmersiveExperience = () => {
                           <h3
                             className={`${FONTS.microgrammaBold.className} text-md`}
                           >
-                            Automated Rendering & Spatial Syncing
-                          </h3>
+                             <Translate text="CONNECT" /> </h3>
                         ),
                         content: (
                           <p className="text-xs max-w-md leading-6">
-                            Eliminate manual steps. Automate environment
-                            rendering, spatial data syncing, and version
-                            tracking so your creative team stays focused on
-                            innovation, not logistics.
+                             <Translate text="We integrate the technologies behind the experience so your data, environments, products and people can work together seamlessly." /> <br /><br />
+                            <strong> <Translate text="One ecosystem. Connected intelligence." /> </strong>
                           </p>
                         ),
                       },
@@ -112,15 +103,12 @@ const ImmersiveExperience = () => {
                           <h3
                             className={`${FONTS.microgrammaBold.className} text-md`}
                           >
-                            Collaborative In-Experience <br /> Feedback & Review
-                          </h3>
+                             <Translate text="COLLABORATE" /> </h3>
                         ),
                         content: (
                           <p className="text-xs max-w-md leading-6">
-                            From remote stakeholder reviews to cross-department
-                            design iterations, collaboration happens inside the
-                            experience. Comment, adjust, and approve within the
-                            platform—no back-and-forth emails needed.
+                             <Translate text="Explore 3D models, review spaces, simulate experiences and make decisions together—before anything is manufactured, built or deployed." /> <br /><br />
+                            <strong> <Translate text="See it. Share it. Shape it together." /> </strong>
                           </p>
                         ),
                       },
@@ -132,16 +120,12 @@ const ImmersiveExperience = () => {
                           <h3
                             className={`${FONTS.microgrammaBold.className} text-md`}
                           >
-                            Unified client portal for <br /> seamless
-                            collaboration
-                          </h3>
+                             <Translate text="SCALE" /> </h3>
                         ),
                         content: (
                           <p className="text-xs max-w-md leading-6">
-                            Monitor user engagement, spatial interactions, and
-                            design feedback using real-time analytics. Gain
-                            insight into what resonates—and refine for even more
-                            immersive impact.
+                             <Translate text="From one environment to an entire enterprise, build once, learn continuously and scale without limits." /> <br /><br />
+                            <strong> <Translate text="Start small. Think global. Build for what comes next." /> </strong>
                           </p>
                         ),
                       },
@@ -152,11 +136,10 @@ const ImmersiveExperience = () => {
                       asChild
                       size={"lg"}
                       className="uppercase text-[10px] cursor-pointer"
-                      href="/#use-cases"
+                      href="/services"
                       aria-label="Learn more about Immersive Experience services and AR/VR solutions"
                     >
-                      Learn more about IE.
-                    </AnimatedButton>
+                       <Translate text="EXPLORE OUR CAPABILITIES" /> </AnimatedButton>
                   </div>
                 </div>
               </div>

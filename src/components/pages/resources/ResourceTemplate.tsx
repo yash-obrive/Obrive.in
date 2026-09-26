@@ -1,3 +1,5 @@
+import Image from "next/image";
+import type { ReactNode } from "react";
 import FONTS from "@/assets/fonts";
 import {
   CASE_STUDIES_AVATAR,
@@ -7,13 +9,12 @@ import {
   RESOURCES_BLOG_IMAGES_META,
 } from "@/assets/images";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import { Button, buttonVariants } from "@/components/ui/button";
-import Image from "next/image";
-import { ReactNode } from "react";
-import { CaseStudyMetadata } from "@/lib/mdx";
-import ResourceWorkflowSteps from "./ResourceWorkflowSteps";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import type { CaseStudyMetadata } from "@/lib/mdx";
 import BlogRecommendations from "./BlogRecommendations";
+import ResourceBackButton from "./ResourceBackButton";
+import ResourceWorkflowSteps from "./ResourceWorkflowSteps";
+import Translate from "@/components/shared/Translate";
 
 interface ResourceTemplateProps {
   metadata: CaseStudyMetadata;
@@ -32,20 +33,11 @@ export default function ResourceTemplate({
       <section>
         <FullWidthSection
           backgroundColor="accent"
-          className="pt-20 sm:pt-28 lg:pt-38 pb-16 sm:pb-24 lg:pb-30 min-h-[80vh] sm:min-h-screen"
+          className="pt-20 sm:pt-28 lg:pt-38 pb-16 sm:pb-24 lg:pb-30"
         >
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-20 px-4 sm:px-8 lg:px-13 items-start justify-between">
             <div className="relative flex flex-col gap-4 w-full lg:min-w-[400px] lg:max-w-[500px]">
-              <div className="relative z-10">
-                <Link
-                  href="/resources"
-                  className={`text-xs ${buttonVariants({ variant: "link" })}`}
-                >
-                  BACK
-                </Link>
-              </div>
-
-              <div className="w-full max-sm:w-[300px] max-sm:h-[300px] h-64 sm:h-80 lg:h-90 rounded-2xl sm:flex items-center justify-center sm:relative">
+              <div className="w-full max-sm:w-[300px] max-sm:h-[300px] h-64 sm:h-80 lg:h-90 rounded-2xl overflow-hidden relative">
                 {(() => {
                   const blogImage =
                     RESOURCES_BLOG_IMAGES[
@@ -58,9 +50,20 @@ export default function ResourceTemplate({
                   const heroKey = metadata?.heroImage as
                     | keyof typeof CASE_STUDIES_IMAGES
                     | undefined;
-                  const fallbackHero = heroKey
-                    ? CASE_STUDIES_IMAGES[heroKey]
-                    : undefined;
+
+                  let fallbackHero:
+                    | string
+                    | (typeof CASE_STUDIES_IMAGES)[keyof typeof CASE_STUDIES_IMAGES]
+                    | undefined;
+                  if (heroKey && CASE_STUDIES_IMAGES[heroKey]) {
+                    fallbackHero = CASE_STUDIES_IMAGES[heroKey];
+                  } else if (
+                    typeof metadata?.heroImage === "string" &&
+                    metadata.heroImage.startsWith("/")
+                  ) {
+                    fallbackHero = metadata.heroImage;
+                  }
+
                   const heroSrc = blogImage ?? fallbackHero;
                   const altText = blogImage
                     ? blogImageMeta?.alt || metadata.title
@@ -72,7 +75,7 @@ export default function ResourceTemplate({
                       src={heroSrc}
                       alt={altText}
                       fill
-                      className="object-contain pointer-events-none"
+                      className="object-cover pointer-events-none"
                       priority
                     />
                   );
@@ -87,18 +90,17 @@ export default function ResourceTemplate({
                   variant={"outline"}
                   size={"sm"}
                 >
-                  {metadata.postType || "CASE STUDY"}
+                  <Translate text={metadata.postType || "CASE STUDY"} />
                 </Button>
-
-                <span className="text-slate-700 text-xs font-medium">
-                  {metadata.date}
+                <span className="text-sm font-medium text-secondary ml-4">
+                  <Translate text={metadata.date} />
                 </span>
               </div>
 
               <h1
                 className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-secondary leading-tight`}
               >
-                {metadata.title}
+                <Translate text={metadata.title} />
               </h1>
 
               <blockquote className="text-sm sm:text-base lg:text-lg text-slate-700 leading-relaxed">
@@ -109,13 +111,12 @@ export default function ResourceTemplate({
                     return (
                       <>
                         <span className={`${FONTS.microgrammaBold.className}`}>
-                          Disclaimer
-                        </span>
-                        {quote.slice(prefix.length)}
+                           <Translate text="Disclaimer" /> </span>
+                        <Translate text={quote.slice(prefix.length)} />
                       </>
                     );
                   }
-                  return quote;
+                  return <Translate text={quote} />;
                 })()}
               </blockquote>
 
@@ -132,7 +133,7 @@ export default function ResourceTemplate({
                 </div>
                 <div>
                   <p className="font-semibold text-slate-800 text-sm sm:text-base">
-                    {metadata.author}
+                    <Translate text={metadata.author} />
                   </p>
                 </div>
               </div>
@@ -146,7 +147,17 @@ export default function ResourceTemplate({
           {/* workflow steps sidebar */}
           {metadata.workflowSteps && metadata.workflowSteps.length > 0 && (
             <div className="lg:sticky lg:top-24 lg:self-start">
+              <div className="mb-4">
+                <ResourceBackButton />
+              </div>
               <ResourceWorkflowSteps steps={metadata.workflowSteps} />
+            </div>
+          )}
+
+          {/* Back button fallback when no sidebar */}
+          {(!metadata.workflowSteps || metadata.workflowSteps.length === 0) && (
+            <div>
+              <ResourceBackButton />
             </div>
           )}
 

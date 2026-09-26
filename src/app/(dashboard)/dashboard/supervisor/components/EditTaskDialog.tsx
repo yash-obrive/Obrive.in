@@ -1,19 +1,19 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from "react";
 
 interface EditTaskDialogProps {
-  open: boolean
-  onClose: () => void
+  open: boolean;
+  onClose: () => void;
   onSubmit: (data: {
-    title: string
-    description?: string
-    deadline?: string
-    assigned_to?: number
-    status?: string
-  }) => void
-  task: any
-  teamMembers: any[]
+    title: string;
+    description?: string;
+    deadline?: string;
+    assigned_to?: number;
+    status?: string;
+  }) => void;
+  task: any;
+  teamMembers: any[];
 }
 
 export default function EditTaskDialog({
@@ -23,42 +23,46 @@ export default function EditTaskDialog({
   task,
   teamMembers,
 }: EditTaskDialogProps) {
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [deadline, setDeadline] = useState('')
-  const [assignedTo, setAssignedTo] = useState('')
-  const [status, setStatus] = useState('')
-  const [updating, setUpdating] = useState(false)
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [deadline, setDeadline] = useState("");
+  const [assignedTo, setAssignedTo] = useState("");
+  const [status, setStatus] = useState("");
+  const [updating, setUpdating] = useState(false);
 
   useEffect(() => {
     if (task) {
-      setTitle(task.title || '')
-      setDescription(task.description || '')
-      setDeadline(task.deadline ? new Date(task.deadline).toISOString().split('T')[0] : '')
-      setAssignedTo(task.assigned_to?.toString() || '')
-      setStatus(task.status || 'pending')
+      setTitle(task.title || "");
+      setDescription(task.description || "");
+      setDeadline(
+        task.deadline
+          ? new Date(task.deadline).toISOString().split("T")[0]
+          : "",
+      );
+      setAssignedTo(task.assigned_to?.toString() || "");
+      setStatus(task.status || "pending");
     }
-  }, [task])
+  }, [task]);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!title.trim()) return
+    e.preventDefault();
+    if (!title.trim()) return;
 
     try {
-      setUpdating(true)
+      setUpdating(true);
       await onSubmit({
         title: title.trim(),
         description: description.trim() || undefined,
         deadline: deadline || undefined,
         assigned_to: assignedTo ? Number(assignedTo) : undefined,
         status: status || undefined,
-      })
+      });
     } finally {
-      setUpdating(false)
+      setUpdating(false);
     }
-  }
+  };
 
-  if (!open || !task) return null
+  if (!open || !task) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-3 backdrop-blur-sm">
@@ -77,7 +81,10 @@ export default function EditTaskDialog({
 
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="edit-title" className="mb-1 block text-sm text-gray-500">
+            <label
+              htmlFor="edit-title"
+              className="mb-1 block text-sm text-gray-500"
+            >
               Task Title *
             </label>
             <input
@@ -109,7 +116,10 @@ export default function EditTaskDialog({
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label htmlFor="edit-deadline" className="mb-1 block text-sm text-gray-500">
+              <label
+                htmlFor="edit-deadline"
+                className="mb-1 block text-sm text-gray-500"
+              >
                 Deadline
               </label>
               <input
@@ -122,7 +132,10 @@ export default function EditTaskDialog({
             </div>
 
             <div>
-              <label htmlFor="edit-assigned" className="mb-1 block text-sm text-gray-500">
+              <label
+                htmlFor="edit-assigned"
+                className="mb-1 block text-sm text-gray-500"
+              >
                 Assign To
               </label>
               <select
@@ -142,7 +155,10 @@ export default function EditTaskDialog({
           </div>
 
           <div>
-            <label htmlFor="edit-status" className="mb-1 block text-sm text-gray-500">
+            <label
+              htmlFor="edit-status"
+              className="mb-1 block text-sm text-gray-500"
+            >
               Status
             </label>
             <select
@@ -162,10 +178,10 @@ export default function EditTaskDialog({
             disabled={updating || !title.trim()}
             className="w-full rounded-xl bg-[#073933] py-3 font-medium text-white transition hover:bg-[#0a4a42] disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {updating ? 'Updating...' : 'Update Task'}
+            {updating ? "Updating..." : "Update Task"}
           </button>
         </form>
       </div>
     </div>
-  )
+  );
 }

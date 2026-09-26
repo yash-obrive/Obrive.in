@@ -1,15 +1,16 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 import { NAV_ICONS, NAV_ICONS_META } from "@/assets/images";
+import Link from "@/components/shared/LocalizedLink";
 import { buttonVariants } from "@/components/ui/button";
 import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import Image from "next/image";
-import Link from "next/link";
 import AnimatedNavLabel from "../AnimatedNavLabel";
+import Translate from "@/components/shared/Translate";
 
 export function CompanyDropdown() {
   const [isJoinHovered, setIsJoinHovered] = useState(false);
@@ -20,15 +21,13 @@ export function CompanyDropdown() {
         showChevron={false}
         className="text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
       >
-        Company
-      </NavigationMenuTrigger>
+         <Translate text="Company" /> </NavigationMenuTrigger>
       <NavigationMenuContent className="bg-primary! border-none p-6 min-w-[450px] min-h-[300px] md:w-[400px] absolute left-0 top-full mt-2 z-[60] rounded-md shadow-lg">
         <div>
-          <h3 className="text-white text-xs mb-2 w-2xl">COMPANY</h3>
+          <h3 className="text-white text-xs mb-2 w-2xl"> <Translate text="COMPANY" /> </h3>
           <p className="text-accent text-[10px] pr-24 mb-4 uppercase">
-            Bringing Transparency and Efficiency to the World of Immersive
-            Technologies.
-          </p>
+             <Translate text="Bringing Transparency and Efficiency to the World of Immersive
+                                  Technologies." /> </p>
 
           <div className="flex gap-4">
             <div className="relative text-accent/60 rounded-xl overflow-hidden min-w-[200px] h-52 text-xs pointer-events-none">
@@ -67,8 +66,40 @@ export function CompanyDropdown() {
                       variant: "link",
                     })} text-white text-xs !py-6 !px-2`}
                   >
-                    About Obrive
-                  </Link>
+                     <Translate text="About Obrive" /> </Link>
+                </AnimatedNavLabel>
+              </div>
+              <div className="flex items-center gap-3 border-b border-white/20">
+                <AnimatedNavLabel iconSize={14} gap={0} shiftDirection="right">
+                  <Link
+                    href={"/certifications"}
+                    className={`${buttonVariants({
+                      variant: "link",
+                    })} text-white text-xs !py-6 !px-2`}
+                  >
+                     <Translate text="Certifications" /> </Link>
+                </AnimatedNavLabel>
+              </div>
+              <div className="flex items-center gap-3 border-b border-white/20">
+                <AnimatedNavLabel iconSize={14} gap={0} shiftDirection="right">
+                  <Link
+                    href={"/client-login"}
+                    className={`${buttonVariants({
+                      variant: "link",
+                    })} text-white text-xs !py-6 !px-2`}
+                  >
+                     <Translate text="Client Login" /> </Link>
+                </AnimatedNavLabel>
+              </div>
+              <div className="flex items-center gap-3 border-b border-white/20">
+                <AnimatedNavLabel iconSize={14} gap={0} shiftDirection="right">
+                  <Link
+                    href={"/employee-login"}
+                    className={`${buttonVariants({
+                      variant: "link",
+                    })} text-white text-xs !py-6 !px-2`}
+                  >
+                     <Translate text="Employee Login" /> </Link>
                 </AnimatedNavLabel>
               </div>
               <div className="flex items-center gap-3 border-b border-white/20">
@@ -83,8 +114,7 @@ export function CompanyDropdown() {
                     onFocus={() => setIsJoinHovered(true)}
                     onBlur={() => setIsJoinHovered(false)}
                   >
-                    Join our Team
-                  </Link>
+                     <Translate text="Join our Team" /> </Link>
                 </AnimatedNavLabel>
               </div>
             </div>

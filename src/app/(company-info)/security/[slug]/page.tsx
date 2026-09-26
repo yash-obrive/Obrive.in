@@ -1,11 +1,15 @@
-import { getCompanyInfoBySlug, getAllCompanyInfoSlugs } from "@/lib/mdx";
-import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCompanyInfoMDXComponents } from "@/components/pages/company-info/CompanyInfoMDXComponents";
+import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
+import {
+  getAllCompanyInfoSlugs,
+  getCompanyInfoBySlug,
+  sharedMdxOptions,
+} from "@/lib/mdx";
 
 interface SecurityPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export const dynamicParams = false;
@@ -18,7 +22,7 @@ export async function generateStaticParams() {
 }
 
 export default async function SecurityPage({ params }: SecurityPageProps) {
-  const { slug } =  params;
+  const { slug } = await params;
   const securityDoc = await getCompanyInfoBySlug(slug, "security");
 
   if (!securityDoc) {
@@ -30,6 +34,7 @@ export default async function SecurityPage({ params }: SecurityPageProps) {
       <MDXRemote
         source={securityDoc.content}
         components={createCompanyInfoMDXComponents(securityDoc.metadata)}
+        options={sharedMdxOptions}
       />
     </CompanyInfoTemplate>
   );

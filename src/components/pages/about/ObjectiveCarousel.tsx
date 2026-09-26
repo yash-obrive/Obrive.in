@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import { objectiveCardsData } from "@/constants/pages/about/object-frame";
+import Translate from "@/components/shared/Translate";
 
 export default function ObjectiveCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -54,12 +55,12 @@ export default function ObjectiveCarousel() {
                   />
                   <div className="px-4">
                     <p className="text-left text-base max-md:text-sm text-primary/80">
-                      {card.content}
+                      <Translate text={card.content} />
                     </p>
                     <h3
                       className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
                     >
-                      - {card.title}
+                      - <Translate text={card.title} />
                     </h3>
                   </div>
                 </div>

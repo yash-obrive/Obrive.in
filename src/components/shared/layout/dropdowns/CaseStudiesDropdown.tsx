@@ -1,13 +1,14 @@
+import Image from "next/image";
 import { NAV_ICONS, NAV_ICONS_META } from "@/assets/images";
+import Link from "@/components/shared/LocalizedLink";
 import { buttonVariants } from "@/components/ui/button";
 import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import Image from "next/image";
-import Link from "next/link";
 import AnimatedNavLabel from "../AnimatedNavLabel";
+import Translate from "@/components/shared/Translate";
 
 export function CaseStudiesDropdown() {
   return (
@@ -16,14 +17,12 @@ export function CaseStudiesDropdown() {
         showChevron={false}
         className="text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
       >
-        Case Studies
-      </NavigationMenuTrigger>
+         <Translate text="Case Studies" /> </NavigationMenuTrigger>
       <NavigationMenuContent className="bg-primary! border-none p-6 w-[600px] md:w-[750px] absolute left-0 top-full mt-2 z-[60] rounded-md shadow-lg">
         <div>
-          <h3 className="text-white text-xs mb-2 w-2xl">CASE STUDIES</h3>
+          <h3 className="text-white text-xs mb-2 w-2xl"> <Translate text="CASE STUDIES" /> </h3>
           <p className="text-accent text-[10px] mb-4 w-xs">
-            OUR WORK TAILORED FOR INDUSTRIES. ENGINEERED FOR IMMERSION.
-          </p>
+             <Translate text="OUR WORK TAILORED FOR INDUSTRIES. ENGINEERED FOR IMMERSION." /> </p>
 
           <div className="flex gap-4">
             {/* Placeholder for owl image */}
@@ -47,8 +46,7 @@ export function CaseStudiesDropdown() {
                       variant: "link",
                     })} !px-1`}
                   >
-                    Bringing Onboarding to Life with Immersive Spatial Computing
-                  </Link>
+                     <Translate text="Bringing Onboarding to Life with Immersive Spatial Computing" /> </Link>
                 </AnimatedNavLabel>
               </div>
 
@@ -60,8 +58,7 @@ export function CaseStudiesDropdown() {
                       variant: "link",
                     })} !px-1`}
                   >
-                    From Field Friction to Spatial Flow
-                  </Link>
+                     <Translate text="From Field Friction to Spatial Flow" /> </Link>
                 </AnimatedNavLabel>
               </div>
 
@@ -73,8 +70,7 @@ export function CaseStudiesDropdown() {
                       variant: "link",
                     })} !px-1`}
                   >
-                    Breaking Onboarding Barriers with Augmented Reality
-                  </Link>
+                     <Translate text="Breaking Onboarding Barriers with Augmented Reality" /> </Link>
                 </AnimatedNavLabel>
               </div>
 
@@ -86,9 +82,19 @@ export function CaseStudiesDropdown() {
                       variant: "link",
                     })} !px-1`}
                   >
-                    Immersive Onboarding That Feels Like Reality Through the
-                    <br /> eyes of the client
-                  </Link>
+                     <Translate text="Immersive Onboarding That Feels Like Reality Through the" /> <br />  <Translate text="eyes of the client" /> </Link>
+                </AnimatedNavLabel>
+              </div>
+
+              <div className="group flex items-center gap-3 py-2 border-b border-white/20">
+                <AnimatedNavLabel iconSize={14} gap={0} shiftDirection="right">
+                  <Link
+                    href="/resources?filter=Case+Studies"
+                    className={`text-white text-xs ${buttonVariants({
+                      variant: "link",
+                    })} !px-1`}
+                  >
+                     <Translate text="View More" /> </Link>
                 </AnimatedNavLabel>
               </div>
             </div>

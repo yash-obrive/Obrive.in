@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
@@ -7,7 +7,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 async function proxy(
   req: NextRequest,
-  context: { params: Promise<{ path: string[] }> }
+  context: { params: Promise<{ path: string[] }> },
 ) {
   try {
     const params = await Promise.resolve(context.params);
@@ -51,6 +51,13 @@ async function proxy(
       }
     });
 
+    // Enforce CORS to avoid cross-origin blocks when proxying
+    const origin = req.headers.get("origin");
+    if (origin) {
+      responseHeaders.set("Access-Control-Allow-Origin", origin);
+      responseHeaders.set("Access-Control-Allow-Credentials", "true");
+    }
+
     const responseBody = await response.arrayBuffer();
 
     return new NextResponse(responseBody, {
@@ -62,7 +69,7 @@ async function proxy(
     console.error("Proxy error:", error);
     return NextResponse.json(
       { success: false, message: error.message || "Proxy error" },
-      { status: 502 }
+      { status: 502 },
     );
   }
 }

@@ -1,31 +1,17 @@
-const {
-  downgradeToListenerService,
-} = require(
-  "./speakerDowngrade.service"
-);
+const { downgradeToListenerService } = require("./speakerDowngrade.service");
 
-const downgradeToListenerController =
-  async (
-    req,
-    res,
-    next
-  ) => {
-    try {
-      const result =
-        await downgradeToListenerService(
-          {
-            ...req.body,
-            actorUserId: req.user.id,
-          }
-        );
+const downgradeToListenerController = async (req, res, next) => {
+  try {
+    const result = await downgradeToListenerService({
+      ...req.body,
+      actorUserId: req.user.id,
+    });
 
-      return res
-        .status(200)
-        .json(result);
-    } catch (error) {
-      next(error);
-    }
-  };
+    return res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   downgradeToListenerController,

@@ -1,7 +1,5 @@
 const SupportPage = () => {
-  return (
-    <div>SupportPage</div>
-  )
-}
+  return <div>SupportPage</div>;
+};
 
-export default SupportPage
+export default SupportPage;

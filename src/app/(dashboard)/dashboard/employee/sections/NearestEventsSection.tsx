@@ -1,59 +1,60 @@
-'use client'
+"use client";
 
-import { Clock, ChevronUp, ChevronDown } from 'lucide-react'
-import { motion } from 'framer-motion'
-import { useDashboardData } from '../../useDashboardData'
-import SkeletonLoading from '@/components/SkelitonLoading'
+import { motion } from "framer-motion";
+import { ChevronDown, ChevronUp, Clock } from "lucide-react";
+import SkeletonLoading from "@/components/SkelitonLoading";
+import { useDashboardData } from "../../useDashboardData";
 
 interface EventItem {
-  id: string
-  title: string
-  time: string
-  priority: 'high' | 'medium' | 'low'
-  duration?: string
-  borderColor: string
+  id: string;
+  title: string;
+  time: string;
+  priority: "high" | "medium" | "low";
+  duration?: string;
+  borderColor: string;
 }
 
-export default function NearestEventsSection({setActiveSection}:{setActiveSection:(key:string)=>void}) {
-  const { events = [], loading } = useDashboardData('employee')
+export default function NearestEventsSection({
+  setActiveSection,
+}: {
+  setActiveSection: (key: string) => void;
+}) {
+  const { events = [], loading } = useDashboardData("employee");
 
   if (loading) {
-    return <SkeletonLoading />
+    return <SkeletonLoading />;
   }
 
   const getPriorityIcon = (priority: string) => {
-    if (priority === 'high') {
-      return <ChevronUp className="w-4 h-4 text-orange-500" />
+    if (priority === "high") {
+      return <ChevronUp className="w-4 h-4 text-orange-500" />;
     }
-    if (priority === 'low') {
-      return <ChevronDown className="w-4 h-4 text-green-500" />
+    if (priority === "low") {
+      return <ChevronDown className="w-4 h-4 text-green-500" />;
     }
-    return null
-  }
+    return null;
+  };
 
   const getBorderColor = (borderColor: string) =>
-    borderColor === 'bg-blue-500' ? '#3b82f6' : '#a855f7'
+    borderColor === "bg-blue-500" ? "#3b82f6" : "#a855f7";
 
   return (
     <div className="p-4 sm:p-6">
-      
       {/* Header */}
-      <div className='mb-6'>
+      <div className="mb-6">
         <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="text-xl font-bold text-[#073933] sm:text-2xl">
-          Nearest Events
-        </h2>
+          <h2 className="text-xl font-bold text-[#073933] sm:text-2xl">
+            Nearest Events
+          </h2>
 
-        <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#073933] px-4 py-2 text-white shadow transition hover:bg-[#0a4a42] sm:w-auto">
-          <span className="text-lg">+</span>
-          Add Event
-        </button>
-      </div>
-      <div>
-        <h1>
-          Stay Updated About The Nearest Events
-        </h1>
-      </div>
+          <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#073933] px-4 py-2 text-white shadow transition hover:bg-[#0a4a42] sm:w-auto">
+            <span className="text-lg">+</span>
+            Add Event
+          </button>
+        </div>
+        <div>
+          <h1>Stay Updated About The Nearest Events</h1>
+        </div>
       </div>
 
       {/* Grid */}
@@ -68,7 +69,7 @@ export default function NearestEventsSection({setActiveSection}:{setActiveSectio
             className="group relative overflow-hidden rounded-[26px] border bg-white p-5 shadow-[0_18px_40px_rgba(15,23,42,0.08)]"
             style={{
               borderColor: `${getBorderColor(event.borderColor)}25`,
-              borderLeftWidth: '6px',
+              borderLeftWidth: "6px",
               borderLeftColor: getBorderColor(event.borderColor),
             }}
           >
@@ -119,5 +120,5 @@ export default function NearestEventsSection({setActiveSection}:{setActiveSectio
         ))}
       </div>
     </div>
-  )
+  );
 }

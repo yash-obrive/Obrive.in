@@ -1,8 +1,26 @@
-import { SolutionTemplate } from "@/components/pages/solutions/SolutionTemplate";
-import { getTechnologyData, getTechnologySlugs } from "@/lib/technology";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
 import Script from "next/script";
+import { SolutionTemplate } from "@/components/pages/services/SolutionTemplate";
+import { COUNTRIES, SUPPORTED_COUNTRIES } from "@/config/countries";
+import { getTechnologyData, getTechnologySlugs } from "@/lib/technology";
+
+function getAlternates(slug: string) {
+  const activeCountries = SUPPORTED_COUNTRIES.filter(
+    (code) => COUNTRIES[code].isProductionReady
+  );
+  const langs: Record<string, string> = {
+    "x-default": `https://obrive.com/technology/${slug}`,
+  };
+  for (const code of activeCountries) {
+    langs[COUNTRIES[code].hreflang] = `https://obrive.com/${code}/technology/${slug}`;
+  }
+  return {
+    canonical: `https://obrive.com/technology/${slug}`,
+    languages: langs,
+  };
+}
+
 
 interface TechnologyPageProps {
   params: Promise<{
@@ -28,23 +46,27 @@ export async function generateMetadata({
     };
   }
 
-  const blockedSlugs = new Set([
-    "mixed-reality",
-    "extended-reality",
-    "digital-twins",
-    "ai-immersive-technology"
-  ]);
-
-  // Returning baseline metadata using the exact pattern established in the Solutions/Industries fallback
   return {
-    title: `${technologyData.hero.title} | Obrive`,
-    description: technologyData.hero.description,
-    ...(blockedSlugs.has(slug) && {
-      robots: {
-        index: false,
-        follow: true,
-      },
-    }),
+    title: `${technologyData.hero.title} | Obrive Industries`,
+    description: technologyData.hero.description || `Explore ${technologyData.hero.title} technology by Obrive Industries.`,
+    alternates: getAlternates(slug),
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      type: "website",
+      url: `https://obrive.com/technology/${slug}`,
+      title: `${technologyData.hero.title} | Obrive Industries`,
+      description: technologyData.hero.description || `Explore ${technologyData.hero.title} technology by Obrive Industries.`,
+      siteName: "Obrive Industries",
+      locale: "en_IN",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${technologyData.hero.title} | Obrive Industries`,
+      description: technologyData.hero.description || `Explore ${technologyData.hero.title} technology by Obrive Industries.`,
+    },
   };
 }
 
@@ -65,21 +87,54 @@ export default async function TechnologyPage({ params }: TechnologyPageProps) {
         type="application/ld+json"
         strategy="afterInteractive"
       >
-        {JSON.stringify({
-          "@context": "https://schema.org/",
-          "@type": "WebPage",
-          "@id": `https://www.obrive.in/technology/${slug}`,
-          url: `https://www.obrive.in/technology/${slug}`,
-          name: technologyData.hero.title,
-          description: technologyData.hero.description,
-        })}
+        {JSON.stringify([
+          {
+            "@context": "https://schema.org/",
+            "@type": "WebPage",
+            "@id": `https://obrive.com/technology/${slug}`,
+            url: `https://obrive.com/technology/${slug}`,
+            name: technologyData.hero.title,
+            description: technologyData.hero.description,
+            provider: {
+              "@type": "Organization",
+              name: "Obrive Industries",
+              url: "https://obrive.com",
+            },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://obrive.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Technology",
+                "item": "https://obrive.com/technology"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": technologyData.hero.title,
+                "item": `https://obrive.com/technology/${slug}`
+              }
+            ]
+          }
+        ])}
       </Script>
       <SolutionTemplate
-        slug=""
+        slug={slug}
         hero={technologyData.hero}
         keyBenefits={technologyData.keyBenefits}
         howItWorks={technologyData.howItWorks}
         workflowStepsSidebar={technologyData.workflowStepsSidebar}
+        sidebarLinks={technologyData.sidebarLinks}
+        serviceSections={technologyData.serviceSections}
       />
     </>
   );

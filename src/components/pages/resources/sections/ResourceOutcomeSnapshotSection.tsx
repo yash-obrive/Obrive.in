@@ -7,11 +7,11 @@ interface ResourceOutcomeSnapshotSectionProps {
   closingStatement: string;
 }
 
-export default function ResourceOutcomeSnapshotSection({ 
-  title = "Outcome Snapshot", 
+export default function ResourceOutcomeSnapshotSection({
+  title = "Outcome Snapshot",
   quote,
   author,
-  closingStatement
+  closingStatement,
 }: ResourceOutcomeSnapshotSectionProps) {
   return (
     <section className="mb-8">
@@ -21,12 +21,12 @@ export default function ResourceOutcomeSnapshotSection({
       <blockquote className="text-lg text-slate-700 leading-relaxed mb-4">
         "{quote}"
       </blockquote>
-      <p className={`${FONTS.microgrammaBold.className} text-sm text-slate-800 mb-4`}>
+      <p
+        className={`${FONTS.microgrammaBold.className} text-sm text-slate-800 mb-4`}
+      >
         — {author}
       </p>
-      <p className="text-base text-slate-700">
-        {closingStatement}
-      </p>
+      <p className="text-base text-slate-700">{closingStatement}</p>
     </section>
   );
 }

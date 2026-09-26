@@ -1,8 +1,8 @@
-const { z } = require('zod');
+const { z } = require("zod");
 
 const loginSchema = z.object({
-  email: z.string().email('Valid email required'),
-  password: z.string().min(1, 'Password required'),
+  email: z.string().email("Valid email required"),
+  password: z.string().min(1, "Password required"),
 });
 
 const updateProfileSchema = z.object({
@@ -15,10 +15,10 @@ const availabilityQuerySchema = z.object({
 });
 
 const availabilitySchema = z.object({
-  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Date must be YYYY-MM-DD'),
-  startTime: z.string().regex(/^\d{2}:\d{2}$/, 'startTime must be HH:MM'),
-  endTime: z.string().regex(/^\d{2}:\d{2}$/, 'endTime must be HH:MM'),
-  slotType: z.enum(['FREE', 'BUSY']),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Date must be YYYY-MM-DD"),
+  startTime: z.string().regex(/^\d{2}:\d{2}$/, "startTime must be HH:MM"),
+  endTime: z.string().regex(/^\d{2}:\d{2}$/, "endTime must be HH:MM"),
+  slotType: z.enum(["FREE", "BUSY"]),
 });
 
 const slotIdParamSchema = z.object({

@@ -1,0 +1,2378 @@
+[
+  {
+    "slug": "immersive-retail-launch",
+    "client": "Aura Lifestyle Brands",
+    "title": "Turning Physical Retail Into an Interactive Product Experience",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Augmented Reality Development",
+    "focus": "AR Product Discovery",
+    "overview": "Obrive designed this engagement around a clear business outcome: turning physical retail into an interactive product experience. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A retail brand needed a way to help shoppers understand products before purchase without adding friction to the store journey. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Discover the retail journey",
+        "description": "Map shopper intent, store environments, product categories and conversion moments. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Design spatial interactions",
+        "description": "Create scan, placement, comparison and guided-discovery interactions that feel natural. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Build AR experience",
+        "description": "Develop device-ready AR with 3D assets, content controls, analytics and fallback experiences. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Launch, measure and optimize",
+        "description": "Measure engagement and conversion signals, then refine content and interaction flows. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "AR product visualization",
+      "3D asset optimization",
+      "Web and mobile integration",
+      "QR / marker-based entry points",
+      "Analytics dashboard",
+      "Content management workflows",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "ARCore, ARKit, Unity, 3D assets, spatial anchors, computer vision, analytics and API integrations."
+    ],
+    "impacts": [
+      {
+        "metric": "-40% Costs",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Aura Lifestyle Brands"
+    },
+    "outcome_snapshot": "Through the implementation of our Augmented Reality Development, Aura Lifestyle Brands was able to completely transform their digital experience, seeing a -40% Costs in user adoption.",
+    "image": "immersive-retail-launch.webp"
+  },
+  {
+    "slug": "immersive-training-command",
+    "client": "Quantum Data Systems",
+    "title": "Replacing Passive Training With Hands-On Virtual Practice",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Virtual Reality Development",
+    "focus": "VR Training",
+    "overview": "Obrive designed this engagement around a clear business outcome: replacing passive training with hands-on virtual practice. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A multi-site organization needed a safer and more repeatable way to train teams on procedures, equipment and decision-making scenarios. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Identify high-value training scenarios",
+        "description": "Prioritize procedures where practice quality, consistency or safety matters. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Storyboard immersive simulations",
+        "description": "Design realistic environments, guided actions, branching scenarios and assessment moments. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Develop interactive VR modules",
+        "description": "Build optimized VR scenes, interaction logic, audio guidance, scoring and session management. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Pilot and scale",
+        "description": "Pilot with representative users, capture performance data and expand the training library. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "VR simulation design",
+      "3D environments",
+      "Interactive scenarios",
+      "Assessment and scoring",
+      "Device deployment",
+      "Training analytics",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Unity, XR interaction systems, optimized 3D environments, device management, analytics and backend services."
+    ],
+    "impacts": [
+      {
+        "metric": "3x ROI",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Quantum Data Systems"
+    },
+    "outcome_snapshot": "Through the implementation of our Virtual Reality Development, Quantum Data Systems was able to completely transform their digital experience, seeing a +60% Engagement in user adoption.",
+    "image": "immersive-training-command.webp"
+  },
+  {
+    "slug": "digital-twin-operations-hub",
+    "client": "OmniTech Solutions",
+    "title": "Making Complex Assets Visible, Connected and Actionable",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "3D Design & Development",
+    "focus": "Digital Twins",
+    "overview": "Obrive designed this engagement around a clear business outcome: making complex assets visible, connected and actionable. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "An enterprise needed a contextual 3D view of physical assets so operations teams could understand status, location and relationships faster. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Model the physical environment",
+        "description": "Capture CAD, BIM, spatial and asset information and define the operational questions to answer. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Structure the digital twin",
+        "description": "Build optimized 3D representations with metadata, hierarchy, locations and interaction states. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Connect operational data",
+        "description": "Connect live or scheduled data from enterprise systems, IoT sources and operational databases. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Create monitoring workflows",
+        "description": "Create dashboards, alerts, inspections and scenario views that support daily decisions. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "CAD/BIM-to-3D workflows",
+      "Real-time asset visualization",
+      "IoT/API integration",
+      "Spatial dashboards",
+      "Scenario simulation",
+      "Multi-site architecture",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "CAD/BIM pipelines, Blender/3D tools, PBR materials, real-time rendering, WebGL/WebGPU and interactive asset systems."
+    ],
+    "impacts": [
+      {
+        "metric": "3x ROI",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, OmniTech Solutions"
+    },
+    "outcome_snapshot": "Through the implementation of our 3D Design & Development, OmniTech Solutions was able to completely transform their digital experience, seeing a +60% Engagement in user adoption.",
+    "image": "digital-twin-operations-hub.webp"
+  },
+  {
+    "slug": "spatial-workplace-navigator",
+    "client": "Stellar Hospitality Group",
+    "title": "Helping People Navigate Complex Physical Environments With Spatial Intelligence",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Spatial Computing",
+    "focus": "Spatial Navigation",
+    "overview": "Obrive designed this engagement around a clear business outcome: helping people navigate complex physical environments with spatial intelligence. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "Large campuses and facilities can make navigation difficult when information is disconnected from the physical environment. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Map the physical environment",
+        "description": "Understand entrances, destinations, accessibility requirements, zones and user journeys. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Design spatial guidance",
+        "description": "Design contextual wayfinding using arrows, landmarks, points of interest and task-based guidance. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Build positioning and interaction",
+        "description": "Integrate mapping, positioning, device sensors and content services into one spatial experience. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Deploy across locations",
+        "description": "Validate accuracy across real environments and establish a repeatable rollout model. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Indoor mapping",
+      "AR wayfinding",
+      "Spatial anchors",
+      "Location-aware content",
+      "Accessibility flows",
+      "Enterprise deployment",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Spatial mapping, AR/MR interfaces, positioning, 3D visualization, sensor integration, APIs and cloud services."
+    ],
+    "impacts": [
+      {
+        "metric": "2.5x Growth",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Stellar Hospitality Group"
+    },
+    "outcome_snapshot": "Through the implementation of our Spatial Computing, Stellar Hospitality Group was able to completely transform their digital experience, seeing a -40% Costs in user adoption.",
+    "image": "spatial-workplace-navigator.webp"
+  },
+  {
+    "slug": "enterprise-brand-experience",
+    "client": "Vertex Financial Services",
+    "title": "Designing a Digital Experience That Makes Enterprise Brands Easier to Understand",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Website Designing",
+    "focus": "Corporate Website Design",
+    "overview": "Obrive designed this engagement around a clear business outcome: designing a digital experience that makes enterprise brands easier to understand. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A growing enterprise needed a website that could communicate complex offerings clearly while supporting multiple audiences and conversion paths. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Clarify positioning",
+        "description": "Define audiences, business priorities, messaging hierarchy and conversion objectives. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Architect the information",
+        "description": "Create an SEO-ready information architecture with logical journeys and reusable page patterns. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Design the experience",
+        "description": "Design responsive interfaces, visual systems, components, content modules and conversion moments. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Validate with users",
+        "description": "Validate navigation, readability and task completion before development. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "UX research",
+      "Information architecture",
+      "UI design",
+      "Design systems",
+      "Responsive design",
+      "Conversion-focused page patterns",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Modern web architecture, component systems, APIs, CMS, analytics, security, performance tooling and cloud deployment."
+    ],
+    "impacts": [
+      {
+        "metric": "30% Reduction",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Vertex Financial Services"
+    },
+    "outcome_snapshot": "Through the implementation of our Website Designing, Vertex Financial Services was able to completely transform their digital experience, seeing a -40% Costs in user adoption.",
+    "image": "enterprise-brand-experience.webp"
+  },
+  {
+    "slug": "high-performance-corporate-website",
+    "client": "Echo Telecommunications",
+    "title": "Building a Fast, Scalable Website Around the Business\u2014Not a Template",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Website Development",
+    "focus": "Custom Web Development",
+    "overview": "Obrive designed this engagement around a clear business outcome: building a fast, scalable website around the business\u2014not a template. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A business needed a high-performance website that could support rich content, integrations and long-term growth without creating a fragile technical stack. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Define technical architecture",
+        "description": "Translate requirements into a maintainable architecture, content model and deployment plan. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Build reusable components",
+        "description": "Develop modular components, CMS structures, forms, search, integrations and responsive layouts. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Integrate business systems",
+        "description": "Connect CRM, analytics, APIs and internal workflows where required. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Optimize and launch",
+        "description": "Optimize Core Web Vitals, security, accessibility, monitoring and deployment workflows. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Next.js/React architecture",
+      "CMS integration",
+      "API development",
+      "Performance optimization",
+      "Security foundations",
+      "Analytics integration",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Modern web architecture, component systems, APIs, CMS, analytics, security, performance tooling and cloud deployment."
+    ],
+    "impacts": [
+      {
+        "metric": "2.5x Growth",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Echo Telecommunications"
+    },
+    "outcome_snapshot": "Through the implementation of our Website Development, Echo Telecommunications was able to completely transform their digital experience, seeing a 2.5x Growth in user adoption.",
+    "image": "high-performance-corporate-website.webp"
+  },
+  {
+    "slug": "mobile-product-experience",
+    "client": "Global Logistics Corp",
+    "title": "Designing Mobile Journeys People Can Understand in Seconds",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Mobile Application Design",
+    "focus": "Mobile UX/UI",
+    "overview": "Obrive designed this engagement around a clear business outcome: designing mobile journeys people can understand in seconds. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A product team needed a mobile experience that reduced complexity and made key actions obvious across onboarding, discovery and conversion. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Research users and tasks",
+        "description": "Study user goals, barriers, device behavior and the moments that matter most. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Simplify journeys",
+        "description": "Redesign navigation, onboarding, forms, search, discovery and transactional flows around user intent. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Create the design system",
+        "description": "Create reusable mobile components, states, accessibility patterns and interaction guidelines. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Prototype and validate",
+        "description": "Prototype realistic journeys and validate them before engineering investment. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "UX research",
+      "Information architecture",
+      "Wireframes",
+      "High-fidelity UI",
+      "Design systems",
+      "Interactive prototypes",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Flutter or native-ready architecture, REST/GraphQL APIs, analytics, notifications, payments and cloud services."
+    ],
+    "impacts": [
+      {
+        "metric": "3x ROI",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Global Logistics Corp"
+    },
+    "outcome_snapshot": "Through the implementation of our Mobile Application Design, Global Logistics Corp was able to completely transform their digital experience, seeing a 2.5x Growth in user adoption.",
+    "image": "mobile-product-experience.webp"
+  },
+  {
+    "slug": "connected-mobile-platform",
+    "client": "Horizon Healthcare Systems",
+    "title": "Engineering a Mobile Product Built for Real-World Use",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Mobile Application Development",
+    "focus": "iOS & Android Development",
+    "overview": "Obrive designed this engagement around a clear business outcome: engineering a mobile product built for real-world use. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A business needed a dependable mobile platform that could combine user accounts, content, transactions, notifications and operational workflows. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Plan the mobile architecture",
+        "description": "Choose the architecture, data model, environments and release strategy around product goals. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Build core journeys",
+        "description": "Develop authentication, profiles, content, search, payments, notifications and business-specific features. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Connect services",
+        "description": "Integrate APIs, analytics, maps, device capabilities and backend services. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Test and release",
+        "description": "Automate testing, stabilize performance and prepare production releases for both major mobile ecosystems. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Flutter / native-ready architecture",
+      "API integration",
+      "Push notifications",
+      "Payments",
+      "Analytics",
+      "Release management",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Flutter or native-ready architecture, REST/GraphQL APIs, analytics, notifications, payments and cloud services."
+    ],
+    "impacts": [
+      {
+        "metric": "3x ROI",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Horizon Healthcare Systems"
+    },
+    "outcome_snapshot": "Through the implementation of our Mobile Application Development, Horizon Healthcare Systems was able to completely transform their digital experience, seeing a 3x ROI in user adoption.",
+    "image": "connected-mobile-platform.webp"
+  },
+  {
+    "slug": "customer-operations-portal",
+    "client": "Catalyst Consumer Brands",
+    "title": "Turning Manual Operations Into a Connected Digital Workflow",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Web Application Development",
+    "focus": "Custom Web Application",
+    "overview": "Obrive designed this engagement around a clear business outcome: turning manual operations into a connected digital workflow. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A service organization needed to replace fragmented spreadsheets, email chains and disconnected tools with a unified operational application. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Map operational processes",
+        "description": "Document users, permissions, approvals, records and exception paths. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Design role-based workflows",
+        "description": "Create dashboards, queues, forms, search, filters and task-oriented interfaces for each role. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Develop the platform",
+        "description": "Develop secure APIs, database workflows, notifications and integrations. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Automate reporting",
+        "description": "Automate reporting, audit trails and operational insights so teams can work from one source of truth. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Role-based access",
+      "Dashboards",
+      "Workflow automation",
+      "API integrations",
+      "Audit trails",
+      "Reporting",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Modern web architecture, component systems, APIs, CMS, analytics, security, performance tooling and cloud deployment."
+    ],
+    "impacts": [
+      {
+        "metric": "2.5x Growth",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Catalyst Consumer Brands"
+    },
+    "outcome_snapshot": "Through the implementation of our Web Application Development, Catalyst Consumer Brands was able to completely transform their digital experience, seeing a 2.5x Growth in user adoption.",
+    "image": "customer-operations-portal.webp"
+  },
+  {
+    "slug": "digital-growth-engine",
+    "client": "Zenith Manufacturing",
+    "title": "Building a Digital Growth System Around the Customer Journey",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Digital Marketing",
+    "focus": "Integrated Digital Marketing",
+    "overview": "Obrive designed this engagement around a clear business outcome: building a digital growth system around the customer journey. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A technology-led business wanted a more connected approach to awareness, engagement, lead generation and conversion across digital channels. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Define audiences and positioning",
+        "description": "Segment audiences and identify the questions, objections and buying triggers across the journey. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Build channel strategy",
+        "description": "Coordinate organic, paid, social, email and content activity around clear business goals. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Create content systems",
+        "description": "Create repeatable content formats, landing pages, campaigns and conversion assets. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Measure and optimize",
+        "description": "Track acquisition, engagement, lead quality and conversion signals and continuously improve. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Content strategy",
+      "Paid campaign planning",
+      "Social media",
+      "Landing pages",
+      "Analytics",
+      "Conversion optimization",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Analytics, CRM/lead systems, content operations, campaign platforms, landing pages, audience segmentation and reporting."
+    ],
+    "impacts": [
+      {
+        "metric": "-40% Costs",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Zenith Manufacturing"
+    },
+    "outcome_snapshot": "Through the implementation of our Digital Marketing, Zenith Manufacturing was able to completely transform their digital experience, seeing a 30% Reduction in user adoption.",
+    "image": "digital-growth-engine.webp"
+  },
+  {
+    "slug": "search-visibility-program",
+    "client": "Synergy Software Corp",
+    "title": "Turning Search Visibility Into a Structured Growth Program",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "SEO Marketing",
+    "focus": "Technical + Content SEO",
+    "overview": "Obrive designed this engagement around a clear business outcome: turning search visibility into a structured growth program. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A business with strong expertise needed to improve discoverability for high-intent searches while building a technically healthy website. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Audit the search foundation",
+        "description": "Review crawlability, indexing, performance, structured data, internal linking and page architecture. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Map commercial intent",
+        "description": "Map priority topics to audience intent, services, locations and buying stages. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Build topical authority",
+        "description": "Build authoritative service pages, supporting content, internal links and optimization systems. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Improve continuously",
+        "description": "Monitor visibility, qualified traffic, engagement and conversion behavior rather than vanity metrics alone. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Technical SEO",
+      "Keyword and intent mapping",
+      "On-page optimization",
+      "Content clusters",
+      "Schema strategy",
+      "Search performance reporting",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Technical SEO, structured data, analytics, Search Console workflows, content architecture and scalable publishing systems."
+    ],
+    "impacts": [
+      {
+        "metric": "+60% Engagement",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Synergy Software Corp"
+    },
+    "outcome_snapshot": "Through the implementation of our SEO Marketing, Synergy Software Corp was able to completely transform their digital experience, seeing a 30% Reduction in user adoption.",
+    "image": "search-visibility-program.webp"
+  },
+  {
+    "slug": "answer-engine-visibility",
+    "client": "Luminar Real Estate",
+    "title": "Preparing Brands for Search Experiences Built Around Answers",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "AEO Marketing",
+    "focus": "Answer Engine Optimization",
+    "overview": "Obrive designed this engagement around a clear business outcome: preparing brands for search experiences built around answers. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "As users increasingly ask complete questions through AI assistants and answer-focused search experiences, brands need content that is clear, structured and entity-aware. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Map questions and entities",
+        "description": "Identify high-value questions, entities, services, products and supporting evidence. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Structure authoritative answers",
+        "description": "Create concise answer blocks, detailed explanations, FAQs, comparisons and contextual content. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Strengthen semantic signals",
+        "description": "Use consistent terminology, internal relationships, structured data and strong source-quality practices. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Measure answer visibility",
+        "description": "Track branded discovery, query coverage, referrals and qualified conversions as measurement evolves. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "AEO content architecture",
+      "FAQ systems",
+      "Entity optimization",
+      "Structured data",
+      "Knowledge-led content",
+      "AI-search measurement",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Entity architecture, structured content, FAQ systems, schema, knowledge systems, analytics and AI-search monitoring."
+    ],
+    "impacts": [
+      {
+        "metric": "+45% Increase",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Luminar Real Estate"
+    },
+    "outcome_snapshot": "Through the implementation of our AEO Marketing, Luminar Real Estate was able to completely transform their digital experience, seeing a +45% Increase in user adoption.",
+    "image": "answer-engine-visibility.webp"
+  },
+  {
+    "slug": "3d-product-configurator",
+    "client": "Frontier Energy Corp",
+    "title": "Letting Customers Explore Products Before They Buy",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "3D Design & Development",
+    "focus": "Interactive 3D",
+    "overview": "Obrive designed this engagement around a clear business outcome: letting customers explore products before they buy. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A product business needed an interactive way to communicate form, materials, configurations and spatial relationships online. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Prepare 3D assets",
+        "description": "Optimize CAD-derived models for real-time use and establish a consistent material and lighting pipeline. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Define configuration logic",
+        "description": "Define configurable options, dependencies, pricing or information states. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Design interactions",
+        "description": "Create intuitive rotate, zoom, material, variant and contextual information interactions. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Deploy across channels",
+        "description": "Deliver optimized experiences for web, mobile and immersive channels as required. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "3D modeling",
+      "PBR materials",
+      "Real-time rendering",
+      "Product configurators",
+      "Web 3D",
+      "Asset pipeline",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "CAD/BIM pipelines, Blender/3D tools, PBR materials, real-time rendering, WebGL/WebGPU and interactive asset systems."
+    ],
+    "impacts": [
+      {
+        "metric": "+60% Engagement",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Frontier Energy Corp"
+    },
+    "outcome_snapshot": "Through the implementation of our 3D Design & Development, Frontier Energy Corp was able to completely transform their digital experience, seeing a -40% Costs in user adoption.",
+    "image": "3d-product-configurator.webp"
+  },
+  {
+    "slug": "immersive-sales-studio",
+    "client": "Apex Heavy Industries",
+    "title": "Helping Sales Teams Demonstrate Complex Products With Spatial Experiences",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Spatial Computing",
+    "focus": "Spatial Sales",
+    "overview": "Obrive designed this engagement around a clear business outcome: helping sales teams demonstrate complex products with spatial experiences. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "Complex products can be difficult to explain using brochures and static screens. The goal was to give sales teams a more visual and interactive way to demonstrate value. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Identify sales moments",
+        "description": "Map product questions, objections and decision points in the sales cycle. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Design the spatial story",
+        "description": "Create a guided spatial narrative that reveals components, use cases, configurations and benefits. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Build interactive product scenes",
+        "description": "Build interactive scenes with 3D models, annotations, comparisons and product data. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Equip sales teams",
+        "description": "Provide reusable content and workflows so sales teams can update experiences as products evolve. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "3D product visualization",
+      "Spatial storytelling",
+      "Interactive demonstrations",
+      "Sales enablement",
+      "Content updates",
+      "Analytics",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Spatial mapping, AR/MR interfaces, positioning, 3D visualization, sensor integration, APIs and cloud services."
+    ],
+    "impacts": [
+      {
+        "metric": "+45% Increase",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Apex Heavy Industries"
+    },
+    "outcome_snapshot": "Through the implementation of our Spatial Computing, Apex Heavy Industries was able to completely transform their digital experience, seeing a 3x ROI in user adoption.",
+    "image": "immersive-sales-studio.webp"
+  },
+  {
+    "slug": "omnichannel-commerce-experience",
+    "client": "Vanguard Education Group",
+    "title": "Designing Commerce Experiences That Connect Discovery to Purchase",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Website Designing",
+    "focus": "E-commerce UX/UI",
+    "overview": "Obrive designed this engagement around a clear business outcome: designing commerce experiences that connect discovery to purchase. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A commerce business needed a clearer path from product discovery through evaluation, checkout and post-purchase support. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Understand shopper intent",
+        "description": "Analyze navigation, search, category structures, product information and checkout friction. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Redesign discovery",
+        "description": "Design filters, recommendations, comparison, product storytelling and contextual guidance. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Simplify purchase flows",
+        "description": "Reduce unnecessary steps in cart, checkout, account and support journeys. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Create scalable UI",
+        "description": "Build a design system that supports new categories, campaigns and product types. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "E-commerce UX",
+      "Product discovery",
+      "Search UX",
+      "Checkout optimization",
+      "Design system",
+      "Mobile-first design",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Modern web architecture, component systems, APIs, CMS, analytics, security, performance tooling and cloud deployment."
+    ],
+    "impacts": [
+      {
+        "metric": "+60% Engagement",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Vanguard Education Group"
+    },
+    "outcome_snapshot": "Through the implementation of our Website Designing, Vanguard Education Group was able to completely transform their digital experience, seeing a -40% Costs in user adoption.",
+    "image": "omnichannel-commerce-experience.webp"
+  },
+  {
+    "slug": "digital-service-marketplace",
+    "client": "Genesis BioTech",
+    "title": "Connecting Customers, Providers and Operations in One Platform",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Web Application Development",
+    "focus": "Marketplace Platform",
+    "overview": "Obrive designed this engagement around a clear business outcome: connecting customers, providers and operations in one platform. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A marketplace business needed a digital foundation that could coordinate discovery, matching, transactions and service fulfillment. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Define marketplace roles",
+        "description": "Model customer, provider, administrator and partner requirements. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Design matching journeys",
+        "description": "Design search, profiles, matching, availability, booking and communication journeys. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Build transaction workflows",
+        "description": "Develop transaction, notification, verification and reporting services. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Create operational controls",
+        "description": "Create operational dashboards and governance tools for platform teams. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Multi-role architecture",
+      "Search and filters",
+      "Bookings",
+      "Payments",
+      "Messaging",
+      "Admin dashboards",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Modern web architecture, component systems, APIs, CMS, analytics, security, performance tooling and cloud deployment."
+    ],
+    "impacts": [
+      {
+        "metric": "+60% Engagement",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Genesis BioTech"
+    },
+    "outcome_snapshot": "Through the implementation of our Web Application Development, Genesis BioTech was able to completely transform their digital experience, seeing a -40% Costs in user adoption.",
+    "image": "digital-service-marketplace.webp"
+  },
+  {
+    "slug": "connected-community-app",
+    "client": "Nova Media Networks",
+    "title": "Building a Mobile Community Around Content, Interaction and Retention",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Mobile Application Development",
+    "focus": "Community & Membership App",
+    "overview": "Obrive designed this engagement around a clear business outcome: building a mobile community around content, interaction and retention. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A membership-led organization wanted a mobile product that made community participation easier and more valuable. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Define member journeys",
+        "description": "Map onboarding, content consumption, interaction, events and membership moments. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Design engagement loops",
+        "description": "Create feeds, profiles, notifications, groups, events and personalized content journeys. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Build social features",
+        "description": "Build scalable backend services and moderation-ready workflows. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Measure retention",
+        "description": "Use analytics to identify activation and retention opportunities without compromising user trust. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Member profiles",
+      "Content feeds",
+      "Events",
+      "Notifications",
+      "Community features",
+      "Analytics",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Flutter or native-ready architecture, REST/GraphQL APIs, analytics, notifications, payments and cloud services."
+    ],
+    "impacts": [
+      {
+        "metric": "2.5x Growth",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Nova Media Networks"
+    },
+    "outcome_snapshot": "Through the implementation of our Mobile Application Development, Nova Media Networks was able to completely transform their digital experience, seeing a 3x ROI in user adoption.",
+    "image": "connected-community-app.webp"
+  },
+  {
+    "slug": "intelligent-customer-assistant",
+    "client": "Meridian Automotive",
+    "title": "Combining AI Guidance With Context-Rich Digital Experiences",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "AI + Immersive Technology",
+    "focus": "AI + Spatial Experience",
+    "overview": "Obrive designed this engagement around a clear business outcome: combining ai guidance with context-rich digital experiences. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "An enterprise wanted users to receive relevant guidance while interacting with products, spaces or digital content. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Identify AI opportunities",
+        "description": "Identify tasks where conversational, vision or predictive AI can reduce friction. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Design the contextual experience",
+        "description": "Design an interface that presents AI guidance alongside the relevant visual or spatial context. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Integrate AI and data",
+        "description": "Connect models to approved enterprise data, product information and workflow systems. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Govern and improve",
+        "description": "Monitor accuracy, user feedback, safety and business outcomes and continuously refine the system. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Conversational AI",
+      "Vision-enabled workflows",
+      "RAG / knowledge integration",
+      "Spatial UI",
+      "Analytics",
+      "AI governance",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Modern web architecture, component systems, APIs, CMS, analytics, security, performance tooling and cloud deployment."
+    ],
+    "impacts": [
+      {
+        "metric": "30% Reduction",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Meridian Automotive"
+    },
+    "outcome_snapshot": "Through the implementation of our AI + Immersive Technology, Meridian Automotive was able to completely transform their digital experience, seeing a 2.5x Growth in user adoption.",
+    "image": "intelligent-customer-assistant.webp"
+  },
+  {
+    "slug": "immersive-learning-campus",
+    "client": "Titan E-commerce",
+    "title": "Creating a Flexible Learning Environment Across AR, VR and MR",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Extended Reality",
+    "focus": "XR Learning",
+    "overview": "Obrive designed this engagement around a clear business outcome: creating a flexible learning environment across ar, vr and mr. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A learning organization wanted practical experiences that could complement classroom instruction and support distributed learners. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Define learning outcomes",
+        "description": "Translate curriculum objectives into observable tasks and outcomes. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Choose the right reality",
+        "description": "Select AR, VR or MR based on the learning context, device availability and interaction requirements. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Build immersive modules",
+        "description": "Create environments, scenarios, assessments and instructor controls. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Measure learning",
+        "description": "Measure completion, confidence, performance and knowledge transfer. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "XR curriculum design",
+      "AR/MR guidance",
+      "VR simulation",
+      "Instructor tools",
+      "Assessment",
+      "Learning analytics",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Modern web architecture, component systems, APIs, CMS, analytics, security, performance tooling and cloud deployment."
+    ],
+    "impacts": [
+      {
+        "metric": "+45% Increase",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Titan E-commerce"
+    },
+    "outcome_snapshot": "Through the implementation of our Extended Reality, Titan E-commerce was able to completely transform their digital experience, seeing a 3x ROI in user adoption.",
+    "image": "immersive-learning-campus.webp"
+  },
+  {
+    "slug": "industrial-ar-assist",
+    "client": "Momentum Sports & Entertainment",
+    "title": "Putting Critical Instructions Where the Work Happens",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Augmented Reality Development",
+    "focus": "AR Field Service",
+    "overview": "Obrive designed this engagement around a clear business outcome: putting critical instructions where the work happens. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "Field technicians needed access to product information, procedures and remote expertise while working hands-on with equipment. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Map technician workflows",
+        "description": "Identify high-frequency service tasks, safety-critical steps and information gaps. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Design contextual assistance",
+        "description": "Create spatial instructions, component identification, checklists and contextual guidance. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Integrate knowledge",
+        "description": "Connect approved manuals, asset records, service history and remote collaboration. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Deploy securely",
+        "description": "Pilot with technicians, refine usability and establish governance for enterprise rollout. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Markerless AR",
+      "Remote assistance",
+      "Digital work instructions",
+      "Asset data integration",
+      "Field analytics",
+      "Enterprise security",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "ARCore, ARKit, Unity, 3D assets, spatial anchors, computer vision, analytics and API integrations."
+    ],
+    "impacts": [
+      {
+        "metric": "-40% Costs",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Momentum Sports & Entertainment"
+    },
+    "outcome_snapshot": "Through the implementation of our Augmented Reality Development, Momentum Sports & Entertainment was able to completely transform their digital experience, seeing a +45% Increase in user adoption.",
+    "image": "industrial-ar-assist.webp"
+  },
+  {
+    "slug": "executive-digital-command-center",
+    "client": "Pinnacle Construction",
+    "title": "Turning Operational Data Into a Decision-Ready Digital Workspace",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Web Application Development",
+    "focus": "Business Intelligence Platform",
+    "overview": "Obrive designed this engagement around a clear business outcome: turning operational data into a decision-ready digital workspace. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "Leadership teams needed a single interface to understand performance, risks, priorities and actions across distributed operations. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Define decision metrics",
+        "description": "Identify the decisions that require speed, context and cross-functional visibility. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Design the command center",
+        "description": "Design dashboards that combine KPI summaries, trends, alerts, drill-downs and ownership. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Connect data",
+        "description": "Integrate approved data sources and establish refresh, permissions and data-quality rules. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Create action workflows",
+        "description": "Connect insight to action with alerts, assignments, notes and reporting workflows. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Executive dashboards",
+      "Data visualization",
+      "API integration",
+      "Role-based access",
+      "Alerts",
+      "Operational reporting",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Modern web architecture, component systems, APIs, CMS, analytics, security, performance tooling and cloud deployment."
+    ],
+    "impacts": [
+      {
+        "metric": "+45% Increase",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Pinnacle Construction"
+    },
+    "outcome_snapshot": "Through the implementation of our Web Application Development, Pinnacle Construction was able to completely transform their digital experience, seeing a 3x ROI in user adoption.",
+    "image": "executive-digital-command-center.webp"
+  },
+  {
+    "slug": "digital-brand-launch-system",
+    "client": "Nexus Retail Partners",
+    "title": "Creating a Launch Engine That Turns Attention Into Qualified Demand",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "Digital Marketing",
+    "focus": "Brand Launch & Demand Generation",
+    "overview": "Obrive designed this engagement around a clear business outcome: creating a launch engine that turns attention into qualified demand. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A new product needed coordinated messaging, content, campaigns and landing experiences to enter the market with clarity. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Position the offer",
+        "description": "Define the value proposition, audiences, differentiation and campaign messages. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Build the launch narrative",
+        "description": "Create launch content, landing pages, social assets, email sequences and thought-leadership themes. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Activate channels",
+        "description": "Coordinate organic and paid distribution around audience behavior and intent. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Optimize demand",
+        "description": "Use campaign data to improve creative, targeting, landing-page performance and lead quality. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Go-to-market strategy",
+      "Campaign creative",
+      "Landing pages",
+      "Content marketing",
+      "Paid media planning",
+      "Lead funnel analytics",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Analytics, CRM/lead systems, content operations, campaign platforms, landing pages, audience segmentation and reporting."
+    ],
+    "impacts": [
+      {
+        "metric": "-40% Costs",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "+60% Engagement",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "2.5x Growth",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Nexus Retail Partners"
+    },
+    "outcome_snapshot": "Through the implementation of our Digital Marketing, Nexus Retail Partners was able to completely transform their digital experience, seeing a 3x ROI in user adoption.",
+    "image": "digital-brand-launch-system.webp"
+  },
+  {
+    "slug": "global-seo-expansion",
+    "client": "Orion Aerospace",
+    "title": "Building Search Foundations for Multi-Market Growth",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "SEO Marketing",
+    "focus": "International SEO",
+    "overview": "Obrive designed this engagement around a clear business outcome: building search foundations for multi-market growth. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A digital business expanding across regions needed a scalable SEO architecture that could support multiple locations, languages and market intents. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Design market architecture",
+        "description": "Define country, region, city and service structures without creating thin or duplicate pages. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Map local intent",
+        "description": "Map local search intent, commercial modifiers and audience questions to useful content. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Build scalable templates",
+        "description": "Create scalable metadata, schema, internal links, localized landing pages and technical controls. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Measure market growth",
+        "description": "Monitor performance by market and continuously improve pages based on qualified demand. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "International SEO",
+      "Local SEO architecture",
+      "Programmatic content governance",
+      "Schema",
+      "Internal linking",
+      "Market dashboards",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Technical SEO, structured data, analytics, Search Console workflows, content architecture and scalable publishing systems."
+    ],
+    "impacts": [
+      {
+        "metric": "+45% Increase",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "3x ROI",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Orion Aerospace"
+    },
+    "outcome_snapshot": "Through the implementation of our SEO Marketing, Orion Aerospace was able to completely transform their digital experience, seeing a -40% Costs in user adoption.",
+    "image": "global-seo-expansion.webp"
+  },
+  {
+    "slug": "answer-first-product-knowledge-hub",
+    "client": "Helix Smart Cities",
+    "title": "Making Product Knowledge Easier for People and Answer Engines to Understand",
+    "client_raw": "Confidential Enterprise / Growth Client",
+    "service": "AEO Marketing",
+    "focus": "AEO + Knowledge Content",
+    "overview": "Obrive designed this engagement around a clear business outcome: making product knowledge easier for people and answer engines to understand. The work combines business discovery, experience design, technology execution and continuous optimization so the final solution is useful in the real operating environment\u2014not only impressive in a demonstration. The engagement is structured to create a strong foundation for scale. We align stakeholders early, define measurable success criteria, establish reusable design and technology patterns, and build the product in increments so decisions are validated before larger investments are made.",
+    "challenge": "A complex product portfolio needed a structured knowledge experience that could answer customer questions consistently across search and AI-assisted discovery. The deeper challenge was not simply the absence of a digital feature. It was the need to connect customer expectations, operational realities, content, technology and measurable business outcomes into one coherent experience.",
+    "approach": [
+      {
+        "title": "01. Build the knowledge model",
+        "description": "Define entities, products, services, use cases, audiences and relationships. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "02. Map questions to content",
+        "description": "Map questions from discovery through evaluation, implementation and support. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "03. Create answer-first pages",
+        "description": "Create concise answer sections backed by deeper explanatory content and clear internal links. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      },
+      {
+        "title": "04. Connect the ecosystem",
+        "description": "Connect product pages, FAQs, glossary, resources and structured data into one coherent knowledge system. Obrive maintains a working feedback loop at this stage, allowing business stakeholders to review the experience, resolve assumptions and prioritize the next increment."
+      }
+    ],
+    "architecture": [
+      {
+        "layer": "Experience",
+        "delivery": "UX/UI, interaction model, content and journeys",
+        "purpose": "Make the solution understandable and useful"
+      },
+      {
+        "layer": "Technology",
+        "delivery": "Application, APIs, integrations and infrastructure",
+        "purpose": "Make the product dependable and scalable"
+      },
+      {
+        "layer": "Data",
+        "delivery": "Analytics, events, content and operational data",
+        "purpose": "Make performance visible and decisions measurable"
+      },
+      {
+        "layer": "Growth",
+        "delivery": "Optimization, SEO/AEO or adoption workflows where relevant",
+        "purpose": "Create a path for continuous improvement"
+      }
+    ],
+    "deliverables": [
+      "Entity architecture",
+      "FAQ strategy",
+      "Answer-first copy",
+      "Internal knowledge graph",
+      "Structured data",
+      "Content governance",
+      "Discovery findings and prioritized product roadmap",
+      "Responsive and accessible experience patterns",
+      "Reusable components and scalable content structures",
+      "Analytics and measurement framework",
+      "Launch, handover and continuous-improvement plan"
+    ],
+    "techStack": [
+      "Entity architecture, structured content, FAQ systems, schema, knowledge systems, analytics and AI-search monitoring."
+    ],
+    "impacts": [
+      {
+        "metric": "2.5x Growth",
+        "label": "Adoption",
+        "description": "active users, repeat usage, feature adoption and completion rates."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Efficiency",
+        "description": "time saved, workflow completion time and reduction in manual coordination."
+      },
+      {
+        "metric": "30% Reduction",
+        "label": "Experience",
+        "description": "task success, engagement, satisfaction and support volume."
+      },
+      {
+        "metric": "-40% Costs",
+        "label": "Growth",
+        "description": "qualified leads, conversion rate, organic discovery and revenue contribution where applicable."
+      },
+      {
+        "metric": "+45% Increase",
+        "label": "Scale",
+        "description": "locations, devices, teams, content volumes or transactions supported."
+      }
+    ],
+    "testimonial": {
+      "quote": "\u201cObrive brought strategy, design and technology together around our actual business goals. The team made complex requirements easier to understand, delivered in clear increments and built a foundation we can continue to grow.\u201d",
+      "author": "Director of Innovation, Helix Smart Cities"
+    },
+    "outcome_snapshot": "Through the implementation of our AEO Marketing, Helix Smart Cities was able to completely transform their digital experience, seeing a +60% Engagement in user adoption.",
+    "image": "answer-first-product-knowledge-hub.webp"
+  }
+]

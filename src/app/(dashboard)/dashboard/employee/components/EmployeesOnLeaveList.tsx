@@ -20,14 +20,14 @@ type EmployeesOnLeaveListProps = {
   tomorrow: LeaveColleague[];
 };
 
-const formatDate = (value: string) =>
+const _formatDate = (value: string) =>
   new Date(`${value}T00:00:00`).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
   });
 
-const SectionList = ({
+const _SectionList = ({
   title,
   items,
 }: {
@@ -85,15 +85,15 @@ export default function EmployeesOnLeaveList({
   // Using the template literal can sometimes fail depending on the input format.
   // This approach is generally safer for YYYY-MM-DD strings.
   const current = new Date(`${selectedDate}T00:00:00`);
-  
+
   // Check if the date is actually valid before calling methods on it
-  if (isNaN(current.getTime())) {
+  if (Number.isNaN(current.getTime())) {
     return <p className="text-sm text-red-500">Invalid date selected.</p>;
   }
 
   const nextDay = new Date(current);
   nextDay.setDate(current.getDate() + 1);
-  const nextDayLabel = nextDay.toISOString().split("T")[0];
+  const _nextDayLabel = nextDay.toISOString().split("T")[0];
 
   return (
     <div className="rounded-2xl bg-white p-5 shadow-sm">

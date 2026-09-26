@@ -1,6 +1,6 @@
-import PrimaryLogo from "@/components/shared/logo/PrimaryLogo";
+import Link from "@/components/shared/LocalizedLink";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import Link from "next/link";
+import PrimaryLogo from "@/components/shared/logo/PrimaryLogo";
 
 export default function CompanyInfoLayout({
   children,

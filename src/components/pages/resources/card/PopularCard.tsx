@@ -1,8 +1,9 @@
+import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import { CASE_STUDIES_AVATAR } from "@/assets/images";
-import { PopularCardContentType } from "@/constants/pages/resources/popular-card";
-import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
+import type { PopularCardContentType } from "@/constants/pages/resources/popular-card";
+import Translate from "@/components/shared/Translate";
 
 const PopularCard = ({
   src,
@@ -15,23 +16,23 @@ const PopularCard = ({
 }: PopularCardContentType) => {
   return (
     <Link href={`/resources/${slug}`}>
-      <div className="p-4 bg-accent rounded-xl flex gap-4 lg:gap-6 min-h-[180px] lg:min-h-[200px] cursor-pointer hover:bg-accent/80 transition-colors">
+      <div className="p-4 bg-accent rounded-xl flex gap-4 lg:gap-6 min-h-[180px] lg:min-h-[200px] cursor-pointer hover:bg-gradient-to-br hover:from-[#A2F1DF]/80 hover:to-[#caede5]/80 transition-colors">
         <div className="relative aspect-[16/10] rounded-xl overflow-hidden min-w-[140px] max-w-[180px] lg:min-w-[200px] lg:max-w-[240px] flex-shrink-0">
           <Image src={src} fill alt={alt} className="object-cover" priority />
         </div>
         <div className="flex flex-col gap-3 flex-1 min-w-0">
           <div className="flex text-xs items-center justify-between">
-            <span>Blog</span>
-            <span>{date}</span>
+            <span> <Translate text="Blog" /> </span>
+            <span><Translate text={date} /></span>
           </div>
           <div className="flex-1">
             <h3
               className={`${FONTS.microgrammaBold.className} text-sm lg:text-base text-primary leading-tight`}
             >
-              {title}
+              <Translate text={title} />
             </h3>
             <p className="text-xs text-primary mt-2 lg:mt-3 line-clamp-2 lg:line-clamp-3">
-              {description}
+              <Translate text={description} />
             </p>
           </div>
           <div className="flex items-center gap-3 mt-auto">
@@ -45,7 +46,7 @@ const PopularCard = ({
                 priority
               />
             </div>
-            <p className="text-xs lg:text-sm truncate">{author}</p>
+            <p className="text-xs lg:text-sm truncate"><Translate text={author} /></p>
           </div>
         </div>
       </div>

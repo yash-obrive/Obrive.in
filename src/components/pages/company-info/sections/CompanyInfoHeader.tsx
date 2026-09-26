@@ -1,6 +1,6 @@
-import React from "react";
-import FONTS from "@/assets/fonts";
 import { CalendarMinus2, CircleUserRound } from "lucide-react";
+import FONTS from "@/assets/fonts";
+import Translate from "@/components/shared/Translate";
 
 interface CompanyInfoHeaderProps {
   title: string;
@@ -44,8 +44,7 @@ export default function CompanyInfoHeader({
       {lastUpdated && (
         <div className="text-sm mt-10">
           <span className={`${FONTS.microgrammaBold.className}`}>
-            Last updated:
-          </span>{" "}
+             <Translate text="Last updated:" /> </span>{" "}
           {lastUpdated}
         </div>
       )}

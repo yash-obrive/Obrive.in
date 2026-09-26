@@ -1,6 +1,8 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { socketAuthMiddleware } = require("../src/socket/middleware/auth.middleware");
+const {
+  socketAuthMiddleware,
+} = require("../src/socket/middleware/auth.middleware");
 const { signAccessToken } = require("../src/utils/jwt");
 const { prisma } = require("../prisma");
 

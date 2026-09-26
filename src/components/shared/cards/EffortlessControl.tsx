@@ -1,12 +1,12 @@
-import FullWidthSection from "../layout/FullWidthSection";
-import { FadeInOnView } from "../motion/GsapMotion";
-import FONTS from "@/assets/fonts";
 import Image from "next/image";
+import FONTS from "@/assets/fonts";
 import { OBPARK_IMAGES, OBPARK_IMAGES_META } from "@/assets/images";
 import HoverAccordion from "../accordion/HoverAccordion";
 import AnimatedButton from "../buttons/AnimatedButton";
 import ObIcon from "../icons/ObIcon";
-import Link from "next/link";
+import FullWidthSection from "../layout/FullWidthSection";
+import { FadeInOnView } from "../motion/GsapMotion";
+import Translate from "@/components/shared/Translate";
 
 const EffortlessControl = () => {
   return (
@@ -16,10 +16,9 @@ const EffortlessControl = () => {
           <FadeInOnView>
             <div className="text-center">
               <h2
-                className={`${FONTS.microgrammaBold.className} text-3xl sm:text-4xl max-sm:text-center lg:text-5xl`}
+                className={`${FONTS.microgrammaBold.className} text-3xl sm:text-4xl max-sm:text-center lg:text-[40px]`}
               >
-                Effortless Control
-              </h2>
+                 <Translate text="THE FUTURE OF MOBILITY IS SPATIAL." /> </h2>
             </div>
           </FadeInOnView>
           <div className="flex flex-col lg:flex-row gap-10 justify-between items-start lg:items-start">
@@ -39,10 +38,7 @@ const EffortlessControl = () => {
                 <div className="flex flex-col gap-5">
                   <ObIcon />
                   <h4 className="text-lg sm:text-xl leading-8">
-                    Obpark - AR simplifies navigation with real-time route
-                    guidance, parking alerts, and spatial overlays—all in one
-                    immersive dashboard.
-                  </h4>
+                     <Translate text="OBPARK uses AR, spatial navigation and intelligent mobility technology to transform how people find, navigate, reserve and experience parking." /> </h4>
                   <HoverAccordion
                     className="mt-4"
                     defaultOpen={0}
@@ -78,14 +74,12 @@ const EffortlessControl = () => {
                           <h3
                             className={`${FONTS.microgrammaBold.className} text-md`}
                           >
-                            Effortless Real-Time Navigation
-                          </h3>
+                             <Translate text="FIND" /> </h3>
                         ),
                         content: (
                           <p className="text-xs max-w-md leading-6">
-                            Carve the perfect path with immersive, context-aware
-                            AR overlays, avoiding traffic and parking
-                            frustration.
+                             <Translate text="OBPARK turns parking discovery into a smarter, more informed first step of the journey." /> <br /><br />
+                            <strong> <Translate text="Find less. Drive smarter." /> </strong>
                           </p>
                         ),
                       },
@@ -97,14 +91,12 @@ const EffortlessControl = () => {
                           <h3
                             className={`${FONTS.microgrammaBold.className} text-md`}
                           >
-                            Seamless Spatial Automation
-                          </h3>
+                             <Translate text="NAVIGATE" /> </h3>
                         ),
                         content: (
                           <p className="text-xs max-w-md leading-6">
-                            Let ObPark dynamically highlight parking zones,
-                            verge areas, and no-go zones as you drive—no
-                            toggling screens required.
+                             <Translate text="From entrances and ramps to parking zones and your final destination, OBPARK helps turn unfamiliar spaces into navigable experiences." /> <br /><br />
+                            <strong> <Translate text="From location to destination." /> </strong>
                           </p>
                         ),
                       },
@@ -116,13 +108,12 @@ const EffortlessControl = () => {
                           <h3
                             className={`${FONTS.microgrammaBold.className} text-md`}
                           >
-                            Enhanced Safety & Awareness
-                          </h3>
+                             <Translate text="RESERVE" /> </h3>
                         ),
                         content: (
                           <p className="text-xs max-w-md leading-6">
-                            Stay focused on the road while essential navigation
-                            details float directly in your field of view.
+                             <Translate text="Discover and reserve available parking spaces in advance, helping drivers plan their journey with greater confidence and convenience." /> <br /><br />
+                            <strong> <Translate text="Know your space before you reach it." /> </strong>
                           </p>
                         ),
                       },
@@ -134,13 +125,12 @@ const EffortlessControl = () => {
                           <h3
                             className={`${FONTS.microgrammaBold.className} text-md`}
                           >
-                            Optimize Urban Driving Flow
-                          </h3>
+                             <Translate text="EXPERIENCE" /> </h3>
                         ),
                         content: (
                           <p className="text-xs max-w-md leading-6">
-                            Improve trip efficiency and reduce stress by
-                            accessing intuitive, location-aware AR cues.
+                             <Translate text="From car care and EV charging to mobility services, offers and digital commerce, OBPARK creates a connected ecosystem that extends beyond the parking space." /> <br /><br />
+                            <strong> <Translate text="Park. Discover. Connect. Experience." /> </strong>
                           </p>
                         ),
                       },
@@ -150,11 +140,10 @@ const EffortlessControl = () => {
                     <AnimatedButton
                       size={"lg"}
                       className="uppercase text-[10px] cursor-pointer"
-                      href="/products/obpark"
+                      href="https://www.obpark.in/"
                       aria-label="Learn more about ObPark AR navigation and parking solutions"
                     >
-                      learn more about ob
-                    </AnimatedButton>
+                       <Translate text="EXPLORE OBPARK" /> </AnimatedButton>
                   </div>
                 </div>
               </div>

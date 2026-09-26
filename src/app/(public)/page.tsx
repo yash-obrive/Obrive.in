@@ -1,27 +1,27 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
-import RoundedBallIcon from "@/components/shared/icons/RoundedBallIcon";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import dynamic from "next/dynamic";
-
-import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import UsecaseCard from "@/components/pages/home/card/UsecaseCard";
-import { HOME_CARD, HOME_CARD_BLOG } from "@/constants/pages/home/home-card";
 import BlogCard from "@/components/pages/home/card/BlogCard";
+import GoodByeCard from "@/components/pages/home/card/GoodByeCard";
+import UsecaseCard from "@/components/pages/home/card/UsecaseCard";
+import { HomepageRiveAnimation } from "@/components/pages/home/HomepageRiveAnimation";
+import ObriveVideo from "@/components/pages/home/Videos/ObriveVideo";
+import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
+import SmoothScrollLink from "@/components/shared/buttons/SmoothScrollLink";
+import RoundedBallIcon from "@/components/shared/icons/RoundedBallIcon";
+import Link from "@/components/shared/LocalizedLink";
+import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import {
   FadeInOnLoad,
   FadeInOnView,
   StaggerTiltBottomLeftOnScroll,
 } from "@/components/shared/motion/GsapMotion";
-import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
-import SmoothScrollLink from "@/components/shared/buttons/SmoothScrollLink";
 import SmoothScrollProvider from "@/components/shared/motion/SmoothScrollProvider";
-import ObriveVideo from "@/components/pages/home/Videos/ObriveVideo";
-import Link from "next/link";
-import GoodByeCard from "@/components/pages/home/card/GoodByeCard";
-import { HomepageRiveAnimation } from "@/components/pages/home/HomepageRiveAnimation";
+import { Button } from "@/components/ui/button";
+import { HOME_CARD, HOME_CARD_BLOG } from "@/constants/pages/home/home-card";
+import Translate from "@/components/shared/Translate";
 
 // Dynamic imports for performance optimization
 // const HomepageRiveAnimation = dynamic(
@@ -43,7 +43,7 @@ const VideoCardObrive = dynamic(
     loading: () => (
       <div className="h-[300px] animate-pulse bg-gray-200 rounded-lg" />
     ),
-  }
+  },
 );
 
 const ImmersiveExperience = dynamic(
@@ -52,7 +52,7 @@ const ImmersiveExperience = dynamic(
     loading: () => (
       <div className="h-[400px] animate-pulse bg-gray-200 rounded-lg" />
     ),
-  }
+  },
 );
 
 const EffortlessControl = dynamic(
@@ -61,7 +61,7 @@ const EffortlessControl = dynamic(
     loading: () => (
       <div className="h-[400px] animate-pulse bg-gray-200 rounded-lg" />
     ),
-  }
+  },
 );
 
 export const metadata: Metadata = {
@@ -120,7 +120,7 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "IN-KA",
     "geo.placename": "Bangalore, Karnataka, India",
-    "ICBM": "12.9716, 77.5946",
+    ICBM: "12.9716, 77.5946",
   },
 };
 
@@ -142,59 +142,49 @@ export default function Home() {
       />
       <SmoothScrollProvider>
         <div className="flex flex-col items-center">
-          {/* hero content */}
-          <FullWidthSection backgroundColor="accent" className="py-10 pt-30">
-            <div className="text-center flex flex-col items-center gap-8 mt-10">
+          {/* hero content, buttons, and animation combined to fix spacing */}
+          <FullWidthSection backgroundColor="accent" className="pt-28 pb-10">
+            <div className="text-center flex flex-col items-center gap-6 mt-4">
               <FadeInOnLoad delay={0.15}>
                 <h1
                   className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl md:text-5xl lg:text-6xl text-secondary`}
                 >
-                  AR, VR, MR & Spatial Computing Solutions for Enterprise
+                  <Translate text="Owning the Future" />
                 </h1>
               </FadeInOnLoad>
               <FadeInOnLoad delay={0.3}>
                 <p className="text-sm sm:text-md text-center max-w-4xl px-4 font-medium leading-relaxed">
-                  Obrive Industries is an immersive technology company
-                  delivering enterprise-grade Augmented Reality (AR), Virtual
-                  Reality (VR), Mixed Reality (MR), 3D design, and spatial
-                  computing solutions. We help forward-thinking organizations
-                  modernize operations, elevate client experiences, and unlock
-                  interactive digital realities.
+                  <Translate text="We build the spatial layer between the physical and digital worlds. We combine Spatial Computing, Artificial Intelligence, Augmented Reality, Virtual Reality, Mixed Reality, 3D, Digital Twins, Computer Vision and intelligent software to transform how people experience places, products, services and information. The future isn't something we wait for. It's something we build." />
                 </p>
               </FadeInOnLoad>
-            </div>
-          </FullWidthSection>
 
-          {/*  Buttons */}
-          <FullWidthSection backgroundColor="accent" className="py-6">
-            <FadeInOnLoad delay={0.45}>
-              <div className="flex sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-                <AnimatedButton
-                  asChild
-                  className="text-xs uppercase"
-                  size="lg"
-                  href="/coming-soon"
-                  aria-label="talk to ella our ai assistant"
-                  iconSize={16}
-                >
-                  Talk to Ella
-                </AnimatedButton>
-                <SmoothScrollLink href="/about" offset={80}>
-                  <Button
-                    variant="outline"
+              <FadeInOnLoad delay={0.45}>
+                <div className="flex sm:flex-row gap-4 sm:gap-6 justify-center items-center mt-4">
+                  <AnimatedButton
+                    asChild
+                    className="text-xs uppercase"
                     size="lg"
-                    className="text-primary uppercase text-xs"
+                    href="/faqs"
+                    aria-label="explore faqs"
+                    iconSize={16}
                   >
-                    Learn More
-                  </Button>
-                </SmoothScrollLink>
-              </div>
-            </FadeInOnLoad>
-          </FullWidthSection>
+                    <Translate text="Explore FAQs" />
+                  </AnimatedButton>
+                  <SmoothScrollLink href="/about" offset={80}>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="text-primary uppercase text-xs"
+                    >
+                      <Translate text="Learn More" />
+                    </Button>
+                  </SmoothScrollLink>
+                </div>
+              </FadeInOnLoad>
+            </div>
 
-          {/* homepage animation */}
-          <FullWidthSection backgroundColor="accent" className="py-10">
-            <div className="mx-auto flex items-center w-full">
+            {/* homepage animation */}
+            <div className="mx-auto flex items-center w-full mt-12 sm:mt-16">
               <HomepageRiveAnimation className="w-full aspect-[16/4] max-h-[320px] sm:max-h-[340px] lg:max-h-[380px]" />
             </div>
           </FullWidthSection>
@@ -205,14 +195,14 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row pb-8 border-b-2 border-primary/40 sm:items-center max-sm:items-start justify-between w-full gap-4">
                 <Link href="/resources">
                   <Button
-                    className="uppercase bg-accent cursor-pointer rounded-lg text-[10px]"
+                    className="uppercase bg-accent cursor-pointer rounded-lg text-xs"
                     variant={"outline"}
                   >
-                    News
+                    <Translate text="News" />
                   </Button>
                 </Link>
-                <p className="uppercase text-[10px] font-semibold max-sm:text-left text-primary text-center sm:text-right">
-                  Powering Enterprise Digital Transformation with Immersive Technology
+                <p className="uppercase text-xs font-semibold max-sm:text-left text-primary text-center sm:text-right">
+                  <Translate text="TURNING COMPLEX BUSINESS CHALLENGES INTO INTELLIGENT EXPERIENCES." />
                 </p>
               </div>
             </FadeInOnView>
@@ -235,10 +225,7 @@ export default function Home() {
                     <h2
                       className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl lg:text-4xl leading-tight`}
                     >
-                      Empower teams. Captivate audiences. Obrive enables
-                      enterprises to transform operations through immersive
-                      technology—turning complex concepts into interactive
-                      realities.
+                      <Translate text="THE WORLD IS BECOMING SPATIAL." /> <span className="text-[30px]"><Translate text="Screens are becoming environments. Products are becoming experiences. Buildings are becoming intelligent. Cities are becoming interactive. And businesses are moving beyond the flat digital world." /></span>
                     </h2>
                     <Link href="/about">
                       <Button
@@ -246,27 +233,23 @@ export default function Home() {
                         variant={"outline"}
                         size={"lg"}
                       >
-                        Know More About Obrive
+                        <Translate text="Know More About Obrive" />
                       </Button>
                     </Link>
                   </div>
                 </FadeInOnView>
 
-                <div className="my-20">
+                <div className="my-10">
                   <FadeInOnView>
                     <ObriveVideo />
                   </FadeInOnView>
                   <FadeInOnView>
                     <div
-                      className="mt-6 max-w-4xl w-full text-sm px-4 sm:px-14"
+                      className="mt-6 max-w-3xl w-full text-sm px-4 sm:px-14"
                       id="mission"
                     >
                       <p>
-                        Stay ahead of the future—create immersive Augmented
-                        Reality, Virtual Reality, and Mixed Reality experiences,
-                        design stunning 3D environments, and harness the power
-                        of spatial computing—all from one innovative platform
-                        with Obrive Industries.
+                        <Translate text="Obrive brings Augmented Reality, Virtual Reality, Mixed Reality, 3D, Artificial Intelligence and Spatial Computing together to help businesses create experiences that people can see, explore, understand and interact with." />
                       </p>
                     </div>
                   </FadeInOnView>
@@ -292,20 +275,20 @@ export default function Home() {
           {/* use cases  */}
           <FullWidthSection>
             <FadeInOnView>
-              <div className="my-20 flex flex-col justify-between w-full gap-16 px-4">
+              <div className="my-16 flex flex-col justify-between w-full gap-16 px-4">
                 <FadeInOnView>
                   <div className="flex flex-col items-center gap-14">
                     <div className="flex flex-col items-center gap-2">
                       <RoundedBallIcon />
                       <span className="uppercase text-xs font-medium">
-                        Use cases
+                        <Translate text="USE CASES" />
                       </span>
                     </div>
-                    <div>
+                    <div className="w-full flex justify-center">
                       <h2
-                        className={`${FONTS.microgrammaBold.className} text-center w-full sm:w-4xl lg:w-5xl text-3xl sm:text-4xl lg:text-5xl px-4 sm:px-8`}
+                        className={`${FONTS.microgrammaBold.className} text-center w-full max-w-none text-3xl sm:text-4xl lg:text-[40px] px-2 sm:px-4`}
                       >
-                        Transforming Real-World Challenges with Immersive Tech
+                        <Translate text="WHAT CAN YOU BUILD WHEN THE WORLD BECOMES YOUR INTERFACE?" />
                       </h2>
                     </div>
                   </div>
@@ -348,18 +331,16 @@ export default function Home() {
           {/* immersive tech section */}
           <FullWidthSection>
             <FadeInOnView>
-              <div className="my-20 flex flex-col justify-between w-full gap-16 px-4">
+              <div className="my-16 flex flex-col justify-between w-full gap-16 px-4">
                 <FadeInOnView>
                   <div className="text-center flex flex-col items-center gap-4">
                     <h2
-                      className={`${FONTS.microgrammaBold.className} w-full sm:w-3xl leading-tight sm:leading-14 px-4 sm:px-10 text-primary text-3xl sm:text-4xl lg:text-5xl`}
+                      className={`${FONTS.microgrammaBold.className} w-full leading-tight sm:leading-14 px-4 sm:px-10 text-primary text-3xl sm:text-4xl lg:text-[40px]`}
                     >
-                      Immersive Tech Resource Library
+                      <Translate text="THE FUTURE IS ALREADY BEING BUILT." />
                     </h2>
-                    <p className="text-md w-full sm:w-3xl lg:w-4xl px-4 sm:px-10 text-center">
-                      Learn and lead with confidence through blogs, case
-                      studies, and insights shaping the future of AR, VR, MR, 3D
-                      Design, and Spatial Computing.
+                    <p className="text-md w-full max-w-4xl lg:max-w-5xl px-4 sm:px-10 text-center">
+                      <Translate text="Ideas, technologies and perspectives shaping the spatial era. Explore the technologies transforming industries—and the ideas that will define what comes next." />
                     </p>
                   </div>
                 </FadeInOnView>
@@ -384,9 +365,9 @@ export default function Home() {
                     <Button
                       size={"lg"}
                       variant={"outline"}
-                      className="uppercase rounded-full bg-white! hover:bg-[#074139]! transition-all duration-300 hover:text-white text-[10px] w-full sm:w-auto cursor-pointer"
+                      className="uppercase rounded-full bg-white! hover:bg-[#074139]! transition-all duration-300 hover:text-white text-xs w-full sm:w-auto cursor-pointer"
                     >
-                      Visit Library
+                      <Translate text="Visit Library" />
                     </Button>
                   </Link>
                 </div>

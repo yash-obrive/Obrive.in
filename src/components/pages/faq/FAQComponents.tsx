@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
+} from "@/components/ui/accordion";
 
 interface FAQItemProps {
   question: string;
@@ -25,20 +25,22 @@ export const FAQItem = ({ question, children }: FAQItemProps) => {
 export const FAQSection = ({ title, children }: FAQSectionProps) => {
   const faqItems = React.Children.toArray(children).filter(
     (child): child is React.ReactElement<FAQItemProps> =>
-      React.isValidElement(child) && typeof child.type === 'function' && child.type.name === 'FAQItem'
+      React.isValidElement(child) &&
+      typeof child.type === "function" &&
+      child.type.name === "FAQItem",
   );
 
   return (
-    <div className="mb-8" id={title.toLowerCase().replace(/\s+/g, '-')}>
+    <div className="mb-8" id={title.toLowerCase().replace(/\s+/g, "-")}>
       <h2 className="text-2xl font-semibold text-teal-900 mb-6">{title}</h2>
-      
+
       <Accordion type="single" collapsible className="space-y-4">
         {faqItems?.map((item, index) => (
           <AccordionItem
             key={index}
             value={`item-${title}-${index}`}
             className="bg-white rounded-lg border border-teal-200 shadow-sm hover:shadow-md transition-shadow"
-            id={`question-${title.toLowerCase().replace(/\s+/g, '-')}-${index}`}
+            id={`question-${title.toLowerCase().replace(/\s+/g, "-")}-${index}`}
           >
             <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
               <span className="text-teal-900 font-medium pr-4">

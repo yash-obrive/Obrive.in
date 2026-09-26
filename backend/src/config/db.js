@@ -1,9 +1,9 @@
-require('dotenv').config();
-const { PrismaClient } = require('@prisma/client');
+require("dotenv").config();
+const { PrismaClient } = require("@prisma/client");
 
 let prisma;
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   prisma = new PrismaClient({
     datasources: {
       db: {

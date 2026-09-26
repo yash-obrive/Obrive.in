@@ -1,6 +1,6 @@
-import { useEffect, useState, useCallback } from "react";
-import type { UserRole } from "@/constants/dashboardConfig";
+import { useCallback, useEffect, useState } from "react";
 import type { ProjectItem } from "@/components/dashboard/ProjectCard";
+import type { UserRole } from "@/constants/dashboardConfig";
 import { apiFetch } from "@/lib/api";
 
 const formatDateLabel = (value?: string | null) => {
@@ -107,7 +107,7 @@ export function useDashboardData(userRole: UserRole) {
 
       // // Use apiFetch which handles BASE_URL and credentials (cookies)
       // let projectsRes, eventsRes, usersRes,meRes, calendarRes;
-      
+
       // if (userRole === 'supervisor') {
       //   // For supervisor, fetch all projects and events
       //   [projectsRes, eventsRes, usersRes] = await Promise.all([
@@ -125,7 +125,7 @@ export function useDashboardData(userRole: UserRole) {
       //     apiFetch('/auth/me', { method: 'GET' })
       //   ])
       // }
-      
+
       // if (userRole === 'client') {
       //   [projectsRes] = await Promise.all([
       //     apiFetch('/projects/client/projects', { method: 'GET' })
@@ -161,47 +161,48 @@ export function useDashboardData(userRole: UserRole) {
       console.log("Me API Response:", meResult.data);
 
       if (projectsResult.success) {
-        const projectsData = Array.isArray(projectsResult.data) ? projectsResult.data : [];
-        const mappedProjects: ProjectItem[] = projectsData.map(
-          (p: any) => ({
-            id: String(p.id),
-            code: p.project_id || `PN${String(p.id).padStart(7, "0")}`,
-            name: p.name,
-            createdAtLabel: `Created ${new Date(
-              p.created_at,
-            ).toLocaleDateString("en-US", {
+        const projectsData = Array.isArray(projectsResult.data)
+          ? projectsResult.data
+          : [];
+        const mappedProjects: ProjectItem[] = projectsData.map((p: any) => ({
+          id: String(p.id),
+          code: p.project_id || `PN${String(p.id).padStart(7, "0")}`,
+          name: p.name,
+          createdAtLabel: `Created ${new Date(p.created_at).toLocaleDateString(
+            "en-US",
+            {
               month: "short",
               day: "numeric",
               year: "numeric",
-            })}`,
-            priority:
-              ((p.priority?.charAt(0).toUpperCase() +
-                p.priority?.slice(1).toLowerCase()) as any) || "Medium",
-            allTasks: p.tasks ? p.tasks.length : 0,
-            activeTasks: p.tasks
-              ? p.tasks.filter((t: any) => t.status !== "completed").length
-              : 0,
-            assignees:
-              p.team_members?.map((member: any) => ({
-                id: String(member.id),
-                name: member.name,
-                avatarUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`,
-                role: member.role,
-              })) || [],
-            extraAssigneesCount: Math.max(0, (p.team_members?.length || 0) - 2),
-            description: p.description,
-            status: p.status,
-            progress: normalizeProgress(p.progress),
-            completedTasks: p.tasks
-              ? p.tasks.filter((t: any) => t.status === "completed").length
-              : p.completedTasks || 0,
-            startDate: formatDateLabel(
-              p.start_date ?? p.startDate ?? p.created_at,
-            ),
-            endDate: formatDateLabel(p.end_date ?? p.endDate ?? p.deadline),
-            tasks: p.tasks || [], // Include tasks in the project item
-          }),
-        ) as any;
+            },
+          )}`,
+          priority:
+            ((p.priority?.charAt(0).toUpperCase() +
+              p.priority?.slice(1).toLowerCase()) as any) || "Medium",
+          allTasks: p.tasks ? p.tasks.length : 0,
+          activeTasks: p.tasks
+            ? p.tasks.filter((t: any) => t.status !== "completed").length
+            : 0,
+          assignees:
+            p.team_members?.map((member: any) => ({
+              id: String(member.id),
+              name: member.name,
+              avatarUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`,
+              role: member.role,
+            })) || [],
+          extraAssigneesCount: Math.max(0, (p.team_members?.length || 0) - 2),
+          description: p.description,
+          status: p.status,
+          progress: normalizeProgress(p.progress),
+          completedTasks: p.tasks
+            ? p.tasks.filter((t: any) => t.status === "completed").length
+            : p.completedTasks || 0,
+          startDate: formatDateLabel(
+            p.start_date ?? p.startDate ?? p.created_at,
+          ),
+          endDate: formatDateLabel(p.end_date ?? p.endDate ?? p.deadline),
+          tasks: p.tasks || [], // Include tasks in the project item
+        })) as any;
 
         const mappedEvents = (eventsResult.data || []).map((e: any) => {
           // Calculate duration if both times exist

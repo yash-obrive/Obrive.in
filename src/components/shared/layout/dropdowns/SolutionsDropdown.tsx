@@ -1,13 +1,14 @@
+import Image from "next/image";
+import { NAV_ICONS, NAV_ICONS_META } from "@/assets/images";
+import Link from "@/components/shared/LocalizedLink";
+import { buttonVariants } from "@/components/ui/button";
 import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { ICONS, NAV_ICONS, NAV_ICONS_META } from "@/assets/images";
-import Image from "next/image";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
 import AnimatedNavLabel from "../AnimatedNavLabel";
+import Translate from "@/components/shared/Translate";
 
 export function SolutionsDropdown() {
   return (
@@ -16,14 +17,12 @@ export function SolutionsDropdown() {
         showChevron={false}
         className="text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
       >
-        Services
-      </NavigationMenuTrigger>
+         <Translate text="Services" /> </NavigationMenuTrigger>
       <NavigationMenuContent className="bg-primary! border-none p-6 w-[400px] md:w-[400px] absolute left-0 top-full mt-2 z-[60] rounded-md shadow-lg">
         <div>
-          <h3 className="text-white text-xs mb-2">SERVICES</h3>
+          <h3 className="text-white text-xs mb-2"> <Translate text="SERVICES" /> </h3>
           <p className="text-white/80 text-[10px] mb-4">
-            SERVICES TAILORED FOR INDUSTRIES. ENGINEERED FOR IMMERSION.
-          </p>
+             <Translate text="SERVICES TAILORED FOR INDUSTRIES. ENGINEERED FOR IMMERSION." /> </p>
 
           <div className="">
             <div className="flex items-center gap-3 py-4 px-2 border-y border-white/20">
@@ -37,13 +36,12 @@ export function SolutionsDropdown() {
                     className="flex-shrink-0"
                   />
                   <Link
-                    href="/solutions/augmented-reality-development"
+                    href="/services/augmented-reality-development"
                     className={`${buttonVariants({
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
                   >
-                    Augmented Reality Development
-                  </Link>
+                     <Translate text="Augmented Reality Development" /> </Link>
                 </div>
               </AnimatedNavLabel>
             </div>
@@ -58,13 +56,12 @@ export function SolutionsDropdown() {
                     className="flex-shrink-0"
                   />
                   <Link
-                    href="/solutions/virtual-reality-development"
+                    href="/services/virtual-reality-development"
                     className={`${buttonVariants({
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
                   >
-                    Virtual Reality Development
-                  </Link>
+                     <Translate text="Virtual Reality Development" /> </Link>
                 </div>
               </AnimatedNavLabel>
             </div>
@@ -79,13 +76,12 @@ export function SolutionsDropdown() {
                     className="flex-shrink-0"
                   />
                   <Link
-                    href="/solutions/3d-design-development"
+                    href="/services/3d-design-development"
                     className={`${buttonVariants({
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
                   >
-                    3D Design & Development
-                  </Link>
+                     <Translate text="3D Design & Development" /> </Link>
                 </div>
               </AnimatedNavLabel>
             </div>
@@ -100,13 +96,32 @@ export function SolutionsDropdown() {
                     className="flex-shrink-0"
                   />
                   <Link
-                    href="/solutions/spatial-computing-app-development"
+                    href="/services/spatial-computing-app-development"
                     className={`${buttonVariants({
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
                   >
-                    Spatial Computing App Development
-                  </Link>
+                     <Translate text="Spatial Computing App Development" /> </Link>
+                </div>
+              </AnimatedNavLabel>
+            </div>
+            <div className="flex items-center gap-3 py-4 px-2">
+              <AnimatedNavLabel iconSize={16}>
+                <div className="flex items-center gap-3">
+                  <Image
+                    src={NAV_ICONS.THREE_D_ICON_NAV}
+                    width={NAV_ICONS_META.THREE_D_ICON_NAV.width}
+                    height={NAV_ICONS_META.THREE_D_ICON_NAV.height}
+                    alt={NAV_ICONS_META.THREE_D_ICON_NAV.alt}
+                    className="flex-shrink-0"
+                  />
+                  <Link
+                    href="/services/mixed-reality-development"
+                    className={`${buttonVariants({
+                      variant: "link",
+                    })} !text-white !p-0 text-xs h-auto relative z-10`}
+                  >
+                     <Translate text="Mixed Reality Development" /> </Link>
                 </div>
               </AnimatedNavLabel>
             </div>

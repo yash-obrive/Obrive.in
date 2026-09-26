@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface AnimatedNavLabelProps {
   children: ReactNode;

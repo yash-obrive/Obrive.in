@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
 import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
+import { useEffect } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -30,10 +30,13 @@ function HomepageRiveAnimationComponent({
   }, [rive]);
 
   return (
-    <div className={cn("relative max-sm:scale-[2] w-full h-full overflow-hidden", className)}>
-      <RiveComponent
-        className={cn("h-full w-full", canvasClassName)}
-      />
+    <div
+      className={cn(
+        "relative max-sm:scale-[2] w-full h-full overflow-hidden",
+        className,
+      )}
+    >
+      <RiveComponent className={cn("h-full w-full", canvasClassName)} />
     </div>
   );
 }

@@ -1,11 +1,11 @@
-import { notFound } from 'next/navigation';
-import { MDXRemote } from 'next-mdx-remote/rsc';
-import { getFAQBySlug, getAllFAQSlugs } from '@/lib/mdx';
-import { createFAQMDXComponents } from '@/components/pages/faq/FAQMDXComponents';
-import FAQTemplate from '@/components/pages/faq/FAQTemplate';
-import { Metadata } from 'next';
-import Script from 'next/script';
-import { faqMetadata } from './metadata';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Script from "next/script";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { createFAQMDXComponents } from "@/components/pages/faq/FAQMDXComponents";
+import FAQTemplate from "@/components/pages/faq/FAQTemplate";
+import { getAllFAQSlugs, getFAQBySlug, sharedMdxOptions } from "@/lib/mdx";
+import { faqMetadata } from "./metadata";
 
 interface FaqSlugPageProps {
   params: Promise<{
@@ -30,7 +30,7 @@ export async function generateMetadata({
 
   if (!faqData) {
     return {
-      title: 'FAQ Not Found | Obrive',
+      title: "FAQ Not Found | Obrive",
     };
   }
 
@@ -38,7 +38,7 @@ export async function generateMetadata({
   return (
     faqMetadata[slug] || {
       title: `${faqData.metadata.title} | Obrive`,
-      description: faqData.metadata.description || '',
+      description: faqData.metadata.description || "",
       alternates: {
         canonical: `https://obrive.com/faq/${slug}`,
       },
@@ -58,11 +58,11 @@ const FaqSlugPage = async ({ params }: FaqSlugPageProps) => {
   const headingRegex = /^#{2,3}\s+(.+)$/gm;
   const headings: { level: number; text: string; id: string }[] = [];
   let match;
-  
+
   while ((match = headingRegex.exec(faqData.content)) !== null) {
-    const level = match[0].split('#').length - 1;
+    const level = match[0].split("#").length - 1;
     const text = match[1].trim();
-    const id = text.toLowerCase().replace(/\s+/g, '-');
+    const id = text.toLowerCase().replace(/\s+/g, "-");
     headings.push({ level, text, id });
   }
 
@@ -110,6 +110,7 @@ const FaqSlugPage = async ({ params }: FaqSlugPageProps) => {
         <MDXRemote
           source={faqData.content}
           components={createFAQMDXComponents(faqData.metadata)}
+          options={sharedMdxOptions}
         />
       </FAQTemplate>
     </>

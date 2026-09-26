@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import { ReactNode } from "react";
-import { CareerMetadata } from "@/lib/mdx";
+import type { CareerMetadata } from "@/lib/mdx";
 
 interface CareerTemplateProps {
   metadata: CareerMetadata;

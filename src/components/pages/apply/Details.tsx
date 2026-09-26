@@ -1,10 +1,10 @@
-import { getAllCareerSlugs, getCareerBySlug } from "@/lib/mdx";
 import { notFound, redirect } from "next/navigation";
-import React from "react";
 import FONTS from "@/assets/fonts";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { getAllCareerSlugs, getCareerBySlug } from "@/lib/mdx";
+import Translate from "@/components/shared/Translate";
 
 export async function generateStaticParams() {
   const slugs = await getAllCareerSlugs();
@@ -15,7 +15,11 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false;
 
-const DetailsPage = async ({ params }: { params: { slug: string } }) => {
+const DetailsPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) => {
   const { slug } = await params;
   const career = await getCareerBySlug(slug);
 
@@ -26,8 +30,8 @@ const DetailsPage = async ({ params }: { params: { slug: string } }) => {
   async function handleSubmit(formData: FormData) {
     "use server";
 
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
+    const _name = formData.get("name") as string;
+    const _email = formData.get("email") as string;
 
     redirect(`/apply.career.obrive.com/${slug}/more`);
   }
@@ -38,16 +42,14 @@ const DetailsPage = async ({ params }: { params: { slug: string } }) => {
           className={`${FONTS.microgrammaBold.className}
          tracking-wider text-4xl mb-10 font-extrabold text-primary`}
         >
-          Let’s get started!
-        </h1>
+           <Translate text="Let’s get started!" /> </h1>
         <p className="text-gray-800 mb-6">
           <span className={`${FONTS.microgrammaBold.className}`}>Obrive</span>{" "}
-          has invited you to interview for the position of <br />
+           <Translate text="has invited you to interview for the position of" /> <br />
           <span className={`${FONTS.microgrammaBold.className}`}>
             {career.metadata.title}
           </span>
-          . Enter your name and email address to get started.
-        </p>
+           <Translate text=". Enter your name and email address to get started." /> </p>
 
         <form
           action={handleSubmit}
@@ -56,8 +58,7 @@ const DetailsPage = async ({ params }: { params: { slug: string } }) => {
           {/* Name Input */}
           <div className="w-full text-left">
             <Label htmlFor="name" className="text-sm mb-1">
-              Name
-            </Label>
+               <Translate text="Name" /> </Label>
             <Input
               type="text"
               name="name"
@@ -70,8 +71,7 @@ const DetailsPage = async ({ params }: { params: { slug: string } }) => {
           {/* Email Input */}
           <div className="w-full text-left">
             <Label htmlFor="email" className="text-sm mb-1">
-              Email
-            </Label>
+               <Translate text="Email" /> </Label>
             <Input
               type="email"
               name="email"
@@ -83,8 +83,7 @@ const DetailsPage = async ({ params }: { params: { slug: string } }) => {
 
           {/* Submit Button */}
           <Button type="submit" size={"lg"} className="mt-6 cursor-pointer">
-            GET STARTED
-          </Button>
+             <Translate text="GET STARTED" /> </Button>
         </form>
       </div>
     </div>

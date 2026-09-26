@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
 import { motion } from "framer-motion";
+import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 
 interface CustomPaginationProps {
@@ -25,7 +25,7 @@ const CustomPagination = ({
     const half = Math.floor(maxVisiblePages / 2);
     const start = Math.max(
       1,
-      Math.min(currentPage - half, totalPages - maxVisiblePages + 1)
+      Math.min(currentPage - half, totalPages - maxVisiblePages + 1),
     );
     const end = Math.min(totalPages, start + maxVisiblePages - 1);
 

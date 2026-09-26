@@ -1,18 +1,28 @@
-import React from "react";
-import Link from "next/link";
 import FONTS from "@/assets/fonts";
-import { ButtonLink } from "@/components/ui/ButtonLink";
-import ResourceChallengeSection from "./sections/ResourceChallengeSection";
+import Link from "@/components/shared/LocalizedLink";
 import { StyledText } from "@/components/shared/StyledText";
-import ResourceStrategicApproachSection from "./sections/ResourceStrategicApproachSection";
-import ResourceCompanyOverviewSection from "./sections/ResourceCompanyOverviewSection";
-import ResourceWhyItWorkedSection from "./sections/ResourceWhyItWorkedSection";
-import ResourceOutcomeSnapshotSection from "./sections/ResourceOutcomeSnapshotSection";
+import { ButtonLink } from "@/components/ui/ButtonLink";
 import ResourceImpactMetricsTable from "./ResourceImpactMetricsTable";
-import ResourceObrivesApproachTable from "./sections/ResourceObrivesApproachTable";
-import ResourceTheImpactTable from "./sections/ResourceTheImpactTable";
+import ResourceChallengeSection from "./sections/ResourceChallengeSection";
+import ResourceCompanyOverviewSection from "./sections/ResourceCompanyOverviewSection";
+import ResourceObrivesApproachTable, {
+  ApproachPhaseItem,
+  ApproachTableDescription,
+  ApproachTableTitle,
+} from "./sections/ResourceObrivesApproachTable";
+import ResourceOutcomeSnapshotSection from "./sections/ResourceOutcomeSnapshotSection";
+import ResourceStrategicApproachSection, {
+  StrategicStepItem,
+} from "./sections/ResourceStrategicApproachSection";
+import ResourceTheImpactTable, {
+  ImpactTableCell,
+  ImpactTableMetric,
+  ImpactTableRow,
+} from "./sections/ResourceTheImpactTable";
+import ResourceWhyItWorkedSection, {
+  WhyItWorkedItem,
+} from "./sections/ResourceWhyItWorkedSection";
 
-// Export components for direct import in MDX files
 export {
   ResourceChallengeSection,
   ResourceStrategicApproachSection,
@@ -22,6 +32,11 @@ export {
   ResourceImpactMetricsTable,
   ResourceObrivesApproachTable,
   ResourceTheImpactTable,
+  WhyItWorkedItem,
+  StrategicStepItem,
+  ApproachPhaseItem,
+  ApproachTableTitle,
+  ApproachTableDescription,
 };
 
 // Create a function that returns MDX components with access to metadata
@@ -48,16 +63,36 @@ export const createResourceMDXComponents = (metadata: any) => ({
   p: (props: any) => (
     <p className="text-base leading-relaxed text-gray-700 mb-4" {...props} />
   ),
+  ul: (props: any) => (
+    <ul
+      className="list-disc list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      {...props}
+    />
+  ),
+  ol: (props: any) => (
+    <ol
+      className="list-decimal list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      {...props}
+    />
+  ),
+  li: (props: any) => (
+    <li className="text-base leading-relaxed text-gray-700" {...props} />
+  ),
+  strong: (props: any) => (
+    <strong
+      className={`${FONTS.microgrammaBold.className} text-gray-900`}
+      {...props}
+    />
+  ),
+  em: (props: any) => <em className="italic" {...props} />,
   blockquote: (props: any) => (
-    <div className="pr-30">
-      <div className="bg-primary text-accent rounded-xl p-12 my-6">
-        <p
-          className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}
-        >
-          {props.children}
-        </p>
-      </div>
-    </div>
+    <blockquote className="border-l-4 border-primary pl-6 my-6 italic text-gray-700">
+      <p
+        className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}
+      >
+        {props.children}
+      </p>
+    </blockquote>
   ),
 
   // Custom resource components that can be used in MDX (new names)
@@ -108,7 +143,6 @@ export const createResourceMDXComponents = (metadata: any) => ({
     );
   },
 
-  // Obrive's Approach table component
   ResourceObrivesApproachTable: (props: any) => (
     <ResourceObrivesApproachTable {...props} />
   ),
@@ -119,11 +153,22 @@ export const createResourceMDXComponents = (metadata: any) => ({
   // The Impact table component
   ResourceTheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
   TheImpactTable: (props: any) => <ResourceTheImpactTable {...props} />,
-  
-  // Custom components
+  ImpactTableRow: (props: any) => <ImpactTableRow {...props} />,
+  ImpactTableCell: (props: any) => <ImpactTableCell {...props} />,
+  ImpactTableMetric: (props: any) => <ImpactTableMetric {...props} />,
+  WhyItWorkedItem: (props: any) => <WhyItWorkedItem {...props} />,
+  StrategicStepItem: (props: any) => <StrategicStepItem {...props} />,
+  ApproachPhaseItem: (props: any) => <ApproachPhaseItem {...props} />,
+  ApproachTableTitle: (props: any) => <ApproachTableTitle {...props} />,
+  ApproachTableDescription: (props: any) => (
+    <ApproachTableDescription {...props} />
+  ),
+
+  // Custom generic components
   Link,
   a: (props: any) => {
-    const isInternal = props.href?.startsWith("/") || props.href?.startsWith("#");
+    const isInternal =
+      props.href?.startsWith("/") || props.href?.startsWith("#");
     if (isInternal) {
       return <Link {...props} />;
     }
@@ -156,20 +201,41 @@ export default {
   p: (props: any) => (
     <p className="text-base leading-relaxed text-gray-700 mb-4" {...props} />
   ),
+  ul: (props: any) => (
+    <ul
+      className="list-disc list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      {...props}
+    />
+  ),
+  ol: (props: any) => (
+    <ol
+      className="list-decimal list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      {...props}
+    />
+  ),
+  li: (props: any) => (
+    <li className="text-base leading-relaxed text-gray-700" {...props} />
+  ),
+  strong: (props: any) => (
+    <strong
+      className={`${FONTS.microgrammaBold.className} text-gray-900`}
+      {...props}
+    />
+  ),
+  em: (props: any) => <em className="italic" {...props} />,
   blockquote: (props: any) => (
-    <div className="pr-30">
-      <div className="bg-primary text-accent rounded-xl p-12 my-6">
-        <p
-          className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}
-        >
-          {props.children}
-        </p>
-      </div>
-    </div>
+    <blockquote className="border-l-4 border-primary pl-6 my-6 italic text-gray-700">
+      <p
+        className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}
+      >
+        {props.children}
+      </p>
+    </blockquote>
   ),
   Link,
   a: (props: any) => {
-    const isInternal = props.href?.startsWith("/") || props.href?.startsWith("#");
+    const isInternal =
+      props.href?.startsWith("/") || props.href?.startsWith("#");
     if (isInternal) {
       return <Link {...props} />;
     }
@@ -177,4 +243,9 @@ export default {
   },
   // Provide StyledText for default mapping
   StyledText,
+  WhyItWorkedItem,
+  StrategicStepItem,
+  ApproachPhaseItem,
+  ApproachTableTitle,
+  ApproachTableDescription,
 };

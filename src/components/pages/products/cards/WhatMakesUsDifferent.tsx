@@ -1,10 +1,11 @@
 "use client";
 
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import FONTS from "@/assets/fonts";
 import { ICONS, ICONS_META } from "@/assets/images";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import Translate from "@/components/shared/Translate";
 
 type Item = { title: string; description: string };
 
@@ -45,7 +46,7 @@ export default function WhatMakesUsDifferent({
       },
       {
         threshold: 0.9,
-      }
+      },
     );
 
     observer.observe(node);
@@ -90,7 +91,7 @@ export default function WhatMakesUsDifferent({
               {showGlow && (
                 <motion.div
                   className={`hidden lg:block absolute left-0 -translate-x-1/2 ${glowClassByIndex(
-                    idx
+                    idx,
                   )} z-10 pointer-events-none`}
                   animate={
                     shouldAnimateGlow
@@ -119,16 +120,16 @@ export default function WhatMakesUsDifferent({
                   idx === 0
                     ? "mt-10"
                     : idx === 1
-                    ? "mt-70"
-                    : idx === 2
-                    ? "mt-8"
-                    : "mt-50"
+                      ? "mt-70"
+                      : idx === 2
+                        ? "mt-8"
+                        : "mt-50"
                 } max-md:mt-6`}
               >
-                {item.title}
+                <Translate text={item.title} />
               </h3>
               <p className="text-accent/80 text-xs leading-relaxed z-10">
-                {item.description}
+                <Translate text={item.description} />
               </p>
             </div>
           );

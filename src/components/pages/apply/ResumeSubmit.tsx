@@ -1,15 +1,17 @@
 "use client";
 
+import type React from "react";
+import { useState } from "react";
 import FONTS from "@/assets/fonts";
 import { Input } from "@/components/ui/input";
-import React, { useState } from "react";
+import Translate from "@/components/shared/Translate";
 
 const ResumeSubmit = ({
   props,
 }: {
   props: { setStage: React.Dispatch<React.SetStateAction<number>> };
 }) => {
-  const [loading, setLoading] = useState(false);
+  const [_loading, setLoading] = useState(false);
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -36,8 +38,7 @@ const ResumeSubmit = ({
         <h2
           className={`text-3xl ${FONTS.microgrammaBold.className} text-[#074139] mb-8`}
         >
-          Upload your resume...
-        </h2>
+           <Translate text="Upload your resume..." /> </h2>
 
         <label
           htmlFor="resume"
@@ -82,11 +83,10 @@ const ResumeSubmit = ({
           </svg>
 
           <p className="text-[#020303] text-sm">
-            Drag and drop your{" "}
-            <span className={`${FONTS.microgrammaBold.className}`}>resume</span>{" "}
-            (PDF or Word document) into this box or click to select a file to
-            upload.
-          </p>
+             <Translate text="Drag and drop your" /> {" "}
+            <span className={`${FONTS.microgrammaBold.className}`}> <Translate text="resume" /> </span>{" "}
+             <Translate text="(PDF or Word document) into this box or click to select a file to
+                                  upload." /> </p>
           <Input
             id="resume"
             type="file"

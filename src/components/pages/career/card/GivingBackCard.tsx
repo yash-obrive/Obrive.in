@@ -1,5 +1,5 @@
 import FONTS from "@/assets/fonts";
-import { GIVING_BACK_CARD_TYPE } from "@/constants/pages/career/giving-back-card";
+import type { GIVING_BACK_CARD_TYPE } from "@/constants/pages/career/giving-back-card";
 
 const GivingBackCard = ({
   title,

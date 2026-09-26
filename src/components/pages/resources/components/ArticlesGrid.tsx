@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import BlogGridCard from "@/components/pages/resources/card/BlogGridCard";
 import RoundedBallIcon from "@/components/shared/icons/RoundedBallIcon";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import { BlogCardContent } from "@/constants/pages/resources/blog-card";
+import type { BlogCardContent } from "@/constants/pages/resources/blog-card";
 
 interface ArticlesGridProps {
   currentBlogs: (typeof BlogCardContent)[number][];
@@ -24,7 +24,9 @@ const ArticlesGrid = ({
           <div className="flex flex-col items-center gap-2 sm:gap-3">
             <RoundedBallIcon />
             <h2 className="uppercase text-xs sm:text-sm font-medium text-center">
-              All Articles
+              {currentFilter?.toLowerCase() === "all"
+                ? "All Articles"
+                : currentFilter}
             </h2>
           </div>
 

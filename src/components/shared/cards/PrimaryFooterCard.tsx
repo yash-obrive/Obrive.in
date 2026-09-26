@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import AnimatedButton from "../buttons/AnimatedButton";
-import FONTS from "@/assets/fonts";
-import Link from "next/link";
 import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
+import { useEffect, useRef } from "react";
+import FONTS from "@/assets/fonts";
+import AnimatedButton from "../buttons/AnimatedButton";
 
 type PrimaryFooterCardVariant = "default" | "small";
 
@@ -41,7 +40,6 @@ function FooterCardRive({ className }: FooterCardRiveProps) {
         }
 
         if (entry.isIntersecting) {
-          rive.resizeDrawingSurfaceToCanvas();
           rive.play();
         } else {
           rive.pause();
@@ -89,7 +87,7 @@ export default function PrimaryFooterCard({
   const titleClasses =
     variant === "small"
       ? "text-xl sm:text-2xl"
-      : `${FONTS.microgrammaBold.className} sm:w-2xl text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight sm:leading-14`;
+      : `${FONTS.microgrammaBold.className} text-md leading-tight`;
 
   const isExternal = buttonLink.startsWith("http");
 
@@ -98,23 +96,23 @@ export default function PrimaryFooterCard({
       <div className="bg-primary overflow-hidden relative text-white flex flex-col max-sm:-space-y-10 sm:gap-10 justify-between w-full max-w-[90%] sm:max-w-[95%] lg:max-w-[1238px] rounded-xl min-h-[300px] sm:min-h-[361px]">
         <div className="flex px-4 sm:px-10 py-6 sm:py-6 flex-col sm:flex-row items-center sm:items-start justify-between gap-4 sm:gap-0">
           <h2
-            className={`${titleClasses} w-full text-center sm:text-left max-sm:text-left`}
+            className={`${titleClasses} w-full text-center sm:text-left max-sm:text-left whitespace-pre-line`}
           >
             {title}
           </h2>
 
           <div className="max-sm:hidden">
-              <AnimatedButton
-                size={"lg"}
-                className="uppercase bg-accent text-primary hover:bg-accent/90! text-[10px] w-full sm:w-auto max-sm:hidden"
-                iconSize={16}
-                arrowColor="primary"
-                href={buttonLink}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-              >
-                {buttonText}
-              </AnimatedButton>
+            <AnimatedButton
+              size={"lg"}
+              className="uppercase bg-accent text-primary hover:bg-accent/90! text-[10px] w-full sm:w-auto max-sm:hidden"
+              iconSize={16}
+              arrowColor="primary"
+              href={buttonLink}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+            >
+              {buttonText}
+            </AnimatedButton>
           </div>
         </div>
         <div className="flex flex-col gap-10 sm:flex-row justify-between max-sm:justify-center">
@@ -129,17 +127,17 @@ export default function PrimaryFooterCard({
           </div>
 
           <div className="sm:hidden w-[200px] pl-4 max-sm:-mt-10">
-              <AnimatedButton
-                size={"lg"}
-                className="uppercase bg-accent text-primary hover:bg-accent/90 text-[10px] w-full sm:w-auto"
-                iconSize={16}
-                arrowColor="primary"
-                href={buttonLink}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-              >
-                {buttonText}
-              </AnimatedButton>
+            <AnimatedButton
+              size={"lg"}
+              className="uppercase bg-accent text-primary hover:bg-accent/90 text-[10px] w-full sm:w-auto"
+              iconSize={16}
+              arrowColor="primary"
+              href={buttonLink}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+            >
+              {buttonText}
+            </AnimatedButton>
           </div>
 
           <div className="pointer-events-none sm:hidden w-full px-4 mt-4">

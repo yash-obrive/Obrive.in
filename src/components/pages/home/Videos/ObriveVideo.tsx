@@ -1,9 +1,10 @@
 "use client";
 
-import { HOME_VIDEOS } from "@/assets/videos";
-import { HOME_IMAGES, HOME_IMAGES_META } from "@/assets/images";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { HOME_IMAGES, HOME_IMAGES_META } from "@/assets/images";
+import { HOME_VIDEOS } from "@/assets/videos";
+import Translate from "@/components/shared/Translate";
 
 export default function ObriveVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -43,7 +44,7 @@ export default function ObriveVideo() {
       },
       {
         rootMargin: "100px", // start loading video beforew entring 100px viewport
-      }
+      },
     );
 
     if (containerRef.current) {
@@ -116,8 +117,7 @@ export default function ObriveVideo() {
       >
         {/* Captions track for accessibility - video is decorative and muted by default */}
         <track kind="captions" srcLang="en" label="English" />
-        Your browser does not support the video tag.
-      </video>
+         <Translate text="Your browser does not support the video tag." /> </video>
     </div>
   );
 }

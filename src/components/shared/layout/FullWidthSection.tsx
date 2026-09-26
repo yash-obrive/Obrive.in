@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import { cn } from "@/lib/utils";
 
 type FullWidthSectionProps = {
@@ -26,7 +26,7 @@ export default function FullWidthSection({
       className={cn(
         "w-full relative -mb-[1px]",
         clipOverflow ? "overflow-x-clip" : "overflow-visible",
-        bgColorMap[backgroundColor]
+        bgColorMap[backgroundColor],
       )}
     >
       <div className={cn("w-full", className)}>

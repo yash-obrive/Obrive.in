@@ -59,18 +59,13 @@ exports.registerModerationHandler = (io, socket) => {
         actorUserId: socket.user?.id,
       });
 
-      console.log(
-        `✅ User ${userId} muted in room ${roomId}`
-      );
+      console.log(`✅ User ${userId} muted in room ${roomId}`);
 
-      io.to(`audio-room:${roomId}`).emit(
-        "speaker_muted",
-        {
-          userId: Number(userId),
-          isMuted: true,
-          roomId: Number(roomId),
-        }
-      );
+      io.to(`audio-room:${roomId}`).emit("speaker_muted", {
+        userId: Number(userId),
+        isMuted: true,
+        roomId: Number(roomId),
+      });
 
       await emitParticipantUpdate(roomId, userId);
     } catch (error) {
@@ -112,18 +107,13 @@ exports.registerModerationHandler = (io, socket) => {
         actorUserId: socket.user?.id,
       });
 
-      console.log(
-        `✅ User ${userId} unmuted in room ${roomId}`
-      );
+      console.log(`✅ User ${userId} unmuted in room ${roomId}`);
 
-      io.to(`audio-room:${roomId}`).emit(
-        "speaker_unmuted",
-        {
-          userId: Number(userId),
-          isMuted: false,
-          roomId: Number(roomId),
-        }
-      );
+      io.to(`audio-room:${roomId}`).emit("speaker_unmuted", {
+        userId: Number(userId),
+        isMuted: false,
+        roomId: Number(roomId),
+      });
 
       await emitParticipantUpdate(roomId, userId);
     } catch (error) {
@@ -164,18 +154,13 @@ exports.registerModerationHandler = (io, socket) => {
         actorUserId: socket.user?.id,
       });
 
-      console.log(
-        `✅ User ${userId} downgraded to listener in room ${roomId}`
-      );
+      console.log(`✅ User ${userId} downgraded to listener in room ${roomId}`);
 
-      io.to(`audio-room:${roomId}`).emit(
-        "role_changed",
-        {
-          userId: Number(userId),
-          roomId: Number(roomId),
-          newRole: "listener",
-        }
-      );
+      io.to(`audio-room:${roomId}`).emit("role_changed", {
+        userId: Number(userId),
+        roomId: Number(roomId),
+        newRole: "listener",
+      });
 
       await emitParticipantUpdate(roomId, userId);
     } catch (error) {
@@ -216,17 +201,12 @@ exports.registerModerationHandler = (io, socket) => {
         actorUserId: socket.user?.id,
       });
 
-      console.log(
-        `✅ User ${userId} removed from room ${roomId}`
-      );
+      console.log(`✅ User ${userId} removed from room ${roomId}`);
 
-      io.to(`audio-room:${roomId}`).emit(
-        "participant_removed",
-        {
-          userId: Number(userId),
-          roomId: Number(roomId),
-        }
-      );
+      io.to(`audio-room:${roomId}`).emit("participant_removed", {
+        userId: Number(userId),
+        roomId: Number(roomId),
+      });
 
       await emitParticipantUpdate(roomId, userId);
     } catch (error) {

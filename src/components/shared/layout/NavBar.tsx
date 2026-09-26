@@ -1,32 +1,32 @@
 "use client";
-import { MOBILE_NAV_STRUCTURE } from "@/constants/navigation";
-import Link from "next/link";
-import { FadeInOnLoad } from "@/components/shared/motion/GsapMotion";
-import { useState, useEffect, useRef, useMemo } from "react";
-import AnimatedButton from "../buttons/AnimatedButton";
 import { Menu, X } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
-import { ProductsDropdown } from "./dropdowns/ProductsDropdown";
-import { SolutionsDropdown } from "./dropdowns/SolutionsDropdown";
-import { CaseStudiesDropdown } from "./dropdowns/CaseStudiesDropdown";
-import { CompanyDropdown } from "./dropdowns/CompanyDropdown";
-import { ResourcesDropdown } from "./dropdowns/ResourcesDropdown";
-import PrimaryLogo from "../logo/PrimaryLogo";
-import {
-  NavigationMenu,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
+import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "@/components/shared/LocalizedLink";
+import { FadeInOnLoad } from "@/components/shared/motion/GsapMotion";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { buttonVariants } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from "@/components/ui/navigation-menu";
+import { MOBILE_NAV_STRUCTURE } from "@/constants/navigation";
+import { useCountry } from "@/context/CountryContext";
+import { useTranslation } from "@/context/TranslationContext";
+import AnimatedButton from "../buttons/AnimatedButton";
+import Translate from "@/components/shared/Translate";
+import PrimaryLogo from "../logo/PrimaryLogo";
+import { CaseStudiesDropdown } from "./dropdowns/CaseStudiesDropdown";
+import { CompanyDropdown } from "./dropdowns/CompanyDropdown";
+import { ProductsDropdown } from "./dropdowns/ProductsDropdown";
+import { ResourcesDropdown } from "./dropdowns/ResourcesDropdown";
+import { SolutionsDropdown } from "./dropdowns/SolutionsDropdown";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 // Breakpoint constants
 const BREAKPOINTS = {
@@ -96,9 +96,15 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
   const [lastScrollY, setLastScrollY] = useState(0);
   const [windowWidth, setWindowWidth] = useState(0);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [_isScrolled, setIsScrolled] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const { countryConfig, suggestedCountry, isBannerDismissed, country } = useCountry();
+  const { t } = useTranslation();
+  const isBannerVisible = Boolean(suggestedCountry && !isBannerDismissed && suggestedCountry !== country);
+  const calendlyUrl =
+    countryConfig?.calendlyUrl ||
+    "https://calendly.com/obrive-inc/talk-to-ob-experts";
 
   // Use the custom hook for device detection
   const { isMobile, isTablet } = useDeviceType(windowWidth, isMounted);
@@ -109,7 +115,7 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
 
       setScrollY(currentScrollY);
       setIsScrolled(
-        currentScrollY > NAVBAR_DIMENSIONS.scroll.scrolledThreshold
+        currentScrollY > NAVBAR_DIMENSIONS.scroll.scrolledThreshold,
       );
 
       // Determine scroll direction
@@ -177,8 +183,8 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
     const deviceDimensions = isMobile
       ? NAVBAR_DIMENSIONS.mobile
       : isTablet
-      ? NAVBAR_DIMENSIONS.tablet
-      : NAVBAR_DIMENSIONS.desktop;
+        ? NAVBAR_DIMENSIONS.tablet
+        : NAVBAR_DIMENSIONS.desktop;
 
     if (scrollY <= shrinkStartHeight) {
       return {
@@ -199,8 +205,8 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
         maxWidth: isMobile
           ? `calc(100% - ${NAVBAR_DIMENSIONS.mobile.maxWidthGutter}px)`
           : isTablet
-          ? `calc(100% - ${NAVBAR_DIMENSIONS.tablet.maxWidthGutter}px)`
-          : `${NAVBAR_DIMENSIONS.desktop.maxWidth}px`,
+            ? `calc(100% - ${NAVBAR_DIMENSIONS.tablet.maxWidthGutter}px)`
+            : `${NAVBAR_DIMENSIONS.desktop.maxWidth}px`,
         marginTop: `${deviceDimensions.marginTop}px`,
         borderRadius: `${deviceDimensions.borderRadius}px`,
         height: `${deviceDimensions.endHeight}px`,
@@ -231,8 +237,8 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
           ? isMobile
             ? `calc(100% - ${NAVBAR_DIMENSIONS.mobile.maxWidthGutter}px)`
             : isTablet
-            ? `calc(100% - ${NAVBAR_DIMENSIONS.tablet.maxWidthGutter}px)`
-            : `${NAVBAR_DIMENSIONS.desktop.maxWidth}px`
+              ? `calc(100% - ${NAVBAR_DIMENSIONS.tablet.maxWidthGutter}px)`
+              : `${NAVBAR_DIMENSIONS.desktop.maxWidth}px`
           : "100%",
       marginTop: `${easeProgress * marginTop}px`,
       borderRadius: `${easeProgress * borderRadius}px`,
@@ -253,7 +259,9 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
     scrollDirection === "down" && scrollY > heroSectionHeight;
   const progressiveValues = getProgressiveValues();
   const borderClass =
-    progressiveValues.progress > 0 ? "border-[0.5px] border-primary/30" : "border-[0.5px] border-transparent";
+    progressiveValues.progress > 0
+      ? "border-[0.5px] border-primary/30"
+      : "border-[0.5px] border-transparent";
 
   // Get background color classes
   const getBackgroundColor = () => {
@@ -267,7 +275,10 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
     <>
       {/* Mobile Fixed Toggle Button - only render after mount */}
       {isMounted && isMobile && (
-        <div className="fixed top-4 right-4 z-[110] md:hidden">
+        <div 
+          className="fixed right-4 z-[110] md:hidden transition-all duration-300"
+          style={{ top: isBannerVisible ? '60px' : '16px' }}
+        >
           <button
             className="flex items-center justify-center p-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-gray-200"
             onClick={toggleMenu}
@@ -281,10 +292,11 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
       )}
 
       <header
+        style={{ top: isBannerVisible ? '44px' : '0px' }}
         className={`${
           isMobile
-            ? "absolute top-0 left-0 right-0 w-full"
-            : `fixed top-0 container mx-auto left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+            ? "absolute left-0 right-0 w-full z-50"
+            : `fixed container mx-auto left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
                 shouldHideNavbar ? "-translate-y-full" : "translate-y-0"
               }`
         }`}
@@ -320,57 +332,30 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
                   <CaseStudiesDropdown />
                   <CompanyDropdown />
                   <ResourcesDropdown />
+                  <NavigationMenuItem>
+                    <Link
+                      href="/contact"
+                      className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
+                    >
+                      <Translate text="Contact" />
+                    </Link>
+                  </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
 
               <div className="hidden md:flex items-center gap-2 lg:gap-4">
-                <HoverCard>
-                  <HoverCardTrigger asChild>
-                    <Link
-                      href="/client-login"
-                      className={`${buttonVariants({
-                        variant: "ghost",
-                        size: "lg",
-                      })} uppercase text-xs cursor-pointer`}
-                    >
-                      Login
-                    </Link>
-                  </HoverCardTrigger>
-                  <HoverCardContent className="bg-primary px-8 border-none">
-                    <div className="border-y-1 border-accent/40">
-                      <Link
-                        href="/client-login"
-                        className={`${buttonVariants({
-                          variant: "link",
-                        })} uppercase cursor-pointer text-white`}
-                      >
-                        Clients
-                      </Link>
-                    </div>
-                    <div className="border-b-1 border-accent/40">
-                      <Link
-                        href="/employee-login"
-                        className={`${buttonVariants({
-                          variant: "link",
-                        })} uppercase cursor-pointer text-white`}
-                      >
-                        Employee
-                      </Link>
-                    </div>
-                  </HoverCardContent>
-                </HoverCard>
-
+                <LanguageSwitcher />
                 <AnimatedButton
                   asChild
                   className="text-xs hidden sm:flex"
                   size="lg"
-                  href="https://calendly.com/obrive-inc/talk-to-ob-experts"
+                  href={calendlyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Schedule a call with our experts on Calendly"
                   iconSize={16}
                 >
-                  Schedule A Call
+                  {t("nav.scheduleCall")}
                 </AnimatedButton>
               </div>
 
@@ -429,57 +414,30 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
                     <CaseStudiesDropdown />
                     <CompanyDropdown />
                     <ResourcesDropdown />
+                    <NavigationMenuItem>
+                      <Link
+                        href="/contact"
+                        className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
+                      >
+                        <Translate text="Contact" />
+                      </Link>
+                    </NavigationMenuItem>
                   </NavigationMenuList>
                 </NavigationMenu>
 
                 <div className="hidden md:flex items-center gap-2 lg:gap-4">
-                  <HoverCard>
-                    <HoverCardTrigger asChild>
-                      <Link
-                        href="/client-login"
-                        className={`${buttonVariants({
-                          variant: "ghost",
-                          size: "lg",
-                        })} uppercase text-xs hover:bg-transparent! hover:font-extrabold cursor-pointer`}
-                      >
-                        Login
-                      </Link>
-                    </HoverCardTrigger>
-                    <HoverCardContent className="bg-primary px-8 border-none">
-                      <div className="border-y-1 border-accent/40">
-                        <Link
-                          href="/client-login"
-                          className={`${buttonVariants({
-                            variant: "link",
-                          })} uppercase cursor-pointer text-white`}
-                        >
-                          Clients
-                        </Link>
-                      </div>
-                      <div className="border-b-1 border-accent/40">
-                        <Link
-                          href="/employee-login"
-                          className={`${buttonVariants({
-                            variant: "link",
-                          })} uppercase cursor-pointer text-white`}
-                        >
-                          Employee
-                        </Link>
-                      </div>
-                    </HoverCardContent>
-                  </HoverCard>
-
+                  <LanguageSwitcher />
                   <AnimatedButton
                     asChild
                     className="text-xs hidden sm:flex"
                     size="lg"
-                    href="https://calendly.com/obrive-inc/talk-to-ob-experts"
+                    href={calendlyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Schedule a call with our experts on Calendly"
                     iconSize={16}
                   >
-                    Schedule A Call
+                    <Translate text="Schedule A Call" />
                   </AnimatedButton>
                 </div>
 
@@ -536,17 +494,20 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
             </Accordion>
 
             <div className="mt-8 space-y-4 pt-4 border-t border-primary/20">
+              <div className="flex justify-start">
+                <LanguageSwitcher />
+              </div>
               <Link
-                href="/client-login"
+                href="/contact"
                 className={`${buttonVariants({
                   variant: "default",
                 })} uppercase text-xs w-full bg-primary text-white`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Login
+                <Translate text="Contact" />
               </Link>
               <Link
-                href="https://calendly.com/obrive-inc/talk-to-ob-experts"
+                href={calendlyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${buttonVariants({
@@ -554,7 +515,7 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
                 })} text-xs w-full bg-primary text-white`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Schedule A Call
+                {t("nav.scheduleCall")}
               </Link>
             </div>
           </div>

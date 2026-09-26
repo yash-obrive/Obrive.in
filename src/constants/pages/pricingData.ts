@@ -15,6 +15,11 @@ export interface PricingPackage {
   isRecommended?: boolean;
   isMonthly?: boolean;
   ctaText: string;
+  /**
+   * When true, no GST or gateway charges are applied to this package.
+   * Used for internal test packages only.
+   */
+  noCharges?: boolean;
 }
 
 export interface ServiceStream {
@@ -27,6 +32,29 @@ export interface ServiceStream {
 
 export const PRICING_STREAMS: ServiceStream[] = [
   {
+    id: "live-testing-stream",
+    number: "00",
+    title: "Live Testing",
+    subtitle: "System Testing & Validation",
+    packages: [
+      {
+        id: "live-testing-90k",
+        category: "Testing",
+        name: "Live Testing Package",
+        description: "A ₹90,000 package for live testing Razorpay webhooks, Brevo emails, and payment interconnectivity.",
+        priceINR: 90000,
+        priceUSD: 1080,
+        noCharges: true,
+        features: [
+          { text: "Razorpay Webhook Validation" },
+          { text: "Brevo Email Notification" },
+          { text: "Database Transaction Logging" },
+        ],
+        ctaText: "Test Payment",
+      }
+    ]
+  },
+  {
     id: "immersive-spatial",
     number: "01",
     title: "Immersive & Spatial",
@@ -36,7 +64,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "ar",
         category: "Immersive",
         name: "AR Experience",
-        description: "Web/mobile AR, product visualization, campaigns and interactive overlays.",
+        description:
+          "Web/mobile AR, product visualization, campaigns and interactive overlays.",
         priceINR: 150000,
         priceUSD: 1725,
         features: [
@@ -51,7 +80,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "vr",
         category: "Immersive",
         name: "VR Experience",
-        description: "Training, simulation, virtual tours and branded VR environments.",
+        description:
+          "Training, simulation, virtual tours and branded VR environments.",
         priceINR: 250000,
         priceUSD: 2875,
         features: [
@@ -66,7 +96,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "mr",
         category: "Enterprise",
         name: "MR Experience",
-        description: "Mixed-reality product demos, industrial workflows and collaborative experiences.",
+        description:
+          "Mixed-reality product demos, industrial workflows and collaborative experiences.",
         priceINR: 350000,
         priceUSD: 4025,
         features: [
@@ -82,7 +113,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "3d",
         category: "3D",
         name: "3D Visualization",
-        description: "Product, architectural and interactive 3D assets for web and immersive platforms.",
+        description:
+          "Product, architectural and interactive 3D assets for web and immersive platforms.",
         priceINR: 100000,
         priceUSD: 1150,
         features: [
@@ -97,7 +129,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "spatial",
         category: "Spatial",
         name: "Spatial Computing",
-        description: "Spatial apps and experiences for XR, enterprise environments and emerging devices.",
+        description:
+          "Spatial apps and experiences for XR, enterprise environments and emerging devices.",
         priceINR: 500000,
         priceUSD: 5750,
         features: [
@@ -120,7 +153,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "website-design",
         category: "Web",
         name: "Website Design",
-        description: "Premium responsive UX/UI for corporate, product and conversion-focused websites.",
+        description:
+          "Premium responsive UX/UI for corporate, product and conversion-focused websites.",
         priceINR: 100000,
         priceUSD: 1150,
         features: [
@@ -135,7 +169,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "mobile-design",
         category: "Mobile",
         name: "Mobile App Design",
-        description: "Research-led iOS & Android UX/UI with a scalable component system.",
+        description:
+          "Research-led iOS & Android UX/UI with a scalable component system.",
         priceINR: 150000,
         priceUSD: 1725,
         features: [
@@ -150,7 +185,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "product-design",
         category: "Product",
         name: "Product UX/UI System",
-        description: "End-to-end product design for SaaS, portals, dashboards and complex workflows.",
+        description:
+          "End-to-end product design for SaaS, portals, dashboards and complex workflows.",
         priceINR: 250000,
         priceUSD: 2875,
         features: [
@@ -173,7 +209,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "website-development",
         category: "Engineering",
         name: "Website Development",
-        description: "High-performance React/Next.js websites with CMS, analytics and integrations.",
+        description:
+          "High-performance React/Next.js websites with CMS, analytics and integrations.",
         priceINR: 250000,
         priceUSD: 2875,
         features: [
@@ -188,7 +225,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "mobile-development",
         category: "Mobile Engineering",
         name: "Mobile App Development",
-        description: "Production-ready iOS & Android apps with backend, APIs and store release support.",
+        description:
+          "Production-ready iOS & Android apps with backend, APIs and store release support.",
         priceINR: 450000,
         priceUSD: 5175,
         features: [
@@ -204,7 +242,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "saas",
         category: "SaaS / MVP",
         name: "Web App / SaaS MVP",
-        description: "Validated MVPs with authentication, dashboards, databases and integrations.",
+        description:
+          "Validated MVPs with authentication, dashboards, databases and integrations.",
         priceINR: 500000,
         priceUSD: 5750,
         features: [
@@ -219,7 +258,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "platform",
         category: "Enterprise",
         name: "Custom Digital Platform",
-        description: "Complex portals, marketplaces, workflow systems and enterprise applications.",
+        description:
+          "Complex portals, marketplaces, workflow systems and enterprise applications.",
         priceINR: 700000,
         priceUSD: 8050,
         features: [
@@ -242,7 +282,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "growth-launch",
         category: "Growth",
         name: "Growth Launch",
-        description: "Focused SEO, content, social and reporting for businesses establishing digital demand.",
+        description:
+          "Focused SEO, content, social and reporting for businesses establishing digital demand.",
         priceINR: 100000,
         priceUSD: 1150,
         features: [
@@ -258,7 +299,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "growth-engine",
         category: "Growth Engine",
         name: "Growth Engine",
-        description: "SEO, AEO/GEO, social, content, paid-media management and conversion optimisation.",
+        description:
+          "SEO, AEO/GEO, social, content, paid-media management and conversion optimisation.",
         priceINR: 250000,
         priceUSD: 2875,
         features: [
@@ -275,7 +317,8 @@ export const PRICING_STREAMS: ServiceStream[] = [
         id: "enterprise-growth",
         category: "Enterprise",
         name: "Digital Growth Partner",
-        description: "Full-funnel growth team combining strategy, creative, media and optimisation.",
+        description:
+          "Full-funnel growth team combining strategy, creative, media and optimisation.",
         priceINR: 500000,
         priceUSD: 5750,
         features: [

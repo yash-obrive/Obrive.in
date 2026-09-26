@@ -1,6 +1,8 @@
 // backend/src/socket/handlers/audioRoom.Handler.js
-const { prisma } = require("../../../db");
-const { getRoomDetailsService } = require("../../modules/AUDIO_ROOM/room-details/roomDetails.service");
+const { prisma } = require("../../../prisma");
+const {
+  getRoomDetailsService,
+} = require("../../modules/AUDIO_ROOM/room-details/roomDetails.service");
 
 exports.registerAudioRoomHandler = (io, socket) => {
   const emitParticipantUpdate = async (roomId, userId) => {
@@ -13,7 +15,10 @@ exports.registerAudioRoomHandler = (io, socket) => {
       });
     } catch (error) {
       console.error(`[Socket Participant Update Error]: ${error.message}`);
-      socket.emit("room_error", { message: error.message, status: error.status || 500 });
+      socket.emit("room_error", {
+        message: error.message,
+        status: error.status || 500,
+      });
     }
   };
 
@@ -22,13 +27,13 @@ exports.registerAudioRoomHandler = (io, socket) => {
       (connectedSocket) =>
         connectedSocket.id !== socket.id &&
         Number(connectedSocket.user?.id) === Number(userId) &&
-        Number(connectedSocket.currentRoomId) === Number(roomId)
+        Number(connectedSocket.currentRoomId) === Number(roomId),
     );
 
   // ==========================
   // JOIN AUDIO ROOM
   // ==========================
-  socket.on("join_audio_room", async (payload, legacyUserId) => {
+  socket.on("join_audio_room", async (payload, _legacyUserId) => {
     try {
       const roomId = typeof payload === "object" ? payload.roomId : payload;
       const userId = Number(socket.user?.id);
@@ -52,7 +57,7 @@ exports.registerAudioRoomHandler = (io, socket) => {
   // ==========================
   // LEAVE AUDIO ROOM
   // ==========================
-  socket.on("leave_audio_room", async (payload, legacyUserId) => {
+  socket.on("leave_audio_room", async (payload, _legacyUserId) => {
     try {
       const roomId = typeof payload === "object" ? payload.roomId : payload;
       const userId = Number(socket.user?.id);

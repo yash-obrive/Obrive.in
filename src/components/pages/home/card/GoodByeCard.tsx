@@ -1,94 +1,36 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
+import dynamic from "next/dynamic";
+import FONTS from "@/assets/fonts";
 import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
+import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
+import Translate from "@/components/shared/Translate";
 
-const RIVE_SRC = "/animations/goodbye-card.riv";
-const STATE_MACHINE_NAME = "talk to expert for page";
-
-type GoodbyeCardRiveProps = {
-  className?: string;
-};
-
-function GoodbyeCardRive({ className }: GoodbyeCardRiveProps) {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const { RiveComponent, rive } = useRive({
-    src: RIVE_SRC,
-    autoplay: false,
-    stateMachines: [STATE_MACHINE_NAME],
-    layout: new Layout({
-      fit: Fit.Contain,
-      alignment: Alignment.Center,
-    }),
-  });
-
-  useEffect(() => {
-    if (!rive || !containerRef.current) {
-      return;
-    }
-
-    const node = containerRef.current;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry) {
-          return;
-        }
-
-        if (entry.isIntersecting) {
-          rive.resizeDrawingSurfaceToCanvas();
-          rive.play();
-        } else {
-          rive.pause();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(node);
-
-    return () => {
-      observer.unobserve(node);
-      observer.disconnect();
-      rive.pause();
-    };
-  }, [rive]);
-
-  const combinedClassName = [
-    "flex items-center justify-center w-full h-full",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  return (
-    <div ref={containerRef} className={combinedClassName}>
-      <RiveComponent className="w-full h-full" />
+const GoodbyeCardRive = dynamic(() => import("./GoodbyeCardRive"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center bg-transparent animate-pulse rounded-full opacity-10">
+      <div className="w-48 h-48 rounded-full bg-primary/20 blur-3xl"></div>
     </div>
-  );
-}
+  ),
+});
 
 const GoodByeCard = () => {
   return (
     <div className="w-full flex items-center my-10 sm:my-20 justify-center px-4">
       <div className="bg-gradient overflow-hidden relative flex flex-col max-sm:-space-y-10 justify-between w-full sm:min-w-[1238px] rounded-xl min-h-[250px] sm:min-h-[300px] md:min-h-[361px]">
         <div className="flex px-4 sm:px-10 py-6 sm:py-6 flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-0">
-          <h2 className="text-xl sm:text-2xl">
-            Why Choose Obrive for AR, VR & Spatial Computing
-          </h2>
-
-          <div className="max-sm:hidden">
+          <h2 className={`${FONTS.microgrammaBold.className} text-md`}>
+             <Translate text="FREE TO IMAGINE. BUILT TO EXPERIENCE" /> </h2>
+          <FadeInOnView delay={0.2}>
             <AnimatedButton
-              asChild
               size={"lg"}
-              className="uppercase z-10 text-xs cursor-pointer"
+              className="uppercase bg-accent text-primary hover:bg-accent/90! text-[10px] border border-primary"
               iconSize={16}
-              href="/faq/ob-services-faq"
+              arrowColor="primary"
             >
-              SERVICES FAQ
-            </AnimatedButton>
-          </div>
+               <Translate text="#FreeToImagine" /> </AnimatedButton>
+          </FadeInOnView>
         </div>
         <div className="flex flex-col gap-10 sm:flex-row justify-between">
           <div className="max-sm:hidden flex-1 px-4 sm:px-0 h-full w-full">
@@ -96,24 +38,9 @@ const GoodByeCard = () => {
           </div>
           <div>
             <p className="text-left md:text-right text-xs w-full px-4 sm:px-10 py-6 max-w-full md:max-w-[500px] mt-2 md:mt-6 leading-6">
-              Stop limiting your brand with flat, outdated interactions. With
-              Obrive Industries, unlock the power of Augmented Reality, Virtual
-              Reality, Mixed Reality, 3D Design, and Spatial Computing to
-              automate engagement and create immersive experiences that truly
-              matter. <br /> #FreeToImagine
-            </p>
+               <Translate text="Technology should feel less like software—and more like reality. Obrive combines strategy, design, engineering and immersive technology to build experiences that work in the real world. Don't limit your business to what technology can do today. Imagine what's possible when the physical and digital worlds work together." /> </p>
           </div>
-          <div className="sm:hidden pl-4 -mt-6">
-            <AnimatedButton
-              asChild
-              size={"lg"}
-              className="uppercase text-xs cursor-pointer"
-              iconSize={16}
-              href="/faq/ob-services-faq"
-            >
-              SERVICES FAQ
-            </AnimatedButton>
-          </div>
+
           <div className="sm:hidden w-full px-4 mt-4">
             <GoodbyeCardRive className="h-[280px]" />
           </div>

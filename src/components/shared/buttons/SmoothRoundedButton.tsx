@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
 
 interface SmoothRoundedButtonProps {
   children: ReactNode;
@@ -46,19 +46,19 @@ export default function SmoothRoundedButton({
           borderRadius: "1rem",
           transition: {
             duration: 0,
-            ease: "easeInOut"
-          }
+            ease: "easeInOut",
+          },
         },
         hover: {
           borderRadius: "9999px",
           transition: {
             duration: 0.8,
-            ease: "easeInOut"
-          }
-        }
+            ease: "easeInOut",
+          },
+        },
       }}
       style={{
-        borderRadius: "1rem"
+        borderRadius: "1rem",
       }}
       className="w-fit"
     >

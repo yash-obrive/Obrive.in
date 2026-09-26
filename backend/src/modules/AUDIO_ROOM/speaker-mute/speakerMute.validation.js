@@ -1,4 +1,4 @@
-const { z } = require('zod');
+const { z } = require("zod");
 
 const SpeakerMuteBodySchema = z.object({
   roomId: z.coerce.number().int().positive(),

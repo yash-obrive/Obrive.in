@@ -1,4 +1,9 @@
-import { OBMOVE_IMAGES, OBPARK_IMAGES, OBNAVI_IMAGES, OBNEST_IMAGES } from "@/assets/images";
+import {
+  OBMOVE_IMAGES,
+  OBNAVI_IMAGES,
+  OBNEST_IMAGES,
+  OBPARK_IMAGES,
+} from "@/assets/images";
 
 export const OBPARK_HOW_IT_WORK = [
   {

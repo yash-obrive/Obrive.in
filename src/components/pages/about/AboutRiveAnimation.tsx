@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
 import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
+import { useEffect } from "react";
 
 export function AboutRiveAnimation() {
   const { RiveComponent, rive } = useRive({

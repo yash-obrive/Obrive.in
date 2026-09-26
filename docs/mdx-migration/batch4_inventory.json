@@ -1,0 +1,284 @@
+{
+  "src/content/resources/client-immersive-onboarding.mdx": [
+    {
+      "mode": "legacy",
+      "title": "Results That Speak Volumes",
+      "metrics": [
+        {
+          "metric": "\"Onboarding Duration\"",
+          "beforeObrive": "\"Multi-day sessions\"",
+          "afterObrive": "\"One immersive session\""
+        },
+        {
+          "metric": "\"Retention & Recall\"",
+          "beforeObrive": "\"~55%\"",
+          "afterObrive": "\"90%+ recall rate\""
+        },
+        {
+          "metric": "\"Trainer-Led Support Hours\"",
+          "beforeObrive": "\"High (live facilitation)\"",
+          "afterObrive": "\"Minimal thanks to automation\""
+        },
+        {
+          "metric": "\"Onboarding Cost & Scalability\"",
+          "beforeObrive": "\"Increasing challenge\"",
+          "afterObrive": "\"Efficient & scalable\""
+        },
+        {
+          "metric": "\"Global Rollout Time\"",
+          "beforeObrive": "\"Prolonged and inconsistent\"",
+          "afterObrive": "\"Organization-wide rollout in 4 weeks\""
+        }
+      ],
+      "columns": [],
+      "data": []
+    }
+  ],
+  "src/content/resources/spatial-flow.mdx": [
+    {
+      "mode": "legacy",
+      "title": "",
+      "metrics": [
+        {
+          "metric": "\"Onboarding Duration\"",
+          "beforeObrive": "\"5 days\"",
+          "afterObrive": "\"1 immersive session\""
+        },
+        {
+          "metric": "\"Training Error Rate\"",
+          "beforeObrive": "\"High (manual overload)\"",
+          "afterObrive": "\"40% reduction\""
+        },
+        {
+          "metric": "\"Participant Retention Scores\"",
+          "beforeObrive": "\"60%\"",
+          "afterObrive": "\"85%+\""
+        },
+        {
+          "metric": "\"Deployment Timeline\"",
+          "beforeObrive": "\"Pilot over 4 weeks\"",
+          "afterObrive": "\"Global rollout in 6 weeks\""
+        },
+        {
+          "metric": "\"Training Support Hours Required\"",
+          "beforeObrive": "\"High (live facilitation)\"",
+          "afterObrive": "\"Minimal—automated\""
+        },
+        {
+          "metric": "\"Cost of Managing Scale\"",
+          "beforeObrive": "\"Growing\"",
+          "afterObrive": "\"Efficient and scalable\""
+        }
+      ],
+      "columns": [],
+      "data": []
+    }
+  ],
+  "src/content/resources/web-vr-vs-app-vr-enterprises.mdx": [
+    {
+      "mode": "dynamic",
+      "title": "Web VR vs App VR: What Leaders Need to Know",
+      "metrics": [],
+      "columns": [
+        {
+          "key": "\"feature\"",
+          "header": "\"Feature / Factor\"",
+          "width": "\"25%\""
+        },
+        {
+          "key": "\"webar\"",
+          "header": "\"Web VR (WebXR)\"",
+          "width": "\"35%\""
+        },
+        {
+          "key": "\"appar\"",
+          "header": "\"App VR (Native)\"",
+          "width": "\"30%\""
+        }
+      ],
+      "data": [
+        {
+          "feature": "<StyledText>Accessibility</StyledText>",
+          "webar": "\"Instant via browser—no installs\"",
+          "appar": "\"Requires download, setup, and installation\""
+        },
+        {
+          "feature": "<StyledText>Performance & Capabilities</StyledText>",
+          "webar": "\"Good for moderate VR experiences\"",
+          "appar": "\"Superior visuals, tracking, SLAM, spatial mapping\""
+        },
+        {
+          "feature": "<StyledText>Development Simplicity</StyledText>",
+          "webar": "\"Single codebase, fast updates\"",
+          "appar": "\"More complex—platform-specific builds & updates\""
+        },
+        {
+          "feature": "<StyledText>Maintenance & Updates</StyledText>",
+          "webar": "\"Instant—refresh browser to deploy updates\"",
+          "appar": "\"Needs App Store updates and user compliance\""
+        },
+        {
+          "feature": "<StyledText>Platform Reach</StyledText>",
+          "webar": "\"Broad device/browser support\"",
+          "appar": "\"Device-specific (iOS, Android, headsets)\""
+        },
+        {
+          "feature": "<StyledText>Enterprise Use Cases</StyledText>",
+          "webar": "\"Quick demos, presentations, lightweight training\"",
+          "appar": "\"Deep training, simulations, long-term immersive scenarios\""
+        }
+      ]
+    }
+  ],
+  "src/content/resources/ar-vr-mr-differences-business-use-cases-2025.mdx": [
+    {
+      "mode": "dynamic",
+      "title": "AR vs. VR vs. MR: Quick Comparison",
+      "metrics": [],
+      "columns": [
+        {
+          "key": "\"aspect\"",
+          "header": "\"Aspect\"",
+          "width": "\"25%\""
+        },
+        {
+          "key": "\"ar\"",
+          "header": "\"Augmented Reality (AR)\"",
+          "width": "\"25%\""
+        },
+        {
+          "key": "\"vr\"",
+          "header": "\"Virtual Reality (VR)\"",
+          "width": "\"25%\""
+        },
+        {
+          "key": "\"mr\"",
+          "header": "\"Mixed Reality (MR)\"",
+          "width": "\"25%\""
+        }
+      ],
+      "data": [
+        {
+          "aspect": "<StyledText>Environment</StyledText>",
+          "ar": "\"Real world + digital overlay\"",
+          "vr": "\"Fully digital world\"",
+          "mr": "\"Real + digital interactive\""
+        },
+        {
+          "aspect": "<StyledText>Hardware</StyledText>",
+          "ar": "\"Smartphones, AR glasses\"",
+          "vr": "\"VR headsets\"",
+          "mr": "\"MR headsets\""
+        },
+        {
+          "aspect": "<StyledText>Immersion</StyledText>",
+          "ar": "\"Low to medium\"",
+          "vr": "\"High\"",
+          "mr": "\"Medium to high\""
+        },
+        {
+          "aspect": "<StyledText>Best For</StyledText>",
+          "ar": "\"Navigation, marketing, retail\"",
+          "vr": "\"Training, real estate, entertainment\"",
+          "mr": "\"Collaboration, design, healthcare\""
+        }
+      ]
+    }
+  ],
+  "src/content/resources/webar-vs-app-ar-business-solution.mdx": [
+    {
+      "mode": "dynamic",
+      "title": "AR vs. VR vs. MR: Quick Comparison",
+      "metrics": [],
+      "columns": [
+        {
+          "key": "\"feature\"",
+          "header": "\"Feature\"",
+          "width": "\"25%\""
+        },
+        {
+          "key": "\"webar\"",
+          "header": "\"WebAR\"",
+          "width": "\"35%\""
+        },
+        {
+          "key": "\"appar\"",
+          "header": "\"App AR\"",
+          "width": "\"30%\""
+        }
+      ],
+      "data": [
+        {
+          "feature": "<StyledText>Accessibility</StyledText>",
+          "webar": "\"No install, browser-based\"",
+          "appar": "\"Requires download/install\""
+        },
+        {
+          "feature": "<StyledText>Setup Speed</StyledText>",
+          "webar": "\"Fast and lightweight\"",
+          "appar": "\"More complex setup\""
+        },
+        {
+          "feature": "<StyledText>Tracking Capability</StyledText>",
+          "webar": "\"Basic, often marker-based\"",
+          "appar": "\"Advanced—SLAM, depth, environment mapping\""
+        },
+        {
+          "feature": "<StyledText>Engagement Potential</StyledText>",
+          "webar": "\"Great for marketing & quick demos\"",
+          "appar": "\"Ideal for immersive, repeat-use cases\""
+        },
+        {
+          "feature": "<StyledText>Hardware Integration</StyledText>",
+          "webar": "\"Limited\"",
+          "appar": "\"Full access (camera, sensors, performance)\""
+        },
+        {
+          "feature": "<StyledText>Maintenance Overhead</StyledText>",
+          "webar": "\"Low\"",
+          "appar": "\"Higher (updates, compatibility)\""
+        },
+        {
+          "feature": "<StyledText>Analytics</StyledText>",
+          "webar": "\"Web metrics\"",
+          "appar": "\"Deeper usage data\""
+        }
+      ]
+    }
+  ],
+  "src/content/resources/ar-onboarding.mdx": [
+    {
+      "mode": "legacy",
+      "title": "Quantified Impact",
+      "metrics": [
+        {
+          "metric": "\"Onboarding Time\"",
+          "beforeObrive": "\"Multi-day sessions\"",
+          "afterObrive": "\"Completed in one immersive session\""
+        },
+        {
+          "metric": "\"Recall & Retention\"",
+          "beforeObrive": "\"~60%\"",
+          "afterObrive": "\"85%+ recall rate\""
+        },
+        {
+          "metric": "\"Trainer Support Hours\"",
+          "beforeObrive": "\"High (live facilitation)\"",
+          "afterObrive": "\"Minimal thanks to automation\""
+        },
+        {
+          "metric": "\"Onboarding Cost & Scalability\"",
+          "beforeObrive": "\"Increasing\"",
+          "afterObrive": "\"Efficient & scalable\""
+        },
+        {
+          "metric": "\"Global Rollout Timeline\"",
+          "beforeObrive": "\"Extended\"",
+          "afterObrive": "\"Scaled globally in under 2 months\""
+        }
+      ],
+      "columns": [],
+      "data": []
+    }
+  ]
+}

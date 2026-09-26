@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { RiveProductAnimation } from "./RiveProductAnimation";
 
 export function RiveScrollSection() {
@@ -31,7 +31,7 @@ export function RiveScrollSection() {
 
   const translateRange: [number, number] = useMemo(
     () => (isLarge ? [-90, 90] : [-60, 60]),
-    [isLarge]
+    [isLarge],
   );
 
   const x = useTransform(scrollYProgress, [0, 1], translateRange);

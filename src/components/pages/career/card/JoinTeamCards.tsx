@@ -1,8 +1,7 @@
+import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
-import Image from "next/image";
-import React from "react";
-import { JoinTeamCardType } from "@/constants/pages/career/join-team-card";
+import type { JoinTeamCardType } from "@/constants/pages/career/join-team-card";
 
 const JoinTeamCards = ({
   title,

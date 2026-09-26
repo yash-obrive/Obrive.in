@@ -1,5 +1,5 @@
 import FONTS from "@/assets/fonts";
-import React from "react";
+import Translate from "@/components/shared/Translate";
 
 interface CareerHeaderProps {
   title: string;
@@ -18,21 +18,23 @@ export default function CareerHeader({
 }: CareerHeaderProps) {
   return (
     <div className="mb-8">
-      <h1 className={`${FONTS.microgrammaBold.className} text-primary text-4xl mb-4`}>
+      <h1
+        className={`${FONTS.microgrammaBold.className} text-primary text-4xl mb-4`}
+      >
         {title}
       </h1>
       <div className="flex flex-col gap-2">
         <p className="text-sm leading-relaxed text-gray-700 max-w-3xl">
-          Location: {location}
+           <Translate text="Location:" /> {location}
         </p>
         <p className="text-sm leading-relaxed text-gray-700 max-w-3xl">
-          Posted On: {postedOn}
+           <Translate text="Posted On:" /> {postedOn}
         </p>
         <p className="text-sm leading-relaxed text-gray-700 max-w-3xl">
-          Employment Type: {employmentType}
+           <Translate text="Employment Type:" /> {employmentType}
         </p>
         <p className="text-sm leading-relaxed text-gray-700 max-w-3xl">
-          Salary Range: {salaryRange}
+           <Translate text="Salary Range:" /> {salaryRange}
         </p>
       </div>
     </div>

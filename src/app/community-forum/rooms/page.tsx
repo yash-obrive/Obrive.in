@@ -1,4 +1,4 @@
-import CommunityRooms from "@/AUDIO_ROOM/pages/CommunityRooms";
+import CommunityRooms from "@/features/audio-room/pages/CommunityRooms";
 
 export default function RoomsPage() {
   return <CommunityRooms />;

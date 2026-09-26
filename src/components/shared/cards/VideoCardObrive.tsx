@@ -1,9 +1,10 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { FadeInOnView } from "../motion/GsapMotion";
 import { Play, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { FadeInOnView } from "../motion/GsapMotion";
+import Translate from "@/components/shared/Translate";
 
 const VideoCardObrive = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -63,7 +64,7 @@ const VideoCardObrive = () => {
       };
       startRAF();
     },
-    [startRAF]
+    [startRAF],
   );
 
   const handlePointerEnter = useCallback(() => {
@@ -146,10 +147,9 @@ const VideoCardObrive = () => {
         <FadeInOnView>
           <div className="relative z-10 rounded-2xl flex items-center justify-center mt-20 max-md:mt-10">
             <p className="text-center w-[660px] max-sm:text-sm max-md:w-full max-md:px-4 tracking-wide text-white text-xl max-md:text-base">
-              Obrive Industries is a pioneer in Augmented Reality, Virtual
-              Reality, and Mixed Reality solutions. We empower businesses and
-              individuals to seamlessly connect digital and physical worlds.
-            </p>
+               <Translate text="Obrive Industries is a pioneer in Augmented Reality, Virtual
+                                        Reality, and Mixed Reality solutions. We empower businesses and
+                                        individuals to seamlessly connect digital and physical worlds." /> </p>
           </div>
         </FadeInOnView>
 
@@ -158,19 +158,22 @@ const VideoCardObrive = () => {
           type="button"
           className={cn(
             "pointer-events-auto absolute top-0 left-0 hidden md:inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition-opacity duration-150 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 z-10",
-            isPointerActive ? "opacity-100" : "opacity-0"
+            isPointerActive ? "opacity-100" : "opacity-0",
           )}
           style={{ willChange: "transform" }}
           onClick={handlePlayClick}
           aria-label="Play immersive experience video"
         >
           <Play className="h-4 w-4" />
-          Play Video
-        </Button>
-        <Button className="sm:hidden max-sm:flex mt-4" size={"lg"} type="button" onClick={handlePlayClick}>
+           <Translate text="Play Video" /> </Button>
+        <Button
+          className="sm:hidden max-sm:flex mt-4"
+          size={"lg"}
+          type="button"
+          onClick={handlePlayClick}
+        >
           <Play className="h-4 w-4" />
-          Watch Video
-        </Button>
+           <Translate text="Watch Video" /> </Button>
       </div>
 
       {/* Video Modal */}

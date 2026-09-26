@@ -1,4 +1,4 @@
-import RoomConfigurationDashboard from "@/AUDIO_ROOM/pages/RoomConfigurationDashboard";
+import RoomConfigurationDashboard from "@/features/audio-room/pages/RoomConfigurationDashboard";
 
 export default function AudioRoomPage() {
   return <RoomConfigurationDashboard />;

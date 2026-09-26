@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const ctrl = require('./employee.controller');
-const authenticate = require('../../middleware/auth');
-const { authorize } = require('../../middleware/rbac');
-const zodValidate = require('../../middleware/zodValidate');
+const router = require("express").Router();
+const ctrl = require("./employee.controller");
+const authenticate = require("../../middleware/auth");
+const { authorize } = require("../../middleware/rbac");
+const zodValidate = require("../../middleware/zodValidate");
 const {
   availabilityQuerySchema,
   availabilitySchema,
@@ -11,61 +11,75 @@ const {
   slotIdParamSchema,
   updateProfileSchema,
   recordLocationSchema,
-} = require('./employee.validation');
+} = require("./employee.validation");
 
-router.post('/login', zodValidate({ part: 'body', schema: loginSchema }), ctrl.login);
+router.post(
+  "/login",
+  zodValidate({ part: "body", schema: loginSchema }),
+  ctrl.login,
+);
 
 router.use(authenticate);
 
 // Profile
-router.get('/me', authorize('employee'), ctrl.getMyProfile);
-router.put('/me', authorize('employee'), zodValidate({ part: 'body', schema: updateProfileSchema }), ctrl.updateMyProfile
+router.get("/me", authorize("employee"), ctrl.getMyProfile);
+router.put(
+  "/me",
+  authorize("employee"),
+  zodValidate({ part: "body", schema: updateProfileSchema }),
+  ctrl.updateMyProfile,
 );
 
 // Availability
 router.get(
-  '/availability',
-  authorize('employee', 'hr', 'admin'),
-  zodValidate({ part: 'query', schema: availabilityQuerySchema }),
-  ctrl.getMyAvailability
+  "/availability",
+  authorize("employee", "hr", "admin"),
+  zodValidate({ part: "query", schema: availabilityQuerySchema }),
+  ctrl.getMyAvailability,
 );
-router.post('/availability',  authorize('employee'), zodValidate({ part: 'body', schema: availabilitySchema }), ctrl.addAvailabilitySlot
-);
-
- 
-
-router.put('/availability/:slotId',
-  authorize('employee'),
-  zodValidate({ part: 'params', schema: slotIdParamSchema }),
-  zodValidate({ part: 'body', schema: availabilitySchema }),
-  ctrl.updateAvailabilitySlot
+router.post(
+  "/availability",
+  authorize("employee"),
+  zodValidate({ part: "body", schema: availabilitySchema }),
+  ctrl.addAvailabilitySlot,
 );
 
-router.delete('/availability/:slotId',
-  authorize('employee'),
-  zodValidate({ part: 'params', schema: slotIdParamSchema }),
-  ctrl.deleteAvailabilitySlot
+router.put(
+  "/availability/:slotId",
+  authorize("employee"),
+  zodValidate({ part: "params", schema: slotIdParamSchema }),
+  zodValidate({ part: "body", schema: availabilitySchema }),
+  ctrl.updateAvailabilitySlot,
+);
+
+router.delete(
+  "/availability/:slotId",
+  authorize("employee"),
+  zodValidate({ part: "params", schema: slotIdParamSchema }),
+  ctrl.deleteAvailabilitySlot,
 );
 
 // ── HR/Admin: view a specific employee's availability ────────
-router.get('/:employeeId/availability',
-  authorize('hr', 'admin'),
-  zodValidate({ part: 'params', schema: employeeIdParamSchema }),
-  zodValidate({ part: 'query', schema: availabilityQuerySchema }),
-  ctrl.getEmployeeAvailability
+router.get(
+  "/:employeeId/availability",
+  authorize("hr", "admin"),
+  zodValidate({ part: "params", schema: employeeIdParamSchema }),
+  zodValidate({ part: "query", schema: availabilityQuerySchema }),
+  ctrl.getEmployeeAvailability,
 );
 
 // ── My projects ──────────────────────────────────────────────
-router.get('/my-projects', authorize('employee'), ctrl.getMyProjects);
+router.get("/my-projects", authorize("employee"), ctrl.getMyProjects);
 
 // ── Login logs (own) ─────────────────────────────────────────
-router.get('/my-logs', authorize('employee'), ctrl.getMyLogs);
+router.get("/my-logs", authorize("employee"), ctrl.getMyLogs);
 
 // ── GPS Location Ping (Work Timer) ───────────────────────────
-router.post('/location',
-  authorize('employee'),
-  zodValidate({ part: 'body', schema: recordLocationSchema }),
-  ctrl.recordLocation
+router.post(
+  "/location",
+  authorize("employee"),
+  zodValidate({ part: "body", schema: recordLocationSchema }),
+  ctrl.recordLocation,
 );
 
 module.exports = router;

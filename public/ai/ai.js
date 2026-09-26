@@ -1,24 +1,29 @@
-
-const DEFAULT_AGENT_ID = 'agent_4201k6mkfkg0epv9wdr4hdn3fp38';
+const DEFAULT_AGENT_ID = "agent_4201k6mkfkg0epv9wdr4hdn3fp38";
 
 // Resolve AGENT_ID from multiple possible sources so you can override it without editing this file:
-let AGENT_ID = (typeof window !== 'undefined' && window.ELEVENLABS_AGENT_ID) || DEFAULT_AGENT_ID;
+let AGENT_ID =
+  (typeof window !== "undefined" && window.ELEVENLABS_AGENT_ID) ||
+  DEFAULT_AGENT_ID;
 
 // Try to read data-agent-id from the script tag if present (works when script tag has id="eleven-ai")
-function tryReadAgentFromScriptTag() { 
+function tryReadAgentFromScriptTag() {
   try {
     // Prefer an explicit script element with id 'eleven-ai'
-    const scriptEl = document.getElementById('eleven-ai') || Array.from(document.getElementsByTagName('script')).find(s => s.src && s.src.includes('/ai/ai.js'));
-    if (scriptEl && scriptEl.dataset && scriptEl.dataset.agentId) {
+    const scriptEl =
+      document.getElementById("eleven-ai") ||
+      Array.from(document.getElementsByTagName("script")).find((s) =>
+        s.src?.includes("/ai/ai.js"),
+      );
+    if (scriptEl?.dataset?.agentId) {
       AGENT_ID = scriptEl.dataset.agentId;
     }
-  } catch (e) {
+  } catch (_e) {
     // ignore
   }
 }
 
 // If DOM is already available, try to read the script tag now; otherwise try later during injection
-if (typeof document !== 'undefined' && document.readyState !== 'loading') {
+if (typeof document !== "undefined" && document.readyState !== "loading") {
   tryReadAgentFromScriptTag();
 }
 
@@ -26,10 +31,10 @@ if (typeof document !== 'undefined' && document.readyState !== 'loading') {
 const OPEN_IN_NEW_TAB = false; // true = new tab, false = same tab
 
 // OPTIONAL: Change widget position
-const WIDGET_POSITION = 'bottom-right'; // 'bottom-right', 'bottom-left', 'top-right', 'top-left'
+const WIDGET_POSITION = "bottom-right"; // 'bottom-right', 'bottom-left', 'top-right', 'top-left'
 
 // OPTIONAL: Base URL for navigation (leave empty for auto-detection)
-const BASE_URL = 'https://obrive.com';
+const BASE_URL = "https://obrive.com";
 
 // ============================================================================
 // DON'T CHANGE ANYTHING BELOW THIS LINE
@@ -37,8 +42,8 @@ const BASE_URL = 'https://obrive.com';
 
 // Create and inject the widget with client tools
 function injectElevenLabsWidget() {
-  const ID = 'elevenlabs-convai-widget';
-  
+  const ID = "elevenlabs-convai-widget";
+
   // Check if the widget is already loaded
   if (document.getElementById(ID)) {
     return;
@@ -56,14 +61,30 @@ function injectElevenLabsWidget() {
 
       // Patch fetch (async wrapper so we can inspect responses)
       const origFetch = window.fetch;
-      window.fetch = async function(input, init) {
+      window.fetch = async function (input, init) {
         let finalInput = input;
         try {
-          let url = (typeof finalInput === 'string') ? finalInput : finalInput && finalInput.url;
-          if (typeof url === 'string' && url.includes('/convai/agents/') && !url.includes(desired)) {
-            const newUrl = url.replace(/(\/convai\/agents\/)[^\/]+(\/widget)/, `$1${desired}$2`);
-            console.info('[ElevenLabs ConvAI] Rewriting fetch URL:', url, '->', newUrl);
-            finalInput = (typeof finalInput === 'string') ? newUrl : new Request(newUrl, finalInput);
+          let url =
+            typeof finalInput === "string" ? finalInput : finalInput?.url;
+          if (
+            typeof url === "string" &&
+            url.includes("/convai/agents/") &&
+            !url.includes(desired)
+          ) {
+            const newUrl = url.replace(
+              /(\/convai\/agents\/)[^/]+(\/widget)/,
+              `$1${desired}$2`,
+            );
+            console.info(
+              "[ElevenLabs ConvAI] Rewriting fetch URL:",
+              url,
+              "->",
+              newUrl,
+            );
+            finalInput =
+              typeof finalInput === "string"
+                ? newUrl
+                : new Request(newUrl, finalInput);
             url = newUrl;
           }
 
@@ -71,18 +92,27 @@ function injectElevenLabsWidget() {
 
           // If this is a widget-config request, log the response body for diagnosis
           try {
-            if (typeof url === 'string' && url.includes('/convai/agents/') && url.includes('/widget')) {
+            if (
+              typeof url === "string" &&
+              url.includes("/convai/agents/") &&
+              url.includes("/widget")
+            ) {
               const clone = res.clone();
-              clone.text().then(text => {
-                //console.info('[ElevenLabs ConvAI] widget response for', url, ':', text);
-              }).catch(e => console.warn('failed to read widget response body', e));
+              clone
+                .text()
+                .then((_text) => {
+                  //console.info('[ElevenLabs ConvAI] widget response for', url, ':', text);
+                })
+                .catch((e) =>
+                  console.warn("failed to read widget response body", e),
+                );
             }
           } catch (e) {
-            console.warn('widget response logging failed', e);
+            console.warn("widget response logging failed", e);
           }
 
           return res;
-        } catch (e) {
+        } catch (_e) {
           //console.warn('agent-url-rewrite fetch patch error', e);
           return origFetch.call(this, finalInput, init);
         }
@@ -90,31 +120,48 @@ function injectElevenLabsWidget() {
 
       // Patch XHR
       const origOpen = XMLHttpRequest.prototype.open;
-      XMLHttpRequest.prototype.open = function(method, url) {
+      XMLHttpRequest.prototype.open = function (method, url) {
         try {
-          if (typeof url === 'string' && url.includes('/convai/agents/') && !url.includes(desired)) {
-            const newUrl = url.replace(/(\/convai\/agents\/)[^\/]+(\/widget)/, `$1${desired}$2`);
-            console.info('[ElevenLabs ConvAI] Rewriting XHR URL:', url, '->', newUrl);
-            return origOpen.apply(this, [method, newUrl].concat(Array.prototype.slice.call(arguments, 2)));
+          if (
+            typeof url === "string" &&
+            url.includes("/convai/agents/") &&
+            !url.includes(desired)
+          ) {
+            const newUrl = url.replace(
+              /(\/convai\/agents\/)[^/]+(\/widget)/,
+              `$1${desired}$2`,
+            );
+            console.info(
+              "[ElevenLabs ConvAI] Rewriting XHR URL:",
+              url,
+              "->",
+              newUrl,
+            );
+            return origOpen.apply(
+              this,
+              [method, newUrl].concat(Array.prototype.slice.call(arguments, 2)),
+            );
           }
-        } catch (e) { console.warn('agent-url-rewrite xhr patch error', e); }
+        } catch (e) {
+          console.warn("agent-url-rewrite xhr patch error", e);
+        }
         return origOpen.apply(this, arguments);
       };
     } catch (e) {
-      console.warn('installAgentUrlRewrite failed', e);
+      console.warn("installAgentUrlRewrite failed", e);
     }
   })();
 
-  const script = document.createElement('script');
-  script.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
+  const script = document.createElement("script");
+  script.src = "https://unpkg.com/@elevenlabs/convai-widget-embed";
   script.async = true;
-  script.type = 'text/javascript';
+  script.type = "text/javascript";
   document.head.appendChild(script);
 
   // Inject styles for Orion Assistive Ball and collapsible card
-  if (!document.getElementById('orion-assistive-styles')) {
-    const styleEl = document.createElement('style');
-    styleEl.id = 'orion-assistive-styles';
+  if (!document.getElementById("orion-assistive-styles")) {
+    const styleEl = document.createElement("style");
+    styleEl.id = "orion-assistive-styles";
     styleEl.textContent = `
       .orion-assistive-ball {
         position: fixed;
@@ -342,40 +389,57 @@ void main() {
 
   class OrionOrbRenderer {
     static noiseImage = null;
-    constructor(canvas, color1 = '#59D0B5', color2 = '#CAEDE5') {
+    constructor(canvas, color1 = "#59D0B5", color2 = "#CAEDE5") {
       this.canvas = canvas;
       try {
-        this.gl = canvas.getContext('webgl2', { depth: false, stencil: false });
-      } catch (e) {
+        this.gl = canvas.getContext("webgl2", { depth: false, stencil: false });
+      } catch (_e) {
         this.gl = null;
       }
       if (!this.gl) return;
-      
+
       this.colorA = [0, 0, 0];
       this.colorB = [0, 0, 0];
       this.offsets = new Float32Array(7).map(() => Math.random() * Math.PI * 2);
       this.program = this.setupProgram();
       if (!this.program) return;
-      
+
       const gl = this.gl;
       const tex = gl.createTexture();
       gl.bindTexture(gl.TEXTURE_2D, tex);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([128, 128, 128, 255]));
-      
+      gl.texImage2D(
+        gl.TEXTURE_2D,
+        0,
+        gl.RGBA,
+        1,
+        1,
+        0,
+        gl.RGBA,
+        gl.UNSIGNED_BYTE,
+        new Uint8Array([128, 128, 128, 255]),
+      );
+
       if (!OrionOrbRenderer.noiseImage) {
         OrionOrbRenderer.noiseImage = new Image();
-        OrionOrbRenderer.noiseImage.crossOrigin = 'anonymous';
-        OrionOrbRenderer.noiseImage.src = 'https://storage.googleapis.com/eleven-public-cdn/images/perlin-noise.png';
+        OrionOrbRenderer.noiseImage.crossOrigin = "anonymous";
+        OrionOrbRenderer.noiseImage.src =
+          "https://storage.googleapis.com/eleven-public-cdn/images/perlin-noise.png";
       }
       if (OrionOrbRenderer.noiseImage.complete) {
         this.copyNoiseImage();
       } else {
-        OrionOrbRenderer.noiseImage.addEventListener('load', () => this.copyNoiseImage());
+        OrionOrbRenderer.noiseImage.addEventListener("load", () =>
+          this.copyNoiseImage(),
+        );
       }
 
       const posBuffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, 1, -1, -1, 1, 1, 1, -1]), gl.STATIC_DRAW);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array([-1, 1, -1, -1, 1, 1, 1, -1]),
+        gl.STATIC_DRAW,
+      );
       gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
       gl.enableVertexAttribArray(0);
 
@@ -392,15 +456,22 @@ void main() {
 
     copyNoiseImage() {
       if (this.gl && OrionOrbRenderer.noiseImage) {
-        this.gl.texImage2D(this.gl.TEXTURE_2D, 0, this.gl.RGBA, this.gl.RGBA, this.gl.UNSIGNED_BYTE, OrionOrbRenderer.noiseImage);
+        this.gl.texImage2D(
+          this.gl.TEXTURE_2D,
+          0,
+          this.gl.RGBA,
+          this.gl.RGBA,
+          this.gl.UNSIGNED_BYTE,
+          OrionOrbRenderer.noiseImage,
+        );
         this.gl.generateMipmap(this.gl.TEXTURE_2D);
       }
     }
 
     updateColors(hex1, hex2) {
       if (!this.gl) return;
-      this.colorA = this.parseColor('uColor1', hex1);
-      this.colorB = this.parseColor('uColor2', hex2);
+      this.colorA = this.parseColor("uColor1", hex1);
+      this.colorB = this.parseColor("uColor2", hex2);
     }
 
     parseColor(uniformName, hex) {
@@ -409,9 +480,12 @@ void main() {
         const r = parseInt(hex.slice(3, 5), 16) / 255;
         const i = parseInt(hex.slice(5, 7), 16) / 255;
         const rgb = [n ** 2.2, r ** 2.2, i ** 2.2];
-        this.gl.uniform3fv(this.gl.getUniformLocation(this.program, uniformName), rgb);
+        this.gl.uniform3fv(
+          this.gl.getUniformLocation(this.program, uniformName),
+          rgb,
+        );
         return rgb;
-      } catch (e) {
+      } catch (_e) {
         return [0, 0, 0];
       }
     }
@@ -426,8 +500,8 @@ void main() {
       gl.attachShader(prog, vs);
       gl.linkProgram(prog);
       gl.useProgram(prog);
-      gl.uniform1i(gl.getUniformLocation(prog, 'uPerlinTexture'), 0);
-      gl.uniform1fv(gl.getUniformLocation(prog, 'uOffsets'), this.offsets);
+      gl.uniform1i(gl.getUniformLocation(prog, "uPerlinTexture"), 0);
+      gl.uniform1fv(gl.getUniformLocation(prog, "uOffsets"), this.offsets);
       return prog;
     }
 
@@ -442,7 +516,10 @@ void main() {
     render() {
       if (!this.gl) return;
       const elapsed = (performance.now() - this.startTime) / 1000;
-      this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'uTime'), elapsed);
+      this.gl.uniform1f(
+        this.gl.getUniformLocation(this.program, "uTime"),
+        elapsed,
+      );
       this.gl.drawArrays(this.gl.TRIANGLE_STRIP, 0, 4);
       this.rafId = requestAnimationFrame(this.render);
     }
@@ -455,11 +532,11 @@ void main() {
   }
 
   // Create the Assistive Ball button with the animated WebGL orb from the card
-  const ballBtn = document.createElement('button');
-  ballBtn.id = 'orion-assistive-ball';
-  ballBtn.className = 'orion-assistive-ball';
-  ballBtn.setAttribute('aria-label', 'Open Orion Assistant');
-  ballBtn.setAttribute('title', 'Orion here to help !');
+  const ballBtn = document.createElement("button");
+  ballBtn.id = "orion-assistive-ball";
+  ballBtn.className = "orion-assistive-ball";
+  ballBtn.setAttribute("aria-label", "Open Orion Assistant");
+  ballBtn.setAttribute("title", "Orion here to help !");
   ballBtn.innerHTML = `
     <div class="orion-ball-canvas-wrap">
       <canvas id="orion-assistive-canvas" class="orion-assistive-canvas"></canvas>
@@ -467,52 +544,52 @@ void main() {
   `;
 
   // Instantiate the animated WebGL orb on the assistive ball canvas
-  let orbRenderer = null;
+  let _orbRenderer = null;
   setTimeout(() => {
-    const canvas = document.getElementById('orion-assistive-canvas');
+    const canvas = document.getElementById("orion-assistive-canvas");
     if (canvas) {
-      orbRenderer = new OrionOrbRenderer(canvas, '#59D0B5', '#CAEDE5');
+      _orbRenderer = new OrionOrbRenderer(canvas, "#59D0B5", "#CAEDE5");
     }
   }, 50);
 
   // Create wrapper and widget (card is COLLAPSED by default)
-  const wrapper = document.createElement('div');
-  wrapper.id = 'orion-card-wrapper';
+  const wrapper = document.createElement("div");
+  wrapper.id = "orion-card-wrapper";
   wrapper.className = `convai-widget ${WIDGET_POSITION} orion-collapsed`;
 
   // Helper functions to open and close Orion
   const openOrion = () => {
-    ballBtn.classList.add('orion-hidden');
-    wrapper.classList.remove('orion-collapsed');
-    wrapper.classList.add('orion-expanded');
-    if (widget && widget.shadowRoot) {
+    ballBtn.classList.add("orion-hidden");
+    wrapper.classList.remove("orion-collapsed");
+    wrapper.classList.add("orion-expanded");
+    if (widget?.shadowRoot) {
       setupShadowRoot(widget.shadowRoot);
     }
   };
 
   const closeOrion = () => {
-    wrapper.classList.remove('orion-expanded');
-    wrapper.classList.add('orion-collapsed');
-    ballBtn.classList.remove('orion-hidden');
+    wrapper.classList.remove("orion-expanded");
+    wrapper.classList.add("orion-collapsed");
+    ballBtn.classList.remove("orion-hidden");
   };
 
-  ballBtn.addEventListener('click', (e) => {
+  ballBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     openOrion();
   });
 
   const createCloseBtn = () => {
-    const btn = document.createElement('button');
-    btn.className = 'orion-close-cross-btn';
-    btn.setAttribute('aria-label', 'Close Orion Assistant');
-    btn.setAttribute('title', 'Close');
+    const btn = document.createElement("button");
+    btn.className = "orion-close-cross-btn";
+    btn.setAttribute("aria-label", "Close Orion Assistant");
+    btn.setAttribute("title", "Close");
     btn.innerHTML = `
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     `;
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener("click", (e) => {
       e.stopPropagation();
       e.preventDefault();
       closeOrion();
@@ -520,104 +597,131 @@ void main() {
     return btn;
   };
 
-  const widget = document.createElement('elevenlabs-convai');
+  const widget = document.createElement("elevenlabs-convai");
   widget.id = ID;
   // Ensure we have the latest value for AGENT_ID (if a script tag provided an override)
   tryReadAgentFromScriptTag();
 
   if (!AGENT_ID) {
-    console.warn('[ElevenLabs ConvAI] No agent id found. Please set window.ELEVENLABS_AGENT_ID, add data-agent-id to the script tag, or edit this file.');
+    console.warn(
+      "[ElevenLabs ConvAI] No agent id found. Please set window.ELEVENLABS_AGENT_ID, add data-agent-id to the script tag, or edit this file.",
+    );
     return;
   }
 
   // Debug: print where the agent id was resolved from
   try {
-    const scriptEl = document.getElementById('eleven-ai') || Array.from(document.getElementsByTagName('script')).find(s => s.src && s.src.includes('/ai/ai.js'));
-    console.debug('[ElevenLabs ConvAI] Resolved AGENT_ID:', AGENT_ID);
-    console.debug('[ElevenLabs ConvAI] window.ELEVENLABS_AGENT_ID =', typeof window !== 'undefined' ? window.ELEVENLABS_AGENT_ID : undefined);
-    console.debug('[ElevenLabs ConvAI] script data-agent-id =', scriptEl && scriptEl.dataset ? scriptEl.dataset.agentId : undefined);
-  } catch (e) {
+    const scriptEl =
+      document.getElementById("eleven-ai") ||
+      Array.from(document.getElementsByTagName("script")).find((s) =>
+        s.src?.includes("/ai/ai.js"),
+      );
+    console.debug("[ElevenLabs ConvAI] Resolved AGENT_ID:", AGENT_ID);
+    console.debug(
+      "[ElevenLabs ConvAI] window.ELEVENLABS_AGENT_ID =",
+      typeof window !== "undefined" ? window.ELEVENLABS_AGENT_ID : undefined,
+    );
+    console.debug(
+      "[ElevenLabs ConvAI] script data-agent-id =",
+      scriptEl?.dataset ? scriptEl.dataset.agentId : undefined,
+    );
+  } catch (_e) {
     // ignore logging errors
   }
 
-  widget.setAttribute('agent-id', AGENT_ID);
+  widget.setAttribute("agent-id", AGENT_ID);
 
   // Observe the widget element for attribute changes so we can detect if something overwrites the agent-id
   const observer = new MutationObserver((mutations) => {
-    mutations.forEach(m => {
-      if (m.type === 'attributes' && m.attributeName === 'agent-id') {
-        const newVal = widget.getAttribute('agent-id');
-        console.warn('[ElevenLabs ConvAI] Detected agent-id attribute change ->', newVal);
-        console.debug('[ElevenLabs ConvAI] Current window.ELEVENLABS_AGENT_ID =', typeof window !== 'undefined' ? window.ELEVENLABS_AGENT_ID : undefined);
+    mutations.forEach((m) => {
+      if (m.type === "attributes" && m.attributeName === "agent-id") {
+        const newVal = widget.getAttribute("agent-id");
+        console.warn(
+          "[ElevenLabs ConvAI] Detected agent-id attribute change ->",
+          newVal,
+        );
+        console.debug(
+          "[ElevenLabs ConvAI] Current window.ELEVENLABS_AGENT_ID =",
+          typeof window !== "undefined"
+            ? window.ELEVENLABS_AGENT_ID
+            : undefined,
+        );
         try {
-          console.debug('[ElevenLabs ConvAI] script data-agent-id =', scriptEl && scriptEl.dataset ? scriptEl.dataset.agentId : undefined);
-        } catch (e) {}
+          console.debug(
+            "[ElevenLabs ConvAI] script data-agent-id =",
+            scriptEl?.dataset ? scriptEl.dataset.agentId : undefined,
+          );
+        } catch (_e) {}
       }
     });
   });
 
   observer.observe(widget, { attributes: true });
-  widget.setAttribute('variant', 'full');
+  widget.setAttribute("variant", "full");
 
   // Register the widget's client tool for external redirects. The embed may look up this
   // tool by different casing/keys, so register multiple variants on the widget and a
   // global container. This makes the handler discoverable regardless of the name used.
-  const makeRedirectHandler = () => ({ url }) => {
-    //console.log('redirectToExternalURL called with url:', url);
+  const makeRedirectHandler =
+    () =>
+    ({ url }) => {
+      //console.log('redirectToExternalURL called with url:', url);
 
-    if (!url || typeof url !== 'string') return;
+      if (!url || typeof url !== "string") return;
 
-    // Trim and normalize whitespace (speech-to-text often inserts spaces)
-    let raw = url.trim();
-    // Replace consecutive whitespace with single hyphen to better match slug patterns
-    // e.g. 'virtual reality' -> 'virtual-reality'
-    raw = raw.replace(/\s+/g, '-');
+      // Trim and normalize whitespace (speech-to-text often inserts spaces)
+      let raw = url.trim();
+      // Replace consecutive whitespace with single hyphen to better match slug patterns
+      // e.g. 'virtual reality' -> 'virtual-reality'
+      raw = raw.replace(/\s+/g, "-");
 
-    // Helper to strip trailing slash from base
-    const baseOrigin = (BASE_URL && BASE_URL.length > 0 ? BASE_URL : window.location.origin).replace(/\/$/, '');
+      // Helper to strip trailing slash from base
+      const baseOrigin = (
+        BASE_URL && BASE_URL.length > 0 ? BASE_URL : window.location.origin
+      ).replace(/\/$/, "");
 
-    let fullUrl;
-    // Absolute URL (with protocol)
-    if (/^https?:\/\//i.test(raw)) {
-      fullUrl = raw;
-    } else if (raw.startsWith('/')) {
-      // Root-relative path -> attach to origin/base
-      fullUrl = baseOrigin + raw;
-    } else if (/^\.|^\.\./.test(raw)) {
-      // Relative path using ./ or ../ -> resolve against current location
-      try {
-        fullUrl = new URL(raw, window.location.href).toString();
-      } catch (e) {
-        fullUrl = baseOrigin + '/' + raw;
+      let fullUrl;
+      // Absolute URL (with protocol)
+      if (/^https?:\/\//i.test(raw)) {
+        fullUrl = raw;
+      } else if (raw.startsWith("/")) {
+        // Root-relative path -> attach to origin/base
+        fullUrl = baseOrigin + raw;
+      } else if (/^\.|^\.\./.test(raw)) {
+        // Relative path using ./ or ../ -> resolve against current location
+        try {
+          fullUrl = new URL(raw, window.location.href).toString();
+        } catch (_e) {
+          fullUrl = `${baseOrigin}/${raw}`;
+        }
+      } else {
+        // No leading slash -> treat as root-relative (most voice commands refer to top-level routes)
+        fullUrl = `${baseOrigin}/${raw}`;
       }
-    } else {
-      // No leading slash -> treat as root-relative (most voice commands refer to top-level routes)
-      fullUrl = baseOrigin + '/' + raw;
-    }
 
-    //console.log('Navigating to:', fullUrl);
+      //console.log('Navigating to:', fullUrl);
 
-    // Navigate based on config
-    if (OPEN_IN_NEW_TAB) {
-      window.open(fullUrl, '_blank', 'noopener,noreferrer');
-    } else {
-      window.location.href = fullUrl;
-    }
-  };
+      // Navigate based on config
+      if (OPEN_IN_NEW_TAB) {
+        window.open(fullUrl, "_blank", "noopener,noreferrer");
+      } else {
+        window.location.href = fullUrl;
+      }
+    };
 
   const redirectHandler = makeRedirectHandler();
 
   // Preferred name (camelCase) and several common variants the embed might use
   const clientToolNames = [
-    'redirectToExternalURL',
-    'redirecttoExternalURL',
-    'redirectToExternalUrl',
-    'redirecttoExternalUrl',
-    'redirecttoexternalurl'
+    "redirectToExternalURL",
+    "redirecttoExternalURL",
+    "redirectToExternalUrl",
+    "redirecttoExternalUrl",
+    "redirecttoexternalurl",
   ];
 
   // Attach to event.detail.config when the embed fires 'call' (keeps previous behaviour)
-  widget.addEventListener('elevenlabs-convai:call', (event) => {
+  widget.addEventListener("elevenlabs-convai:call", (event) => {
     try {
       event.detail = event.detail || {};
       event.detail.config = event.detail.config || {};
@@ -629,17 +733,19 @@ void main() {
       // The server may override this; it's a best-effort client-side request.
       try {
         // Support multiple possible keys the embed may inspect
-        event.detail.config.widget_config = event.detail.config.widget_config || {};
+        event.detail.config.widget_config =
+          event.detail.config.widget_config || {};
         event.detail.config.widget_config.disable_banner = true;
-        event.detail.config.widgetConfig = event.detail.config.widgetConfig || {};
+        event.detail.config.widgetConfig =
+          event.detail.config.widgetConfig || {};
         event.detail.config.widgetConfig.disable_banner = true;
         // also set a top-level flag in case the embed looks there
         event.detail.config.disable_banner = true;
       } catch (e) {
-        console.warn('failed to set disable_banner on event config', e);
+        console.warn("failed to set disable_banner on event config", e);
       }
     } catch (e) {
-      console.warn('failed to attach clientTools to event.detail:', e);
+      console.warn("failed to attach clientTools to event.detail:", e);
     }
   });
 
@@ -650,17 +756,18 @@ void main() {
       widget.clientTools[name] = redirectHandler;
     }
   } catch (e) {
-    console.warn('failed to set widget.clientTools:', e);
+    console.warn("failed to set widget.clientTools:", e);
   }
 
   // And expose a global registry in case the embed checks there
   try {
-    window.ELEVENLABS_CONVAI_CLIENT_TOOLS = window.ELEVENLABS_CONVAI_CLIENT_TOOLS || {};
+    window.ELEVENLABS_CONVAI_CLIENT_TOOLS =
+      window.ELEVENLABS_CONVAI_CLIENT_TOOLS || {};
     for (const name of clientToolNames) {
       window.ELEVENLABS_CONVAI_CLIENT_TOOLS[name] = redirectHandler;
     }
   } catch (e) {
-    console.warn('failed to set global ELEVENLABS_CONVAI_CLIENT_TOOLS:', e);
+    console.warn("failed to set global ELEVENLABS_CONVAI_CLIENT_TOOLS:", e);
   }
 
   // Helper function to setup styling, top-right close button, and eradicate Powered-By branding in shadowRoot
@@ -668,9 +775,9 @@ void main() {
     if (!shadow) return;
 
     // 1. Inject styles directly into shadowRoot
-    if (!shadow.getElementById('orion-shadow-styles')) {
-      const style = document.createElement('style');
-      style.id = 'orion-shadow-styles';
+    if (!shadow.getElementById("orion-shadow-styles")) {
+      const style = document.createElement("style");
+      style.id = "orion-shadow-styles";
       style.textContent = `
         p, 
         a[href*="elevenlabs"],
@@ -731,30 +838,38 @@ void main() {
     // 2. Remove any powered-by nodes and their parent overlay container
     try {
       const poweredNodes = shadow.querySelectorAll('p, a[href*="elevenlabs"]');
-      poweredNodes.forEach(el => {
-        const parentOverlay = el.closest('.overlay');
-        const sheetOverlay = shadow.querySelector('.rounded-sheet, .sheet, [class*="sheet"]')?.closest('.overlay');
+      poweredNodes.forEach((el) => {
+        const parentOverlay = el.closest(".overlay");
+        const sheetOverlay = shadow
+          .querySelector('.rounded-sheet, .sheet, [class*="sheet"]')
+          ?.closest(".overlay");
         if (parentOverlay && parentOverlay !== sheetOverlay) {
-          parentOverlay.style.setProperty('display', 'none', 'important');
-          try { parentOverlay.remove(); } catch (e) {}
+          parentOverlay.style.setProperty("display", "none", "important");
+          try {
+            parentOverlay.remove();
+          } catch (_e) {}
         } else {
-          el.style.setProperty('display', 'none', 'important');
-          try { el.remove(); } catch (e) {}
+          el.style.setProperty("display", "none", "important");
+          try {
+            el.remove();
+          } catch (_e) {}
         }
       });
-    } catch (e) {}
+    } catch (_e) {}
 
     // 3. Ensure close cross button is placed at top-right inside sheet
     try {
-      const sheet = shadow.querySelector('.rounded-sheet, .sheet, [class*="sheet"]');
+      const sheet = shadow.querySelector(
+        '.rounded-sheet, .sheet, [class*="sheet"]',
+      );
       if (sheet) {
-        sheet.style.setProperty('position', 'relative', 'important');
-        if (!sheet.querySelector('.orion-close-cross-btn')) {
+        sheet.style.setProperty("position", "relative", "important");
+        if (!sheet.querySelector(".orion-close-cross-btn")) {
           const btn = createCloseBtn();
           sheet.appendChild(btn);
         }
       }
-    } catch (e) {}
+    } catch (_e) {}
   }
 
   // Attach assistive ball and card wrapper to the DOM
@@ -765,13 +880,16 @@ void main() {
   // Connect shadow root observer to manage close button and brand styling
   let shadowObserver = null;
   function connectShadowRootObserver() {
-    if (widget && widget.shadowRoot) {
+    if (widget?.shadowRoot) {
       setupShadowRoot(widget.shadowRoot);
       if (!shadowObserver) {
         shadowObserver = new MutationObserver(() => {
           setupShadowRoot(widget.shadowRoot);
         });
-        shadowObserver.observe(widget.shadowRoot, { childList: true, subtree: true });
+        shadowObserver.observe(widget.shadowRoot, {
+          childList: true,
+          subtree: true,
+        });
       }
       return true;
     }
@@ -794,8 +912,8 @@ void main() {
 }
 
 // Initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', injectElevenLabsWidget);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", injectElevenLabsWidget);
 } else {
   injectElevenLabsWidget();
 }

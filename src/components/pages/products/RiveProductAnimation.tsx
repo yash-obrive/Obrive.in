@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
 import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
+import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 type RiveProductAnimationProps = {
@@ -32,7 +32,7 @@ export function RiveProductAnimation({
   const containerClasses = cn(
     "relative w-full",
     aspectClassName ?? "aspect-[16/10]",
-    className
+    className,
   );
 
   return (

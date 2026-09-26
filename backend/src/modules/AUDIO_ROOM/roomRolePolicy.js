@@ -20,7 +20,10 @@ const MODERATOR_ROOM_ROLES = [
   ROOM_ROLES.MODERATOR,
 ];
 
-const normalizeRole = (role) => String(role || "").trim().toLowerCase();
+const normalizeRole = (role) =>
+  String(role || "")
+    .trim()
+    .toLowerCase();
 
 const normalizeCrmRole = (role) => {
   const normalizedRole = normalizeRole(role);
@@ -67,7 +70,7 @@ const findAssignedRoomRole = ({ room, userId, crmRole }) => {
   const specificUserAssignment = assignments.find(
     (assignment) =>
       assignment.assignmentType === "specific-user" &&
-      Number(assignment.userId) === Number(userId)
+      Number(assignment.userId) === Number(userId),
   );
 
   if (specificUserAssignment) {
@@ -77,7 +80,7 @@ const findAssignedRoomRole = ({ room, userId, crmRole }) => {
   const crmRoleAssignment = assignments.find(
     (assignment) =>
       assignment.assignmentType === "crm-role" &&
-      crmRoleMatches(assignment.crmRole, crmRole)
+      crmRoleMatches(assignment.crmRole, crmRole),
   );
 
   return crmRoleAssignment
@@ -89,14 +92,14 @@ const hasJoinPermission = ({ room, crmRole }) => {
   return (room?.joinPermissions || []).some(
     (permission) =>
       permission.permissionType === "crm-role" &&
-      crmRoleMatches(permission.crmRole, crmRole)
+      crmRoleMatches(permission.crmRole, crmRole),
   );
 };
 
 const allowsGuestJoin = (room) =>
   Boolean(room?.allowGuestUsers) &&
   (room?.joinPermissions || []).some(
-    (permission) => permission.permissionType === "guest"
+    (permission) => permission.permissionType === "guest",
   );
 
 const resolveConfiguredRoomRole = ({ room, user }) => {
@@ -118,7 +121,10 @@ const resolveConfiguredRoomRole = ({ room, user }) => {
     return getCreatorRoomRole(user?.role);
   }
 
-  if (hasJoinPermission({ room, crmRole: user?.role }) || allowsGuestJoin(room)) {
+  if (
+    hasJoinPermission({ room, crmRole: user?.role }) ||
+    allowsGuestJoin(room)
+  ) {
     return ROOM_ROLES.LISTENER;
   }
 

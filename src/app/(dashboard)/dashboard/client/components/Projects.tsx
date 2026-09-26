@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
-import ProjectCard, { type ProjectItem } from "@/components/dashboard/ProjectCard";
+import { useEffect, useState } from "react";
+import ProjectCard, {
+  type ProjectItem,
+} from "@/components/dashboard/ProjectCard";
 import { apiFetch } from "@/lib/api";
-
 
 type ProjectCardVariant = "dashboard" | "projects";
 
@@ -32,7 +33,6 @@ const normalizeProgress = (value: unknown) => {
   return undefined;
 };
 
-
 interface ProjectsProps {
   projects?: ProjectItem[];
   onViewAll?: () => void;
@@ -46,7 +46,7 @@ export default function Projects({
   onViewAll,
   variant,
   onSelectProject,
-  setActiveSection
+  setActiveSection,
 }: ProjectsProps) {
   const [myProjects, setMyProjects] = useState<ProjectItem[]>([]);
 
@@ -69,21 +69,26 @@ export default function Projects({
             createdAtLabel: new Date(p.created_at).toLocaleDateString(),
             allTasks: Array.isArray(p.tasks) ? p.tasks.length : p.allTasks || 0,
             activeTasks: Array.isArray(p.tasks)
-              ? p.tasks.filter((task: any) => task.status !== "completed").length
+              ? p.tasks.filter((task: any) => task.status !== "completed")
+                  .length
               : p.activeTasks || 0,
-            assignees: p.team_members?.map((member: any) => ({
-              id: member.id.toString(),
-              name: member.name,
-              avatarUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`,
-              role: member.role,
-            })) || [],
+            assignees:
+              p.team_members?.map((member: any) => ({
+                id: member.id.toString(),
+                name: member.name,
+                avatarUrl: `https://api.dicebear.com/7.x/avataaars/svg?seed=${member.name}`,
+                role: member.role,
+              })) || [],
             extraAssigneesCount: Math.max(0, (p.team_members?.length || 0) - 2),
             status: p.project_status,
             progress: normalizeProgress(p.progress),
             completedTasks: Array.isArray(p.tasks)
-              ? p.tasks.filter((task: any) => task.status === "completed").length
+              ? p.tasks.filter((task: any) => task.status === "completed")
+                  .length
               : p.completedTasks || 0,
-            startDate: formatDateLabel(p.start_date ?? p.startDate ?? p.created_at),
+            startDate: formatDateLabel(
+              p.start_date ?? p.startDate ?? p.created_at,
+            ),
             endDate: formatDateLabel(p.end_date ?? p.endDate ?? p.deadline),
             tasks: Array.isArray(p.tasks) ? p.tasks : [],
           }));
@@ -102,19 +107,15 @@ export default function Projects({
 
   const displayProjects = variant === "projects" ? myProjects : projects;
 
-
   if (variant === "dashboard") {
     return (
       <section className="bg-transparent">
-
         <div className="flex items-center justify-between mb-3">
-          <h2 className="text-base font-extrabold text-[#1a472a]">
-            Projects
-          </h2>
+          <h2 className="text-base font-extrabold text-[#1a472a]">Projects</h2>
 
           <button
             type="button"
-            onClick={()=>setActiveSection("projects")}
+            onClick={() => setActiveSection("projects")}
             className="text-sm font-semibold text-teal-700 hover:text-teal-800 inline-flex items-center gap-1"
           >
             View all <ChevronRight className="w-4 h-4" />
@@ -123,36 +124,40 @@ export default function Projects({
 
         <div className="space-y-4">
           {displayProjects.map((p) => (
-            <ProjectCard key={p.id} project={p} variant={variant} onSelectProject={onSelectProject} />
+            <ProjectCard
+              key={p.id}
+              project={p}
+              variant={variant}
+              onSelectProject={onSelectProject}
+            />
           ))}
         </div>
       </section>
     );
   }
 
-
   if (variant === "projects") {
     return (
-
       <div className="flex flex-col gap-6 h-full">
-
-          
-          <div className="bg-transparent">
-            <div className="flex items-center justify-center mb-3 border-b p-2 border-[#d6d4d4]">
-              <h2 className="text-base font-extrabold text-[#1a472a]">
-                Current Projects
-              </h2>
-            </div>
-
-            <div className="space-y-4">
-              {displayProjects.map((p) => (
-                <ProjectCard key={p.id} project={p} variant={variant} onSelectProject={onSelectProject} />
-              ))}
-            </div>
+        <div className="bg-transparent">
+          <div className="flex items-center justify-center mb-3 border-b p-2 border-[#d6d4d4]">
+            <h2 className="text-base font-extrabold text-[#1a472a]">
+              Current Projects
+            </h2>
           </div>
-  </div>
-  
 
+          <div className="space-y-4">
+            {displayProjects.map((p) => (
+              <ProjectCard
+                key={p.id}
+                project={p}
+                variant={variant}
+                onSelectProject={onSelectProject}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
     );
   }
 

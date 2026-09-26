@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
+import Link from "@/components/shared/LocalizedLink";
 import PrimaryLogo from "@/components/shared/logo/PrimaryLogo";
-import Link from "next/link";
-import { ReactNode } from "react";
 
 export default function LayoutPublic({ children }: { children: ReactNode }) {
   return (

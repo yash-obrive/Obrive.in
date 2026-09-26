@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,7 +22,7 @@ export default function SmoothScrollProvider({
     // Initialize Lenis with optimized settings for ultra-smooth scrolling
     const lenis = new Lenis({
       duration: 1.2, // Increased for smoother, more fluid motion
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth exponential easing
+      easing: (t) => Math.min(1, 1.001 - 2 ** (-10 * t)), // Smooth exponential easing
       wheelMultiplier: 1.0, // More responsive wheel scrolling
       touchMultiplier: 2.0, // Enhanced touch sensitivity
       smoothWheel: true,
@@ -38,7 +38,7 @@ export default function SmoothScrollProvider({
     // Optimize ScrollTrigger integration
     lenis.on("scroll", ScrollTrigger.update);
 
-    // Use GSAP ticker for better performance 
+    // Use GSAP ticker for better performance
     // Create stable function reference to ensure proper cleanup
     const onTick = (time: number) => {
       lenis.raf(time * 1000); // GSAP ticker uses seconds, Lenis uses milliseconds

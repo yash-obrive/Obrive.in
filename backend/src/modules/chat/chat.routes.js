@@ -20,26 +20,34 @@ router.get(
   "/conversations/:conversationId/messages",
   zodValidate({ part: "params", schema: ConversationIdParamSchema }),
   zodValidate({ part: "query", schema: MessagesQuerySchema }),
-  chatController.getMessages
+  chatController.getMessages,
 );
-router.post("/conversations", zodValidate({ part: "body", schema: CreateConversationBodySchema }), chatController.createConversation);
+router.post(
+  "/conversations",
+  zodValidate({ part: "body", schema: CreateConversationBodySchema }),
+  chatController.createConversation,
+);
 router.post(
   "/conversations/:conversationId/participants",
   zodValidate({ part: "params", schema: ConversationIdParamSchema }),
   zodValidate({ part: "body", schema: AddParticipantsBodySchema }),
-  chatController.addParticipants
+  chatController.addParticipants,
 );
 router.delete(
   "/conversations/:conversationId/participants/:userId",
   zodValidate({ part: "params", schema: ConversationParticipantParamSchema }),
-  chatController.removeParticipant
+  chatController.removeParticipant,
 );
-router.post("/conversations/:conversationId/read", zodValidate({ part: "params", schema: ConversationIdParamSchema }), chatController.markAsRead);
+router.post(
+  "/conversations/:conversationId/read",
+  zodValidate({ part: "params", schema: ConversationIdParamSchema }),
+  chatController.markAsRead,
+);
 router.delete(
   "/conversations/:conversationId",
   zodValidate({ part: "params", schema: ConversationIdParamSchema }),
   zodValidate({ part: "query", schema: DeleteConversationQuerySchema }),
-  chatController.deleteConversation
+  chatController.deleteConversation,
 );
 router.post("/seed-dummy", chatController.seedDummyChats);
 

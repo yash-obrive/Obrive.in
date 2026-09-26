@@ -6,7 +6,17 @@ author: "Jonnah Razel"
 postType: "BLOG"
 seoTitle: "AR, VR or MR? See Which Reality Will Power Your Business in 2025"
 seoDescription: "Confused between AR, VR, and MR? Uncover their differences, real-world use cases, and how each can transform your business in 2025."
-seoKeywords: ["AR", "VR", "MR", "Augmented Reality", "Virtual Reality", "Mixed Reality", "Business Technology", "2025"]
+seoKeywords:
+  [
+    "AR",
+    "VR",
+    "MR",
+    "Augmented Reality",
+    "Virtual Reality",
+    "Mixed Reality",
+    "Business Technology",
+    "2025",
+  ]
 heroImage: "HERO_IMAGE_TWO"
 avatar: "AVATAR_ONE"
 workflowSteps:
@@ -28,98 +38,77 @@ impactMetrics:
 
 import { StyledText } from "@/components/shared/StyledText";
 
-<ChallengeSection
-  title=""
-  content={
-    <>
-      The world of immersive technology is evolving rapidly, and terms like
-      Augmented Reality (AR), Virtual Reality (VR), and Mixed Reality (MR) are
-      shaping how businesses innovate in 2025. While many use these technologies
-      interchangeably, each offers unique capabilities that serve different
-      industries and business goals.
-      <br />
-      In this blog, we’ll break down the key differences between AR, VR, and MR,
-      and explore real-world business use cases that highlight their impact
-      across industries.
-    </>
-  }
-/>
+<ChallengeSection title="">
 
-<WhyItWorkedSection
-  title="What is Augmented Reality (AR)?"
-  items={[
-    {
-      title: "Definition:",
-      description: (
-        <>
-          Augmented Reality overlays digital content—like 3D models, navigation
-          arrows, or interactive elements—onto the real world through devices
-          such as smartphones, tablets, or AR glasses. Business Use Cases in
-          2025:
-          <br />
-          <br />
-          <ul>
-            <li>
-              <StyledText>Retail & eCommerce:</StyledText> Virtual try-ons for
-              clothing, furniture, or cosmetics.
-            </li>
-            <li>
-              <StyledText>Navigation & Automotive:</StyledText> AR dashboards
-              like <StyledText>Obpark</StyledText> providing real-time parking
-              and driving assistance.
-            </li>
-            <li>
-              <StyledText>Marketing & Advertising:</StyledText> AR-powered
-              campaigns that turn static ads into interactive experiences.
-            </li>
-          </ul>
-          <br />
-          <StyledText>Key Advantage:</StyledText> AR enhances the physical world
-          without removing you from it—making it highly effective for customer engagement
-          and productivity tools.
-        </>
-      ),
-    },
-  ]}
-/>
+The world of immersive technology is evolving rapidly, and terms like
+Augmented Reality (AR), Virtual Reality (VR), and Mixed Reality (MR) are
+shaping how businesses innovate in 2025. While many use these technologies
+interchangeably, each offers unique capabilities that serve different
+industries and business goals.
 
-<WhyItWorkedSection
-  title="What is Mixed Reality (MR)?"
-  items={[
-    {
-      title: "Definition:",
-      description: (
-        <>
-          Virtual Reality immerses users in a completely digital environment,
-          shutting out the real world. It requires VR headsets like Meta Quest
-          or HTC Vive.
-          <br />
-          <br />
-          <StyledText>Business Use Cases in 2025:</StyledText>
-          <ul>
-            <li>
-              <StyledText>Product Design & Engineering:</StyledText> Real-time
-              collaboration on 3D models with interactive prototypes.
-            </li>
-            <li>
-              <StyledText>Healthcare:</StyledText> Surgeons overlaying digital
-              scans onto a patient during live procedures.
-            </li>
-            <li>
-              <StyledText>Remote Collaboration:</StyledText> Teams working
-              inside shared mixed reality spaces, reviewing designs or workflows
-              together.
-            </li>
-          </ul>
-          <br />
-          <StyledText>Key Advantage:</StyledText> MR merges the best of AR and
-          VR, creating true hybrid experiences where digital and physical
-          elements coexist.
-        </>
-      ),
-    },
-  ]}
-/>
+<br />
+In this blog, we’ll break down the key differences between AR, VR, and MR, and
+explore real-world business use cases that highlight their impact across
+industries.
+
+</ChallengeSection>
+
+<WhyItWorkedSection title="What is Augmented Reality (AR)?">
+  <WhyItWorkedItem title="Definition:">
+    Augmented Reality overlays digital content—like 3D models, navigation
+    arrows, or interactive elements—onto the real world through devices such as
+    smartphones, tablets, or AR glasses. Business Use Cases in 2025:
+    <br />
+    <br />
+    <ul>
+      <li>
+        <StyledText>Retail & eCommerce:</StyledText> Virtual try-ons for
+        clothing, furniture, or cosmetics.
+      </li>
+      <li>
+        <StyledText>Navigation & Automotive:</StyledText> AR dashboards like{" "}
+        <StyledText>Obpark</StyledText> providing real-time parking and driving
+        assistance.
+      </li>
+      <li>
+        <StyledText>Marketing & Advertising:</StyledText> AR-powered campaigns
+        that turn static ads into interactive experiences.
+      </li>
+    </ul>
+    <br />
+    <StyledText>Key Advantage:</StyledText>AR enhances the physical world
+    without removing you from it—making it highly effective for customer
+    engagement and productivity tools.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<WhyItWorkedSection title="What is Mixed Reality (MR)?">
+  <WhyItWorkedItem title="Definition:">
+    Virtual Reality immerses users in a completely digital environment, shutting
+    out the real world. It requires VR headsets like Meta Quest or HTC Vive.
+    <br />
+    <br />
+    <StyledText>Business Use Cases in 2025:</StyledText>
+    <ul>
+      <li>
+        <StyledText>Product Design & Engineering:</StyledText> Real-time
+        collaboration on 3D models with interactive prototypes.
+      </li>
+      <li>
+        <StyledText>Healthcare:</StyledText> Surgeons overlaying digital scans
+        onto a patient during live procedures.
+      </li>
+      <li>
+        <StyledText>Remote Collaboration:</StyledText> Teams working inside
+        shared mixed reality spaces, reviewing designs or workflows together.
+      </li>
+    </ul>
+    <br />
+    <StyledText>Key Advantage:</StyledText>MR merges the best of AR and VR,
+    creating true hybrid experiences where digital and physical elements
+    coexist.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
 
 <TheImpactTable
   title="AR vs. VR vs. MR: Quick Comparison"
@@ -145,72 +134,86 @@ import { StyledText } from "@/components/shared/StyledText";
       header: "Mixed Reality (MR)",
       width: "25%",
     },
-  ]}
-  data={[
-    {
-      aspect: <StyledText>Environment</StyledText>,
-      ar: "Real world + digital overlay",
-      vr: "Fully digital world",
-      mr: "Real + digital interactive",
-    },
-    {
-      aspect: <StyledText>Hardware</StyledText>,
-      ar: "Smartphones, AR glasses",
-      vr: "VR headsets",
-      mr: "MR headsets",
-    },
-    {
-      aspect: <StyledText>Immersion</StyledText>,
-      ar: "Low to medium",
-      vr: "High",
-      mr: "Medium to high",
-    },
-    {
-      aspect: <StyledText>Best For</StyledText>,
-      ar: "Navigation, marketing, retail",
-      vr: "Training, real estate, entertainment",
-      mr: "Collaboration, design, healthcare",
-    },
-  ]}
-/>
+  ]}>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Aspect"}>
+      <StyledText>Environment</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Augmented Reality (AR)"}>
+      Real world + digital overlay
+    </ImpactTableCell>
+    <ImpactTableCell header={"Virtual Reality (VR)"}>
+      Fully digital world
+    </ImpactTableCell>
+    <ImpactTableCell header={"Mixed Reality (MR)"}>
+      Real + digital interactive
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Aspect"}>
+      <StyledText>Hardware</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Augmented Reality (AR)"}>
+      Smartphones, AR glasses
+    </ImpactTableCell>
+    <ImpactTableCell header={"Virtual Reality (VR)"}>
+      VR headsets
+    </ImpactTableCell>
+    <ImpactTableCell header={"Mixed Reality (MR)"}>
+      MR headsets
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Aspect"}>
+      <StyledText>Immersion</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Augmented Reality (AR)"}>
+      Low to medium
+    </ImpactTableCell>
+    <ImpactTableCell header={"Virtual Reality (VR)"}>
+      High
+    </ImpactTableCell>
+    <ImpactTableCell header={"Mixed Reality (MR)"}>
+      Medium to high
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Aspect"}>
+      <StyledText>Best For</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Augmented Reality (AR)"}>
+      Navigation, marketing, retail
+    </ImpactTableCell>
+    <ImpactTableCell header={"Virtual Reality (VR)"}>
+      Training, real estate, entertainment
+    </ImpactTableCell>
+    <ImpactTableCell header={"Mixed Reality (MR)"}>
+      Collaboration, design, healthcare
+    </ImpactTableCell>
+  </ImpactTableRow>
+</TheImpactTable>
 
-<WhyItWorkedSection
-  title="Why Businesses Need AR, VR, and MR in 2025"
-  items={[
-    {
-      title: "Definition:",
-      description: (
-        <>
-          Immersive technologies are no longer experimental—they are
-          becoming essential tools for digital transformation. From improving
-          training efficiency to delivering unforgettable customer experiences,
-          AR, VR, and MR are creating measurable value across industries.
-          <br />
-          <br />
+<WhyItWorkedSection title="Why Businesses Need AR, VR, and MR in 2025">
+<WhyItWorkedItem title="Definition:">
+Immersive technologies are no longer experimental—they are
+becoming essential tools for digital transformation. From improving
+training efficiency to delivering unforgettable customer experiences,
+AR, VR, and MR are creating measurable value across industries.
+<br />
+<br />
 
-          Forward-thinking companies adopting spatial computing today are building the competitive edge of tomorrow.
-        </>
-      ),
-    },
+Forward-thinking companies adopting spatial computing today are building the competitive edge of tomorrow.
 
-]}
-/>
+</WhyItWorkedItem>
+</WhyItWorkedSection>
 
-<WhyItWorkedSection
-  title="Conclusion"
-  items={[
-    {
-      title: "Definition:",
-      description: (
-        <>
-          While AR, VR, and MR each serve different purposes, together they represent the future of immersive business operations. Whether it’s guiding drivers with AR, creating full VR training simulations, or enabling MR collaboration in design, these technologies are reshaping industries in 2025.
-          <br />
-          <br />
+<WhyItWorkedSection title="Conclusion">
+<WhyItWorkedItem title="Definition:">
+While AR, VR, and MR each serve different purposes, together they represent the future of immersive business operations. Whether it’s guiding drivers with AR, creating full VR training simulations, or enabling MR collaboration in design, these technologies are reshaping industries in 2025.
+<br />
+<br />
 
-          At Obrive Industries, we’re powering this shift with solutions like Obpark (AR navigation) and Obnest (MR/VR real estate platform), helping businesses transform how they operate in the spatial era.
-        </>
-      ),
-    },
+At Obrive Industries, we’re powering this shift with solutions like Obpark (AR navigation) and Obnest (MR/VR real estate platform), helping businesses transform how they operate in the spatial era.
 
-]}
-/>
+</WhyItWorkedItem>
+</WhyItWorkedSection>

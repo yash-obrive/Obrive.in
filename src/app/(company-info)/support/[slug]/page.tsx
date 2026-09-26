@@ -1,13 +1,17 @@
-import { getCompanyInfoBySlug, getAllCompanyInfoSlugs } from "@/lib/mdx";
-import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCompanyInfoMDXComponents } from "@/components/pages/company-info/CompanyInfoMDXComponents";
-import { Metadata } from "next";
-import Script from "next/script";
+import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
+import {
+  getAllCompanyInfoSlugs,
+  getCompanyInfoBySlug,
+  sharedMdxOptions,
+} from "@/lib/mdx";
 
 interface SupportPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export const dynamicParams = false;
@@ -22,7 +26,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: SupportPageProps): Promise<Metadata> {
-  const { slug } =  params;
+  const { slug } = await params;
   const supportDoc = await getCompanyInfoBySlug(slug, "support");
 
   if (!supportDoc) {
@@ -100,6 +104,7 @@ export default async function SupportPage({ params }: SupportPageProps) {
         <MDXRemote
           source={supportDoc.content}
           components={createCompanyInfoMDXComponents(supportDoc.metadata)}
+          options={sharedMdxOptions}
         />
       </CompanyInfoTemplate>
     </>

@@ -1,168 +1,127 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { COUNTRIES, SUPPORTED_COUNTRIES } from "@/config/countries";
+import { getTranslationStatus } from "@/config/translations";
+import { getIndustrySlugs } from "@/lib/industries";
 import {
   getAllCaseStudySlugs,
-  getAllFAQSlugs,
   getAllCompanyInfoSlugs,
+  getAllFAQSlugs,
 } from "@/lib/mdx";
-import { getSolutionSlugs } from "@/lib/solutions";
 import { getProductSlugs } from "@/lib/products";
-import { getIndustrySlugs } from "@/lib/industries";
-import { getUseCaseSlugs } from "@/lib/use-cases";
+import { getSolutionSlugs } from "@/lib/services";
 import { getTechnologySlugs } from "@/lib/technology";
+import { getUseCaseSlugs } from "@/lib/use-cases";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://obrive.com";
+const CHUNK_SIZE = 20;
 
-  // Static pages
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/site-map`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/legal`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/servicecharges`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-  ];
+const baseUrl = "https://obrive.com";
 
-  // Product pages
-  const productSlugs = getProductSlugs();
-  const productPages: MetadataRoute.Sitemap = productSlugs.map((slug) => ({
-    url: `${baseUrl}/products/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
+// Filter only production-ready countries
+const activeCountries = SUPPORTED_COUNTRIES.filter(
+  (code) => COUNTRIES[code].isProductionReady,
+);
 
-  // Solution pages
-  const solutionSlugs = getSolutionSlugs();
-  const solutionPages: MetadataRoute.Sitemap = solutionSlugs.map((slug) => ({
-    url: `${baseUrl}/solutions/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
+const makeAlternates = (subpath: string) => {
+  const langs: Record<string, string> = {
+    "x-default": `${baseUrl}/in/en${subpath}`,
+  };
+  for (const code of activeCountries) {
+    const countryConf = COUNTRIES[code];
+    const regionCode = countryConf.hreflang.split("-")[1] || code.toUpperCase();
+    
+    for (const lang of countryConf.supportedLanguages) {
+      if (getTranslationStatus(code, lang, subpath) === "ready") {
+        const hrefLangKey = `${lang}-${regionCode}`;
+        langs[hrefLangKey] = `${baseUrl}/${code}/${lang}${subpath}`;
+      }
+    }
+  }
+  return { languages: langs };
+};
 
-  // Industries pages
-  const blockedIndustrySlugs = new Set([
-    "retail",
-    "healthcare",
-    "manufacturing",
-    "architecture-engineering",
-    "education",
-    "enterprise"
-  ]);
-  const industrySlugs = getIndustrySlugs().filter(slug => !blockedIndustrySlugs.has(slug));
-  const industryPages: MetadataRoute.Sitemap = industrySlugs.map((slug) => ({
-    url: `${baseUrl}/industries/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
+type BasePath = { path: string; priority: number; changeFreq: any; isLegalOrSupport?: boolean };
 
-  // Use Cases pages
-  const blockedUseCaseSlugs = new Set([
-    "3d-product-configuration",
-    "digital-twins",
-    "remote-assistance"
-  ]);
-  const useCaseSlugs = getUseCaseSlugs().filter(slug => !blockedUseCaseSlugs.has(slug));
-  const useCasePages: MetadataRoute.Sitemap = useCaseSlugs.map((slug) => ({
-    url: `${baseUrl}/use-cases/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
+async function getAllBasePaths(): Promise<BasePath[]> {
+  const basePaths: BasePath[] = [];
 
-  // Technology pages
-  const blockedTechnologySlugs = new Set([
-    "mixed-reality",
-    "extended-reality",
-    "digital-twins",
-    "ai-immersive-technology"
-  ]);
-  const technologySlugs = getTechnologySlugs().filter(slug => !blockedTechnologySlugs.has(slug));
-  const technologyPages: MetadataRoute.Sitemap = technologySlugs.map((slug) => ({
-    url: `${baseUrl}/technology/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: 0.9,
-  }));
+  // Static
+  ["", "/about", "/site-map", "/servicecharges", "/contact", "/global"].forEach(p => basePaths.push({ path: p, priority: p === "" ? 1.0 : 0.8, changeFreq: p === "" ? "weekly" : "monthly" }));
 
-  // Case study/resource pages
+  // Products
+  getProductSlugs().forEach(s => basePaths.push({ path: `/products/${s}`, priority: 0.9, changeFreq: "weekly" }));
+
+  // Solutions
+  getSolutionSlugs().forEach(s => basePaths.push({ path: `/services/${s}`, priority: 0.9, changeFreq: "weekly" }));
+
+  // Industries
+  getIndustrySlugs().forEach(s => basePaths.push({ path: `/industries/${s}`, priority: 0.9, changeFreq: "weekly" }));
+
+  // Use Cases
+  getUseCaseSlugs().forEach(s => basePaths.push({ path: `/use-cases/${s}`, priority: 0.9, changeFreq: "weekly" }));
+
+  // Technology
+  getTechnologySlugs().forEach(s => basePaths.push({ path: `/technology/${s}`, priority: 0.9, changeFreq: "weekly" }));
+
+  // Resources
   const caseStudySlugs = await getAllCaseStudySlugs();
-  const caseStudyPages: MetadataRoute.Sitemap = caseStudySlugs.map((slug) => ({
-    url: `${baseUrl}/resources/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  const { getAllBlogs } = await import("@/lib/blogs");
+  const { getAllCaseStudySlugs: getAllJsonCaseStudySlugs } = await import("@/lib/case-studies");
+  const allResourceSlugs = [...caseStudySlugs, ...getAllBlogs().map(b => b.slug), ...getAllJsonCaseStudySlugs()];
+  allResourceSlugs.forEach(s => basePaths.push({ path: `/resources/${s}`, priority: 0.7, changeFreq: "monthly" }));
 
-  // FAQ pages
+  // FAQ
   const faqSlugs = await getAllFAQSlugs();
-  const faqPages: MetadataRoute.Sitemap = faqSlugs.map((slug) => ({
-    url: `${baseUrl}/faq/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.6,
-  }));
+  faqSlugs.forEach(s => basePaths.push({ path: `/faq/${s}`, priority: 0.6, changeFreq: "monthly" }));
 
-  // Legal pages
+  // Legal
   const legalSlugs = await getAllCompanyInfoSlugs("legal");
-  const legalPages: MetadataRoute.Sitemap = legalSlugs.map((slug) => ({
-    url: `${baseUrl}/legal/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "yearly",
-    priority: 0.4,
-  }));
+  legalSlugs.forEach(s => basePaths.push({ path: `/legal/${s}`, priority: 0.4, changeFreq: "yearly", isLegalOrSupport: true }));
 
-  // Support pages
+  // Support
   const supportSlugs = await getAllCompanyInfoSlugs("support");
-  const supportPages: MetadataRoute.Sitemap = supportSlugs.map((slug) => ({
-    url: `${baseUrl}/support/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.5,
-  }));
+  supportSlugs.forEach(s => basePaths.push({ path: `/support/${s}`, priority: 0.5, changeFreq: "monthly", isLegalOrSupport: true }));
 
-  return [
-    ...staticPages,
-    ...productPages,
-    ...solutionPages,
-    ...industryPages,
-    ...useCasePages,
-    ...technologyPages,
-    ...caseStudyPages,
-    ...faqPages,
-    ...legalPages,
-    ...supportPages,
-  ];
+  return basePaths;
+}
+
+export async function generateSitemaps() {
+  const allPaths = await getAllBasePaths();
+  const numChunks = Math.ceil(allPaths.length / CHUNK_SIZE);
+  return Array.from({ length: numChunks }, (_, i) => ({ id: i }));
+}
+
+export default async function sitemap({ id }: { id: number }): Promise<MetadataRoute.Sitemap> {
+  const allPaths = await getAllBasePaths();
+  const start = id * CHUNK_SIZE;
+  const chunkPaths = allPaths.slice(start, start + CHUNK_SIZE);
+
+  const pages: MetadataRoute.Sitemap = [];
+
+  for (const { path, priority, changeFreq, isLegalOrSupport } of chunkPaths) {
+    if (isLegalOrSupport) {
+      pages.push({
+        url: `${baseUrl}${path}`,
+        lastModified: new Date(),
+        changeFrequency: changeFreq,
+        priority: priority,
+      });
+    } else {
+      for (const country of activeCountries) {
+        const countryConf = COUNTRIES[country];
+        for (const lang of countryConf.supportedLanguages) {
+          if (getTranslationStatus(country, lang, path) === "ready") {
+            pages.push({
+              url: `${baseUrl}/${country}/${lang}${path}`,
+              lastModified: new Date(),
+              changeFrequency: changeFreq,
+              priority: priority,
+              alternates: makeAlternates(path),
+            });
+          }
+        }
+      }
+    }
+  }
+
+  return pages;
 }

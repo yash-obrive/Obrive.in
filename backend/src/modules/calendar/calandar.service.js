@@ -1,5 +1,4 @@
-const { prisma } = require('../../../db');
-
+const { prisma } = require("../../../prisma");
 /**
  * Fetch tasks between an optional start and end date
  * @param {string} startDate - Start date of the calendar view
@@ -39,16 +38,16 @@ const createTask = async (taskData) => {
     description,
     deadline,
     location,
-    status = 'pending',
+    status = "pending",
     assigned_to,
     created_by,
     project_id,
-    task_number
+    task_number,
   } = taskData;
 
   // Validate required fields
   if (!title) {
-    throw new Error('Task title is required');
+    throw new Error("Task title is required");
   }
 
   // Generate task_number if not provided
@@ -84,27 +83,22 @@ const createTask = async (taskData) => {
  * @returns {Object} Updated task
  */
 const updateTask = async (taskId, updateData) => {
-  const {
-    title,
-    description,
-    deadline,
-    location,
-    status,
-    assigned_to
-  } = updateData;
+  const { title, description, deadline, location, status, assigned_to } =
+    updateData;
 
   // Build only the fields that are provided
   const dataToUpdate = {};
   if (title !== undefined) dataToUpdate.title = title;
   if (description !== undefined) dataToUpdate.description = description;
-  if (deadline !== undefined) dataToUpdate.deadline = deadline ? new Date(deadline) : null;
+  if (deadline !== undefined)
+    dataToUpdate.deadline = deadline ? new Date(deadline) : null;
   if (location !== undefined) dataToUpdate.location = location;
   if (status !== undefined) dataToUpdate.status = status;
   if (assigned_to !== undefined) dataToUpdate.assigned_to = assigned_to;
 
   // Update the task
   const updatedTask = await prisma.tasks.update({
-    where: { id: parseInt(taskId) },
+    where: { id: parseInt(taskId, 10) },
     data: dataToUpdate,
   });
 
@@ -118,7 +112,7 @@ const updateTask = async (taskId, updateData) => {
  */
 const deleteTask = async (taskId) => {
   const deletedTask = await prisma.tasks.delete({
-    where: { id: parseInt(taskId) },
+    where: { id: parseInt(taskId, 10) },
   });
 
   return deletedTask;

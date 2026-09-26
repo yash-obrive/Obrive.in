@@ -1,10 +1,10 @@
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 async function main() {
   try {
     console.log("Checking and fixing room_configs table...");
-    
+
     // Safely add missing columns one by one. If they already exist, it will just log an error and continue.
     const queries = [
       `ALTER TABLE "room_configs" ADD COLUMN IF NOT EXISTS "roomName" VARCHAR(100);`,
@@ -22,13 +22,15 @@ async function main() {
       `ALTER TABLE "room_configs" ADD COLUMN IF NOT EXISTS "notificationSettings" JSONB;`,
       `ALTER TABLE "room_configs" ADD COLUMN IF NOT EXISTS "createdBy" INTEGER;`,
       `ALTER TABLE "room_configs" ADD COLUMN IF NOT EXISTS "endedBy" INTEGER;`,
-      `ALTER TABLE "room_configs" ADD COLUMN IF NOT EXISTS "endedAt" TIMESTAMP(3);`
+      `ALTER TABLE "room_configs" ADD COLUMN IF NOT EXISTS "endedAt" TIMESTAMP(3);`,
     ];
 
     for (const query of queries) {
       try {
         await prisma.$executeRawUnsafe(query);
-        console.log(`✅ Executed: ${query.split('ADD COLUMN IF NOT EXISTS ')[1]}`);
+        console.log(
+          `✅ Executed: ${query.split("ADD COLUMN IF NOT EXISTS ")[1]}`,
+        );
       } catch (e) {
         console.log(`Column might already exist or error:`, e.message);
       }

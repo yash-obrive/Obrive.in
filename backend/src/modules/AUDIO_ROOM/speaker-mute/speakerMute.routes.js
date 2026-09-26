@@ -1,14 +1,8 @@
-const express =
-  require("express");
+const express = require("express");
 
-const router =
-  express.Router();
+const router = express.Router();
 
-const {
-  muteUnmuteController,
-} = require(
-  "./speakerMute.controller"
-);
+const { muteUnmuteController } = require("./speakerMute.controller");
 const auth = require("../../../middleware/auth");
 const zodValidate = require("../../../middleware/zodValidate");
 const { requireRoomRoles } = require("../audioRoomAuthz");
@@ -19,7 +13,7 @@ router.post(
   auth,
   requireRoomRoles(["host", "moderator", "admin"]),
   zodValidate({ part: "body", schema: SpeakerMuteBodySchema }),
-  muteUnmuteController
+  muteUnmuteController,
 );
 
 router.post(
@@ -27,7 +21,7 @@ router.post(
   auth,
   requireRoomRoles(["host", "moderator", "admin"]),
   zodValidate({ part: "body", schema: SpeakerMuteBodySchema }),
-  muteUnmuteController
+  muteUnmuteController,
 );
 
 module.exports = router;

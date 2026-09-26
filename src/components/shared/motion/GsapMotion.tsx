@@ -1,8 +1,8 @@
 "use client";
 
-import { PropsWithChildren, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { type PropsWithChildren, useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +26,7 @@ export function FadeInOnLoad({ children, className, delay = 0 }: CommonProps) {
         delay,
         force3D: true,
         willChange: "transform, opacity",
-      }
+      },
     );
   }, [delay]);
 
@@ -63,7 +63,7 @@ export function FadeInOnView({ children, className, delay = 0 }: CommonProps) {
             markers: false,
             refreshPriority: -1,
           },
-        }
+        },
       );
     });
 
@@ -102,7 +102,7 @@ export function StaggerOnView({ children, className, delay = 0 }: CommonProps) {
             once: true,
             markers: false,
           },
-        }
+        },
       );
     });
 
@@ -154,13 +154,13 @@ export function StaggerTiltLeftOnView({
               once: true,
               markers: false,
             },
-          }
+          },
         );
       });
     });
 
     return () => ctx.revert();
-  }, [delay]);
+  }, []);
 
   return (
     <div ref={ref} className={className}>
@@ -184,7 +184,7 @@ export function StaggerTiltBottomLeftOnScroll({
 
     const items = Array.from(el.children) as HTMLElement[];
     const ctx = gsap.context(() => {
-      items.forEach((item, index) => {
+      items.forEach((item, _index) => {
         gsap.set(item, {
           transformOrigin: "left bottom",
           willChange: "transform, opacity",
@@ -259,13 +259,13 @@ export function StaggerTiltBottomLeftOnScroll({
                 });
               },
             },
-          }
+          },
         );
       });
     });
 
     return () => ctx.revert();
-  }, [delay, scrollStart]);
+  }, [scrollStart]);
 
   return (
     <div
@@ -330,7 +330,7 @@ export function SmoothSlideInCards({
           delay,
           ease: "power3.out",
           force3D: true,
-        }
+        },
       );
 
       // for a subtle bounce effect at the end

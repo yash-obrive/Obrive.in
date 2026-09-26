@@ -1,6 +1,7 @@
+import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import { ICONS, ICONS_META } from "@/assets/images";
-import Image from "next/image";
+import Translate from "@/components/shared/Translate";
 
 type BenefitItem = {
   title: string;
@@ -27,9 +28,9 @@ export default function BusinessBenefitsCard({
               <h3
                 className={`${FONTS.microgrammaBold.className} text-primary text-md`}
               >
-                {item.title}
+                <Translate text={item.title} />
               </h3>
-              <p className="text-xs max-w-md leading-5">{item.description}</p>
+              <p className="text-xs max-w-md leading-5"><Translate text={item.description} /></p>
             </div>
           );
         })}
@@ -43,7 +44,7 @@ export default function BusinessBenefitsCard({
                 height={ICONS_META.QUOTE_ICON.height}
                 className="w-13 h-13"
               />
-              <p className="text-[14px] max-sm:text-[10px]">{bottomNote}</p>
+              <p className="text-[14px] max-sm:text-[10px]"><Translate text={bottomNote} /></p>
             </div>
           </div>
         ) : null}

@@ -4,7 +4,7 @@ const endRoomController = async (req, res, next) => {
   try {
     // Fall back through authenticated user profiles down to the body parameters safely
     const userId = req.user?.id || req.body.userId;
-    const userRole = req.user?.role; 
+    const userRole = req.user?.role;
 
     if (!userId) {
       throw new Error("User identification signature is required.");

@@ -1,14 +1,8 @@
-const express =
-  require("express");
+const express = require("express");
 
-const router =
-  express.Router();
+const router = express.Router();
 
-const {
-  startRoomController,
-} = require(
-  "./roomStart.controller"
-);
+const { startRoomController } = require("./roomStart.controller");
 const auth = require("../../../middleware/auth");
 const zodValidate = require("../../../middleware/zodValidate");
 const { requireRoomRoles } = require("../audioRoomAuthz");
@@ -19,8 +13,7 @@ router.post(
   auth,
   requireRoomRoles(["host", "moderator", "admin"]),
   zodValidate({ part: "body", schema: RoomStartBodySchema }),
-  startRoomController
+  startRoomController,
 );
 
-module.exports =
-  router;
+module.exports = router;

@@ -47,7 +47,10 @@ function generateUserId(role: RoleOption) {
   return `${prefix}-${Date.now()}`;
 }
 
-export default function CreateUserDialog({ open, onClose,}:CreateUserDialogProps) {
+export default function CreateUserDialog({
+  open,
+  onClose,
+}: CreateUserDialogProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState<RoleOption>("employee");

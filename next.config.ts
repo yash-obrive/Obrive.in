@@ -1,6 +1,7 @@
 // next.config.ts
-import type { NextConfig } from "next";
+
 import createMDX from "@next/mdx";
+import type { NextConfig } from "next";
 
 const withMDX = createMDX({
   extension: /\.mdx?$/, // support .mdx files
@@ -16,7 +17,10 @@ const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "mdx"],
 
   // Standalone output for Docker optimization (disabled on Windows to avoid symlink EPERM errors unless NEXT_STANDALONE is set)
-  output: (process.platform === "win32" && !process.env.NEXT_STANDALONE) ? undefined : "standalone",
+  output:
+    process.platform === "win32" && !process.env.NEXT_STANDALONE
+      ? undefined
+      : "standalone",
 
   // Target modern browsers to eliminate legacy polyfills
   experimental: {
@@ -41,16 +45,16 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
+        protocol: "https",
+        hostname: "images.unsplash.com",
       },
       {
-        protocol: 'https',
-        hostname: 'api.dicebear.com',
+        protocol: "https",
+        hostname: "api.dicebear.com",
       },
       {
-        protocol: 'https',
-        hostname: 'randomuser.me', // <-- added randomuser.me to allowed domains for avatars , it is written in this format because of next/image remotePatterns requirement
+        protocol: "https",
+        hostname: "randomuser.me", // <-- added randomuser.me to allowed domains for avatars , it is written in this format because of next/image remotePatterns requirement
       },
     ],
   },
@@ -68,11 +72,11 @@ const nextConfig: NextConfig = {
     // Keep your other bundling optimizations for prod unchanged:
     if (!isServer && !dev) {
       config.target = ["web", "es2020"];
-      if (config.module && config.module.rules) {
+      if (config.module?.rules) {
         config.module.rules.forEach((rule: any) => {
           if (rule.use && Array.isArray(rule.use)) {
             rule.use.forEach((loader: any) => {
-              if (loader.loader && loader.loader.includes("swc-loader")) {
+              if (loader.loader?.includes("swc-loader")) {
                 if (!loader.options) loader.options = {};
                 loader.options.jsc = {
                   ...loader.options.jsc,
@@ -169,6 +173,11 @@ const nextConfig: NextConfig = {
             value:
               "<https://www.googletagmanager.com>; rel=preconnect, <https://unpkg.com>; rel=preconnect, <https://storage.googleapis.com>; rel=preconnect",
           },
+          {
+            key: "Content-Security-Policy-Report-Only",
+            value:
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://images.unsplash.com https://api.dicebear.com https://randomuser.me; connect-src 'self' wss: https:; frame-src 'self' https://calendly.com;",
+          },
         ],
       },
       {
@@ -204,7 +213,7 @@ const nextConfig: NextConfig = {
         source: "/coming-soon/site-map",
         destination: "/site-map",
         permanent: true,
-      }
+      },
     ];
   },
 
@@ -222,8 +231,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-
-
-
 export default withMDX(nextConfig);
-

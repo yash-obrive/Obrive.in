@@ -1,6 +1,7 @@
 import FONTS from "@/assets/fonts";
-import { CAREER_CARD_TYPE } from "@/constants/pages/career/career-card";
-import Link from "next/link";
+import Link from "@/components/shared/LocalizedLink";
+import type { CAREER_CARD_TYPE } from "@/constants/pages/career/career-card";
+import Translate from "@/components/shared/Translate";
 
 const CareerCard = ({ title, date, slug }: CAREER_CARD_TYPE) => {
   return (
@@ -18,12 +19,11 @@ const CareerCard = ({ title, date, slug }: CAREER_CARD_TYPE) => {
             <h2
               className={`${FONTS.microgrammaBold.className} text-primary text-lg max-md:text-base`}
             >
-              Obrive.com Bangalore, India
-            </h2>
-            <p className="text-sm mt-1 max-md:text-xs">Posted on {date}</p>
+               <Translate text="Obrive.com Bangalore, India" /> </h2>
+            <p className="text-sm mt-1 max-md:text-xs"> <Translate text="Posted on" /> {date}</p>
           </div>
           <div>
-            <p className="text-sm max-md:text-xs">Full-time: Remote/On-site</p>
+            <p className="text-sm max-md:text-xs"> <Translate text="Full-time: Remote/On-site" /> </p>
           </div>
         </div>
       </div>

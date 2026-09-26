@@ -1,31 +1,31 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
-type Level = 'Junior' | 'Middle' | 'Senior'
+type Level = "Junior" | "Middle" | "Senior";
 
 export interface WorkloadMember {
-  id: string
-  name: string
-  role: string
-  level: Level
-  avatarUrl?: string
+  id: string;
+  name: string;
+  role: string;
+  level: Level;
+  avatarUrl?: string;
 }
 
 interface WorkloadProps {
-  members?: WorkloadMember[]
-  onViewAll?: () => void
+  members?: WorkloadMember[];
+  onViewAll?: () => void;
 }
 
 // Helper function to get initials from name
 function getInitials(name: string) {
   return name
-    .split(' ')
+    .split(" ")
     .filter(Boolean)
     .slice(0, 2)
-    .map((p) => p[0]?.toUpperCase() || '')
-    .join('')
+    .map((p) => p[0]?.toUpperCase() || "")
+    .join("");
 }
 
 export default function Workload({ members = [], onViewAll }: WorkloadProps) {
@@ -58,12 +58,18 @@ export default function Workload({ members = [], onViewAll }: WorkloadProps) {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <span className="text-[9px] font-bold text-gray-600">{getInitials(m.name)}</span>
+                <span className="text-[9px] font-bold text-gray-600">
+                  {getInitials(m.name)}
+                </span>
               )}
             </div>
 
-            <p className="mt-2 text-xs font-bold text-[#1a472a] line-clamp-1">{m.name}</p>
-            <p className="text-[10px] text-gray-500 mt-0.5 line-clamp-1">{m.role}</p>
+            <p className="mt-2 text-xs font-bold text-[#1a472a] line-clamp-1">
+              {m.name}
+            </p>
+            <p className="text-[10px] text-gray-500 mt-0.5 line-clamp-1">
+              {m.role}
+            </p>
 
             <span className="mt-2 text-[9px] px-2 py-0.5 rounded-full border border-gray-200 bg-white/70 text-gray-600">
               {m.level}
@@ -72,5 +78,5 @@ export default function Workload({ members = [], onViewAll }: WorkloadProps) {
         ))}
       </div>
     </section>
-  )
+  );
 }

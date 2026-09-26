@@ -1,3 +1,4 @@
+import Link from "@/components/shared/LocalizedLink";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenuContent,
@@ -5,9 +6,9 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import ImmersiveIcon from "../../icons/ImmersiveIcon";
-import Link from "next/link";
 import ObIcon from "../../icons/ObIcon";
 import AnimatedNavLabel from "../AnimatedNavLabel";
+import Translate from "@/components/shared/Translate";
 
 export function ProductsDropdown() {
   return (
@@ -16,8 +17,7 @@ export function ProductsDropdown() {
         showChevron={false}
         className="text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
       >
-        Products
-      </NavigationMenuTrigger>
+         <Translate text="Products" /> </NavigationMenuTrigger>
       <NavigationMenuContent className="bg-primary! border-none p-6 w-[600px] md:w-[650px] z-[60] rounded-md shadow-lg">
         <div className="flex h-full">
           {/* OBPARK */}
@@ -30,10 +30,9 @@ export function ProductsDropdown() {
               <ImmersiveIcon />
             </div>
             <div>
-              <h3 className="text-xs text-white mb-2">OBPARK</h3>
+              <h3 className="text-xs text-white mb-2"> <Translate text="OBPARK" /> </h3>
               <p className="text-[10px] text-white mb-2">
-                SERVICES TAILORED FOR INDUSTRIES. ENGINEERED FOR IMMERSION.
-              </p>
+                 <Translate text="NAVIGATE SMARTER. PARK FASTER. MOVE BETTER." /> </p>
               <div className="flex items-center">
                 <Button
                   variant="link"
@@ -45,8 +44,7 @@ export function ProductsDropdown() {
                       gap={8}
                       shiftDirection="right"
                     >
-                      READ MORE
-                    </AnimatedNavLabel>
+                       <Translate text="READ MORE" /> </AnimatedNavLabel>
                   </Link>
                 </Button>
               </div>
@@ -66,10 +64,9 @@ export function ProductsDropdown() {
               <ObIcon />
             </div>
             <div>
-              <h3 className="text-xs text-white mb-2">OBNEST</h3>
+              <h3 className="text-xs text-white mb-2"> <Translate text="OBNEST" /> </h3>
               <p className="text-[10px] text-white mb-2">
-                SERVICES TAILORED FOR INDUSTRIES. ENGINEERED FOR IMMERSION.
-              </p>
+                 <Translate text="EXPLORE PROPERTIES. EXPERIENCE SPACES. FIND YOUR FUTURE." /> </p>
               <div className="flex items-center">
                 <Button
                   variant="link"
@@ -81,8 +78,7 @@ export function ProductsDropdown() {
                       gap={8}
                       shiftDirection="right"
                     >
-                      READ MORE
-                    </AnimatedNavLabel>
+                       <Translate text="READ MORE" /> </AnimatedNavLabel>
                   </Link>
                 </Button>
               </div>

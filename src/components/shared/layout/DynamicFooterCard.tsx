@@ -1,13 +1,13 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import PrimaryFooterCard from "../cards/PrimaryFooterCard";
 import { PRIMARY_FOOTER_CARD } from "@/constants/Footer";
+import PrimaryFooterCard from "../cards/PrimaryFooterCard";
 
 export default function DynamicFooterCard() {
   const pathname = usePathname();
 
-  if (pathname === "/site-map") {
+  if (pathname?.endsWith("/site-map")) {
     return (
       <PrimaryFooterCard
         title="Have a project in mind?"
@@ -16,9 +16,24 @@ export default function DynamicFooterCard() {
     );
   }
 
-  if (pathname === "/contact") {
+  if (pathname?.endsWith("/contact")) {
     // Hide footer card on contact page since they are already there
     return null;
+  }
+
+  if (
+    pathname?.includes("/services/") &&
+    !pathname.endsWith("/faqs") &&
+    !pathname.endsWith("/industries")
+  ) {
+    return (
+      <PrimaryFooterCard
+        title="Have Questions?"
+        description="Find answers to common questions about our services and our process."
+        buttonText="Explore FAQs"
+        buttonLink={`${pathname}/faqs`}
+      />
+    );
   }
 
   return <PrimaryFooterCard {...PRIMARY_FOOTER_CARD} />;
