@@ -153,16 +153,6 @@ export function ResourcesDropdown() {
                   </AnimatedNavLabel>
                 </Button>
               </div>
-              <div className="flex items-center gap-3 py-4 px-2 border-b border-white/20">
-                <Button
-                  variant="link"
-                  className="!text-white text-sm !p-0 h-auto"
-                >
-                  <AnimatedNavLabel iconSize={8} gap={8} shiftDirection="right">
-                    <Link href="/certifications"> <Translate text="Certifications" /> </Link>
-                  </AnimatedNavLabel>
-                </Button>
-              </div>
             </div>
           </div>
         </div>

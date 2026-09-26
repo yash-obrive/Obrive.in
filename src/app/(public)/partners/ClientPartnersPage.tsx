@@ -38,6 +38,17 @@ export default function PartnersPage() {
     "SPATIAL COMPUTING", "WEB & MOBILE", "SAAS", "PRODUCT ENGINEERING",
   ];
 
+  const formatTitle = (title: string) => {
+    if (!title) return "";
+    return title.split(" ").map(word => {
+      if (["AR/VR", "3D", "AI"].includes(word)) return word;
+      if (word.includes("-")) {
+        return word.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join("-");
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }).join(" ");
+  };
+
   return (
     <div className="flex flex-col w-full bg-white text-zinc-900">
       
@@ -180,10 +191,10 @@ export default function PartnersPage() {
                 <div className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-700 space-y-6">
                   <p>{capabilities?.description ?? "Access a multidisciplinary delivery team across emerging technology and digital product development."}</p>
                   
-                  <ul className="list-disc list-inside pl-0 space-y-3">
+                  <ul className="list-none pl-0 space-y-3">
                     {(capabilities?.subSections ?? []).map((cap, i) => (
                       <li key={i}>
-                        <strong className="text-gray-900 font-bold">{cap.title}:</strong>{" "}
+                        <strong className="text-gray-900 font-bold">{formatTitle(cap.title)}:</strong>{" "}
                         {cap.description}
                       </li>
                     ))}
@@ -202,10 +213,10 @@ export default function PartnersPage() {
                 <div className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-700 space-y-6">
                   <p>{partnershipModels?.description ?? "Choose how deeply Obrive integrates into your delivery model. Our partnership structure is designed to protect your client ownership while giving you access to specialized execution."}</p>
 
-                  <ul className="list-disc list-inside pl-0 space-y-3">
+                  <ul className="list-none pl-0 space-y-3">
                     {partnerCards.map((card, i) => (
                       <li key={i}>
-                        <strong className="text-gray-900 font-bold">{card.eyebrow} - {card.title}:</strong>{" "}
+                        <strong className="text-gray-900 font-bold">{formatTitle(card.eyebrow)} - {card.title}:</strong>{" "}
                         {card.description}
                       </li>
                     ))}
@@ -224,19 +235,19 @@ export default function PartnersPage() {
                 <div className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-700 space-y-6">
                   <p>A simple operating model keeps responsibilities clear and delivery predictable.</p>
                   
-                  <ul className="list-disc list-inside pl-0 space-y-3">
+                  <ul className="list-none pl-0 space-y-3">
                     {(partnershipModels?.subSections ?? []).map((model, i) => (
                       <li key={i}>
-                        <strong className="text-gray-900 font-bold">MODEL {String.fromCharCode(65 + i)} - {model.title}:</strong>{" "}
+                        <strong className="text-gray-900 font-bold">Model {String.fromCharCode(65 + i)} - {formatTitle(model.title)}:</strong>{" "}
                         {model.description}
                       </li>
                     ))}
                   </ul>
 
-                  <ul className="list-disc list-inside pl-0 space-y-3">
+                  <ul className="list-none pl-0 space-y-3">
                     {WHITE_LABEL_PROCESS_STEPS.map((step, i) => (
                       <li key={i}>
-                        <strong className="text-gray-900 font-bold">{i + 1}. {step.title}:</strong>{" "}
+                        <strong className="text-gray-900 font-bold">{step.title}:</strong>{" "}
                         {step.description}
                       </li>
                     ))}
@@ -255,7 +266,7 @@ export default function PartnersPage() {
                 <div className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-700 space-y-6">
                   <p>Our white-label model is designed to help partners increase capability without increasing organizational complexity at the same pace.</p>
 
-                  <ul className="list-disc list-inside pl-0 space-y-3">
+                  <ul className="list-none pl-0 space-y-3">
                     {whyObrive.map((item, i) => (
                       <li key={i}>
                         <strong className="text-gray-900 font-bold">{item.title}:</strong>{" "}
@@ -277,12 +288,12 @@ export default function PartnersPage() {
                 <div className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-700 space-y-6">
                   <p>{commercialStructure?.description ?? "Obrive can structure partner pricing so you can package, mark up and commercialize the capability within your own offering."}</p>
 
-                  <ul className="list-disc list-inside pl-0 space-y-3">
+                  <ul className="list-none pl-0 space-y-3">
                     {(commercialStructure?.subSections ?? []).map((struct, i) => {
-                      const eyebrows = ["PARTNER BENEFIT", "COMMERCIAL CONTROL", "SCALE"];
+                      const eyebrows = ["Partner Benefit", "Commercial Control", "Scale"];
                       return (
                         <li key={i}>
-                          <strong className="text-gray-900 font-bold">{eyebrows[i]} - {struct.title}:</strong>{" "}
+                          <strong className="text-gray-900 font-bold">{eyebrows[i]} - {formatTitle(struct.title)}:</strong>{" "}
                           {struct.description}
                         </li>
                       );

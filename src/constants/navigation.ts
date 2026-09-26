@@ -84,6 +84,7 @@ export const MOBILE_NAV_STRUCTURE = [
     mainHref: "/company",
     items: [
       { title: "About Obrive", href: "/about" },
+      { title: "Certifications", href: "/certifications" },
       { title: "Client Login", href: "/client-login" },
       { title: "Employee Login", href: "/employee-login" },
       { title: "Join our Team", href: "/career" },
@@ -100,7 +101,6 @@ export const MOBILE_NAV_STRUCTURE = [
       { title: "OBpark FAQ", href: "/faq/obpark-faq" },
       { title: "Change Log", href: "/support/change-log" },
       { title: "Legal", href: "/legal" },
-      { title: "Certifications", href: "/certifications" },
     ],
   },
 ] as const;

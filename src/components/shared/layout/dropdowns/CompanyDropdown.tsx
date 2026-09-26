@@ -72,6 +72,17 @@ export function CompanyDropdown() {
               <div className="flex items-center gap-3 border-b border-white/20">
                 <AnimatedNavLabel iconSize={14} gap={0} shiftDirection="right">
                   <Link
+                    href={"/certifications"}
+                    className={`${buttonVariants({
+                      variant: "link",
+                    })} text-white text-xs !py-6 !px-2`}
+                  >
+                     <Translate text="Certifications" /> </Link>
+                </AnimatedNavLabel>
+              </div>
+              <div className="flex items-center gap-3 border-b border-white/20">
+                <AnimatedNavLabel iconSize={14} gap={0} shiftDirection="right">
+                  <Link
                     href={"/client-login"}
                     className={`${buttonVariants({
                       variant: "link",

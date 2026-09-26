@@ -72,44 +72,31 @@ export const InfiniteHorizontalScroll =
         [speed],
       );
 
-      // Handle mouse events
-      const handleMouseEnter = useCallback(() => {
-        if (pauseOnHover) {
-          plugin.stop();
-        }
-      }, [pauseOnHover, plugin]);
-
-      const handleMouseLeave = useCallback(() => {
-        if (pauseOnHover) {
-          plugin.play();
-        }
-      }, [pauseOnHover, plugin]);
-
       // Handle indicator click
       const handleIndicatorClick = useCallback(
         (index: number) => {
           if (api) {
             api.scrollTo(index);
-            plugin.reset();
+            api.plugins()?.autoplay?.reset();
           }
         },
-        [api, plugin],
+        [api],
       );
 
       // Handle navigation buttons
       const scrollPrev = useCallback(() => {
         if (api) {
           api.scrollPrev();
-          plugin.reset();
+          api.plugins()?.autoplay?.reset();
         }
-      }, [api, plugin]);
+      }, [api]);
 
       const scrollNext = useCallback(() => {
         if (api) {
           api.scrollNext();
-          plugin.reset();
+          api.plugins()?.autoplay?.reset();
         }
-      }, [api, plugin]);
+      }, [api]);
 
       // Setup carousel API listeners
       useEffect(() => {
@@ -125,53 +112,11 @@ export const InfiniteHorizontalScroll =
 
         api.on("select", onSelect);
 
-        // Explicitly start the autoplay plugin once the API is ready
-        // This resolves issues with playOnInit failing in React StrictMode
-        plugin.play();
 
         return () => {
           api.off("select", onSelect);
         };
-      }, [api, plugin]);
-
-      // Handle visibility and focus for autoplay
-      useEffect(() => {
-        const handleResume = () => {
-          // Check if document is visible before resuming
-          if (document.visibilityState === "visible") {
-            plugin.play();
-          }
-        };
-
-        const handlePause = () => {
-          if (document.visibilityState === "hidden") {
-            plugin.stop();
-          }
-        };
-
-        // Named visibility handler so we can remove the exact same function later
-        const handleVisibilityChange = () => {
-          if (document.visibilityState === "visible") {
-            handleResume();
-          } else {
-            handlePause();
-          }
-        };
-
-        // Add event listeners
-        window.addEventListener("focus", handleResume);
-        window.addEventListener("blur", handlePause);
-        document.addEventListener("visibilitychange", handleVisibilityChange);
-
-        return () => {
-          window.removeEventListener("focus", handleResume);
-          window.removeEventListener("blur", handlePause);
-          document.removeEventListener(
-            "visibilitychange",
-            handleVisibilityChange,
-          );
-        };
-      }, [plugin]);
+      }, [api]);
 
       // Early return if no children
       if (childrenArray.length === 0) {
@@ -214,8 +159,6 @@ export const InfiniteHorizontalScroll =
             plugins={[plugin]}
             className="w-full relative group"
             setApi={setApi}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
           >
             <CarouselContent
               className="flex py-2"
