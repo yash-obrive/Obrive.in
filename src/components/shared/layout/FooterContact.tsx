@@ -11,6 +11,7 @@ import {
 import { COUNTRIES, DEFAULT_COUNTRY } from "@/config/countries";
 import { SOCIAL_LINKS } from "@/constants/Footer";
 import { useCountry } from "@/context/CountryContext";
+import Translate from "@/components/shared/Translate";
 
 const contactCellBase =
   "border border-primary/30 rounded-lg text-xs text-sm hover:text-white transition-colors duration-500 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-primary before:scale-y-0 before:origin-center hover:before:scale-y-100 before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.19,1,0.22,1)] before:-z-10 z-10";
@@ -26,8 +27,7 @@ export default function FooterContact() {
         href="/contact"
         className={`border border-primary/40 py-2 px-3 font-semibold text-primary rounded-lg ${FONTS.microgrammaBold.className}`}
       >
-        Contact
-      </Link>
+         <Translate text="Contact" /> </Link>
       <div className={`${contactCellBase} p-3`}>
         {defaultCountryConfig.phone}
       </div>

@@ -20,6 +20,7 @@ import {
 import type { ProductData } from "@/lib/products";
 import { AnimatedRiveSection } from "./AnimatedRiveSection";
 import { ProductSectionIcon } from "./ProductSectionIcon";
+import Translate from "@/components/shared/Translate";
 
 interface ProductTemplateProps extends ProductData {}
 
@@ -64,10 +65,10 @@ export function ProductTemplate({
                   <h1
                     className={`${FONTS.microgrammaBold.className} uppercase text-primary text-6xl max-md:text-4xl`}
                   >
-                    {hero.title}
+                    <Translate text={hero.title} />
                   </h1>
                   <p className="text-md text-center text-primary max-w-2xl px-4 leading-7">
-                    {hero.description}
+                    <Translate text={hero.description} />
                   </p>
                 </div>
               </FramerFadeIn>
@@ -79,7 +80,7 @@ export function ProductTemplate({
                     rel="noopener noreferrer"
                   >
                     <AnimatedButton size="lg" className="text-xs">
-                      {hero.ctaButtons.primary}
+                      <Translate text={hero.ctaButtons.primary} />
                     </AnimatedButton>
                   </Link>
                   <Link
@@ -91,7 +92,7 @@ export function ProductTemplate({
                       size={"lg"}
                       className="cursor-pointer text-[10px]"
                     >
-                      {hero.ctaButtons.secondary}
+                      <Translate text={hero.ctaButtons.secondary} />
                     </AnimatedButton>
                   </Link>
                 </div>
@@ -116,10 +117,9 @@ export function ProductTemplate({
                   <h1
                     className={`${FONTS.microgrammaBold.className} text-primary max-sm:text-center text-5xl max-md:text-3xl`}
                   >
-                    What Makes Us Different.
-                  </h1>
+                     <Translate text="What Makes Us Different." /> </h1>
                   <p className="text-primary text-center w-[840px] max-[888px]:w-full max-[888px]:px-6 text-md tracking-wider">
-                    {whatMakesDifferentDescription}
+                    <Translate text={whatMakesDifferentDescription} />
                   </p>
                 </div>
               </section>
@@ -143,7 +143,7 @@ export function ProductTemplate({
                       <ProductSectionIcon iconName={section.icon} />
                       {section.iconText && (
                         <span className="uppercase text-xs font-medium">
-                          {section.iconText}
+                          <Translate text={section.iconText} />
                         </span>
                       )}
                     </div>
@@ -155,10 +155,10 @@ export function ProductTemplate({
                           index === 0 ? "text-2xl" : "text-5xl"
                         } max-md:text-2xl`}
                       >
-                        {section.title}
+                        {section.title && <Translate text={section.title} />}
                       </h3>
                       {section.description && (
-                        <p className="text-center">{section.description}</p>
+                        <p className="text-center"><Translate text={section.description} /></p>
                       )}
                     </div>
                   </div>

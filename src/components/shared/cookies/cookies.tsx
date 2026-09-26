@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import FONTS from "@/assets/fonts";
 import { Button } from "@/components/ui/button";
+import Translate from "@/components/shared/Translate";
 
 const CONSENT_STORAGE_KEY = "cookie_consent";
 
@@ -61,10 +62,9 @@ export default function CookiePopup() {
           className="absolute top-0 right-0 w-32 rotate-180 opacity-80"
         /> */}
         <p className={`leading-relaxed text-sm z-10 relative`}>
-          We use cookies to enhance your browsing experience, analyze site
-          traffic, and improve our services. By continuing to use our site, you
-          agree to our use of cookies.
-        </p>
+           <Translate text="We use cookies to enhance your browsing experience, analyze site
+                            traffic, and improve our services. By continuing to use our site, you
+                            agree to our use of cookies." /> </p>
         <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-start z-10 relative">
           <Button
             onClick={() => handleChoice("accepted")}
@@ -72,16 +72,14 @@ export default function CookiePopup() {
             variant={"outline"}
             className={`${FONTS.microgrammaBold.className} text-primary`}
           >
-            ACCEPT
-          </Button>
+             <Translate text="ACCEPT" /> </Button>
           <Button
             onClick={() => handleChoice("rejected")}
             size={"lg"}
             variant={"outline"}
             className={`${FONTS.microgrammaBold.className} text-primary`}
           >
-            DECLINE
-          </Button>
+             <Translate text="DECLINE" /> </Button>
         </div>
       </div>
     </div>

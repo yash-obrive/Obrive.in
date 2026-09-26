@@ -2,6 +2,7 @@ import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import Link from "@/components/shared/LocalizedLink";
 import type { CaseStudy } from "@/lib/case-studies";
+import Translate from "@/components/shared/Translate";
 
 interface CaseStudyCardProps {
   caseStudy: CaseStudy;
@@ -28,8 +29,7 @@ const CaseStudyCard = ({ caseStudy }: CaseStudyCardProps) => {
           {/* overlay that appears on hover / focus */}
           <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm opacity-0 translate-y-2 group-hover:opacity-100 group-focus-within:opacity-100 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-all duration-300 pointer-events-none">
             <span className="pointer-events-auto inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white bg-black/40">
-              Read Case Study
-            </span>
+               <Translate text="Read Case Study" /> </span>
           </div>
         </div>
 

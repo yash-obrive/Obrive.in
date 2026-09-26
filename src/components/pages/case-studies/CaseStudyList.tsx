@@ -6,6 +6,7 @@ import RoundedBallIcon from "@/components/shared/icons/RoundedBallIcon";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import type { CaseStudy } from "@/lib/case-studies";
 import CaseStudyCard from "./CaseStudyCard";
+import Translate from "@/components/shared/Translate";
 
 interface CaseStudyListProps {
   caseStudies: CaseStudy[];
@@ -157,7 +158,7 @@ const CaseStudyList = ({ caseStudies }: CaseStudyListProps) => {
 
           {currentCaseStudies.length === 0 && (
             <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
-              <p>No case studies found for this category.</p>
+              <p> <Translate text="No case studies found for this category." /> </p>
             </div>
           )}
         </div>
@@ -185,7 +186,7 @@ const CaseStudyList = ({ caseStudies }: CaseStudyListProps) => {
               </svg>
             </button>
             <span className="text-sm font-medium">
-              Page {currentPage} of {totalPages}
+               <Translate text="Page" /> {currentPage}  <Translate text="of" /> {totalPages}
             </span>
             <button
               onClick={() => handlePageChange(currentPage + 1)}

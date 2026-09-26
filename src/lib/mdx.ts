@@ -106,9 +106,14 @@ export interface CareerData {
 
 export async function getCaseStudyBySlug(
   slug: string,
+  locale: string = "en",
 ): Promise<CaseStudyData | null> {
   try {
-    const fullPath = path.join(caseStudiesDirectory, `${slug}.mdx`);
+    let fullPath = path.join(process.cwd(), "src/content", locale, "resources", `${slug}.mdx`);
+
+    if (!fs.existsSync(fullPath)) {
+      fullPath = path.join(caseStudiesDirectory, `${slug}.mdx`);
+    }
 
     if (!fs.existsSync(fullPath)) {
       return null;
@@ -142,11 +147,12 @@ export async function getAllCaseStudySlugs(): Promise<string[]> {
 
 export async function getAllCaseStudies(
   country?: string,
+  locale: string = "en",
 ): Promise<CaseStudyData[]> {
   const slugs = await getAllCaseStudySlugs();
   const caseStudies = await Promise.all(
     slugs.map(async (slug) => {
-      const caseStudy = await getCaseStudyBySlug(slug);
+      const caseStudy = await getCaseStudyBySlug(slug, locale);
       return caseStudy;
     }),
   );
@@ -171,6 +177,7 @@ export async function getAllCaseStudies(
 export async function getCompanyInfoBySlug(
   slug: string,
   type: "legal" | "support" | "security",
+  locale: string = "en",
 ): Promise<CompanyInfoData | null> {
   try {
     const directory =
@@ -179,7 +186,12 @@ export async function getCompanyInfoBySlug(
         : type === "support"
           ? supportDirectory
           : securityDirectory;
-    const fullPath = path.join(directory, `${slug}.mdx`);
+
+    let fullPath = path.join(process.cwd(), "src/content", locale, type, `${slug}.mdx`);
+
+    if (!fs.existsSync(fullPath)) {
+      fullPath = path.join(directory, `${slug}.mdx`);
+    }
 
     if (!fs.existsSync(fullPath)) {
       return null;
@@ -226,11 +238,12 @@ export async function getAllCompanyInfoSlugs(
 
 export async function getAllCompanyInfo(
   type: "legal" | "support" | "security",
+  locale: string = "en",
 ): Promise<CompanyInfoData[]> {
   const slugs = await getAllCompanyInfoSlugs(type);
   const companyInfos = await Promise.all(
     slugs.map(async (slug) => {
-      const companyInfo = await getCompanyInfoBySlug(slug, type);
+      const companyInfo = await getCompanyInfoBySlug(slug, type, locale);
       return companyInfo;
     }),
   );
@@ -241,9 +254,16 @@ export async function getAllCompanyInfo(
 }
 
 // FAQ functions
-export async function getFAQBySlug(slug: string): Promise<FAQData | null> {
+export async function getFAQBySlug(
+  slug: string,
+  locale: string = "en",
+): Promise<FAQData | null> {
   try {
-    const fullPath = path.join(faqDirectory, `${slug}.mdx`);
+    let fullPath = path.join(process.cwd(), "src/content", locale, "faq", `${slug}.mdx`);
+
+    if (!fs.existsSync(fullPath)) {
+      fullPath = path.join(faqDirectory, `${slug}.mdx`);
+    }
 
     if (!fs.existsSync(fullPath)) {
       return null;
@@ -279,11 +299,13 @@ export async function getAllFAQSlugs(): Promise<string[]> {
   }
 }
 
-export async function getAllFAQs(): Promise<FAQData[]> {
+export async function getAllFAQs(
+  locale: string = "en",
+): Promise<FAQData[]> {
   const slugs = await getAllFAQSlugs();
   const faqs = await Promise.all(
     slugs.map(async (slug) => {
-      const faq = await getFAQBySlug(slug);
+      const faq = await getFAQBySlug(slug, locale);
       return faq;
     }),
   );
@@ -294,9 +316,14 @@ export async function getAllFAQs(): Promise<FAQData[]> {
 // Career functions
 export async function getCareerBySlug(
   slug: string,
+  locale: string = "en",
 ): Promise<CareerData | null> {
   try {
-    const fullPath = path.join(careerDirectory, `${slug}.mdx`);
+    let fullPath = path.join(process.cwd(), "src/content", locale, "career", `${slug}.mdx`);
+
+    if (!fs.existsSync(fullPath)) {
+      fullPath = path.join(careerDirectory, `${slug}.mdx`);
+    }
 
     if (!fs.existsSync(fullPath)) {
       return null;
@@ -332,11 +359,13 @@ export async function getAllCareerSlugs(): Promise<string[]> {
   }
 }
 
-export async function getAllCareers(): Promise<CareerData[]> {
+export async function getAllCareers(
+  locale: string = "en",
+): Promise<CareerData[]> {
   const slugs = await getAllCareerSlugs();
   const careers = await Promise.all(
     slugs.map(async (slug) => {
-      const career = await getCareerBySlug(slug);
+      const career = await getCareerBySlug(slug, locale);
       return career;
     }),
   );

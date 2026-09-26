@@ -3,6 +3,7 @@ import FONTS from "@/assets/fonts";
 import { CASE_STUDIES_AVATAR } from "@/assets/images";
 import Link from "@/components/shared/LocalizedLink";
 import type { PopularCardContentType } from "@/constants/pages/resources/popular-card";
+import Translate from "@/components/shared/Translate";
 
 const PopularCard = ({
   src,
@@ -21,17 +22,17 @@ const PopularCard = ({
         </div>
         <div className="flex flex-col gap-3 flex-1 min-w-0">
           <div className="flex text-xs items-center justify-between">
-            <span>Blog</span>
-            <span>{date}</span>
+            <span> <Translate text="Blog" /> </span>
+            <span><Translate text={date} /></span>
           </div>
           <div className="flex-1">
             <h3
               className={`${FONTS.microgrammaBold.className} text-sm lg:text-base text-primary leading-tight`}
             >
-              {title}
+              <Translate text={title} />
             </h3>
             <p className="text-xs text-primary mt-2 lg:mt-3 line-clamp-2 lg:line-clamp-3">
-              {description}
+              <Translate text={description} />
             </p>
           </div>
           <div className="flex items-center gap-3 mt-auto">
@@ -45,7 +46,7 @@ const PopularCard = ({
                 priority
               />
             </div>
-            <p className="text-xs lg:text-sm truncate">{author}</p>
+            <p className="text-xs lg:text-sm truncate"><Translate text={author} /></p>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import type { KEY_BENEFITS_TYPE } from "@/constants/pages/key-benefits";
+import Translate from "@/components/shared/Translate";
 
 export const KeyBenefitsCard = ({
   title,
@@ -25,13 +26,13 @@ export const KeyBenefitsCard = ({
             <h2
               className={`${FONTS.microgrammaBold.className} relative w-fit mt-[-1.00px] text-primary text-[23px] max-md:text-[20px] tracking-[0.46px] leading-[30px]`}
             >
-              {title}
+              <Translate text={title} />
             </h2>
           </header>
 
           <div className="flex mb-2 pb-2.5 pl-2.5 self-stretch w-full items-center gap-2.5 relative flex-1 max-md:p-0">
             <p className="relative w-[416px] max-md:w-full mt-[-1.00px] mr-[-20.00px] max-md:mr-0 font-medium text-primary text-sm  leading-[26px] max-md:leading-[24px]">
-              {description}
+              <Translate text={description} />
             </p>
           </div>
         </div>

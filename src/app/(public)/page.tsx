@@ -21,6 +21,7 @@ import {
 import SmoothScrollProvider from "@/components/shared/motion/SmoothScrollProvider";
 import { Button } from "@/components/ui/button";
 import { HOME_CARD, HOME_CARD_BLOG } from "@/constants/pages/home/home-card";
+import Translate from "@/components/shared/Translate";
 
 // Dynamic imports for performance optimization
 // const HomepageRiveAnimation = dynamic(
@@ -148,12 +149,12 @@ export default function Home() {
                 <h1
                   className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl md:text-5xl lg:text-6xl text-secondary`}
                 >
-                  Owning the Future
+                  <Translate text="Owning the Future" />
                 </h1>
               </FadeInOnLoad>
               <FadeInOnLoad delay={0.3}>
                 <p className="text-sm sm:text-md text-center max-w-4xl px-4 font-medium leading-relaxed">
-                  We build the spatial layer between the physical and digital worlds. We combine Spatial Computing, Artificial Intelligence, Augmented Reality, Virtual Reality, Mixed Reality, 3D, Digital Twins, Computer Vision and intelligent software to transform how people experience places, products, services and information. The future isn't something we wait for. It's something we build.
+                  <Translate text="We build the spatial layer between the physical and digital worlds. We combine Spatial Computing, Artificial Intelligence, Augmented Reality, Virtual Reality, Mixed Reality, 3D, Digital Twins, Computer Vision and intelligent software to transform how people experience places, products, services and information. The future isn't something we wait for. It's something we build." />
                 </p>
               </FadeInOnLoad>
 
@@ -167,7 +168,7 @@ export default function Home() {
                     aria-label="explore faqs"
                     iconSize={16}
                   >
-                    Explore FAQs
+                    <Translate text="Explore FAQs" />
                   </AnimatedButton>
                   <SmoothScrollLink href="/about" offset={80}>
                     <Button
@@ -175,7 +176,7 @@ export default function Home() {
                       size="lg"
                       className="text-primary uppercase text-xs"
                     >
-                      Learn More
+                      <Translate text="Learn More" />
                     </Button>
                   </SmoothScrollLink>
                 </div>
@@ -197,11 +198,11 @@ export default function Home() {
                     className="uppercase bg-accent cursor-pointer rounded-lg text-xs"
                     variant={"outline"}
                   >
-                    News
+                    <Translate text="News" />
                   </Button>
                 </Link>
                 <p className="uppercase text-xs font-semibold max-sm:text-left text-primary text-center sm:text-right">
-                  TURNING COMPLEX BUSINESS CHALLENGES INTO INTELLIGENT EXPERIENCES.
+                  <Translate text="TURNING COMPLEX BUSINESS CHALLENGES INTO INTELLIGENT EXPERIENCES." />
                 </p>
               </div>
             </FadeInOnView>
@@ -224,7 +225,7 @@ export default function Home() {
                     <h2
                       className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl lg:text-4xl leading-tight`}
                     >
-                      THE WORLD IS BECOMING SPATIAL. Screens are becoming environments. Products are becoming experiences. Buildings are becoming intelligent. Cities are becoming interactive. And businesses are moving beyond the flat digital world.
+                      <Translate text="THE WORLD IS BECOMING SPATIAL." /> <span className="text-[30px]"><Translate text="Screens are becoming environments. Products are becoming experiences. Buildings are becoming intelligent. Cities are becoming interactive. And businesses are moving beyond the flat digital world." /></span>
                     </h2>
                     <Link href="/about">
                       <Button
@@ -232,7 +233,7 @@ export default function Home() {
                         variant={"outline"}
                         size={"lg"}
                       >
-                        Know More About Obrive
+                        <Translate text="Know More About Obrive" />
                       </Button>
                     </Link>
                   </div>
@@ -248,7 +249,7 @@ export default function Home() {
                       id="mission"
                     >
                       <p>
-                        Obrive brings Augmented Reality, Virtual Reality, Mixed Reality, 3D, Artificial Intelligence and Spatial Computing together to help businesses create experiences that people can see, explore, understand and interact with.
+                        <Translate text="Obrive brings Augmented Reality, Virtual Reality, Mixed Reality, 3D, Artificial Intelligence and Spatial Computing together to help businesses create experiences that people can see, explore, understand and interact with." />
                       </p>
                     </div>
                   </FadeInOnView>
@@ -280,14 +281,14 @@ export default function Home() {
                     <div className="flex flex-col items-center gap-2">
                       <RoundedBallIcon />
                       <span className="uppercase text-xs font-medium">
-                        USE CASES
+                        <Translate text="USE CASES" />
                       </span>
                     </div>
                     <div className="w-full flex justify-center">
                       <h2
                         className={`${FONTS.microgrammaBold.className} text-center w-full max-w-none text-3xl sm:text-4xl lg:text-[40px] px-2 sm:px-4`}
                       >
-                        WHAT CAN YOU BUILD WHEN <br className="hidden lg:block" /> THE WORLD BECOMES YOUR INTERFACE?
+                        <Translate text="WHAT CAN YOU BUILD WHEN THE WORLD BECOMES YOUR INTERFACE?" />
                       </h2>
                     </div>
                   </div>
@@ -336,10 +337,10 @@ export default function Home() {
                     <h2
                       className={`${FONTS.microgrammaBold.className} w-full leading-tight sm:leading-14 px-4 sm:px-10 text-primary text-3xl sm:text-4xl lg:text-[40px]`}
                     >
-                      THE FUTURE IS ALREADY BEING BUILT.
+                      <Translate text="THE FUTURE IS ALREADY BEING BUILT." />
                     </h2>
                     <p className="text-md w-full max-w-4xl lg:max-w-5xl px-4 sm:px-10 text-center">
-                      Ideas, technologies and perspectives shaping the spatial era. Explore the technologies transforming industries—and the ideas that will define what comes next.
+                      <Translate text="Ideas, technologies and perspectives shaping the spatial era. Explore the technologies transforming industries—and the ideas that will define what comes next." />
                     </p>
                   </div>
                 </FadeInOnView>
@@ -366,7 +367,7 @@ export default function Home() {
                       variant={"outline"}
                       className="uppercase rounded-full bg-white! hover:bg-[#074139]! transition-all duration-300 hover:text-white text-xs w-full sm:w-auto cursor-pointer"
                     >
-                      Visit Library
+                      <Translate text="Visit Library" />
                     </Button>
                   </Link>
                 </div>

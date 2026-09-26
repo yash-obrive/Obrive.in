@@ -8,6 +8,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import AnimatedNavLabel from "../AnimatedNavLabel";
+import Translate from "@/components/shared/Translate";
 
 export function ResourcesDropdown() {
   return (
@@ -16,20 +17,17 @@ export function ResourcesDropdown() {
         showChevron={false}
         className="text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
       >
-        Resources
-      </NavigationMenuTrigger>
+         <Translate text="Resources" /> </NavigationMenuTrigger>
       <NavigationMenuContent className="bg-primary! border-none p-6 w-[600px] md:w-[700px] absolute -left-70 top-full mt-2 z-[60] rounded-md shadow-lg">
         <div className="grid grid-cols-2 gap-6">
           <div className="border-r border-accent/30">
             <div>
               <div className="border-b border-accent/30 pb-4">
                 <h3 className="text-white text-xs mb-2 pr-2 uppercase">
-                  Obrive Resource Library
-                </h3>
+                   <Translate text="Obrive Resource Library" /> </h3>
                 <p className="text-white/80 text-[9px] mb-4 pr-2 uppercase">
-                  A COLLECTION OF BLOGS, INDUSTRY INSIGHTS, AND RESOURCES
-                  SHAPING THE FUTURE OF IMMERSIVE TECHNOLOGY.
-                </p>
+                   <Translate text="A COLLECTION OF BLOGS, INDUSTRY INSIGHTS, AND RESOURCES
+                                                    SHAPING THE FUTURE OF IMMERSIVE TECHNOLOGY." /> </p>
                 <div className="flex items-center">
                   <Button
                     variant="link"
@@ -41,8 +39,7 @@ export function ResourcesDropdown() {
                         gap={8}
                         shiftDirection="right"
                       >
-                        READ MORE
-                      </AnimatedNavLabel>
+                         <Translate text="READ MORE" /> </AnimatedNavLabel>
                     </Link>
                   </Button>
                 </div>
@@ -59,49 +56,41 @@ export function ResourcesDropdown() {
                       alt={ICONS_META.ROUNDED_BALLS.alt}
                     />
 
-                    <p className="text-[8px]">E-Book</p>
+                    <p className="text-[8px]"> <Translate text="E-Book" /> </p>
                   </div>
 
                   <div className="flex flex-col items-center w-full justify-center">
                     <div className="text-left pl-1 w-full py-1 text-[8px] border-b border-primary/20">
-                      Discover how AR,
-                    </div>
+                       <Translate text="Discover how AR," /> </div>
                     <div className="text-left pl-1 w-full py-1 text-[8px] border-b border-primary/20">
-                      VR, MR, and spatial
-                    </div>
+                       <Translate text="VR, MR, and spatial" /> </div>
                     <div className="text-left pl-1 w-full py-1 text-[8px] border-b border-primary/20">
-                      redefining industries
-                    </div>
+                       <Translate text="redefining industries" /> </div>
                     <div className="text-left pl-1 w-full py-1 text-[8px] border-b border-primary/20">
-                      worldwide.
-                    </div>
+                       <Translate text="worldwide." /> </div>
                   </div>
                 </div>
 
                 <h3 className="text-white text-xs mt-4 mb-3 pr-2 uppercase">
-                  Obrive Resource Library
-                </h3>
+                   <Translate text="Obrive Resource Library" /> </h3>
                 <p className="text-white/80 text-[9px] mb-2 pr-2 uppercase">
-                  DOWNLOAD YOUR FREE E-BOOK AND DISCOVER HOW IMMERSIVE
-                  TECHNOLOGIES CAN TRANSFORM YOUR BUSINESS OPERATIONS.
-                </p>
+                   <Translate text="DOWNLOAD YOUR FREE E-BOOK AND DISCOVER HOW IMMERSIVE
+                                                    TECHNOLOGIES CAN TRANSFORM YOUR BUSINESS OPERATIONS." /> </p>
                 <Button
                   variant="link"
                   className="text-accent p-0 text-[9px] h-auto"
                 >
                   <AnimatedNavLabel iconSize={8} gap={8} shiftDirection="right">
-                    DOWNLOAD
-                  </AnimatedNavLabel>
+                     <Translate text="DOWNLOAD" /> </AnimatedNavLabel>
                 </Button>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-white text-xs mb-2">SOLUTIONS</h3>
+            <h3 className="text-white text-xs mb-2"> <Translate text="SOLUTIONS" /> </h3>
             <p className="text-white/80 text-[10px] mb-4 uppercase">
-              Expert Insights, Guides, and Tools to Power Immersive Innovation
-            </p>
+               <Translate text="Expert Insights, Guides, and Tools to Power Immersive Innovation" /> </p>
 
             <div className="">
               <div className="flex items-center gap-3 py-4 px-2 border-y border-white/20">
@@ -110,7 +99,7 @@ export function ResourcesDropdown() {
                   className="!text-white text-sm !p-0 h-auto"
                 >
                   <AnimatedNavLabel iconSize={8} gap={8} shiftDirection="right">
-                    <Link href="/support/help-center">OB Help Center</Link>
+                    <Link href="/support/help-center"> <Translate text="OB Help Center" /> </Link>
                   </AnimatedNavLabel>
                 </Button>
               </div>
@@ -120,7 +109,7 @@ export function ResourcesDropdown() {
                   className="!text-white text-sm !p-0 h-auto"
                 >
                   <AnimatedNavLabel iconSize={8} gap={8} shiftDirection="right">
-                    <Link href="/faq/ob-product-faq">OB Products FAQ</Link>
+                    <Link href="/faq/ob-product-faq"> <Translate text="OB Products FAQ" /> </Link>
                   </AnimatedNavLabel>
                 </Button>
               </div>
@@ -130,7 +119,7 @@ export function ResourcesDropdown() {
                   className="!text-white text-sm !p-0 h-auto"
                 >
                   <AnimatedNavLabel iconSize={8} gap={8} shiftDirection="right">
-                    <Link href="/faq/ob-services-faq">OB Services FAQ</Link>
+                    <Link href="/faq/ob-services-faq"> <Translate text="OB Services FAQ" /> </Link>
                   </AnimatedNavLabel>
                 </Button>
               </div>
@@ -140,7 +129,7 @@ export function ResourcesDropdown() {
                   className="!text-white text-sm !p-0 h-auto"
                 >
                   <AnimatedNavLabel iconSize={8} gap={8} shiftDirection="right">
-                    <Link href="/faq/obpark-faq">Obpark FAQ</Link>
+                    <Link href="/faq/obpark-faq"> <Translate text="Obpark FAQ" /> </Link>
                   </AnimatedNavLabel>
                 </Button>
               </div>
@@ -150,7 +139,7 @@ export function ResourcesDropdown() {
                   className="!text-white text-sm !p-0 h-auto"
                 >
                   <AnimatedNavLabel iconSize={8} gap={8} shiftDirection="right">
-                    <Link href="/support/change-log">Change Log</Link>
+                    <Link href="/support/change-log"> <Translate text="Change Log" /> </Link>
                   </AnimatedNavLabel>
                 </Button>
               </div>
@@ -160,7 +149,7 @@ export function ResourcesDropdown() {
                   className="!text-white text-sm !p-0 h-auto"
                 >
                   <AnimatedNavLabel iconSize={8} gap={8} shiftDirection="right">
-                    <Link href="/legal">Legal</Link>
+                    <Link href="/legal"> <Translate text="Legal" /> </Link>
                   </AnimatedNavLabel>
                 </Button>
               </div>
@@ -170,7 +159,7 @@ export function ResourcesDropdown() {
                   className="!text-white text-sm !p-0 h-auto"
                 >
                   <AnimatedNavLabel iconSize={8} gap={8} shiftDirection="right">
-                    <Link href="/certifications">Certifications</Link>
+                    <Link href="/certifications"> <Translate text="Certifications" /> </Link>
                   </AnimatedNavLabel>
                 </Button>
               </div>

@@ -6,6 +6,7 @@ import {
   IMAGES,
 } from "@/assets/images";
 import type { QUOTES_TYPE } from "@/constants/pages/products/quotes";
+import Translate from "@/components/shared/Translate";
 
 export default function ProductPageCard({
   quote,
@@ -34,11 +35,11 @@ export default function ProductPageCard({
           />
         )}
         <div className="sm:px-4">
-          <p className="text-left max-sm:text-xs text-primary/80">{quote}</p>
+          <p className="text-left max-sm:text-xs text-primary/80"><Translate text={quote} /></p>
           <h3
             className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
           >
-            {author}
+            <Translate text={author} />
           </h3>
         </div>
       </div>

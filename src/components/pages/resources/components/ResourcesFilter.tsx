@@ -3,6 +3,7 @@
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { Button } from "@/components/ui/button";
 import { filters } from "@/constants/pages/resources/filters";
+import Translate from "@/components/shared/Translate";
 
 interface ResourcesFilterProps {
   currentFilter: string;
@@ -20,8 +21,7 @@ const ResourcesFilter = ({
       <FullWidthSection backgroundColor="none">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
           <h2 className="text-secondary text-xs sm:text-sm uppercase font-medium whitespace-nowrap">
-            Browse by Topic:
-          </h2>
+             <Translate text="Browse by Topic:" /> </h2>
           <div className="flex flex-wrap gap-2 sm:gap-3">
             {filters.map((filter) => (
               <Button

@@ -3,6 +3,7 @@ import FONTS from "@/assets/fonts";
 import { IMAGES, IMAGES_META } from "@/assets/images";
 import { Button } from "@/components/ui/button";
 import type { HOW_IT_WORK_TYPE } from "@/constants/pages/products/how-it-work";
+import Translate from "@/components/shared/Translate";
 
 type HowItWorksCardProps = HOW_IT_WORK_TYPE & {
   variant?: "default" | "right";
@@ -47,15 +48,15 @@ export default function HowItWorksCard({
           size={"lg"}
           className="rounded-full bg-transparent! hover:bg-transparent! uppercase text-[10px]"
         >
-          {step}
+          <Translate text={step} />
         </Button>
         <h3
           className={`${FONTS.microgrammaBold.className} text-primary text-center text-lg max-md:text-left`}
         >
-          {title}
+          <Translate text={title} />
         </h3>
         <p className="text-sm w-lg max-md:w-full leading-7 max-md:text-left">
-          {description}
+          <Translate text={description} />
         </p>
       </div>
     </div>

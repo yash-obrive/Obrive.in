@@ -69,6 +69,8 @@ type SubmitState =
   | "error"
   | "dismissed";
 
+type GstinVerifyState = "idle" | "verifying" | "valid" | "invalid";
+
 function loadRazorpayScript(): Promise<boolean> {
   return new Promise((resolve) => {
     if (typeof window !== "undefined" && window.Razorpay) {
@@ -115,7 +117,13 @@ export default function CheckoutForm() {
     gatewayFeeGst: number;
     gatewayCharges: number;
     totalAmount: number;
+    serviceGstExempt?: boolean;
+    gstinVerified?: boolean;
   } | null>(null);
+
+  // GSTIN verification state
+  const [gstinVerifyState, setGstinVerifyState] = useState<GstinVerifyState>("idle");
+  const [gstinVerifyMessage, setGstinVerifyMessage] = useState<string>("");
 
   useEffect(() => {
     if (serviceParam) {
@@ -139,6 +147,38 @@ export default function CheckoutForm() {
     if (errors[name as keyof CheckoutFormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
+    // Reset GSTIN verification if the field changes
+    if (name === "gst") {
+      setGstinVerifyState("idle");
+      setGstinVerifyMessage("");
+    }
+  };
+
+  const handleVerifyGst = async () => {
+    const rawGstin = formData.gst?.trim();
+    if (!rawGstin) return;
+
+    setGstinVerifyState("verifying");
+    setGstinVerifyMessage("");
+
+    try {
+      const res = await fetch("/api/payments/verify-gst", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ gstin: rawGstin }),
+      });
+      const data = await res.json();
+      if (data.valid) {
+        setGstinVerifyState("valid");
+        setGstinVerifyMessage(data.message || "GSTIN format verified");
+      } else {
+        setGstinVerifyState("invalid");
+        setGstinVerifyMessage(data.message || "Invalid GSTIN format");
+      }
+    } catch {
+      setGstinVerifyState("invalid");
+      setGstinVerifyMessage("Verification request failed. Please try again.");
+    }
   };
 
   const formatINR = (rupees: number) =>
@@ -150,12 +190,15 @@ export default function CheckoutForm() {
 
   // Preview breakdown shown before server responds (from frontend pricing data, in rupees).
   // These are for display only — Razorpay uses the server-authoritative totalAmount.
-  const previewGst = packageDetails
-    ? Math.round((packageDetails.priceINR * 1800) / 10000)
-    : 0;
-  const previewGatewayFee = packageDetails
-    ? Math.round((packageDetails.priceINR * 200) / 10000)
-    : 0;
+  // noCharges packages skip all GST and gateway fees entirely.
+  const previewGst =
+    packageDetails && !packageDetails.noCharges
+      ? Math.round((packageDetails.priceINR * 1800) / 10000)
+      : 0;
+  const previewGatewayFee =
+    packageDetails && !packageDetails.noCharges
+      ? Math.round((packageDetails.priceINR * 200) / 10000)
+      : 0;
   const previewGatewayFeeGst = Math.round((previewGatewayFee * 1800) / 10000);
   const previewTotal = packageDetails
     ? packageDetails.priceINR +
@@ -213,6 +256,7 @@ export default function CheckoutForm() {
           customerEmail: formData.email,
           customerPhone: formData.phone,
           company: formData.company || "",
+          // Pass the raw GSTIN string. Server re-validates independently.
           gst: formData.gst || "",
           address: formData.address || "",
         }),
@@ -235,6 +279,8 @@ export default function CheckoutForm() {
         gatewayFeeGst: order.gatewayFeeGst,
         gatewayCharges: order.gatewayCharges,
         totalAmount: order.totalAmount,
+        serviceGstExempt: order.serviceGstExempt,
+        gstinVerified: order.gstinVerified,
       });
     } catch (err) {
       setSubmitState("error");
@@ -492,14 +538,46 @@ export default function CheckoutForm() {
                 <label className="block text-xs font-bold text-primary/70 uppercase tracking-wider mb-2">
                   GST Number
                 </label>
-                <input
-                  type="text"
-                  name="gst"
-                  value={formData.gst}
-                  onChange={handleChange}
-                  className="w-full bg-primary/5 border border-primary/10 focus:border-primary/30 rounded-xl px-4 py-3 text-sm text-primary outline-none transition-colors"
-                  placeholder="Optional"
-                />
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    name="gst"
+                    value={formData.gst}
+                    onChange={handleChange}
+                    maxLength={15}
+                    className={`flex-1 bg-primary/5 border ${
+                      gstinVerifyState === "invalid"
+                        ? "border-red-400"
+                        : gstinVerifyState === "valid"
+                          ? "border-green-500"
+                          : "border-primary/10 focus:border-primary/30"
+                    } rounded-xl px-4 py-3 text-sm text-primary outline-none transition-colors uppercase`}
+                    placeholder="e.g. 29ABCDE1234F1Z5"
+                  />
+                  {(formData.gst ?? "").trim().length > 0 && gstinVerifyState !== "valid" && (
+                    <button
+                      type="button"
+                      onClick={handleVerifyGst}
+                      disabled={gstinVerifyState === "verifying" || isProcessing}
+                      className="shrink-0 px-4 py-3 rounded-xl bg-primary text-white text-xs font-bold transition-opacity disabled:opacity-50 hover:opacity-90"
+                    >
+                      {gstinVerifyState === "verifying" ? "..." : "Verify"}
+                    </button>
+                  )}
+                </div>
+                {gstinVerifyState === "valid" && (
+                  <span className="flex items-center gap-1.5 text-green-600 text-xs mt-1.5">
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                    {gstinVerifyMessage}
+                  </span>
+                )}
+                {gstinVerifyState === "invalid" && (
+                  <span className="text-red-500 text-xs mt-1 block">
+                    {gstinVerifyMessage}
+                  </span>
+                )}
               </div>
             </div>
 
@@ -639,7 +717,11 @@ export default function CheckoutForm() {
                     <span>GST on Service @ 18%</span>
                     <span className="font-bold">
                       {breakdown
-                        ? formatINR(breakdown.serviceGst / 100)
+                        ? (
+                          breakdown.serviceGstExempt
+                            ? <span className="text-green-600">₹0 <span className="text-xs font-normal">(Exempt)</span></span>
+                            : formatINR(breakdown.serviceGst / 100)
+                        )
                         : formatINR(previewGst)}
                     </span>
                   </div>

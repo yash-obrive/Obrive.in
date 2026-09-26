@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { getAllCareerSlugs, getCareerBySlug } from "@/lib/mdx";
+import Translate from "@/components/shared/Translate";
 
 export async function generateStaticParams() {
   const slugs = await getAllCareerSlugs();
@@ -41,16 +42,14 @@ const DetailsPage = async ({
           className={`${FONTS.microgrammaBold.className}
          tracking-wider text-4xl mb-10 font-extrabold text-primary`}
         >
-          Let’s get started!
-        </h1>
+           <Translate text="Let’s get started!" /> </h1>
         <p className="text-gray-800 mb-6">
           <span className={`${FONTS.microgrammaBold.className}`}>Obrive</span>{" "}
-          has invited you to interview for the position of <br />
+           <Translate text="has invited you to interview for the position of" /> <br />
           <span className={`${FONTS.microgrammaBold.className}`}>
             {career.metadata.title}
           </span>
-          . Enter your name and email address to get started.
-        </p>
+           <Translate text=". Enter your name and email address to get started." /> </p>
 
         <form
           action={handleSubmit}
@@ -59,8 +58,7 @@ const DetailsPage = async ({
           {/* Name Input */}
           <div className="w-full text-left">
             <Label htmlFor="name" className="text-sm mb-1">
-              Name
-            </Label>
+               <Translate text="Name" /> </Label>
             <Input
               type="text"
               name="name"
@@ -73,8 +71,7 @@ const DetailsPage = async ({
           {/* Email Input */}
           <div className="w-full text-left">
             <Label htmlFor="email" className="text-sm mb-1">
-              Email
-            </Label>
+               <Translate text="Email" /> </Label>
             <Input
               type="email"
               name="email"
@@ -86,8 +83,7 @@ const DetailsPage = async ({
 
           {/* Submit Button */}
           <Button type="submit" size={"lg"} className="mt-6 cursor-pointer">
-            GET STARTED
-          </Button>
+             <Translate text="GET STARTED" /> </Button>
         </form>
       </div>
     </div>

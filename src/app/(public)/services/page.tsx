@@ -41,6 +41,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+import Translate from "@/components/shared/Translate";
+
 export default function ServicesPage() {
   return (
     <div className="bg-white min-h-screen">
@@ -49,14 +51,14 @@ export default function ServicesPage() {
         backgroundColor="accent"
         className="py-12 sm:py-20 pt-28 sm:pt-36"
       >
-        <div className="flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
+        <div className="flex flex-col items-center text-center gap-4 max-w-3xl mx-auto">
           <h1
-            className={`${FONTS.microgrammaBold.className} text-secondary text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight text-balance uppercase`}
+            className={`${FONTS.microgrammaBold.className} text-secondary text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight text-balance uppercase`}
           >
-            {MAIN_SERVICES_HERO.title}
+            <Translate text={MAIN_SERVICES_HERO.title} />
           </h1>
-          <p className="text-primary/80 text-base sm:text-lg max-w-3xl font-normal leading-relaxed text-balance">
-            {MAIN_SERVICES_HERO.description}
+          <p className="text-primary/80 text-sm sm:text-base max-w-2xl font-normal leading-relaxed text-balance">
+            <Translate text={MAIN_SERVICES_HERO.description} />
           </p>
         </div>
       </FullWidthSection>
@@ -70,37 +72,37 @@ export default function ServicesPage() {
                 <div className="flex flex-col lg:flex-row justify-between gap-6 mb-10">
                   <div className="max-w-2xl">
                     <div className="uppercase text-xs font-semibold tracking-wider text-primary/60 mb-3">
-                      {category.category}
+                      <Translate text={category.category} />
                     </div>
                     <h2
                       className={`${FONTS.microgrammaBold.className} text-secondary text-3xl sm:text-4xl m-0 leading-tight`}
                     >
-                      {category.heading}
+                      <Translate text={category.heading} />
                     </h2>
                   </div>
                   <p className="max-w-[500px] text-primary/70 text-sm sm:text-base m-0 lg:pt-8 leading-relaxed">
-                    {category.description}
+                    <Translate text={category.description} />
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                   {category.items.map((item, itemIdx) => {
                     const CardContent = (
-                      <div className="group flex flex-col min-h-[180px] h-full p-6 bg-gradient-to-br from-white to-primary/[0.03] border border-primary/10 rounded-[20px] transition-all duration-300 hover:border-primary/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5">
+                      <div className="group flex flex-col min-h-[150px] h-full p-5 bg-gradient-to-br from-white to-primary/[0.03] border border-primary/10 rounded-[16px] transition-all duration-300 hover:border-primary/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5">
                         <div className="text-secondary/50 text-[10px] font-extrabold tracking-[0.15em]">
                           {String(itemIdx + 1).padStart(2, "0")}
                         </div>
                         <h3
-                          className={`${FONTS.microgrammaBold.className} text-primary text-base mt-[16px] mb-[8px] group-hover:text-secondary transition-colors`}
+                          className={`${FONTS.microgrammaBold.className} text-primary text-sm mt-[12px] mb-[6px] group-hover:text-secondary transition-colors`}
                         >
-                          {item.title}
+                          <Translate text={item.title} />
                         </h3>
-                        <p className="text-primary/70 text-[13px] m-0 mb-auto leading-relaxed">
-                          {item.description}
+                        <p className="text-primary/70 text-[12px] m-0 mb-auto leading-relaxed">
+                          <Translate text={item.description} />
                         </p>
                         {item.href && (
                           <div className="mt-6 flex items-center text-[11px] font-bold text-primary/40 group-hover:text-primary transition-colors uppercase tracking-widest">
-                            Learn more <ArrowRight className="w-3 h-3 ml-1 transition-transform group-hover:translate-x-1" />
+                            <Translate text="Learn more" /> <ArrowRight className="w-3 h-3 ml-1 transition-transform group-hover:translate-x-1" />
                           </div>
                         )}
                       </div>

@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCareerMDXComponents } from "@/components/pages/career/CareerMDXComponents";
@@ -23,7 +24,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const career = await getCareerBySlug(slug);
+  const headersList = await headers();
+  const languageCode = headersList.get("x-obrive-language") || "en";
+  const career = await getCareerBySlug(slug, languageCode);
 
   if (!career) {
     return {
@@ -65,7 +68,9 @@ export default async function CareerPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const career = await getCareerBySlug(slug);
+  const headersList = await headers();
+  const languageCode = headersList.get("x-obrive-language") || "en";
+  const career = await getCareerBySlug(slug, languageCode);
 
   if (!career) {
     notFound();

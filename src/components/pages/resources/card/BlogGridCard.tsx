@@ -2,6 +2,7 @@ import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import Link from "@/components/shared/LocalizedLink";
 import type { BlogCardContentType } from "@/constants/pages/resources/blog-card";
+import Translate from "@/components/shared/Translate";
 
 const BlogGridCard = ({
   src,
@@ -32,24 +33,23 @@ const BlogGridCard = ({
           {/* overlay that appears on hover / focus */}
           <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm opacity-0 translate-y-2 group-hover:opacity-100 group-focus-within:opacity-100 group-hover:translate-y-0 group-focus-within:translate-y-0 transition-all duration-300 pointer-events-none">
             <span className="pointer-events-auto inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white bg-black/40">
-              Read more
-            </span>
+               <Translate text="Read more" /> </span>
           </div>
         </div>
 
         <div className="flex text-xs items-center justify-between px-3 mb-4 text-muted-foreground">
-          <span className="uppercase tracking-wide">{type || "BLOG"}</span>
-          <span>{date}</span>
+          <span className="uppercase tracking-wide"><Translate text={type || "BLOG"} /></span>
+          <span><Translate text={date} /></span>
         </div>
 
         <div className="space-y-3">
           <h3
             className={`${FONTS.microgrammaBold.className} text-lg font-bold text-foreground leading-tight transition-colors duration-200 group-hover:text-accent-foreground`}
           >
-            {title}
+            <Translate text={title} />
           </h3>
           <p className="text-sm leading-relaxed text-muted-foreground group-hover:text-accent-foreground/90">
-            {description}
+            <Translate text={description} />
           </p>
         </div>
       </div>

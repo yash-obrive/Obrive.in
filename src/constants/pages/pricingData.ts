@@ -15,6 +15,11 @@ export interface PricingPackage {
   isRecommended?: boolean;
   isMonthly?: boolean;
   ctaText: string;
+  /**
+   * When true, no GST or gateway charges are applied to this package.
+   * Used for internal test packages only.
+   */
+  noCharges?: boolean;
 }
 
 export interface ServiceStream {
@@ -33,12 +38,13 @@ export const PRICING_STREAMS: ServiceStream[] = [
     subtitle: "System Testing & Validation",
     packages: [
       {
-        id: "live-testing-100",
+        id: "live-testing-90k",
         category: "Testing",
         name: "Live Testing Package",
-        description: "A 100 INR package for live testing Razorpay webhooks, Brevo emails, and database interconnectivity.",
-        priceINR: 100,
-        priceUSD: 1.5,
+        description: "A ₹90,000 package for live testing Razorpay webhooks, Brevo emails, and payment interconnectivity.",
+        priceINR: 90000,
+        priceUSD: 1080,
+        noCharges: true,
         features: [
           { text: "Razorpay Webhook Validation" },
           { text: "Brevo Email Notification" },

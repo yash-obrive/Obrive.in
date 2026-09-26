@@ -7,6 +7,7 @@ import Link from "@/components/shared/LocalizedLink";
 import { GROUPS } from "@/constants/Footer";
 import DynamicFooterCard from "./DynamicFooterCard";
 import FooterContact from "./FooterContact";
+import Translate from "@/components/shared/Translate";
 
 export default function Footer() {
   const maxItems = Math.max(...GROUPS.map((g) => g.items.length)) + 1;
@@ -79,20 +80,18 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Legal Notice
-              </Link>
+                 <Translate text="Legal Notice" /> </Link>
               <Link
                 href="/terms-accessibility"
                 className="hover:text-primary transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Terms & Accessibility
-              </Link>
+                 <Translate text="Terms & Accessibility" /> </Link>
             </div>
 
             <div className="flex items-center gap-4">
-              <p>Copyrights Reserved 2026</p>
+              <p> <Translate text="Copyrights Reserved 2026" /> </p>
             </div>
           </div>
         </section>

@@ -5,6 +5,7 @@ import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import type { SolutionIndustriesContent } from "@/types/services";
 import SolutionServiceSection from "./components/SolutionServiceSection";
+import Translate from "@/components/shared/Translate";
 
 export function IndustriesTemplate({
   hero,
@@ -24,7 +25,7 @@ export function IndustriesTemplate({
               <h1
                 className={`${FONTS.microgrammaBold.className} text-center text-primary text-7xl max-xl:text-6xl max-lg:text-5xl max-md:text-4xl max-sm:text-3xl`}
               >
-                {hero.title}
+                <Translate text={hero.title} />
               </h1>
             </div>
 
@@ -32,7 +33,7 @@ export function IndustriesTemplate({
               <div className="inline-flex flex-col items-center justify-center gap-2.5 pl-6 pr-[90px] pt-4 pb-6 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] rounded-2xl border-[0.5px] border-solid border-primary/40 max-lg:w-full max-lg:px-6 max-lg:py-6 max-md:px-4 max-md:py-5 max-sm:px-3">
                 <div className="flex w-full max-w-[804px] items-center justify-center gap-2.5 p-2.5 relative flex-[0_0_auto] max-lg:max-w-none max-lg:p-0">
                   <p className="relative w-full max-w-[804px] mt-[-1.00px] ml-[-4.50px] mr-[-4.50px] font-normal text-base tracking-[1.00px] leading-7 max-lg:max-w-none max-lg:m-0 max-md:text-sm max-md:leading-6 max-sm:text-xs whitespace-pre-wrap text-zinc-700">
-                    {hero.description}
+                    <Translate text={hero.description} />
                   </p>
                 </div>
               </div>
@@ -52,7 +53,7 @@ export function IndustriesTemplate({
                   <h3
                     className={`${FONTS.microgrammaBold.className} text-primary text-[22px] max-md:text-xl`}
                   >
-                    {ind.title}
+                    <Translate text={ind.title} />
                   </h3>
                 </div>
                 <ul className="mt-2 flex flex-wrap gap-2 pl-6">
@@ -66,7 +67,7 @@ export function IndustriesTemplate({
                         className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-zinc-200/60 bg-white shadow-sm text-xs text-zinc-500 group-hover:border-primary/30 group-hover:text-zinc-700 transition-colors"
                       >
                         <div className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary"></div>
-                        <span className="leading-snug">{item}</span>
+                        <span className="leading-snug"><Translate text={item} /></span>
                       </li>
                     ))}
                 </ul>
@@ -102,11 +103,11 @@ export function IndustriesTemplate({
                       <h2
                         className={`${FONTS.microgrammaBold.className} text-primary text-4xl max-md:text-3xl mb-4`}
                       >
-                        {technologyCapabilities.title}
+                        <Translate text={technologyCapabilities.title} />
                       </h2>
                       {technologyCapabilities.subtitle && (
                         <p className="text-zinc-600 text-lg max-w-3xl">
-                          {technologyCapabilities.subtitle}
+                          <Translate text={technologyCapabilities.subtitle} />
                         </p>
                       )}
                     </div>
@@ -118,7 +119,7 @@ export function IndustriesTemplate({
                           className="flex items-center justify-center gap-2 px-4 py-2 border border-zinc-200/80 rounded-full bg-zinc-50/50 hover:bg-zinc-100/80 hover:border-primary/30 transition-colors max-w-full"
                         >
                           <span className="text-[11px] sm:text-xs text-zinc-600 font-medium leading-snug text-center break-words">
-                            {item}
+                            <Translate text={item} />
                           </span>
                         </li>
                       ))}
@@ -137,16 +138,16 @@ export function IndustriesTemplate({
                       <h2
                         className={`${FONTS.microgrammaBold.className} text-primary text-4xl max-md:text-3xl mb-4`}
                       >
-                        {globalDelivery.title}
+                        <Translate text={globalDelivery.title} />
                       </h2>
                       {globalDelivery.subtitle && (
                         <p className="text-zinc-700 font-medium text-lg max-w-3xl mb-4">
-                          {globalDelivery.subtitle}
+                          <Translate text={globalDelivery.subtitle} />
                         </p>
                       )}
                       {globalDelivery.description && (
                         <p className="text-zinc-500 text-[15px] leading-relaxed max-w-4xl tracking-[0.3px]">
-                          {globalDelivery.description}
+                          <Translate text={globalDelivery.description} />
                         </p>
                       )}
                     </div>
@@ -158,7 +159,7 @@ export function IndustriesTemplate({
                           className="flex items-center justify-center gap-2 px-4 py-2 border border-zinc-200/80 rounded-full bg-zinc-50/50 hover:bg-zinc-100/80 hover:border-primary/30 transition-colors max-w-full"
                         >
                           <span className="text-[11px] sm:text-xs text-zinc-600 font-medium leading-snug text-center break-words">
-                            {item}
+                            <Translate text={item} />
                           </span>
                         </li>
                       ))}
@@ -179,7 +180,7 @@ export function IndustriesTemplate({
               <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
                 <div className="w-12 h-0.5 bg-primary/30 mb-8 rounded-full"></div>
                 <p className="text-zinc-500 text-[17px] md:text-xl leading-[1.8] tracking-[0.5px]">
-                  {footerText}
+                  <Translate text={footerText} />
                 </p>
               </div>
             </FadeInOnView>

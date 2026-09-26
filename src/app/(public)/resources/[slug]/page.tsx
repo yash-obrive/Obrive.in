@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { CASE_STUDIES_IMAGES } from "@/assets/images";
@@ -25,7 +26,9 @@ export async function generateMetadata({
   params,
 }: ResourcePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const resource = await getCaseStudyBySlug(slug);
+  const headersList = await headers();
+  const languageCode = headersList.get("x-obrive-language") || "en";
+  const resource = await getCaseStudyBySlug(slug, languageCode);
 
   if (!resource) {
     const blog = getBlogBySlug(slug);
@@ -167,7 +170,9 @@ export async function generateStaticParams() {
 
 export default async function ResourcePage({ params }: ResourcePageProps) {
   const { slug } = await params;
-  const resource = await getCaseStudyBySlug(slug);
+  const headersList = await headers();
+  const languageCode = headersList.get("x-obrive-language") || "en";
+  const resource = await getCaseStudyBySlug(slug, languageCode);
 
   if (!resource) {
     const blog = getBlogBySlug(slug);

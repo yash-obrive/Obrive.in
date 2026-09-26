@@ -17,6 +17,14 @@ export interface OrderData {
   gatewayFeeGst?: number;
   gatewayCharges?: number;
   totalAmount?: number;
+  /** Server-validated GSTIN, if provided and structurally valid. */
+  gstin?: string;
+  /**
+   * Whether service GST was set to ₹0 for this order per the server's
+   * configured tax policy (GSTIN_SERVICE_GST_EXEMPTION_ENABLED).
+   * This is informational only in the email — it reflects the server calculation.
+   */
+  serviceGstExempt?: boolean;
 }
 
 function formatINR(paise?: number) {
@@ -45,15 +53,32 @@ function buildBreakdownRows(orderData: OrderData) {
       </tr>`;
   }
 
+  // Build the service GST row — reflects the server-calculated value.
+  // If serviceGstExempt is true, the server has set serviceGst = 0 per its configured policy.
+  const serviceGstLabel =
+    orderData.serviceGstExempt === true
+      ? `GST on Service (exempt per configured policy)`
+      : `GST on Service (${RATE_CONFIG.serviceGstPct}%)`;
+
+  const gstinRow =
+    orderData.gstin
+      ? `
+    <tr>
+      <td style="padding:10px;border:1px solid #eef7ff;"><strong>GSTIN:</strong></td>
+      <td style="padding:10px;border:1px solid #eef7ff;">${orderData.gstin}</td>
+    </tr>`
+      : "";
+
   return `
     <tr>
       <td style="padding:10px;border:1px solid #eef7ff;"><strong>Service Price:</strong></td>
       <td style="padding:10px;border:1px solid #eef7ff;">${formatINR(orderData.baseAmount)}</td>
     </tr>
     <tr>
-      <td style="padding:10px;border:1px solid #eef7ff;"><strong>GST on Service (${RATE_CONFIG.serviceGstPct}%):</strong></td>
+      <td style="padding:10px;border:1px solid #eef7ff;"><strong>${serviceGstLabel}:</strong></td>
       <td style="padding:10px;border:1px solid #eef7ff;">${formatINR(orderData.serviceGst)}</td>
     </tr>
+    ${gstinRow}
     <tr>
       <td style="padding:10px;border:1px solid #eef7ff;"><strong>Payment Gateway Fee (${RATE_CONFIG.gatewayFeePct}%):</strong></td>
       <td style="padding:10px;border:1px solid #eef7ff;">${formatINR(orderData.gatewayFee)}</td>

@@ -1,3 +1,4 @@
+import type { LanguageCode } from "./languages";
 // src/config/countries.ts
 
 export type CountryCode =
@@ -40,7 +41,8 @@ export interface CountryConfig {
   offices: string[];
   calendlyUrl?: string;
   hreflang: string;
-  dir: "ltr" | "rtl";
+  defaultLanguage: LanguageCode;
+  supportedLanguages: LanguageCode[];
   isProductionReady: boolean;
 }
 
@@ -67,7 +69,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=in",
     hreflang: "en-IN",
-    dir: "ltr",
+    defaultLanguage: "en",
+    supportedLanguages: ["en", "hi"],
     isProductionReady: true,
   },
 
@@ -92,7 +95,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=us",
     hreflang: "en-US",
-    dir: "ltr",
+    defaultLanguage: "en",
+    supportedLanguages: ["en", "es"],
     isProductionReady: true,
   },
   ca: {
@@ -108,7 +112,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ca",
     hreflang: "en-CA",
-    dir: "ltr",
+    defaultLanguage: "en",
+    supportedLanguages: ["en", "fr"],
     isProductionReady: true,
   },
   mx: {
@@ -124,7 +129,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=mx",
     hreflang: "es-MX",
-    dir: "ltr",
+    defaultLanguage: "es",
+    supportedLanguages: ["es", "en"],
     isProductionReady: true,
   },
   br: {
@@ -140,7 +146,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=br",
     hreflang: "pt-BR",
-    dir: "ltr",
+    defaultLanguage: "pt",
+    supportedLanguages: ["pt", "en"],
     isProductionReady: true,
   },
 
@@ -158,7 +165,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ae",
     hreflang: "en-AE",
-    dir: "ltr",
+    defaultLanguage: "en",
+    supportedLanguages: ["en", "ar"],
     isProductionReady: true,
   },
   sa: {
@@ -173,8 +181,9 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     offices: ["Riyadh", "Jeddah", "Dammam", "NEOM"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=sa",
-    hreflang: "en-SA",
-    dir: "ltr",
+    hreflang: "ar-SA",
+    defaultLanguage: "ar",
+    supportedLanguages: ["ar", "en"],
     isProductionReady: true,
   },
   qa: {
@@ -189,8 +198,9 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     offices: ["Doha"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=qa",
-    hreflang: "en-QA",
-    dir: "ltr",
+    hreflang: "ar-QA",
+    defaultLanguage: "ar",
+    supportedLanguages: ["ar", "en"],
     isProductionReady: true,
   },
   bh: {
@@ -205,8 +215,9 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     offices: ["Manama"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=bh",
-    hreflang: "en-BH",
-    dir: "ltr",
+    hreflang: "ar-BH",
+    defaultLanguage: "ar",
+    supportedLanguages: ["ar", "en"],
     isProductionReady: true,
   },
 
@@ -224,7 +235,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=uk",
     hreflang: "en-GB",
-    dir: "ltr",
+    defaultLanguage: "en",
+    supportedLanguages: ["en"],
     isProductionReady: true,
   },
   de: {
@@ -240,7 +252,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=de",
     hreflang: "de-DE",
-    dir: "ltr",
+    defaultLanguage: "de",
+    supportedLanguages: ["de", "en"],
     isProductionReady: true,
   },
   fr: {
@@ -256,7 +269,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=fr",
     hreflang: "fr-FR",
-    dir: "ltr",
+    defaultLanguage: "fr",
+    supportedLanguages: ["fr", "en"],
     isProductionReady: true,
   },
   nl: {
@@ -271,8 +285,9 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     offices: ["Amsterdam", "Rotterdam", "Eindhoven"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=nl",
-    hreflang: "en-NL",
-    dir: "ltr",
+    hreflang: "nl-NL",
+    defaultLanguage: "nl",
+    supportedLanguages: ["nl", "en"],
     isProductionReady: true,
   },
   ch: {
@@ -288,7 +303,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ch",
     hreflang: "de-CH",
-    dir: "ltr",
+    defaultLanguage: "de",
+    supportedLanguages: ["de", "fr", "en"],
     isProductionReady: true,
   },
   se: {
@@ -304,7 +320,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=se",
     hreflang: "sv-SE",
-    dir: "ltr",
+    defaultLanguage: "sv",
+    supportedLanguages: ["sv", "en"],
     isProductionReady: true,
   },
   es: {
@@ -320,7 +337,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=es",
     hreflang: "es-ES",
-    dir: "ltr",
+    defaultLanguage: "es",
+    supportedLanguages: ["es", "en"],
     isProductionReady: true,
   },
   it: {
@@ -336,7 +354,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=it",
     hreflang: "it-IT",
-    dir: "ltr",
+    defaultLanguage: "it",
+    supportedLanguages: ["it", "en"],
     isProductionReady: true,
   },
 
@@ -354,7 +373,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=sg",
     hreflang: "en-SG",
-    dir: "ltr",
+    defaultLanguage: "en",
+    supportedLanguages: ["en", "zh"],
     isProductionReady: true,
   },
   au: {
@@ -370,7 +390,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=au",
     hreflang: "en-AU",
-    dir: "ltr",
+    defaultLanguage: "en",
+    supportedLanguages: ["en"],
     isProductionReady: true,
   },
   nz: {
@@ -386,7 +407,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=nz",
     hreflang: "en-NZ",
-    dir: "ltr",
+    defaultLanguage: "en",
+    supportedLanguages: ["en"],
     isProductionReady: true,
   },
   jp: {
@@ -402,7 +424,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=jp",
     hreflang: "ja-JP",
-    dir: "ltr",
+    defaultLanguage: "ja",
+    supportedLanguages: ["ja", "en"],
     isProductionReady: true,
   },
   kr: {
@@ -418,7 +441,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=kr",
     hreflang: "ko-KR",
-    dir: "ltr",
+    defaultLanguage: "ko",
+    supportedLanguages: ["ko", "en"],
     isProductionReady: true,
   },
   my: {
@@ -434,7 +458,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=my",
     hreflang: "en-MY",
-    dir: "ltr",
+    defaultLanguage: "en",
+    supportedLanguages: ["en", "ms"],
     isProductionReady: true,
   },
   id: {
@@ -450,7 +475,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=id",
     hreflang: "id-ID",
-    dir: "ltr",
+    defaultLanguage: "id",
+    supportedLanguages: ["id", "en"],
     isProductionReady: true,
   },
   th: {
@@ -466,7 +492,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=th",
     hreflang: "th-TH",
-    dir: "ltr",
+    defaultLanguage: "th",
+    supportedLanguages: ["th", "en"],
     isProductionReady: true,
   },
 
@@ -484,7 +511,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=za",
     hreflang: "en-ZA",
-    dir: "ltr",
+    defaultLanguage: "en",
+    supportedLanguages: ["en"],
     isProductionReady: true,
   },
 };

@@ -7,6 +7,7 @@ import {
   ICONS,
   ICONS_META,
 } from "@/assets/images";
+import Translate from "@/components/shared/Translate";
 
 interface ObjectiveCardProps {
   className?: string;
@@ -29,25 +30,22 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
             />
             <div className="px-4">
               <p className="text-left text-base text-primary/80">
-                With industries rapidly embracing digital transformation, our
-                outlook is crystal clear: be the partner of choice for
-                businesses that want to stay ahead in the immersive era
-                <br /> <br />
-                We envision a world where: Parking navigation becomes effortless
-                with AR overlays. Property buying happens through immersive 3D
-                VR experiences. <br /> Retail thrives through interactive
-                product visualization. Enterprises train employees in safe,
-                simulated MR environments. <br />
+                 <Translate text="With industries rapidly embracing digital transformation, our
+                                            outlook is crystal clear: be the partner of choice for
+                                            businesses that want to stay ahead in the immersive era" /> <br /> <br />
+                 <Translate text="We envision a world where: Parking navigation becomes effortless
+                                            with AR overlays. Property buying happens through immersive 3D
+                                            VR experiences." /> <br />  <Translate text="Retail thrives through interactive
+                                            product visualization. Enterprises train employees in safe,
+                                            simulated MR environments." /> <br />
                 <br />
-                Obrive is building the tools of tomorrow, today—solutions that
-                scale with industry needs and prepare businesses for the spatial
-                computing revolution.
-              </p>
+                 <Translate text="Obrive is building the tools of tomorrow, today—solutions that
+                                            scale with industry needs and prepare businesses for the spatial
+                                            computing revolution." /> </p>
               <h3
                 className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
               >
-                - Objective
-              </h3>
+                 <Translate text="- Objective" /> </h3>
             </div>
           </div>
 
@@ -70,25 +68,22 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
             />
             <div className="px-4">
               <p className="text-left text-base text-primary/80">
-                With industries rapidly embracing digital transformation, our
-                outlook is crystal clear: be the partner of choice for
-                businesses that want to stay ahead in the immersive era
-                <br /> <br />
-                We envision a world where: Parking navigation becomes effortless
-                with AR overlays. Property buying happens through immersive 3D
-                VR experiences. <br /> Retail thrives through interactive
-                product visualization. Enterprises train employees in safe,
-                simulated MR environments. <br />
+                 <Translate text="With industries rapidly embracing digital transformation, our
+                                            outlook is crystal clear: be the partner of choice for
+                                            businesses that want to stay ahead in the immersive era" /> <br /> <br />
+                 <Translate text="We envision a world where: Parking navigation becomes effortless
+                                            with AR overlays. Property buying happens through immersive 3D
+                                            VR experiences." /> <br />  <Translate text="Retail thrives through interactive
+                                            product visualization. Enterprises train employees in safe,
+                                            simulated MR environments." /> <br />
                 <br />
-                Obrive is building the tools of tomorrow, today—solutions that
-                scale with industry needs and prepare businesses for the spatial
-                computing revolution.
-              </p>
+                 <Translate text="Obrive is building the tools of tomorrow, today—solutions that
+                                            scale with industry needs and prepare businesses for the spatial
+                                            computing revolution." /> </p>
               <h3
                 className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
               >
-                - Objective
-              </h3>
+                 <Translate text="- Objective" /> </h3>
             </div>
           </div>
 
@@ -111,25 +106,22 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
             />
             <div className="px-4">
               <p className="text-left text-base text-primary/80">
-                With industries rapidly embracing digital transformation, our
-                outlook is crystal clear: be the partner of choice for
-                businesses that want to stay ahead in the immersive era
-                <br /> <br />
-                We envision a world where: Parking navigation becomes effortless
-                with AR overlays. Property buying happens through immersive 3D
-                VR experiences. <br /> Retail thrives through interactive
-                product visualization. Enterprises train employees in safe,
-                simulated MR environments. <br />
+                 <Translate text="With industries rapidly embracing digital transformation, our
+                                            outlook is crystal clear: be the partner of choice for
+                                            businesses that want to stay ahead in the immersive era" /> <br /> <br />
+                 <Translate text="We envision a world where: Parking navigation becomes effortless
+                                            with AR overlays. Property buying happens through immersive 3D
+                                            VR experiences." /> <br />  <Translate text="Retail thrives through interactive
+                                            product visualization. Enterprises train employees in safe,
+                                            simulated MR environments." /> <br />
                 <br />
-                Obrive is building the tools of tomorrow, today—solutions that
-                scale with industry needs and prepare businesses for the spatial
-                computing revolution.
-              </p>
+                 <Translate text="Obrive is building the tools of tomorrow, today—solutions that
+                                            scale with industry needs and prepare businesses for the spatial
+                                            computing revolution." /> </p>
               <h3
                 className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
               >
-                - Objective
-              </h3>
+                 <Translate text="- Objective" /> </h3>
             </div>
           </div>
 
@@ -152,25 +144,22 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
             />
             <div className="px-4">
               <p className="text-left text-base text-primary/80">
-                With industries rapidly embracing digital transformation, our
-                outlook is crystal clear: be the partner of choice for
-                businesses that want to stay ahead in the immersive era
-                <br /> <br />
-                We envision a world where: Parking navigation becomes effortless
-                with AR overlays. Property buying happens through immersive 3D
-                VR experiences. <br /> Retail thrives through interactive
-                product visualization. Enterprises train employees in safe,
-                simulated MR environments. <br />
+                 <Translate text="With industries rapidly embracing digital transformation, our
+                                            outlook is crystal clear: be the partner of choice for
+                                            businesses that want to stay ahead in the immersive era" /> <br /> <br />
+                 <Translate text="We envision a world where: Parking navigation becomes effortless
+                                            with AR overlays. Property buying happens through immersive 3D
+                                            VR experiences." /> <br />  <Translate text="Retail thrives through interactive
+                                            product visualization. Enterprises train employees in safe,
+                                            simulated MR environments." /> <br />
                 <br />
-                Obrive is building the tools of tomorrow, today—solutions that
-                scale with industry needs and prepare businesses for the spatial
-                computing revolution.
-              </p>
+                 <Translate text="Obrive is building the tools of tomorrow, today—solutions that
+                                            scale with industry needs and prepare businesses for the spatial
+                                            computing revolution." /> </p>
               <h3
                 className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
               >
-                - Objective
-              </h3>
+                 <Translate text="- Objective" /> </h3>
             </div>
           </div>
 
@@ -193,25 +182,22 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
             />
             <div className="px-4">
               <p className="text-left text-base text-primary/80">
-                With industries rapidly embracing digital transformation, our
-                outlook is crystal clear: be the partner of choice for
-                businesses that want to stay ahead in the immersive era
-                <br /> <br />
-                We envision a world where: Parking navigation becomes effortless
-                with AR overlays. Property buying happens through immersive 3D
-                VR experiences. <br /> Retail thrives through interactive
-                product visualization. Enterprises train employees in safe,
-                simulated MR environments. <br />
+                 <Translate text="With industries rapidly embracing digital transformation, our
+                                            outlook is crystal clear: be the partner of choice for
+                                            businesses that want to stay ahead in the immersive era" /> <br /> <br />
+                 <Translate text="We envision a world where: Parking navigation becomes effortless
+                                            with AR overlays. Property buying happens through immersive 3D
+                                            VR experiences." /> <br />  <Translate text="Retail thrives through interactive
+                                            product visualization. Enterprises train employees in safe,
+                                            simulated MR environments." /> <br />
                 <br />
-                Obrive is building the tools of tomorrow, today—solutions that
-                scale with industry needs and prepare businesses for the spatial
-                computing revolution.
-              </p>
+                 <Translate text="Obrive is building the tools of tomorrow, today—solutions that
+                                            scale with industry needs and prepare businesses for the spatial
+                                            computing revolution." /> </p>
               <h3
                 className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
               >
-                - Objective
-              </h3>
+                 <Translate text="- Objective" /> </h3>
             </div>
           </div>
 

@@ -84,6 +84,8 @@ export const MOBILE_NAV_STRUCTURE = [
     mainHref: "/company",
     items: [
       { title: "About Obrive", href: "/about" },
+      { title: "Client Login", href: "/client-login" },
+      { title: "Employee Login", href: "/employee-login" },
       { title: "Join our Team", href: "/career" },
     ],
   },

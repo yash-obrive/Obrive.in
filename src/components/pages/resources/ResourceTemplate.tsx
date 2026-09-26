@@ -14,6 +14,7 @@ import type { CaseStudyMetadata } from "@/lib/mdx";
 import BlogRecommendations from "./BlogRecommendations";
 import ResourceBackButton from "./ResourceBackButton";
 import ResourceWorkflowSteps from "./ResourceWorkflowSteps";
+import Translate from "@/components/shared/Translate";
 
 interface ResourceTemplateProps {
   metadata: CaseStudyMetadata;
@@ -89,18 +90,17 @@ export default function ResourceTemplate({
                   variant={"outline"}
                   size={"sm"}
                 >
-                  {metadata.postType || "CASE STUDY"}
+                  <Translate text={metadata.postType || "CASE STUDY"} />
                 </Button>
-
-                <span className="text-slate-700 text-xs font-medium">
-                  {metadata.date}
+                <span className="text-sm font-medium text-secondary ml-4">
+                  <Translate text={metadata.date} />
                 </span>
               </div>
 
               <h1
                 className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-secondary leading-tight`}
               >
-                {metadata.title}
+                <Translate text={metadata.title} />
               </h1>
 
               <blockquote className="text-sm sm:text-base lg:text-lg text-slate-700 leading-relaxed">
@@ -111,13 +111,12 @@ export default function ResourceTemplate({
                     return (
                       <>
                         <span className={`${FONTS.microgrammaBold.className}`}>
-                          Disclaimer
-                        </span>
-                        {quote.slice(prefix.length)}
+                           <Translate text="Disclaimer" /> </span>
+                        <Translate text={quote.slice(prefix.length)} />
                       </>
                     );
                   }
-                  return quote;
+                  return <Translate text={quote} />;
                 })()}
               </blockquote>
 
@@ -134,7 +133,7 @@ export default function ResourceTemplate({
                 </div>
                 <div>
                   <p className="font-semibold text-slate-800 text-sm sm:text-base">
-                    {metadata.author}
+                    <Translate text={metadata.author} />
                   </p>
                 </div>
               </div>

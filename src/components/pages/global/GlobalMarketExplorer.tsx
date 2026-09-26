@@ -7,6 +7,7 @@ import FONTS from "@/assets/fonts";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { useCountry } from "@/context/CountryContext";
 import { MARKETS_DATA } from "./globalData";
+import Translate from "@/components/shared/Translate";
 
 type RegionFilter =
   | "all"
@@ -70,19 +71,16 @@ export default function GlobalMarketExplorer() {
           <h1
             className={`${FONTS.microgrammaBold.className} text-secondary text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight text-balance`}
           >
-            One Obrive.
-            <br />
-            Every Market.
-          </h1>
+             <Translate text="One Obrive." /> <br />
+             <Translate text="Every Market." /> </h1>
 
           {/* Subtitle */}
           <p className="text-primary/80 text-base sm:text-lg max-w-3xl font-normal leading-relaxed text-balance">
-            Obrive combines global technology capabilities with market-specific
-            experiences. Every market page is structured to connect local
-            business needs with the right solutions, products, services,
-            resources, and opportunities—creating a consistent global Obrive
-            experience without losing local relevance.
-          </p>
+             <Translate text="Obrive combines global technology capabilities with market-specific
+                                  experiences. Every market page is structured to connect local
+                                  business needs with the right solutions, products, services,
+                                  resources, and opportunities—creating a consistent global Obrive
+                                  experience without losing local relevance." /> </p>
         </div>
       </FullWidthSection>
 
@@ -134,8 +132,7 @@ export default function GlobalMarketExplorer() {
                 <h2
                   className={`${FONTS.microgrammaBold.className} text-secondary text-2xl sm:text-3xl`}
                 >
-                  Global Country Explorer
-                </h2>
+                   <Translate text="Global Country Explorer" /> </h2>
               </div>
             </div>
 
@@ -178,8 +175,7 @@ export default function GlobalMarketExplorer() {
                 ))
               ) : (
                 <div className="col-span-full py-12 text-center text-primary/60 text-sm">
-                  No country markets match your current filter criteria.
-                </div>
+                   <Translate text="No country markets match your current filter criteria." /> </div>
               )}
             </div>
           </section>

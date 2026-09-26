@@ -66,6 +66,9 @@ export async function POST(req: NextRequest) {
         gatewayFeeGst: Number(notes.gatewayFeeGst) || 0,
         gatewayCharges: Number(notes.gatewayCharges) || 0,
         totalAmount: Number(notes.totalAmount) || (paymentEntity?.amount || orderEntity?.amount),
+        // GSTIN and GST exemption status — stored in Razorpay notes by create-order
+        gstin: notes.gstin || undefined,
+        serviceGstExempt: notes.serviceGstExempt === "true",
       };
 
       if (orderData.customerEmail) {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
+import Translate from "@/components/shared/Translate";
 
 interface FAQWorkflowStepsProps {
   steps: string[];
@@ -38,7 +39,7 @@ export default function FAQWorkflowSteps({
                 onClick={() => handleScrollToSection(targetId)}
                 aria-label={`Jump to ${step}`}
               >
-                <span>{step}</span>
+                <span><Translate text={step} /></span>
               </button>
             );
           })}

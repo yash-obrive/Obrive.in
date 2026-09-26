@@ -1,5 +1,6 @@
 import FONTS from "@/assets/fonts";
 import Link from "next/link";
+import Translate from "@/components/shared/Translate";
 
 import type { ServiceSubSection } from "@/types/services";
 
@@ -32,20 +33,20 @@ const SolutionServiceSection = ({
       <h2
         className={`${FONTS.microgrammaBold.className} text-primary text-[32px] max-xl:text-3xl max-lg:text-2xl max-md:text-xl`}
       >
-        {title}
+        <Translate text={title} />
       </h2>
 
       <div className="flex flex-col gap-4 md:gap-6">
         {/* Subtitle */}
         {subtitle && (
           <p className="text-zinc-600 text-base max-md:text-sm max-w-[680px]">
-            {subtitle}
+            <Translate text={subtitle} />
           </p>
         )}
 
         {/* Description */}
         <p className="text-sm leading-7 tracking-[0.3px] text-zinc-600 max-w-[680px]">
-          {description}
+          <Translate text={description || ""} />
         </p>
 
         {/* Tag Label */}
@@ -53,7 +54,7 @@ const SolutionServiceSection = ({
           <p
             className={`${FONTS.microgrammaBold.className} text-primary text-xl max-md:text-lg mt-4 md:mt-8`}
           >
-            {label}
+            <Translate text={label} />
           </p>
         )}
 
@@ -65,7 +66,7 @@ const SolutionServiceSection = ({
                 className="flex-shrink-0 flex items-center justify-center gap-2 px-3 py-1.5 border border-zinc-300 rounded-full bg-transparent hover:bg-zinc-50 transition-colors"
               >
                 <span className="text-[11px] sm:text-xs text-zinc-600 leading-snug text-center">
-                  {item}
+                  <Translate text={item} />
                 </span>
               </div>
             ))}
@@ -81,12 +82,12 @@ const SolutionServiceSection = ({
                   <h3
                     className={`${FONTS.microgrammaBold.className} text-primary text-lg`}
                   >
-                    {sub.title}
+                    <Translate text={sub.title} />
                   </h3>
                 )}
                 {sub.description && (
                   <p className="text-sm leading-6 tracking-[0.3px] text-zinc-600">
-                    {sub.description}
+                    <Translate text={sub.description} />
                   </p>
                 )}
                 {sub.items && sub.items.length > 0 && (
@@ -96,7 +97,7 @@ const SolutionServiceSection = ({
                         key={i}
                         className="flex-shrink-0 flex items-center justify-center px-3 py-1 bg-zinc-50 border border-zinc-200 rounded-full text-[11px] sm:text-xs text-zinc-600 leading-snug"
                       >
-                        {item}
+                        <Translate text={item} />
                       </div>
                     ))}
                   </div>
@@ -109,7 +110,7 @@ const SolutionServiceSection = ({
         {/* Footer paragraph */}
         {footer && (
           <p className="text-xs leading-6 text-zinc-500 max-w-[660px] mt-6 md:mt-10">
-            {footer}
+            <Translate text={footer} />
           </p>
         )}
 
@@ -122,7 +123,7 @@ const SolutionServiceSection = ({
                 href={link.href}
                 className="flex items-center text-xs font-medium text-primary hover:opacity-80 transition-opacity"
               >
-                {link.label} →
+                <Translate text={link.label} /> →
               </Link>
             ))}
           </div>

@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { COUNTRIES, SUPPORTED_COUNTRIES } from "@/config/countries";
+import { getTranslationStatus } from "@/config/translations";
+import type { LanguageCode } from "@/config/languages";
 import { getIndustrySlugs } from "@/lib/industries";
 import {
   getAllCaseStudySlugs,
@@ -21,13 +23,43 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const makeAlternates = (subpath: string) => {
     const langs: Record<string, string> = {
-      "x-default": `${baseUrl}/in${subpath}`,
+      // The absolute fallback (x-default) points to the English India version
+      "x-default": `${baseUrl}/in/en${subpath}`,
     };
     for (const code of activeCountries) {
-      langs[COUNTRIES[code].hreflang] = `${baseUrl}/${code}${subpath}`;
+      const countryConf = COUNTRIES[code];
+      const regionCode = countryConf.hreflang.split("-")[1] || code.toUpperCase();
+      
+      for (const lang of countryConf.supportedLanguages) {
+        if (getTranslationStatus(code, lang, subpath) === "ready") {
+          const hrefLangKey = `${lang}-${regionCode}`;
+          langs[hrefLangKey] = `${baseUrl}/${code}/${lang}${subpath}`;
+        }
+      }
     }
     return { languages: langs };
   };
+
+  function createLocalizedPages(paths: string[], priority: number, changeFreq: any) {
+    const pages: MetadataRoute.Sitemap = [];
+    for (const country of activeCountries) {
+      const countryConf = COUNTRIES[country];
+      for (const path of paths) {
+        for (const lang of countryConf.supportedLanguages) {
+          if (getTranslationStatus(country, lang, path) === "ready") {
+            pages.push({
+              url: `${baseUrl}/${country}/${lang}${path}`,
+              lastModified: new Date(),
+              changeFrequency: path === "" ? "weekly" : changeFreq,
+              priority: path === "" ? 1.0 : priority,
+              alternates: makeAlternates(path),
+            });
+          }
+        }
+      }
+    }
+    return pages;
+  }
 
   // Country-specific static storefront pages
   const staticPaths = [
@@ -38,81 +70,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contact",
     "/global",
   ];
-  const localizedStaticPages: MetadataRoute.Sitemap = activeCountries.flatMap(
-    (country) =>
-      staticPaths.map((path) => ({
-        url: `${baseUrl}/${country}${path}`,
-        lastModified: new Date(),
-        changeFrequency: path === "" ? "weekly" : "monthly",
-        priority: path === "" ? 1.0 : 0.8,
-        alternates: makeAlternates(path),
-      })),
-  );
+  const localizedStaticPages = createLocalizedPages(staticPaths, 0.8, "monthly");
 
   // Product pages per country
   const productSlugs = getProductSlugs();
-  const localizedProductPages: MetadataRoute.Sitemap = activeCountries.flatMap(
-    (country) =>
-      productSlugs.map((slug) => ({
-        url: `${baseUrl}/${country}/products/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.9,
-        alternates: makeAlternates(`/products/${slug}`),
-      })),
-  );
+  const localizedProductPages = createLocalizedPages(productSlugs.map(s => `/products/${s}`), 0.9, "weekly");
 
   // Solution pages per country
   const solutionSlugs = getSolutionSlugs();
-  const localizedSolutionPages: MetadataRoute.Sitemap = activeCountries.flatMap(
-    (country) =>
-      solutionSlugs.map((slug) => ({
-        url: `${baseUrl}/${country}/services/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.9,
-        alternates: makeAlternates(`/services/${slug}`),
-      })),
-  );
+  const localizedSolutionPages = createLocalizedPages(solutionSlugs.map(s => `/services/${s}`), 0.9, "weekly");
 
   // Industries pages per country
   const industrySlugs = getIndustrySlugs();
-  const localizedIndustryPages: MetadataRoute.Sitemap = activeCountries.flatMap(
-    (country) =>
-      industrySlugs.map((slug) => ({
-        url: `${baseUrl}/${country}/industries/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.9,
-        alternates: makeAlternates(`/industries/${slug}`),
-      })),
-  );
+  const localizedIndustryPages = createLocalizedPages(industrySlugs.map(s => `/industries/${s}`), 0.9, "weekly");
 
   // Use Cases pages per country
   const useCaseSlugs = getUseCaseSlugs();
-  const localizedUseCasePages: MetadataRoute.Sitemap = activeCountries.flatMap(
-    (country) =>
-      useCaseSlugs.map((slug) => ({
-        url: `${baseUrl}/${country}/use-cases/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.9,
-        alternates: makeAlternates(`/use-cases/${slug}`),
-      })),
-  );
+  const localizedUseCasePages = createLocalizedPages(useCaseSlugs.map(s => `/use-cases/${s}`), 0.9, "weekly");
 
   // Technology pages per country
   const technologySlugs = getTechnologySlugs();
-  const localizedTechnologyPages: MetadataRoute.Sitemap =
-    activeCountries.flatMap((country) =>
-      technologySlugs.map((slug) => ({
-        url: `${baseUrl}/${country}/technology/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.9,
-        alternates: makeAlternates(`/technology/${slug}`),
-      })),
-    );
+  const localizedTechnologyPages = createLocalizedPages(technologySlugs.map(s => `/technology/${s}`), 0.9, "weekly");
 
   // Case study/resource/blog pages per country
   const caseStudySlugs = await getAllCaseStudySlugs();
@@ -127,30 +105,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...blogSlugs,
     ...jsonCaseStudySlugs,
   ];
-
-  const localizedCaseStudyPages: MetadataRoute.Sitemap =
-    activeCountries.flatMap((country) =>
-      allResourceSlugs.map((slug) => ({
-        url: `${baseUrl}/${country}/resources/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.7,
-        alternates: makeAlternates(`/resources/${slug}`),
-      })),
-    );
+  const localizedCaseStudyPages = createLocalizedPages(allResourceSlugs.map(s => `/resources/${s}`), 0.7, "monthly");
 
   // FAQ pages per country
   const faqSlugs = await getAllFAQSlugs();
-  const localizedFaqPages: MetadataRoute.Sitemap = activeCountries.flatMap(
-    (country) =>
-      faqSlugs.map((slug) => ({
-        url: `${baseUrl}/${country}/faq/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly",
-        priority: 0.6,
-        alternates: makeAlternates(`/faq/${slug}`),
-      })),
-  );
+  const localizedFaqPages = createLocalizedPages(faqSlugs.map(s => `/faq/${s}`), 0.6, "monthly");
 
   // Global Legal & Support pages (from (company-info) route group)
   const legalSlugs = await getAllCompanyInfoSlugs("legal");

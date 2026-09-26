@@ -7,6 +7,7 @@ import ArticlesGrid from "./components/ArticlesGrid";
 import CustomPagination from "./components/CustomPagination";
 import FeaturedPopularSection from "./components/FeaturedPopularSection";
 import ResourcesFilter from "./components/ResourcesFilter";
+import Translate from "@/components/shared/Translate";
 
 const FILTER_KEYWORDS = {
   AR: ["ar", "augmented reality", "augmented"],
@@ -183,7 +184,7 @@ const ResourcesContentInner = () => {
 
 const ResourcesContent = () => {
   return (
-    <Suspense fallback={<div>Loading resources...</div>}>
+    <Suspense fallback={<div> <Translate text="Loading resources..." /> </div>}>
       <ResourcesContentInner />
     </Suspense>
   );

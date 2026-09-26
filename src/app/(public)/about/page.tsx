@@ -10,6 +10,7 @@ import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import WhySection from "@/components/shared/layout/WhySection";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import { WHO_WE_ARE_ABOUT } from "@/constants/pages/why-section";
+import Translate from "@/components/shared/Translate";
 
 export const metadata = {
   metadataBase: new URL("https://www.obrive.in"),
@@ -153,12 +154,12 @@ export default function Products() {
               <h1
                 className={`${FONTS.microgrammaBold.className} text-secondary sm:leading-20 text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-[90vw] sm:max-w-3xl md:max-w-4xl break-words text-balance`}
               >
-                Immersive Tech Redefining Business
+                <Translate text="Immersive Tech Redefining Business" />
               </h1>
               <p className="text-base sm:text-md text-center max-w-3xl px-4 font-medium">
-                At Obrive.com, we empower organizations to transform how they
+                <Translate text="At Obrive.com, we empower organizations to transform how they
                 design, train, and engage—leveraging the full spectrum of AR,
-                VR, MR, 3D design, and Spatial Computing.
+                VR, MR, 3D design, and Spatial Computing." />
               </p>
             </div>
           </FadeInOnView>
@@ -171,19 +172,19 @@ export default function Products() {
           <div className="relative z-10 text-center px-4">
             <FadeInOnView>
               <div className="bg-gradient relative w-fit -top-40 -left-60 flex max-sm:flex-col gap-4 sm:items-center max-sm:items-start justify-between rounded-lg py-3 px-8 mb-4 border border-primary/80 max-md:static max-md:w-full max-md:justify-center max-md:gap-2 max-md:px-4 max-md:py-2">
-                <span className="text-secondary">Mission</span>
+                <span className="text-secondary"><Translate text="Mission" /></span>
                 <hr className="w-px max-sm:hidden h-8 max-md:h-6 bg-primary/80" />
                 <p className="text-secondary max-sm:text-left max-md:text-sm">
-                  Create Immersive Futures That Matter
+                  <Translate text="Create Immersive Futures That Matter" />
                 </p>
               </div>
             </FadeInOnView>
             <FadeInOnView>
               <div className="bg-gradient relative w-fit -top-40 left-60 flex max-sm:flex-col gap-4 sm:items-center max-sm:items-start justify-between rounded-lg py-3 px-8 mb-4 border border-primary/80 max-md:static max-md:w-full max-md:justify-center max-md:gap-2 max-md:px-4 max-md:py-2">
-                <span className="text-secondary">Vision</span>
+                <span className="text-secondary"><Translate text="Vision" /></span>
                 <hr className="w-px max-sm:hidden h-8 max-md:h-6 bg-primary/80" />
                 <p className="text-secondary max-sm:text-left max-md:text-sm">
-                  A World Where Digital and Physical Seamlessly Coexist.
+                  <Translate text="A World Where Digital and Physical Seamlessly Coexist." />
                 </p>
               </div>
             </FadeInOnView>

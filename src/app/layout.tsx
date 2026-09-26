@@ -38,13 +38,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+import { headers } from "next/headers";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerList = await headers();
+  const language = headerList.get("x-obrive-language") || "en";
+  const dir = language === "ar" ? "rtl" : "ltr";
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={language} dir={dir} suppressHydrationWarning>
       <head>
         {/* Preconnect to critical external domains only (max 3-4) */}
         {/*
