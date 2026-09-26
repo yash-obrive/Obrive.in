@@ -10,6 +10,7 @@ import type {
 } from "@/types/services";
 import SolutionProcessSteps from "./SolutionProcessSteps";
 import SolutionServiceSection from "./SolutionServiceSection";
+import Translate from "@/components/shared/Translate";
 
 interface SolutionSidebarLayoutProps {
   slug: string;
@@ -68,7 +69,7 @@ const SolutionSidebarLayout = ({
         {/* Sticky Sidebar */}
         <div className="sticky top-20 self-start max-lg:hidden flex-shrink-0">
           <div className="w-sm">
-            <p className="text-xs py-4 px-2">{serviceLabel}</p>
+            <p className="text-xs py-4 px-2"><Translate text={serviceLabel} /></p>
             {sidebarLinks.map((link, index) => (
               <div
                 key={link.id}
@@ -78,7 +79,7 @@ const SolutionSidebarLayout = ({
                   ${activeId === link.id ? "text-primary font-semibold" : ""}
                 `}
               >
-                <span>{link.label}</span>
+                <span><Translate text={link.label} /></span>
               </div>
             ))}
             <div
@@ -90,14 +91,13 @@ const SolutionSidebarLayout = ({
               }}
               className="flex items-center gap-3 py-4 px-2 cursor-pointer hover:bg-primary/10 transition-colors text-xs border-b border-primary/80"
             >
-              <span>Our Process</span>
+              <span> <Translate text="Our Process" /> </span>
             </div>
             <Link
               href={`/services/${slug}/industries`}
               className="flex items-center gap-3 py-4 px-2 cursor-pointer hover:bg-primary/10 transition-colors text-xs border-b border-primary/80"
             >
-              Industries We Serve
-            </Link>
+               <Translate text="Industries We Serve" /> </Link>
           </div>
         </div>
 

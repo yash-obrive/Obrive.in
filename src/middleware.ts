@@ -7,22 +7,13 @@ import {
   type CountryCode,
   DEFAULT_COUNTRY,
   isValidCountryCode,
+  getCountryConfig,
 } from "@/config/countries";
+import { isValidLanguageCode, type LanguageCode } from "@/config/languages";
 
 // Exclude static assets, internal endpoints, and global portal routes
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - robots.txt, sitemap.xml
-     * - public assets and media folders (animations, audio, images, videos, certificates, ai)
-     * - public asset extensions (svg, png, jpg, jpeg, webp, avif, ico, mp4, webm, ogg, mp3, wav, riv, woff, woff2, ttf, otf, eot, css, js, json, pdf, txt, xml)
-     * - /api routes
-     * - Portal and global routes: client-login, employee-login, dashboard, audio-room, client, community-forum, profile, apply.career.obrive.com, legal, security, support
-     */
     "/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|animations/|audio/|images/|videos/|certificates/|ai/|api/|client-login|employee-login|dashboard|audio-room|client/|community-forum|profile|legal|security|support|apply\\.career\\.obrive\\.com|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif|ico|mp4|webm|ogg|mp3|wav|riv|woff|woff2|ttf|otf|eot|css|js|json|pdf|txt|xml)$).*)",
   ],
 };
@@ -44,6 +35,7 @@ export function middleware(req: NextRequest) {
   const { pathname, search } = req.nextUrl;
   const segments = pathname.split("/").filter(Boolean);
   const firstSegment = segments[0]?.toLowerCase();
+  const secondSegment = segments[1]?.toLowerCase();
 
   // Handle /location/[city] routes
   if (firstSegment === "location" && segments.length > 1) {
@@ -89,7 +81,8 @@ export function middleware(req: NextRequest) {
 
   // 1. Check if the path starts with a supported country code (e.g. /in, /us/about, /ae/products/obpark)
   if (isValidCountryCode(firstSegment)) {
-    const countryCode = firstSegment;
+    const countryCode = firstSegment as CountryCode;
+    const countryConfig = getCountryConfig(countryCode);
 
     // Canonicalize uppercase/mixed-case country in URL (e.g. /IN -> /in)
     if (segments[0] !== countryCode) {
@@ -97,8 +90,6 @@ export function middleware(req: NextRequest) {
       canonicalUrl.pathname = `/${countryCode}${segments.length > 1 ? `/${segments.slice(1).join("/")}` : ""}`;
       return NextResponse.redirect(canonicalUrl, { status: 301 });
     }
-
-    const countryConfig = COUNTRIES[countryCode];
 
     // If country is not production ready (and not in preview mode), fallback to default
     if (
@@ -110,69 +101,78 @@ export function middleware(req: NextRequest) {
       return NextResponse.redirect(fallbackUrl);
     }
 
-    // Pass the country in custom headers for server components and layout
-    const requestHeaders = new Headers(req.headers);
-    requestHeaders.set("x-obrive-country", countryCode);
+    // Now check the language segment
+    if (isValidLanguageCode(secondSegment)) {
+      const languageCode = secondSegment as LanguageCode;
+      
+      // Canonicalize uppercase/mixed-case language in URL (e.g. /EN -> /en)
+      if (segments[1] !== languageCode) {
+        const canonicalUrl = req.nextUrl.clone();
+        canonicalUrl.pathname = `/${countryCode}/${languageCode}${segments.length > 2 ? `/${segments.slice(2).join("/")}` : ""}`;
+        return NextResponse.redirect(canonicalUrl, { status: 301 });
+      }
 
-    // Pass geo-detected country as suggested country if different
-    const rawGeo =
-      req.headers.get("x-vercel-ip-country") || req.headers.get("cf-ipcountry");
-    const detected = mapGeoCountryToSupported(rawGeo);
-    if (detected && detected !== countryCode) {
-      requestHeaders.set("x-obrive-suggested-country", detected);
-    }
+      // Check if language is supported by this country
+      if (!countryConfig.supportedLanguages.includes(languageCode)) {
+        // Return 404 for invalid combinations (e.g., /in/ar/services)
+        const notFoundUrl = req.nextUrl.clone();
+        notFoundUrl.pathname = "/404";
+        return NextResponse.rewrite(notFoundUrl);
+      }
 
-    // Determine the internal underlying path (e.g. /in -> /, /in/about -> /about, /in/global -> /global)
-    const subpath = segments.slice(1).join("/");
-    const rewriteUrl = req.nextUrl.clone();
-    rewriteUrl.pathname = subpath ? `/${subpath}` : "/";
-    rewriteUrl.search = search;
+      // Valid Country + Language
+      const requestHeaders = new Headers(req.headers);
+      requestHeaders.set("x-obrive-country", countryCode);
+      requestHeaders.set("x-obrive-language", languageCode);
+      requestHeaders.set("x-obrive-pathname", req.nextUrl.pathname);
 
-    // Rewrite internally to the public route while keeping the country prefix in the browser URL
-    const response = NextResponse.rewrite(rewriteUrl, {
-      request: {
-        headers: requestHeaders,
-      },
-    });
+      // Pass geo-detected country as suggested country if different
+      const rawGeo =
+        req.headers.get("x-vercel-ip-country") || req.headers.get("cf-ipcountry");
+      const detected = mapGeoCountryToSupported(rawGeo);
+      if (detected && detected !== countryCode) {
+        requestHeaders.set("x-obrive-suggested-country", detected);
+      }
 
-    // Ensure cookie is synced with the active URL country
-    const existingCookie = req.cookies.get("preferred_country")?.value;
-    if (existingCookie !== countryCode) {
-      response.cookies.set("preferred_country", countryCode, {
-        path: "/",
-        maxAge: 31536000,
-        sameSite: "lax",
+      // Determine the internal underlying path (e.g. /in/en -> /, /in/en/about -> /about)
+      const subpath = segments.slice(2).join("/");
+      const rewriteUrl = req.nextUrl.clone();
+      rewriteUrl.pathname = subpath ? `/${subpath}` : "/";
+      rewriteUrl.search = search;
+
+      const response = NextResponse.rewrite(rewriteUrl, {
+        request: {
+          headers: requestHeaders,
+        },
       });
-    }
 
-    return response;
-  }
-
-  // 2. Path does NOT have a country prefix (e.g., '/', '/about', '/products/obpark', '/global')
-  // Check user's preferred cookie first
-  const cookieCountry = req.cookies.get("preferred_country")?.value;
-  let targetCountry: CountryCode = DEFAULT_COUNTRY;
-
-  if (isValidCountryCode(cookieCountry)) {
-    targetCountry = cookieCountry;
-  } else {
-    // Detect country from edge geo IP header
-    const rawGeo =
-      req.headers.get("x-vercel-ip-country") || req.headers.get("cf-ipcountry");
-    const detected = mapGeoCountryToSupported(rawGeo);
-    if (detected && COUNTRIES[detected]?.isProductionReady) {
-      targetCountry = detected;
+      return response;
+    } else {
+      // 2. Path has a country prefix but NO language prefix (legacy URL like /in/services)
+      // 301 Redirect to the country's default language to preserve SEO.
+      const redirectUrl = req.nextUrl.clone();
+      const restOfPath = segments.slice(1).join("/");
+      redirectUrl.pathname = `/${countryCode}/${countryConfig.defaultLanguage}${restOfPath ? `/${restOfPath}` : ""}`;
+      return NextResponse.redirect(redirectUrl, { status: 301 });
     }
   }
 
-  // Pass the country in custom headers for server components and layout
+  // 3. Path does NOT have a country prefix (e.g., '/', '/about', '/products/obpark', '/global')
+  // These are INTERNATIONAL pages — always served in English.
+  // Country/language-specific pages live at /{country}/{language}/...
+  // Geo-detection is only used for the CountrySwitcherBanner suggestion, not for content language.
+
+  // Pass English as the language for all international routes
   const requestHeaders = new Headers(req.headers);
-  requestHeaders.set("x-obrive-country", targetCountry);
+  requestHeaders.set("x-obrive-country", DEFAULT_COUNTRY);
+  requestHeaders.set("x-obrive-language", "en");
+  requestHeaders.set("x-obrive-pathname", req.nextUrl.pathname);
 
+  // Still detect geo for the country-switcher banner suggestion
   const rawGeo2 =
     req.headers.get("x-vercel-ip-country") || req.headers.get("cf-ipcountry");
   const detectedGeo2 = mapGeoCountryToSupported(rawGeo2);
-  if (detectedGeo2 && detectedGeo2 !== targetCountry) {
+  if (detectedGeo2 && COUNTRIES[detectedGeo2]?.isProductionReady) {
     requestHeaders.set("x-obrive-suggested-country", detectedGeo2);
   }
 
@@ -181,15 +181,6 @@ export function middleware(req: NextRequest) {
       headers: requestHeaders,
     },
   });
-
-  // Set preferred_country cookie on initial load if not present
-  if (!cookieCountry) {
-    response.cookies.set("preferred_country", targetCountry, {
-      path: "/",
-      maxAge: 31536000,
-      sameSite: "lax",
-    });
-  }
 
   return response;
 }

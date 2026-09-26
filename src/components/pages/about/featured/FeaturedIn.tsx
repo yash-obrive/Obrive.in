@@ -6,6 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 import FONTS from "@/assets/fonts";
 import { Button } from "@/components/ui/button";
 import { FEATURED_IN } from "@/constants/pages/about/featured";
+import Translate from "@/components/shared/Translate";
 
 const FeaturedIn = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,8 +56,7 @@ const FeaturedIn = () => {
           <h1
             className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl text-center`}
           >
-            Featured in
-          </h1>
+             <Translate text="Featured in" /> </h1>
         </div>
         <div className="w-full max-w-7xl h-[400px] flex items-center justify-center">
           {/* Placeholder to prevent layout shift */}
@@ -71,8 +71,7 @@ const FeaturedIn = () => {
         <h1
           className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl text-center`}
         >
-          Featured in
-        </h1>
+           <Translate text="Featured in" /> </h1>
       </div>
 
       <div className="w-full max-w-7xl overflow-hidden relative px-4">
@@ -115,7 +114,7 @@ const FeaturedIn = () => {
                         />
                       </div>
                       <p className="text-sm text-primary/80 text-left max-w-md mx-auto">
-                        {item.description}
+                        <Translate text={item.description} />
                       </p>
                     </div>
                   </a>

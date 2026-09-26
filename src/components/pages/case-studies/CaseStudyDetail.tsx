@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import type { CaseStudy } from "@/lib/case-studies";
 import type { CaseStudyMetadata } from "@/lib/mdx";
+import Translate from "@/components/shared/Translate";
 
 interface CaseStudyDetailProps {
   caseStudy: CaseStudy;
@@ -34,8 +35,7 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
           <h2
             className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}
           >
-            Overview
-          </h2>
+             <Translate text="Overview" /> </h2>
           <div>
             <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
               {caseStudy.overview}
@@ -48,8 +48,7 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
             <h2
               className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}
             >
-              The Challenge
-            </h2>
+               <Translate text="The Challenge" /> </h2>
             <div>
               <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
                 {caseStudy.challenge}
@@ -63,8 +62,7 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
             <h2
               className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}
             >
-              Solution Architecture
-            </h2>
+               <Translate text="Solution Architecture" /> </h2>
             <div>
               <ul className="list-disc list-inside pl-0 space-y-3">
                 {caseStudy.architecture.map((arch, idx) => (
@@ -88,8 +86,7 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
             <h2
               className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}
             >
-              Deliverables
-            </h2>
+               <Translate text="Deliverables" /> </h2>
             <div>
               <ul className="list-disc list-inside pl-0 space-y-2">
                 {caseStudy.deliverables.map((item, idx) => (
@@ -110,8 +107,7 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
             <h2
               className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}
             >
-              Technology Stack
-            </h2>
+               <Translate text="Technology Stack" /> </h2>
             <div className="flex flex-wrap gap-2">
               {caseStudy.techStack
                 .flatMap((stack) => stack.split(", "))
@@ -132,8 +128,7 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
             <h2
               className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}
             >
-              Impact & Outcomes
-            </h2>
+               <Translate text="Impact & Outcomes" /> </h2>
             <div>
               <ul className="list-disc list-inside pl-0 space-y-4">
                 {caseStudy.impacts.map((impact, idx) => (
@@ -157,8 +152,7 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
             <h2
               className={`${FONTS.microgrammaBold.className} text-2xl md:text-3xl mb-4 mt-6`}
             >
-              Frequently Asked Questions
-            </h2>
+               <Translate text="Frequently Asked Questions" /> </h2>
             <Accordion type="single" collapsible className="w-full">
               {caseStudy.faqs.map((faq, idx) => (
                 <AccordionItem key={idx} value={`faq-${idx}`}>

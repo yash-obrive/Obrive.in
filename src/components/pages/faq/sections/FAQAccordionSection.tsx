@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion";
 
 interface FAQAccordionSectionProps {
-  title?: string;
+  title?: string | React.ReactNode;
   children: React.ReactNode;
 }
 
@@ -24,7 +24,7 @@ export default function FAQAccordionSection({
   children,
 }: FAQAccordionSectionProps) {
   return (
-    <section className="mb-6" id={title ? slugify(title) : undefined}>
+    <section className="mb-6" id={typeof title === 'string' ? slugify(title) : undefined}>
       {title && <p className="text-base mb-4 text-gray-700">{title}</p>}
 
       <div className="border border-zinc-800 rounded-xl overflow-hidden">
@@ -37,8 +37,8 @@ export default function FAQAccordionSection({
 }
 
 interface FAQItemProps {
-  question?: string;
-  q?: string;
+  question?: string | React.ReactNode;
+  q?: string | React.ReactNode;
   answer?: string | React.ReactNode;
   children?: React.ReactNode;
   value?: string;
@@ -59,7 +59,7 @@ export function FAQItem({
     return html;
   };
 
-  const itemValue = value || `faq-${slugify(actualQuestion)}`;
+  const itemValue = value || `faq-item`;
   const content = children || answer;
 
   return (

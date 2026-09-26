@@ -3,7 +3,6 @@ const crypto = require("node:crypto");
 const { getPackageDetails } = require("../../utils/pricing");
 const { calculatePaymentBreakdown } = require("../../utils/paymentCalculation");
 const { sendPaymentConfirmationEmails } = require("./payment.email");
-const { prisma } = require("../../../prisma");
 
 const getRazorpayInstance = () => {
   const key_id = process.env.RAZORPAY_KEY_ID;
@@ -16,9 +15,6 @@ const getRazorpayInstance = () => {
 
 exports.createOrder = async (req, res) => {
   try {
-    // NOTE: Only packageId is trusted from the client.
-    // All amounts are calculated server-side from the trusted pricing source.
-    // Client-submitted amount/serviceGst/gatewayFee/totalAmount are IGNORED.
     const {
       packageId,
       customerName,
@@ -42,11 +38,8 @@ exports.createOrder = async (req, res) => {
         .json({ success: false, error: "Invalid package ID" });
     }
 
-    // Server-side authoritative price calculation.
-    // priceINR in pricing.js is INR; multiply by 100 for paise.
     const baseAmountPaise = packageDetails.priceINR * 100;
     const breakdown = calculatePaymentBreakdown(baseAmountPaise);
-    // breakdown.totalAmount is what the customer actually pays.
 
     const currency = "INR";
     const receipt = `rcpt_${Date.now()}_${Math.random().toString(36).substring(7)}`;
@@ -62,7 +55,7 @@ exports.createOrder = async (req, res) => {
       });
     }
 
-    // Razorpay order uses totalAmount (base + GST + gateway charges)
+    // Embed all necessary data in Razorpay notes so we don't need a database!
     const order = await razorpay.orders.create({
       amount: breakdown.totalAmount,
       currency,
@@ -72,45 +65,16 @@ exports.createOrder = async (req, res) => {
         packageName: packageDetails.name,
         customerName: customerName || "",
         customerEmail: customerEmail || "",
-        company: company || "",
+        customerPhone: customerPhone || "",
+        baseAmount: breakdown.baseAmount.toString(),
+        serviceGst: breakdown.serviceGst.toString(),
+        gatewayFee: breakdown.gatewayFee.toString(),
+        gatewayFeeGst: breakdown.gatewayFeeGst.toString(),
+        gatewayCharges: breakdown.gatewayCharges.toString(),
+        totalAmount: breakdown.totalAmount.toString(),
       },
     });
 
-    // Save full financial breakdown + customer info to DB
-    try {
-      await prisma.paymentOrder.create({
-        data: {
-          packageId,
-          packageName: packageDetails.name,
-          // Legacy field kept for backward compat — equals totalAmount for new records
-          amount: breakdown.totalAmount,
-          // Financial breakdown fields
-          baseAmount: breakdown.baseAmount,
-          serviceGst: breakdown.serviceGst,
-          gatewayFee: breakdown.gatewayFee,
-          gatewayFeeGst: breakdown.gatewayFeeGst,
-          gatewayCharges: breakdown.gatewayCharges,
-          totalAmount: breakdown.totalAmount,
-          currency,
-          razorpayOrderId: order.id,
-          status: "CREATED",
-          customerName: customerName || "",
-          customerEmail: customerEmail || "",
-          customerPhone: customerPhone || "",
-          company: company || "",
-          gst: gst || "",
-          address: address || "",
-        },
-      });
-    } catch (dbError) {
-      console.error("Failed to persist order to database:", dbError);
-      return res
-        .status(500)
-        .json({ success: false, error: "Internal database error" });
-    }
-
-    // Return server-calculated breakdown to frontend for display.
-    // Secrets are never included. Client MUST use these values — not recalculate.
     return res.status(200).json({
       success: true,
       orderId: order.id,
@@ -164,66 +128,8 @@ exports.verifyPayment = async (req, res) => {
         .json({ success: false, error: "Payment verification failed." });
     }
 
-    // Process payment in a transaction for idempotency
-    const result = await prisma.$transaction(async (tx) => {
-      const existingOrder = await tx.paymentOrder.findUnique({
-        where: { razorpayOrderId: razorpay_order_id },
-      });
-
-      if (!existingOrder) {
-        throw new Error("Order not found in database");
-      }
-
-      if (
-        existingOrder.status === "AUTHORIZED" ||
-        existingOrder.status === "CAPTURED"
-      ) {
-        return { existingOrder, alreadyProcessed: true };
-      }
-
-      const updatedOrder = await tx.paymentOrder.update({
-        where: { id: existingOrder.id },
-        data: {
-          status: "AUTHORIZED",
-          razorpayPaymentId: razorpay_payment_id,
-        },
-      });
-
-      return { existingOrder: updatedOrder, alreadyProcessed: false };
-    });
-
-    // Send emails if not processed yet and not previously sent
-    if (!result.alreadyProcessed && !result.existingOrder.customerEmailSentAt) {
-      try {
-        const orderData = {
-          razorpayOrderId: result.existingOrder.razorpayOrderId,
-          razorpayPaymentId: razorpay_payment_id,
-          amount: result.existingOrder.amount,
-          currency: result.existingOrder.currency,
-          packageId: result.existingOrder.packageId,
-          packageName: result.existingOrder.packageName,
-          customerName: result.existingOrder.customerName,
-          customerEmail: result.existingOrder.customerEmail,
-          customerPhone: result.existingOrder.customerPhone,
-        };
-
-        await sendPaymentConfirmationEmails(orderData);
-
-        await prisma.paymentOrder.update({
-          where: { id: result.existingOrder.id },
-          data: {
-            customerEmailSentAt: new Date(),
-            adminEmailSentAt: new Date(),
-          },
-        });
-      } catch (err) {
-        console.error(
-          "Failed to send confirmation emails during verification:",
-          err,
-        );
-      }
-    }
-
+    // Since we don't use DB, we trust verifyPayment to just return success.
+    // The webhook will handle sending the email.
     return res
       .status(200)
       .json({ success: true, message: "Payment verified successfully" });
@@ -280,74 +186,65 @@ exports.webhook = async (req, res) => {
     }
 
     if (event === "payment.captured" || event === "order.paid") {
-      const result = await prisma.$transaction(async (tx) => {
-        const existingOrder = await tx.paymentOrder.findUnique({
-          where: { razorpayOrderId: razorpayOrderId },
-        });
+      // Extract data from Razorpay notes instead of database!
+      const notes = paymentEntity?.notes || orderEntity?.notes || {};
+      
+      const orderData = {
+        razorpayOrderId: razorpayOrderId,
+        razorpayPaymentId: razorpayPaymentId,
+        amount: paymentEntity?.amount || orderEntity?.amount,
+        currency: paymentEntity?.currency || orderEntity?.currency || "INR",
+        packageId: notes.packageId || "unknown",
+        packageName: notes.packageName || "Unknown Package",
+        customerName: notes.customerName || "Customer",
+        customerEmail: notes.customerEmail || "",
+        customerPhone: notes.customerPhone || "",
+        baseAmount: Number(notes.baseAmount) || 0,
+        serviceGst: Number(notes.serviceGst) || 0,
+        gatewayFee: Number(notes.gatewayFee) || 0,
+        gatewayFeeGst: Number(notes.gatewayFeeGst) || 0,
+        gatewayCharges: Number(notes.gatewayCharges) || 0,
+        totalAmount: Number(notes.totalAmount) || (paymentEntity?.amount || orderEntity?.amount),
+      };
 
-        if (!existingOrder) {
-          throw new Error("Order not found in database");
-        }
-
-        if (existingOrder.status === "CAPTURED") {
-          return { existingOrder, alreadyProcessed: true };
-        }
-
-        const updatedOrder = await tx.paymentOrder.update({
-          where: { id: existingOrder.id },
-          data: {
-            status: "CAPTURED",
-            razorpayPaymentId:
-              razorpayPaymentId || existingOrder.razorpayPaymentId,
-          },
-        });
-
-        return { existingOrder: updatedOrder, alreadyProcessed: false };
-      });
-
-      if (!result.existingOrder.customerEmailSentAt) {
-        try {
-          const orderData = {
-            razorpayOrderId: result.existingOrder.razorpayOrderId,
-            razorpayPaymentId: razorpayPaymentId,
-            amount: result.existingOrder.amount,
-            currency: result.existingOrder.currency,
-            packageId: result.existingOrder.packageId,
-            packageName: result.existingOrder.packageName,
-            customerName: result.existingOrder.customerName,
-            customerEmail: result.existingOrder.customerEmail,
-            customerPhone: result.existingOrder.customerPhone,
-          };
-
-          await sendPaymentConfirmationEmails(orderData);
-
-          await prisma.paymentOrder.update({
-            where: { id: result.existingOrder.id },
-            data: {
-              customerEmailSentAt: new Date(),
-              adminEmailSentAt: new Date(),
-            },
-          });
-        } catch (err) {
-          console.error("Failed to send emails from webhook:", err);
-        }
+      if (orderData.customerEmail) {
+        await sendPaymentConfirmationEmails(orderData);
+        console.log(`Webhook sent confirmation email for order: ${razorpayOrderId}`);
       }
-    } else if (event === "payment.failed") {
-      await prisma.paymentOrder.updateMany({
-        where: {
-          razorpayOrderId: razorpayOrderId,
-          status: { notIn: ["CAPTURED", "AUTHORIZED", "FAILED"] },
-        },
-        data: {
-          status: "FAILED",
-          razorpayPaymentId: razorpayPaymentId,
-        },
-      });
     }
 
     return res.status(200).json({ success: true });
   } catch (error) {
     console.error("Webhook processing error:", error);
     return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+exports.testEmail = async (req, res) => {
+  try {
+    const orderData = {
+      razorpayOrderId: "order_test_12345",
+      razorpayPaymentId: "pay_test_67890",
+      amount: 12000,
+      baseAmount: 10000,
+      serviceGst: 1800,
+      gatewayFee: 200,
+      gatewayFeeGst: 36,
+      gatewayCharges: 236,
+      totalAmount: 12036,
+      currency: "INR",
+      packageId: "live-testing-100",
+      packageName: "Live Testing Package",
+      customerName: "Obrive Admin Test",
+      customerEmail: "yashveer@obrive.com", 
+      customerPhone: "8873394750",
+    };
+
+    await sendPaymentConfirmationEmails(orderData);
+    
+    return res.status(200).json({ success: true, message: "Test email triggered successfully!" });
+  } catch (error) {
+    console.error("Test email error:", error);
+    return res.status(500).json({ success: false, error: error.message });
   }
 };

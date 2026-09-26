@@ -12,6 +12,7 @@ export interface Blog {
   author: string;
   category: string;
   cta: string;
+  image?: string;
   sections: BlogSection[];
 }
 

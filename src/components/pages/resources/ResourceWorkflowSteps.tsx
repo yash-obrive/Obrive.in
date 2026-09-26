@@ -11,6 +11,7 @@ import {
 import React from "react";
 import { Button } from "@/components/ui/button";
 import CustomToast from "./components/Toast";
+import Translate from "@/components/shared/Translate";
 
 interface ResourceWorkflowStepsProps {
   steps: string[];
@@ -184,7 +185,7 @@ export default function ResourceWorkflowSteps({
                 aria-label={`Jump to ${step}`}
                 disabled={!hasTarget}
               >
-                <span>{step}</span>
+                <span><Translate text={step} /></span>
               </button>
             );
           })}
@@ -199,7 +200,7 @@ export default function ResourceWorkflowSteps({
             className="text-[10px]"
           >
             <Share2 className="size-4" />
-            {copied ? "Copied" : "Share"}
+            <Translate text={copied ? "Copied" : "Share"} />
           </Button>
 
           <Button

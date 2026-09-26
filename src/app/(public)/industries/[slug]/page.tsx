@@ -2,7 +2,25 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import { SolutionTemplate } from "@/components/pages/services/SolutionTemplate";
+import { COUNTRIES, SUPPORTED_COUNTRIES } from "@/config/countries";
 import { getIndustryData, getIndustrySlugs } from "@/lib/industries";
+
+function getAlternates(slug: string) {
+  const activeCountries = SUPPORTED_COUNTRIES.filter(
+    (code) => COUNTRIES[code].isProductionReady
+  );
+  const langs: Record<string, string> = {
+    "x-default": `https://obrive.com/industries/${slug}`,
+  };
+  for (const code of activeCountries) {
+    langs[COUNTRIES[code].hreflang] = `https://obrive.com/${code}/industries/${slug}`;
+  }
+  return {
+    canonical: `https://obrive.com/industries/${slug}`,
+    languages: langs,
+  };
+}
+
 
 interface IndustryPageProps {
   params: Promise<{
@@ -29,8 +47,26 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${industryData.hero.title} | Obrive`,
-    description: industryData.hero.description,
+    title: `${industryData.hero.title} | Obrive Industries`,
+    description: industryData.hero.description || `Explore ${industryData.hero.title} solutions by Obrive Industries.`,
+    alternates: getAlternates(slug),
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      type: "website",
+      url: `https://obrive.com/industries/${slug}`,
+      title: `${industryData.hero.title} | Obrive Industries`,
+      description: industryData.hero.description || `Explore ${industryData.hero.title} solutions by Obrive Industries.`,
+      siteName: "Obrive Industries",
+      locale: "en_IN",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${industryData.hero.title} | Obrive Industries`,
+      description: industryData.hero.description || `Explore ${industryData.hero.title} solutions by Obrive Industries.`,
+    },
   };
 }
 
@@ -51,19 +87,45 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
         type="application/ld+json"
         strategy="afterInteractive"
       >
-        {JSON.stringify({
-          "@context": "https://schema.org/",
-          "@type": "WebPage",
-          "@id": `https://www.obrive.in/industries/${slug}`,
-          url: `https://www.obrive.in/industries/${slug}`,
-          name: industryData.hero.title,
-          description: industryData.hero.description,
-          provider: {
-            "@type": "Organization",
-            name: "Obrive",
-            url: "https://obrive.com",
+        {JSON.stringify([
+          {
+            "@context": "https://schema.org/",
+            "@type": "WebPage",
+            "@id": `https://obrive.com/industries/${slug}`,
+            url: `https://obrive.com/industries/${slug}`,
+            name: industryData.hero.title,
+            description: industryData.hero.description,
+            provider: {
+              "@type": "Organization",
+              name: "Obrive Industries",
+              url: "https://obrive.com",
+            },
           },
-        })}
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://obrive.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Industries",
+                "item": "https://obrive.com/industries"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": industryData.hero.title,
+                "item": `https://obrive.com/industries/${slug}`
+              }
+            ]
+          }
+        ])}
       </Script>
       <SolutionTemplate
         slug={slug}

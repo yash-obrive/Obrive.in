@@ -9,6 +9,7 @@ import type { ServiceSection, SidebarLink } from "@/types/services";
 import BenefitsTable from "../cards/BenefitsTable";
 import WorkflowSteps from "../cards/WorkflowSteps";
 import SolutionServiceSection from "./SolutionServiceSection";
+import Translate from "@/components/shared/Translate";
 
 interface WorkflowSectionProps {
   howItWorks?: readonly any[];
@@ -39,7 +40,7 @@ const WorkflowSection = ({
     <div className="flex items-start my-20 justify-between gap-12 lg:gap-24 xl:gap-32 max-xl:gap-16 max-lg:flex-col max-lg:items-stretch max-lg:justify-start max-md:my-14 max-sm:my-10">
       <div className="sticky top-20 self-start max-md:hidden flex-shrink-0">
         <div className="w-sm">
-          <p className="text-xs py-4 px-2">Workflow Steps</p>
+          <p className="text-xs py-4 px-2"> <Translate text="Workflow Steps" /> </p>
           {(workflowStepsSidebar || []).map((step, index) => (
             <div
               key={step}
@@ -48,13 +49,13 @@ const WorkflowSection = ({
               } border-primary/80`}
               onClick={() => scrollToStep(index)}
             >
-              <span className="text-xs">{step}</span>
+              <span className="text-xs"><Translate text={step} /></span>
             </div>
           ))}
 
           {sidebarLinks && sidebarLinks.length > 0 && (
             <div className="mt-8">
-              <p className="text-xs py-4 px-2 text-zinc-500">More Details</p>
+              <p className="text-xs py-4 px-2 text-zinc-500"> <Translate text="More Details" /> </p>
               {sidebarLinks.map((link, index) => (
                 <div
                   key={link.id}
@@ -65,7 +66,7 @@ const WorkflowSection = ({
                     scrollToStep((howItWorks?.length || 0) + index)
                   }
                 >
-                  <span className="text-xs">{link.label}</span>
+                  <span className="text-xs"><Translate text={link.label} /></span>
                 </div>
               ))}
             </div>
@@ -104,8 +105,7 @@ const WorkflowSection = ({
                 <h1
                   className={`${FONTS.microgrammaBold.className} text-primary text-5xl max-xl:text-4xl max-lg:text-3xl max-md:text-2xl max-sm:text-xl`}
                 >
-                  Why Choose Obrive
-                </h1>
+                   <Translate text="Why Choose Obrive" /> </h1>
 
                 <Image
                   src={IMAGES.SOLUTION_FIRST_IMAGE}

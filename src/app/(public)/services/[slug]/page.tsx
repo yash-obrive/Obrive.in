@@ -2,7 +2,25 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import { SolutionTemplate } from "@/components/pages/services/SolutionTemplate";
+import { COUNTRIES, SUPPORTED_COUNTRIES } from "@/config/countries";
 import { getSolutionData, getSolutionSlugs } from "@/lib/services";
+
+function getAlternates(slug: string) {
+  const activeCountries = SUPPORTED_COUNTRIES.filter(
+    (code) => COUNTRIES[code].isProductionReady
+  );
+  const langs: Record<string, string> = {
+    "x-default": `https://obrive.com/services/${slug}`,
+  };
+  for (const code of activeCountries) {
+    langs[COUNTRIES[code].hreflang] = `https://obrive.com/${code}/services/${slug}`;
+  }
+  return {
+    canonical: `https://obrive.com/services/${slug}`,
+    languages: langs,
+  };
+}
+
 
 interface SolutionPageProps {
   params: Promise<{
@@ -30,13 +48,11 @@ export async function generateMetadata({
 
   if (slug === "augmented-reality-development") {
     return {
-      metadataBase: new URL("https://obrive.com"),
-
       title:
-        "Augmented Reality (AR) Development Services in India | AR App Solutions | Obrive",
+        "Augmented Reality (AR) Development Services in India | AR App Solutions | Obrive Industries",
 
       description:
-        "Obrive offers professional Augmented Reality (AR) development services in India including AR apps, AR solutions for enterprise, retail, real estate & industrial use cases. Build engaging AR experiences with spatial computing expertise.",
+        "Obrive Industries offers professional Augmented Reality (AR) development services in India including AR apps, AR solutions for enterprise, retail, real estate & industrial use cases. Build engaging AR experiences with spatial computing expertise.",
 
       keywords: [
         "augmented reality development India",
@@ -48,9 +64,7 @@ export async function generateMetadata({
         "Obrive AR development services",
       ],
 
-      alternates: {
-        canonical: "https://obrive.com/services/augmented-reality-development",
-      },
+      alternates: getAlternates(slug),
 
       robots: {
         index: true,
@@ -61,16 +75,16 @@ export async function generateMetadata({
         type: "website",
         url: "https://obrive.com/services/augmented-reality-development",
         title:
-          "Augmented Reality Development FAQs | AR Services & Solutions | Obrive",
+          "Augmented Reality Development FAQs | AR Services & Solutions | Obrive Industries",
         description:
           "Professional AR app development and enterprise augmented reality solutions built with spatial computing expertise.",
-        siteName: "Obrive",
+        siteName: "Obrive Industries",
         locale: "en_IN",
       },
 
       twitter: {
         card: "summary_large_image",
-        title: "Augmented Reality (AR) Development Services | Obrive",
+        title: "Augmented Reality (AR) Development Services | Obrive Industries",
         description:
           "Custom AR app development and enterprise AR solutions for retail, real estate and industrial use cases.",
       },
@@ -85,13 +99,11 @@ export async function generateMetadata({
 
   if (slug === "virtual-reality-development") {
     return {
-      metadataBase: new URL("https://obrive.com"),
-
       title:
-        "Virtual Reality (VR) Development Services in India | Immersive VR Apps | Obrive",
+        "Virtual Reality (VR) Development Services in India | Immersive VR Apps | Obrive Industries",
 
       description:
-        "Obrive offers professional Virtual Reality (VR) development services in India including VR apps, enterprise VR solutions, 360° immersive experiences and interactive 3D simulations for training, marketing, education & industrial use cases.",
+        "Obrive Industries offers professional Virtual Reality (VR) development services in India including VR apps, enterprise VR solutions, 360° immersive experiences and interactive 3D simulations for training, marketing, education & industrial use cases.",
 
       keywords: [
         "virtual reality development India",
@@ -103,9 +115,7 @@ export async function generateMetadata({
         "Obrive VR development",
       ],
 
-      alternates: {
-        canonical: "https://obrive.com/services/virtual-reality-development",
-      },
+      alternates: getAlternates(slug),
 
       robots: {
         index: true,
@@ -116,16 +126,16 @@ export async function generateMetadata({
         type: "website",
         url: "https://obrive.com/services/virtual-reality-development",
         title:
-          "Virtual Reality Development FAQs | VR Services & Solutions | Obrive",
+          "Virtual Reality Development FAQs | VR Services & Solutions | Obrive Industries",
         description:
           "Professional VR app development and immersive simulation solutions for enterprise, training and marketing.",
-        siteName: "Obrive",
+        siteName: "Obrive Industries",
         locale: "en_IN",
       },
 
       twitter: {
         card: "summary_large_image",
-        title: "Virtual Reality (VR) Development Services | Obrive",
+        title: "Virtual Reality (VR) Development Services | Obrive Industries",
         description:
           "Immersive VR applications and enterprise VR solutions built for training and engagement.",
       },
@@ -140,13 +150,11 @@ export async function generateMetadata({
 
   if (slug === "3d-design-development") {
     return {
-      metadataBase: new URL("https://obrive.com"),
-
       title:
-        "3D Design & Visualization Services | Architectural & Product 3D Development | Obrive",
+        "3D Design & Visualization Services | Architectural & Product 3D Development | Obrive Industries",
 
       description:
-        "Obrive provides professional 3D design and visualization services including architectural modeling, product 3D rendering, digital twin creation, and immersive 3D experiences for real estate, manufacturing & enterprise projects.",
+        "Obrive Industries provides professional 3D design and visualization services including architectural modeling, product 3D rendering, digital twin creation, and immersive 3D experiences for real estate, manufacturing & enterprise projects.",
 
       keywords: [
         "3D design services India",
@@ -158,9 +166,7 @@ export async function generateMetadata({
         "Obrive 3D design",
       ],
 
-      alternates: {
-        canonical: "https://obrive.com/services/3d-design-development",
-      },
+      alternates: getAlternates(slug),
 
       robots: {
         index: true,
@@ -171,16 +177,16 @@ export async function generateMetadata({
         type: "website",
         url: "https://obrive.com/services/3d-design-development",
         title:
-          "3D Design & Development FAQs | 3D Services & Solutions | Obrive",
+          "3D Design & Development FAQs | 3D Services & Solutions | Obrive Industries",
         description:
           "Professional architectural 3D modeling, product rendering and immersive visualization services.",
-        siteName: "Obrive",
+        siteName: "Obrive Industries",
         locale: "en_IN",
       },
 
       twitter: {
         card: "summary_large_image",
-        title: "3D Design & Visualization Services | Obrive",
+        title: "3D Design & Visualization Services | Obrive Industries",
         description:
           "Architectural modeling, product rendering and immersive 3D visualization solutions.",
       },
@@ -195,13 +201,11 @@ export async function generateMetadata({
 
   if (slug === "spatial-computing-app-development") {
     return {
-      metadataBase: new URL("https://obrive.com"),
-
       title:
-        "Spatial Computing App Development Services | AR/VR & Immersive Experiences | Obrive",
+        "Spatial Computing App Development Services | AR/VR & Immersive Experiences | Obrive Industries",
 
       description:
-        "Obrive offers spatial computing app development services to build immersive applications using AR/VR, 3D spatial interactions and mixed reality for enterprise, retail, real estate, healthcare and industrial solutions.",
+        "Obrive Industries offers spatial computing app development services to build immersive applications using AR/VR, 3D spatial interactions and mixed reality for enterprise, retail, real estate, healthcare and industrial solutions.",
 
       keywords: [
         "spatial computing app development",
@@ -213,10 +217,7 @@ export async function generateMetadata({
         "Obrive spatial computing services",
       ],
 
-      alternates: {
-        canonical:
-          "https://obrive.com/services/spatial-computing-app-development",
-      },
+      alternates: getAlternates(slug),
 
       robots: {
         index: true,
@@ -227,16 +228,16 @@ export async function generateMetadata({
         type: "website",
         url: "https://obrive.com/services/spatial-computing-app-development",
         title:
-          "Spatial Computing App Development FAQs | Spatial Services & Solutions | Obrive",
+          "Spatial Computing App Development FAQs | Spatial Services & Solutions | Obrive Industries",
         description:
-          "Build immersive AR, VR and mixed reality applications with spatial computing expertise from Obrive.",
-        siteName: "Obrive",
+          "Build immersive AR, VR and mixed reality applications with spatial computing expertise from Obrive Industries.",
+        siteName: "Obrive Industries",
         locale: "en_IN",
       },
 
       twitter: {
         card: "summary_large_image",
-        title: "Spatial Computing App Development Services | Obrive",
+        title: "Spatial Computing App Development Services | Obrive Industries",
         description:
           "AR, VR and immersive spatial applications for enterprise and industry.",
       },
@@ -249,9 +250,79 @@ export async function generateMetadata({
     } satisfies Metadata;
   }
 
+  if (slug === "white-label-technology-partnerships") {
+    return {
+      title:
+        "White Label Technology Partnerships & Development | Obrive Industries",
+
+      description:
+        "Partner with Obrive Industries to deliver advanced digital, immersive and AI solutions to your clients under your own brand. Extend your agency capabilities with white-label technology development.",
+
+      keywords: [
+        "white label development",
+        "technology partnerships",
+        "white label AR VR",
+        "agency technology partner",
+        "white label AI development",
+        "dedicated technology teams",
+        "Obrive white label services",
+      ],
+
+      alternates: getAlternates(slug),
+
+      robots: {
+        index: true,
+        follow: true,
+      },
+
+      openGraph: {
+        type: "website",
+        url: "https://obrive.com/services/white-label-technology-partnerships",
+        title:
+          "White Label Technology Partnerships | Obrive Industries",
+        description:
+          "Extend your capabilities with white-label digital, immersive, and AI development partnerships.",
+        siteName: "Obrive Industries",
+        locale: "en_IN",
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: "White Label Technology Partnerships | Obrive Industries",
+        description:
+          "Deliver advanced technology solutions to your clients under your own brand.",
+      },
+
+      other: {
+        "geo.region": "IN-KA",
+        "geo.placename": "Bangalore, Karnataka, India",
+        ICBM: "12.9716, 77.5946",
+      },
+    } satisfies Metadata;
+  }
+
+  // Fallback for all other services
   return {
-    title: `${solutionData.hero.title} | Obrive`,
-    description: solutionData.hero.description,
+    title: `${solutionData.hero.title} | Obrive Industries`,
+    description: solutionData.hero.description || `Professional ${solutionData.hero.title} services provided by Obrive Industries.`,
+    alternates: getAlternates(slug),
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      type: "website",
+      url: `https://obrive.com/services/${slug}`,
+      title: `${solutionData.hero.title} | Obrive Industries`,
+      description: solutionData.hero.description || `Professional ${solutionData.hero.title} services provided by Obrive Industries.`,
+      siteName: "Obrive Industries",
+      locale: "en_IN",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${solutionData.hero.title} | Obrive Industries`,
+      description: solutionData.hero.description || `Professional ${solutionData.hero.title} services provided by Obrive Industries.`,
+    },
   };
 }
 
@@ -271,34 +342,60 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
         type="application/ld+json"
         strategy="afterInteractive"
       >
-        {JSON.stringify({
-          "@context": "https://schema.org/",
-          "@type": "Service",
-          "@id": `https://obrive.com/services/${slug}`,
-          url: `https://obrive.com/services/${slug}`,
-          name: (() => {
-            switch (slug) {
-              case "augmented-reality-development":
-                return "Augmented Reality Development Across Industries";
-              case "virtual-reality-development":
-                return "Virtual Reality Development Across Industries";
-              case "3d-design-development":
-                return "3D Design & Development Across Industries";
-              case "spatial-computing-app-development":
-                return "Spatial Computing App Development Across Industries";
-              default:
-                return solutionData.hero.title;
-            }
-          })(),
-          description: solutionData.hero.description,
-          provider: {
-            "@type": "Organization",
-            name: "Obrive",
-            url: "https://obrive.com",
+        {JSON.stringify([
+          {
+            "@context": "https://schema.org/",
+            "@type": "Service",
+            "@id": `https://obrive.com/services/${slug}`,
+            url: `https://obrive.com/services/${slug}`,
+            name: (() => {
+              switch (slug) {
+                case "augmented-reality-development":
+                  return "Augmented Reality Development Across Industries";
+                case "virtual-reality-development":
+                  return "Virtual Reality Development Across Industries";
+                case "3d-design-development":
+                  return "3D Design & Development Across Industries";
+                case "spatial-computing-app-development":
+                  return "Spatial Computing App Development Across Industries";
+                default:
+                  return solutionData.hero.title;
+              }
+            })(),
+            description: solutionData.hero.description,
+            provider: {
+              "@type": "Organization",
+              name: "Obrive Industries",
+              url: "https://obrive.com",
+            },
+            serviceType: "Software Development",
+            areaServed: "Worldwide",
           },
-          serviceType: "Software Development",
-          areaServed: "Worldwide",
-        })}
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://obrive.com"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": "https://obrive.com/services"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": solutionData.hero.title,
+                "item": `https://obrive.com/services/${slug}`
+              }
+            ]
+          }
+        ])}
       </Script>
       <SolutionTemplate
         slug={slug}

@@ -1,5 +1,6 @@
 import FONTS from "@/assets/fonts";
 import { BENEFITS_TABLE } from "@/constants/pages/services/workflow-steps";
+import Translate from "@/components/shared/Translate";
 
 export interface BenefitItem {
   benefit?: string;
@@ -22,13 +23,11 @@ const BenefitsTable = ({ data = BENEFITS_TABLE }: BenefitsTableProps) => {
                 <th
                   className={`text-left px-6 py-3 font-semibold text-sm text-gray-800 border-r border-zinc-300 ${FONTS.microgrammaBold.className}`}
                 >
-                  Benefit
-                </th>
+                   <Translate text="Benefit" /> </th>
                 <th
                   className={`text-left px-6 py-3 font-semibold text-sm text-gray-800 ${FONTS.microgrammaBold.className}`}
                 >
-                  Description
-                </th>
+                   <Translate text="Description" /> </th>
               </tr>
             </thead>
 
@@ -42,13 +41,13 @@ const BenefitsTable = ({ data = BENEFITS_TABLE }: BenefitsTableProps) => {
                     <div
                       className={`text-sm ${FONTS.microgrammaBold.className}`}
                     >
-                      {item.benefit || item.title}
+                      <Translate text={item.benefit || item.title || ""} />
                     </div>
                   </td>
 
                   <td className="px-6 py-4">
                     <div className="text-xs text-gray-600 leading-relaxed">
-                      {item.description}
+                      <Translate text={item.description} />
                     </div>
                   </td>
                 </tr>
@@ -67,11 +66,11 @@ const BenefitsTable = ({ data = BENEFITS_TABLE }: BenefitsTableProps) => {
             <div
               className={`border-b border-zinc-300 px-4 py-3 text-sm text-gray-800 ${FONTS.microgrammaBold.className}`}
             >
-              {item.benefit || item.title}
+              <Translate text={item.benefit || item.title || ""} />
             </div>
             <div className="px-4 py-3">
               <div className="text-xs text-gray-600 leading-relaxed">
-                {item.description}
+                <Translate text={item.description} />
               </div>
             </div>
           </div>

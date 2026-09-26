@@ -1,4 +1,5 @@
 import FONTS from "@/assets/fonts";
+import Translate from "@/components/shared/Translate";
 
 interface ImpactMetric {
   benefit: string;
@@ -28,13 +29,11 @@ export default function ResourceImpactMetricsTable({
                   <th
                     className={`text-left px-6 py-3 font-semibold text-sm text-gray-800 border-r border-zinc-300 ${FONTS.microgrammaBold.className}`}
                   >
-                    Benefit
-                  </th>
+                     <Translate text="Benefit" /> </th>
                   <th
                     className={`text-left px-6 py-3 font-semibold text-sm text-gray-800 ${FONTS.microgrammaBold.className}`}
                   >
-                    Description
-                  </th>
+                     <Translate text="Description" /> </th>
                 </tr>
               </thead>
 

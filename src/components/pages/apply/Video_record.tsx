@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import FONTS from "@/assets/fonts";
 import BgImage from "@/assets/images/backgrounds/fluent_chat-video-20-filled.png";
+import Translate from "@/components/shared/Translate";
 
 export default function VideoRecord({
   props,
@@ -87,16 +88,13 @@ export default function VideoRecord({
       className={`mt-8 flex flex-col items-center ${FONTS.microgrammaBold.className} justify-center p-6`}
     >
       <div className="text-center mt-5">
-        <h1 className="text-2xl font-bold mb-2">Set up webcam and mic...</h1>
+        <h1 className="text-2xl font-bold mb-2"> <Translate text="Set up webcam and mic..." /> </h1>
         <p className="text-sm font-light">
-          Tell us a little bit about yourself!
-        </p>
+           <Translate text="Tell us a little bit about yourself!" /> </p>
         <p className="text-sm font-light mb-4">
-          We want to know what excites you.
-        </p>
+           <Translate text="We want to know what excites you." /> </p>
         <p className="text-sm font-light mb-4">
-          What do you do for fun? <br /> What kind of food do you like?
-        </p>
+           <Translate text="What do you do for fun?" /> <br />  <Translate text="What kind of food do you like?" /> </p>
       </div>
 
       {/* Video / Placeholder Section */}
@@ -138,22 +136,19 @@ export default function VideoRecord({
             onClick={startPreview}
             className="bg-[#074139] px-6  text-white py-2 rounded-sm shadow-md hover:bg-[#00594C] transition"
           >
-            Enable Camera
-          </button>
+             <Translate text="Enable Camera" /> </button>
         ) : !recording ? (
           <button
             onClick={startRecording}
             className="bg-[#074139]  text-white px-6 py-2 rounded-sm shadow-md hover:bg-[#00594C] transition"
           >
-            Start Interview
-          </button>
+             <Translate text="Start Interview" /> </button>
         ) : (
           <button
             onClick={stopRecording}
             className="bg-red-600 px-6 py-2  text-white rounded-sm shadow-md hover:bg-red-700 transition"
           >
-            Stop Recording
-          </button>
+             <Translate text="Stop Recording" /> </button>
         )}
 
         <button
@@ -161,8 +156,7 @@ export default function VideoRecord({
           disabled={!videoURL}
           className="px-6 py-2 rounded-sm  text-white shadow-md transition bg-[#074139] hover:bg-[#00594C]"
         >
-          Submit
-        </button>
+           <Translate text="Submit" /> </button>
       </div>
     </main>
   );

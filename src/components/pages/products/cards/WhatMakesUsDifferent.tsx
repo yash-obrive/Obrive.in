@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import FONTS from "@/assets/fonts";
 import { ICONS, ICONS_META } from "@/assets/images";
+import Translate from "@/components/shared/Translate";
 
 type Item = { title: string; description: string };
 
@@ -125,10 +126,10 @@ export default function WhatMakesUsDifferent({
                         : "mt-50"
                 } max-md:mt-6`}
               >
-                {item.title}
+                <Translate text={item.title} />
               </h3>
               <p className="text-accent/80 text-xs leading-relaxed z-10">
-                {item.description}
+                <Translate text={item.description} />
               </p>
             </div>
           );

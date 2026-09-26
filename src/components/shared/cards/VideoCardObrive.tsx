@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { FadeInOnView } from "../motion/GsapMotion";
+import Translate from "@/components/shared/Translate";
 
 const VideoCardObrive = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -146,10 +147,9 @@ const VideoCardObrive = () => {
         <FadeInOnView>
           <div className="relative z-10 rounded-2xl flex items-center justify-center mt-20 max-md:mt-10">
             <p className="text-center w-[660px] max-sm:text-sm max-md:w-full max-md:px-4 tracking-wide text-white text-xl max-md:text-base">
-              Obrive Industries is a pioneer in Augmented Reality, Virtual
-              Reality, and Mixed Reality solutions. We empower businesses and
-              individuals to seamlessly connect digital and physical worlds.
-            </p>
+               <Translate text="Obrive Industries is a pioneer in Augmented Reality, Virtual
+                                        Reality, and Mixed Reality solutions. We empower businesses and
+                                        individuals to seamlessly connect digital and physical worlds." /> </p>
           </div>
         </FadeInOnView>
 
@@ -165,8 +165,7 @@ const VideoCardObrive = () => {
           aria-label="Play immersive experience video"
         >
           <Play className="h-4 w-4" />
-          Play Video
-        </Button>
+           <Translate text="Play Video" /> </Button>
         <Button
           className="sm:hidden max-sm:flex mt-4"
           size={"lg"}
@@ -174,8 +173,7 @@ const VideoCardObrive = () => {
           onClick={handlePlayClick}
         >
           <Play className="h-4 w-4" />
-          Watch Video
-        </Button>
+           <Translate text="Watch Video" /> </Button>
       </div>
 
       {/* Video Modal */}

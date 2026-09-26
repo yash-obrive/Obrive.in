@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { Button } from "@/components/ui/button";
 import { filters } from "@/constants/pages/resources/filters";
+import Translate from "@/components/shared/Translate";
 
 const FilterSection = () => {
   const router = useRouter();
@@ -35,7 +36,7 @@ const FilterSection = () => {
     <section className="flex items-center justify-center gap-4 border-y-2 border-secondary/40 my-8 py-8">
       <FullWidthSection backgroundColor="none">
         <div className="flex items-center gap-4">
-          <h4 className="text-secondary text-sm uppercase">Filter:</h4>
+          <h4 className="text-secondary text-sm uppercase"> <Translate text="Filter:" /> </h4>
           <div className="flex flex-wrap gap-4">
             {filters.map((filter) => (
               <Button

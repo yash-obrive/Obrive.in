@@ -43,7 +43,6 @@ export const GROUPS = [
       { label: "Retail", href: "/industries/retail" },
       { label: "Manufacturing", href: "/industries/manufacturing" },
       { label: "Healthcare", href: "/industries/healthcare" },
-      { label: "Education", href: "/industries/education" },
     ],
     bottomLink: { label: "Obrive Legal", href: "/legal" },
   },

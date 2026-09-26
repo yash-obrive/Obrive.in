@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
+import Translate from "@/components/shared/Translate";
 
 export default function ResourceBackButton() {
   const router = useRouter();
@@ -11,7 +12,6 @@ export default function ResourceBackButton() {
       onClick={() => router.back()}
       className={`text-xs ${buttonVariants({ variant: "link" })} cursor-pointer`}
     >
-      BACK
-    </button>
+       <Translate text="BACK" /> </button>
   );
 }

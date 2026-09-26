@@ -1,6 +1,7 @@
 import Image from "next/image";
 import FONTS from "@/assets/fonts";
 import type { JOIN_TEAM_LIBRARY_CARD_TYPE } from "@/constants/pages/career/library-card";
+import Translate from "@/components/shared/Translate";
 
 export default function LibraryCard({
   src,
@@ -21,7 +22,7 @@ export default function LibraryCard({
       </div>
       <div className="flex flex-col gap-4">
         <div className="w-full text-xs flex justify-between">
-          <span>Industry</span>
+          <span> <Translate text="Industry" /> </span>
           <span>{date}</span>
         </div>
         <div>

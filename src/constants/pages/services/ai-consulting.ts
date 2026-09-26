@@ -165,6 +165,10 @@ export const AI_CONSULTING_SERVICE_SECTIONS = [
       },
     ],
     footer: "",
+    relatedLinks: [
+      { label: "Enterprise Solutions", href: "/industries/enterprise" },
+      { label: "Manufacturing Applications", href: "/industries/manufacturing" }
+    ],
   },
   {
     id: "ai-era-consulting-capabilities",

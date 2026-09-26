@@ -16,14 +16,21 @@ import {
   getCountryConfig,
   isValidCountryCode,
 } from "@/config/countries";
+import {
+  type LanguageCode,
+  isValidLanguageCode,
+  getLanguageConfig,
+} from "@/config/languages";
 
 interface CountryContextType {
   country: CountryCode;
   countryConfig: CountryConfig;
+  language: LanguageCode;
   suggestedCountry: CountryCode | null;
   isBannerDismissed: boolean;
   dismissBanner: () => void;
   switchCountry: (newCountry: CountryCode, preservePath?: boolean) => void;
+  switchLanguage: (newLanguage: LanguageCode) => void;
 }
 
 const CountryContext = createContext<CountryContextType | undefined>(undefined);
@@ -31,18 +38,23 @@ const CountryContext = createContext<CountryContextType | undefined>(undefined);
 export interface CountryProviderProps {
   children: ReactNode;
   initialCountry?: CountryCode;
+  initialLanguage?: LanguageCode;
   initialSuggestedCountry?: CountryCode | null;
 }
 
 export function CountryProvider({
   children,
   initialCountry = DEFAULT_COUNTRY,
+  initialLanguage,
   initialSuggestedCountry = null,
 }: CountryProviderProps) {
   const _router = useRouter();
   const pathname = usePathname();
 
   const [country, setCountry] = useState<CountryCode>(initialCountry);
+  const [language, setLanguage] = useState<LanguageCode>(
+    initialLanguage || getCountryConfig(initialCountry).defaultLanguage
+  );
   const [suggestedCountry] = useState<CountryCode | null>(
     initialSuggestedCountry,
   );
@@ -53,6 +65,20 @@ export function CountryProvider({
       setCountry(initialCountry);
     }
   }, [initialCountry]);
+
+  useEffect(() => {
+    if (isValidLanguageCode(initialLanguage)) {
+      setLanguage(initialLanguage);
+    }
+  }, [initialLanguage]);
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      const langConfig = getLanguageConfig(language);
+      document.documentElement.lang = langConfig.code;
+      document.documentElement.dir = langConfig.dir;
+    }
+  }, [language]);
 
   useEffect(() => {
     // Check if user previously dismissed banner
@@ -71,6 +97,7 @@ export function CountryProvider({
     if (typeof document !== "undefined") {
       document.cookie =
         "dismissed_country_banner=true; path=/; max-age=2592000; SameSite=Lax";
+      document.cookie = `preferred_country=${country}; path=/; max-age=31536000; SameSite=Lax`;
     }
   };
 
@@ -80,7 +107,6 @@ export function CountryProvider({
   ) => {
     if (!isValidCountryCode(newCountry)) return;
 
-    // Set 1-year preference cookie
     if (typeof document !== "undefined") {
       document.cookie = `preferred_country=${newCountry}; path=/; max-age=31536000; SameSite=Lax`;
     }
@@ -88,27 +114,41 @@ export function CountryProvider({
     setCountry(newCountry);
     dismissBanner();
 
-    // Get current path to append to the new domain
-    let currentPath = pathname || "/";
-    if (currentPath.startsWith(`/${country}`)) {
-      currentPath = currentPath.replace(`/${country}`, "");
-    }
-    if (!currentPath.startsWith("/")) {
-      currentPath = `/${currentPath}`;
+    const newCountryConfig = getCountryConfig(newCountry);
+    let targetLanguage = language;
+    if (!newCountryConfig.supportedLanguages.includes(language)) {
+      targetLanguage = newCountryConfig.defaultLanguage;
     }
 
-    // Redirect using domain for India, path-based routing architecture for others
-    if (newCountry === "in") {
-      const targetUrl = "https://obrive.in/coming-soon";
-      window.location.href = targetUrl;
-      return;
+    let currentPath = pathname || "/";
+    const segments = currentPath.split("/").filter(Boolean);
+    if (segments.length >= 2 && isValidCountryCode(segments[0]) && isValidLanguageCode(segments[1])) {
+      currentPath = "/" + segments.slice(2).join("/");
+    } else if (segments.length >= 1 && isValidCountryCode(segments[0])) {
+      currentPath = "/" + segments.slice(1).join("/");
     }
 
     if (preservePath) {
-      window.location.href = `/${newCountry}${currentPath === "/" ? "" : currentPath}`;
+      window.location.href = `/${newCountry}/${targetLanguage}${currentPath === "/" ? "" : currentPath}`;
     } else {
-      window.location.href = `/${newCountry}`;
+      window.location.href = `/${newCountry}/${targetLanguage}`;
     }
+  };
+
+  const switchLanguage = (newLanguage: LanguageCode) => {
+    if (!isValidLanguageCode(newLanguage)) return;
+
+    setLanguage(newLanguage);
+
+    let currentPath = pathname || "/";
+    const segments = currentPath.split("/").filter(Boolean);
+    if (segments.length >= 2 && isValidCountryCode(segments[0]) && isValidLanguageCode(segments[1])) {
+      currentPath = "/" + segments.slice(2).join("/");
+    } else if (segments.length >= 1 && isValidCountryCode(segments[0])) {
+      currentPath = "/" + segments.slice(1).join("/");
+    }
+
+    window.location.href = `/${country}/${newLanguage}${currentPath === "/" ? "" : currentPath}`;
   };
 
   const countryConfig = getCountryConfig(country);
@@ -118,10 +158,12 @@ export function CountryProvider({
       value={{
         country,
         countryConfig,
+        language,
         suggestedCountry,
         isBannerDismissed,
         dismissBanner,
         switchCountry,
+        switchLanguage,
       }}
     >
       {children}
@@ -136,10 +178,12 @@ export function useCountry(): CountryContextType {
     return {
       country: DEFAULT_COUNTRY,
       countryConfig: COUNTRIES[DEFAULT_COUNTRY],
+      language: COUNTRIES[DEFAULT_COUNTRY].defaultLanguage,
       suggestedCountry: null,
       isBannerDismissed: true,
       dismissBanner: () => {},
       switchCountry: () => {},
+      switchLanguage: () => {},
     };
   }
   return context;

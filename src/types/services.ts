@@ -18,6 +18,7 @@ export interface ServiceSection {
   items?: readonly string[];
   subSections?: readonly ServiceSubSection[];
   footer?: string;
+  relatedLinks?: readonly { label: string; href: string }[];
 }
 
 export interface WorkflowStep {

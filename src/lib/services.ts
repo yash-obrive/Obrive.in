@@ -113,6 +113,15 @@ import {
   WEBSITE_DEVELOPMENT_SERVICE_SERVICE_SECTIONS,
   WEBSITE_DEVELOPMENT_SERVICE_SIDEBAR_LINKS,
 } from "@/constants/pages/services/website-development-service";
+import {
+  WHITE_LABEL_FAQS,
+  WHITE_LABEL_FAQS_META,
+  WHITE_LABEL_HERO,
+  WHITE_LABEL_KEY_BENEFITS,
+  WHITE_LABEL_PROCESS_STEPS,
+  WHITE_LABEL_SERVICE_SECTIONS,
+  WHITE_LABEL_SIDEBAR_LINKS,
+} from "@/constants/pages/services/white-label-partnerships";
 import solutionFaqsRaw from "@/data/solution-faqs.json";
 import type {
   ServiceSection,
@@ -199,6 +208,16 @@ const SOLUTIONS_DATA: Record<string, SolutionData> = {
     sidebarLinks: THREE_D_DESIGN_SIDEBAR_LINKS,
     serviceSections: THREE_D_DESIGN_SERVICE_SECTIONS,
     processSteps: THREE_D_DESIGN_PROCESS_STEPS,
+  },
+  "white-label-technology-partnerships": {
+    slug: "white-label-technology-partnerships",
+    hero: WHITE_LABEL_HERO,
+    keyBenefits: WHITE_LABEL_KEY_BENEFITS,
+    faqs: WHITE_LABEL_FAQS,
+    faqMeta: WHITE_LABEL_FAQS_META,
+    sidebarLinks: WHITE_LABEL_SIDEBAR_LINKS,
+    serviceSections: WHITE_LABEL_SERVICE_SECTIONS,
+    processSteps: WHITE_LABEL_PROCESS_STEPS,
   },
   "spatial-computing-app-development": {
     slug: "spatial-computing-app-development",

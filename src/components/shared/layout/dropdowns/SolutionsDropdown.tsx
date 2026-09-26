@@ -8,6 +8,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import AnimatedNavLabel from "../AnimatedNavLabel";
+import Translate from "@/components/shared/Translate";
 
 export function SolutionsDropdown() {
   return (
@@ -16,14 +17,12 @@ export function SolutionsDropdown() {
         showChevron={false}
         className="text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
       >
-        Services
-      </NavigationMenuTrigger>
+         <Translate text="Services" /> </NavigationMenuTrigger>
       <NavigationMenuContent className="bg-primary! border-none p-6 w-[400px] md:w-[400px] absolute left-0 top-full mt-2 z-[60] rounded-md shadow-lg">
         <div>
-          <h3 className="text-white text-xs mb-2">SERVICES</h3>
+          <h3 className="text-white text-xs mb-2"> <Translate text="SERVICES" /> </h3>
           <p className="text-white/80 text-[10px] mb-4">
-            SERVICES TAILORED FOR INDUSTRIES. ENGINEERED FOR IMMERSION.
-          </p>
+             <Translate text="SERVICES TAILORED FOR INDUSTRIES. ENGINEERED FOR IMMERSION." /> </p>
 
           <div className="">
             <div className="flex items-center gap-3 py-4 px-2 border-y border-white/20">
@@ -42,8 +41,7 @@ export function SolutionsDropdown() {
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
                   >
-                    Augmented Reality Development
-                  </Link>
+                     <Translate text="Augmented Reality Development" /> </Link>
                 </div>
               </AnimatedNavLabel>
             </div>
@@ -63,8 +61,7 @@ export function SolutionsDropdown() {
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
                   >
-                    Virtual Reality Development
-                  </Link>
+                     <Translate text="Virtual Reality Development" /> </Link>
                 </div>
               </AnimatedNavLabel>
             </div>
@@ -84,8 +81,7 @@ export function SolutionsDropdown() {
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
                   >
-                    3D Design & Development
-                  </Link>
+                     <Translate text="3D Design & Development" /> </Link>
                 </div>
               </AnimatedNavLabel>
             </div>
@@ -105,8 +101,7 @@ export function SolutionsDropdown() {
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
                   >
-                    Spatial Computing App Development
-                  </Link>
+                     <Translate text="Spatial Computing App Development" /> </Link>
                 </div>
               </AnimatedNavLabel>
             </div>
@@ -126,8 +121,7 @@ export function SolutionsDropdown() {
                       variant: "link",
                     })} !text-white !p-0 text-xs h-auto relative z-10`}
                   >
-                    Mixed Reality Development
-                  </Link>
+                     <Translate text="Mixed Reality Development" /> </Link>
                 </div>
               </AnimatedNavLabel>
             </div>

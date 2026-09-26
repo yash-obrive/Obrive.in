@@ -7,6 +7,7 @@ import FAQAccordionSection, {
   FAQItem,
 } from "@/components/pages/faq/sections/FAQAccordionSection";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
+import Translate from "@/components/shared/Translate";
 
 interface FAQ {
   q: string;
@@ -68,14 +69,12 @@ export default function FAQMainClientLayout({
             <h1
               className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl lg:text-6xl text-secondary leading-tight mb-6 uppercase tracking-widest`}
             >
-              Frequently Asked Questions
-            </h1>
+               <Translate text="Frequently Asked Questions" /> </h1>
             <p className="text-base sm:text-lg text-slate-700 leading-relaxed max-w-3xl">
-              Explore answers to common questions about Obrive&apos;s
-              capabilities, digital product development, web design &amp;
-              development, AI, AR, VR, MR, 3D design, Spatial Computing,
-              pricing, timelines, and collaboration models.
-            </p>
+               <Translate text="Explore answers to common questions about Obrive&apos;s
+                                        capabilities, digital product development, web design &amp;
+                                        development, AI, AR, VR, MR, 3D design, Spatial Computing,
+                                        pricing, timelines, and collaboration models." /> </p>
           </div>
 
           {/* Content */}
@@ -90,15 +89,15 @@ export default function FAQMainClientLayout({
               <div className="max-w-none lg:pr-8 xl:pr-16">
                 {categories.map((category) => (
                   <div key={category} className="mb-10">
-                    <FAQAccordionSection title={category}>
+                    <FAQAccordionSection title={<Translate text={category} />}>
                       {faqs[category].map((faq, index) => (
                         <FAQItem
                           key={index}
                           value={`faq-${slugify(category)}-${index}`}
-                          question={faq.q}
+                          question={<Translate text={faq.q} />}
                           answer={faq.a.split("\n\n").map((para, i) => (
                             <p key={i} className="mb-4 last:mb-0">
-                              {para}
+                              <Translate text={para} />
                             </p>
                           ))}
                         />

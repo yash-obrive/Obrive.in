@@ -87,7 +87,7 @@ export default function PrimaryFooterCard({
   const titleClasses =
     variant === "small"
       ? "text-xl sm:text-2xl"
-      : `${FONTS.microgrammaBold.className} text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight sm:leading-14`;
+      : `${FONTS.microgrammaBold.className} text-md leading-tight`;
 
   const isExternal = buttonLink.startsWith("http");
 

@@ -277,7 +277,7 @@ const navbarCaseStudies: BlogCardContentType[] = [
 ];
 
 const jsonBlogs: BlogCardContentType[] = getAllBlogs().map((blog) => ({
-  src: "/images/blogs/blog-fallback.png",
+  src: blog.image || "/images/blogs/blog-fallback.png",
   alt: blog.title,
   date: "25.07.2025",
   title: blog.title,
