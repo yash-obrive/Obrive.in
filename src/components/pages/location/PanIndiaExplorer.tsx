@@ -56,7 +56,7 @@ export default function PanIndiaExplorer() {
           <h1
             className={`${FONTS.microgrammaBold.className} text-secondary text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight text-balance`}
           >
-            One India.
+            One Obrive.
             <br />
             Every City.
           </h1>
