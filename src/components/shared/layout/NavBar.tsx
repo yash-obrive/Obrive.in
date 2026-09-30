@@ -276,7 +276,7 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
       {/* Mobile Fixed Toggle Button - only render after mount */}
       {isMounted && isMobile && (
         <div 
-          className="fixed right-4 z-[110] md:hidden transition-all duration-300"
+          className="fixed end-4 z-[110] md:hidden transition-all duration-300"
           style={{ top: isBannerVisible ? '60px' : '16px' }}
         >
           <button
@@ -295,8 +295,8 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
         style={{ top: isBannerVisible ? '44px' : '0px' }}
         className={`${
           isMobile
-            ? "absolute left-0 right-0 w-full z-50"
-            : `fixed container mx-auto left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+            ? "absolute start-0 end-0 w-full z-50"
+            : `fixed container mx-auto start-0 end-0 z-50 transition-all duration-500 ease-in-out ${
                 shouldHideNavbar ? "-translate-y-full" : "translate-y-0"
               }`
         }`}
@@ -472,10 +472,10 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
                   className="border-b border-primary/20"
                 >
                   <AccordionTrigger className="text-primary uppercase text-sm font-semibold hover:no-underline">
-                    {section.title}
+                    <Translate text={section.title} />
                   </AccordionTrigger>
                   <AccordionContent>
-                    <ul className="space-y-3 pl-4">
+                    <ul className="space-y-3 ps-4">
                       {section.items.map((item) => (
                         <li key={item.href}>
                           <Link
@@ -483,7 +483,7 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
                             className="text-primary/80 hover:text-primary text-sm block py-1"
                             onClick={() => setIsMenuOpen(false)}
                           >
-                            {item.title}
+                            <Translate text={item.title} />
                           </Link>
                         </li>
                       ))}

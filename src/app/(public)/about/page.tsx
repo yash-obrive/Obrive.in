@@ -171,19 +171,19 @@ export default function Products() {
           </div>
           <div className="relative z-10 text-center px-4">
             <FadeInOnView>
-              <div className="bg-gradient relative w-fit -top-40 -left-60 flex max-sm:flex-col gap-4 sm:items-center max-sm:items-start justify-between rounded-lg py-3 px-8 mb-4 border border-primary/80 max-md:static max-md:w-full max-md:justify-center max-md:gap-2 max-md:px-4 max-md:py-2">
+              <div className="bg-gradient relative w-fit -top-40 -start-60 flex max-sm:flex-col gap-4 sm:items-center max-sm:items-start justify-between rounded-lg py-3 px-8 mb-4 border border-primary/80 max-md:static max-md:w-full max-md:justify-center max-md:gap-2 max-md:px-4 max-md:py-2">
                 <span className="text-secondary"><Translate text="Mission" /></span>
                 <hr className="w-px max-sm:hidden h-8 max-md:h-6 bg-primary/80" />
-                <p className="text-secondary max-sm:text-left max-md:text-sm">
+                <p className="text-secondary max-sm:text-start max-md:text-sm">
                   <Translate text="Create Immersive Futures That Matter" />
                 </p>
               </div>
             </FadeInOnView>
             <FadeInOnView>
-              <div className="bg-gradient relative w-fit -top-40 left-60 flex max-sm:flex-col gap-4 sm:items-center max-sm:items-start justify-between rounded-lg py-3 px-8 mb-4 border border-primary/80 max-md:static max-md:w-full max-md:justify-center max-md:gap-2 max-md:px-4 max-md:py-2">
+              <div className="bg-gradient relative w-fit -top-40 start-60 flex max-sm:flex-col gap-4 sm:items-center max-sm:items-start justify-between rounded-lg py-3 px-8 mb-4 border border-primary/80 max-md:static max-md:w-full max-md:justify-center max-md:gap-2 max-md:px-4 max-md:py-2">
                 <span className="text-secondary"><Translate text="Vision" /></span>
                 <hr className="w-px max-sm:hidden h-8 max-md:h-6 bg-primary/80" />
-                <p className="text-secondary max-sm:text-left max-md:text-sm">
+                <p className="text-secondary max-sm:text-start max-md:text-sm">
                   <Translate text="A World Where Digital and Physical Seamlessly Coexist." />
                 </p>
               </div>

@@ -57,9 +57,9 @@ export default function CareerCarousel() {
         className="w-full max-w-7xl"
         setApi={setApi}
       >
-        <CarouselContent className="-ml-4">
+        <CarouselContent className="-ms-4">
           {CAREER_CARD.map((item, index) => (
-            <CarouselItem key={index} className="pl-4 md:basis-1/3 basis-full">
+            <CarouselItem key={index} className="ps-4 md:basis-1/3 basis-full">
               <CareerCard {...item} />
             </CarouselItem>
           ))}

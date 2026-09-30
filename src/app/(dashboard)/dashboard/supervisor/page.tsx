@@ -7,6 +7,7 @@ import {
   List,
   Menu,
   MessageSquare,
+  Palmtree,
 } from "lucide-react";
 import { useState } from "react";
 import supportImg from "@/assets/images/employee/illustration.png";
@@ -85,7 +86,7 @@ export default function SupervisorDashboard() {
             {/* Close Button */}
             <button
               onClick={() => setSupportOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200"
+              className="absolute top-4 end-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200"
             >
               ✕
             </button>

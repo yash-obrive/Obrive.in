@@ -13,6 +13,8 @@ type FetchOptions = RequestInit & {
   retry?: boolean;
 };
 
+let isRedirecting = false;
+
 export function clearAuthStorage() {
   if (typeof window === "undefined") {
     return;
@@ -54,6 +56,11 @@ export async function apiFetch(endpoint: string, options: FetchOptions = {}) {
       return apiFetch(endpoint, { ...options, retry: false });
     } else {
       clearAuthStorage();
+      
+      if (typeof window !== "undefined" && !isRedirecting) {
+        isRedirecting = true;
+        window.location.href = "/login";
+      }
 
       return Promise.reject(new Error("Session expired"));
     }

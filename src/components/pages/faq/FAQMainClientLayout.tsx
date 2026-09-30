@@ -86,7 +86,7 @@ export default function FAQMainClientLayout({
 
             <div className="flex flex-col flex-1">
               {/* FAQ Accordions */}
-              <div className="max-w-none lg:pr-8 xl:pr-16">
+              <div className="max-w-none lg:pe-8 xl:pe-16">
                 {categories.map((category) => (
                   <div key={category} className="mb-10">
                     <FAQAccordionSection title={<Translate text={category} />}>

@@ -34,6 +34,20 @@ export default function EmployeesList(_props: EmployeesListProps) {
     description: "",
     type: "info",
   });
+  const [groupBy, setGroupBy] = useState<"none" | "department" | "job_title">("none");
+  const [currentUserRole, setCurrentUserRole] = useState<string>("");
+
+  const fetchCurrentUser = useCallback(async () => {
+    try {
+      const response = await apiFetch("/auth/me", { method: "GET" });
+      const result = await response.json();
+      if (result.success && result.data) {
+        setCurrentUserRole(result.data.role);
+      }
+    } catch (error) {
+      console.error("Error fetching current user:", error);
+    }
+  }, []);
 
   const fetchEmployees = useCallback(async () => {
     try {
@@ -53,8 +67,9 @@ export default function EmployeesList(_props: EmployeesListProps) {
   }, []);
 
   useEffect(() => {
+    fetchCurrentUser();
     fetchEmployees();
-  }, [fetchEmployees]);
+  }, [fetchEmployees, fetchCurrentUser]);
 
   const getStatusColor = (status?: string) => {
     switch (status?.toLowerCase()) {
@@ -160,18 +175,139 @@ export default function EmployeesList(_props: EmployeesListProps) {
     });
   };
 
+  const handleImpersonate = async (employee: Employee) => {
+    try {
+      const response = await apiFetch(`/supervisor/employees/${employee.id}/impersonate`, {
+        method: "POST",
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Failed to impersonate");
+      }
+
+      // Reload the page to apply the new impersonated session token
+      window.location.href = "/dashboard";
+    } catch (error) {
+      setAlertConfig({
+        isOpen: true,
+        title: "Impersonation Failed",
+        description: error instanceof Error ? error.message : "Failed to impersonate",
+        type: "error",
+      });
+    }
+  };
+
+  const renderEmployeeCard = (employee: Employee) => (
+    <div
+      key={employee.id}
+      className="group rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md hover:border-[#1a472a]/20"
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2">
+            <h3 className="font-semibold text-gray-900 truncate">
+              {employee.name}
+            </h3>
+            <Circle
+              className={`h-2 w-2 flex-shrink-0 ${getStatusColor(employee.status)}`}
+              fill="currentColor"
+            />
+          </div>
+          <p className="text-xs text-gray-500 truncate">{employee.email}</p>
+          {employee.job_title && (
+            <p className="text-xs text-gray-600 mt-1">{employee.job_title}</p>
+          )}
+          {employee.department && (
+            <p className="text-xs text-gray-500">{employee.department}</p>
+          )}
+          {employee.status?.toLowerCase() === "inactive" ||
+          employee.is_active === false ? (
+            <p className="mt-2 text-[11px] font-medium text-amber-600">
+              Access blocked
+            </p>
+          ) : null}
+        </div>
+
+        <div className="flex items-center gap-1 opacity-100 sm:opacity-0 sm:transition sm:group-hover:opacity-100">
+          {currentUserRole === 'super_admin' && (
+            <button
+              type="button"
+              onClick={() => handleImpersonate(employee)}
+              className="rounded-lg p-2 text-[#1a472a] transition hover:bg-[#1a472a]/10"
+              title="Login as User"
+            >
+              <User className="h-4 w-4" />
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={() => handleBlockEmployee(employee)}
+            disabled={
+              employee.status?.toLowerCase() === "inactive" ||
+              employee.is_active === false
+            }
+            className="rounded-lg p-2 text-amber-600 transition hover:bg-amber-50 disabled:cursor-not-allowed disabled:opacity-40"
+            title="Block access"
+          >
+            <ShieldX className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => handleDeleteEmployee(employee)}
+            className="rounded-lg p-2 text-red-600 transition hover:bg-red-50"
+            title="Delete user"
+          >
+            <Trash2 className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  const getGroupedEmployees = () => {
+    if (groupBy === "none") return { "All Employees": employees };
+    
+    return employees.reduce((groups, emp) => {
+      let groupKey = "Uncategorized";
+      if (groupBy === "department" && emp.department) groupKey = emp.department;
+      if (groupBy === "job_title" && emp.job_title) groupKey = emp.job_title;
+      
+      if (!groups[groupKey]) groups[groupKey] = [];
+      groups[groupKey].push(emp);
+      return groups;
+    }, {} as Record<string, Employee[]>);
+  };
+
+  const groupedData = getGroupedEmployees();
+
   return (
     <div className="w-full space-y-4">
       {/* Header */}
-      <div className="rounded-2xl bg-gradient-to-br from-[#eef7ff] to-[#e2f5f1] p-5 shadow-sm">
-        <div className="flex items-center gap-3 mb-2">
-          <Users className="h-5 w-5 text-[#1a472a]" />
-          <h2 className="text-lg font-bold text-[#1a472a]">Team Members</h2>
+      <div className="rounded-2xl bg-gradient-to-br from-[#eef7ff] to-[#e2f5f1] p-5 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-3 mb-2">
+            <Users className="h-5 w-5 text-[#1a472a]" />
+            <h2 className="text-lg font-bold text-[#1a472a]">Team Members</h2>
+          </div>
+          <p className="text-sm text-gray-600">
+            {employees.length} employee{employees.length !== 1 ? "s" : ""} in your
+            team
+          </p>
         </div>
-        <p className="text-sm text-gray-600">
-          {employees.length} employee{employees.length !== 1 ? "s" : ""} in your
-          team
-        </p>
+        
+        <div className="flex items-center gap-2">
+          <label className="text-xs font-bold text-[#1a472a]">Group By:</label>
+          <select 
+            value={groupBy}
+            onChange={(e) => setGroupBy(e.target.value as any)}
+            className="text-sm px-3 py-1.5 rounded-lg border border-gray-200 outline-none focus:ring-2 focus:ring-[#1a472a]/20 bg-white text-gray-700"
+          >
+            <option value="none">None</option>
+            <option value="department">Department</option>
+            <option value="job_title">Job Title</option>
+          </select>
+        </div>
       </div>
 
       {/* Employees Grid */}
@@ -190,66 +326,16 @@ export default function EmployeesList(_props: EmployeesListProps) {
           <p className="text-sm text-gray-500">No employees found</p>
         </div>
       ) : (
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-          {employees.map((employee) => (
-            <div
-              key={employee.id}
-              className="group rounded-2xl border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-md hover:border-[#1a472a]/20"
-            >
-              <div className="flex items-start justify-between gap-3">
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-semibold text-gray-900 truncate">
-                      {employee.name}
-                    </h3>
-                    <Circle
-                      className={`h-2 w-2 flex-shrink-0 ${getStatusColor(employee.status)}`}
-                      fill="currentColor"
-                    />
-                  </div>
-                  <p className="text-xs text-gray-500 truncate">
-                    {employee.email}
-                  </p>
-                  {employee.job_title && (
-                    <p className="text-xs text-gray-600 mt-1">
-                      {employee.job_title}
-                    </p>
-                  )}
-                  {employee.department && (
-                    <p className="text-xs text-gray-500">
-                      {employee.department}
-                    </p>
-                  )}
-                  {employee.status?.toLowerCase() === "inactive" ||
-                  employee.is_active === false ? (
-                    <p className="mt-2 text-[11px] font-medium text-amber-600">
-                      Access blocked
-                    </p>
-                  ) : null}
-                </div>
-
-                <div className="flex items-center gap-1 opacity-100 sm:opacity-0 sm:transition sm:group-hover:opacity-100">
-                  <button
-                    type="button"
-                    onClick={() => handleBlockEmployee(employee)}
-                    disabled={
-                      employee.status?.toLowerCase() === "inactive" ||
-                      employee.is_active === false
-                    }
-                    className="rounded-lg p-2 text-amber-600 transition hover:bg-amber-50 disabled:cursor-not-allowed disabled:opacity-40"
-                    title="Block access"
-                  >
-                    <ShieldX className="h-4 w-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteEmployee(employee)}
-                    className="rounded-lg p-2 text-red-600 transition hover:bg-red-50"
-                    title="Delete user"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                </div>
+        <div className="space-y-6">
+          {Object.entries(groupedData).map(([groupName, groupEmployees]) => (
+            <div key={groupName} className="space-y-3">
+              {groupBy !== "none" && (
+                <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500 border-b border-gray-100 pb-2">
+                  {groupName} <span className="ms-2 bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">{groupEmployees.length}</span>
+                </h3>
+              )}
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                {groupEmployees.map(renderEmployeeCard)}
               </div>
             </div>
           ))}

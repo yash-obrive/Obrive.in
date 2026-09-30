@@ -30,9 +30,9 @@ export function IndustriesTemplate({
             </div>
 
             <div className="flex w-full items-center justify-center p-2.5 relative max-lg:w-full max-lg:p-0">
-              <div className="inline-flex flex-col items-center justify-center gap-2.5 pl-6 pr-[90px] pt-4 pb-6 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] rounded-2xl border-[0.5px] border-solid border-primary/40 max-lg:w-full max-lg:px-6 max-lg:py-6 max-md:px-4 max-md:py-5 max-sm:px-3">
+              <div className="inline-flex flex-col items-center justify-center gap-2.5 ps-6 pe-[90px] pt-4 pb-6 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] rounded-2xl border-[0.5px] border-solid border-primary/40 max-lg:w-full max-lg:px-6 max-lg:py-6 max-md:px-4 max-md:py-5 max-sm:px-3">
                 <div className="flex w-full max-w-[804px] items-center justify-center gap-2.5 p-2.5 relative flex-[0_0_auto] max-lg:max-w-none max-lg:p-0">
-                  <p className="relative w-full max-w-[804px] mt-[-1.00px] ml-[-4.50px] mr-[-4.50px] font-normal text-base tracking-[1.00px] leading-7 max-lg:max-w-none max-lg:m-0 max-md:text-sm max-md:leading-6 max-sm:text-xs whitespace-pre-wrap text-zinc-700">
+                  <p className="relative w-full max-w-[804px] mt-[-1.00px] ms-[-4.50px] me-[-4.50px] font-normal text-base tracking-[1.00px] leading-7 max-lg:max-w-none max-lg:m-0 max-md:text-sm max-md:leading-6 max-sm:text-xs whitespace-pre-wrap text-zinc-700">
                     <Translate text={hero.description} />
                   </p>
                 </div>
@@ -47,7 +47,7 @@ export function IndustriesTemplate({
         <div className="grid grid-cols-2 max-lg:grid-cols-1 gap-x-12 gap-y-4 py-20 max-md:py-14">
           {industries.map((ind, i) => (
             <FadeInOnView key={ind.id} delay={i * 0.05}>
-              <div className="group flex flex-col gap-3 py-6 px-6 hover:bg-zinc-50/80 border-l-[3px] border-transparent hover:border-primary hover:-translate-y-0.5 motion-reduce:transform-none transition-all duration-300 h-full rounded-r-xl">
+              <div className="group flex flex-col gap-3 py-6 px-6 hover:bg-zinc-50/80 border-s-[3px] border-transparent hover:border-primary hover:-translate-y-0.5 motion-reduce:transform-none transition-all duration-300 h-full rounded-e-xl">
                 <div className="flex items-center gap-4 mb-1">
                   <div className="w-2 h-2 rounded-full bg-primary/20 group-hover:bg-primary transition-colors flex-shrink-0"></div>
                   <h3
@@ -56,7 +56,7 @@ export function IndustriesTemplate({
                     <Translate text={ind.title} />
                   </h3>
                 </div>
-                <ul className="mt-2 flex flex-wrap gap-2 pl-6">
+                <ul className="mt-2 flex flex-wrap gap-2 ps-6">
                   {ind.description
                     .split(/[,;]|\band\b/i)
                     .map((s) => s.trim().replace(/\.$/, ""))

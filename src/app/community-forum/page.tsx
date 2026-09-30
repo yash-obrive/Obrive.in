@@ -141,7 +141,7 @@ const CommunityPage = () => {
         ))}
       </div>
 
-      <header className="fixed top-0 left-0 w-full z-50 px-6 md:px-15 py-6 md:py-8 flex justify-between items-center bg-transparent pointer-events-auto">
+      <header className="fixed top-0 start-0 w-full z-50 px-6 md:px-15 py-6 md:py-8 flex justify-between items-center bg-transparent pointer-events-auto">
         <div
           className="font-black tracking-tight text-xl pointer-events-auto cursor-pointer"
           onClick={() => router.push("/")}
@@ -154,7 +154,7 @@ const CommunityPage = () => {
       </header>
 
       {/* 1. FIXED SWAPPING TEXT CONTAINER */}
-      <div className="fixed top-0 left-0 z-50 pointer-events-none flex h-screen w-screen flex-col items-center justify-center text-center overflow-hidden">
+      <div className="fixed top-0 start-0 z-50 pointer-events-none flex h-screen w-screen flex-col items-center justify-center text-center overflow-hidden">
         <h1 className="text-4xl md:text-6xl font-black lowercase tracking-tight relative h-20 w-full flex items-center justify-center">
           {/* "community" - Staggered exit animation */}
           <span className="absolute flex">
@@ -214,7 +214,7 @@ const CommunityPage = () => {
         {/* // login dialog box ------------------------------------------------------------------------- */}
         {showLoginDialog ? (
           <div className="pointer-events-auto fixed inset-0 z-60 flex items-center justify-center bg-black/55 px-4 py-6 backdrop-blur-sm">
-            <div className="w-full max-w-110 rounded-[20px] border border-black/10 bg-white p-8 text-left shadow-[0_30px_80px_rgba(0,0,0,0.22)]">
+            <div className="w-full max-w-110 rounded-[20px] border border-black/10 bg-white p-8 text-start shadow-[0_30px_80px_rgba(0,0,0,0.22)]">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <div className="inline-flex rounded-full border border-[#074139]/15 bg-[#074139]/10 px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-[#074139]">
@@ -301,7 +301,7 @@ const CommunityPage = () => {
       </div>
 
       {/* 2. SCREEN 1: First Screen (Eggshell White Background) */}
-      <div className="h-screen w-full bg-[#effbf0] flex flex-col justify-center items-center fixed top-0 left-0 z-0">
+      <div className="h-screen w-full bg-[#effbf0] flex flex-col justify-center items-center fixed top-0 start-0 z-0">
         <p className="text-sm mt-32 text-gray-400 animate-bounce">
           scroll down ↓
         </p>
@@ -317,7 +317,7 @@ const CommunityPage = () => {
         </h1> */}
       </div>
 
-      <footer className="fixed bottom-0 left-0 z-50 w-full px-6 md:px-10 py-4 md:py-6 flex flex-col-reverse md:flex-row items-center justify-between gap-3 text-[10px] text-black font-bold bg-transparent pointer-events-auto">
+      <footer className="fixed bottom-0 start-0 z-50 w-full px-6 md:px-10 py-4 md:py-6 flex flex-col-reverse md:flex-row items-center justify-between gap-3 text-[10px] text-black font-bold bg-transparent pointer-events-auto">
         <div className="text-center md:text-left text-gray-500 md:text-black">
           © 2026 obrive inc. all rights reserved.
         </div>

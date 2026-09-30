@@ -81,7 +81,7 @@ const ProjectsSection = () => {
 
       <div className="flex h-full min-h-0 flex-col gap-4 overflow-hidden lg:flex-row">
         <div
-          className={`${isProjectListOpen ? "translate-x-0" : "-translate-x-full"} fixed inset-y-3 left-3 z-50 w-[min(20rem,calc(100vw-1.5rem))] transition-transform lg:static lg:w-64 lg:translate-x-0 lg:flex-shrink-0`}
+          className={`${isProjectListOpen ? "translate-x-0" : "-translate-x-full"} fixed inset-y-3 start-3 z-50 w-[min(20rem,calc(100vw-1.5rem))] transition-transform lg:static lg:w-64 lg:translate-x-0 lg:flex-shrink-0`}
         >
           <div className="h-full overflow-y-auto rounded-2xl bg-white p-3 shadow-sm">
             <div className="mb-3 flex items-center justify-between border-b border-gray-100 pb-3 lg:hidden">

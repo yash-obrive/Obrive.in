@@ -201,7 +201,7 @@ export default function Home() {
                     <Translate text="News" />
                   </Button>
                 </Link>
-                <p className="uppercase text-xs font-semibold max-sm:text-left text-primary text-center sm:text-right">
+                <p className="uppercase text-xs font-semibold max-sm:text-start text-primary text-center sm:text-end">
                   <Translate text="TURNING COMPLEX BUSINESS CHALLENGES INTO INTELLIGENT EXPERIENCES." />
                 </p>
               </div>
@@ -212,7 +212,7 @@ export default function Home() {
           <FullWidthSection backgroundColor="accent" className="pt-10">
             <FadeInOnView>
               <div className="flex relative w-full overflow-hidden gap-10 flex-col">
-                <div className="absolute top-20 left-80">
+                <div className="absolute top-20 start-80">
                   <Image
                     src={BACKGROUND_IMAGE.CURVED_BG}
                     alt={BACKGROUND_IMAGE_META.CURVED_BG.alt}
@@ -295,7 +295,7 @@ export default function Home() {
                 </FadeInOnView>
                 <div className="relative flex flex-col px-4 sm:px-8 lg:px-18 gap-6 lg:gap-10 min-h-[400px]">
                   {/* curved primary bg image */}
-                  <div className="hidden lg:block absolute inset-y-0 left-30 w-[800px] -z-10 pointer-events-none">
+                  <div className="hidden lg:block absolute inset-y-0 start-30 w-[800px] -z-10 pointer-events-none">
                     <Image
                       src={BACKGROUND_IMAGE.PRIMARY_CURVED_BG}
                       alt={BACKGROUND_IMAGE_META.PRIMARY_CURVED_BG.alt}

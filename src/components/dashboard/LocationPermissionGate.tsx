@@ -40,7 +40,7 @@ export default function LocationPermissionGate({
           </p>
 
           {/* Browser Instructions Box */}
-          <div className="mt-6 rounded-2xl bg-slate-50 p-5 text-left border border-slate-200/70">
+          <div className="mt-6 rounded-2xl bg-slate-50 p-5 text-start border border-slate-200/70">
             <div className="flex items-center gap-2 mb-3 text-xs font-bold uppercase tracking-wider text-slate-500">
               <AlertTriangle className="h-4 w-4 text-amber-500" />
               How to unblock in your browser:

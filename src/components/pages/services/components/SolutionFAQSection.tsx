@@ -70,7 +70,7 @@ export default function SolutionFAQSection({
 
           {/* Accordion Categories */}
           <div className="flex flex-col flex-1">
-            <div className="max-w-none lg:pr-8 xl:pr-16">
+            <div className="max-w-none lg:pe-8 xl:pe-16">
               {categories.map((category) => (
                 <FAQAccordionSection
                   key={category.title}

@@ -72,8 +72,8 @@ export default function ProjectCard({
               {/* ICON */}
               <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-slate-50 flex items-center justify-center overflow-hidden flex-shrink-0 border border-slate-100">
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-white opacity-50" />
-                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-amber-200/40 rounded-full blur-xl transform -translate-x-1/2 translate-y-1/2" />
-                <div className="absolute top-0 right-0 w-6 h-6 bg-purple-500 rounded-full blur-lg opacity-60 transform translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute bottom-0 start-0 w-full h-1/2 bg-amber-200/40 rounded-full blur-xl transform -translate-x-1/2 translate-y-1/2" />
+                <div className="absolute top-0 end-0 w-6 h-6 bg-purple-500 rounded-full blur-lg opacity-60 transform translate-x-1/2 -translate-y-1/2" />
                 <div className="z-10 w-8 h-8 sm:w-9 sm:h-9 bg-white rounded-lg  flex items-center justify-center">
                   <div className="w-full h-full bg-gradient-to-tr from-amber-400 via-amber-200 to-purple-500 rounded-lg" />
                 </div>

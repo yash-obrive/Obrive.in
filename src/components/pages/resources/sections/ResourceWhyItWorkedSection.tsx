@@ -27,7 +27,7 @@ export function WhyItWorkedItem({
           {title}
         </h3>
       )}
-      <div className="text-sm sm:text-base leading-relaxed [&>ul]:list-disc [&>ul]:list-inside [&>ul]:pl-0 [&>ul]:space-y-2">
+      <div className="text-sm sm:text-base leading-relaxed [&>ul]:list-disc [&>ul]:list-inside [&>ul]:ps-0 [&>ul]:space-y-2">
         {children}
       </div>
     </div>
@@ -62,14 +62,14 @@ export default function ResourceWhyItWorkedSection({
                     {item.description}
                   </p>
                 ) : (
-                  <div className="text-sm sm:text-base leading-relaxed [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2">
+                  <div className="text-sm sm:text-base leading-relaxed [&>ul]:list-disc [&>ul]:ps-6 [&>ul]:space-y-2">
                     {item.description}
                   </div>
                 )}
               </div>
             ))}
       </div>
-      <div className="pr-30 max-md:pr-0">
+      <div className="pe-30 max-md:pe-0">
         {finalQuote && (
           <div className="bg-primary text-accent rounded-xl py-10 px-16 max-md:py-8 max-md:px-6 mt-6">
             <p

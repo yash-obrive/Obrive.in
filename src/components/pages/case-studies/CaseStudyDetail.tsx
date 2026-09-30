@@ -38,7 +38,7 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
              <Translate text="Overview" /> </h2>
           <div>
             <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-              {caseStudy.overview}
+              <Translate text={caseStudy.overview} />
             </p>
           </div>
         </div>
@@ -51,7 +51,7 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
                <Translate text="The Challenge" /> </h2>
             <div>
               <p className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg">
-                {caseStudy.challenge}
+                <Translate text={caseStudy.challenge} />
               </p>
             </div>
           </div>
@@ -64,16 +64,16 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
             >
                <Translate text="Solution Architecture" /> </h2>
             <div>
-              <ul className="list-disc list-inside pl-0 space-y-3">
+              <ul className="list-disc list-inside ps-0 space-y-3">
                 {caseStudy.architecture.map((arch, idx) => (
                   <li
                     key={idx}
                     className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg"
                   >
                     <strong className="text-gray-900 font-bold">
-                      {arch.layer}:
+                      <Translate text={arch.layer} />:
                     </strong>{" "}
-                    {arch.delivery} - {arch.purpose}
+                    <Translate text={`${arch.delivery} - ${arch.purpose}`} />
                   </li>
                 ))}
               </ul>
@@ -88,13 +88,13 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
             >
                <Translate text="Deliverables" /> </h2>
             <div>
-              <ul className="list-disc list-inside pl-0 space-y-2">
+              <ul className="list-disc list-inside ps-0 space-y-2">
                 {caseStudy.deliverables.map((item, idx) => (
                   <li
                     key={idx}
                     className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg"
                   >
-                    {item}
+                    <Translate text={item} />
                   </li>
                 ))}
               </ul>
@@ -130,16 +130,16 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
             >
                <Translate text="Impact & Outcomes" /> </h2>
             <div>
-              <ul className="list-disc list-inside pl-0 space-y-4">
+              <ul className="list-disc list-inside ps-0 space-y-4">
                 {caseStudy.impacts.map((impact, idx) => (
                   <li
                     key={idx}
                     className="text-gray-700 leading-relaxed text-sm sm:text-base lg:text-lg"
                   >
                     <strong className="text-gray-900 font-bold">
-                      {impact.metric} {impact.label}:
+                      <Translate text={`${impact.metric} ${impact.label}`} />:
                     </strong>{" "}
-                    {impact.description}
+                    <Translate text={impact.description} />
                   </li>
                 ))}
               </ul>
@@ -157,12 +157,12 @@ export default function CaseStudyDetail({ caseStudy }: CaseStudyDetailProps) {
               {caseStudy.faqs.map((faq, idx) => (
                 <AccordionItem key={idx} value={`faq-${idx}`}>
                   <AccordionTrigger
-                    className={`${FONTS.microgrammaBold.className} text-left text-primary text-base md:text-lg hover:no-underline py-4`}
+                    className={`${FONTS.microgrammaBold.className} text-start text-primary text-base md:text-lg hover:no-underline py-4`}
                   >
-                    {faq.q}
+                    <Translate text={faq.q} />
                   </AccordionTrigger>
                   <AccordionContent className="text-secondary/80 text-base leading-relaxed pb-4">
-                    {faq.a}
+                    <Translate text={faq.a} />
                   </AccordionContent>
                 </AccordionItem>
               ))}

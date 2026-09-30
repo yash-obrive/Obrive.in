@@ -7,7 +7,6 @@ export type Dictionary = typeof en;
 // Explicit mapping prevents arbitrary path resolution
 const dictionaries = {
   en: () => import("@/dictionaries/en.json").then((module) => module.default),
-  hi: () => import("@/dictionaries/hi.json").then((module) => module.default),
   ar: () => import("@/dictionaries/ar.json").then((module) => module.default),
   es: () => import("@/dictionaries/es.json").then((module) => module.default),
   pt: () => import("@/dictionaries/pt.json").then((module) => module.default),
@@ -32,10 +31,9 @@ export const getDictionary = async (locale: LanguageCode): Promise<Dictionary> =
   
   try {
     const dict = await loader();
-    // In a real application, you might deep-merge with English fallback here
-    // For this phase, all three JSON files have identical required keys
-    // We will do a basic merge at the top level
-    return { ...en, ...dict } as Dictionary;
+    // STRICT VALIDATION: Return the localized dictionary exactly as-is.
+    // Do NOT merge with 'en' to avoid silent English fallbacks in production.
+    return dict as Dictionary;
   } catch (error) {
     // Safe fallback to English if chunk fails to load
     return dictionaries.en();

@@ -38,6 +38,7 @@ type AddTaskModalProps = {
     author_name?: string;
   }) => void;
   dateOptions?: NoteDateSlot[];
+  defaultDate?: string | null;
 };
 
 export default function AddTaskModal({
@@ -45,6 +46,7 @@ export default function AddTaskModal({
   onClose,
   onAdd,
   dateOptions,
+  defaultDate,
 }: AddTaskModalProps) {
   const slots = useMemo(
     () => (dateOptions?.length ? dateOptions : getNext3Days()),
@@ -65,10 +67,16 @@ export default function AddTaskModal({
 
   useEffect(() => {
     if (!isOpen) return;
-    setNoteDate((prev) =>
-      slots.some((s) => s.id === prev) ? prev : (slots[0]?.id ?? ""),
-    );
-  }, [isOpen, slots]);
+    if (defaultDate && slots.some((s) => s.id === defaultDate)) {
+      setNoteDate(defaultDate);
+    } else {
+      setNoteDate((prev) =>
+        slots.some((s) => s.id === prev) 
+          ? prev 
+          : (slots.find((s: any) => s.isToday)?.id ?? slots[0]?.id ?? "")
+      );
+    }
+  }, [isOpen, slots, defaultDate]);
 
   if (!isOpen) return null;
 
@@ -97,7 +105,7 @@ export default function AddTaskModal({
       onAdd({
         id: saved.id.toString(),
         title: saved.content,
-        note_date: new Date(saved.note_date).toLocaleDateString("en-CA"),
+        note_date: noteDate,
         color: saved.color,
         position: saved.position,
         user_id: saved.user_id != null ? String(saved.user_id) : undefined,
@@ -152,7 +160,7 @@ export default function AddTaskModal({
             id="sticky-note-date-trigger"
             type="button"
             onClick={() => setOpenDate(!openDate)}
-            className="mt-1 flex w-full items-center justify-between rounded-lg border border-gray-200 px-3 py-2 text-left text-sm transition hover:border-[#1a472a]"
+            className="mt-1 flex w-full items-center justify-between rounded-lg border border-gray-200 px-3 py-2 text-start text-sm transition hover:border-[#1a472a]"
           >
             <span>{slots.find((d) => d.id === noteDate)?.label}</span>
             <span
@@ -163,7 +171,7 @@ export default function AddTaskModal({
           </button>
 
           <div
-            className={`absolute left-0 right-0 z-50 mt-2 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg transition-all duration-200 ${
+            className={`absolute start-0 end-0 z-50 mt-2 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-lg transition-all duration-200 ${
               openDate
                 ? "pointer-events-auto scale-100 opacity-100"
                 : "pointer-events-none scale-95 opacity-0"
@@ -177,7 +185,7 @@ export default function AddTaskModal({
                   setNoteDate(d.id);
                   setOpenDate(false);
                 }}
-                className={`w-full px-3 py-2 text-left text-sm transition hover:bg-gray-100 ${
+                className={`w-full px-3 py-2 text-start text-sm transition hover:bg-gray-100 ${
                   noteDate === d.id ? "bg-gray-100 font-medium" : ""
                 }`}
               >

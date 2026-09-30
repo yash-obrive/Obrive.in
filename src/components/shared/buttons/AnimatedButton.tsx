@@ -47,13 +47,13 @@ export default function AnimatedButton({
       {/* left icon */}
       {showArrow && (
         <span
-          className="btn__icon --1 absolute left-0 top-1/2 flex items-center"
+          className="btn__icon --1 absolute start-0 top-1/2 flex items-center"
           style={{
             width: iconSize,
             height: iconSize,
           }}
         >
-          <RightAnimateIcon aria-hidden="true" color={arrowColor} />
+          <RightAnimateIcon aria-hidden="true" color={arrowColor}  />
         </span>
       )}
 
@@ -63,14 +63,14 @@ export default function AnimatedButton({
       {/* right icon */}
       {showArrow && (
         <span
-          className="btn__icon --2 relative left-1 flex items-center"
+          className="btn__icon --2 relative start-1 flex items-center"
           style={{
             width: iconSize,
             height: iconSize,
-            marginLeft: 8,
+            marginInlineStart: 8,
           }}
         >
-          <RightAnimateIcon aria-hidden="true" color={arrowColor} />
+          <RightAnimateIcon aria-hidden="true" color={arrowColor}  />
         </span>
       )}
     </span>

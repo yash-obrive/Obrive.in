@@ -40,6 +40,8 @@ export const metadata: Metadata = {
 
 import { headers } from "next/headers";
 
+import { Toaster } from "react-hot-toast";
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -115,6 +117,7 @@ export default async function RootLayout({
         />
       </head>
       <body className={`${michroma.className} antialiased bg-white`}>
+        <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
         {children}
 
         {/* Google Analytics */}

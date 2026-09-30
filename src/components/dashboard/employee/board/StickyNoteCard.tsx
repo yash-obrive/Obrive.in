@@ -99,14 +99,14 @@ export default function StickyNoteCard({
             e.stopPropagation();
             onDeletePress();
           }}
-          className="absolute right-1 top-1 z-10 rounded-md p-1 text-gray-400 transition hover:bg-gray-100 hover:text-red-500"
+          className="absolute end-1 top-1 z-10 rounded-md p-1 text-gray-400 transition hover:bg-gray-100 hover:text-red-500"
           aria-label="Remove note"
         >
           <X className="h-3.5 w-3.5" />
         </button>
       ) : null}
 
-      <div className="flex h-full flex-col p-2 pr-8 pt-5">
+      <div className="flex h-full flex-col p-2 pe-8 pt-5">
         <div className="flex min-h-0 flex-1 gap-1.5">
           <div
             className={`mt-0.5 h-4 w-4 flex-shrink-0 rounded border ${style.box}`}

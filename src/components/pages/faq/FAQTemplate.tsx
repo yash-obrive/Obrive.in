@@ -51,7 +51,7 @@ export default function FAQTemplate({ metadata, children }: FAQTemplateProps) {
 
           <div className="flex flex-col flex-1">
             {/* MDX Content */}
-            <div className="max-w-none lg:pr-8 xl:pr-16">{children}</div>
+            <div className="max-w-none lg:pe-8 xl:pe-16">{children}</div>
           </div>
         </div>
       </div>

@@ -48,7 +48,7 @@ const Sidebar = ({
   return (
     <>
       {/* 1. MOBILE ONLY VIEWPORT MODE: Fixed Dock Bottom Navigation Layer Bar */}
-      <nav className="m-3  rounded-lg md:hidden fixed bottom-0 left-0 right-0 h-14 bg-zinc-50 border-t border-slate-200/80 px-2 flex items-center justify-around z-40 shadow-[0_-2px_12px_rgba(0,0,0,0.03)] select-none">
+      <nav className="m-3  rounded-lg md:hidden fixed bottom-0 start-0 end-0 h-14 bg-zinc-50 border-t border-slate-200/80 px-2 flex items-center justify-around z-40 shadow-[0_-2px_12px_rgba(0,0,0,0.03)] select-none">
         {sidebarItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeSection === item.id;
@@ -81,7 +81,7 @@ const Sidebar = ({
           hidden md:flex
           relative
           h-full
-          border-r
+          border-e
           border-slate-200/60
           bg-white/70
           select-none

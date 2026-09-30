@@ -92,7 +92,7 @@ export default function ResourceTemplate({
                 >
                   <Translate text={metadata.postType || "CASE STUDY"} />
                 </Button>
-                <span className="text-sm font-medium text-secondary ml-4">
+                <span className="text-sm font-medium text-secondary ms-4">
                   <Translate text={metadata.date} />
                 </span>
               </div>
@@ -164,7 +164,7 @@ export default function ResourceTemplate({
           <div className="flex flex-col gap-6 sm:gap-8 lg:gap-10 flex-1">
             {/* MDX Content */}
             <div
-              className="max-w-none lg:pr-8 xl:pr-16 flex flex-col gap-6 sm:gap-8 lg:gap-10"
+              className="max-w-none lg:pe-8 xl:pe-16 flex flex-col gap-6 sm:gap-8 lg:gap-10"
               data-resource-content
             >
               {children}

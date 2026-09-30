@@ -355,13 +355,13 @@ export default function LocationHistoryModal({
                 </div>
 
                 {/* Timeline for this date */}
-                <div className="relative border-l-2 border-emerald-200 ml-3.5 space-y-4">
+                <div className="relative border-s-2 border-emerald-200 ms-3.5 space-y-4">
                   {group.pings.map((ping) => {
                     const dateObj = new Date(ping.recordedAt);
                     return (
-                      <div key={ping.id} className="relative pl-6 group">
+                      <div key={ping.id} className="relative ps-6 group">
                         {/* Timeline Node */}
-                        <div className="absolute -left-[9px] top-2 h-4 w-4 rounded-full border-2 border-white bg-emerald-600 shadow-sm"></div>
+                        <div className="absolute -start-[9px] top-2 h-4 w-4 rounded-full border-2 border-white bg-emerald-600 shadow-sm"></div>
 
                         <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-3.5 transition group-hover:bg-white group-hover:shadow-md group-hover:border-emerald-200">
                           <div className="flex items-center justify-between mb-2">
@@ -400,7 +400,7 @@ export default function LocationHistoryModal({
                                 Accuracy: &plusmn;{Math.round(ping.accuracy)}m
                               </span>
                             )}
-                            <span className="ml-auto text-[11px] uppercase font-bold text-slate-500 tracking-wider">
+                            <span className="ms-auto text-[11px] uppercase font-bold text-slate-500 tracking-wider">
                               {ping.source || "30m Interval"}
                             </span>
                           </div>

@@ -157,7 +157,7 @@ const VideoCardObrive = () => {
           ref={buttonRef}
           type="button"
           className={cn(
-            "pointer-events-auto absolute top-0 left-0 hidden md:inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition-opacity duration-150 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 z-10",
+            "pointer-events-auto absolute top-0 start-0 hidden md:inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition-opacity duration-150 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 z-10",
             isPointerActive ? "opacity-100" : "opacity-0",
           )}
           style={{ willChange: "transform" }}
@@ -188,7 +188,7 @@ const VideoCardObrive = () => {
           >
             <button
               onClick={handleCloseModal}
-              className="absolute top-4 right-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="absolute top-4 end-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
               aria-label="Close video"
             >
               <X className="h-4 w-4" />

@@ -18,14 +18,14 @@ export function ResourcesDropdown() {
         className="text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
       >
          <Translate text="Resources" /> </NavigationMenuTrigger>
-      <NavigationMenuContent className="bg-primary! border-none p-6 w-[600px] md:w-[700px] absolute -left-70 top-full mt-2 z-[60] rounded-md shadow-lg">
+      <NavigationMenuContent className="bg-primary! border-none p-6 w-[600px] md:w-[700px] absolute -start-70 top-full mt-2 z-[60] rounded-md shadow-lg">
         <div className="grid grid-cols-2 gap-6">
-          <div className="border-r border-accent/30">
+          <div className="border-e border-accent/30">
             <div>
               <div className="border-b border-accent/30 pb-4">
-                <h3 className="text-white text-xs mb-2 pr-2 uppercase">
+                <h3 className="text-white text-xs mb-2 pe-2 uppercase">
                    <Translate text="Obrive Resource Library" /> </h3>
-                <p className="text-white/80 text-[9px] mb-4 pr-2 uppercase">
+                <p className="text-white/80 text-[9px] mb-4 pe-2 uppercase">
                    <Translate text="A COLLECTION OF BLOGS, INDUSTRY INSIGHTS, AND RESOURCES
                                                     SHAPING THE FUTURE OF IMMERSIVE TECHNOLOGY." /> </p>
                 <div className="flex items-center">
@@ -60,20 +60,20 @@ export function ResourcesDropdown() {
                   </div>
 
                   <div className="flex flex-col items-center w-full justify-center">
-                    <div className="text-left pl-1 w-full py-1 text-[8px] border-b border-primary/20">
+                    <div className="text-start ps-1 w-full py-1 text-[8px] border-b border-primary/20">
                        <Translate text="Discover how AR," /> </div>
-                    <div className="text-left pl-1 w-full py-1 text-[8px] border-b border-primary/20">
+                    <div className="text-start ps-1 w-full py-1 text-[8px] border-b border-primary/20">
                        <Translate text="VR, MR, and spatial" /> </div>
-                    <div className="text-left pl-1 w-full py-1 text-[8px] border-b border-primary/20">
+                    <div className="text-start ps-1 w-full py-1 text-[8px] border-b border-primary/20">
                        <Translate text="redefining industries" /> </div>
-                    <div className="text-left pl-1 w-full py-1 text-[8px] border-b border-primary/20">
+                    <div className="text-start ps-1 w-full py-1 text-[8px] border-b border-primary/20">
                        <Translate text="worldwide." /> </div>
                   </div>
                 </div>
 
-                <h3 className="text-white text-xs mt-4 mb-3 pr-2 uppercase">
+                <h3 className="text-white text-xs mt-4 mb-3 pe-2 uppercase">
                    <Translate text="Obrive Resource Library" /> </h3>
-                <p className="text-white/80 text-[9px] mb-2 pr-2 uppercase">
+                <p className="text-white/80 text-[9px] mb-2 pe-2 uppercase">
                    <Translate text="DOWNLOAD YOUR FREE E-BOOK AND DISCOVER HOW IMMERSIVE
                                                     TECHNOLOGIES CAN TRANSFORM YOUR BUSINESS OPERATIONS." /> </p>
                 <Button

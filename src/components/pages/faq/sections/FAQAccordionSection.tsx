@@ -64,8 +64,8 @@ export function FAQItem({
 
   return (
     <AccordionItem value={itemValue} className="bg-white">
-      <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
-        <span className="text-sm pr-4 text-secondary">{actualQuestion}</span>
+      <AccordionTrigger className="px-6 py-4 text-start hover:no-underline">
+        <span className="text-sm pe-4 text-secondary">{actualQuestion}</span>
       </AccordionTrigger>
       <AccordionContent className="px-6 pb-4">
         <div className="text-sm leading-relaxed text-gray-700">
@@ -76,7 +76,7 @@ export function FAQItem({
               }}
             />
           ) : (
-            <div className="[&>ul]:list-disc [&>ul]:list-outside [&>ul]:pl-8 [&>ul]:space-y-2">
+            <div className="[&>ul]:list-disc [&>ul]:list-outside [&>ul]:ps-8 [&>ul]:space-y-2">
               {content}
             </div>
           )}

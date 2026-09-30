@@ -14,6 +14,7 @@ import { useCallback, useEffect, useState } from "react";
 import ConfirmationAlert from "@/components/ConfirmationAlert";
 import SkeletonLoading from "@/components/SkelitonLoading";
 import { apiFetch } from "@/lib/api";
+import VacationCalendarView from "@/components/dashboard/VacationCalendarView";
 
 export const dynamic = "force-dynamic";
 
@@ -43,9 +44,12 @@ const formatDate = (value?: string) => {
 
 const Leaves = () => {
   const [leaves, setLeaves] = useState<LeaveRequest[]>([]);
+  const [employees, setEmployees] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedLeave, setSelectedLeave] = useState<LeaveRequest | null>(null);
   const [isLeaveListOpen, setIsLeaveListOpen] = useState(false);
+  const [viewMode, setViewMode] = useState<"list" | "calendar">("list");
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   const [updating, setUpdating] = useState(false);
   const [alertConfig, setAlertConfig] = useState<{
     isOpen: boolean;
@@ -63,10 +67,19 @@ const Leaves = () => {
   const fetchLeaves = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await apiFetch("/supervisor/leaves", { method: "GET" });
-      const result = await response.json();
-      if (result.success) {
-        const sortedLeaves = (result.data || []).sort(
+      const [leavesRes, empRes] = await Promise.all([
+        apiFetch("/supervisor/leaves", { method: "GET" }),
+        apiFetch("/supervisor/employees", { method: "GET" })
+      ]);
+      const leavesResult = await leavesRes.json();
+      const empResult = await empRes.json();
+      
+      if (empResult.success) {
+        setEmployees(empResult.data || []);
+      }
+      
+      if (leavesResult.success) {
+        const sortedLeaves = (leavesResult.data || []).sort(
           (a: LeaveRequest, b: LeaveRequest) => {
             const dateDiff =
               new Date(a.start_date || 0).getTime() -
@@ -213,6 +226,47 @@ const Leaves = () => {
     return <SkeletonLoading />;
   }
 
+  // ── Compute per-employee leave summary ──────────────────────
+  const ANNUAL_QUOTA = 18; // configurable annual leave days
+
+  const employeeSummaryMap: Record<number, { id: number; name: string; email: string; taken: number }> = {};
+  
+  // 1. Initialize all employees in the map
+  employees.forEach(emp => {
+    employeeSummaryMap[emp.id] = {
+      id: emp.id,
+      name: emp.name || "Unknown",
+      email: emp.email || "",
+      taken: 0
+    };
+  });
+
+  // 2. Add taken leaves
+  leaves.forEach(leave => {
+    const uid = leave.users?.id;
+    if (!uid) return;
+    
+    // Ensure they exist in the map just in case a leave has a user not in the employees list
+    if (!employeeSummaryMap[uid]) {
+      employeeSummaryMap[uid] = {
+        id: uid,
+        name: leave.users?.name || "Unknown",
+        email: leave.users?.email || "",
+        taken: 0
+      };
+    }
+    
+    // Only count approved leaves toward "taken"
+    if (leave.status === "approved" && leave.start_date && leave.end_date) {
+      const start = new Date(leave.start_date);
+      const end = new Date(leave.end_date);
+      const days = Math.round((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+      employeeSummaryMap[uid].taken += days;
+    }
+  });
+
+  const employeeSummary = Object.values(employeeSummaryMap);
+
   return (
     <motion.div
       className="h-full min-h-0 p-3 sm:p-4"
@@ -220,9 +274,33 @@ const Leaves = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
     >
+      {/* Desktop Header / View Switcher */}
+      <div className="mb-4 hidden lg:flex items-center justify-between">
+        <h1 className="text-2xl font-bold text-[#1a472a]">Leave Management</h1>
+        <div className="flex bg-gray-100 p-1 rounded-lg">
+          <button
+            onClick={() => setViewMode("list")}
+            className={`px-4 py-1.5 text-sm font-medium rounded-md transition-colors ${
+              viewMode === "list" ? "bg-white text-gray-900 shadow" : "text-gray-500 hover:text-gray-900"
+            }`}
+          >
+            List View
+          </button>
+          <button
+            onClick={() => setViewMode("calendar")}
+            className={`px-4 py-1.5 text-sm font-medium rounded-md transition-colors ${
+              viewMode === "calendar" ? "bg-white text-gray-900 shadow" : "text-gray-500 hover:text-gray-900"
+            }`}
+          >
+            Calendar View
+          </button>
+        </div>
+      </div>
+
       {/* Mobile header */}
-      <div className="mb-3 flex items-center justify-between lg:hidden">
-        <button
+      <div className="mb-3 flex flex-col gap-3 lg:hidden">
+        <div className="flex items-center justify-between">
+          <button
           type="button"
           onClick={() => setIsLeaveListOpen(true)}
           className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-700 shadow-sm"
@@ -230,9 +308,28 @@ const Leaves = () => {
           <Menu className="h-4 w-4" />
           Leave Requests
         </button>
-        <span className="text-sm font-semibold text-[#1a472a]">
-          {selectedLeave ? "Leave Details" : "Leaves"}
-        </span>
+          <span className="text-sm font-semibold text-[#1a472a]">
+            {selectedLeave ? "Leave Details" : "Leaves"}
+          </span>
+        </div>
+        <div className="flex bg-gray-100 p-1 rounded-lg w-full">
+          <button
+            onClick={() => setViewMode("list")}
+            className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${
+              viewMode === "list" ? "bg-white text-gray-900 shadow" : "text-gray-500 hover:text-gray-900"
+            }`}
+          >
+            List
+          </button>
+          <button
+            onClick={() => setViewMode("calendar")}
+            className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${
+              viewMode === "calendar" ? "bg-white text-gray-900 shadow" : "text-gray-500 hover:text-gray-900"
+            }`}
+          >
+            Calendar
+          </button>
+        </div>
       </div>
 
       {isLeaveListOpen ? (
@@ -244,11 +341,50 @@ const Leaves = () => {
       ) : null}
 
       <div className="flex h-full min-h-0 flex-col gap-4 overflow-hidden lg:flex-row">
+
+        {/* ── Employee Leave Summary (top on mobile, sidebar on desktop) ── */}
+        {employeeSummary.length > 0 && (
+          <div className="shrink-0 lg:w-56 xl:w-64">
+            <div className="rounded-2xl bg-white p-4 shadow-sm space-y-3">
+              <h3 className="text-[11px] font-bold uppercase tracking-[0.15em] text-slate-500">
+                Leave Summary ({ANNUAL_QUOTA} days/yr)
+              </h3>
+              {employeeSummary.map((emp) => {
+                const remaining = Math.max(0, ANNUAL_QUOTA - emp.taken);
+                const pct = Math.min(100, (emp.taken / ANNUAL_QUOTA) * 100);
+                return (
+                  <div key={emp.id} className="space-y-1">
+                    <div className="flex items-center justify-between">
+                      <p className="text-xs font-semibold text-[#073933] truncate max-w-[65%]">
+                        {emp.name}
+                      </p>
+                      <span className="text-[10px] text-slate-500 font-medium shrink-0">
+                        {emp.taken}d taken · <span className="text-emerald-600">{remaining}d left</span>
+                      </span>
+                    </div>
+                    <div className="h-1.5 w-full rounded-full bg-[#F4F9FD] overflow-hidden">
+                      <div
+                        className={`h-1.5 rounded-full transition-all duration-500 ${
+                          pct >= 90
+                            ? "bg-red-500"
+                            : pct >= 70
+                              ? "bg-amber-400"
+                              : "bg-[#073933]"
+                        }`}
+                        style={{ width: `${pct}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
         {/* Leave Requests List */}
         <div
           className={`${
             isLeaveListOpen ? "translate-x-0" : "-translate-x-full"
-          } fixed inset-y-3 left-3 z-50 w-[min(20rem,calc(100vw-1.5rem))] transition-transform lg:static lg:w-64 lg:translate-x-0 lg:flex-shrink-0`}
+          } fixed inset-y-3 start-3 z-50 w-[min(20rem,calc(100vw-1.5rem))] transition-transform lg:static lg:w-64 lg:translate-x-0 lg:flex-shrink-0`}
         >
           <div className="h-full overflow-y-auto rounded-2xl bg-white p-3 shadow-sm">
             <div className="mb-3 flex items-center justify-between border-b border-gray-100 pb-3 lg:hidden">
@@ -263,6 +399,10 @@ const Leaves = () => {
             </div>
 
             {/* Leave Requests List */}
+            <div className="mb-4 hidden lg:block border-b border-gray-100 pb-3">
+              <h2 className="text-sm font-semibold text-[#1a472a] uppercase tracking-wider">Leave Requests</h2>
+            </div>
+            
             <div className="space-y-2">
               {leaves.length === 0 ? (
                 <p className="text-center text-sm text-gray-500">
@@ -277,7 +417,7 @@ const Leaves = () => {
                       setSelectedLeave(leave);
                       setIsLeaveListOpen(false);
                     }}
-                    className={`w-full rounded-lg px-3 py-2.5 text-left text-sm transition ${
+                    className={`w-full rounded-lg px-3 py-2.5 text-start text-sm transition ${
                       selectedLeave?.id === leave.id
                         ? "bg-[#1a472a] text-white"
                         : "bg-gray-50 text-gray-700 hover:bg-gray-100"
@@ -308,7 +448,56 @@ const Leaves = () => {
 
         {/* Main Content Area */}
         <div className="flex min-w-0 flex-1 flex-col gap-4 overflow-hidden">
-          {selectedLeave ? (
+          {viewMode === "calendar" ? (
+            <div className="flex-1 overflow-hidden bg-white rounded-2xl shadow-sm p-4">
+              <VacationCalendarView
+                employees={employees.map((emp) => ({
+                  id: emp.id,
+                  name: emp.name || "Unknown",
+                  email: emp.email || "",
+                  userid: emp.userid || "",
+                  leaves: leaves
+                    .filter((l) => l.users?.id === emp.id)
+                    .map((l) => ({
+                      id: l.id,
+                      user_id: emp.id,
+                      leave_type: l.leave_type || "vacation",
+                      start_date: l.start_date || "",
+                      end_date: l.end_date || "",
+                      status: l.status || "pending",
+                      reason: l.reason,
+                    })),
+                }))}
+                currentMonth={currentMonth}
+                setCurrentMonth={setCurrentMonth}
+                monthName={currentMonth.toLocaleString("default", { month: "long" })}
+                daysArray={Array.from(
+                  { length: new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate() },
+                  (_, i) => i + 1
+                )}
+                getLeaveForDay={(empId, day) => {
+                  const emp = employees.find((e) => e.id === empId);
+                  if (!emp) return null;
+                  const target = Date.UTC(currentMonth.getFullYear(), currentMonth.getMonth(), day);
+                  const l = leaves.find((l) => {
+                    if (l.users?.id !== empId || !l.start_date || !l.end_date) return false;
+                    const s = new Date(l.start_date).getTime();
+                    const e = new Date(l.end_date).getTime();
+                    return target >= s && target <= e;
+                  });
+                  return l ? {
+                    id: l.id,
+                    user_id: emp.id,
+                    leave_type: l.leave_type || "vacation",
+                    start_date: l.start_date || "",
+                    end_date: l.end_date || "",
+                    status: l.status || "pending",
+                    reason: l.reason
+                  } : null;
+                }}
+              />
+            </div>
+          ) : selectedLeave ? (
             <>
               <div className="flex items-center gap-3 rounded-2xl bg-[#eef7ff] p-3 shadow-sm">
                 <button

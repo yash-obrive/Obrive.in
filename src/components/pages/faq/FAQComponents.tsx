@@ -42,8 +42,8 @@ export const FAQSection = ({ title, children }: FAQSectionProps) => {
             className="bg-white rounded-lg border border-teal-200 shadow-sm hover:shadow-md transition-shadow"
             id={`question-${title.toLowerCase().replace(/\s+/g, "-")}-${index}`}
           >
-            <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
-              <span className="text-teal-900 font-medium pr-4">
+            <AccordionTrigger className="px-6 py-4 text-start hover:no-underline">
+              <span className="text-teal-900 font-medium pe-4">
                 {item.props.question}
               </span>
             </AccordionTrigger>

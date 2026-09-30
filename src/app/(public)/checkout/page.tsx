@@ -1,3 +1,4 @@
+import Translate from "@/components/shared/Translate";
 import { Suspense } from "react";
 import CheckoutForm from "./components/CheckoutForm";
 import CheckoutHero from "./components/CheckoutHero";
@@ -22,7 +23,7 @@ export default function CheckoutPage() {
       <Suspense
         fallback={
           <div className="h-96 flex items-center justify-center text-primary">
-            Loading checkout...
+            <Translate text="Loading checkout..." />
           </div>
         }
       >

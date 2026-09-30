@@ -44,11 +44,11 @@ export function RiveScrollSection() {
   return (
     <div
       ref={containerRef}
-      className="relative max-sm:hidden w-screen max-w-none h-[90vh] left-1/2 -translate-x-1/2 overflow-visible flex items-center justify-center"
+      className="relative max-sm:hidden w-screen max-w-none h-[90vh] start-1/2 -translate-x-1/2 overflow-visible flex items-center justify-center"
     >
       <motion.div
         style={{ x: smoothX }}
-        className="relative h-full w-[140vw] max-w-none flex items-center justify-center left-1/2 -translate-x-1/2"
+        className="relative h-full w-[140vw] max-w-none flex items-center justify-center start-1/2 -translate-x-1/2"
         aria-hidden
       >
         <RiveProductAnimation />

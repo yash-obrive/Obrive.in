@@ -18,7 +18,7 @@ export function SolutionsDropdown() {
         className="text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
       >
          <Translate text="Services" /> </NavigationMenuTrigger>
-      <NavigationMenuContent className="bg-primary! border-none p-6 w-[400px] md:w-[400px] absolute left-0 top-full mt-2 z-[60] rounded-md shadow-lg">
+      <NavigationMenuContent className="bg-primary! border-none p-6 w-[400px] md:w-[400px] absolute start-0 top-full mt-2 z-[60] rounded-md shadow-lg">
         <div>
           <h3 className="text-white text-xs mb-2"> <Translate text="SERVICES" /> </h3>
           <p className="text-white/80 text-[10px] mb-4">

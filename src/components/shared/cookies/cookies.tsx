@@ -49,17 +49,17 @@ export default function CookiePopup() {
   if (!show) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 z-50 max-w-sm w-full overflow-hidden drop-shadow-2xl">
-      <div className="relative bg-accent rounded-xl shadow-[0_18px_36px_-14px_rgba(7,65,57,0.42)] p-4 sm:p-6 w-full text-left">
+    <div className="fixed bottom-4 start-4 z-50 max-w-sm w-full overflow-hidden drop-shadow-2xl">
+      <div className="relative bg-accent rounded-xl shadow-[0_18px_36px_-14px_rgba(7,65,57,0.42)] p-4 sm:p-6 w-full text-start">
         {/* <Image
           src={imga}
           alt="Decoration left"
-          className="absolute bottom-0 left-0 w-32 opacity-80"
+          className="absolute bottom-0 start-0 w-32 opacity-80"
         /> */}
         {/* <Image
           src={image}
           alt="Decoration right"
-          className="absolute top-0 right-0 w-32 rotate-180 opacity-80"
+          className="absolute top-0 end-0 w-32 rotate-180 opacity-80"
         /> */}
         <p className={`leading-relaxed text-sm z-10 relative`}>
            <Translate text="We use cookies to enhance your browsing experience, analyze site

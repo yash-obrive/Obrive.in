@@ -1,4 +1,5 @@
 "use client";
+import Translate from "@/components/shared/Translate";
 
 import FONTS from "@/assets/fonts";
 import FAQWorkflowSteps from "@/components/pages/faq/FAQWorkflowSteps";
@@ -38,7 +39,7 @@ export default function FAQClientLayout({
           <h1
             className={`${FONTS.microgrammaBold.className} text-secondary text-2xl`}
           >
-            No FAQs Available
+            <Translate text="No FAQs Available" />
           </h1>
         </div>
       </FullWidthSection>
@@ -66,7 +67,7 @@ export default function FAQClientLayout({
 
           <div className="flex flex-col flex-1">
             {/* FAQ Accordions */}
-            <div className="max-w-none lg:pr-8 xl:pr-16">
+            <div className="max-w-none lg:pe-8 xl:pe-16">
               {categories.map((category) => (
                 <div key={category} className="mb-10">
                   <FAQAccordionSection title={category}>

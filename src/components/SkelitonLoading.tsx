@@ -4,7 +4,7 @@ export default function SkeletonLoading() {
   return (
     <div className="flex h-screen animate-pulse">
       {/* Sidebar Skeleton */}
-      <div className="w-64 bg-white border-r border-gray-200 p-4 space-y-4">
+      <div className="w-64 bg-white border-e border-gray-200 p-4 space-y-4">
         <div className="h-10 bg-gray-200 rounded-lg w-32" />
 
         <div className="space-y-3 mt-6">

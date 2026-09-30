@@ -22,7 +22,7 @@ export default function VacationCalendarView({
       {/* Header Area */}
       <div className="flex bg-white">
         {/* Left Header - Employees Search */}
-        <div className="w-[300px] flex-shrink-0 border-r border-gray-100 border-b border-gray-100 flex items-center justify-between p-4">
+        <div className="w-[300px] flex-shrink-0 border-e border-gray-100 border-b border-gray-100 flex items-center justify-between p-4">
           <div className="text-[16px] font-bold text-gray-800">Employees</div>
           <button className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 text-gray-600 hover:bg-gray-100 shadow-sm border border-gray-100">
             <svg
@@ -86,7 +86,7 @@ export default function VacationCalendarView({
           {/* Header Row (Sticky Header for Days AND empty top-left sticky intersection) */}
           <div className="flex sticky top-0 z-30 bg-white border-b border-gray-100 w-full pt-1 pb-1">
             {/* Top-left corner above employee list */}
-            <div className="w-[300px] flex-shrink-0 sticky left-0 z-40 bg-white border-r border-[#f1f5f9]" />
+            <div className="w-[300px] flex-shrink-0 sticky start-0 z-40 bg-white border-e border-[#f1f5f9]" />
 
             {daysArray.map((day) => (
               <div
@@ -117,7 +117,7 @@ export default function VacationCalendarView({
                 className="flex h-14 border-b border-[#f1f5f9] bg-white items-center hover:bg-gray-50 transition-colors"
               >
                 {/* Fixed Left Column - Employee Info */}
-                <div className="w-[300px] flex-shrink-0 sticky left-0 z-20 bg-white group-hover:bg-gray-50 flex items-center gap-3 h-full px-6 border-r border-[#f1f5f9] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)]">
+                <div className="w-[300px] flex-shrink-0 sticky start-0 z-20 bg-white group-hover:bg-gray-50 flex items-center gap-3 h-full px-6 border-e border-[#f1f5f9] shadow-[2px_0_5px_-2px_rgba(0,0,0,0.05)]">
                   <img
                     src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${employee.name}`}
                     alt={employee.name}

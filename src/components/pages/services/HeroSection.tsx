@@ -11,7 +11,7 @@ export const HeroSection = () => {
            <Translate text="Augmented Reality Development Across Industries in Bangalore, India." /> </h1>
       </div>
       <div className="flex items-center relative">
-        {/* <div className="flex flex-col w-[507px] items-start gap-2.5 pt-[25px] pb-2.5 px-2.5 relative self-stretch mt-[-1.00px] mb-[-1.00px] ml-[-1.00px] rounded-2xl border-[0.5px] border-solid border-[#00000080]">
+        {/* <div className="flex flex-col w-[507px] items-start gap-2.5 pt-[25px] pb-2.5 px-2.5 relative self-stretch mt-[-1.00px] mb-[-1.00px] ms-[-1.00px] rounded-2xl border-[0.5px] border-solid border-[#00000080]">
         <div className="relative self-stretch w-full h-[58px]" />
       </div> */}
 
@@ -22,9 +22,9 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        <div className="inline-flex flex-col items-center justify-center gap-2.5 pl-6 pr-[90px] pt-4 pb-6 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] rounded-2xl border-[0.5px] border-solid border-primary/40">
+        <div className="inline-flex flex-col items-center justify-center gap-2.5 ps-6 pe-[90px] pt-4 pb-6 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] rounded-2xl border-[0.5px] border-solid border-primary/40">
           <div className="flex w-[804px] items-center justify-center gap-2.5 p-2.5 relative flex-[0_0_auto]">
-            <p className="relative w-[804px] mt-[-1.00px] ml-[-4.50px] mr-[-4.50px] font-normal text-base tracking-[1.00px] leading-7">
+            <p className="relative w-[804px] mt-[-1.00px] ms-[-4.50px] me-[-4.50px] font-normal text-base tracking-[1.00px] leading-7">
                <Translate text="Traditional workflows across industries—from manufacturing to
                                         healthcare to training—often rely on physical prototyping,
                                         manuals, and static visuals. These methods can be slow,
@@ -39,7 +39,7 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        {/* <div className="flex flex-col w-[507px] items-start gap-2.5 pt-[25px] pb-2.5 px-2.5 relative self-stretch mt-[-1.00px] mb-[-1.00px] mr-[-1.00px] rounded-2xl border-[0.5px] border-solid border-[#00000080]">
+        {/* <div className="flex flex-col w-[507px] items-start gap-2.5 pt-[25px] pb-2.5 px-2.5 relative self-stretch mt-[-1.00px] mb-[-1.00px] me-[-1.00px] rounded-2xl border-[0.5px] border-solid border-[#00000080]">
         <div className="relative self-stretch w-full h-[58px]" />
       </div> */}
       </div>

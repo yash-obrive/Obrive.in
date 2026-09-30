@@ -22,10 +22,10 @@ export function CompanyDropdown() {
         className="text-[10px] hover:bg-transparent! focus:bg-transparent! active:bg-transparent! hover:font-extrabold transition-all duration-200 ease-in-out uppercase cursor-pointer hover:text-primary bg-transparent"
       >
          <Translate text="Company" /> </NavigationMenuTrigger>
-      <NavigationMenuContent className="bg-primary! border-none p-6 min-w-[450px] min-h-[300px] md:w-[400px] absolute left-0 top-full mt-2 z-[60] rounded-md shadow-lg">
+      <NavigationMenuContent className="bg-primary! border-none p-6 min-w-[450px] min-h-[300px] md:w-[400px] absolute start-0 top-full mt-2 z-[60] rounded-md shadow-lg">
         <div>
           <h3 className="text-white text-xs mb-2 w-2xl"> <Translate text="COMPANY" /> </h3>
-          <p className="text-accent text-[10px] pr-24 mb-4 uppercase">
+          <p className="text-accent text-[10px] pe-24 mb-4 uppercase">
              <Translate text="Bringing Transparency and Efficiency to the World of Immersive
                                   Technologies." /> </p>
 
@@ -57,7 +57,7 @@ export function CompanyDropdown() {
               />
             </div>
 
-            <div className="w-full pr-6">
+            <div className="w-full pe-6">
               <div className="flex items-center gap-3  border-y border-white/20">
                 <AnimatedNavLabel iconSize={14} gap={0} shiftDirection="right">
                   <Link

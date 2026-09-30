@@ -4,6 +4,19 @@ import { Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { apiFetch } from "@/lib/api";
 
+import { z } from "zod";
+
+const projectSchema = z.object({
+  name: z.string().min(3, "Project name must be at least 3 characters").max(100, "Project name is too long"),
+  projectId: z.string().min(3, "Project ID is required").max(50, "Project ID is too long"),
+  description: z.string().max(1000, "Description is too long").optional(),
+  status: z.string().max(100, "Status is too long").optional(),
+  priority: z.enum(["low", "medium", "high"]),
+  deadline: z.string().optional(),
+  team_members: z.array(z.number()),
+  client_id: z.string().optional().nullable(),
+});
+
 interface Employee {
   id: number;
   name: string;
@@ -54,6 +67,7 @@ export default function CreateProjectDialog({
   const [selectedEmployees, setSelectedEmployees] = useState<number[]>([]);
   const [clients, setClients] = useState<Client[]>([]);
   const [selectedClient, setSelectedClient] = useState<string | null>(null); // 2. CHANGED FROM number TO string
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -87,6 +101,7 @@ export default function CreateProjectDialog({
     if (open) {
       fetchEmployees();
       fetchClients();
+      setErrors({});
 
       if (isEdit && project) {
         setName(project.name || "");
@@ -124,7 +139,29 @@ export default function CreateProjectDialog({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !projectId.trim()) return;
+    setErrors({});
+
+    const result = projectSchema.safeParse({
+      name: name.trim(),
+      projectId: projectId.trim(),
+      description: description.trim() || undefined,
+      status: status.trim() || undefined,
+      priority,
+      deadline: deadline || undefined,
+      team_members: selectedEmployees,
+      client_id: selectedClient || undefined,
+    });
+
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          fieldErrors[err.path[0] as string] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
+      return;
+    }
 
     onSubmit({
       name: name.trim(),
@@ -155,7 +192,7 @@ export default function CreateProjectDialog({
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-lg hover:bg-gray-200"
+          className="absolute end-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-lg hover:bg-gray-200"
         >
           ×
         </button>
@@ -177,11 +214,16 @@ export default function CreateProjectDialog({
                 id="projectId"
                 type="text"
                 value={projectId}
-                onChange={(e) => setProjectId(e.target.value)}
+                onChange={(e) => {
+                  setProjectId(e.target.value);
+                  setErrors((prev) => ({ ...prev, projectId: "" }));
+                }}
                 placeholder="PRJ-001"
-                className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#073933]"
-                required
+                className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#073933] ${errors.projectId ? "border-red-500" : ""}`}
               />
+              {errors.projectId && (
+                <p className="mt-1 text-xs text-red-500">{errors.projectId}</p>
+              )}
             </div>
             <div>
               <label
@@ -194,11 +236,16 @@ export default function CreateProjectDialog({
                 id="name"
                 type="text"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setErrors((prev) => ({ ...prev, name: "" }));
+                }}
                 placeholder="Enter project name"
-                className="w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#073933]"
-                required
+                className={`w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#073933] ${errors.name ? "border-red-500" : ""}`}
               />
+              {errors.name && (
+                <p className="mt-1 text-xs text-red-500">{errors.name}</p>
+              )}
             </div>
           </div>
 
@@ -212,10 +259,16 @@ export default function CreateProjectDialog({
             <textarea
               id="description"
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={(e) => {
+                setDescription(e.target.value);
+                setErrors((prev) => ({ ...prev, description: "" }));
+              }}
               placeholder="Enter project description"
-              className="h-20 w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#073933] resize-none"
+              className={`h-20 w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#073933] resize-none ${errors.description ? "border-red-500" : ""}`}
             />
+            {errors.description && (
+              <p className="mt-1 text-xs text-red-500">{errors.description}</p>
+            )}
           </div>
 
           <div>
@@ -228,10 +281,16 @@ export default function CreateProjectDialog({
             <textarea
               id="Status"
               value={status}
-              onChange={(e) => setStatus(e.target.value)}
+              onChange={(e) => {
+                setStatus(e.target.value);
+                setErrors((prev) => ({ ...prev, status: "" }));
+              }}
               placeholder="Enter project status"
-              className="h-20 w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#073933] resize-none"
+              className={`h-20 w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#073933] resize-none ${errors.status ? "border-red-500" : ""}`}
             />
+            {errors.status && (
+              <p className="mt-1 text-xs text-red-500">{errors.status}</p>
+            )}
           </div>
 
           <div className="grid grid-cols-2 gap-4">

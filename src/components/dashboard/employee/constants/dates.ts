@@ -78,7 +78,7 @@ export const getNext3Days = () => {
     return d;
   };
 
-  const formatDate = (date: Date) => date.toISOString().split("T")[0];
+  const formatDate = (date: Date) => toLocalYYYYMMDD(date);
 
   return Array.from({ length: 3 }, (_, i) => {
     const d = addDays(i);
@@ -99,7 +99,7 @@ export const getNext60Days = () => {
     return d;
   };
 
-  const formatDate = (date: Date) => date.toISOString().split("T")[0];
+  const formatDate = (date: Date) => toLocalYYYYMMDD(date);
 
   return Array.from({ length: 60 }, (_, i) => {
     const d = addDays(i);

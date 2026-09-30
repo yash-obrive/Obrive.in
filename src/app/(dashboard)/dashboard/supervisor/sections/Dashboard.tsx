@@ -33,7 +33,7 @@ const Dashboard = ({
       <div className="flex h-full min-h-0 flex-col gap-3 overflow-hidden xl:flex-row">
         <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-hidden">
           <Header pageTitle="Supervisor Dashboard" userName={user?.name} />
-          <div className="flex-1 overflow-y-auto flex flex-col gap-3 pr-0 xl:pr-2">
+          <div className="flex-1 overflow-y-auto flex flex-col gap-3 pe-0 xl:pr-2">
             <EmployeesList setActiveSection={setActiveSection} />
           </div>
         </div>
@@ -79,7 +79,7 @@ const Dashboard = ({
                               .join("")
                           )}
                         </div>
-                        <div className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-green-500"></div>
+                        <div className="absolute -bottom-0.5 -end-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-green-500"></div>
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-xs font-bold text-gray-900">
