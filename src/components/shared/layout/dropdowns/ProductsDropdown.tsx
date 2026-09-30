@@ -21,7 +21,7 @@ export function ProductsDropdown() {
       <NavigationMenuContent className="bg-primary! border-none p-6 w-[600px] md:w-[650px] z-[60] rounded-md shadow-lg">
         <div className="flex h-full">
           {/* OBPARK */}
-          <div className="flex-1 pr-6 flex flex-col gap-3">
+          <div className="flex-1 pe-6 flex flex-col gap-3">
             <div className="relative flex items-center justify-center w-fit isolate">
               <div
                 aria-hidden
@@ -52,10 +52,10 @@ export function ProductsDropdown() {
           </div>
 
           {/* Divider Line */}
-          <div className="w-[.5px] h-[96%] absolute left-1/2 top-33 -translate-x-1/2 -translate-y-1/2 bg-accent/60 mx-0"></div>
+          <div className="w-[.5px] h-[96%] absolute start-1/2 top-33 -translate-x-1/2 -translate-y-1/2 bg-accent/60 mx-0"></div>
 
           {/* OBNEST */}
-          <div className="flex-1 pl-6 flex flex-col gap-3">
+          <div className="flex-1 ps-6 flex flex-col gap-3">
             <div className="relative flex items-center justify-center w-fit isolate">
               <div
                 aria-hidden

@@ -38,7 +38,7 @@ export default function Footer() {
                 <div
                   className={`border border-primary/40 py-2 px-3 font-semibold text-primary rounded-lg ${FONTS.microgrammaBold.className}`}
                 >
-                  {group.title}
+                  <Translate text={group.title} />
                 </div>
                 {group.items.map((item) => (
                   <Link
@@ -48,7 +48,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {item.label}
+                    <Translate text={item.label} />
                   </Link>
                 ))}
                 {Array.from({ length: maxItems - group.items.length - (group.bottomLink ? 1 : 0) + 1 }).map((_, i) => (
@@ -61,7 +61,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {group.bottomLink.label}
+                    <Translate text={group.bottomLink.label} />
                   </Link>
                 )}
               </div>

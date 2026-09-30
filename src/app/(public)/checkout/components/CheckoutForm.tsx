@@ -1,4 +1,6 @@
 "use client";
+import { useTranslation } from "@/context/TranslationContext";
+import Translate from "@/components/shared/Translate";
 
 import { useSearchParams } from "next/navigation";
 import type React from "react";
@@ -86,6 +88,8 @@ function loadRazorpayScript(): Promise<boolean> {
 }
 
 export default function CheckoutForm() {
+  const { dictionary } = useTranslation();
+  const dict = dictionary as Record<string, string>;
   const searchParams = useSearchParams();
   const serviceParam = searchParams.get("service");
 
@@ -398,11 +402,10 @@ export default function CheckoutForm() {
           <h2
             className={`${FONTS.microgrammaBold.className} text-3xl text-primary mb-4`}
           >
-            Payment Successful
+            <Translate text="Payment Successful" />
           </h2>
           <p className="text-primary/70 mb-2">
-            Thank you! Your payment has been confirmed and your service scope
-            has been initiated.
+            <Translate text="Thank you! Your payment has been confirmed and your service scope has been initiated." />
           </p>
           {paymentId && (
             <p className="text-primary/50 text-xs mt-4 font-mono">
@@ -418,7 +421,7 @@ export default function CheckoutForm() {
             href="/servicecharges"
             className="mt-8 inline-block text-sm text-primary/60 underline hover:text-primary transition-colors"
           >
-            ← Back to Pricing
+            <Translate text="← Back to Pricing" />
           </a>
         </div>
       </section>
@@ -434,10 +437,10 @@ export default function CheckoutForm() {
             <h2
               className={`${FONTS.microgrammaBold.className} text-2xl text-primary mb-2`}
             >
-              Billing Details
+              <Translate text="Billing Details" />
             </h2>
             <p className="text-primary/60 text-sm">
-              Please enter your company and contact information for the invoice.
+              <Translate text="Please enter your company and contact information for the invoice." />
             </p>
           </div>
 
@@ -445,7 +448,7 @@ export default function CheckoutForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold text-primary/70 uppercase tracking-wider mb-2">
-                  First Name *
+                  <Translate text="First Name *" />
                 </label>
                 <input
                   type="text"
@@ -453,7 +456,7 @@ export default function CheckoutForm() {
                   value={formData.firstName}
                   onChange={handleChange}
                   className={`w-full bg-primary/5 border ${errors.firstName ? "border-red-500" : "border-primary/10 focus:border-primary/30"} rounded-xl px-4 py-3 text-sm text-primary outline-none transition-colors`}
-                  placeholder="John"
+                  placeholder={dict["John"] || "John"}
                 />
                 {errors.firstName && (
                   <span className="text-red-500 text-xs mt-1 block">
@@ -463,7 +466,7 @@ export default function CheckoutForm() {
               </div>
               <div>
                 <label className="block text-xs font-bold text-primary/70 uppercase tracking-wider mb-2">
-                  Last Name *
+                  <Translate text="Last Name *" />
                 </label>
                 <input
                   type="text"
@@ -471,7 +474,7 @@ export default function CheckoutForm() {
                   value={formData.lastName}
                   onChange={handleChange}
                   className={`w-full bg-primary/5 border ${errors.lastName ? "border-red-500" : "border-primary/10 focus:border-primary/30"} rounded-xl px-4 py-3 text-sm text-primary outline-none transition-colors`}
-                  placeholder="Doe"
+                  placeholder={dict["Doe"] || "Doe"}
                 />
                 {errors.lastName && (
                   <span className="text-red-500 text-xs mt-1 block">
@@ -484,7 +487,7 @@ export default function CheckoutForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold text-primary/70 uppercase tracking-wider mb-2">
-                  Email Address *
+                  <Translate text="Email Address *" />
                 </label>
                 <input
                   type="email"
@@ -492,7 +495,7 @@ export default function CheckoutForm() {
                   value={formData.email}
                   onChange={handleChange}
                   className={`w-full bg-primary/5 border ${errors.email ? "border-red-500" : "border-primary/10 focus:border-primary/30"} rounded-xl px-4 py-3 text-sm text-primary outline-none transition-colors`}
-                  placeholder="john@company.com"
+                  placeholder={dict["john@company.com"] || "john@company.com"}
                 />
                 {errors.email && (
                   <span className="text-red-500 text-xs mt-1 block">
@@ -502,7 +505,7 @@ export default function CheckoutForm() {
               </div>
               <div>
                 <label className="block text-xs font-bold text-primary/70 uppercase tracking-wider mb-2">
-                  Phone Number *
+                  <Translate text="Phone Number *" />
                 </label>
                 <input
                   type="tel"
@@ -510,7 +513,7 @@ export default function CheckoutForm() {
                   value={formData.phone}
                   onChange={handleChange}
                   className={`w-full bg-primary/5 border ${errors.phone ? "border-red-500" : "border-primary/10 focus:border-primary/30"} rounded-xl px-4 py-3 text-sm text-primary outline-none transition-colors`}
-                  placeholder="+91 98765 43210"
+                  placeholder={dict["+91 98765 43210"] || "+91 98765 43210"}
                 />
                 {errors.phone && (
                   <span className="text-red-500 text-xs mt-1 block">
@@ -523,7 +526,7 @@ export default function CheckoutForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold text-primary/70 uppercase tracking-wider mb-2">
-                  Company Name
+                  <Translate text="Company Name" />
                 </label>
                 <input
                   type="text"
@@ -531,12 +534,12 @@ export default function CheckoutForm() {
                   value={formData.company}
                   onChange={handleChange}
                   className="w-full bg-primary/5 border border-primary/10 focus:border-primary/30 rounded-xl px-4 py-3 text-sm text-primary outline-none transition-colors"
-                  placeholder="Optional"
+                  placeholder={dict["Optional"] || "Optional"}
                 />
               </div>
               <div>
                 <label className="block text-xs font-bold text-primary/70 uppercase tracking-wider mb-2">
-                  GST Number
+                  <Translate text="GST Number" />
                 </label>
                 <div className="flex gap-2">
                   <input
@@ -552,7 +555,7 @@ export default function CheckoutForm() {
                           ? "border-green-500"
                           : "border-primary/10 focus:border-primary/30"
                     } rounded-xl px-4 py-3 text-sm text-primary outline-none transition-colors uppercase`}
-                    placeholder="e.g. 29ABCDE1234F1Z5"
+                    placeholder={dict["e.g. 29ABCDE1234F1Z5"] || "e.g. 29ABCDE1234F1Z5"}
                   />
                   {(formData.gst ?? "").trim().length > 0 && gstinVerifyState !== "valid" && (
                     <button
@@ -583,7 +586,7 @@ export default function CheckoutForm() {
 
             <div>
               <label className="block text-xs font-bold text-primary/70 uppercase tracking-wider mb-2">
-                Billing Address *
+                <Translate text="Billing Address *" />
               </label>
               <textarea
                 name="address"
@@ -591,7 +594,7 @@ export default function CheckoutForm() {
                 onChange={handleChange}
                 rows={3}
                 className={`w-full bg-primary/5 border ${errors.address ? "border-red-500" : "border-primary/10 focus:border-primary/30"} rounded-xl px-4 py-3 text-sm text-primary outline-none transition-colors resize-none`}
-                placeholder="Full billing address for the invoice"
+                placeholder={dict["Full billing address for the invoice"] || "Full billing address for the invoice"}
               />
               {errors.address && (
                 <span className="text-red-500 text-xs mt-1 block">
@@ -649,13 +652,13 @@ export default function CheckoutForm() {
                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z"
                   />
                 </svg>
-                Secured by Razorpay · 256-bit SSL
+                <Translate text="Secured by Razorpay · 256-bit SSL" />
               </div>
 
               {/* Status messages */}
               {submitState === "dismissed" && (
                 <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-800 text-sm">
-                  Payment window was closed. You can try again when ready.
+                  <Translate text="Payment window was closed. You can try again when ready." />
                 </div>
               )}
               {submitState === "error" && (
@@ -673,14 +676,14 @@ export default function CheckoutForm() {
             <h2
               className={`${FONTS.microgrammaBold.className} text-xl text-primary mb-8`}
             >
-              Order Summary
+              <Translate text="Order Summary" />
             </h2>
 
             {!packageDetails ? (
               <div className="text-primary/60 text-sm">
                 No service package selected.{" "}
                 <a href="/servicecharges" className="underline text-primary">
-                  Return to pricing
+                  <Translate text="Return to pricing" />
                 </a>{" "}
                 to select a package.
               </div>
@@ -714,7 +717,7 @@ export default function CheckoutForm() {
                     </span>
                   </div>
                   <div className="flex justify-between items-center text-primary/80">
-                    <span>GST on Service @ 18%</span>
+                    <span><Translate text="GST on Service @ 18%" /></span>
                     <span className="font-bold">
                       {breakdown
                         ? (
@@ -726,7 +729,7 @@ export default function CheckoutForm() {
                     </span>
                   </div>
                   <div className="flex justify-between items-center text-primary/70 text-xs mt-2 pt-2 border-t border-primary/5">
-                    <span>Payment Gateway Fee @ 2%</span>
+                    <span><Translate text="Payment Gateway Fee @ 2%" /></span>
                     <span className="font-medium">
                       {breakdown
                         ? formatINR(breakdown.gatewayFee / 100)
@@ -734,7 +737,7 @@ export default function CheckoutForm() {
                     </span>
                   </div>
                   <div className="flex justify-between items-center text-primary/70 text-xs">
-                    <span>GST on Gateway Fee @ 18%</span>
+                    <span><Translate text="GST on Gateway Fee @ 18%" /></span>
                     <span className="font-medium">
                       {breakdown
                         ? formatINR(breakdown.gatewayFeeGst / 100)
@@ -742,7 +745,7 @@ export default function CheckoutForm() {
                     </span>
                   </div>
                   <div className="flex justify-between items-center text-primary/60 text-xs pb-2 border-b border-primary/5">
-                    <span>Payment Gateway Charges</span>
+                    <span><Translate text="Payment Gateway Charges" /></span>
                     <span className="font-medium">
                       {breakdown
                         ? formatINR(breakdown.gatewayCharges / 100)
@@ -755,7 +758,7 @@ export default function CheckoutForm() {
 
                 <div className="flex justify-between items-center">
                   <span className="font-bold text-primary uppercase text-sm">
-                    Total Payable
+                    <Translate text="Total Payable" />
                   </span>
                   <span
                     className={`${FONTS.microgrammaBold.className} text-2xl text-primary`}
@@ -827,7 +830,7 @@ export default function CheckoutForm() {
 
                   {submitState === "dismissed" && (
                     <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-800 text-sm">
-                      Payment window was closed. You can try again when ready.
+                      <Translate text="Payment window was closed. You can try again when ready." />
                     </div>
                   )}
                   {submitState === "error" && (
@@ -854,7 +857,7 @@ export default function CheckoutForm() {
                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z"
                   />
                 </svg>
-                Secured by Razorpay · 256-bit SSL encryption
+                <Translate text="Secured by Razorpay · 256-bit SSL encryption" />
               </div>
             </div>
           </div>

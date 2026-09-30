@@ -65,13 +65,13 @@ export const createResourceMDXComponents = (metadata: any) => ({
   ),
   ul: (props: any) => (
     <ul
-      className="list-disc list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      className="list-disc list-inside ps-0 space-y-2 mb-4 text-gray-700"
       {...props}
     />
   ),
   ol: (props: any) => (
     <ol
-      className="list-decimal list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      className="list-decimal list-inside ps-0 space-y-2 mb-4 text-gray-700"
       {...props}
     />
   ),
@@ -86,7 +86,7 @@ export const createResourceMDXComponents = (metadata: any) => ({
   ),
   em: (props: any) => <em className="italic" {...props} />,
   blockquote: (props: any) => (
-    <blockquote className="border-l-4 border-primary pl-6 my-6 italic text-gray-700">
+    <blockquote className="border-s-4 border-primary ps-6 my-6 italic text-gray-700">
       <p
         className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}
       >
@@ -203,13 +203,13 @@ export default {
   ),
   ul: (props: any) => (
     <ul
-      className="list-disc list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      className="list-disc list-inside ps-0 space-y-2 mb-4 text-gray-700"
       {...props}
     />
   ),
   ol: (props: any) => (
     <ol
-      className="list-decimal list-inside pl-0 space-y-2 mb-4 text-gray-700"
+      className="list-decimal list-inside ps-0 space-y-2 mb-4 text-gray-700"
       {...props}
     />
   ),
@@ -224,7 +224,7 @@ export default {
   ),
   em: (props: any) => <em className="italic" {...props} />,
   blockquote: (props: any) => (
-    <blockquote className="border-l-4 border-primary pl-6 my-6 italic text-gray-700">
+    <blockquote className="border-s-4 border-primary ps-6 my-6 italic text-gray-700">
       <p
         className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}
       >

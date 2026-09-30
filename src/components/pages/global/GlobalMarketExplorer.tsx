@@ -106,7 +106,7 @@ export default function GlobalMarketExplorer() {
               </select>
 
               {/* Quick Jump Anchors */}
-              <div className="hidden lg:flex items-center gap-1.5 border-l border-primary/15 pl-2 ml-1">
+              <div className="hidden lg:flex items-center gap-1.5 border-s border-primary/15 ps-2 ms-1">
                 {quickJumpNav.map((item) => (
                   <a
                     key={item.href}
@@ -159,7 +159,7 @@ export default function GlobalMarketExplorer() {
                           <span
                             className={`${FONTS.microgrammaBold.className} text-primary text-base group-hover:text-secondary transition-colors`}
                           >
-                            {market.name}
+                            <Translate text={market.name} />
                           </span>
                         </div>
                         <span className="text-primary/40 group-hover:text-primary transition-colors p-1">
@@ -168,7 +168,7 @@ export default function GlobalMarketExplorer() {
                       </div>
 
                       <p className="text-primary/70 text-xs leading-relaxed line-clamp-3 mb-4">
-                        {market.cities}
+                        <Translate text={market.cities} />
                       </p>
                     </div>
                   </Link>

@@ -119,7 +119,7 @@ const SolutionSidebarLayout = ({
 
       {/* ── Full-Width Process Steps (breaks out of container padding) ───── */}
       <FadeInOnView>
-        <div className="w-[100vw] relative left-1/2 -translate-x-1/2">
+        <div className="w-[100vw] relative start-1/2 -translate-x-1/2">
           <SolutionProcessSteps steps={processSteps} />
         </div>
       </FadeInOnView>

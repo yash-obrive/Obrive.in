@@ -298,13 +298,13 @@ export default function HRLocationsSection() {
         {/* Search & Filter Controls */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-2 border-b border-slate-100">
           <div className="relative w-full sm:max-w-xs">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+            <Search className="absolute start-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
             <input
               type="text"
               placeholder="Search by name, role, department..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-8 pr-3 py-1.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#073933]"
+              className="w-full ps-8 pe-3 py-1.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#073933]"
             />
           </div>
 
@@ -328,14 +328,14 @@ export default function HRLocationsSection() {
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
+          <table className="w-full text-start text-xs">
             <thead>
               <tr className="border-b border-slate-100 text-slate-400 uppercase tracking-wider font-bold">
-                <th className="pb-3 pl-2">Employee</th>
+                <th className="pb-3 ps-2">Employee</th>
                 <th className="pb-3">Department & Role</th>
                 <th className="pb-3 text-center">Tracking Status</th>
                 <th className="pb-3">Last GPS Ping</th>
-                <th className="pb-3 text-right pr-2">Actions</th>
+                <th className="pb-3 text-end pe-2">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -371,7 +371,7 @@ export default function HRLocationsSection() {
                       className="hover:bg-slate-50/70 transition"
                     >
                       {/* Name & Avatar */}
-                      <td className="py-3 pl-2">
+                      <td className="py-3 ps-2">
                         <div className="flex items-center gap-2.5">
                           <div className="h-8 w-8 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center font-bold text-xs overflow-hidden border border-slate-200">
                             {emp.avatar_url ? (
@@ -485,7 +485,7 @@ export default function HRLocationsSection() {
                       </td>
 
                       {/* Actions */}
-                      <td className="py-3 pr-2 text-right">
+                      <td className="py-3 pe-2 text-end">
                         <div className="flex items-center justify-end gap-1.5">
                           {emp.latitude != null && emp.longitude != null && (
                             <a

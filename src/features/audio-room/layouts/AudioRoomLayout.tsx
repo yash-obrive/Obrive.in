@@ -33,7 +33,7 @@ const AudioRoomLayout = ({
       {/* Main Framework Layout Viewport */}
       <div className="flex flex-1 min-h-0 overflow-hidden relative flex-col md:flex-row">
         {/* 1. DESKTOP ONLY: Streamlined Left Side Tabs Bar Container */}
-        <nav className="hidden md:flex w-44 bg-white border-r border-slate-200/80 flex-col gap-1 p-2 select-none">
+        <nav className="hidden md:flex w-44 bg-white border-e border-slate-200/80 flex-col gap-1 p-2 select-none">
           <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-2.5 mt-2 mb-1.5">
             Dashboard
           </p>
@@ -57,7 +57,7 @@ const AudioRoomLayout = ({
         </nav>
 
         {/* 2. MOBILE ONLY: Fluid Snap Bottom Navigation Action Layer Bar */}
-        <nav className="md:hidden fixed bottom-0 left-0 right-0 h-14 bg-white border-t border-slate-200/80 px-2 flex items-center justify-around z-40 shadow-[0_-2px_12px_rgba(0,0,0,0.02)] select-none">
+        <nav className="md:hidden fixed bottom-0 start-0 end-0 h-14 bg-white border-t border-slate-200/80 px-2 flex items-center justify-around z-40 shadow-[0_-2px_12px_rgba(0,0,0,0.02)] select-none">
           {sections.map((section) => {
             const isActive = activeSection === section.id;
             return (

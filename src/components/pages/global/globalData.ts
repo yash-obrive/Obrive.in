@@ -23,19 +23,27 @@ export interface BriefCard {
 
 import { COUNTRIES, type CountryCode } from "@/config/countries";
 
-export const MARKETS_DATA: MarketItem[] = (
-  Object.keys(COUNTRIES) as CountryCode[]
-).map((code) => {
-  const country = COUNTRIES[code];
-  return {
-    flag: country.flag,
-    name: country.name,
-    region: country.region,
-    code: country.code,
-    href: country.code === "in" ? "https://obrive.in/coming-soon" : `/${country.code}`,
-    cities: country.offices.join(" · "),
-  };
-});
+export const MARKETS_DATA: MarketItem[] = [
+  {
+    flag: "🇮🇳",
+    name: "India",
+    region: "APAC",
+    code: "in",
+    href: "https://obrive.in",
+    cities: "Bengaluru · Mumbai · Ahmedabad",
+  },
+  ...(Object.keys(COUNTRIES) as CountryCode[]).map((code) => {
+    const country = COUNTRIES[code];
+    return {
+      flag: country.flag,
+      name: country.name,
+      region: country.region,
+      code: country.code,
+      href: `/${country.code}`,
+      cities: country.offices.join(" · "),
+    };
+  }),
+];
 
 export const INDUSTRIES_DATA: HubItem[] = [
   {

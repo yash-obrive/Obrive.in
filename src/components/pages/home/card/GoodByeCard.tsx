@@ -34,10 +34,10 @@ const GoodByeCard = () => {
         </div>
         <div className="flex flex-col gap-10 sm:flex-row justify-between">
           <div className="max-sm:hidden flex-1 px-4 sm:px-0 h-full w-full">
-            <GoodbyeCardRive className="h-[360px] absolute top-10 -left-48 lg:h-[320px]" />
+            <GoodbyeCardRive className="h-[360px] absolute top-10 -start-48 lg:h-[320px]" />
           </div>
           <div>
-            <p className="text-left md:text-right text-xs w-full px-4 sm:px-10 py-6 max-w-full md:max-w-[500px] mt-2 md:mt-6 leading-6">
+            <p className="text-start md:text-end text-xs w-full px-4 sm:px-10 py-6 max-w-full md:max-w-[500px] mt-2 md:mt-6 leading-6">
                <Translate text="Technology should feel less like software—and more like reality. Obrive combines strategy, design, engineering and immersive technology to build experiences that work in the real world. Don't limit your business to what technology can do today. Imagine what's possible when the physical and digital worlds work together." /> </p>
           </div>
 

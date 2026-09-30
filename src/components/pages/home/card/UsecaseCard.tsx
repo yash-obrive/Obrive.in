@@ -24,7 +24,7 @@ export default function UsecaseCard({
           <Translate text={use} />
         </Button>
       </div>
-      <div className="flex flex-col gap-4 mt-5 pr-0 sm:pr-6 lg:pr-11">
+      <div className="flex flex-col gap-4 mt-5 pe-0 sm:pe-6 lg:pe-11">
         <h3
           className={`${FONTS.microgrammaBold.className} text-lg text-primary`}
         >

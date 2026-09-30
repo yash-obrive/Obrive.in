@@ -104,7 +104,7 @@ export default function CommunityRooms() {
             <div className="max-w-2xl">
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-7 py-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#074139] shadow-sm backdrop-blur">
                 Conversations, new ideas, trends, community live discussions and
-                more. <span className="ml-2 text-slate-400">join now</span>
+                more. <span className="ms-2 text-slate-400">join now</span>
               </div>
               <h1 className="text-4xl font-black tracking-tight sm:text-4xl lg:text-5xl">
                 Step into the room.

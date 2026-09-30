@@ -35,9 +35,9 @@ export default function ProductPageCard({
           />
         )}
         <div className="sm:px-4">
-          <p className="text-left max-sm:text-xs text-primary/80"><Translate text={quote} /></p>
+          <p className="text-start max-sm:text-xs text-primary/80"><Translate text={quote} /></p>
           <h3
-            className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
+            className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-start text-lg`}
           >
             <Translate text={author} />
           </h3>

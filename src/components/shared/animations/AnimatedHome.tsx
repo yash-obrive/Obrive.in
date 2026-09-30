@@ -1178,14 +1178,14 @@ export const Box = ({
         <section
           ref={leftSectionRef}
           className={cn(
-            "absolute w-[345px] h-[345px] top-0 left-0 rounded-3xl overflow-hidden",
+            "absolute w-[345px] h-[345px] top-0 start-0 rounded-3xl overflow-hidden",
             cardBgClassName,
           )}
           aria-label="Left panel"
         >
           <div className="relative w-[335px] h-[243px] top-[102px]">
             <div className="flex flex-col w-[335px] h-[243px] items-end gap-2.5 relative overflow-hidden">
-              <div className="relative w-[728.55px] h-[453.74px] ml-[-393.55px]">
+              <div className="relative w-[728.55px] h-[453.74px] ms-[-393.55px]">
                 <div className="relative w-[729px] h-[454px]">
                   {leftPanelImages.map((imageData, index) =>
                     renderImageElement(imageData, index),
@@ -1198,23 +1198,23 @@ export const Box = ({
 
         <section
           ref={centerSectionRef}
-          className="absolute w-[757px] h-[345px] top-0 left-[366px]"
+          className="absolute w-[757px] h-[345px] top-0 start-[366px]"
           aria-label="Center panel"
         >
           <div
             className={cn(
-              "absolute w-[345px] h-[345px] top-0 left-[23px] rounded-3xl overflow-hidden",
+              "absolute w-[345px] h-[345px] top-0 start-[23px] rounded-3xl overflow-hidden",
               cardBgClassName,
             )}
           />
           <div
             className={cn(
-              "absolute w-[345px] h-[345px] top-0 left-[412px] rounded-3xl overflow-hidden",
+              "absolute w-[345px] h-[345px] top-0 start-[412px] rounded-3xl overflow-hidden",
               cardBgClassName,
             )}
           />
 
-          <div className="absolute w-[736px] h-[306px] top-[38px] left-0">
+          <div className="absolute w-[736px] h-[306px] top-[38px] start-0">
             <div className="flex flex-col w-[736px] h-[306px] items-start gap-2.5 relative overflow-hidden">
               <div className="relative w-[728.55px] h-[453.74px]">
                 <div className="relative w-[729px] h-[454px]">
@@ -1230,14 +1230,14 @@ export const Box = ({
         <section
           ref={rightSectionRef}
           className={cn(
-            "absolute w-[345px] h-[345px] top-0 left-[1167px] rounded-3xl overflow-hidden",
+            "absolute w-[345px] h-[345px] top-0 start-[1167px] rounded-3xl overflow-hidden",
             cardBgClassName,
           )}
           aria-label="Right panel"
         >
           <div className="relative w-[335px] h-[243px]">
             <div className="flex flex-col w-[345px] h-[345px] items-center justify-center gap-2.5 relative overflow-hidden">
-              <div className="mt-[-300px] ml-[-100px] mr-[-120px] rotate-180 relative w-[728.55px] h-[453.74px]">
+              <div className="mt-[-300px] ms-[-100px] me-[-120px] rotate-180 relative w-[728.55px] h-[453.74px]">
                 <div className="relative w-[729px] h-[454px]">
                   {rightPanelImages.map((imageData, index) =>
                     renderImageElement(imageData, index),

@@ -38,7 +38,7 @@ export default function VacationEmployeeList({
                     alt={employee.name}
                     className="w-12 h-12 rounded-full bg-slate-50 flex-shrink-0 object-cover border border-gray-100"
                   />
-                  <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+                  <div className="absolute bottom-0 end-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
                 </div>
                 <div className="flex flex-col min-w-0">
                   <span className="text-md font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
@@ -51,7 +51,15 @@ export default function VacationEmployeeList({
               </div>
 
               {/* Right: Leave Stats */}
-              <div className="flex items-center gap-10 ml-4 flex-shrink-0">
+              <div className="flex items-center gap-10 ms-4 flex-shrink-0">
+                <div className="flex flex-col items-center min-w-[80px]">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
+                    Pending
+                  </span>
+                  <span className="text-lg font-black text-amber-500">
+                    {employee.leaves?.filter(l => l.status === "pending").length || 0}
+                  </span>
+                </div>
                 <div className="flex flex-col items-center min-w-[80px]">
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">
                     Vacations

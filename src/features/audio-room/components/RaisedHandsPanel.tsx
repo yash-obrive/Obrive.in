@@ -109,7 +109,7 @@ const RaisedHandsPanel = ({ roomId, role }: RaisedHandsPanelProps) => {
     <aside
       className="
         absolute
-        right-5
+        end-5
         top-20
         z-20
         w-72

@@ -8,18 +8,28 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { COUNTRIES, DEFAULT_COUNTRY } from "@/config/countries";
+
 import { SOCIAL_LINKS } from "@/constants/Footer";
 import { useCountry } from "@/context/CountryContext";
 import Translate from "@/components/shared/Translate";
+import { useEffect, useState } from "react";
 
 const contactCellBase =
   "border border-primary/30 rounded-lg text-xs text-sm hover:text-white transition-colors duration-500 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-primary before:scale-y-0 before:origin-center hover:before:scale-y-100 before:transition-transform before:duration-500 before:ease-[cubic-bezier(0.19,1,0.22,1)] before:-z-10 z-10";
 
 export default function FooterContact() {
-  const { countryConfig: _ } = useCountry();
-  const defaultCountryConfig = COUNTRIES[DEFAULT_COUNTRY];
-  const offices = defaultCountryConfig.offices || [];
+  const { countryConfig } = useCountry();
+  const [isExplicitUS, setIsExplicitUS] = useState(false);
+
+  useEffect(() => {
+    if (window.location.pathname.startsWith("/us")) {
+      setIsExplicitUS(true);
+    }
+  }, []);
+
+  const offices = (countryConfig.code === "us" && !isExplicitUS)
+    ? ["Bengaluru, Karnataka, India", "Mumbai, Maharashtra, India", "Ahmedabad, Gujarat, India"]
+    : countryConfig.offices || [];
 
   return (
     <div className="flex flex-col">
@@ -28,27 +38,28 @@ export default function FooterContact() {
         className={`border border-primary/40 py-2 px-3 font-semibold text-primary rounded-lg ${FONTS.microgrammaBold.className}`}
       >
          <Translate text="Contact" /> </Link>
-      <div className={`${contactCellBase} p-3`}>
-        {defaultCountryConfig.phone}
+      <div className={`${contactCellBase} p-3`} dir="ltr">
+        +91-888-477-4300
       </div>
       <a
-        href={`mailto:${defaultCountryConfig.contactEmail}`}
+        href="mailto:info@obrive.com"
         className={`${contactCellBase} p-3`}
+        dir="ltr"
       >
-        {defaultCountryConfig.contactEmail}
+        info@obrive.com
       </a>
 
       {/* Display up to 3 offices */}
       {offices.slice(0, 3).map((office, idx) => (
         <div key={idx} className={`${contactCellBase} p-3`}>
-          {office}, {defaultCountryConfig.name}
+          <Translate text={office} />
         </div>
       ))}
 
       {/* Fill remaining slots to maintain layout height if there are less than 3 offices */}
-      {offices.length < 3 && <div className={`${contactCellBase} p-3`}></div>}
-      {offices.length < 2 && <div className={`${contactCellBase} p-3`}></div>}
-      {offices.length === 0 && <div className={`${contactCellBase} p-3`}></div>}
+      {offices.length < 3 && <div className={`${contactCellBase} p-3`}>&nbsp;</div>}
+      {offices.length < 2 && <div className={`${contactCellBase} p-3`}>&nbsp;</div>}
+      {offices.length === 0 && <div className={`${contactCellBase} p-3`}>&nbsp;</div>}
 
       <div className={`${contactCellBase} p-5`}></div>
 

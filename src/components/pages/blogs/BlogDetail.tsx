@@ -14,6 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { BlogCardContent } from "@/constants/pages/resources/blog-card";
 import type { Blog } from "@/lib/blogs";
+import Translate from "@/components/shared/Translate";
 
 interface BlogDetailProps {
   blog: Blog;
@@ -68,11 +69,11 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
               <h1
                 className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-secondary leading-tight`}
               >
-                {blog.title}
+                <Translate text={blog.title} />
               </h1>
 
               <blockquote className="text-sm sm:text-base lg:text-lg text-slate-700 leading-relaxed">
-                {blog.sections[0]?.content[0]}
+                <Translate text={blog.sections[0]?.content[0]} />
               </blockquote>
 
               <div className="flex items-center gap-3 pt-2 sm:pt-4">
@@ -81,7 +82,7 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
                 </div>
                 <div>
                   <p className="font-semibold text-slate-800 text-sm sm:text-base">
-                    {blog.author}
+                    <Translate text={blog.author} />
                   </p>
                 </div>
               </div>
@@ -111,7 +112,7 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
 
           <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8 flex-1">
             <div
-              className="max-w-none lg:pr-8 xl:pr-16 flex flex-col gap-4 sm:gap-6 lg:gap-8"
+              className="max-w-none lg:pe-8 xl:pe-16 flex flex-col gap-4 sm:gap-6 lg:gap-8"
               data-resource-content
             >
               {blog.sections.map((section, idx) => {
@@ -124,7 +125,7 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
                       <h2
                         className={`${FONTS.microgrammaBold.className} text-3xl mb-4 mt-6`}
                       >
-                        {section.title}
+                        <Translate text={section.title} />
                       </h2>
                     )}
                     {isFaq ? (
@@ -144,12 +145,12 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
                           .map((faq, fIdx) => (
                             <AccordionItem key={fIdx} value={`item-${fIdx}`}>
                               <AccordionTrigger
-                                className={`${FONTS.microgrammaBold.className} text-left text-primary text-base md:text-lg hover:no-underline py-4`}
+                                className={`${FONTS.microgrammaBold.className} text-start text-primary text-base md:text-lg hover:no-underline py-4`}
                               >
-                                {faq.q}
+                                <Translate text={faq.q} />
                               </AccordionTrigger>
                               <AccordionContent className="text-secondary/80 text-base leading-relaxed pb-4">
-                                {faq.a}
+                                <Translate text={faq.a} />
                               </AccordionContent>
                             </AccordionItem>
                           ))}
@@ -161,7 +162,7 @@ const BlogDetail = ({ blog }: BlogDetailProps) => {
                             key={pIdx}
                             className="text-base leading-relaxed text-gray-700"
                           >
-                            {paragraph}
+                            <Translate text={paragraph} />
                           </p>
                         ))}
                       </div>

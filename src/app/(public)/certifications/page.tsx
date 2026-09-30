@@ -1,4 +1,5 @@
 "use client";
+import Translate from "@/components/shared/Translate";
 
 import { Calendar, CircleUser } from "lucide-react";
 import Image from "next/image";
@@ -364,7 +365,7 @@ export default function CertificationsPage() {
           <h1
             className={`${FONTS.microgrammaBold.className} text-[#074139] text-sm sm:text-base md:text-lg tracking-wide text-center mb-4`}
           >
-            ISO Certifications
+            <Translate text="ISO Certifications" />
           </h1>
 
           {/* Desktop Slider (Shows 4 large images per tile) */}

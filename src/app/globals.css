@@ -375,3 +375,27 @@ body {
 .animate-scroll {
   animation: scroll linear infinite;
 }
+
+/* RTL Button Animation Overrides */
+html[dir="rtl"] .btn__icon.--1 {
+  transform: translate(250%) translate(2rem) translateY(-50%);
+}
+html[dir="rtl"] .btn:hover .btn__icon.--1 {
+  transform: translate(0.4rem) translateY(-50%);
+}
+
+html[dir="rtl"] .btn:hover .btn__icon.--2 {
+  transform: translate(-100%) translate(-2rem);
+}
+
+html[dir="rtl"] .btn:hover .btn__label {
+  transform: translate(-1.5rem) translate(-0.1rem);
+}
+html[dir="rtl"] .btn.--play:hover .btn__label {
+  transform: translate(-2rem);
+}
+
+/* Force SVG flip in RTL for buttons */
+html[dir="rtl"] .btn__icon svg {
+  transform: scaleX(-1);
+}

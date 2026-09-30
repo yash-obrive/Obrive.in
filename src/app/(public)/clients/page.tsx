@@ -1,4 +1,5 @@
 "use client";
+import Translate from "@/components/shared/Translate";
 
 import { motion, useInView } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -118,7 +119,7 @@ export default function ClientsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Our Clients
+          <Translate text="Our Clients" />
         </motion.h1>
 
         {/* Client Grid */}

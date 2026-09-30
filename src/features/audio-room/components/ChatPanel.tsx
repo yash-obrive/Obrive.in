@@ -77,9 +77,9 @@ const ChatPanel = ({ setIsChatOpen }: ChatPanelProps) => {
           <div
             key={message.id}
             className={`
-                rounded-tl-xl
-                rounded-tr-xl
-                rounded-bl-xl
+                rounded-ss-xl
+                rounded-se-xl
+                rounded-es-xl
                 px-4
                 py-2
                 text-[9px]

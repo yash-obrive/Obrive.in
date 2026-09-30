@@ -59,6 +59,7 @@ export default function Board({
 
   const [draggedTask, setDraggedTask] = useState<BoardTask | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [defaultAddDate, setDefaultAddDate] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
 
   const [localTasks, setLocalTasks] = useState<any[]>([]);
@@ -97,7 +98,7 @@ export default function Board({
           const formattedTasks = json.data.map((task: any) => ({
             id: task.id.toString(),
             title: task.content,
-            note_date: new Date(task.note_date).toLocaleDateString("en-CA"),
+            note_date: String(task.note_date).split("T")[0],
             color: task.color,
             position: task.position,
             user_id: task.user_id != null ? String(task.user_id) : undefined,
@@ -112,7 +113,10 @@ export default function Board({
     fetchTasks();
   }, [mode, propTasks, setTasks]);
 
-  const handleAddCardOpen = () => setIsModalOpen(true);
+  const handleAddCardOpen = (dateId?: string) => {
+    setDefaultAddDate(dateId || null);
+    setIsModalOpen(true);
+  };
 
   const handleDrop = async (e: any, column: BoardColumn) => {
     e.preventDefault();
@@ -203,8 +207,7 @@ export default function Board({
             : NOTES_BOARD_GRID
         }
       >
-        {userId !== null &&
-          columns.map((col) => {
+        {columns.map((col) => {
             const columnEl = (
               <Column
                 column={col}
@@ -243,10 +246,10 @@ export default function Board({
 
       {shouldShowAddTask && (
         <>
-          <div className="pointer-events-none fixed bottom-6 right-4 z-50 sm:bottom-8 sm:right-8">
+          <div className="pointer-events-none fixed bottom-6 end-4 z-50 sm:bottom-8 sm:end-8">
             <div className="pointer-events-auto shrink-0">
               <FloatingButton
-                onClick={handleAddCardOpen}
+                onClick={() => handleAddCardOpen()}
                 label={addButtonLabel || "Add note"}
               />
             </div>
@@ -256,6 +259,7 @@ export default function Board({
             onClose={() => setIsModalOpen(false)}
             onAdd={handleAddTask}
             dateOptions={columns.map(({ id, label }) => ({ id, label }))}
+            defaultDate={defaultAddDate}
           />
         </>
       )}

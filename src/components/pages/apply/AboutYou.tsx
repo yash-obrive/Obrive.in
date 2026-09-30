@@ -40,7 +40,7 @@ const AboutYou = ({
              <Translate text="Why do I need to do this?" /> </h3>
           <p className="mt-3 text-sm text-gray-700">
              <Translate text="At" /> {" "}
-            <span className={`${FONTS.microgrammaBold.className}`}>Obrive</span>{" "}
+            <span className={`${FONTS.microgrammaBold.className}`}><Translate text="Obrive" /></span>{" "}
              <Translate text="Industries, we want to ensure you’ll feel at home in our culture and
                                   thrive as part of our team. This also helps us understand your
                                   strengths, passions, and working style so we can place you in a role

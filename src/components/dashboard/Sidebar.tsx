@@ -66,9 +66,9 @@ export default function Sidebar({
       ) : null}
 
       <div
-        className={`${mobileOpen ? "translate-x-0" : "-translate-x-full"} fixed inset-y-2 left-2 z-50 w-[min(18rem,calc(100vw-1rem))] transition-transform duration-300 md:hidden`}
+        className={`${mobileOpen ? "translate-x-0" : "-translate-x-full"} fixed inset-y-2 start-2 z-50 w-[min(18rem,calc(100vw-1rem))] transition-transform duration-300 md:hidden`}
       >
-        <div className="h-full rounded-lg bg-white border-r border-gray-200 shadow-sm">
+        <div className="h-full rounded-lg bg-white border-e border-gray-200 shadow-sm">
           <div className="flex h-full flex-col">
             <div className="border-b border-gray-100 p-4">
               <div className="flex items-center justify-between">
@@ -145,7 +145,7 @@ export default function Sidebar({
       </div>
 
       <div
-        className={`${isCollapsed ? "w-20" : "w-64"} hidden h-full bg-white border-r border-gray-200 md:flex md:flex-col transition-all duration-300 rounded-lg shadow-sm`}
+        className={`${isCollapsed ? "w-20" : "w-64"} hidden h-full bg-white border-e border-gray-200 md:flex md:flex-col transition-all duration-300 rounded-lg shadow-sm`}
       >
         <div className="p-4 border-b border-gray-100">
           <div className="flex items-center justify-between">

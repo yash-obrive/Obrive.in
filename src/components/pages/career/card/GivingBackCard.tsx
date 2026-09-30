@@ -12,7 +12,7 @@ const GivingBackCard = ({
         <h2 className={`${FONTS.microgrammaBold.className}`}>{title}</h2>
         <p className="text-xs">{number}</p>
       </div>
-      <div className="px-6 py-4 pr-20 pb-8 border-b-2 border-primary/40">
+      <div className="px-6 py-4 pe-20 pb-8 border-b-2 border-primary/40">
         <p className="text-xs leading-7">{description}</p>
       </div>
       <div className="py-4" />

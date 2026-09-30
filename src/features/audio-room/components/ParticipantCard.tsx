@@ -99,7 +99,7 @@ const ParticipantCard = ({
         {/* Status Indicator Badge Overlay */}
         <div
           className={`
-            absolute -bottom-0.5 -right-0.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-white shadow-xs
+            absolute -bottom-0.5 -end-0.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-white shadow-xs
             ${isMuted ? "bg-red-500 text-white" : "bg-[#076d47] text-white"}
           `}
         >
@@ -112,12 +112,12 @@ const ParticipantCard = ({
 
         {/* Role Icon Mini Badge Indicator */}
         {normalizedRole === "host" && (
-          <div className="absolute -top-1 -right-1 bg-amber-400 text-amber-950 p-0.5 rounded-full border border-white shadow-xs">
+          <div className="absolute -top-1 -end-1 bg-amber-400 text-amber-950 p-0.5 rounded-full border border-white shadow-xs">
             <Crown size={9} className="fill-amber-950/20" />
           </div>
         )}
         {normalizedRole === "moderator" && (
-          <div className="absolute -top-1 -right-1 bg-sky-500 text-white p-0.5 rounded-full border border-white shadow-xs">
+          <div className="absolute -top-1 -end-1 bg-sky-500 text-white p-0.5 rounded-full border border-white shadow-xs">
             <Shield size={9} />
           </div>
         )}

@@ -1,3 +1,4 @@
+import Translate from "@/components/shared/Translate";
 import { HomeIcon } from "lucide-react";
 import FONTS from "@/assets/fonts";
 import Link from "@/components/shared/LocalizedLink";
@@ -11,17 +12,16 @@ export default function ComingSoon() {
         <h1
           className={`${FONTS.microgrammaBold.className} text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary text-center`}
         >
-          Coming Soon
+          <Translate text="Coming Soon" />
         </h1>
         <h2
           className={`${FONTS.microgrammaBold.className} mt-6 text-2xl sm:text-3xl text-center text-primary`}
         >
-          Ella is on the way
+          <Translate text="Ella is on the way" />
         </h2>
 
         <p className="mt-3 text-sm text-center max-w-xl mx-auto">
-          Our AI assistant is currently in development and will be available
-          soon. Stay tuned for exciting updates!
+          <Translate text="Our AI assistant is currently in development and will be available soon. Stay tuned for exciting updates!" />
         </p>
       </FadeInOnLoad>
       <Link
@@ -29,7 +29,7 @@ export default function ComingSoon() {
         className={buttonVariants({ variant: "default", size: "lg" })}
       >
         <HomeIcon className="size-4" />
-        Back to Home
+        <Translate text="Back to Home" />
       </Link>
     </div>
   );

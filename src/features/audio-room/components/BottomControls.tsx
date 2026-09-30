@@ -229,7 +229,7 @@ const BottomControls = ({
               </button>
 
               {showModerationMenu && (
-                <div className="absolute bottom-12 left-0 bg-white border border-slate-200/80 rounded-xl shadow-xl p-2 z-50 w-60 max-h-64 overflow-y-auto custom-scrollbar animate-in fade-in slide-in-from-bottom-2 duration-150">
+                <div className="absolute bottom-12 start-0 bg-white border border-slate-200/80 rounded-xl shadow-xl p-2 z-50 w-60 max-h-64 overflow-y-auto custom-scrollbar animate-in fade-in slide-in-from-bottom-2 duration-150">
                   <div className="text-[8px] font-bold tracking-wider text-slate-400 uppercase px-2 py-1 mb-1">
                     Moderation Panel
                   </div>

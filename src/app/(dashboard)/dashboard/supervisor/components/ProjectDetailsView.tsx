@@ -462,7 +462,7 @@ export default function ProjectDetailsView({
                       <Crown className="h-3 w-3" />
                     )}
                     {member.name}
-                    <div className="flex items-center gap-1 ml-1 border-l border-black/10 pl-1">
+                    <div className="flex items-center gap-1 ms-1 border-s border-black/10 ps-1">
                       {(currentUser?.role === "supervisor" ||
                         currentUser?.role === "hr") &&
                         project.leader_id !== member.id && (

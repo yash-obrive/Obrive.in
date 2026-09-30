@@ -228,7 +228,7 @@ const jsonCaseStudies: BlogCardContentType[] = caseStudiesData.map((cs) => ({
   date: "25.07.2025",
   title: cs.title,
   slug: cs.slug,
-  description: `${cs.overview.slice(0, 150)}...`,
+  description: cs.overview,
   type: "Case Studies" as const,
 }));
 
@@ -282,7 +282,7 @@ const jsonBlogs: BlogCardContentType[] = getAllBlogs().map((blog) => ({
   date: "25.07.2025",
   title: blog.title,
   slug: blog.slug,
-  description: `${(blog.sections?.[0]?.content?.[0] || "").slice(0, 150)}...`,
+  description: blog.sections?.[0]?.content?.[0] || "",
   type: "Blog" as const,
 }));
 

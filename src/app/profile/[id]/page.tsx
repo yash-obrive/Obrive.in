@@ -241,7 +241,7 @@ export default function ProfilePage() {
                   </div>
 
                   {isUploaded && (
-                    <div className="absolute bottom-2 right-2 rounded-full bg-blue-600 p-2 shadow-lg">
+                    <div className="absolute bottom-2 end-2 rounded-full bg-blue-600 p-2 shadow-lg">
                       <Check className="h-5 w-5 text-white" />
                     </div>
                   )}

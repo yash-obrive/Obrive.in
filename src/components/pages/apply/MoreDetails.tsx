@@ -66,11 +66,11 @@ export default function MoreDetails({
         </div>
 
         {/* Progress line */}
-        <div className="relative mt-[-18px]  w-full sm:ml-10 sm:w-11/12 md:ml-16 md:w-5/6">
-          <div className="absolute left-0 right-0 top-1/2 h-3 -translate-y-12 bg-[#D9D9D9] rounded-full" />
+        <div className="relative mt-[-18px]  w-full sm:ms-10 sm:w-11/12 md:ms-16 md:w-5/6">
+          <div className="absolute start-0 end-0 top-1/2 h-3 -translate-y-12 bg-[#D9D9D9] rounded-full" />
           {selected !== null && (
             <div
-              className="absolute left-0 top-1/2 h-3 -translate-y-12 bg-[#CAEDE5] transition-all rounded-full"
+              className="absolute start-0 top-1/2 h-3 -translate-y-12 bg-[#CAEDE5] transition-all rounded-full"
               style={{
                 width: `${(selected / (options.length - 1)) * 100}%`,
               }}

@@ -1,4 +1,5 @@
 "use client";
+import Translate from "@/components/shared/Translate";
 
 import Image from "next/image";
 import FONTS from "@/assets/fonts";
@@ -78,10 +79,10 @@ export default function PartnersPage() {
                   variant="outline"
                   size="sm"
                 >
-                  WHITE-LABEL TECHNOLOGY PARTNERSHIPS
+                  <Translate text="WHITE-LABEL TECHNOLOGY PARTNERSHIPS" />
                 </Button>
                 <span className="text-slate-700 text-xs font-medium">
-                  ALWAYS AVAILABLE
+                  <Translate text="ALWAYS AVAILABLE" />
                 </span>
               </div>
 
@@ -162,20 +163,20 @@ export default function PartnersPage() {
 
           <div className="flex flex-col gap-4 sm:gap-6 lg:gap-8 flex-1">
             <div
-              className="max-w-none lg:pr-8 xl:pr-16 flex flex-col gap-4 sm:gap-6 lg:gap-8"
+              className="max-w-none lg:pe-8 xl:pe-16 flex flex-col gap-4 sm:gap-6 lg:gap-8"
               data-resource-content
             >
               {/* ── 01 / THE OPPORTUNITY ────────────────────────────── */}
               <section className="mb-4" id="the-opportunity">
                 <h2 className="sr-only">
-                  The Opportunity
+                  <Translate text="The Opportunity" />
                 </h2>
                 <h3 className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl leading-tight mb-4 mt-6`}>
-                  Sell the solution. We build the technology.
+                  <Translate text="Sell the solution. We build the technology." />
                 </h3>
                 <div className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-700">
                   <p>
-                    Your clients increasingly expect AI, immersive experiences, 3D, SaaS and modern digital products. You shouldn't need to hire, train and manage every specialist to deliver them. Partner with Obrive as your behind-the-scenes technology team while you own the client relationship, brand and commercial strategy.
+                    <Translate text="Your clients increasingly expect AI, immersive experiences, 3D, SaaS and modern digital products. You shouldn't need to hire, train and manage every specialist to deliver them. Partner with Obrive as your behind-the-scenes technology team while you own the client relationship, brand and commercial strategy." />
                   </p>
                 </div>
               </section>
@@ -183,15 +184,15 @@ export default function PartnersPage() {
               {/* ── 02 / CAPABILITIES ───────────────────────────────── */}
               <section className="mb-4" id="capabilities">
                 <h2 className="sr-only">
-                  Capabilities
+                  <Translate text="Capabilities" />
                 </h2>
                 <h3 className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl leading-tight mb-4 mt-6`}>
-                  One technology partner. More to sell.
+                  <Translate text="One technology partner. More to sell." />
                 </h3>
                 <div className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-700 space-y-6">
                   <p>{capabilities?.description ?? "Access a multidisciplinary delivery team across emerging technology and digital product development."}</p>
                   
-                  <ul className="list-none pl-0 space-y-3">
+                  <ul className="list-none ps-0 space-y-3">
                     {(capabilities?.subSections ?? []).map((cap, i) => (
                       <li key={i}>
                         <strong className="text-gray-900 font-bold">{formatTitle(cap.title)}:</strong>{" "}
@@ -205,15 +206,15 @@ export default function PartnersPage() {
               {/* ── 03 / PARTNERSHIP MODEL ──────────────────────────── */}
               <section className="mb-4" id="partnership-models">
                 <h2 className="sr-only">
-                  Partnership Models
+                  <Translate text="Partnership Models" />
                 </h2>
                 <h3 className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl leading-tight mb-4 mt-6`}>
-                  Built around your business.
+                  <Translate text="Built around your business." />
                 </h3>
                 <div className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-700 space-y-6">
                   <p>{partnershipModels?.description ?? "Choose how deeply Obrive integrates into your delivery model. Our partnership structure is designed to protect your client ownership while giving you access to specialized execution."}</p>
 
-                  <ul className="list-none pl-0 space-y-3">
+                  <ul className="list-none ps-0 space-y-3">
                     {partnerCards.map((card, i) => (
                       <li key={i}>
                         <strong className="text-gray-900 font-bold">{formatTitle(card.eyebrow)} - {card.title}:</strong>{" "}
@@ -227,15 +228,15 @@ export default function PartnersPage() {
               {/* ── 04 / HOW IT WORKS ───────────────────────────────── */}
               <section className="mb-4" id="process">
                 <h2 className="sr-only">
-                  Process
+                  <Translate text="Process" />
                 </h2>
                 <h3 className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl leading-tight mb-4 mt-6`}>
-                  From brief to delivery without the overhead.
+                  <Translate text="From brief to delivery without the overhead." />
                 </h3>
                 <div className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-700 space-y-6">
-                  <p>A simple operating model keeps responsibilities clear and delivery predictable.</p>
+                  <p><Translate text="A simple operating model keeps responsibilities clear and delivery predictable." /></p>
                   
-                  <ul className="list-none pl-0 space-y-3">
+                  <ul className="list-none ps-0 space-y-3">
                     {(partnershipModels?.subSections ?? []).map((model, i) => (
                       <li key={i}>
                         <strong className="text-gray-900 font-bold">Model {String.fromCharCode(65 + i)} - {formatTitle(model.title)}:</strong>{" "}
@@ -244,7 +245,7 @@ export default function PartnersPage() {
                     ))}
                   </ul>
 
-                  <ul className="list-none pl-0 space-y-3">
+                  <ul className="list-none ps-0 space-y-3">
                     {WHITE_LABEL_PROCESS_STEPS.map((step, i) => (
                       <li key={i}>
                         <strong className="text-gray-900 font-bold">{step.title}:</strong>{" "}
@@ -258,15 +259,15 @@ export default function PartnersPage() {
               {/* ── 05 / WHY OBRIVE ─────────────────────────────────── */}
               <section className="mb-4" id="why-obrive">
                 <h2 className="sr-only">
-                  Why Obrive
+                  <Translate text="Why Obrive" />
                 </h2>
                 <h3 className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl leading-tight mb-4 mt-6`}>
-                  More capability. Less complexity.
+                  <Translate text="More capability. Less complexity." />
                 </h3>
                 <div className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-700 space-y-6">
-                  <p>Our white-label model is designed to help partners increase capability without increasing organizational complexity at the same pace.</p>
+                  <p><Translate text="Our white-label model is designed to help partners increase capability without increasing organizational complexity at the same pace." /></p>
 
-                  <ul className="list-none pl-0 space-y-3">
+                  <ul className="list-none ps-0 space-y-3">
                     {whyObrive.map((item, i) => (
                       <li key={i}>
                         <strong className="text-gray-900 font-bold">{item.title}:</strong>{" "}
@@ -280,15 +281,15 @@ export default function PartnersPage() {
               {/* ── 06 / COMMERCIAL STRUCTURE ───────────────────────── */}
               <section className="mb-12" id="commercial-structure">
                 <h2 className="sr-only">
-                  Commercial Structure
+                  <Translate text="Commercial Structure" />
                 </h2>
                 <h3 className={`${FONTS.microgrammaBold.className} text-2xl sm:text-3xl leading-tight mb-4 mt-6`}>
-                  Designed to leave room for your margin.
+                  <Translate text="Designed to leave room for your margin." />
                 </h3>
                 <div className="text-sm sm:text-base lg:text-lg leading-relaxed text-slate-700 space-y-6">
                   <p>{commercialStructure?.description ?? "Obrive can structure partner pricing so you can package, mark up and commercialize the capability within your own offering."}</p>
 
-                  <ul className="list-none pl-0 space-y-3">
+                  <ul className="list-none ps-0 space-y-3">
                     {(commercialStructure?.subSections ?? []).map((struct, i) => {
                       const eyebrows = ["Partner Benefit", "Commercial Control", "Scale"];
                       return (
@@ -301,7 +302,7 @@ export default function PartnersPage() {
                   </ul>
                   
                   <p className={`${FONTS.microgrammaBold.className} text-[9px] tracking-[0.15em] uppercase text-zinc-400 mt-8 block`}>
-                    *FINAL PARTNER PRICING IS SCOPED ACCORDING TO TECHNOLOGY, PROJECT COMPLEXITY, TEAM REQUIREMENTS AND ENGAGEMENT MODEL.
+                    <Translate text="*FINAL PARTNER PRICING IS SCOPED ACCORDING TO TECHNOLOGY, PROJECT COMPLEXITY, TEAM REQUIREMENTS AND ENGAGEMENT MODEL." />
                   </p>
                 </div>
               </section>

@@ -1,4 +1,5 @@
 "use client";
+import Translate from "@/components/shared/Translate";
 
 import React, { useState } from "react";
 import FONTS from "@/assets/fonts";
@@ -6,17 +7,76 @@ import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 import { FadeInOnView } from "@/components/shared/motion/GsapMotion";
 import { PRICING_STREAMS } from "@/constants/pages/pricingData";
+import { useCountry } from "@/context/CountryContext";
+import { useEffect } from "react";
+
+
+const EXCHANGE_RATES: Record<string, number> = {
+  USD: 1,
+  INR: 83.5,
+  EUR: 0.92,
+  GBP: 0.79,
+  CNY: 7.24,
+  AED: 3.67,
+  SAR: 3.75,
+  QAR: 3.64,
+  BHD: 0.38,
+  CHF: 0.90,
+  SEK: 10.5,
+  SGD: 1.35,
+  AUD: 1.53,
+  NZD: 1.66,
+  JPY: 153.0,
+  KRW: 1370.0,
+  MYR: 4.7,
+  IDR: 16000.0,
+  THB: 37.0,
+  ZAR: 18.5,
+  MXN: 17.0,
+  BRL: 5.1,
+  CAD: 1.37,
+};
 
 export default function PricingSection() {
-  const [isUSD, setIsUSD] = useState(false);
+  const { countryConfig } = useCountry();
+  const userCurrency = countryConfig?.currency || "USD";
+  const userSymbol = countryConfig?.currencySymbol || "$";
+  const hasLocalCurrency = userCurrency !== "USD" && userCurrency !== "INR"; // If it's INR, we treat it separately if needed, but wait, India is redirected. Let's just say != "USD"
+
+  const [showUSD, setShowUSD] = useState(!hasLocalCurrency);
   const [hoveredPackageId, setHoveredPackageId] = useState<string | null>(null);
 
-  const formatINR = (value: number) => {
-    return new Intl.NumberFormat("en-IN", {
+  useEffect(() => {
+    setShowUSD(userCurrency === "USD");
+  }, [userCurrency]);
+
+  const formatCurrency = (pkg: any, useUSD: boolean) => {
+    if (useUSD) {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0,
+      }).format(pkg.priceUSD);
+    }
+    
+    // If it's INR, use the hardcoded INR price.
+    if (userCurrency === "INR") {
+      return new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 0,
+      }).format(pkg.priceINR);
+    }
+    
+    // Otherwise calculate dynamically from USD
+    const rate = EXCHANGE_RATES[userCurrency] || 1;
+    const localValue = pkg.priceUSD * rate;
+    
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "INR",
+      currency: userCurrency,
       maximumFractionDigits: 0,
-    }).format(value);
+    }).format(localValue);
   };
 
   const formatUSD = (value: number) => {
@@ -35,39 +95,37 @@ export default function PricingSection() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
             <div className="max-w-[760px]">
               <div className="uppercase text-xs font-medium text-primary mb-2">
-                OBRIVE SERVICES
+                <Translate text="OBRIVE SERVICES" />
               </div>
               <h2
                 className={`${FONTS.microgrammaBold.className} text-primary text-3xl sm:text-4xl lg:text-5xl mb-4`}
               >
-                Choose your stream.
+                <Translate text="Choose your stream." />
               </h2>
               <p className="text-primary/70 text-lg leading-relaxed">
-                Each package is a starting commercial scope. Final deliverables,
-                timeline and payment amount are confirmed in the SOW before
-                checkout.
+                <Translate text="Each package is a starting commercial scope. Final deliverables, timeline and payment amount are confirmed in the SOW before checkout." />
               </p>
             </div>
             <div className="flex bg-primary/5 p-1 rounded-full border border-primary/10">
               <button
-                onClick={() => setIsUSD(false)}
+                onClick={() => setShowUSD(false)}
                 className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
-                  !isUSD
+                  !showUSD
                     ? "bg-primary text-white shadow-md"
                     : "text-primary/60 hover:text-primary"
                 }`}
               >
-                INR ₹
+                {userCurrency} {userSymbol}
               </button>
               <button
-                onClick={() => setIsUSD(true)}
+                onClick={() => setShowUSD(true)}
                 className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${
-                  isUSD
+                  showUSD
                     ? "bg-primary text-white shadow-md"
                     : "text-primary/60 hover:text-primary"
                 }`}
               >
-                USD $
+                <Translate text="USD $" />
               </button>
             </div>
           </div>
@@ -123,7 +181,7 @@ export default function PricingSection() {
                         {(pkg.isRecommended ||
                           pkg.isPopular ||
                           pkg.isBestSeller) && (
-                          <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-bl-lg">
+                          <div className="absolute top-0 end-0 bg-primary text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-es-lg">
                             {pkg.isRecommended
                               ? "Recommended"
                               : pkg.isPopular
@@ -149,11 +207,9 @@ export default function PricingSection() {
                             suppressHydrationWarning
                             className={`${FONTS.microgrammaBold.className} text-primary text-3xl`}
                           >
-                            {isUSD
-                              ? formatUSD(pkg.priceUSD)
-                              : formatINR(pkg.priceINR)}
+                            {formatCurrency(pkg, showUSD)}
                             {pkg.isMonthly && (
-                              <span className="text-base text-primary/50 font-sans ml-1">
+                              <span className="text-base text-primary/50 font-sans ms-1">
                                 /mo
                               </span>
                             )}
@@ -163,9 +219,7 @@ export default function PricingSection() {
                             className="text-primary/50 text-xs mt-1"
                           >
                             ≈{" "}
-                            {isUSD
-                              ? formatINR(pkg.priceINR)
-                              : formatUSD(pkg.priceUSD)}
+                            {formatCurrency(pkg, !showUSD)}
                             {pkg.isMonthly && "/mo"}
                           </div>
                         </div>
@@ -176,7 +230,7 @@ export default function PricingSection() {
                               key={fIndex}
                               className="flex items-start text-sm text-primary/80"
                             >
-                              <span className="text-secondary mr-2.5 font-bold mt-0.5">
+                              <span className="text-secondary me-2.5 font-bold mt-0.5">
                                 •
                               </span>
                               <span className="leading-relaxed">

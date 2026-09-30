@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import GlobalMarketExplorer from "@/components/pages/global/GlobalMarketExplorer";
+import Translate from "@/components/shared/Translate";
 import {
   DEFAULT_COUNTRY,
   getCountryConfig,

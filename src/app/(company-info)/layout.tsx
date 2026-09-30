@@ -10,7 +10,7 @@ export default function CompanyInfoLayout({
   return (
     <div>
       <FullWidthSection backgroundColor="none" className="relative">
-        <div className="absolute max-sm:hidden -top-[3.9rem] left-[13.8vw] z-10">
+        <div className="absolute max-sm:hidden -top-[3.9rem] start-[13.8vw] z-10">
           <Link href="/">
             <PrimaryLogo />
           </Link>

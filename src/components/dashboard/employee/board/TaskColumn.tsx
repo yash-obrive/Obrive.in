@@ -31,7 +31,7 @@ export default function Column({
         ) : null}
 
         <div className="flex min-h-0 flex-1 flex-col rounded-[28px] border border-[#e6edf5] bg-[#f8fafc] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_18px_32px_rgba(148,163,184,0.14)]">
-          <div className="flex-1 space-y-4 overflow-y-auto pr-1">
+          <div className="flex-1 space-y-4 overflow-y-auto pe-1">
             {tasks.length > 0 ? (
               tasks.map((task: any) => (
                 <TaskCard
@@ -94,7 +94,7 @@ export default function Column({
         ) : null}
       </div>
 
-      <div className="grid min-h-0 min-w-0 flex-1 auto-rows-max gap-3 overflow-y-auto overflow-x-hidden pr-1 scrollbar-hide">
+      <div className="grid min-h-0 min-w-0 flex-1 auto-rows-max gap-3 overflow-y-auto overflow-x-hidden pe-1 scrollbar-hide">
         {tasks.length === 0 ? (
           <div className="flex min-h-[100px] items-center justify-center rounded-2xl border-2 border-dashed border-[#c7d8e8] bg-white/60 px-4 py-6 text-center">
             <span className="text-sm font-medium text-[#8aa0b6]">
@@ -119,7 +119,7 @@ export default function Column({
           <button
             type="button"
             className="flex min-h-[120px] w-full shrink-0 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-2xl border-2 border-dashed border-[#c7d8e8] bg-white/70 px-3 py-4 text-[#627d98] transition duration-200 hover:border-[#073933]/40 hover:bg-white hover:text-[#073933] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#073933]"
-            onClick={() => handleAddCardOpen()}
+            onClick={() => handleAddCardOpen(column.id)}
           >
             <span className="select-none text-2xl font-light leading-none">
               +

@@ -210,7 +210,7 @@ export default function Calendar() {
             {duration}
             {trend === "up" ? (
               <svg
-                className="w-3 h-3 text-yellow-500 ml-1"
+                className="w-3 h-3 text-yellow-500 ms-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -224,7 +224,7 @@ export default function Calendar() {
               </svg>
             ) : (
               <svg
-                className="w-3 h-3 text-green-500 ml-1"
+                className="w-3 h-3 text-green-500 ms-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -328,7 +328,7 @@ export default function Calendar() {
           </div> */}
 
         <div className="mb-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="ml-1 text-2xl font-bold text-[#0f172a] sm:text-3xl">
+          <h1 className="ms-1 text-2xl font-bold text-[#0f172a] sm:text-3xl">
             Calendar
           </h1>
 
@@ -433,12 +433,12 @@ export default function Calendar() {
                   Location
                 </label>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+                  <MapPin className="absolute start-3 top-2.5 h-4 w-4 text-gray-400" />
                   <input
                     type="text"
                     value={newEventLocation}
                     onChange={(e) => setNewEventLocation(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6]/20 focus:border-[#3b82f6] outline-none transition-all"
+                    className="w-full ps-10 pe-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#3b82f6]/20 focus:border-[#3b82f6] outline-none transition-all"
                     placeholder="Office, Zoom, etc."
                   />
                 </div>

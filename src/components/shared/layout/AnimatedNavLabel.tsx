@@ -32,7 +32,7 @@ export default function AnimatedNavLabel({
     >
       {/* left icon slides */}
       <motion.span
-        className="absolute left-0 flex items-center justify-center"
+        className="absolute start-0 flex items-center justify-center"
         style={{
           width: shiftAmount,
           height: iconSize + 4,

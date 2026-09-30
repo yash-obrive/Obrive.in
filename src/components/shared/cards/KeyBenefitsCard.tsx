@@ -10,7 +10,7 @@ export const KeyBenefitsCard = ({
   srcMeta,
 }: KEY_BENEFITS_TYPE) => {
   return (
-    <article className="flex flex-col w-[509px] h-auto min-h-[433px] items-start gap-4 pl-9 pr-[20px] pb-10 pt-4 relative bg-white rounded-2xl border-[0.5px] border-primary max-lg:w-[460px] max-md:w-full max-md:min-h-[360px] max-md:px-6 max-md:py-6">
+    <article className="flex flex-col w-[509px] h-auto min-h-[433px] items-start gap-4 ps-9 pe-[20px] pb-10 pt-4 relative bg-white rounded-2xl border-[0.5px] border-primary max-lg:w-[460px] max-md:w-full max-md:min-h-[360px] max-md:px-6 max-md:py-6">
       <div className="flex flex-col w-[416px] h-full justify-between items-start gap-[150px] relative flex-1 max-lg:w-full max-md:w-full max-md:gap-8">
         <div className="inline-flex items-center justify-center gap-2.5 top-4 relative">
           <Image
@@ -30,8 +30,8 @@ export const KeyBenefitsCard = ({
             </h2>
           </header>
 
-          <div className="flex mb-2 pb-2.5 pl-2.5 self-stretch w-full items-center gap-2.5 relative flex-1 max-md:p-0">
-            <p className="relative w-[416px] max-md:w-full mt-[-1.00px] mr-[-20.00px] max-md:mr-0 font-medium text-primary text-sm  leading-[26px] max-md:leading-[24px]">
+          <div className="flex mb-2 pb-2.5 ps-2.5 self-stretch w-full items-center gap-2.5 relative flex-1 max-md:p-0">
+            <p className="relative w-[416px] max-md:w-full mt-[-1.00px] me-[-20.00px] max-md:me-0 font-medium text-primary text-sm  leading-[26px] max-md:leading-[24px]">
               <Translate text={description} />
             </p>
           </div>

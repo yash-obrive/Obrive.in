@@ -43,7 +43,7 @@ const RoomHeader = ({
           <span className="text-[10px] font-bold text-slate-700 leading-none">
             {participantCount}
           </span>
-          <span className="hidden sm:inline text-[9px] font-medium text-slate-400 border-l border-slate-200 pl-1.5 leading-none">
+          <span className="hidden sm:inline text-[9px] font-medium text-slate-400 border-s border-slate-200 ps-1.5 leading-none">
             Active
           </span>
         </div>

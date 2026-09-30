@@ -1,3 +1,4 @@
+import Translate from "@/components/shared/Translate";
 import Link from "@/components/shared/LocalizedLink";
 import PricingHero from "./components/PricingHero";
 import PricingSection from "./components/PricingSection";
@@ -34,13 +35,7 @@ export default function PricingPage() {
           className="text-[10px] md:text-[11px] leading-[1.6] text-[#484848]"
           style={{ fontFamily: "var(--font-michroma)" }}
         >
-          Payments made to Obrive are processed securely using trusted payment
-          gateways. Project scopes, service packages, subscriptions, and other
-          digital services must be paid according to the agreed milestones
-          before project initiation or confirmation. Prices may vary depending
-          on the specific project requirements, engagement duration, and
-          applicable taxes. All payments are subject to successful authorization
-          and confirmation.
+          <Translate text="Payments made to Obrive are processed securely using trusted payment gateways. Project scopes, service packages, subscriptions, and other digital services must be paid according to the agreed milestones before project initiation or confirmation. Prices may vary depending on the specific project requirements, engagement duration, and applicable taxes. All payments are subject to successful authorization and confirmation." />
         </p>
         <div className="mt-5 mb-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <img
@@ -56,19 +51,19 @@ export default function PricingPage() {
               href="/legal/refund-policy"
               className="hover:text-primary transition-colors"
             >
-              Refund Policy
+              <Translate text="Refund Policy" />
             </Link>
             <Link
               href="/legal/gst-taxes-policy"
               className="hover:text-primary transition-colors"
             >
-              GST & Taxes
+              <Translate text="GST & Taxes" />
             </Link>
             <Link
               href="/legal/service-policy"
               className="hover:text-primary transition-colors"
             >
-              Services Policy
+              <Translate text="Services Policy" />
             </Link>
           </div>
         </div>

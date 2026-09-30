@@ -54,8 +54,16 @@ export default function ProfileDropdown({
   }, []);
 
   const handleRouting = () => {
-    if (user?.id) {
-      router.push(`/profile/${user.id}`);
+    let targetId = user?.id;
+    if (!targetId) {
+      try {
+        const localUser = JSON.parse(localStorage.getItem("user") || "{}");
+        targetId = localUser?.id;
+      } catch (e) {}
+    }
+
+    if (targetId) {
+      router.push(`/profile/${targetId}`);
       return;
     }
 
@@ -105,7 +113,7 @@ export default function ProfileDropdown({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 mt-2 w-72 rounded-2xl border border-gray-100 bg-white p-3 shadow-xl"
+            className="absolute end-0 mt-2 w-72 rounded-2xl border border-gray-100 bg-white p-3 shadow-xl"
           >
             <div className="space-y-4">
               <div className="flex items-center gap-3 border-b border-gray-100 pb-1">
@@ -146,7 +154,7 @@ export default function ProfileDropdown({
                     <User className="h-4 w-4 text-blue-700" />
                   </div>
 
-                  <div className="text-left">
+                  <div className="text-start">
                     <p className="text-sm font-medium text-gray-800">Profile</p>
                     <p className="text-xs text-gray-500">Manage profile</p>
                   </div>

@@ -2,6 +2,7 @@
 import type React from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { io, type Socket } from "socket.io-client";
+import { toast } from "react-hot-toast";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { API_BASE_URL } from "@/lib/api";
 
@@ -60,12 +61,27 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
       console.error("Socket connection error", error.message);
     });
 
+    socketInstance.on("initial_online_users", (userIds) => {
+      setOnlineUsers(userIds);
+    });
+
     socketInstance.on("user_online", ({ userId }) => {
       setOnlineUsers((prev) => Array.from(new Set([...prev, userId])));
     });
 
     socketInstance.on("user_offline", ({ userId }) => {
       setOnlineUsers((prev) => prev.filter((id) => id !== userId));
+    });
+
+    // Global Push Notifications
+    socketInstance.on("notification", (data: { title: string, message: string, type: "success" | "error" | "info" }) => {
+      if (data.type === "success") {
+        toast.success(data.message);
+      } else if (data.type === "error") {
+        toast.error(data.message);
+      } else {
+        toast(data.message);
+      }
     });
 
     setSocket(socketInstance);

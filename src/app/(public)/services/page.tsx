@@ -102,7 +102,7 @@ export default function ServicesPage() {
                         </p>
                         {item.href && (
                           <div className="mt-6 flex items-center text-[11px] font-bold text-primary/40 group-hover:text-primary transition-colors uppercase tracking-widest">
-                            <Translate text="Learn more" /> <ArrowRight className="w-3 h-3 ml-1 transition-transform group-hover:translate-x-1" />
+                            <Translate text="Learn more" /> <ArrowRight className="w-3 h-3 ms-1 transition-transform group-hover:translate-x-1" />
                           </div>
                         )}
                       </div>

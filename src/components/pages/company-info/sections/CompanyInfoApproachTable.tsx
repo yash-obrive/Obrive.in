@@ -34,10 +34,10 @@ export function CompanyInfoApproachPhaseItem({
   return (
     <>
       <div className="hidden md:grid grid-cols-[26%_62%] text-primary/80 odd:bg-gray-50 border-t border-gray-200">
-        <div className="p-3 border-r border-gray-200">
-          <div className="text-sm pr-8">{phase}</div>
+        <div className="p-3 border-e border-gray-200">
+          <div className="text-sm pe-8">{phase}</div>
         </div>
-        <div className="p-3 pr-8 bg-white">
+        <div className="p-3 pe-8 bg-white">
           <div className="text-sm leading-snug">{content}</div>
         </div>
       </div>
@@ -118,7 +118,7 @@ export default function CompanyInfoApproachTable({
         <div className="md:rounded-lg md:border md:border-gray-300 md:overflow-hidden">
           <div className="hidden md:grid text-primary grid-cols-[26%_62%] bg-gray-100">
             <div
-              className={`${FONTS.microgrammaBold.className} p-3 pr-4 text-lg font-semibold`}
+              className={`${FONTS.microgrammaBold.className} p-3 pe-4 text-lg font-semibold`}
             >
               {header1}
             </div>
@@ -158,7 +158,7 @@ export default function CompanyInfoApproachTable({
         {/* Table Header */}
         <div className="grid text-primary grid-cols-[26%_62%] bg-gray-100">
           <div
-            className={`${FONTS.microgrammaBold.className} p-3 pr-4  text-lg font-semibold`}
+            className={`${FONTS.microgrammaBold.className} p-3 pe-4  text-lg font-semibold`}
           >
             {header1}
           </div>
@@ -175,10 +175,10 @@ export default function CompanyInfoApproachTable({
             key={index}
             className="grid grid-cols-[26%_62%] text-primary/80 odd:bg-gray-50 border-t border-gray-200"
           >
-            <div className="p-3 border-r border-gray-200">
-              <div className={`text-sm pr-8`}>{item.phase}</div>
+            <div className="p-3 border-e border-gray-200">
+              <div className={`text-sm pe-8`}>{item.phase}</div>
             </div>
-            <div className="p-3 pr-8 bg-white">
+            <div className="p-3 pe-8 bg-white">
               <div className="text-sm leading-snug">{item.action}</div>
             </div>
           </div>

@@ -547,7 +547,7 @@ const CreateRoom = () => {
                               />
 
                               {userSearch[roleKey] && (
-                                <div className="absolute应用 z-50 left-0 right-0 mt-1 max-h-40 overflow-y-auto rounded-md border border-slate-200 bg-white p-1 shadow-md">
+                                <div className="absolute应用 z-50 start-0 end-0 mt-1 max-h-40 overflow-y-auto rounded-md border border-slate-200 bg-white p-1 shadow-md">
                                   {allUsers
                                     .filter((user) =>
                                       `${user.name} ${user.userid}`

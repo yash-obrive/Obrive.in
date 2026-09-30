@@ -2,12 +2,12 @@ import type { LanguageCode } from "./languages";
 // src/config/countries.ts
 
 export type CountryCode =
-  | "in"
   | "us"
   | "ca"
   | "mx"
   | "br"
-  | "ae"
+  | "uae"
+  | "cn"
   | "sa"
   | "qa"
   | "bh"
@@ -47,33 +47,6 @@ export interface CountryConfig {
 }
 
 export const COUNTRIES: Record<CountryCode, CountryConfig> = {
-  // --- INDIA ---
-  in: {
-    code: "in",
-    name: "India",
-    flag: "🇮🇳",
-    region: "India",
-    currency: "INR",
-    currencySymbol: "₹",
-    phone: "+91-888-477-4300",
-    contactEmail: "info@obrive.com",
-    offices: [
-      "Bengaluru, Karnataka",
-      "Mumbai, Maharashtra",
-      "Ahmedabad, Gujarat",
-      "Delhi NCR, Delhi",
-      "Hyderabad, Telangana",
-      "Pune, Maharashtra",
-      "Chennai, Tamil Nadu",
-    ],
-    calendlyUrl:
-      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=in",
-    hreflang: "en-IN",
-    defaultLanguage: "en",
-    supportedLanguages: ["en", "hi"],
-    isProductionReady: true,
-  },
-
   // --- AMERICAS ---
   us: {
     code: "us",
@@ -96,7 +69,7 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=us",
     hreflang: "en-US",
     defaultLanguage: "en",
-    supportedLanguages: ["en", "es"],
+    supportedLanguages: ["en"],
     isProductionReady: true,
   },
   ca: {
@@ -113,7 +86,7 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ca",
     hreflang: "en-CA",
     defaultLanguage: "en",
-    supportedLanguages: ["en", "fr"],
+    supportedLanguages: ["en"],
     isProductionReady: true,
   },
   mx: {
@@ -129,8 +102,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=mx",
     hreflang: "es-MX",
-    defaultLanguage: "es",
-    supportedLanguages: ["es", "en"],
+    defaultLanguage: "en",
+    supportedLanguages: ["en"],
     isProductionReady: true,
   },
   br: {
@@ -152,8 +125,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
   },
 
   // --- MIDDLE EAST ---
-  ae: {
-    code: "ae",
+  uae: {
+    code: "uae",
     name: "United Arab Emirates",
     flag: "🇦🇪",
     region: "Middle East",
@@ -163,10 +136,10 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     contactEmail: "uae@obrive.com",
     offices: ["Dubai Internet City", "Abu Dhabi", "Sharjah"],
     calendlyUrl:
-      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ae",
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=uae",
     hreflang: "en-AE",
-    defaultLanguage: "en",
-    supportedLanguages: ["en", "ar"],
+    defaultLanguage: "ar",
+    supportedLanguages: ["ar", "en"],
     isProductionReady: true,
   },
   sa: {
@@ -303,8 +276,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ch",
     hreflang: "de-CH",
-    defaultLanguage: "de",
-    supportedLanguages: ["de", "fr", "en"],
+    defaultLanguage: "en",
+    supportedLanguages: ["en"],
     isProductionReady: true,
   },
   se: {
@@ -360,6 +333,23 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
   },
 
   // --- APAC ---
+  cn: {
+    code: "cn",
+    name: "China",
+    flag: "🇨🇳",
+    region: "APAC",
+    currency: "CNY",
+    currencySymbol: "¥",
+    phone: "+86 10 8884 4300",
+    contactEmail: "apac@obrive.com",
+    offices: ["Beijing", "Shanghai", "Shenzhen"],
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=cn",
+    hreflang: "zh-CN",
+    defaultLanguage: "zh",
+    supportedLanguages: ["zh", "en"],
+    isProductionReady: true,
+  },
   sg: {
     code: "sg",
     name: "Singapore",
@@ -374,7 +364,7 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=sg",
     hreflang: "en-SG",
     defaultLanguage: "en",
-    supportedLanguages: ["en", "zh"],
+    supportedLanguages: ["en"],
     isProductionReady: true,
   },
   au: {
@@ -458,8 +448,8 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=my",
     hreflang: "en-MY",
-    defaultLanguage: "en",
-    supportedLanguages: ["en", "ms"],
+    defaultLanguage: "ms",
+    supportedLanguages: ["ms", "en"],
     isProductionReady: true,
   },
   id: {
@@ -516,8 +506,7 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     isProductionReady: true,
   },
 };
-
-export const DEFAULT_COUNTRY: CountryCode = "in";
+export const DEFAULT_COUNTRY: CountryCode = "us";
 
 export const SUPPORTED_COUNTRIES: CountryCode[] = Object.keys(
   COUNTRIES,

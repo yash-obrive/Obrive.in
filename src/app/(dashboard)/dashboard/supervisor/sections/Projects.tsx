@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Menu, Plus, Trash2, X } from "lucide-react";
+import { ArrowLeft, Menu, Plus, Trash2, X, FolderOpen } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 import ConfirmationAlert from "@/components/ConfirmationAlert";
 import SkeletonLoading from "@/components/SkelitonLoading";
@@ -166,7 +166,7 @@ const Projects = () => {
         <div
           className={`${
             isProjectListOpen ? "translate-x-0" : "-translate-x-full"
-          } fixed inset-y-3 left-3 z-50 w-[min(20rem,calc(100vw-1.5rem))] transition-transform lg:static lg:w-64 lg:translate-x-0 lg:flex-shrink-0`}
+          } fixed inset-y-3 start-3 z-50 w-[min(20rem,calc(100vw-1.5rem))] transition-transform lg:static lg:w-64 lg:translate-x-0 lg:flex-shrink-0`}
         >
           <div className="h-full overflow-y-auto rounded-2xl bg-white p-3 shadow-sm">
             <div className="mb-3 flex items-center justify-between border-b border-gray-100 pb-3 lg:hidden">
@@ -204,7 +204,7 @@ const Projects = () => {
                       setSelectedProject(project);
                       setIsProjectListOpen(false);
                     }}
-                    className={`w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium transition ${
+                    className={`w-full rounded-lg px-3 py-2.5 text-start text-sm font-medium transition ${
                       selectedProject?.id === project.id
                         ? "bg-[#1a472a] text-white"
                         : "bg-gray-50 text-gray-700 hover:bg-gray-100"
@@ -262,9 +262,15 @@ const Projects = () => {
             </>
           ) : (
             <div className="flex h-full items-center justify-center">
-              <div className="text-center">
-                <p className="text-gray-500 mb-4">
-                  Select a project or create a new one
+              <div className="text-center max-w-md w-full">
+                <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-[#f1f4f8] shadow-inner">
+                  <FolderOpen className="h-10 w-10 text-[#5f6f83]" />
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-[#1a472a]">
+                  No Project Selected
+                </h3>
+                <p className="text-gray-500 mb-8">
+                  Select a project from the sidebar or create a new one to get started.
                 </p>
                 <button
                   type="button"

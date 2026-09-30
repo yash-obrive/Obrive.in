@@ -21,11 +21,11 @@ const BenefitsTable = ({ data = BENEFITS_TABLE }: BenefitsTableProps) => {
             <thead className="border-b border-zinc-300">
               <tr>
                 <th
-                  className={`text-left px-6 py-3 font-semibold text-sm text-gray-800 border-r border-zinc-300 ${FONTS.microgrammaBold.className}`}
+                  className={`text-start px-6 py-3 font-semibold text-sm text-gray-800 border-e border-zinc-300 ${FONTS.microgrammaBold.className}`}
                 >
                    <Translate text="Benefit" /> </th>
                 <th
-                  className={`text-left px-6 py-3 font-semibold text-sm text-gray-800 ${FONTS.microgrammaBold.className}`}
+                  className={`text-start px-6 py-3 font-semibold text-sm text-gray-800 ${FONTS.microgrammaBold.className}`}
                 >
                    <Translate text="Description" /> </th>
               </tr>
@@ -37,7 +37,7 @@ const BenefitsTable = ({ data = BENEFITS_TABLE }: BenefitsTableProps) => {
                   key={item.benefit || item.title || i}
                   className="border-b border-zinc-300 last:border-b-0"
                 >
-                  <td className="align-top w-[170px] px-6 py-4 border-r border-zinc-300">
+                  <td className="align-top w-[170px] px-6 py-4 border-e border-zinc-300">
                     <div
                       className={`text-sm ${FONTS.microgrammaBold.className}`}
                     >
