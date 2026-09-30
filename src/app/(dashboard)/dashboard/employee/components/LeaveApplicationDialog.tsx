@@ -7,7 +7,7 @@ import supportImg from "@/assets/images/employee/illustration.png";
 
 const leaveSchema = z.object({
   leaveType: z.enum(["vacation", "sick"], {
-    errorMap: () => ({ message: "Please select a valid leave type." }),
+    message: "Please select a valid leave type.",
   }),
   leaveDate: z.string().min(1, "Leave date is required."),
   reason: z
@@ -59,7 +59,7 @@ export default function LeaveApplicationDialog({
     const result = leaveSchema.safeParse({ leaveType, leaveDate, reason });
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
-      result.error.errors.forEach((err) => {
+      result.error.issues.forEach((err) => {
         if (err.path[0]) {
           fieldErrors[err.path[0] as string] = err.message;
         }
