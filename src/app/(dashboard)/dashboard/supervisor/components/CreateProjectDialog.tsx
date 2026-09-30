@@ -11,7 +11,7 @@ const projectSchema = z.object({
   projectId: z.string().min(3, "Project ID is required").max(50, "Project ID is too long"),
   description: z.string().max(1000, "Description is too long").optional(),
   status: z.string().max(100, "Status is too long").optional(),
-  priority: z.enum(["low", "medium", "high"]),
+  priority: z.enum(["low", "medium", "high"] as const),
   deadline: z.string().optional(),
   team_members: z.array(z.number()),
   client_id: z.string().optional().nullable(),
