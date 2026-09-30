@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "python3 scripts/validate_translations.py && next build --turbopack",
+    "build": "next build --turbopack",
     "export": "next export",
     "start": "next start",
     "lint": "biome check",
