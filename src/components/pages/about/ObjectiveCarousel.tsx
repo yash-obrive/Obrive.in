@@ -54,11 +54,11 @@ export default function ObjectiveCarousel() {
                     height={card.iconMeta.height}
                   />
                   <div className="px-4">
-                    <p className="text-left text-base max-md:text-sm text-primary/80">
+                    <p className="text-start text-base max-md:text-sm text-primary/80">
                       <Translate text={card.content} />
                     </p>
                     <h3
-                      className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
+                      className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-start text-lg`}
                     >
                       - <Translate text={card.title} />
                     </h3>

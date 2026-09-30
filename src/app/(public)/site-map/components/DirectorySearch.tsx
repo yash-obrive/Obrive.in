@@ -1,4 +1,6 @@
 "use client";
+import { useTranslation } from "@/context/TranslationContext";
+import Translate from "@/components/shared/Translate";
 import { useState } from "react";
 import FONTS from "@/assets/fonts";
 import Link from "@/components/shared/LocalizedLink";
@@ -11,20 +13,26 @@ interface DirectorySearchProps {
 }
 
 export default function DirectorySearch({ categories }: DirectorySearchProps) {
+  const { dictionary } = useTranslation();
+  const dict = dictionary as Record<string, string>;
   const [query, setQuery] = useState("");
   const normalizedQuery = query.toLowerCase().trim();
 
   // Filter logic
   let _visiblePagesCount = 0;
-  const filteredCategories = categories.map((cat) => {
-    const filteredEntries = cat.entries.filter((entry) => {
-      const isMatch =
-        !normalizedQuery || entry.searchKeywords.includes(normalizedQuery);
-      if (isMatch) _visiblePagesCount++;
-      return isMatch;
+    const filteredCategories = categories.map((cat) => {
+      const catTitle = dict[cat.title] || cat.title;
+      const catDesc = dict[cat.description] || cat.description;
+      const filteredEntries = cat.entries.filter((entry) => {
+        const entryTitle = dict[entry.title] || entry.title;
+        const entryDesc = dict[entry.description] || entry.description;
+        const searchPool = (entryTitle + " " + entryDesc + " " + entry.category).toLowerCase();
+        const isMatch = !normalizedQuery || searchPool.includes(normalizedQuery) || entry.searchKeywords.toLowerCase().includes(normalizedQuery);
+        if (isMatch) _visiblePagesCount++;
+        return isMatch;
+      });
+      return { ...cat, translatedTitle: catTitle, translatedDesc: catDesc, entries: filteredEntries };
     });
-    return { ...cat, entries: filteredEntries };
-  });
   return (
     <div className="w-full relative min-h-screen">
       {/* Sticky Search Bar */}
@@ -33,7 +41,7 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
           <div className="flex gap-2.5 items-center max-w-2xl mx-auto">
             <input
               type="text"
-              placeholder="Search the sitemap — e.g. augmented reality, automotive..."
+              placeholder={dict["Search the sitemap — e.g. augmented reality, automotive..."] || "Search the sitemap — e.g. augmented reality, automotive..."}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="w-full h-[52px] bg-primary/5 border border-primary/20 rounded-full px-6 text-primary placeholder:text-primary/40 focus:outline-none focus:border-primary/40 focus:ring-1 focus:ring-primary/40 transition-all font-medium text-sm"
@@ -44,7 +52,7 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
                 onClick={() => setQuery("")}
                 className="h-[52px] px-6 rounded-full bg-primary text-white font-medium text-sm hover:bg-primary/90 transition-colors flex items-center justify-center shrink-0"
               >
-                Clear
+                <Translate text="Clear" />
               </button>
             )}
           </div>
@@ -54,23 +62,22 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
       {/* Directory Content */}
       <FullWidthSection backgroundColor="none" className="pt-2 pb-20">
         <div className="max-w-[1280px] mx-auto flex flex-col gap-12">
-          {filteredCategories.length > 0 ? (
-            filteredCategories.map((category) => (
+          {filteredCategories.map((category) => (category.entries.length > 0 ? (
               <FadeInOnView key={category.id}>
                 <section id={category.id} className="pt-8 mt-2 scroll-mt-32">
                   <div className="flex flex-col md:flex-row justify-between gap-6 mb-8">
                     <div>
                       <div className="uppercase text-xs font-medium text-primary mb-2">
-                        Directory
+                        <Translate text="Directory" />
                       </div>
                       <h2
                         className={`${FONTS.microgrammaBold.className} text-secondary text-3xl sm:text-4xl m-0`}
                       >
-                        {category.title}
+                        {category.translatedTitle}
                       </h2>
                     </div>
                     <p className="max-w-[550px] text-primary/70 text-sm sm:text-base m-0 pt-1">
-                      {category.description}
+                      {category.translatedDesc}
                     </p>
                   </div>
 
@@ -89,26 +96,26 @@ export default function DirectorySearch({ categories }: DirectorySearchProps) {
                         <h3
                           className={`${FONTS.microgrammaBold.className} text-primary text-lg mt-[18px] mb-[7px]`}
                         >
-                          {entry.title}
+                          {dict[entry.title] || entry.title}
                         </h3>
                         <p className="text-primary/70 text-[13px] m-0 mb-auto leading-relaxed">
-                          {entry.description}
+                          {dict[entry.description] || entry.description}
                         </p>
                       </Link>
                     ))}
                   </div>
                 </section>
               </FadeInOnView>
-            ))
-          ) : (
+            ) : null))}
+          {_visiblePagesCount === 0 && (
             <div className="py-20 text-center">
               <h3
                 className={`${FONTS.microgrammaBold.className} text-primary text-2xl`}
               >
-                No results found
+                <Translate text="No results found" />
               </h3>
               <p className="text-primary/70 mt-2">
-                Try adjusting your search terms.
+                <Translate text="Try adjusting your search terms." />
               </p>
             </div>
           )}

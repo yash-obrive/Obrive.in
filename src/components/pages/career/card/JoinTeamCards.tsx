@@ -14,11 +14,11 @@ const JoinTeamCards = ({
       <div className="p-4 max-md:p-4 flex flex-col gap-4 w-3xl max-md:w-full">
         <div className="px-4">
           <h3
-            className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
+            className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-start text-lg`}
           >
             {title}
           </h3>
-          <p className="text-left mt-8 text-sm text-primary/90">
+          <p className="text-start mt-8 text-sm text-primary/90">
             {description_one}
             <br /> <br />
             {description_two}
@@ -28,7 +28,7 @@ const JoinTeamCards = ({
         </div>
       </div>
 
-      <div className="relative top-0 -left-10 pointer-events-none max-md:hidden">
+      <div className="relative top-0 -start-10 pointer-events-none max-md:hidden">
         <Image
           src={BACKGROUND_IMAGE.CARD_STACK}
           alt={BACKGROUND_IMAGE_META.CARD_STACK.alt}

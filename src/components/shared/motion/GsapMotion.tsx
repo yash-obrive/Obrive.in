@@ -130,9 +130,12 @@ export function StaggerTiltLeftOnView({
 
     const items = Array.from(el.children) as HTMLElement[];
     const ctx = gsap.context(() => {
+      const isRTL = typeof window !== 'undefined' && window.getComputedStyle(el).direction === 'rtl';
+      const dirMultiplier = isRTL ? -1 : 1;
+      
       // prepare transform origin for a subtle pivot effect
       gsap.set(items, {
-        transformOrigin: "left center",
+        transformOrigin: isRTL ? "right center" : "left center",
         willChange: "transform, opacity",
       });
 
@@ -140,7 +143,7 @@ export function StaggerTiltLeftOnView({
       items.forEach((item) => {
         gsap.fromTo(
           item,
-          { opacity: 0, x: -80, rotate: -6 },
+          { opacity: 0, x: -80 * dirMultiplier, rotate: -6 * dirMultiplier },
           {
             opacity: 1,
             x: 0,
@@ -184,13 +187,16 @@ export function StaggerTiltBottomLeftOnScroll({
 
     const items = Array.from(el.children) as HTMLElement[];
     const ctx = gsap.context(() => {
+      const isRTL = typeof window !== 'undefined' && window.getComputedStyle(el).direction === 'rtl';
+      const dirMultiplier = isRTL ? -1 : 1;
+      
       items.forEach((item, _index) => {
         gsap.set(item, {
-          transformOrigin: "left bottom",
+          transformOrigin: isRTL ? "right bottom" : "left bottom",
           willChange: "transform, opacity",
           force3D: true,
           opacity: 1, // Start invisible
-          x: -150,
+          x: -150 * dirMultiplier,
           y: 80,
           scale: 0.6,
         });
@@ -199,10 +205,10 @@ export function StaggerTiltBottomLeftOnScroll({
           item,
           {
             opacity: 1, // Start from invisible
-            x: -120,
+            x: -120 * dirMultiplier,
             y: 80,
             scale: 0.6,
-            skewY: 8,
+            skewY: 8 * dirMultiplier,
           },
           {
             opacity: 1, // Fade in slowly
@@ -387,14 +393,17 @@ export function StaggerSlideInCards({
     >();
 
     const ctx = gsap.context(() => {
+      const isRTL = typeof window !== 'undefined' && window.getComputedStyle(el).direction === 'rtl';
+      const dirMultiplier = isRTL ? -1 : 1;
+      
       // set initial state for all cards
       gsap.set(cards, {
         transformOrigin: "center center",
         willChange: "transform, opacity",
         opacity: 0,
-        x: -100,
+        x: -100 * dirMultiplier,
         scale: 0.8,
-        rotateY: -20,
+        rotateY: -20 * dirMultiplier,
       });
 
       // create staggered animation

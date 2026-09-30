@@ -21,7 +21,7 @@ export default function ResourceCompanyOverviewSection({
       <p className="text-sm sm:text-base leading-relaxed text-gray-700">
         {content}
       </p>
-      <div className="pr-30 max-md:pr-0">
+      <div className="pe-30 max-md:pe-0">
         {quote && (
           <div className="bg-primary text-accent rounded-xl py-10 px-16 max-md:py-8 max-md:px-6 my-6">
             <p

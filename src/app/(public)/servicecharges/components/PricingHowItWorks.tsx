@@ -1,3 +1,4 @@
+import Translate from "@/components/shared/Translate";
 import FONTS from "@/assets/fonts";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
 
@@ -34,12 +35,12 @@ export default function PricingHowItWorks() {
       <div className="max-w-[1280px] mx-auto">
         <div className="mb-12">
           <div className="uppercase text-xs font-medium text-primary mb-2">
-            HOW IT WORKS
+            <Translate text="HOW IT WORKS" />
           </div>
           <h2
             className={`${FONTS.microgrammaBold.className} text-primary text-3xl sm:text-4xl lg:text-[38px] leading-tight`}
           >
-            Simple. Secure. Structured.
+            <Translate text="Simple. Secure. Structured." />
           </h2>
         </div>
 
@@ -65,12 +66,7 @@ export default function PricingHowItWorks() {
         </div>
 
         <p className="text-primary/50 text-xs leading-relaxed mt-12 max-w-[1000px]">
-          Prototype pricing is a proposed standard package list. Final pricing
-          depends on scope, integrations, number of screens/assets, platforms,
-          third-party licences, hosting/cloud costs and delivery requirements.
-          GST and advertising spend are extra unless included in the signed
-          proposal. USD figures are indicative at approximately ₹87/USD and
-          should be recalculated at invoice time.
+          <Translate text="Prototype pricing is a proposed standard package list. Final pricing depends on scope, integrations, number of screens/assets, platforms, third-party licences, hosting/cloud costs and delivery requirements. GST and advertising spend are extra unless included in the signed proposal. USD figures are indicative at approximately ₹87/USD and should be recalculated at invoice time." />
         </p>
       </div>
     </FullWidthSection>

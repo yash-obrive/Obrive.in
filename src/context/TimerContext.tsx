@@ -60,7 +60,7 @@ export function TimerProvider({ children }: { children: React.ReactNode }) {
         clearInterval(sessionRefreshRef.current);
       }
     };
-  }, [initializeSession]);
+  }, []);
 
   // ===================================================
   // INIT

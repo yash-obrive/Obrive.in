@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { apiFetch } from "@/lib/api";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function EmployeeLogin() {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function EmployeeLogin() {
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [showPassword, setShowPassword] = React.useState(false);
   const [error, setError] = React.useState("");
   const [showToast, setShowToast] = React.useState(false);
 
@@ -154,14 +156,29 @@ export default function EmployeeLogin() {
             <div>
               <Label htmlFor="password">Password</Label>
 
-              <Input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                id="password"
-                placeholder="Type your Password"
-                className="border mt-2 py-6 border-primary outline-none"
-              />
+              <div className="relative mt-2">
+                <Input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  placeholder="Type your Password"
+                  className="border py-6 pe-12 border-primary outline-none"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute end-4 top-1/2 -translate-y-1/2 text-primary/70 hover:text-primary transition-colors focus:outline-none"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
+              <div className="flex justify-end mt-2">
+                <a href="/forgot-password" className="text-xs text-primary hover:underline font-medium">
+                  Forgot Password?
+                </a>
+              </div>
             </div>
 
             {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -176,7 +193,7 @@ export default function EmployeeLogin() {
             </Button>
           </form>
 
-          <div className="text-left mt-12 lg:mt-20">
+          <div className="text-start mt-12 lg:mt-20">
             <p>
               Don't have an account? <br /> yet email?
             </p>

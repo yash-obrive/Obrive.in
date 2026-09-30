@@ -88,7 +88,7 @@ export default function NearestEvents({
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto space-y-2 pr-1">
+      <div className="flex-1 overflow-y-auto space-y-2 pe-1">
         {events.length === 0 ? (
           <p className="text-center text-xs text-gray-500 py-4">
             No upcoming events

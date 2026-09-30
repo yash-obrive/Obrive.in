@@ -26,11 +26,11 @@ export default function Header({
           <div className="flex w-full flex-col gap-3 sm:max-w-xl sm:flex-row sm:items-center">
             <div className="w-full sm:max-w-xs">
               <div className="relative">
-                <Search className="absolute left-2 top-1/2 h-3 w-3 -translate-y-1/2 text-gray-400" />
+                <Search className="absolute start-2 top-1/2 h-3 w-3 -translate-y-1/2 text-gray-400" />
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="w-full rounded-lg border border-gray-200 bg-gray-50 py-2 pl-8 pr-3 text-xs focus:outline-none focus:ring-2 focus:ring-[#1a472a]"
+                  className="w-full rounded-lg border border-gray-200 bg-gray-50 py-2 ps-8 pe-3 text-xs focus:outline-none focus:ring-2 focus:ring-[#1a472a]"
                 />
               </div>
             </div>

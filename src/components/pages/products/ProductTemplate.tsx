@@ -45,7 +45,7 @@ export function ProductTemplate({
           clipOverflow={false}
           className="!w-screen !max-w-none"
         >
-          <div className="absolute top-0 left-0 bg-accent w-full h-[120vh] max-md:h-[80vh]">
+          <div className="absolute top-0 start-0 bg-accent w-full h-[120vh] max-md:h-[80vh]">
             <Image
               className="object-cover w-full h-full"
               alt={`${hero.title} Hero Background`}
@@ -107,7 +107,7 @@ export function ProductTemplate({
             {/* rive hero animation */}
             <AnimatedRiveSection
               sectionClassName="w-full"
-              riveClassName="max-w-none relative sm:left-1/2 sm:-translate-x-1/2 w-[110vw] max-sm:hidden"
+              riveClassName="max-w-none relative sm:start-1/2 sm:-translate-x-1/2 w-[110vw] max-sm:hidden"
               aspectClassName="aspect-[16/6]"
             />
             {/* what makes us different */}

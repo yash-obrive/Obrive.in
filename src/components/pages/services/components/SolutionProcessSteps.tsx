@@ -77,7 +77,7 @@ export default function SolutionProcessSteps({
     <div
       id="our-process"
       ref={sectionRef}
-      className="bg-primary w-full pl-18 max-sm:p-0 max-md:pl-4"
+      className="bg-primary w-full ps-18 max-sm:p-0 max-md:ps-4"
     >
       <div className="grid grid-cols-1 relative sm:grid-cols-2 lg:grid-cols-4 h-auto sm:h-[569px] max-md:py-8">
         {steps.map((item, idx) => {
@@ -90,7 +90,7 @@ export default function SolutionProcessSteps({
               }`}
             >
               <motion.div
-                className={`hidden lg:block absolute left-0 -translate-x-1/2 ${glowClassByIndex(
+                className={`hidden lg:block absolute start-0 -translate-x-1/2 ${glowClassByIndex(
                   idx,
                 )} z-10 pointer-events-none`}
                 animate={

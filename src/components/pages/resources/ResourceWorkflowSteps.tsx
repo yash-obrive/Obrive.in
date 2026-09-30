@@ -176,7 +176,7 @@ export default function ResourceWorkflowSteps({
               <button
                 key={`${step}-${index}`}
                 type="button"
-                className={`flex w-full items-center gap-3 py-4 px-3 border-b border-primary/80 text-left text-xs transition-colors duration-200 ${
+                className={`flex w-full items-center gap-3 py-4 px-3 border-b border-primary/80 text-start text-xs transition-colors duration-200 ${
                   hasTarget
                     ? "cursor-pointer hover:bg-primary/10"
                     : "cursor-default"

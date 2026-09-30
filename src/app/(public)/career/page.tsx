@@ -1,3 +1,4 @@
+import Translate from "@/components/shared/Translate";
 import type { Metadata } from "next";
 import Image from "next/image";
 import FONTS from "@/assets/fonts";
@@ -86,7 +87,7 @@ export default function JoinTeamPage() {
                 <h1
                   className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-secondary`}
                 >
-                  Join The Otters
+                  <Translate text="Join The Otters" />
                 </h1>
               </FadeInOnLoad>
               <FadeInOnLoad delay={0.3}>
@@ -146,7 +147,7 @@ export default function JoinTeamPage() {
               className="uppercase text-[10px] cursor-pointer rounded-full"
               size={"lg"}
             >
-              <Link href="/resources">Visit Library</Link>
+              <Link href="/resources"><Translate text="Visit Library" /></Link>
             </Button>
           </div>
         </section>
@@ -161,7 +162,7 @@ export default function JoinTeamPage() {
             <div className="mt-20">
               <div className="relative flex flex-col px-4 sm:px-8 lg:px-48 gap-6 lg:gap-0 min-h-[400px]">
                 {/* curved primary bg image */}
-                <div className="hidden lg:block absolute inset-y-0 left-30 -top-20 w-[800px] -z-10 pointer-events-none">
+                <div className="hidden lg:block absolute inset-y-0 start-30 -top-20 w-[800px] -z-10 pointer-events-none">
                   <Image
                     src={BACKGROUND_IMAGE.PRIMARY_CURVED_BG}
                     alt={BACKGROUND_IMAGE_META.PRIMARY_CURVED_BG.alt}
@@ -172,7 +173,7 @@ export default function JoinTeamPage() {
                   />
                 </div>
 
-                <StaggerTiltBottomLeftOnScroll className="flex flex-col gap-8 sm:gap-16 lg:gap-30 w-full items-end pr-30 max-md:items-center max-md:pr-0">
+                <StaggerTiltBottomLeftOnScroll className="flex flex-col gap-8 sm:gap-16 lg:gap-30 w-full items-end pe-30 max-md:items-center max-md:pe-0">
                   {GIVING_BACK_CARD.map((item) => (
                     <GivingBackCard key={item.number} {...item} />
                   ))}
@@ -191,7 +192,7 @@ export default function JoinTeamPage() {
             <h1
               className={`${FONTS.microgrammaBold.className} uppercase text-5xl max-md:text-3xl text-primary`}
             >
-              Careers
+              <Translate text="Careers" />
             </h1>
           </div>
 

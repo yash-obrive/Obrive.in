@@ -48,7 +48,7 @@ const BlogGridCard = ({
           >
             <Translate text={title} />
           </h3>
-          <p className="text-sm leading-relaxed text-muted-foreground group-hover:text-accent-foreground/90">
+          <p className="text-sm leading-relaxed text-muted-foreground group-hover:text-accent-foreground/90 line-clamp-3">
             <Translate text={description} />
           </p>
         </div>

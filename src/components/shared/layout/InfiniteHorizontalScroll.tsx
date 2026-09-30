@@ -184,7 +184,7 @@ export const InfiniteHorizontalScroll =
                 <button
                   type="button"
                   onClick={scrollPrev}
-                  className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full bg-[#A7F1E0] text-primary hover:opacity-80 transition-opacity h-10 w-10 md:h-12 md:w-12 shadow-sm z-10 sm:flex"
+                  className="absolute start-4 md:start-8 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full bg-[#A7F1E0] text-primary hover:opacity-80 transition-opacity h-10 w-10 md:h-12 md:w-12 shadow-sm z-10 sm:flex"
                   aria-label="Previous slide"
                 >
                   <ArrowLeft className="h-5 w-5 md:h-6 md:w-6" />
@@ -192,7 +192,7 @@ export const InfiniteHorizontalScroll =
                 <button
                   type="button"
                   onClick={scrollNext}
-                  className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full bg-[#A7F1E0] text-primary hover:opacity-80 transition-opacity h-10 w-10 md:h-12 md:w-12 shadow-sm z-10 sm:flex"
+                  className="absolute end-4 md:end-8 top-1/2 -translate-y-1/2 flex items-center justify-center rounded-full bg-[#A7F1E0] text-primary hover:opacity-80 transition-opacity h-10 w-10 md:h-12 md:w-12 shadow-sm z-10 sm:flex"
                   aria-label="Next slide"
                 >
                   <ArrowRight className="h-5 w-5 md:h-6 md:w-6" />

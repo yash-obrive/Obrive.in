@@ -34,7 +34,7 @@ export const AR_DEVELOPMENT_FAQS: FAQCategory[] = [
       {
         question: "What types of AR solutions does Obrive develop?",
         answer:
-          '<p>Obrive develops:</p><ul class="list-disc list-outside pl-5 mt-2 space-y-1"><li>WebAR</li><li>Mobile AR</li><li>Enterprise AR</li><li>Industrial AR</li><li>AR product visualization</li><li>AR commerce</li><li>Virtual try-on</li><li>AR training and simulation</li><li>AR remote assistance</li><li>Location-based AR</li><li>Spatial AR</li><li>AI-powered AR</li><li>Computer-vision AR</li><li>3D and spatial content</li><li>Digital twins</li><li>AR portals</li><li>Interactive installations</li><li>AR for events and experiences</li></ul>',
+          '<p>Obrive develops:</p><ul class="list-disc list-outside ps-5 mt-2 space-y-1"><li>WebAR</li><li>Mobile AR</li><li>Enterprise AR</li><li>Industrial AR</li><li>AR product visualization</li><li>AR commerce</li><li>Virtual try-on</li><li>AR training and simulation</li><li>AR remote assistance</li><li>Location-based AR</li><li>Spatial AR</li><li>AI-powered AR</li><li>Computer-vision AR</li><li>3D and spatial content</li><li>Digital twins</li><li>AR portals</li><li>Interactive installations</li><li>AR for events and experiences</li></ul>',
       },
       {
         question: "Can Obrive develop a completely custom AR solution?",

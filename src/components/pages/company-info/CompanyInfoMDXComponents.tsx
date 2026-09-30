@@ -57,16 +57,16 @@ export const createCompanyInfoMDXComponents = (_metadata: any) => ({
     <p className="text-sm leading-relaxed text-gray-700 mb-4" {...props} />
   ),
   ul: (props: any) => (
-    <ul className="list-disc pl-6 space-y-2 mb-4" {...props} />
+    <ul className="list-disc ps-6 space-y-2 mb-4" {...props} />
   ),
   ol: (props: any) => (
-    <ol className="list-decimal pl-6 space-y-2 mb-4" {...props} />
+    <ol className="list-decimal ps-6 space-y-2 mb-4" {...props} />
   ),
   li: (props: any) => (
     <li className="text-sm leading-relaxed text-gray-700" {...props} />
   ),
   blockquote: (props: any) => (
-    <div className="pr-30">
+    <div className="pe-30">
       <div className="bg-primary text-accent rounded-xl p-12 my-6">
         <p
           className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}
@@ -149,16 +149,16 @@ export default {
     <p className="text-sm leading-relaxed text-gray-700 mb-4" {...props} />
   ),
   ul: (props: any) => (
-    <ul className="list-disc pl-6 space-y-2 mb-4" {...props} />
+    <ul className="list-disc ps-6 space-y-2 mb-4" {...props} />
   ),
   ol: (props: any) => (
-    <ol className="list-decimal pl-6 space-y-2 mb-4" {...props} />
+    <ol className="list-decimal ps-6 space-y-2 mb-4" {...props} />
   ),
   li: (props: any) => (
     <li className="text-sm leading-relaxed text-gray-700" {...props} />
   ),
   blockquote: (props: any) => (
-    <div className="pr-30">
+    <div className="pe-30">
       <div className="bg-primary text-accent rounded-xl p-12 my-6">
         <p
           className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}

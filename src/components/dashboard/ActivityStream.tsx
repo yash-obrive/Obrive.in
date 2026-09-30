@@ -35,7 +35,7 @@ export default function ActivityStream({
         Activity Stream
       </h3>
 
-      <div className="flex-1 overflow-y-auto space-y-2 pr-1">
+      <div className="flex-1 overflow-y-auto space-y-2 pe-1">
         {activities.map((activity) => (
           <div
             key={activity.id}

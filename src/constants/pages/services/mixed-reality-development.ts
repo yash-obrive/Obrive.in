@@ -61,22 +61,22 @@ export const MIXED_REALITY_DEVELOPMENT_SIDEBAR_LINKS = [
     label: "Enterprise Mixed Reality Solutions",
   },
   { id: "industrial-mixed-reality", label: "Industrial Mixed Reality" },
-  { id: "mr-training-simulation", label: "MR Training & Simulation" },
+  { id: "me-training-simulation", label: "MR Training & Simulation" },
   {
-    id: "mr-remote-assistance-collaboration",
+    id: "me-remote-assistance-collaboration",
     label: "MR Remote Assistance & Collaboration",
   },
   {
-    id: "mr-product-design-engineering-visualization",
+    id: "me-product-design-engineering-visualization",
     label: "MR Product Design & Engineering Visualization",
   },
   { id: "digital-twins-spatial-data", label: "Digital Twins & Spatial Data" },
   {
-    id: "mr-architecture-construction-real-estate",
+    id: "me-architecture-construction-real-estate",
     label: "MR Architecture, Construction & Real Estate",
   },
   {
-    id: "mr-retail-commerce-customer-experience",
+    id: "me-retail-commerce-customer-experience",
     label: "MR Retail, Commerce & Customer Experience",
   },
   { id: "ai-powered-mixed-reality", label: "AI-Powered Mixed Reality" },
@@ -85,7 +85,7 @@ export const MIXED_REALITY_DEVELOPMENT_SIDEBAR_LINKS = [
     label: "Spatial Portals & Immersive Experiences",
   },
   {
-    id: "mr-workflow-review-approval",
+    id: "me-workflow-review-approval",
     label: "MR Workflow, Review & Approval",
   },
   {
@@ -165,7 +165,7 @@ export const MIXED_REALITY_DEVELOPMENT_SERVICE_SECTIONS = [
     footer: "",
   },
   {
-    id: "mr-training-simulation",
+    id: "me-training-simulation",
     title: "MR Training & Simulation",
     subtitle: "",
     description:
@@ -187,7 +187,7 @@ export const MIXED_REALITY_DEVELOPMENT_SERVICE_SECTIONS = [
     footer: "",
   },
   {
-    id: "mr-remote-assistance-collaboration",
+    id: "me-remote-assistance-collaboration",
     title: "MR Remote Assistance & Collaboration",
     subtitle: "",
     description:
@@ -207,7 +207,7 @@ export const MIXED_REALITY_DEVELOPMENT_SERVICE_SECTIONS = [
     footer: "",
   },
   {
-    id: "mr-product-design-engineering-visualization",
+    id: "me-product-design-engineering-visualization",
     title: "MR Product Design & Engineering Visualization",
     subtitle: "",
     description:
@@ -245,7 +245,7 @@ export const MIXED_REALITY_DEVELOPMENT_SERVICE_SECTIONS = [
     footer: "",
   },
   {
-    id: "mr-architecture-construction-real-estate",
+    id: "me-architecture-construction-real-estate",
     title: "MR Architecture, Construction & Real Estate",
     subtitle: "",
     description:
@@ -264,7 +264,7 @@ export const MIXED_REALITY_DEVELOPMENT_SERVICE_SECTIONS = [
     footer: "",
   },
   {
-    id: "mr-retail-commerce-customer-experience",
+    id: "me-retail-commerce-customer-experience",
     title: "MR Retail, Commerce & Customer Experience",
     subtitle: "",
     description:
@@ -322,7 +322,7 @@ export const MIXED_REALITY_DEVELOPMENT_SERVICE_SECTIONS = [
     footer: "",
   },
   {
-    id: "mr-workflow-review-approval",
+    id: "me-workflow-review-approval",
     title: "MR Workflow, Review & Approval",
     subtitle: "",
     description:

@@ -1,3 +1,4 @@
+import { useTranslation } from "@/context/TranslationContext";
 import { notFound, redirect } from "next/navigation";
 import FONTS from "@/assets/fonts";
 import { Button } from "@/components/ui/button";
@@ -44,7 +45,7 @@ const DetailsPage = async ({
         >
            <Translate text="Let’s get started!" /> </h1>
         <p className="text-gray-800 mb-6">
-          <span className={`${FONTS.microgrammaBold.className}`}>Obrive</span>{" "}
+          <span className={`${FONTS.microgrammaBold.className}`}><Translate text="Obrive" /></span>{" "}
            <Translate text="has invited you to interview for the position of" /> <br />
           <span className={`${FONTS.microgrammaBold.className}`}>
             {career.metadata.title}
@@ -56,26 +57,26 @@ const DetailsPage = async ({
           className="flex flex-col items-center space-y-6 mt-10"
         >
           {/* Name Input */}
-          <div className="w-full text-left">
+          <div className="w-full text-start">
             <Label htmlFor="name" className="text-sm mb-1">
                <Translate text="Name" /> </Label>
             <Input
               type="text"
               name="name"
-              placeholder="Type your name here..."
+              placeholder={"Type your name here..."}
               className="w-full border-b-2 focus-visible:ring-0 border-x-0 border-t-0 rounded-none border-primary focus:outline-none py-2"
               required
             />
           </div>
 
           {/* Email Input */}
-          <div className="w-full text-left">
+          <div className="w-full text-start">
             <Label htmlFor="email" className="text-sm mb-1">
                <Translate text="Email" /> </Label>
             <Input
               type="email"
               name="email"
-              placeholder="Type your email address here..."
+              placeholder={"Type your email address here..."}
               className="w-full border-b-2 focus-visible:ring-0 border-x-0 border-t-0 rounded-none border-primary focus:outline-none py-2"
               required
             />

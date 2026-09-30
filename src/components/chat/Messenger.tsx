@@ -1,4 +1,5 @@
 "use client";
+import Translate from "@/components/shared/Translate";
 import { format } from "date-fns";
 import {
   ArrowDown,
@@ -545,7 +546,7 @@ export default function Messenger() {
             </div>
           </div>
           <p className="text-gray-500 font-medium animate-pulse">
-            Loading Messenger...
+            <Translate text="Loading Messenger..." />
           </p>
         </div>
       </div>
@@ -555,14 +556,14 @@ export default function Messenger() {
   return (
     <div className="flex h-full w-full bg-[#F8FAFC] overflow-hidden rounded-2xl border border-gray-100 shadow-sm relative">
       {!isConnected && (
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 z-[110] bg-red-100 text-red-600 px-4 py-1 rounded-full text-xs font-bold border border-red-200 shadow-sm">
-          Connecting to real-time server...
+        <div className="absolute top-2 start-1/2 -translate-x-1/2 z-[110] bg-red-100 text-red-600 px-4 py-1 rounded-full text-xs font-bold border border-red-200 shadow-sm">
+          <Translate text="Connecting to real-time server..." />
         </div>
       )}
       {/* Sidebar - Conversations */}
-      <div className="w-80 flex flex-col border-r border-b-2 border-gray-100 bg-white">
+      <div className="w-80 flex flex-col border-e border-b-2 border-gray-100 bg-white">
         <div className="p-4 flex items-center justify-between">
-          <h2 className="text-sm font-bold text-gray-800">Conversations</h2>
+          <h2 className="text-sm font-bold text-gray-800"><Translate text="Conversations" /></h2>
           <div className="flex gap-2">
             <button
               onClick={() => setShowUserSearch(true)}
@@ -670,7 +671,7 @@ export default function Messenger() {
                       {activeConversation.type === "direct" &&
                         otherParticipant &&
                         onlineUsers.includes(Number(otherParticipant.id)) && (
-                          <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+                          <div className="absolute bottom-0 end-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
                         )}
                     </div>
                     <div>
@@ -797,10 +798,10 @@ export default function Messenger() {
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center text-gray-400 p-8 text-center">
             <div className="w-24 h-24 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-6 shadow-inner">
-              <Send size={40} className="ml-1" />
+              <Send size={40} className="ms-1" />
             </div>
             <h3 className="text-xl font-bold text-gray-800 mb-2">
-              Your Messenger
+              <Translate text="Your Messenger" />
             </h3>
             <p className="max-w-xs">
               Connect with your colleagues, share files, and collaborate in
@@ -812,9 +813,9 @@ export default function Messenger() {
 
       {/* Details Sidebar */}
       {showDetails && activeConversation && (
-        <div className="w-80 border-l border-gray-100 bg-white flex flex-col animate-in slide-in-from-right duration-300">
+        <div className="w-80 border-s border-gray-100 bg-white flex flex-col animate-in slide-in-from-right duration-300">
           <div className="p-4 border-b border-gray-100 flex items-center justify-between">
-            <h3 className="font-bold text-gray-800">Details</h3>
+            <h3 className="font-bold text-gray-800"><Translate text="Details" /></h3>
             <button
               onClick={() => setShowDetails(false)}
               className="p-1.5 hover:bg-gray-100 rounded-full text-gray-400"
@@ -906,7 +907,7 @@ export default function Messenger() {
                             </p>
                             {p.is_admin && (
                               <span className="text-[9px] font-black bg-blue-100 text-blue-600 px-1 py-0.5 rounded uppercase tracking-tighter">
-                                Admin
+                                <Translate text="Admin" />
                               </span>
                             )}
                           </div>
@@ -937,7 +938,7 @@ export default function Messenger() {
             <div className="p-4 mt-auto border-t border-gray-50 flex flex-col gap-2">
               <button
                 onClick={() => handleDeleteConversation("self")}
-                className="w-full py-2.5 px-4 text-sm font-bold text-red-500 hover:bg-red-50 rounded-xl transition-colors text-left flex items-center gap-3"
+                className="w-full py-2.5 px-4 text-sm font-bold text-red-500 hover:bg-red-50 rounded-xl transition-colors text-start flex items-center gap-3"
               >
                 <XCircle size={18} />
                 {activeConversation.type === "group"
@@ -949,10 +950,10 @@ export default function Messenger() {
                 Number(activeConversation.created_by) === Number(me?.id) && (
                   <button
                     onClick={() => handleDeleteConversation("permanent")}
-                    className="w-full py-2.5 px-4 text-sm font-bold text-red-600 hover:bg-red-50 rounded-xl transition-colors text-left flex items-center gap-3"
+                    className="w-full py-2.5 px-4 text-sm font-bold text-red-600 hover:bg-red-50 rounded-xl transition-colors text-start flex items-center gap-3"
                   >
                     <Trash2 size={18} />
-                    Delete Group for Everyone
+                    <Translate text="Delete Group for Everyone" />
                   </button>
                 )}
             </div>
@@ -989,7 +990,7 @@ export default function Messenger() {
               {showCreateGroup && (
                 <div>
                   <label className="block text-xs font-bold text-gray-400 uppercase mb-2">
-                    Group Name
+                    <Translate text="Group Name" />
                   </label>
                   <input
                     type="text"
@@ -1006,7 +1007,7 @@ export default function Messenger() {
                 </label>
                 <div className="relative mb-3">
                   <Search
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                    className="absolute start-3 top-1/2 -translate-y-1/2 text-gray-400"
                     size={16}
                   />
                   <input
@@ -1014,10 +1015,10 @@ export default function Messenger() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search users..."
-                    className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-10 pr-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-100 transition-all"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl ps-10 pe-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-blue-100 transition-all"
                   />
                 </div>
-                <div className="max-h-60 overflow-y-auto space-y-1 pr-1 custom-scrollbar">
+                <div className="max-h-60 overflow-y-auto space-y-1 pe-1 custom-scrollbar">
                   {filteredUsers.map((u) => (
                     <button
                       key={u.id}
@@ -1034,7 +1035,7 @@ export default function Messenger() {
                           alt=""
                         />
                       </div>
-                      <div className="flex-1 text-left">
+                      <div className="flex-1 text-start">
                         <p className="text-sm font-bold text-gray-800">
                           {u.name}
                         </p>
@@ -1072,7 +1073,7 @@ export default function Messenger() {
                   }}
                   className="flex-1 py-3 text-sm font-bold text-gray-500 hover:bg-gray-100 rounded-xl transition-colors"
                 >
-                  Cancel
+                  <Translate text="Cancel" />
                 </button>
                 <button
                   onClick={
@@ -1190,24 +1191,24 @@ function ConversationItem({
           />
         </div>
         {isOnline && (
-          <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full shadow-sm"></div>
+          <div className="absolute bottom-0 end-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full shadow-sm"></div>
         )}
       </div>
-      <div className="flex-1 text-left overflow-hidden">
+      <div className="flex-1 text-start overflow-hidden">
         <div className="flex justify-between items-baseline mb-0.5">
           <h4
             className={`text-sm font-bold truncate text-[13px] ${isActive ? "text-blue-700" : "text-gray-800"}`}
           >
             {displayName}
           </h4>
-          <span className="text-[10px] text-gray-400 font-medium whitespace-nowrap ml-2">
+          <span className="text-[10px] text-gray-400 font-medium whitespace-nowrap ms-2">
             {conversation.last_message
               ? format(new Date(conversation.last_message.created_at), "HH:mm")
               : ""}
           </span>
         </div>
         <div className="flex justify-between items-center">
-          <p className="text-xs text-gray-400 truncate flex-1 mr-2">
+          <p className="text-xs text-gray-400 truncate flex-1 me-2">
             {conversation.last_message ? (
               conversation.last_message.type === "system" ? (
                 <span className="italic italic-gray-300 font-medium opacity-80">
@@ -1276,7 +1277,7 @@ function MessageBubble({
           </span>
         </div>
         <div
-          className={`p-3.5 rounded-2xl text-[13.5px] leading-relaxed shadow-sm transition-all ${isMe ? "bg-blue-500 text-white rounded-tr-none" : "bg-white text-gray-800 rounded-tl-none border border-gray-100 hover:border-gray-200"}`}
+          className={`p-3.5 rounded-2xl text-[13.5px] leading-relaxed shadow-sm transition-all ${isMe ? "bg-blue-500 text-white rounded-se-none" : "bg-white text-gray-800 rounded-ss-none border border-gray-100 hover:border-gray-200"}`}
         >
           {message.content}
         </div>

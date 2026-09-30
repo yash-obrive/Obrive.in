@@ -45,7 +45,7 @@ export const createFAQMDXComponents = (_metadata: any) => ({
     </strong>
   ),
   blockquote: (props: any) => (
-    <div className="pr-30">
+    <div className="pe-30">
       <div className="bg-primary text-accent rounded-xl p-12 my-6">
         <p
           className={`${FONTS.microgrammaBold.className} text-xl leading-relaxed`}

@@ -233,7 +233,7 @@ const ScheduledRooms = () => {
 
                     <button
                       onClick={() => handleStartNow(room.id)}
-                      className="rounded-md bg-slate-900 px-3 py-1.5 text-[9px] font-bold text-white transition-colors hover:bg-slate-800 ml-auto cursor-pointer"
+                      className="rounded-md bg-slate-900 px-3 py-1.5 text-[9px] font-bold text-white transition-colors hover:bg-slate-800 ms-auto cursor-pointer"
                     >
                       Start Now
                     </button>

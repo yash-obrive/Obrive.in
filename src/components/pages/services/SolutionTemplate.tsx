@@ -59,9 +59,9 @@ export function SolutionTemplate({
                 </div>
               </div>
 
-              <div className="inline-flex flex-col items-center justify-center gap-2.5 pl-6 pr-[90px] pt-4 pb-6 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] rounded-2xl border-[0.5px] border-solid border-primary/40 max-lg:w-full max-lg:px-6 max-lg:py-6 max-md:px-4 max-md:py-5 max-sm:px-3">
+              <div className="inline-flex flex-col items-center justify-center gap-2.5 ps-6 pe-[90px] pt-4 pb-6 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] rounded-2xl border-[0.5px] border-solid border-primary/40 max-lg:w-full max-lg:px-6 max-lg:py-6 max-md:px-4 max-md:py-5 max-sm:px-3">
                 <div className="flex w-full max-w-[804px] items-center justify-center gap-2.5 p-2.5 relative flex-[0_0_auto] max-lg:max-w-none max-lg:p-0">
-                  <p className="relative w-full max-w-[804px] mt-[-1.00px] ml-[-4.50px] mr-[-4.50px] font-normal text-base tracking-[1.00px] leading-7 max-lg:max-w-none max-lg:m-0 max-md:text-sm max-md:leading-6 max-sm:text-xs">
+                  <p className="relative w-full max-w-[804px] mt-[-1.00px] ms-[-4.50px] me-[-4.50px] font-normal text-base tracking-[1.00px] leading-7 max-lg:max-w-none max-lg:m-0 max-md:text-sm max-md:leading-6 max-sm:text-xs">
                     <Translate text={hero.description} />
                     <br />
                     <br />

@@ -85,12 +85,12 @@ export default function StickyNotesBoard({
               <button
                 type="button"
                 onClick={() => onDeleteNote(note.id)}
-                className="absolute right-2 top-2 rounded-full p-1 opacity-0 transition hover:bg-black/10 group-hover:opacity-100"
+                className="absolute end-2 top-2 rounded-full p-1 opacity-0 transition hover:bg-black/10 group-hover:opacity-100"
               >
                 <X className="h-4 w-4" />
               </button>
 
-              <p className="whitespace-pre-wrap text-sm leading-relaxed pr-6">
+              <p className="whitespace-pre-wrap text-sm leading-relaxed pe-6">
                 {note.content}
               </p>
             </motion.div>

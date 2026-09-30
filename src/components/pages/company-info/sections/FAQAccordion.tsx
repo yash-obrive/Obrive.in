@@ -34,7 +34,7 @@ export function FAQItem({ q, children, value }: FAQItemProps) {
       value={itemValue}
       className="bg-white rounded-lg px-6 border border-gray-200 data-[state=open]:shadow-sm transition-all duration-300"
     >
-      <AccordionTrigger className="text-left text-base md:text-lg font-medium text-[#073933] hover:no-underline py-5">
+      <AccordionTrigger className="text-start text-base md:text-lg font-medium text-[#073933] hover:no-underline py-5">
         {q}
       </AccordionTrigger>
       <AccordionContent className="text-[#073933]/80 text-sm md:text-base leading-relaxed pb-6">

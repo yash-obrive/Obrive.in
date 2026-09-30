@@ -40,7 +40,7 @@ export default function BlogRecommendations({
           >
             {/* img hover effect */}
             <div
-              className={`hidden md:flex justify-center items-center absolute bottom-0 left-0 w-full bg-[#B0F0E1] overflow-hidden pointer-events-none z-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out ${index === 0 ? "rounded-tr-3xl" : "rounded-tl-3xl"}`}
+              className={`hidden md:flex justify-center items-center absolute bottom-0 start-0 w-full bg-[#B0F0E1] overflow-hidden pointer-events-none z-0 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out ${index === 0 ? "rounded-se-3xl" : "rounded-ss-3xl"}`}
               aria-hidden="true"
             >
               <div className="relative w-full flex items-center justify-center pt-20 max-w-[43.5rem] overflow-hidden rounded-2xl mb-5">

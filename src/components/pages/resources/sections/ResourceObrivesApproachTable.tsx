@@ -34,7 +34,7 @@ export function ApproachPhaseItem({
   return (
     <>
       <div className="hidden md:grid grid-cols-[38%_62%] border-t border-gray-300">
-        <div className="p-4 border-r border-gray-300 bg-gray-50">
+        <div className="p-4 border-e border-gray-300 bg-gray-50">
           <div
             className={`${FONTS.microgrammaBold.className} text-sm font-semibold`}
           >
@@ -83,7 +83,7 @@ export function ApproachTableDescription({
 }: {
   children: React.ReactNode;
 }) {
-  return <p className="-mt-3 mb-8">{children}</p>;
+  return <div className="-mt-3 mb-8">{children}</div>;
 }
 
 export default function ResourceObrivesApproachTable({
@@ -118,7 +118,7 @@ export default function ResourceObrivesApproachTable({
         <div className="md:border md:border-gray-300 md:rounded-lg md:overflow-hidden">
           <div className="hidden md:grid grid-cols-[38%_62%] bg-gray-100">
             <div
-              className={`${FONTS.microgrammaBold.className} p-4 border-r border-gray-300 text-sm font-semibold`}
+              className={`${FONTS.microgrammaBold.className} p-4 border-e border-gray-300 text-sm font-semibold`}
             >
               {header1}
             </div>
@@ -155,7 +155,7 @@ export default function ResourceObrivesApproachTable({
         {/* Table Header */}
         <div className="grid grid-cols-[38%_62%] bg-gray-100">
           <div
-            className={`${FONTS.microgrammaBold.className} p-4 border-r border-gray-300 text-sm font-semibold`}
+            className={`${FONTS.microgrammaBold.className} p-4 border-e border-gray-300 text-sm font-semibold`}
           >
             {header1}
           </div>
@@ -172,7 +172,7 @@ export default function ResourceObrivesApproachTable({
             key={index}
             className="grid grid-cols-[38%_62%] border-t border-gray-300"
           >
-            <div className="p-4 border-r border-gray-300 bg-gray-50">
+            <div className="p-4 border-e border-gray-300 bg-gray-50">
               <div
                 className={`${FONTS.microgrammaBold.className} text-sm font-semibold`}
               >

@@ -29,7 +29,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
               height={ICONS_META.TARGET_ICON.height}
             />
             <div className="px-4">
-              <p className="text-left text-base text-primary/80">
+              <p className="text-start text-base text-primary/80">
                  <Translate text="With industries rapidly embracing digital transformation, our
                                             outlook is crystal clear: be the partner of choice for
                                             businesses that want to stay ahead in the immersive era" /> <br /> <br />
@@ -43,7 +43,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
                                             scale with industry needs and prepare businesses for the spatial
                                             computing revolution." /> </p>
               <h3
-                className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
+                className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-start text-lg`}
               >
                  <Translate text="- Objective" /> </h3>
             </div>
@@ -67,7 +67,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
               height={ICONS_META.TARGET_ICON.height}
             />
             <div className="px-4">
-              <p className="text-left text-base text-primary/80">
+              <p className="text-start text-base text-primary/80">
                  <Translate text="With industries rapidly embracing digital transformation, our
                                             outlook is crystal clear: be the partner of choice for
                                             businesses that want to stay ahead in the immersive era" /> <br /> <br />
@@ -81,7 +81,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
                                             scale with industry needs and prepare businesses for the spatial
                                             computing revolution." /> </p>
               <h3
-                className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
+                className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-start text-lg`}
               >
                  <Translate text="- Objective" /> </h3>
             </div>
@@ -105,7 +105,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
               height={ICONS_META.TARGET_ICON.height}
             />
             <div className="px-4">
-              <p className="text-left text-base text-primary/80">
+              <p className="text-start text-base text-primary/80">
                  <Translate text="With industries rapidly embracing digital transformation, our
                                             outlook is crystal clear: be the partner of choice for
                                             businesses that want to stay ahead in the immersive era" /> <br /> <br />
@@ -119,7 +119,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
                                             scale with industry needs and prepare businesses for the spatial
                                             computing revolution." /> </p>
               <h3
-                className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
+                className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-start text-lg`}
               >
                  <Translate text="- Objective" /> </h3>
             </div>
@@ -143,7 +143,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
               height={ICONS_META.TARGET_ICON.height}
             />
             <div className="px-4">
-              <p className="text-left text-base text-primary/80">
+              <p className="text-start text-base text-primary/80">
                  <Translate text="With industries rapidly embracing digital transformation, our
                                             outlook is crystal clear: be the partner of choice for
                                             businesses that want to stay ahead in the immersive era" /> <br /> <br />
@@ -157,7 +157,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
                                             scale with industry needs and prepare businesses for the spatial
                                             computing revolution." /> </p>
               <h3
-                className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
+                className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-start text-lg`}
               >
                  <Translate text="- Objective" /> </h3>
             </div>
@@ -181,7 +181,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
               height={ICONS_META.TARGET_ICON.height}
             />
             <div className="px-4">
-              <p className="text-left text-base text-primary/80">
+              <p className="text-start text-base text-primary/80">
                  <Translate text="With industries rapidly embracing digital transformation, our
                                             outlook is crystal clear: be the partner of choice for
                                             businesses that want to stay ahead in the immersive era" /> <br /> <br />
@@ -195,7 +195,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
                                             scale with industry needs and prepare businesses for the spatial
                                             computing revolution." /> </p>
               <h3
-                className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-left text-lg`}
+                className={`${FONTS.microgrammaBold.className} text-primary mt-4 text-start text-lg`}
               >
                  <Translate text="- Objective" /> </h3>
             </div>

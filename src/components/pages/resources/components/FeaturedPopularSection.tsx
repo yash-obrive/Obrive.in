@@ -27,14 +27,14 @@ const FeaturedPopularSection = ({
           <FullWidthSection backgroundColor="none">
             <div className="flex flex-col lg:flex-row gap-8">
               <div className="w-full lg:flex-1">
-                <div className="flex items-center gap-3 pl-8 mb-4">
+                <div className="flex items-center gap-3 ps-8 mb-4">
                   <TwoDotIcons />
                   <h2 className="uppercase text-sm font-medium"> <Translate text="Featured" /> </h2>
                 </div>
                 <FeaturedCard />
               </div>
               <div className="w-full lg:max-w-lg xl:max-w-xl">
-                <div className="flex items-center gap-3 mb-4 pl-8">
+                <div className="flex items-center gap-3 mb-4 ps-8">
                   <TwoDotIcons />
                   <h2 className="uppercase text-sm font-medium"> <Translate text="Popular" /> </h2>
                 </div>

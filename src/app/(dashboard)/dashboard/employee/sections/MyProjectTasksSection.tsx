@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { CheckCircle2, Circle, Clock3, X } from "lucide-react";
+import { CheckCircle2, Circle, Clock3, X, ClipboardList } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { ProjectItem } from "@/components/dashboard/ProjectCard";
 import { apiFetch } from "@/lib/api";
@@ -152,12 +152,25 @@ const MyProjectTasksSection = ({ project }: Props) => {
         </h2>
 
         <div className="space-y-3">
-          {tasks.map((task) => {
-            const status = statusStyles[task.status];
-            const isActive = selectedTask?.id === task.id;
+          {tasks.length === 0 ? (
+            <div className="text-center py-12 rounded-2xl bg-white border border-gray-100 shadow-sm">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#f1f4f8]">
+                <ClipboardList className="h-8 w-8 text-[#5f6f83]" />
+              </div>
+              <h3 className="mb-1 text-lg font-bold text-[#1a472a]">
+                No Tasks Assigned
+              </h3>
+              <p className="text-sm text-gray-500">
+                You don't have any tasks for this project yet.
+              </p>
+            </div>
+          ) : (
+            tasks.map((task) => {
+              const status = statusStyles[task.status];
+              const isActive = selectedTask?.id === task.id;
 
-            return (
-              <motion.div layout key={task.id}>
+              return (
+                <motion.div layout key={task.id}>
                 <div
                   onClick={() => setSelectedTask(task)}
                   className="cursor-pointer rounded-2xl bg-white px-4 py-4 sm:px-5 scrollbar-hide"
@@ -263,7 +276,8 @@ const MyProjectTasksSection = ({ project }: Props) => {
                 </AnimatePresence>
               </motion.div>
             );
-          })}
+          })
+          )}
         </div>
       </div>
 
@@ -278,7 +292,7 @@ const MyProjectTasksSection = ({ project }: Props) => {
           >
             <button
               onClick={() => setSelectedTask(null)}
-              className="absolute top-3 right-3"
+              className="absolute top-3 end-3"
             >
               <X className="w-4 h-4" />
             </button>

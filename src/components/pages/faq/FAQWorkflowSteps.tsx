@@ -31,7 +31,7 @@ export default function FAQWorkflowSteps({
               <button
                 key={step + index}
                 type="button"
-                className={`flex w-full items-center gap-2 py-4 border-b border-zinc-400 transition-all duration-200 text-left text-sm ${
+                className={`flex w-full items-center gap-2 py-4 border-b border-zinc-400 transition-all duration-200 text-start text-sm ${
                   targetId
                     ? "cursor-pointer hover:bg-primary/10 px-3"
                     : "px-3 cursor-default"

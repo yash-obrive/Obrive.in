@@ -73,7 +73,7 @@ export function ImpactTableCell({
   return (
     <>
       <div
-        className={`hidden md:block p-4 ${!isLast ? "border-r border-gray-300" : ""} ${isFirst && firstColumnBold ? "bg-gray-50" : "bg-white"}`}
+        className={`hidden md:block p-4 ${!isLast ? "border-e border-gray-300" : ""} ${isFirst && firstColumnBold ? "bg-gray-50" : "bg-white"}`}
       >
         <div
           className={`text-sm leading-relaxed ${bold ? FONTS.microgrammaBold.className : ""}`}
@@ -182,7 +182,7 @@ export default function ResourceTheImpactTable({
               key={column.key}
               className={`p-4 ${
                 colIndex < effectiveColumns.length - 1
-                  ? "border-r border-gray-300"
+                  ? "border-e border-gray-300"
                   : ""
               } ${FONTS.microgrammaBold.className} text-sm font-semibold`}
             >

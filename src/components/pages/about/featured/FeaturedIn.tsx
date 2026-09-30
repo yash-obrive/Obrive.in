@@ -113,7 +113,7 @@ const FeaturedIn = () => {
                           className="max-w-[200px] max-h-[200px] object-contain"
                         />
                       </div>
-                      <p className="text-sm text-primary/80 text-left max-w-md mx-auto">
+                      <p className="text-sm text-primary/80 text-start max-w-md mx-auto">
                         <Translate text={item.description} />
                       </p>
                     </div>

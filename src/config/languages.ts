@@ -1,7 +1,7 @@
 // src/config/languages.ts
 
 export type LanguageCode = 
-  | "en" | "hi" | "ar" | "es" | "pt" | "fr" | "de" | "nl" 
+  | "en" | "ar" | "es" | "pt" | "fr" | "de" | "nl" 
   | "sv" | "it" | "zh" | "ja" | "ko" | "ms" | "id" | "th";
 
 export interface LanguageConfig {
@@ -13,7 +13,6 @@ export interface LanguageConfig {
 
 export const LANGUAGES: Record<LanguageCode, LanguageConfig> = {
   en: { code: "en", name: "English", nativeName: "English", dir: "ltr" },
-  hi: { code: "hi", name: "Hindi", nativeName: "हिन्दी", dir: "ltr" },
   ar: { code: "ar", name: "Arabic", nativeName: "العربية", dir: "rtl" },
   es: { code: "es", name: "Spanish", nativeName: "Español", dir: "ltr" },
   pt: { code: "pt", name: "Portuguese", nativeName: "Português", dir: "ltr" },

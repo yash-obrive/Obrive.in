@@ -51,11 +51,11 @@ export default function HowItWorksCard({
           <Translate text={step} />
         </Button>
         <h3
-          className={`${FONTS.microgrammaBold.className} text-primary text-center text-lg max-md:text-left`}
+          className={`${FONTS.microgrammaBold.className} text-primary text-center text-lg max-md:text-start`}
         >
           <Translate text={title} />
         </h3>
-        <p className="text-sm w-lg max-md:w-full leading-7 max-md:text-left">
+        <p className="text-sm w-lg max-md:w-full leading-7 max-md:text-start">
           <Translate text={description} />
         </p>
       </div>

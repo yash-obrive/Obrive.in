@@ -1,3 +1,4 @@
+import Translate from "@/components/shared/Translate";
 import { HomeIcon } from "lucide-react";
 import FONTS from "@/assets/fonts";
 import Link from "@/components/shared/LocalizedLink";
@@ -11,18 +12,16 @@ export default function communityFormComingSoon() {
         <h1
           className={`${FONTS.microgrammaBold.className} text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary text-center`}
         >
-          Coming Soon
+          <Translate text="Coming Soon" />
         </h1>
         <h2
           className={`${FONTS.microgrammaBold.className} mt-6 text-2xl sm:text-3xl text-center text-primary`}
         >
-          Community Form is on the way
+          <Translate text="Community Form is on the way" />
         </h2>
 
         <p className="mt-3 text-sm text-center max-w-xl mx-auto">
-          We're creating a vibrant community platform to connect users, share
-          ideas, and collaborate on projects. Stay tuned for updates and early
-          access opportunities!
+          <Translate text="We're creating a vibrant community platform to connect users, share ideas, and collaborate on projects. Stay tuned for updates and early access opportunities!" />
         </p>
       </FadeInOnLoad>
       <Link
@@ -30,7 +29,7 @@ export default function communityFormComingSoon() {
         className={buttonVariants({ variant: "default", size: "lg" })}
       >
         <HomeIcon className="size-4" />
-        Back to Home
+        <Translate text="Back to Home" />
       </Link>
     </div>
   );

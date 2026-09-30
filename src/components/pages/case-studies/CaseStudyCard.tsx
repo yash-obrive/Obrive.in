@@ -34,7 +34,7 @@ const CaseStudyCard = ({ caseStudy }: CaseStudyCardProps) => {
         </div>
 
         <div className="flex text-xs items-center justify-between px-3 mb-4 text-muted-foreground flex-shrink-0">
-          <span className="uppercase tracking-wide line-clamp-1 mr-2 font-medium">
+          <span className="uppercase tracking-wide line-clamp-1 me-2 font-medium">
             {caseStudy.service}
           </span>
           <span className="flex-shrink-0 text-accent-foreground font-medium text-[10px]">

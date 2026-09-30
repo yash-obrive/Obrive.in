@@ -4,6 +4,7 @@ import { Alignment, Fit, Layout, useRive } from "@rive-app/react-canvas";
 import { useEffect, useRef } from "react";
 import FONTS from "@/assets/fonts";
 import AnimatedButton from "../buttons/AnimatedButton";
+import Translate from "@/components/shared/Translate";
 
 type PrimaryFooterCardVariant = "default" | "small";
 
@@ -96,9 +97,9 @@ export default function PrimaryFooterCard({
       <div className="bg-primary overflow-hidden relative text-white flex flex-col max-sm:-space-y-10 sm:gap-10 justify-between w-full max-w-[90%] sm:max-w-[95%] lg:max-w-[1238px] rounded-xl min-h-[300px] sm:min-h-[361px]">
         <div className="flex px-4 sm:px-10 py-6 sm:py-6 flex-col sm:flex-row items-center sm:items-start justify-between gap-4 sm:gap-0">
           <h2
-            className={`${titleClasses} w-full text-center sm:text-left max-sm:text-left whitespace-pre-line`}
+            className={`${titleClasses} w-full text-center sm:text-start max-sm:text-start whitespace-pre-line`}
           >
-            {title}
+            <Translate text={title} />
           </h2>
 
           <div className="max-sm:hidden">
@@ -111,22 +112,22 @@ export default function PrimaryFooterCard({
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noopener noreferrer" : undefined}
             >
-              {buttonText}
+              <Translate text={buttonText} />
             </AnimatedButton>
           </div>
         </div>
         <div className="flex flex-col gap-10 sm:flex-row justify-between max-sm:justify-center">
           {/* animation */}
           <div className="max-sm:hidden flex-1 px-4 sm:px-0 h-full w-full relative">
-            <FooterCardRive className="h-[360px] absolute -top-20 left-0 lg:h-[320px]" />
+            <FooterCardRive className="h-[360px] absolute -top-20 start-0 lg:h-[320px]" />
           </div>
           <div className="px-4 py-6 sm:px-10">
-            <p className="text-center sm:text-right max-sm:text-left text-xs w-full sm:w-[300px] md:w-[350px] lg:w-[500px] mt-2 sm:mt-6 leading-5 sm:leading-6">
-              {description}
+            <p className="text-center sm:text-end max-sm:text-start text-xs w-full sm:w-[300px] md:w-[350px] lg:w-[500px] mt-2 sm:mt-6 leading-5 sm:leading-6">
+              <Translate text={description} />
             </p>
           </div>
 
-          <div className="sm:hidden w-[200px] pl-4 max-sm:-mt-10">
+          <div className="sm:hidden w-[200px] ps-4 max-sm:-mt-10">
             <AnimatedButton
               size={"lg"}
               className="uppercase bg-accent text-primary hover:bg-accent/90 text-[10px] w-full sm:w-auto"
@@ -136,7 +137,7 @@ export default function PrimaryFooterCard({
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noopener noreferrer" : undefined}
             >
-              {buttonText}
+              <Translate text={buttonText} />
             </AnimatedButton>
           </div>
 
