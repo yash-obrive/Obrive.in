@@ -1,0 +1,102 @@
+# src/content/career/3d-visualization-designer.mdx
+
+Canonical URL: https://obrive.com/support/3d-visualization-designer
+Source: src/content/career/3d-visualization-designer.mdx
+
+---
+
+<CareerHeader
+  title="3D Visualization Designer"
+  location="Bangalore, India (Hybrid or Remote)"
+  postedOn="August 20, 2025"
+  employmentType="Full-time"
+  salaryRange="Not Disclosed"
+/>
+
+<CareerSection title="About This Role">
+<CareerItem>As a 3D Visualization Designer, you'll create lifelike, photorealistic 3D models and environments that bring our immersive platforms to life—across AR, VR, MR, and spatial computing experiences. Your work will be central to flagship products like Obpark (AR navigation) and Obnest (XR home tours).</CareerItem>
+
+<CareerItem title="What you'll do">
+  
+    Craft highly detailed 3D assets for immersive applications.
+    
+      Build realistic architectural visualizations, product prototypes, and
+      interactive AR/VR walkthroughs.
+    
+    
+      Collaborate with developers, UX/UI designers, and product strategists to
+      integrate 3D models into real-world experiences.
+    
+    
+      Optimize assets to balance visual fidelity with real-time performance
+      across devices.
+    
+    
+      Push visual aesthetics and innovation through texture, lighting, and
+      dynamic modeling.
+    
+  
+</CareerItem>
+
+<CareerItem title="ABOUT YOU">
+  
+    
+      Proficient with 3D tools such as Blender, Maya, 3ds Max, or Cinema 4D.
+    
+    
+      Strong understanding of photorealistic rendering (PBR), lighting, and
+      texture workflows.
+    
+    
+      Portfolio demonstrating immersive 3D visualizations or architectural
+      renderings.
+    
+    Experience in optimizing assets for AR, VR, or MR platforms.
+    
+      Excellent attention to detail and a passion for visual storytelling
+      through immersive design.
+    
+  
+</CareerItem>
+
+<CareerItem title="WHY JOIN OBRIVE?">
+  
+    
+      Shape the Future: Create visuals for cutting-edge immersive products
+      across industries.
+    
+    
+      Collaborative Workspace: Work within a growth-minded team that blends
+      design, tech, and creativity.
+    
+    
+      Flexible Culture: Remote-first approach with opportunities for in-person
+      collaboration in Bangalore.
+    
+    
+      Professional Growth: Regular design reviews, workshops, and creative
+      exploration funded by Obrive.
+    
+  
+</CareerItem>
+
+<CareerItem title="INTERVIEW PROCESS"><ol>
+          
+            Apply: Submit your resume and 3D portfolio.
+          
+          
+            Initial Screen: A brief chat to understand your background and interests.
+          
+          
+            Portfolio Review: Walk us through your favorite 3D project(s).
+          
+          
+            Team Interview: Discuss concepts, workflows, and how you envision working with Obrive's immersive tech.
+          
+          
+            Offer & Onboarding: Start your journey with full support and integration into our creative process.
+          
+        </ol></CareerItem>
+</CareerSection>
+
+<CareerButton href="/apply.career.obrive.com/3d-visualization-designer" />

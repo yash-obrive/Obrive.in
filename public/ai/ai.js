@@ -557,13 +557,177 @@ void main() {
   wrapper.id = "orion-card-wrapper";
   wrapper.className = `convai-widget ${WIDGET_POSITION} orion-collapsed`;
 
+  // --- PRE-CALL FORM LOGIC ---
+  const loadStoredUserData = () => {
+    try {
+      const stored = localStorage.getItem("orion_user_data");
+      return stored ? JSON.parse(stored) : null;
+    } catch(e) { return null; }
+  };
+  let userData = loadStoredUserData();
+  let hasSubmittedForm = !!userData;
+
+  const preCallForm = document.createElement("div");
+  preCallForm.id = "orion-precall-form";
+  preCallForm.className = "flex flex-col bg-white shadow-xl pointer-events-auto rounded-[24px] p-5 w-[360px] max-w-[calc(100vw-40px)] border border-[#073933]/10 font-sans";
+  preCallForm.style.display = "none";
+  preCallForm.innerHTML = `
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-[#073933] font-bold text-lg m-0">Before we start...</h3>
+      <button type="button" id="orion-precall-close" class="text-[#073933]/50 hover:text-[#073933] transition-colors p-1 rounded-full hover:bg-black/5" title="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <p class="text-sm text-gray-600 mb-5 leading-relaxed m-0">Please provide your details so Orion can personalize your experience.</p>
+    
+    <div class="flex flex-col gap-4">
+      <div>
+        <label class="block text-[#073933]/80 text-xs font-bold mb-1.5">Full Name *</label>
+        <input type="text" id="orion-input-name" placeholder="John Doe" class="w-full bg-[#eef7ff] border border-[#073933]/10 text-[#073933] px-3.5 py-2.5 rounded-xl outline-none focus:border-[#073933]/40 transition-colors text-sm" />
+        <span id="orion-err-name" class="text-red-500 text-[11px] mt-1 hidden">Name is required</span>
+      </div>
+      <div>
+        <label class="block text-[#073933]/80 text-xs font-bold mb-1.5">Email Address *</label>
+        <input type="email" id="orion-input-email" placeholder="john@example.com" class="w-full bg-[#eef7ff] border border-[#073933]/10 text-[#073933] px-3.5 py-2.5 rounded-xl outline-none focus:border-[#073933]/40 transition-colors text-sm" />
+        <span id="orion-err-email" class="text-red-500 text-[11px] mt-1 hidden">Valid email is required</span>
+      </div>
+      <div>
+        <label class="block text-[#073933]/80 text-xs font-bold mb-1.5">Phone Number *</label>
+        <input type="tel" id="orion-input-phone" placeholder="+1 (555) 000-0000" class="w-full bg-[#eef7ff] border border-[#073933]/10 text-[#073933] px-3.5 py-2.5 rounded-xl outline-none focus:border-[#073933]/40 transition-colors text-sm" />
+        <span id="orion-err-phone" class="text-red-500 text-[11px] mt-1 hidden">Phone number is required</span>
+      </div>
+      <button type="button" id="orion-precall-submit" class="mt-2 w-full bg-[#073933] hover:bg-[#052b26] text-white font-bold py-3 px-4 rounded-xl transition-colors text-sm flex items-center justify-center gap-2 shadow-md">
+        Start Chat
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </button>
+    </div>
+  `;
+
+  const blockedUI = document.createElement("div");
+  blockedUI.id = "orion-blocked-ui";
+  blockedUI.className = "flex flex-col bg-white shadow-xl pointer-events-auto rounded-[24px] p-6 w-[360px] max-w-[calc(100vw-40px)] border border-red-500/20 font-sans";
+  blockedUI.style.display = "none";
+  blockedUI.innerHTML = `
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-red-600 font-bold text-lg m-0 flex items-center gap-2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        Access Suspended
+      </h3>
+      <button type="button" id="orion-blocked-close" class="text-red-600/50 hover:text-red-600 transition-colors p-1 rounded-full hover:bg-red-50" title="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <p class="text-sm text-gray-700 leading-relaxed m-0 mb-3">Your access to the Orion assistant has been temporarily suspended due to repeated policy violations.</p>
+    <p class="text-xs text-red-500 font-medium m-0">Please try again later.</p>
+  `;
+
+  // Validation logic
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+  };
+
+  preCallForm.querySelector("#orion-precall-close").addEventListener("click", (e) => {
+    e.stopPropagation();
+    closeOrion();
+  });
+
+  blockedUI.querySelector("#orion-blocked-close").addEventListener("click", (e) => {
+    e.stopPropagation();
+    closeOrion();
+  });
+
+  preCallForm.querySelector("#orion-precall-submit").addEventListener("click", (e) => {
+    e.stopPropagation();
+    const nameInput = preCallForm.querySelector("#orion-input-name");
+    const emailInput = preCallForm.querySelector("#orion-input-email");
+    const phoneInput = preCallForm.querySelector("#orion-input-phone");
+    
+    const errName = preCallForm.querySelector("#orion-err-name");
+    const errEmail = preCallForm.querySelector("#orion-err-email");
+    const errPhone = preCallForm.querySelector("#orion-err-phone");
+    
+    let isValid = true;
+    if (!nameInput.value.trim()) {
+      errName.classList.remove("hidden");
+      isValid = false;
+    } else {
+      errName.classList.add("hidden");
+    }
+    
+    if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
+      errEmail.classList.remove("hidden");
+      isValid = false;
+    } else {
+      errEmail.classList.add("hidden");
+    }
+    
+    if (!phoneInput.value.trim()) {
+      errPhone.classList.remove("hidden");
+      isValid = false;
+    } else {
+      errPhone.classList.add("hidden");
+    }
+    
+    if (isValid) {
+      userData = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        phone: phoneInput.value.trim()
+      };
+      try {
+        localStorage.setItem("orion_user_data", JSON.stringify(userData));
+      } catch(err) {}
+      
+      hasSubmittedForm = true;
+      preCallForm.style.display = "none";
+      
+      // Auto-start the call natively in ElevenLabs to bypass the initial screen
+      window.orionShouldAutoStartCall = true;
+      initWidgetWithData();
+    }
+  });
+
+  const isUserBlocked = () => {
+    try {
+      const blockedUntilStr = localStorage.getItem("orion_blocked_until");
+      if (blockedUntilStr) {
+        const blockedUntil = parseInt(blockedUntilStr, 10);
+        if (blockedUntil > Date.now()) return true;
+        // Expired, clear it
+        localStorage.removeItem("orion_blocked_until");
+      }
+    } catch(e) {}
+    return false;
+  };
+
   // Helper functions to open and close Orion
   const openOrion = () => {
     ballBtn.classList.add("orion-hidden");
     wrapper.classList.remove("orion-collapsed");
     wrapper.classList.add("orion-expanded");
-    if (widget?.shadowRoot) {
-      setupShadowRoot(widget.shadowRoot);
+    
+    if (isUserBlocked()) {
+      preCallForm.style.display = "none";
+      blockedUI.style.display = "flex";
+      // Remove widget from DOM if it was there
+      const w = wrapper.querySelector("elevenlabs-convai");
+      if (w) wrapper.removeChild(w);
+      return;
+    }
+    
+    blockedUI.style.display = "none";
+    if (!hasSubmittedForm) {
+      preCallForm.style.display = "flex";
+    } else {
+      preCallForm.style.display = "none";
+      // Form was already bypassed, auto-start the call immediately
+      window.orionShouldAutoStartCall = true;
+      initWidgetWithData();
     }
   };
 
@@ -592,6 +756,17 @@ void main() {
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
       e.preventDefault();
+      
+      // Prevent ghost audio: attempt to disconnect the call if it's active
+      try {
+        const disconnectBtn = widget.shadowRoot?.querySelector(
+          'button[aria-label*="Disconnect"], button[aria-label*="End"], button[aria-label*="Cancel"]'
+        );
+        if (disconnectBtn) {
+          disconnectBtn.click();
+        }
+      } catch (err) {}
+      
       closeOrion();
     });
     return btn;
@@ -608,6 +783,37 @@ void main() {
     );
     return;
   }
+  
+  let widgetInitialized = false;
+  const initWidgetWithData = () => {
+    if (widgetInitialized) {
+      if (widget?.shadowRoot) {
+        setupShadowRoot(widget.shadowRoot);
+      }
+      return;
+    }
+    
+    if (userData) {
+      widget.setAttribute("dynamic-variables", JSON.stringify({
+        user_name: userData.name,
+        user_email: userData.email,
+        user_phone: userData.phone || ""
+      }));
+      // Tag the conversation in the ElevenLabs dashboard with the user's email AND phone number
+      const dashboardId = userData.phone 
+        ? `${userData.email} (${userData.phone})` 
+        : userData.email;
+      widget.setAttribute("user-id", dashboardId);
+    }
+    
+    wrapper.appendChild(widget);
+    widgetInitialized = true;
+    
+    // Attempt to connect the observer immediately if DOM is ready
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      connectShadowRootObserver();
+    }
+  };
 
   // Debug: print where the agent id was resolved from
   try {
@@ -711,6 +917,27 @@ void main() {
 
   const redirectHandler = makeRedirectHandler();
 
+  const blockUserHandler = (parameters) => {
+    console.warn("Orion invoked blockUser due to violations. Blocking user for 4 hours.");
+    const blockUntil = Date.now() + 4 * 60 * 60 * 1000;
+    try {
+      localStorage.setItem("orion_blocked_until", blockUntil.toString());
+    } catch(e) {}
+    
+    // Attempt to click the disconnect button inside the widget
+    try {
+      const disconnectBtn = widget.shadowRoot?.querySelector(
+        'button[aria-label*="Disconnect"], button[aria-label*="End"], button[aria-label*="Cancel"]'
+      );
+      if (disconnectBtn) disconnectBtn.click();
+    } catch(e) {}
+    
+    // Remove widget from DOM and show the blocked UI
+    if (widget.parentNode) wrapper.removeChild(widget);
+    preCallForm.style.display = "none";
+    blockedUI.style.display = "flex";
+  };
+
   // Preferred name (camelCase) and several common variants the embed might use
   const clientToolNames = [
     "redirectToExternalURL",
@@ -729,6 +956,7 @@ void main() {
       for (const name of clientToolNames) {
         event.detail.config.clientTools[name] = redirectHandler;
       }
+      event.detail.config.clientTools.blockUser = blockUserHandler;
       // Attempt to tell the widget to hide the provider banner via config.
       // The server may override this; it's a best-effort client-side request.
       try {
@@ -755,6 +983,7 @@ void main() {
     for (const name of clientToolNames) {
       widget.clientTools[name] = redirectHandler;
     }
+    widget.clientTools.blockUser = blockUserHandler;
   } catch (e) {
     console.warn("failed to set widget.clientTools:", e);
   }
@@ -779,8 +1008,6 @@ void main() {
       const style = document.createElement("style");
       style.id = "orion-shadow-styles";
       style.textContent = `
-        p, 
-        a[href*="elevenlabs"],
         .overlay:not(:has(.rounded-sheet)):not(:has([class*="sheet"])) {
           display: none !important;
           visibility: hidden !important;
@@ -794,8 +1021,10 @@ void main() {
           pointer-events: none !important;
           opacity: 0 !important;
         }
+
         .rounded-sheet, .sheet, [class*="sheet"] {
           position: relative !important;
+          padding-top: 36px !important; /* Space for the close button */
         }
         .orion-close-cross-btn {
           position: absolute !important;
@@ -835,46 +1064,50 @@ void main() {
       shadow.appendChild(style);
     }
 
-    // 2. Remove any powered-by nodes and their parent overlay container
-    try {
-      const poweredNodes = shadow.querySelectorAll('p, a[href*="elevenlabs"]');
-      poweredNodes.forEach((el) => {
-        const parentOverlay = el.closest(".overlay");
-        const sheetOverlay = shadow
-          .querySelector('.rounded-sheet, .sheet, [class*="sheet"]')
-          ?.closest(".overlay");
-        if (parentOverlay && parentOverlay !== sheetOverlay) {
-          parentOverlay.style.setProperty("display", "none", "important");
-          try {
-            parentOverlay.remove();
-          } catch (_e) {}
-        } else {
-          el.style.setProperty("display", "none", "important");
-          try {
-            el.remove();
-          } catch (_e) {}
-        }
-      });
-    } catch (_e) {}
+    // 2. (Removed) The CSS rule above already successfully hides the branding overlay.
 
-    // 3. Ensure close cross button is placed at top-right inside sheet
+    // 3. Ensure close cross button is placed at top-right inside ALL sheets
     try {
-      const sheet = shadow.querySelector(
+      const sheets = shadow.querySelectorAll(
         '.rounded-sheet, .sheet, [class*="sheet"]',
       );
-      if (sheet) {
+      sheets.forEach((sheet) => {
         sheet.style.setProperty("position", "relative", "important");
+        // We also apply padding-top here in case the CSS rule doesn't catch it immediately
+        sheet.style.setProperty("padding-top", "36px", "important");
         if (!sheet.querySelector(".orion-close-cross-btn")) {
           const btn = createCloseBtn();
           sheet.appendChild(btn);
         }
-      }
+      });
     } catch (_e) {}
+
+    // 4. Auto-click the Call button to bypass the initial screen
+    if (window.orionShouldAutoStartCall) {
+      try {
+        const buttons = Array.from(shadow.querySelectorAll('button:not(.orion-close-cross-btn)'));
+        const startBtn = buttons.find(btn => {
+          const text = (btn.textContent + ' ' + (btn.getAttribute('aria-label') || '')).toLowerCase();
+          return text.includes('call') && !text.includes('end') && !text.includes('disconnect');
+        });
+        
+        // If we found a button that looks like the Start Call button, or if there's only one main button
+        const targetBtn = startBtn || (buttons.length === 1 ? buttons[0] : null);
+        
+        if (targetBtn && !targetBtn.dataset.autoClicked) {
+          targetBtn.dataset.autoClicked = "true";
+          targetBtn.click();
+          window.orionShouldAutoStartCall = false; // Reset flag after clicking
+        }
+      } catch (_e) {}
+    }
   }
 
   // Attach assistive ball and card wrapper to the DOM
   document.body.appendChild(ballBtn);
-  wrapper.appendChild(widget);
+  wrapper.appendChild(preCallForm);
+  wrapper.appendChild(blockedUI);
+  // widget is appended dynamically in initWidgetWithData
   document.body.appendChild(wrapper);
 
   // Connect shadow root observer to manage close button and brand styling
@@ -896,17 +1129,23 @@ void main() {
     return false;
   }
 
-  if (!connectShadowRootObserver()) {
-    const checkInterval = setInterval(() => {
-      if (connectShadowRootObserver()) {
-        clearInterval(checkInterval);
-      }
-    }, 100);
-    setTimeout(() => clearInterval(checkInterval), 10000);
-  }
+  // Only poll if the form is submitted (meaning widget might be mounting)
+  const attemptObserverConnection = () => {
+    if (hasSubmittedForm && !connectShadowRootObserver()) {
+      const checkInterval = setInterval(() => {
+        if (connectShadowRootObserver()) {
+          clearInterval(checkInterval);
+        }
+      }, 100);
+      setTimeout(() => clearInterval(checkInterval), 10000);
+    }
+  };
+  attemptObserverConnection();
 
   const docObserver = new MutationObserver(() => {
-    connectShadowRootObserver();
+    if (hasSubmittedForm) {
+      connectShadowRootObserver();
+    }
   });
   docObserver.observe(document.body, { childList: true, subtree: true });
 }

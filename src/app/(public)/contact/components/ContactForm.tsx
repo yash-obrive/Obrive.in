@@ -410,11 +410,11 @@ export default function ContactForm() {
                 <h4
                   className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}
                 >
-                  {defaultCountryConfig.code === "IN"
+                  {defaultCountryConfig.code === "in"
                     ? "Headquarters"
                     : `${defaultCountryConfig.name} Hub`}
                 </h4>
-                {defaultCountryConfig.code === "IN" ? (
+                {defaultCountryConfig.code === "in" ? (
                   <div className="flex flex-col items-start gap-3 mt-1">
                     <p className="text-primary/70 leading-relaxed">
                       Obrive Industries Private Limited
@@ -436,7 +436,7 @@ export default function ContactForm() {
                     {defaultCountryConfig.offices.join(" · ")}
                   </p>
                 )}
-                {defaultCountryConfig.code !== "IN" && (
+                {defaultCountryConfig.code !== "in" && (
                   <div className="flex flex-col items-start gap-2 mt-2">
                     <p className="text-primary/50 text-xs">
                       Global HQ: Bangalore, Karnataka, India

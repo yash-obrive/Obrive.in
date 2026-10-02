@@ -1,0 +1,169 @@
+src/app/(public)/industries/[slug]/page.tsx: COUNTRIES[code].isProductionReady
+  );
+  const langs: Record
+src/app/(public)/partners/ClientPartnersPage.tsx: WHITE-LABEL TECHNOLOGY PARTNERSHIPS
+src/app/(public)/partners/ClientPartnersPage.tsx: ALWAYS AVAILABLE
+src/app/(public)/partners/ClientPartnersPage.tsx: The Opportunity
+src/app/(public)/partners/ClientPartnersPage.tsx: Sell the solution. We build the technology.
+src/app/(public)/partners/ClientPartnersPage.tsx: Your clients increasingly expect AI, immersive experiences, 3D, SaaS and modern digital products. You shouldn't need to hire, train and manage every specialist to deliver them. Partner with Obrive as your behind-the-scenes technology team while you own the client relationship, brand and commercial strategy.
+src/app/(public)/partners/ClientPartnersPage.tsx: Capabilities
+src/app/(public)/partners/ClientPartnersPage.tsx: One technology partner. More to sell.
+src/app/(public)/partners/ClientPartnersPage.tsx: Partnership Models
+src/app/(public)/partners/ClientPartnersPage.tsx: Built around your business.
+src/app/(public)/partners/ClientPartnersPage.tsx: Process
+src/app/(public)/partners/ClientPartnersPage.tsx: From brief to delivery without the overhead.
+src/app/(public)/partners/ClientPartnersPage.tsx: A simple operating model keeps responsibilities clear and delivery predictable.
+src/app/(public)/partners/ClientPartnersPage.tsx: Why Obrive
+src/app/(public)/partners/ClientPartnersPage.tsx: More capability. Less complexity.
+src/app/(public)/partners/ClientPartnersPage.tsx: Our white-label model is designed to help partners increase capability without increasing organizational complexity at the same pace.
+src/app/(public)/partners/ClientPartnersPage.tsx: Commercial Structure
+src/app/(public)/partners/ClientPartnersPage.tsx: Designed to leave room for your margin.
+src/app/(public)/technology/[slug]/page.tsx: COUNTRIES[code].isProductionReady
+  );
+  const langs: Record
+src/app/(public)/services/page.tsx: COUNTRIES[code].isProductionReady
+  );
+  const langs: Record
+src/app/(public)/services/[slug]/page.tsx: COUNTRIES[code].isProductionReady
+  );
+  const langs: Record
+src/app/(public)/services/[slug]/faqs/FAQClientLayout.tsx: No FAQs Available
+src/app/(public)/certifications/page.tsx: ISO Certifications
+src/app/(public)/servicecharges/page.tsx: Payments made to Obrive are processed securely using trusted payment
+          gateways. Project scopes, service packages, subscriptions, and other
+          digital services must be paid according to the agreed milestones
+          before project initiation or confirmation. Prices may vary depending
+          on the specific project requirements, engagement duration, and
+          applicable taxes. All payments are subject to successful authorization
+          and confirmation.
+src/app/(public)/servicecharges/page.tsx: Refund Policy
+src/app/(public)/servicecharges/page.tsx: GST & Taxes
+src/app/(public)/servicecharges/page.tsx: Services Policy
+src/app/(public)/servicecharges/components/PricingSection.tsx: OBRIVE SERVICES
+src/app/(public)/servicecharges/components/PricingSection.tsx: Choose your stream.
+src/app/(public)/servicecharges/components/PricingSection.tsx: Each package is a starting commercial scope. Final deliverables,
+                timeline and payment amount are confirmed in the SOW before
+                checkout.
+src/app/(public)/servicecharges/components/PricingHowItWorks.tsx: HOW IT WORKS
+src/app/(public)/servicecharges/components/PricingHowItWorks.tsx: Simple. Secure. Structured.
+src/app/(public)/servicecharges/components/PricingHowItWorks.tsx: Prototype pricing is a proposed standard package list. Final pricing
+          depends on scope, integrations, number of screens/assets, platforms,
+          third-party licences, hosting/cloud costs and delivery requirements.
+          GST and advertising spend are extra unless included in the signed
+          proposal. USD figures are indicative at approximately ₹87/USD and
+          should be recalculated at invoice time.
+src/app/(public)/servicecharges/components/PricingHero.tsx: Build what's next.
+src/app/(public)/servicecharges/components/PricingHero.tsx: Know the investment.
+src/app/(public)/servicecharges/components/PricingHero.tsx: Transparent starting prices for immersive experiences, digital
+            products, software engineering and growth. Choose a stream, select a
+            package and move into a clearly scoped engagement.
+src/app/(public)/servicecharges/components/PricingHero.tsx: PROJECT RANGE
+src/app/(public)/servicecharges/components/PricingHero.tsx: Premium fixed packages for defined scopes. Enterprise,
+                multi-platform and high-complexity projects move to a custom
+                SOW.
+src/app/(public)/use-cases/[slug]/page.tsx: COUNTRIES[code].isProductionReady
+  );
+  const langs: Record
+src/app/(public)/products/[slug]/page.tsx: COUNTRIES[code].isProductionReady
+  );
+  const langs: Record
+src/app/(public)/coming-soon/page.tsx: Coming Soon
+src/app/(public)/coming-soon/page.tsx: Ella is on the way
+src/app/(public)/coming-soon/page.tsx: Our AI assistant is currently in development and will be available
+          soon. Stay tuned for exciting updates!
+src/app/(public)/coming-soon/page.tsx: Back to Home
+src/app/(public)/coming-soon/community-form/page.tsx: Coming Soon
+src/app/(public)/coming-soon/community-form/page.tsx: Community Form is on the way
+src/app/(public)/coming-soon/community-form/page.tsx: We're creating a vibrant community platform to connect users, share
+          ideas, and collaborate on projects. Stay tuned for updates and early
+          access opportunities!
+src/app/(public)/coming-soon/community-form/page.tsx: Back to Home
+src/app/(public)/checkout/page.tsx: Loading checkout...
+src/app/(public)/checkout/components/CheckoutForm.tsx: Payment Successful
+src/app/(public)/checkout/components/CheckoutForm.tsx: Thank you! Your payment has been confirmed and your service scope
+            has been initiated.
+src/app/(public)/checkout/components/CheckoutForm.tsx: Billing Details
+src/app/(public)/checkout/components/CheckoutForm.tsx: Please enter your company and contact information for the invoice.
+src/app/(public)/checkout/components/CheckoutForm.tsx: Company Name
+src/app/(public)/checkout/components/CheckoutForm.tsx: GST Number
+src/app/(public)/checkout/components/CheckoutForm.tsx: Secured by Razorpay · 256-bit SSL
+src/app/(public)/checkout/components/CheckoutForm.tsx: Payment window was closed. You can try again when ready.
+src/app/(public)/checkout/components/CheckoutForm.tsx: Order Summary
+src/app/(public)/checkout/components/CheckoutForm.tsx: Return to pricing
+src/app/(public)/checkout/components/CheckoutForm.tsx: Payment Gateway Charges
+src/app/(public)/checkout/components/CheckoutForm.tsx: Total Payable
+src/app/(public)/checkout/components/CheckoutForm.tsx: Payment window was closed. You can try again when ready.
+src/app/(public)/checkout/components/CheckoutForm.tsx: Secured by Razorpay · 256-bit SSL encryption
+src/app/(public)/checkout/components/CheckoutHero.tsx: Secure Checkout
+src/app/(public)/checkout/components/CheckoutHero.tsx: Complete your details to initiate the project scope and begin the
+          development process.
+src/app/(public)/contact/components/ContactForm.tsx: Razorpay payment checkout is currently
+            unconfigured. Please submit your request and our team will securely
+            process your transaction manually.
+src/app/(public)/contact/components/ContactForm.tsx: Backend Not Configured
+src/app/(public)/contact/components/ContactForm.tsx: Your enquiry form is ready, but submissions are not currently
+                connected to an email or CRM backend.
+src/app/(public)/contact/components/ContactForm.tsx: No lead was saved and no email was sent. Please configure your
+                notification service.
+src/app/(public)/contact/components/ContactForm.tsx: Failed to submit your request. Please try
+            again later.
+src/app/(public)/contact/components/ContactForm.tsx: Phone Number
+src/app/(public)/contact/components/ContactForm.tsx: Company Name
+src/app/(public)/contact/components/ContactForm.tsx: Select a service...
+src/app/(public)/contact/components/ContactForm.tsx: Other / General Enquiry
+src/app/(public)/contact/components/ContactForm.tsx: Project / Requirement Scope
+src/app/(public)/contact/components/ContactForm.tsx: Processing...
+src/app/(public)/contact/components/ContactForm.tsx: By submitting this form, you agree to our Privacy Policy and Terms of
+          Service.
+src/app/(public)/contact/components/ContactForm.tsx: Message Sent Successfully!
+src/app/(public)/contact/components/ContactForm.tsx: Thank you for reaching out. Our team has received your enquiry
+                and will get back to you shortly.
+src/app/(public)/contact/components/ContactForm.tsx: Send Another Message
+src/app/(public)/contact/components/ContactForm.tsx: GET IN TOUCH
+src/app/(public)/contact/components/ContactForm.tsx: Let's discuss your next project.
+src/app/(public)/contact/components/ContactForm.tsx: Whether you need immersive experiences, custom software, or a
+              full-funnel growth strategy, our team is ready to help you build
+              what's next.
+src/app/(public)/contact/components/ContactForm.tsx: Global HQ: Bangalore, Karnataka, India
+src/app/(public)/contact/components/ContactForm.tsx: Find HQ on Map
+src/app/(public)/contact/components/ContactForm.tsx: Direct Contact
+src/app/(public)/clients/page.tsx: Our Clients
+src/app/(public)/career/page.tsx: Join The Otters
+src/app/(public)/career/page.tsx: If you're passionate about immersive technology you're in the
+                  right place.
+src/app/(public)/career/page.tsx: Visit Library
+src/app/(public)/career/page.tsx: Careers
+src/app/(public)/site-map/page.tsx: Obrive Website Directory
+src/app/(public)/site-map/page.tsx: Explore the Obrive ecosystem.
+src/app/(public)/site-map/page.tsx: Find the right solution, product, industry application, technology
+            resource or support page. Obrive connects AR, VR, MR, 3D Design and
+            Spatial Computing to real-world business experiences.
+src/app/(public)/site-map/components/DirectorySearch.tsx: Clear
+src/app/(public)/site-map/components/DirectorySearch.tsx: Directory
+src/app/(public)/site-map/components/DirectorySearch.tsx: No results found
+src/app/(public)/site-map/components/DirectorySearch.tsx: Try adjusting your search terms.
+src/components/chat/Messenger.tsx: Loading Messenger...
+src/components/chat/Messenger.tsx: Connecting to real-time server...
+src/components/chat/Messenger.tsx: Conversations
+src/components/chat/Messenger.tsx: Your Messenger
+src/components/chat/Messenger.tsx: Connect with your colleagues, share files, and collaborate in
+              real-time.
+src/components/chat/Messenger.tsx: Details
+src/components/chat/Messenger.tsx: Admin
+src/components/chat/Messenger.tsx: Delete Group for Everyone
+src/components/chat/Messenger.tsx: Group Name
+src/components/chat/Messenger.tsx: Cancel
+                the left side of your browser address bar.
+            unlock.
+src/components/ui/carousel.tsx: Previous slide
+src/components/ui/carousel.tsx: Next slide
+src/components/pages/resources/ResourceWorkflowSteps.tsx: value
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    const contentRoot = document.querySelector
+src/components/pages/apply/Details.tsx: Obrive
+src/components/pages/apply/AboutYou.tsx: Obrive

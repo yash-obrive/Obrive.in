@@ -24,6 +24,7 @@ class SupervisorService {
         orderBy: {
           name: "asc",
         },
+        take: 100, // Security/Performance: bound the query
       });
 
       return employees;
@@ -56,6 +57,7 @@ class SupervisorService {
           },
           tasks: true,
         },
+        take: 50, // Security/Performance: bound the query
       });
 
       return projects;
@@ -108,6 +110,7 @@ class SupervisorService {
         orderBy: {
           created_at: "desc",
         },
+        take: 50, // Security/Performance: bound the query
       });
 
       return projects;
@@ -274,6 +277,7 @@ class SupervisorService {
             created_at: "asc",
           },
         ],
+        take: 100, // Security/Performance: bound the query
       });
 
       return leaves;
@@ -379,6 +383,88 @@ class SupervisorService {
       return newUser;
     } catch (error) {
       throw new Error(`Failed to add user: ${error.message}`);
+    }
+  }
+  async impersonateEmployee(adminId, employeeId) {
+    try {
+      const targetEmployee = await prisma.users.findFirst({
+        where: { id: employeeId, role: "employee" },
+      });
+
+      if (!targetEmployee) {
+        throw new Error("Employee not found or invalid role");
+      }
+      
+      const adminUser = await prisma.users.findUnique({
+        where: { id: adminId }
+      });
+      
+      if (!adminUser || adminUser.role !== 'super_admin') {
+        throw new Error("Unauthorized impersonation attempt");
+      }
+
+      // Record impersonation in audit log
+      await prisma.impersonation_logs.create({
+        data: {
+          original_admin_id: adminId,
+          target_user_id: employeeId,
+          action: "start"
+        }
+      });
+
+      const { signAccessToken } = require("../../utils/jwt");
+
+      const payload = {
+        id: targetEmployee.id,
+        role: targetEmployee.role,
+        originalAdminId: adminId,
+        impersonationStartedAt: new Date().toISOString()
+      };
+
+      const accessToken = signAccessToken(payload);
+
+      return {
+        accessToken,
+        impersonatedUser: {
+          id: targetEmployee.id,
+          userid: targetEmployee.userid,
+          email: targetEmployee.email,
+          name: targetEmployee.name,
+          role: targetEmployee.role,
+        }
+      };
+    } catch (error) {
+      throw new Error(`Failed to impersonate employee: ${error.message}`);
+    }
+  }
+  async exitImpersonation(originalAdminId, currentUserId) {
+    try {
+      const adminUser = await prisma.users.findUnique({
+        where: { id: originalAdminId }
+      });
+
+      if (!adminUser) throw new Error("Original admin not found");
+
+      await prisma.impersonation_logs.create({
+        data: {
+          original_admin_id: originalAdminId,
+          target_user_id: currentUserId,
+          action: "exit"
+        }
+      });
+
+      const { signAccessToken } = require("../../utils/jwt");
+
+      const payload = {
+        id: adminUser.id,
+        role: adminUser.role,
+      };
+
+      const accessToken = signAccessToken(payload);
+
+      return { accessToken };
+    } catch (error) {
+      throw new Error(`Failed to exit impersonation: ${error.message}`);
     }
   }
 }

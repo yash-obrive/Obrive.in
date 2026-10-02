@@ -1,0 +1,75 @@
+# src/content/resources/bringing-onboarding-to-life.mdx
+
+Canonical URL: https://obrive.com/support/bringing-onboarding-to-life
+Source: src/content/resources/bringing-onboarding-to-life.mdx
+
+---
+
+<ChallengeSection title="Understanding the Challenge">
+  TechSolutions struggled with inefficient training processes: slow deployment,
+  inconsistent retention, and poor scalability. Traditional virtual training
+  lacked engagement and required constant manual oversight—slowing
+  time-to-competency and draining resources.
+</ChallengeSection>
+
+<StrategicApproachSection>
+<StrategicStepItem stepNumber="1" title="Discovery & Custom Roadmaps">We began with stakeholder interviews to define high-impact scenarios—maintenance operations, safety drills, remote inspections.</StrategicStepItem>
+
+<StrategicStepItem
+  stepNumber="2"
+  title="Milestone-Based Design & Prototype Iteration"
+>
+  Mirroring Appinventiv's redesign methodology we strip the experience to core
+  user journeys, iterating on wireframes and UX until friction was eliminated.
+</StrategicStepItem>
+
+<StrategicStepItem stepNumber="3" title="Immersive Spatial App Development">
+  Built high-fidelity 3D environments for VR/AR headsets, enabling realistic,
+  interactive walkthroughs.
+</StrategicStepItem>
+
+<StrategicStepItem stepNumber="4" title="Portal-Enabled Client Collaboration">
+  Delivered immersive previews through a secure portal—allowing feedback,
+  testing, and refinement without cumbersome installs.
+</StrategicStepItem>
+
+<StrategicStepItem
+  stepNumber="5"
+  title="Real-Time Analytics & Adaptive Prompts"
+>
+  Embedded analytics enable tracking of trainee engagement and performance;
+  AI-driven prompts surface trouble spots and guide users contextually.
+</StrategicStepItem>
+
+<StrategicStepItem stepNumber="6" title="Phased Deployment & Expansion">Rolled out initial applications to high-risk training groups, scaling across global facilities as adoption grew.</StrategicStepItem>
+</StrategicApproachSection>
+
+<ImpactMetricsTable />
+
+<CompanyOverviewSection
+  title="Company Overview"
+  content="TechSolutions struggled with inefficient training processes: slow deployment, inconsistent retention, and poor scalability. Traditional virtual training lacked engagement and required constant manual oversight—slowing time-to-competency and draining resources."
+  quote="Before discovering Obrive, our field training was stuck in the past—gear manuals, dry presentations, phone-based walkthroughs. Imagine trying to explain complex procedures over the phone, across time zones. It was inefficient, unengaging, and frankly, frustrating."
+/>
+
+<WhyItWorkedSection finalQuote="Then Obrive introduced us to their Spatial Computing platform—step-by-step, immersive walkthroughs that trainees could simply 'step into.' Suddenly, onboarding became immediate, intuitive, and wholly immersive.">
+<WhyItWorkedItem title="Immersive Realism">Spatial environments allowed users to act rather than observe, driving deeper learning.</WhyItWorkedItem>
+
+<WhyItWorkedItem title="Frictionless Access">
+  No installs—users tapped into sessions via easy previews, mirroring the
+  approach of simplified mobile UX in Domino's.
+</WhyItWorkedItem>
+
+<WhyItWorkedItem title="Intelligent Support">
+  Adaptive prompts reduced unnecessary friction, reinforcing Obrive's commitment
+  to intuitive experiences.
+</WhyItWorkedItem>
+
+<WhyItWorkedItem title="Scalable Model">From regional pilots to enterprise-wide rollout, the platform scaled without increasing manual coordination.</WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<OutcomeSnapshotSection
+  quote="In just 2 weeks, we transformed a multi-week process into a single immersive session. Trainees are more confident, retention is up, errors are way down."
+  author="Alex Morgan, VP of Operations, Tech Solutions"
+  closingStatement="Thanks to Obrive, onboarding no longer feels like a chore—it's an experience."
+/>

@@ -138,6 +138,10 @@ model users {
   handRaises                   room_hand_raises[]
   is_location_tracking_enabled Boolean               @default(false)
   employee_locations           employee_locations[]
+  password_resets              password_resets[]
+  impersonation_started        impersonation_logs[]  @relation("ImpersonationAdmin")
+  impersonation_targets        impersonation_logs[]  @relation("ImpersonationTarget")
+
 
   // Chat relations
   created_conversations conversations[]             @relation("CreatedConversations")
@@ -723,3 +727,38 @@ model PaymentOrder {
   @@index([status])
   @@map("payment_orders")
 }
+
+model password_resets {
+  id            Int       @id @default(autoincrement())
+  token         String?   @unique @db.VarChar(255) // Keep for backward compatibility if needed
+  otp_hash      String?   @db.VarChar(255)
+  userId        Int
+  expiresAt     DateTime
+  used          Boolean   @default(false)
+  used_at       DateTime?
+  attempt_count Int       @default(0)
+  createdAt     DateTime  @default(now())
+  
+  user          users     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([token])
+  @@index([userId])
+}
+
+model impersonation_logs {
+  id                 Int       @id @default(autoincrement())
+  original_admin_id  Int
+  target_user_id     Int
+  action             String    @db.VarChar(50) // e.g. 'start', 'exit'
+  start_timestamp    DateTime  @default(now())
+  end_timestamp      DateTime?
+  success            Boolean   @default(true)
+  created_at         DateTime  @default(now())
+
+  admin              users     @relation("ImpersonationAdmin", fields: [original_admin_id], references: [id], onDelete: Cascade)
+  target             users     @relation("ImpersonationTarget", fields: [target_user_id], references: [id], onDelete: Cascade)
+
+  @@index([original_admin_id])
+  @@index([target_user_id])
+}
+

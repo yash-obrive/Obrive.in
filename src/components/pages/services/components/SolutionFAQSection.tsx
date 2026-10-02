@@ -6,6 +6,7 @@ import FAQAccordionSection, {
   FAQItem,
 } from "@/components/pages/faq/sections/FAQAccordionSection";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
+import Translate from "@/components/shared/Translate";
 import type { SolutionFAQCategory } from "@/lib/services";
 
 interface SolutionFAQSectionProps {
@@ -48,7 +49,7 @@ export default function SolutionFAQSection({
               description ? "mb-6" : ""
             }`}
           >
-            {title}
+            <Translate text={title} />
           </h1>
 
           {description && (

@@ -1,6 +1,6 @@
-// backend/src/modules/supervisor/supervisor.controller.js
 const supervisorService = require("./supervisor.service");
 const { successResponse, errorResponse } = require("../../utils/apiResponse");
+const { getIO } = require("../../socket/index");
 
 exports.getAllEmployees = async (req, res) => {
   try {
@@ -94,6 +94,20 @@ exports.updateLeaveStatus = async (req, res) => {
       parseInt(id, 10),
       status,
     );
+
+    try {
+      const userId = leave.users?.id || leave.user_id;
+      if (userId) {
+        getIO().to(`user:${userId}`).emit("notification", {
+          title: "Leave Status Updated",
+          message: `Your leave request has been ${status}.`,
+          type: status === "approved" ? "success" : status === "rejected" ? "error" : "info"
+        });
+      }
+    } catch (err) {
+      console.error("Socket emit failed", err);
+    }
+
     successResponse(res, leave, "Leave status updated successfully");
   } catch (error) {
     errorResponse(res, error.message, 400);
@@ -121,6 +135,54 @@ exports.addUser = async (req, res) => {
       userid,
     });
     successResponse(res, newUser, "User added successfully");
+  } catch (error) {
+    errorResponse(res, error.message, 400);
+  }
+};
+
+exports.impersonateEmployee = async (req, res) => {
+  try {
+    if (req.user.role !== 'super_admin') {
+      return errorResponse(res, "High Privilege Operation: Only Super Admin can impersonate employees", 403);
+    }
+    const { employeeId } = req.params;
+    const result = await supervisorService.impersonateEmployee(
+      req.user.id,
+      parseInt(employeeId, 10)
+    );
+    
+    const authCookieOptions = {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    };
+    
+    // Set the new impersonated token
+    res.cookie("accessToken", result.accessToken, authCookieOptions);
+    successResponse(res, result, "Impersonation started successfully");
+  } catch (error) {
+    errorResponse(res, error.message, 400);
+  }
+};
+
+exports.exitImpersonation = async (req, res) => {
+  try {
+    if (!req.user.originalAdminId) {
+      return errorResponse(res, "Not currently impersonating", 400);
+    }
+    const result = await supervisorService.exitImpersonation(
+      req.user.originalAdminId,
+      req.user.id
+    );
+
+    const authCookieOptions = {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    };
+
+    res.cookie("accessToken", result.accessToken, authCookieOptions);
+    successResponse(res, null, "Exited impersonation successfully");
   } catch (error) {
     errorResponse(res, error.message, 400);
   }

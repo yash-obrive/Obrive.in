@@ -34,40 +34,10 @@ export async function generateStaticParams() {
   return getTechnologySlugs().map((slug: string) => ({ slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: TechnologyPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const technologyData = getTechnologyData(slug);
+import { resolveTechnologyMetadata } from "@/lib/metadata-resolvers";
 
-  if (!technologyData) {
-    return {
-      title: "Technology Not Found",
-    };
-  }
-
-  return {
-    title: `${technologyData.hero.title} | Obrive Industries`,
-    description: technologyData.hero.description || `Explore ${technologyData.hero.title} technology by Obrive Industries.`,
-    alternates: getAlternates(slug),
-    robots: {
-      index: true,
-      follow: true,
-    },
-    openGraph: {
-      type: "website",
-      url: `https://obrive.com/technology/${slug}`,
-      title: `${technologyData.hero.title} | Obrive Industries`,
-      description: technologyData.hero.description || `Explore ${technologyData.hero.title} technology by Obrive Industries.`,
-      siteName: "Obrive Industries",
-      locale: "en_IN",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${technologyData.hero.title} | Obrive Industries`,
-      description: technologyData.hero.description || `Explore ${technologyData.hero.title} technology by Obrive Industries.`,
-    },
-  };
+export async function generateMetadata(props: any): Promise<Metadata> {
+  return resolveTechnologyMetadata((await props.params).slug);
 }
 
 export default async function TechnologyPage({ params }: TechnologyPageProps) {
