@@ -1,0 +1,182 @@
+=== TRANSLATION VALIDATION ===
+
+[es] FAILED: 0 missing, 10 unintended English strings.
+  Untranslated: 'BLOG'
+  Untranslated: 'Blog'
+  Untranslated: 'Popular'
+  Untranslated: 'Legal'
+  Untranslated: 'Web'
+  Untranslated: 'WEBXR'
+  Untranslated: 'Plan'
+  Untranslated: 'Clear'
+  Untranslated: 'John Doe'
+  Untranslated: 'Acme Corp'
+
+[pt] FAILED: 0 missing, 8 unintended English strings.
+  Untranslated: 'BLOG'
+  Untranslated: 'Blog'
+  Untranslated: 'Popular'
+  Untranslated: 'Web'
+  Untranslated: 'WEBXR'
+  Untranslated: 'Design'
+  Untranslated: 'John Doe'
+  Untranslated: 'Acme Corp'
+
+[fr] FAILED: 0 missing, 25 unintended English strings.
+  Untranslated: 'Page'
+  Untranslated: 'Description'
+  Untranslated: 'Contact'
+  Untranslated: 'BLOG'
+  Untranslated: 'Blog'
+  Untranslated: 'Test'
+  Untranslated: 'SOLUTIONS'
+  Untranslated: 'Certifications'
+  Untranslated: 'Services'
+  Untranslated: 'SERVICES'
+  Untranslated: 'Industries'
+  Untranslated: 'Spatial'
+  Untranslated: 'Web'
+  Untranslated: 'Mobile'
+  Untranslated: 'WEBXR'
+  Untranslated: 'Audit'
+  Untranslated: 'Plan'
+  Untranslated: 'Prototype'
+  Untranslated: 'Simulation'
+  Untranslated: 'Construction'
+  Untranslated: 'Diagnostics'
+  Untranslated: 'Conversations'
+  Untranslated: 'John'
+  Untranslated: 'John Doe'
+  Untranslated: 'Acme Corp'
+
+[de] FAILED: 0 missing, 18 unintended English strings.
+  Untranslated: 'Name'
+  Untranslated: 'Filter:'
+  Untranslated: 'BLOG'
+  Untranslated: 'Blog'
+  Untranslated: 'Test'
+  Untranslated: 'E-Book'
+  Untranslated: 'Web'
+  Untranslated: 'Backend & APIs'
+  Untranslated: 'SaaS / MVP'
+  Untranslated: 'WEBXR'
+  Untranslated: 'Pilot'
+  Untranslated: 'Plan'
+  Untranslated: 'Design'
+  Untranslated: 'Brief'
+  Untranslated: 'Simulation'
+  Untranslated: 'John'
+  Untranslated: 'Optional'
+  Untranslated: 'John Doe'
+
+[nl] FAILED: 0 missing, 26 unintended English strings.
+  Untranslated: 'Filter:'
+  Untranslated: 'Contact'
+  Untranslated: 'Obrive.com Bangalore, India'
+  Untranslated: 'BLOG'
+  Untranslated: 'Blog'
+  Untranslated: 'Test'
+  Untranslated: 'Start AR'
+  Untranslated: 'Start VR'
+  Untranslated: 'Web'
+  Untranslated: 'Product'
+  Untranslated: 'SaaS / MVP'
+  Untranslated: 'Automotive Focus'
+  Untranslated: 'VR Labs'
+  Untranslated: 'Audit'
+  Untranslated: 'Architect'
+  Untranslated: 'Plan'
+  Untranslated: 'Prototype'
+  Untranslated: 'Automotive'
+  Untranslated: 'Training'
+  Untranslated: 'Families'
+  Untranslated: 'Direct Contact'
+  Untranslated: 'Obrive Website Directory'
+  Untranslated: 'Details'
+  Untranslated: 'John'
+  Untranslated: 'John Doe'
+  Untranslated: 'Acme Corp'
+
+[sv] FAILED: 0 missing, 9 unintended English strings.
+  Untranslated: 'VR UX'
+  Untranslated: 'SaaS / MVP'
+  Untranslated: 'Pilot'
+  Untranslated: 'Plan'
+  Untranslated: 'Process'
+  Untranslated: 'Admin'
+  Untranslated: 'John'
+  Untranslated: 'John Doe'
+  Untranslated: 'Acme Corp'
+
+[it] FAILED: 0 missing, 10 unintended English strings.
+  Untranslated: 'BLOG'
+  Untranslated: 'Blog'
+  Untranslated: 'Test'
+  Untranslated: 'Web'
+  Untranslated: 'Mobile'
+  Untranslated: 'SaaS / MVP'
+  Untranslated: 'Design'
+  Untranslated: 'John'
+  Untranslated: 'John Doe'
+  Untranslated: 'Acme Corp'
+
+[zh] FAILED: 21 missing, 2 unintended English strings.
+  Missing: Delete Group for Everyone
+  Missing: Cancel
+  Missing: Previous slide
+  Missing: Next slide
+  Missing: value
+  Missing: John
+  Missing: Doe
+  Missing: john@company.com
+  Missing: +91 98765 43210
+  Missing: Optional
+  Missing: e.g. 29ABCDE1234F1Z5
+  Missing: Full billing address for the invoice
+  Missing: John Doe
+  Missing: john@example.com
+  Missing: +1 (555) 000-0000
+  Missing: Acme Corp
+  Missing: e.g., E-commerce AR Viewer, Corporate Website Redesign
+  Missing: Tell us about your goals, timeline, and any specific requirements...
+  Missing: Search the sitemap — e.g. augmented reality, automotive...
+  Missing: Type your name here...
+  Missing: Type your email address here...
+  Untranslated: 'WEBXR'
+  Untranslated: 'Outlook'
+
+[ja] FAILED: 0 missing, 1 unintended English strings.
+  Untranslated: 'VR UX'
+
+[ko] FAILED: 0 missing, 1 unintended English strings.
+  Untranslated: 'OBpark FAQ'
+
+[ms] FAILED: 0 missing, 10 unintended English strings.
+  Untranslated: 'Obrive.com Bangalore, India'
+  Untranslated: 'BLOG'
+  Untranslated: 'Blog'
+  Untranslated: 'Popular'
+  Untranslated: 'SaaS / MVP'
+  Untranslated: 'WEBXR'
+  Untranslated: 'Audit'
+  Untranslated: 'John'
+  Untranslated: 'John Doe'
+  Untranslated: 'Acme Corp'
+
+[id] FAILED: 0 missing, 14 unintended English strings.
+  Untranslated: 'BLOG'
+  Untranslated: 'Blog'
+  Untranslated: 'Web'
+  Untranslated: 'SaaS / MVP'
+  Untranslated: 'WEBXR'
+  Untranslated: 'ENTERPRISE XR'
+  Untranslated: 'Audit'
+  Untranslated: 'Pilot'
+  Untranslated: 'Proposal'
+  Untranslated: 'Multi-Platform'
+  Untranslated: 'Admin'
+  Untranslated: 'John'
+  Untranslated: 'John Doe'
+  Untranslated: 'Acme Corp'
+
+❌ VALIDATION FAILED: Zero-English requirement not met.

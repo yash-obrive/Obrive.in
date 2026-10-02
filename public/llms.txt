@@ -1,0 +1,217 @@
+# Obrive — AI Knowledge Index
+> Obrive Industries is a global technology company specializing in Augmented Reality (AR), Virtual Reality (VR), Mixed Reality (MR), 3D Design, and Spatial Computing development.
+> Source: https://obrive.com
+> AI Knowledge files: https://obrive.com/llms.txt | https://obrive.com/llms-full.txt | https://obrive.com/ai/knowledge.json
+
+## Company
+- **Legal Name:** Obrive Industries Private Limited
+- **Website:** https://obrive.com
+- **Contact:** https://obrive.com/contact
+
+## Services
+### Augmented Reality Development Services Across Industries.
+- URL: https://obrive.com/services/augmented-reality-development
+
+### Virtual Reality Development Services Across Industries.
+- URL: https://obrive.com/services/virtual-reality-development
+
+### 3D Design & Development Services Across Industries.
+- URL: https://obrive.com/services/3d-design-development
+
+### Extend Your Capabilities With Obrive
+- URL: https://obrive.com/services/white-label-technology-partnerships
+
+### Spatial Computing App Development Services.
+- URL: https://obrive.com/services/spatial-computing-app-development
+
+### Mixed Reality Development Services Across Industries
+- URL: https://obrive.com/services/mixed-reality-development
+
+### Answer Engine Optimization (AEO) Services Across Industries — For the AI Era
+- URL: https://obrive.com/services/aeo-service
+
+### AI Consulting Services Across Industries — For the AI Era
+- URL: https://obrive.com/services/ai-consulting
+
+### Content Marketing Services Across Industries — For the AI Era
+- URL: https://obrive.com/services/content-marketing-service
+
+### Generative Engine Optimization (GEO) Services Across Industries — For the AI Era
+- URL: https://obrive.com/services/geo-service
+
+### Mobile App Design Services for the AI Era — Across Industries
+- URL: https://obrive.com/services/mobile-app-design-service
+
+### Mobile App Development Services Across Industries — For the AI Era
+- URL: https://obrive.com/services/mobile-app-development
+
+### SEO Services Across Industries — For the AI Era
+- URL: https://obrive.com/services/seo-service
+
+### Web App & SaaS MVP Development Services Across Industries — For the AI Era
+- URL: https://obrive.com/services/web-app-saas-mvp-development
+
+### Website Design Services for the AI Era — Across Industries
+- URL: https://obrive.com/services/website-design-service
+
+### Website Development Services for the AI Era — Across Industries
+- URL: https://obrive.com/services/website-development-service
+
+## Products
+### Obpark
+- URL: https://obrive.com/products/obpark
+
+### Obnest
+- URL: https://obrive.com/products/obnest
+
+### Obnavi
+- URL: https://obrive.com/products/obnavi
+
+### Obmove
+- URL: https://obrive.com/products/obmove
+
+## Industries
+
+## Use Cases
+- **AR Product Visualization**: https://obrive.com/use-cases/ar-product-visualization
+- **Virtual Training & Simulation**: https://obrive.com/use-cases/virtual-training
+- **Digital Twins**: https://obrive.com/use-cases/digital-twins
+- **Virtual Showrooms**: https://obrive.com/use-cases/virtual-showrooms
+- **3D Product Configuration**: https://obrive.com/use-cases/3d-product-configuration
+- **Virtual Property Tours**: https://obrive.com/use-cases/virtual-property-tours
+- **Remote Assistance**: https://obrive.com/use-cases/remote-assistance
+
+## Technologies
+- **Augmented Reality**: https://obrive.com/technologies/augmented-reality
+- **Virtual Reality**: https://obrive.com/technologies/virtual-reality
+- **Mixed Reality**: https://obrive.com/technologies/mixed-reality
+- **Extended Reality**: https://obrive.com/technologies/extended-reality
+- **Spatial Computing**: https://obrive.com/technologies/spatial-computing
+- **Digital Twins**: https://obrive.com/technologies/digital-twins
+- **3D Visualization**: https://obrive.com/technologies/3d-visualization
+- **AI + Immersive Technology**: https://obrive.com/technologies/ai-immersive-technology
+
+## Case Studies
+- **Turning Physical Retail Into an Interactive Product Experience**: https://obrive.com/case-studies/immersive-retail-launch
+- **Replacing Passive Training With Hands-On Virtual Practice**: https://obrive.com/case-studies/immersive-training-command
+- **Making Complex Assets Visible, Connected and Actionable**: https://obrive.com/case-studies/digital-twin-operations-hub
+- **Helping People Navigate Complex Physical Environments With Spatial Intelligence**: https://obrive.com/case-studies/spatial-workplace-navigator
+- **Designing a Digital Experience That Makes Enterprise Brands Easier to Understand**: https://obrive.com/case-studies/enterprise-brand-experience
+- **Building a Fast, Scalable Website Around the Business—Not a Template**: https://obrive.com/case-studies/high-performance-corporate-website
+- **Designing Mobile Journeys People Can Understand in Seconds**: https://obrive.com/case-studies/mobile-product-experience
+- **Engineering a Mobile Product Built for Real-World Use**: https://obrive.com/case-studies/connected-mobile-platform
+- **Turning Manual Operations Into a Connected Digital Workflow**: https://obrive.com/case-studies/customer-operations-portal
+- **Building a Digital Growth System Around the Customer Journey**: https://obrive.com/case-studies/digital-growth-engine
+- **Turning Search Visibility Into a Structured Growth Program**: https://obrive.com/case-studies/search-visibility-program
+- **Preparing Brands for Search Experiences Built Around Answers**: https://obrive.com/case-studies/answer-engine-visibility
+- **Letting Customers Explore Products Before They Buy**: https://obrive.com/case-studies/3d-product-configurator
+- **Helping Sales Teams Demonstrate Complex Products With Spatial Experiences**: https://obrive.com/case-studies/immersive-sales-studio
+- **Designing Commerce Experiences That Connect Discovery to Purchase**: https://obrive.com/case-studies/omnichannel-commerce-experience
+- **Connecting Customers, Providers and Operations in One Platform**: https://obrive.com/case-studies/digital-service-marketplace
+- **Building a Mobile Community Around Content, Interaction and Retention**: https://obrive.com/case-studies/connected-community-app
+- **Creating a Flexible Learning Environment Across AR, VR and MR**: https://obrive.com/case-studies/immersive-learning-campus
+- **Turning Operational Data Into a Decision-Ready Digital Workspace**: https://obrive.com/case-studies/executive-digital-command-center
+- **Creating a Launch Engine That Turns Attention Into Qualified Demand**: https://obrive.com/case-studies/digital-brand-launch-system
+- **Building Search Foundations for Multi-Market Growth**: https://obrive.com/case-studies/global-seo-expansion
+- **Making Product Knowledge Easier for People and Answer Engines to Understand**: https://obrive.com/case-studies/answer-first-product-knowledge-hub
+
+## FAQs
+- Full machine-readable FAQs: https://obrive.com/llms-full.txt
+
+## Public Documentation (Legal, Support, Security, Resources)
+- **src/content/support/help-center.mdx**: https://obrive.com/support/help-center
+  Full Text: https://obrive.com/ai/documents/help-center.txt
+- **src/content/support/change-log.mdx**: https://obrive.com/support/change-log
+  Full Text: https://obrive.com/ai/documents/change-log.txt
+- **src/content/security/soc-2-type-ii-compliance.mdx**: https://obrive.com/support/soc-2-type-ii-compliance
+  Full Text: https://obrive.com/ai/documents/soc-2-type-ii-compliance.txt
+- **src/content/security/index.mdx**: https://obrive.com/support/index
+  Full Text: https://obrive.com/ai/documents/index.txt
+- **src/content/resources/webar-vs-app-ar-business-solution.mdx**: https://obrive.com/support/webar-vs-app-ar-business-solution
+  Full Text: https://obrive.com/ai/documents/webar-vs-app-ar-business-solution.txt
+- **src/content/resources/web-vr-vs-app-vr-enterprises.mdx**: https://obrive.com/support/web-vr-vs-app-vr-enterprises
+  Full Text: https://obrive.com/ai/documents/web-vr-vs-app-vr-enterprises.txt
+- **src/content/resources/vr-training-workforce-development.mdx**: https://obrive.com/support/vr-training-workforce-development
+  Full Text: https://obrive.com/ai/documents/vr-training-workforce-development.txt
+- **src/content/resources/vr-meetings-events-conferences.mdx**: https://obrive.com/support/vr-meetings-events-conferences
+  Full Text: https://obrive.com/ai/documents/vr-meetings-events-conferences.txt
+- **src/content/resources/spatial-flow.mdx**: https://obrive.com/support/spatial-flow
+  Full Text: https://obrive.com/ai/documents/spatial-flow.txt
+- **src/content/resources/spatial-computing-business-operations-2025.mdx**: https://obrive.com/support/spatial-computing-business-operations-2025
+  Full Text: https://obrive.com/ai/documents/spatial-computing-business-operations-2025.txt
+- **src/content/resources/mixed-reality-use-cases-manufacturing-healthcare-real-estate.mdx**: https://obrive.com/support/mixed-reality-use-cases-manufacturing-healthcare-real-estate
+  Full Text: https://obrive.com/ai/documents/mixed-reality-use-cases-manufacturing-healthcare-real-estate.txt
+- **src/content/resources/mixed-reality-enterprise-productivity-2025.mdx**: https://obrive.com/support/mixed-reality-enterprise-productivity-2025
+  Full Text: https://obrive.com/ai/documents/mixed-reality-enterprise-productivity-2025.txt
+- **src/content/resources/mixed-reality-digital-transformation.mdx**: https://obrive.com/support/mixed-reality-digital-transformation
+  Full Text: https://obrive.com/ai/documents/mixed-reality-digital-transformation.txt
+- **src/content/resources/industries-benefit-ar-development.mdx**: https://obrive.com/support/industries-benefit-ar-development
+  Full Text: https://obrive.com/ai/documents/industries-benefit-ar-development.txt
+- **src/content/resources/future-augmented-reality-business-trends-2025.mdx**: https://obrive.com/support/future-augmented-reality-business-trends-2025
+  Full Text: https://obrive.com/ai/documents/future-augmented-reality-business-trends-2025.txt
+- **src/content/resources/client-immersive-onboarding.mdx**: https://obrive.com/support/client-immersive-onboarding
+  Full Text: https://obrive.com/ai/documents/client-immersive-onboarding.txt
+- **src/content/resources/bringing-onboarding-to-life.mdx**: https://obrive.com/support/bringing-onboarding-to-life
+  Full Text: https://obrive.com/ai/documents/bringing-onboarding-to-life.txt
+- **src/content/resources/ar-vr-mr-differences-business-use-cases-2025.mdx**: https://obrive.com/support/ar-vr-mr-differences-business-use-cases-2025
+  Full Text: https://obrive.com/ai/documents/ar-vr-mr-differences-business-use-cases-2025.txt
+- **src/content/resources/ar-vr-mr-differences-applications.mdx**: https://obrive.com/support/ar-vr-mr-differences-applications
+  Full Text: https://obrive.com/ai/documents/ar-vr-mr-differences-applications.txt
+- **src/content/resources/ar-printing-interactive-experiences.mdx**: https://obrive.com/support/ar-printing-interactive-experiences
+  Full Text: https://obrive.com/ai/documents/ar-printing-interactive-experiences.txt
+- **src/content/resources/ar-presentations-business-pitches.mdx**: https://obrive.com/support/ar-presentations-business-pitches
+  Full Text: https://obrive.com/ai/documents/ar-presentations-business-pitches.txt
+- **src/content/resources/ar-powered-car-parking-systems-urban-mobility-challenges.mdx**: https://obrive.com/support/ar-powered-car-parking-systems-urban-mobility-challenges
+  Full Text: https://obrive.com/ai/documents/ar-powered-car-parking-systems-urban-mobility-challenges.txt
+- **src/content/resources/ar-packaging-immersive-customer-experiences.mdx**: https://obrive.com/support/ar-packaging-immersive-customer-experiences
+  Full Text: https://obrive.com/ai/documents/ar-packaging-immersive-customer-experiences.txt
+- **src/content/resources/ar-onboarding.mdx**: https://obrive.com/support/ar-onboarding
+  Full Text: https://obrive.com/ai/documents/ar-onboarding.txt
+- **src/content/resources/3d-texturing-visualization-customer-engagement.mdx**: https://obrive.com/support/3d-texturing-visualization-customer-engagement
+  Full Text: https://obrive.com/ai/documents/3d-texturing-visualization-customer-engagement.txt
+- **src/content/resources/3d-rendering-real-estate.mdx**: https://obrive.com/support/3d-rendering-real-estate
+  Full Text: https://obrive.com/ai/documents/3d-rendering-real-estate.txt
+- **src/content/legal/terms-of-service.mdx**: https://obrive.com/support/terms-of-service
+  Full Text: https://obrive.com/ai/documents/terms-of-service.txt
+- **src/content/legal/terms-of-product-agreement.mdx**: https://obrive.com/support/terms-of-product-agreement
+  Full Text: https://obrive.com/ai/documents/terms-of-product-agreement.txt
+- **src/content/legal/service-policy.mdx**: https://obrive.com/support/service-policy
+  Full Text: https://obrive.com/ai/documents/service-policy.txt
+- **src/content/legal/refund-policy.mdx**: https://obrive.com/support/refund-policy
+  Full Text: https://obrive.com/ai/documents/refund-policy.txt
+- **src/content/legal/privacy-policy.mdx**: https://obrive.com/support/privacy-policy
+  Full Text: https://obrive.com/ai/documents/privacy-policy.txt
+- **src/content/legal/master-service-agreement.mdx**: https://obrive.com/support/master-service-agreement
+  Full Text: https://obrive.com/ai/documents/master-service-agreement.txt
+- **src/content/legal/index.mdx**: https://obrive.com/support/index
+  Full Text: https://obrive.com/ai/documents/index.txt
+- **src/content/legal/gst-taxes-policy.mdx**: https://obrive.com/support/gst-taxes-policy
+  Full Text: https://obrive.com/ai/documents/gst-taxes-policy.txt
+- **src/content/legal/accessibility.mdx**: https://obrive.com/support/accessibility
+  Full Text: https://obrive.com/ai/documents/accessibility.txt
+- **src/content/faq/obpark-faq.mdx**: https://obrive.com/support/obpark-faq
+  Full Text: https://obrive.com/ai/documents/obpark-faq.txt
+- **src/content/faq/obnest-faq.mdx**: https://obrive.com/support/obnest-faq
+  Full Text: https://obrive.com/ai/documents/obnest-faq.txt
+- **src/content/faq/obnavi-faq.mdx**: https://obrive.com/support/obnavi-faq
+  Full Text: https://obrive.com/ai/documents/obnavi-faq.txt
+- **src/content/faq/obmove-faq.mdx**: https://obrive.com/support/obmove-faq
+  Full Text: https://obrive.com/ai/documents/obmove-faq.txt
+- **src/content/faq/ob-services-faq.mdx**: https://obrive.com/support/ob-services-faq
+  Full Text: https://obrive.com/ai/documents/ob-services-faq.txt
+- **src/content/faq/ob-product-faq.mdx**: https://obrive.com/support/ob-product-faq
+  Full Text: https://obrive.com/ai/documents/ob-product-faq.txt
+- **src/content/career/product-manager-ar-vr-solutions.mdx**: https://obrive.com/support/product-manager-ar-vr-solutions
+  Full Text: https://obrive.com/ai/documents/product-manager-ar-vr-solutions.txt
+- **src/content/career/motion-graphics-designer.mdx**: https://obrive.com/support/motion-graphics-designer
+  Full Text: https://obrive.com/ai/documents/motion-graphics-designer.txt
+- **src/content/career/marketing-content-specialist-immersive-tech.mdx**: https://obrive.com/support/marketing-content-specialist-immersive-tech
+  Full Text: https://obrive.com/ai/documents/marketing-content-specialist-immersive-tech.txt
+- **src/content/career/full-stack-immersive-developer.mdx**: https://obrive.com/support/full-stack-immersive-developer
+  Full Text: https://obrive.com/ai/documents/full-stack-immersive-developer.txt
+- **src/content/career/business-development-executive.mdx**: https://obrive.com/support/business-development-executive
+  Full Text: https://obrive.com/ai/documents/business-development-executive.txt
+- **src/content/career/ar-vr-mr-developer.mdx**: https://obrive.com/support/ar-vr-mr-developer
+  Full Text: https://obrive.com/ai/documents/ar-vr-mr-developer.txt
+- **src/content/career/3d-visualization-designer.mdx**: https://obrive.com/support/3d-visualization-designer
+  Full Text: https://obrive.com/ai/documents/3d-visualization-designer.txt

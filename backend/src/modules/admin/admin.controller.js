@@ -8,6 +8,13 @@ exports.getAllUsers = async (_req, res, next) => {
     next(err);
   }
 };
+exports.getUsersByDepartment = async (_req, res, next) => {
+  try {
+    successResponse(res, await service.getUsersByDepartment());
+  } catch (err) {
+    next(err);
+  }
+};
 exports.createEmployee = async (req, res, next) => {
   try {
     successResponse(

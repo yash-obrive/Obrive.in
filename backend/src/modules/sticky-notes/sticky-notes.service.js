@@ -91,7 +91,7 @@ exports.getStickyNoteById = async (noteId, userId) => {
 exports.createStickyNote = async (userId, data) => {
   const { content, color = "yellow", note_date, position = 0 } = data;
 
-  const noteDate = new Date(`${note_date}T00:00:00`);
+  const noteDate = new Date(`${note_date}T00:00:00.000Z`);
 
   return await prisma.sticky_notes.create({
     data: {
@@ -125,7 +125,7 @@ exports.updateStickyNote = async (noteId, userId, data) => {
   if (data.color !== undefined) updateData.color = data.color.toLowerCase();
 
   if (data.note_date !== undefined) {
-    const noteDate = new Date(`${data.note_date}T00:00:00`);
+    const noteDate = new Date(`${data.note_date}T00:00:00.000Z`);
     updateData.note_date = noteDate;
   }
   if (data.position !== undefined) updateData.position = data.position;

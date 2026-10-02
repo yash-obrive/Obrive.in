@@ -1,13 +1,21 @@
 const { prisma } = require("../../../prisma");
 class VacationsService {
-  async getAllEmployeesWithLeaves() {
-    return await prisma.users.findMany({
-      where: { role: "employee" },
+  async getAllEmployeesWithLeaves(role, userId) {
+    const query = { role: "employee" };
+    
+    // Authorization: As per user request, all authenticated roles (employee, supervisor, etc.)
+    // should be able to see everyone's vacation calendar so they know who is on leave.
+    // We do not filter query.id by userId.
+
+    const users = await prisma.users.findMany({
+      where: query,
       select: {
         id: true,
         name: true,
         email: true,
         userid: true,
+        department: true,
+        job_title: true,
         leaves: {
           select: {
             id: true,
@@ -17,17 +25,27 @@ class VacationsService {
             end_date: true,
             status: true,
             reason: true,
-            users: {
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                userid: true,
-              },
-            },
           },
         },
       },
+    });
+
+    return users.map(user => {
+      let daysUsed = 0;
+      if (user.leaves) {
+        const approvedVacations = user.leaves.filter(l => l.status === 'approved' && l.leave_type === 'vacation');
+        for (const v of approvedVacations) {
+          const start = new Date(v.start_date);
+          const end = new Date(v.end_date);
+          const diffTime = Math.abs(end - start);
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+          daysUsed += diffDays;
+        }
+      }
+      return {
+        ...user,
+        remaining_vacation_days: Math.max(0, 21 - daysUsed)
+      };
     });
   }
 

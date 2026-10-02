@@ -57,6 +57,7 @@ router.delete(
 );
 
 // ── View all users (ADMIN + HR) ──────────────────────────────
+router.get("/users/by-department", authenticate, authorize("ADMIN", "HR", "super_admin"), ctrl.getUsersByDepartment);
 router.get("/users", authenticate, authorize("ADMIN", "HR"), ctrl.getAllUsers);
 
 // ── Logs & Stats (ADMIN only) ────────────────────────────────

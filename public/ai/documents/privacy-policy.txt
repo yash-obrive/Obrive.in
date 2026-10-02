@@ -1,0 +1,212 @@
+# src/content/legal/privacy-policy.mdx
+
+Canonical URL: https://obrive.com/support/privacy-policy
+Source: src/content/legal/privacy-policy.mdx
+
+---
+
+# Privacy Policy
+
+  
+    Obrive Industries Private Limited (“Obrive”, “Company”, “we”, “our”, or
+    “us”) respects your privacy and is committed to protecting it through this
+    Privacy Policy (“Policy”).
+    <br />
+    <br />
+    This Policy describes the types of information we may collect from you or
+    that you may provide to us when you use our websites at obrive.com (the
+    “Site”), our mobile applications, and our AR/VR/MR and spatial computing
+    services and solutions (collectively, “Services”). It also explains how we
+    collect, use, store, and disclose your information.
+    <br />
+    <br />
+    By visiting our Site, downloading our applications, registering an account,
+    or using our Services, you consent to the practices described in this
+    Policy.
+  
+
+## Scope of this Policy
+
+  
+    This Policy applies to information we collect:
+    
+      From visitors to our Site.
+      From users of our mobile and immersive technology applications.
+      From our customers, business partners, and enterprise clients.
+      In email, text, and other electronic communications with us.
+      
+        When you interact with our AR, VR, MR, and spatial computing products
+        and solutions.
+      
+    
+    We reserve the right to update or modify this Policy at any time. If
+    material changes are made, we will notify you by updating the date at the
+    top of this Policy and, where appropriate, through direct communication or
+    in-app notifications.
+  
+
+## Information We Collect
+
+  
+    <StyledText>1. Personal Information</StyledText>– Information that can
+    identify you as an individual, such as:
+    <br />
+    
+      Name, email address, phone number, mailing address
+      Company or organization details (if applicable)
+      Payment and billing details (if you purchase our Services)
+      Account login information (username, password)
+      
+        Any other information you choose to provide when using our Services
+      
+    
+    <StyledText>2. Non-Personal & Usage Data</StyledText>– Information that does
+    not directly identify you, such as:
+    <br />
+    
+      Device type, operating system, browser, IP address
+      Geolocation data (if enabled)
+      
+        Session data and usage patterns (e.g., navigation within immersive apps)
+      
+      
+        Aggregate analytics about how users interact with our Site, apps, and
+        Services
+      
+    
+  
+
+## How We Use Your Information
+
+  
+    We use your information for purposes including:
+    <br />
+    <br />
+    
+      
+        Providing, managing, and improving our AR/VR/MR and software Services.
+      
+      
+        Processing transactions, subscriptions, and customer support requests.
+      
+      
+        Customizing your experience and delivering personalized recommendations.
+      
+      
+        Communicating with you about updates, new features, and promotions.
+      
+      
+        Conducting research, analysis, and internal operations to enhance our
+        offerings.
+      
+      
+        Ensuring security, fraud prevention, and compliance with legal
+        obligations.
+      
+    
+  
+
+## How We Share Information
+
+  
+    We may share your information only as described below:
+    <br />
+    <br />
+    
+      
+        <StyledText>With Service Providers:</StyledText> Trusted third-party
+        vendors who assist with hosting, analytics, payments, or customer
+        support.
+      
+      
+        <StyledText>With Business Partners:</StyledText> In cases of
+        collaborations, joint projects, or integrations where disclosure is
+        necessary.
+      
+      
+        <StyledText>For Legal Compliance:</StyledText> To comply with legal
+        obligations, protect rights, prevent fraud, or respond to lawful
+        requests.
+      
+      
+        <StyledText>In Case of Merger/Acquisition:</StyledText> If Obrive
+        undergoes a merger, acquisition, or asset transfer, your information may
+        be part of the transferred assets.
+      
+    
+    <br />
+    We do not sell your Personal Information to third parties.
+  
+
+## Cookies & Tracking
+
+  
+    We use cookies, analytics tools, and similar technologies to:
+    <br />
+    <br />
+    
+      Improve website and application performance.
+      Remember user preferences.
+      Analyze traffic and usage patterns.
+      Deliver relevant marketing content.
+    
+    <br />
+    You can disable cookies in your browser settings, but some features of our
+    Site and Services may not function properly.
+  
+
+## Your Rights
+
+  
+    Depending on your location, you may have the right to:
+    <br />
+    <br />
+    
+      Access, update, or delete your personal data.
+      Opt out of marketing communications.
+      Restrict or object to processing of your data.
+      Request a copy of the data we hold about you.
+    
+    To exercise your rights, please contact us at{" "}
+    
+      <StyledText>privacy@obrive.com</StyledText>
+    
+  
+
+## Data Security
+
+  
+    We implement reasonable technical and organizational safeguards to protect
+    your personal data. However, no online platform can be 100% secure, and you
+    acknowledge that data transmission over the internet is at your own risk.
+  
+
+## Children’s Privacy
+
+  
+    Our Site and Services are not directed at individuals under 18. We do not
+    knowingly collect personal information from children. If we become aware
+    that we have collected such information, we will delete it immediately.
+  
+
+## Use of AI & Emerging Technologies
+
+  
+    Obrive may use Artificial Intelligence (AI) and spatial computing algorithms
+    in its Services to enhance user experience, personalization, and real-time
+    rendering. Any personal data processed by AI is handled securely and is not
+    used to train third-party general-purpose AI models.
+  
+
+## Contact Us
+
+  
+    Obrive Industries Private Limited
+    <br />
+    <br />
+    
+      
+        Email: privacy@obrive.com
+      
+      
+        Website: www.obrive.com

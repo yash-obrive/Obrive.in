@@ -91,6 +91,11 @@ exports.getCurrentUser = async (req, res, next) => {
   try {
     // Fetch full user details from database using userId from JWT token
     const result = await service.getCurrentUserDetails(req.user.id);
+    // Inject impersonation info from the token
+    if (req.user.originalAdminId) {
+      result.isImpersonating = true;
+      result.originalAdminId = req.user.originalAdminId;
+    }
     successResponse(res, result, "Current user fetched");
   } catch (err) {
     next(err);
@@ -101,6 +106,34 @@ exports.getAllUsers = async (_req, res, next) => {
   try {
     const result = await service.getAllUsers();
     successResponse(res, result, "Users fetched successfully");
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.forgotPassword = async (req, res, next) => {
+  try {
+    await service.forgotPassword(req.body.email);
+    // Generic response
+    successResponse(res, null, "If an account exists, an email was sent");
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.verifyOtp = async (req, res, next) => {
+  try {
+    await service.verifyOtp(req.body.email, req.body.otp);
+    successResponse(res, null, "OTP verified successfully");
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.resetPassword = async (req, res, next) => {
+  try {
+    await service.resetPassword(req.body.email, req.body.otp, req.body.newPassword);
+    successResponse(res, null, "Password has been reset successfully");
   } catch (err) {
     next(err);
   }

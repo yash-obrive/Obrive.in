@@ -2,9 +2,11 @@ const vacationsService = require("./vacations.service");
 const { successResponse, errorResponse } = require("../../utils/apiResponse");
 
 class VacationsController {
-  async getEmployeesWithLeaves(_req, res, next) {
+  async getEmployeesWithLeaves(req, res, next) {
     try {
-      const employees = await vacationsService.getAllEmployeesWithLeaves();
+      const userRole = req.user?.role || "employee";
+      const userId = req.user?.id;
+      const employees = await vacationsService.getAllEmployeesWithLeaves(userRole, userId);
       return successResponse(res, employees, "Vacations fetched successfully");
     } catch (error) {
       console.error("Get Leaves Error:", error);

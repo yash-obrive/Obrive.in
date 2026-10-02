@@ -1,0 +1,110 @@
+# src/content/career/motion-graphics-designer.mdx
+
+Canonical URL: https://obrive.com/support/motion-graphics-designer
+Source: src/content/career/motion-graphics-designer.mdx
+
+---
+
+<CareerHeader
+  title="Motion Graphics Designer"
+  location="Bangalore, India (Hybrid or Remote)"
+  postedOn="August 20, 2025"
+  employmentType="Full-time"
+  salaryRange="Not Disclosed"
+/>
+
+<CareerSection title="About This Role">
+<CareerItem>As a Motion Graphics Designer at Obrive Industries, you’ll craft dynamic, visually compelling animations and interactive visuals that enhance immersive AR, VR, MR, and spatial computing experiences. Your creativity will power product demos, marketing campaigns, XR interfaces, and brand storytelling—helping bring our vision to life.</CareerItem>
+
+<CareerItem title="What you'll do">
+  
+    
+      Design and animate high-quality motion graphics for immersive experiences,
+      digital campaigns, and UI/UX elements.
+    
+    
+      Collaborate with 3D artists, developers, and product teams to bring
+      concepts to life in XR applications.
+    
+    
+      Create holographic effects, AR filters, VR video assets, and mixed reality
+      animations.
+    
+    
+      Produce engaging explainer videos, product walkthroughs, and social media
+      content.
+    
+    
+      Ensure all motion design assets align with Obrive’s brand guidelines and
+      modern design standards.
+    
+  
+</CareerItem>
+
+<CareerItem title="ABOUT YOU">
+  
+    
+      Skilled in Adobe After Effects, Premiere Pro, Illustrator, Photoshop, and
+      motion tools like Cinema 4D or Blender.
+    
+    
+      Strong sense of timing, storytelling, and visual rhythm in animation.
+    
+    
+      Experience creating assets for AR/VR/MR or interactive 3D environments is
+      a plus.
+    
+    
+      Portfolio demonstrating creativity in motion graphics, animated
+      interfaces, or immersive media.
+    
+    
+      Detail-oriented designer who enjoys pushing creative boundaries with new
+      formats and technologies.
+    
+  
+</CareerItem>
+
+<CareerItem title="WHY JOIN OBRIVE?">
+  
+    
+      Be Creative at Scale: Design motion assets for products like Obpark (AR
+      Smart Navigation) and Obnest (XR Real Estate).
+    
+    
+      Work Across Disciplines: Collaborate with innovators in 3D design,
+      immersive development, and product strategy.
+    
+    
+      Flexible Culture: Remote-first, with in-person collaboration hubs in
+      Bangalore.
+    
+    
+      Continuous Growth: Access to design labs, workshops, and opportunities to
+      experiment with emerging motion tools.
+    
+  
+</CareerItem>
+
+<CareerItem title="INTERVIEW PROCESS"><ol>
+          Apply: Submit your resume and motion design portfolio.
+          
+            Initial Chat: Introductory call to learn more about you and your
+            creative approach.
+          
+          
+            Creative Exercise: A short design or animation challenge to showcase
+            your skills.
+          
+          
+            Team Interview: Meet product and creative leads to discuss design
+            thinking and collaboration style.
+          
+          
+            Offer & Onboarding: Start your creative journey with Obrive,
+            equipped with tools and support to thrive.
+          
+        </ol></CareerItem>
+</CareerSection>
+
+<CareerButton href="/apply.career.obrive.com/motion-graphics-designer" />

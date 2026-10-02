@@ -1,0 +1,212 @@
+# src/content/resources/webar-vs-app-ar-business-solution.mdx
+
+Canonical URL: https://obrive.com/support/webar-vs-app-ar-business-solution
+Source: src/content/resources/webar-vs-app-ar-business-solution.mdx
+
+---
+
+<WhyItWorkedSection title="Introduction – Why Choosing the Right AR Format Matters">
+  <WhyItWorkedItem>
+    Not all AR is created equal. The choice between WebAR and App AR can define
+    your user experience, engagement rates, and even ROI. Pick the wrong format,
+    and you risk underwhelming your audience—or locking yourself into costly
+    development without the right fit.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<WhyItWorkedSection title="My AR Journey: From Curiosity to Clarity">
+  <WhyItWorkedItem>
+    A couple of years ago, I noticed our clients were creating app-based AR
+    experiences that few users downloaded. At the same time, web-based
+    complementary experiences had impressive engagement—but limited
+    functionality. So I launched side-by-side pilots:
+    <br />
+    <br />
+    
+      
+        <StyledText>A WebAR campaign</StyledText> for a packaging reveal, no
+        downloads, 60% scan rate.
+      
+      
+        <StyledText>A dedicated AR app</StyledText> for internal equipment
+        training—with headset integration—and saw 90% adoption among staff in
+        two weeks.
+      
+    
+    <br />
+    That moment reframed everything: both formats work—but in different
+    scenarios.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<TheImpactTable
+  title="AR vs. VR vs. MR: Quick Comparison"
+  firstColumnBold={false}
+  columns={[
+    {
+      key: "feature",
+      header: "Feature",
+      width: "25%",
+    },
+    {
+      key: "webar",
+      header: "WebAR",
+      width: "35%",
+    },
+    {
+      key: "appar",
+      header: "App AR",
+      width: "30%",
+    },
+  ]}>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Accessibility</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      No install, browser-based
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Requires download/install
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Setup Speed</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Fast and lightweight
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      More complex setup
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Tracking Capability</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Basic, often marker-based
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Advanced—SLAM, depth, environment mapping
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Engagement Potential</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Great for marketing & quick demos
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Ideal for immersive, repeat-use cases
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Hardware Integration</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Limited
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Full access (camera, sensors, performance)
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Maintenance Overhead</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Low
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Higher (updates, compatibility)
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature"}>
+      <StyledText>Analytics</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"WebAR"}>
+      Web metrics
+    </ImpactTableCell>
+    <ImpactTableCell header={"App AR"}>
+      Deeper usage data
+    </ImpactTableCell>
+  </ImpactTableRow>
+</TheImpactTable>
+
+<WhyItWorkedSection title="Use Cases That Make the Difference">
+  <WhyItWorkedItem>
+    
+      
+        {" "}
+        <StyledText>WebAR </StyledText> shines in: packages, business cards,
+        marketing flyers, social campaigns—anywhere “scan and go” is ideal.
+      
+      
+        {" "}
+        <StyledText>App AR </StyledText> excels in: warehouse navigation,
+        medical training, real estate tours—especially when performance and
+        persistence matter.
+      
+    
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<WhyItWorkedSection title="When to Choose WebAR (and When Not To)">
+  <WhyItWorkedItem>
+    <StyledText>Choose WebAR if you need:</StyledText>
+    <br />
+    <br />
+    
+       Instant reach with minimal friction
+       Campaign-driven engagement (e.g., packaging, ads)
+       Fast deployment and low maintenance
+    
+    <br />
+    <StyledText>Avoid it when your solution needs:</StyledText>
+    <br />
+    <br />
+    
+       Precise tracking (like spatial overlays)
+       Persistent sessions or data saving
+      
+        {" "}
+        Deep hardware performance (e.g., 3D mapping, environmental interaction)
+      
+    
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<WhyItWorkedSection title="The Hybrid AR Strategy">
+  <WhyItWorkedItem>
+    In many cases, the smartest move is a hybrid approach:
+    <br />
+    
+      Start with a WebAR teaser to drive user interest.
+      
+        Follow up with an App AR build for those who want full immersion—think
+        immersive product demos, training modules, or long-term use.
+      
+    
+    <br />
+    This funnel maximizes reach without sacrificing depth.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<WhyItWorkedSection title="Conclusion & Next Steps – Charting Your AR Roadmap">
+  <WhyItWorkedItem>
+    Choosing between WebAR and App AR comes down to your goals:
+    <br />
+    
+      WebAR = immediacy, discovery, and marketing impact.
+      App AR = integration, power, and immersive retention.
+    
+    <br />
+    Ready to explore? Let’s craft your AR strategy—from quick wins with WebAR to
+    immersive App experiences designed for tomorrow.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>

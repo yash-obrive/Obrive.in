@@ -34,40 +34,10 @@ export async function generateStaticParams() {
   return getIndustrySlugs().map((slug: string) => ({ slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: IndustryPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const industryData = getIndustryData(slug);
+import { resolveIndustryMetadata } from "@/lib/metadata-resolvers";
 
-  if (!industryData) {
-    return {
-      title: "Industry Not Found",
-    };
-  }
-
-  return {
-    title: `${industryData.hero.title} | Obrive Industries`,
-    description: industryData.hero.description || `Explore ${industryData.hero.title} solutions by Obrive Industries.`,
-    alternates: getAlternates(slug),
-    robots: {
-      index: true,
-      follow: true,
-    },
-    openGraph: {
-      type: "website",
-      url: `https://obrive.com/industries/${slug}`,
-      title: `${industryData.hero.title} | Obrive Industries`,
-      description: industryData.hero.description || `Explore ${industryData.hero.title} solutions by Obrive Industries.`,
-      siteName: "Obrive Industries",
-      locale: "en_IN",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${industryData.hero.title} | Obrive Industries`,
-      description: industryData.hero.description || `Explore ${industryData.hero.title} solutions by Obrive Industries.`,
-    },
-  };
+export async function generateMetadata(props: any): Promise<Metadata> {
+  return resolveIndustryMetadata((await props.params).slug);
 }
 
 export default async function IndustryPage({ params }: IndustryPageProps) {

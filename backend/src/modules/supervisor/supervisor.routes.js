@@ -43,6 +43,15 @@ router.post(
   zodValidate({ part: "body", schema: AddUserBodySchema }),
   ctrl.addUser,
 );
+router.post(
+  "/employees/:employeeId/impersonate",
+  zodValidate({ part: "params", schema: EmployeeIdParamSchema }),
+  ctrl.impersonateEmployee,
+);
+router.post(
+  "/exit-impersonation",
+  ctrl.exitImpersonation,
+);
 
 // Project endpoints
 router.get("/projects", ctrl.getSupervisorProjects);
