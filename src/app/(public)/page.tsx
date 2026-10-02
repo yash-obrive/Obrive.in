@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { getDictionary } from "@/lib/dictionaries";
+import type { LanguageCode } from "@/config/languages";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
 import BlogCard from "@/components/pages/home/card/BlogCard";
@@ -64,65 +67,75 @@ const EffortlessControl = dynamic(
   },
 );
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://obrive.com"),
+export async function generateMetadata(): Promise<Metadata> {
+  const headerList = await headers();
+  const language = (headerList.get("x-obrive-language") as LanguageCode) || "en";
+  const dictionary = await getDictionary(language);
+  const t = (key: string) => (dictionary as Record<string, string>)[key] || key;
 
-  title: "AR, VR, MR & Spatial Computing Solutions | Obrive",
+  return {
+    metadataBase: new URL("https://obrive.com"),
 
-  description:
-    "Leading immersive technology company in Bangalore delivering AR, VR, MR, 3D visualization and spatial computing solutions for enterprise digital transformation.",
+    title: t("AR, VR, MR & Spatial Computing Solutions | Obrive"),
 
-  keywords: [
-    "AR development global",
-    "VR development enterprise",
-    "MR solutions India",
-    "spatial computing studio",
-    "3D visualization Bangalore",
-    "augmented reality services",
-    "virtual reality applications",
-    "mixed reality enterprise solutions",
-    "immersive technology company",
-  ],
+    description: t(
+      "Leading immersive technology company in Bangalore delivering AR, VR, MR, 3D visualization and spatial computing solutions for enterprise digital transformation."
+    ),
 
-  alternates: {
-    canonical: "https://obrive.com/",
-  },
+    keywords: [
+      "AR development global",
+      "VR development enterprise",
+      "MR solutions India",
+      "spatial computing studio",
+      "3D visualization Bangalore",
+      "augmented reality services",
+      "virtual reality applications",
+      "mixed reality enterprise solutions",
+      "immersive technology company",
+    ],
 
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    alternates: {
+      canonical: "https://obrive.com/",
+    },
+
+    robots: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
     },
-  },
 
-  openGraph: {
-    type: "website",
-    url: "https://obrive.com/",
-    title: "Obrive – AR, VR, MR & Spatial Computing Solutions",
-    description:
-      "Leading immersive technology company in Bangalore delivering AR, VR, MR, 3D visualization and spatial computing solutions for enterprise digital transformation.",
-    siteName: "Obrive",
-    locale: "en_IN",
-  },
+    openGraph: {
+      type: "website",
+      url: "https://obrive.com/",
+      title: t("Obrive – AR, VR, MR & Spatial Computing Solutions"),
+      description: t(
+        "Leading immersive technology company in Bangalore delivering AR, VR, MR, 3D visualization and spatial computing solutions for enterprise digital transformation."
+      ),
+      siteName: "Obrive",
+      locale: "en_IN",
+    },
 
-  twitter: {
-    card: "summary_large_image",
-    title: "Obrive – AR, VR, MR & Spatial Computing Solutions",
-    description:
-      "Immersive technology company in Bangalore delivering AR, VR, MR and 3D visualization solutions.",
-  },
+    twitter: {
+      card: "summary_large_image",
+      title: t("Obrive – AR, VR, MR & Spatial Computing Solutions"),
+      description: t(
+        "Immersive technology company in Bangalore delivering AR, VR, MR and 3D visualization solutions."
+      ),
+    },
 
-  other: {
-    "geo.region": "IN-KA",
-    "geo.placename": "Bangalore, Karnataka, India",
-    ICBM: "12.9716, 77.5946",
-  },
-};
+    other: {
+      "geo.region": "IN-KA",
+      "geo.placename": "Bangalore, Karnataka, India",
+      ICBM: "12.9716, 77.5946",
+    },
+  };
+}
 
 const websiteSchema = {
   "@context": "https://schema.org",

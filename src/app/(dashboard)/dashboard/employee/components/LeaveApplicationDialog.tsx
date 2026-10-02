@@ -6,7 +6,7 @@ import Image from "next/image";
 import supportImg from "@/assets/images/employee/illustration.png";
 
 const leaveSchema = z.object({
-  leaveType: z.enum(["vacation", "sick"], {
+  leaveType: z.enum(["vacation", "sick"] as const, {
     message: "Please select a valid leave type.",
   }),
   leaveDate: z.string().min(1, "Leave date is required."),

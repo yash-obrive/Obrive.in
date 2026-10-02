@@ -22,4 +22,9 @@ router.post("/logout", authenticate, controller.logout);
 router.post("/refresh", controller.refreshToken);
 router.get("/me", authenticate, controller.getCurrentUser);
 router.get("/users", authenticate, controller.getAllUsers);
+
+router.post("/forgot-password", controller.forgotPassword);
+router.post("/verify-otp", controller.verifyOtp);
+router.post("/reset-password", controller.resetPassword);
+
 module.exports = router;

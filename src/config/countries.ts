@@ -27,7 +27,8 @@ export type CountryCode =
   | "my"
   | "id"
   | "th"
-  | "za";
+  | "za"
+  | "in";
 
 export interface CountryConfig {
   code: CountryCode;
@@ -501,6 +502,25 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=za",
     hreflang: "en-ZA",
+    defaultLanguage: "en",
+    supportedLanguages: ["en"],
+    isProductionReady: true,
+  },
+
+  // --- INDIA ---
+  in: {
+    code: "in",
+    name: "India",
+    flag: "🇮🇳",
+    region: "India",
+    currency: "INR",
+    currencySymbol: "₹",
+    phone: "+91 22 6280 0000",
+    contactEmail: "in@obrive.com",
+    offices: ["Mumbai, Maharashtra, India", "Ahmedabad, Gujarat, India"],
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=in",
+    hreflang: "en-IN",
     defaultLanguage: "en",
     supportedLanguages: ["en"],
     isProductionReady: true,

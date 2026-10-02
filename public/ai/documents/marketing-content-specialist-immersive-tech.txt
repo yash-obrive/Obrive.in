@@ -1,0 +1,114 @@
+# src/content/career/marketing-content-specialist-immersive-tech.mdx
+
+Canonical URL: https://obrive.com/support/marketing-content-specialist-immersive-tech
+Source: src/content/career/marketing-content-specialist-immersive-tech.mdx
+
+---
+
+<CareerHeader
+  title="Marketing & Content Specialist - Immersive Tech"
+  location="Bangalore, India (Hybrid or Remote)"
+  postedOn="August 20, 2025"
+  employmentType="Full-time"
+  salaryRange="Not Disclosed"
+/>
+
+<CareerSection title="About This Role">
+<CareerItem>At Obrive Industries, the Marketing & Content Specialist – Immersive Tech will craft compelling, informative, and brand-aligned narratives around our suite of immersive technologies —spanning AR, VR, MR, 3D Design, and spatial computing. You'll bring our innovations to life through storytelling that captures imagination, educates audiences, and drives engagement across platforms.</CareerItem>
+
+<CareerItem title="What you'll do">
+  
+    
+      Develop blogs, case studies, social media content, and video scripts that
+      showcase immersive projects like Obpark and Obnest.
+    
+    
+      Collaborate with designers and engineers to produce eye-catching marketing
+      visuals and motion graphics
+    
+    
+      Plan and implement SEO strategies, digital campaigns, and analytics to
+      drive awareness and conversion
+    
+    
+      Manage email marketing, webinars, and webinars showcasing immersive
+      technology trends
+    
+    
+      Maintain brand consistency and messaging across all marketing touchpoints
+      and channels
+    
+  
+</CareerItem>
+
+<CareerItem title="ABOUT YOU">
+  
+    
+      Strong writing and storytelling skills with experience in tech or B2B
+      marketing.
+    
+    
+      Familiarity with immersive technology terminology, workflows, or use
+      cases.
+    
+    
+      Competent in SEO tools, content strategy, and performance tracking (e.g.
+      Google Analytics).
+    
+    
+      Proactive, creative, and eager to explain complex ideas through engaging
+      content.
+    
+    
+      Comfortable working cross-functionally with product, creative, and
+      business teams.
+    
+  
+</CareerItem>
+
+<CareerItem title="WHY JOIN OBRIVE?">
+  
+    
+      Shape the Narrative: Tell the story of AR, VR, MR, and spatial computing
+      in ways that inspire real-world adoption
+    
+    
+      Collaborate with Innovators: Support developers, designers, and product
+      leads as they push the boundaries of immersive tech
+    
+    
+      Flexible Work Style: Embrace hybrid or remote work with collaborative
+      moments in Bangalore
+    
+    
+      Professional Growth: Gain access to emerging marketing tools, training,
+      and immersive content creation opportunities
+    
+  
+</CareerItem>
+
+<CareerItem title="INTERVIEW PROCESS"><ol>
+          
+            Apply: Send your resume, portfolio, or writing samples relevant to
+            immersive tech or innovation.
+          
+          
+            Intro Call: We'll discuss your experience, ideas, and how you think
+            about tech storytelling.
+          
+          
+            Writing Exercise: Craft a short blog or campaign outline centered on
+            one of Obrive’s products.
+          
+          
+            Team Interview: Meet with marketing, design, and leadership—explore
+            strategy alignment and creative fit.
+          
+          
+            Offer & Onboarding: Start creating immersive narratives, with
+            support and resources to succeed.
+          
+        </ol></CareerItem>
+</CareerSection>
+
+<CareerButton href="/apply.career.obrive.com/marketing-content-specialist-immersive-tech" />

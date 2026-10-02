@@ -1,0 +1,32 @@
+
+> obrive-project@0.1.0 build
+> next build --turbopack
+
+   ▲ Next.js 15.5.26 (Turbopack)
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · optimizePackageImports
+
+   Creating an optimized production build ...
+ ✓ Finished writing to disk in 55ms
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./src/lib/dictionaries.ts:10:13
+Module not found: Can't resolve '@/dictionaries/hi.json'
+[0m [90m  8 |[39m [36mconst[39m dictionaries [33m=[39m {
+ [90m  9 |[39m   en[33m:[39m () [33m=>[39m [36mimport[39m([32m"@/dictionaries/en.json"[39m)[33m.[39mthen((module) [33m=>[39m module[33m.[39m[36mdefault[39m)[33m,[39m
+[31m[1m>[22m[39m[90m 10 |[39m   hi[33m:[39m () [33m=>[39m [36mimport[39m([32m"@/dictionaries/hi.json"[39m)[33m.[39mthen((module) [33m=>[39m module[33m.[39m[36mdefault[39m)[33m,[39m
+ [90m    |[39m             [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 11 |[39m   ar[33m:[39m () [33m=>[39m [36mimport[39m([32m"@/dictionaries/ar.json"[39m)[33m.[39mthen((module) [33m=>[39m module[33m.[39m[36mdefault[39m)[33m,[39m
+ [90m 12 |[39m   es[33m:[39m () [33m=>[39m [36mimport[39m([32m"@/dictionaries/es.json"[39m)[33m.[39mthen((module) [33m=>[39m module[33m.[39m[36mdefault[39m)[33m,[39m
+ [90m 13 |[39m   pt[33m:[39m () [33m=>[39m [36mimport[39m([32m"@/dictionaries/pt.json"[39m)[33m.[39mthen((module) [33m=>[39m module[33m.[39m[36mdefault[39m)[33m,[39m[0m
+
+Import map: aliased to relative './src/dictionaries/hi.json' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./src/lib/dictionaries.ts:10:13)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)

@@ -150,3 +150,30 @@ exports.getDashboardStats = async () => {
     recentLogs,
   };
 };
+
+exports.getUsersByDepartment = async () => {
+  const usersList = await prisma.users.findMany({
+    where: {
+      role: { in: ["employee", "hr", "supervisor"] }
+    },
+    select: {
+      id: true,
+      userid: true,
+      email: true,
+      name: true,
+      role: true,
+      department: true,
+      job_title: true,
+      avatar_url: true,
+      status: true
+    }
+  });
+
+  const grouped = {};
+  for (const user of usersList) {
+    const dept = user.department || 'Unassigned';
+    if (!grouped[dept]) grouped[dept] = [];
+    grouped[dept].push(user);
+  }
+  return grouped;
+};

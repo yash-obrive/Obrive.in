@@ -1,0 +1,106 @@
+# src/content/career/business-development-executive.mdx
+
+Canonical URL: https://obrive.com/support/business-development-executive
+Source: src/content/career/business-development-executive.mdx
+
+---
+
+<CareerHeader
+  title="Business Development Executive"
+  location="Bangalore, India (Hybrid or Remote)"
+  postedOn="August 20, 2025"
+  employmentType="Full-time"
+  salaryRange="Not Disclosed"
+/>
+
+<CareerSection title="About This Role">
+<CareerItem>As a Business Development Executive at Obrive Industries, you'll be instrumental in growing our footprint in the immersive technology market. You’ll build partnerships, drive sales of AR, VR, MR, and spatial computing products like Obpark and Obnest, and strategically position Obrive as a market leader.</CareerItem>
+
+<CareerItem title="What you'll do">
+  
+    
+      Identify and cultivate relationships with enterprise clients in sectors
+      like real estate, automotive, healthcare, and retail.
+    
+    
+      Develop persuasive proposals, pitch decks, and tailored demos showcasing
+      Obrive's immersive solutions.
+    
+    
+      Collaborate with product, creative, and marketing teams to shape
+      go-to-market strategies.
+    
+    
+      Track sales pipeline, negotiate contracts, and support deal closure from
+      lead to launch.
+    
+    
+      Represent Obrive at industry conferences, webinars, and client meetings.
+    
+  
+</CareerItem>
+
+<CareerItem title="ABOUT YOU">
+  
+    
+      3+ years in B2B sales, business development, or partnership roles—ideally
+      in tech, innovation, or emerging tech solutions.
+    
+    Excellent communication, presentation, and negotiation skills.
+    
+      Familiarity with AR/VR/MR technologies and their business applications.
+    
+    Self-motivated with a track record of meeting or exceeding targets.
+    
+      Comfortable working in an agile, collaborative environment with both
+      remote and in-person interactions.
+    
+  
+</CareerItem>
+
+<CareerItem title="WHY JOIN OBRIVE?">
+  
+    
+      Sell the Future: Drive adoption of immersive technology solutions that
+      transform industries.
+    
+    
+      Cross-Functional Collaboration: Partner with innovators in product,
+      design, engineering, and marketing.
+    
+    
+      Flexible Culture: Remote-first working style complemented by in-person
+      sessions in Bangalore.
+    
+    
+      Growth Opportunity: High-impact role in a fast-growing, innovation-led
+      business—your success directly influences scale.
+    
+  
+</CareerItem>
+
+<CareerItem title="INTERVIEW PROCESS"><ol>
+          
+            Apply: Send your resume and a brief note highlighting your past
+            business development success.
+          
+          
+            Intro Call: Discuss your experience, goals, and alignment with
+            Obrive’s mission.
+          
+          
+            Roleplay Exercise: Participate in a mock pitch or client negotiation
+            scenario.
+          
+          
+            Team Interview: Meet with leadership and cross-functional teams to
+            assess fit and strategy fit.
+          
+          
+            Offer & Onboarding: Join our mission with support, training, and
+            opportunity to grow.
+          
+        </ol></CareerItem>
+</CareerSection>
+
+<CareerButton href="/apply.career.obrive.com/business-development-executive" />

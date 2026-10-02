@@ -1,0 +1,120 @@
+# src/content/career/ar-vr-mr-developer.mdx
+
+Canonical URL: https://obrive.com/support/ar-vr-mr-developer
+Source: src/content/career/ar-vr-mr-developer.mdx
+
+---
+
+<CareerHeader
+  title="AR/VR/MR Developer"
+  location="Bangalore, India (Hybrid or Remote)"
+  postedOn="August 20, 2025"
+  employmentType="Full-time"
+  salaryRange="Not Disclosed"
+/>
+
+<CareerSection title="About This Role">
+<CareerItem>As an AR/VR/MR Developer at Obrive Industries, you’ll build next-generation immersive solutions across Augmented Reality, Virtual Reality, and Mixed Reality. Your creations will power experiences like Obpark (AR Smart Car Navigation) and Obnest (XR Real Estate Platform), helping shape how businesses and consumers interact with spatial computing.</CareerItem>
+
+<CareerItem title="What you'll do">
+  
+    
+      Design and develop immersive applications using engines like Unity or
+      Unreal Engine.
+    
+    
+      Implement AR/VR/MR functionality across mobile, headset, and spatial
+      computing platforms.
+    
+    
+      Collaborate with UX/UI designers, 3D artists, and product strategists to
+      deliver seamless immersive experiences.
+    
+    
+      Optimize apps for performance, usability, and cross-platform
+      compatibility.
+    
+    
+      Integrate wearable sensors, spatial data, and environmental mapping for
+      enhanced realism.
+    
+    
+      Participate in agile workflows—sprint demos, UX critiques, and MR/VR
+      workshops—to evolve product features rapidly.
+    
+  
+</CareerItem>
+
+<CareerItem title="ABOUT YOU">
+  
+    
+      2-5 years of experience in AR/VR/MR development, with a solid grasp of
+      Unity, Unreal Engine, or similar platforms.
+    
+    
+      Proficiency in C#, C++, or a comparable language for immersive application
+      building.
+    
+    
+      Hands-on experience with AR SDKs (ARCore, ARKit, Vuforia) or VR headsets
+      (Meta Quest, HoloLens, etc.)
+    
+    
+      Familiarity with spatial computing concepts—scene understanding, SLAM,
+      occlusion, gesture tracking.
+    
+    
+      Passion for storytelling through immersive interfaces and sensitivity to
+      UX best practices.
+    
+    
+      Excellent communication, empathy, and a collaborative mindset for active
+      participation in cross-functional teams.
+    
+  
+</CareerItem>
+
+<CareerItem title="WHY JOIN OBRIVE?">
+  
+    
+      Innovate Fearlessly: Work on products at the cutting edge of immersive
+      technology and spatial computing
+    
+    
+      Remote-First, People-Focused: Flexible work environment plus creative hubs
+      for collaboration
+    
+    
+      Grow with Us: Engage in ongoing learning, peer mentorship, and innovation
+      labs
+    
+    
+      Make a Difference: Your work empowers clients across real estate, retail,
+      automotive, healthcare, and more
+    
+  
+</CareerItem>
+
+<CareerItem title="INTERVIEW PROCESS"><ol>
+          
+            Apply: Submit your resume and portfolio showcasing immersive
+            projects.
+          
+          
+            Screening: Video chat to explore your experience and projects.
+          
+          
+            Technical Exercise: Short take-home or paired coding challenge using
+            AR/VR tools.
+          
+          
+            Team Interview: Deep dive with peers and leadership—touching on
+            vision, workflow, and fit.
+          
+          
+            Offer: If it's a match, receive your offer and onboarding plan.
+          
+        </ol></CareerItem>
+</CareerSection>
+
+<CareerButton href="/apply.career.obrive.com/ar-vr-mr-developer" />

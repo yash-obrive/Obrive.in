@@ -1,0 +1,210 @@
+# src/content/resources/web-vr-vs-app-vr-enterprises.mdx
+
+Canonical URL: https://obrive.com/support/web-vr-vs-app-vr-enterprises
+Source: src/content/resources/web-vr-vs-app-vr-enterprises.mdx
+
+---
+
+<WhyItWorkedSection title="I Always Assumed VR Was All About Apps—Until Web VR Changed That">
+  <WhyItWorkedItem>
+    A few years ago, if someone told me VR could just run in a browser, I’d have
+    raised an eyebrow. I believed immersive realism required a full-fledged app,
+    powerful hardware, and rigorous development.
+    <br />
+    <br />
+    But then came Web VR (via WebXR), and the paradigm shifted. One project, one
+    moment, changed everything.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<WhyItWorkedSection title="The Moment That Shifted Everything">
+  <WhyItWorkedItem>
+    In early 2024, we tested two prototypes for a client in industrial training:
+    <br />
+    <br />
+    
+      
+        A <StyledText>Web VR demo</StyledText>, accessed through a browser—no
+        download, no installation.
+      
+      
+        A <StyledText>native VR app</StyledText>, built for headsets with
+        advanced spatial tracking.
+      
+    
+    <br />
+    The Web VR version delivered seamless accessibility: stakeholders joined
+    instantly on multiple devices. Meanwhile, the native app provided stunning
+    visuals and precise interactions. <br />
+    Both impressed—but for different reasons. That balance sparked a journey of
+    enterprise-grade decision-making{" "}
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<TheImpactTable
+  title="Web VR vs App VR: What Leaders Need to Know"
+  firstColumnBold={false}
+  columns={[
+    {
+      key: "feature",
+      header: "Feature / Factor",
+      width: "25%",
+    },
+    {
+      key: "webar",
+      header: "Web VR (WebXR)",
+      width: "35%",
+    },
+    {
+      key: "appar",
+      header: "App VR (Native)",
+      width: "30%",
+    },
+  ]}>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Accessibility</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Instant via browser—no installs
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      Requires download, setup, and installation
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Performance & Capabilities</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Good for moderate VR experiences
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      Superior visuals, tracking, SLAM, spatial mapping
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Development Simplicity</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Single codebase, fast updates
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      More complex—platform-specific builds & updates
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Maintenance & Updates</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Instant—refresh browser to deploy updates
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      Needs App Store updates and user compliance
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Platform Reach</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Broad device/browser support
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      Device-specific (iOS, Android, headsets)
+    </ImpactTableCell>
+  </ImpactTableRow>
+  <ImpactTableRow>
+    <ImpactTableCell header={"Feature / Factor"}>
+      <StyledText>Enterprise Use Cases</StyledText>
+    </ImpactTableCell>
+    <ImpactTableCell header={"Web VR (WebXR)"}>
+      Quick demos, presentations, lightweight training
+    </ImpactTableCell>
+    <ImpactTableCell header={"App VR (Native)"}>
+      Deep training, simulations, long-term immersive scenarios
+    </ImpactTableCell>
+  </ImpactTableRow>
+</TheImpactTable>
+
+<WhyItWorkedSection title="When to Choose Web VR—and When to Go Native">
+  <WhyItWorkedItem>
+    <StyledText>Web VR shines when:</StyledText>
+    <br />
+    
+       Speed-to-market is key—share via a link or QR, and you're live.
+       You need cross-platform reach without dev overhead.
+      
+        {" "}
+        You aim for light VR: product previews, walkthroughs, frequent updates.
+      
+    
+    <br />
+    <StyledText>But Native App VR wins when:</StyledText>
+    <br />
+    
+      
+        {" "}
+        You require realism—advanced tracking, SLAM, or high-fidelity
+        interactions.
+      
+      
+        {" "}
+        Use cases demand offline stability, complex environments, or rugged
+        hardware.
+      
+    
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<WhyItWorkedSection title="Going Beyond Buzz: Why Both Paths Matter">
+  <WhyItWorkedItem>
+    Web VR isn’t about replacing app-based VR—it’s about lowering the barrier to
+    entry. You can <StyledText>start immersive</StyledText> with Web VR, then
+    deepen engagement via a robust native VR build.
+    <br />
+    <br />
+    At Obrive, that’s our dual-track strategy: deploy instant Web VR in early
+    phases, then transition into tailored App VR for scalable enterprise
+    applications.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<WhyItWorkedSection title="What’s Next on the Horizon">
+  <WhyItWorkedItem>
+    
+      
+        As <StyledText>WebXR standards mature</StyledText>, more complex VR
+        features will become browser-ready.
+      
+      
+        Emerging <StyledText>5G and edge computing</StyledText> will boost
+        streaming fidelity for browser-based VR.
+      
+      
+        <StyledText>Hybrid frameworks</StyledText> (Unity, Babylon.js) are
+        blurring the lines—one build, multiple platformsen.
+      
+      
+        Collaboration-ready "VR-Ready" solutions support mobile, desktop, and
+        VR—maximizing reach
+      
+    
+  </WhyItWorkedItem>
+</WhyItWorkedSection>
+
+<WhyItWorkedSection title="Conclusion: Choose What Makes Sense—Not Just What’s Cool">
+  <WhyItWorkedItem>
+    Choosing between Web VR and App VR isn’t binary. It’s strategic.
+    <br />
+    
+      Web VR gives you agility, accessibility, and speed.
+      App VR delivers precision, depth, and immersive power.
+    
+    <br />
+    Wondering which makes sense for your enterprise use case? Let's architect
+    the immersive path that makes sense both now—and for what comes next.
+  </WhyItWorkedItem>
+</WhyItWorkedSection>

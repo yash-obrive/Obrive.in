@@ -1,0 +1,249 @@
+# src/content/legal/terms-of-product-agreement.mdx
+
+Canonical URL: https://obrive.com/support/terms-of-product-agreement
+Source: src/content/legal/terms-of-product-agreement.mdx
+
+---
+
+# Terms of Products Agreement
+
+The Obrive Industries Terms of Products Agreement outlines the rules
+for using our immersive platforms:
+<br />
+<br />
+
+            Obpark — AR/MR-based parking and navigation app.
+            
+              Obnest — MR/VR real estate navigation and visualization platform.
+            
+            
+              Obnavi — Spatial AR navigation system for indoor/outdoor
+              environments.
+            
+            
+              Obmove — Motion, gesture, and XR-based interactive solutions.
+            
+          
+
+### Key Highlights:
+
+<br />
+
+            
+              Usage Rights: Clients receive a license to use Obrive products as
+              outlined in contracts.
+            
+            
+              Restrictions: No resale, reverse-engineering, or unauthorized
+              distribution.
+            
+            
+              Data & Security: Clients remain responsible for uploaded data;
+              Obrive protects platform security.
+            
+            
+              Updates & Support: Obrive provides updates, bug fixes, and
+              technical support per subscription terms.
+            
+            
+              Termination: Access may be suspended if terms are violated or
+              agreements expire.
+            
+          
+<br />
+These product-specific terms ensure clarity, compliance, and smooth operation across
+industries using Obrive technologies.
+
+## Detailed Terms of Products Agreement
+
+This Terms of Products Agreement governs the use of Obrive Industries’
+immersive technology platforms and solutions, including Obpark,
+Obnest, Obnavi, and Obmove.
+
+### 1. Scope of Agreement
+
+This agreement applies specifically to each product under Obrive
+Industries. By using our platforms, you agree to comply with these
+product-specific terms alongside our Master Service Agreement.
+
+## Product Usage Terms
+
+### a. Obpark (AR/MR Parking Navigation App)
+
+            
+              Designed for parking management, navigation, and smart mobility.
+            
+            
+              Clients may deploy Obpark for internal operations, customer-facing
+              services, or enterprise integration.
+            
+            
+              Restricted from repurposing for unrelated industries (e.g.,
+              reselling as a separate app).
+            
+          
+
+### b. Obnest (MR/VR Real Estate Navigation Platform)
+
+  
+    
+      Enables immersive property walkthroughs, architectural visualization, and
+      client presentations.
+    
+    
+      Licensed for use by real estate developers, brokers, and property
+      managers.
+    
+    
+      Clients must ensure uploaded 3D assets, floor plans, and content are
+      lawfully owned/licensed.
+    
+  
+
+### c. Obnavi (Spatial AR Navigation System)
+
+  
+    
+      Provides indoor/outdoor AR navigation overlays for campuses, malls,
+      airports, and manufacturing plants.
+    
+    
+      Permitted for use as part of enterprise systems or customer services.
+    
+    
+      Prohibited from use in applications involving public safety without prior
+      Obrive approval.
+    
+  
+
+### d. Obmove (Motion/XR Interaction Platform)
+
+            
+              Offers gesture-based controls, XR training, and motion
+              simulations.
+            
+            
+              Licensed for training, education, and enterprise productivity use
+              cases.
+            
+            
+              Not permitted for military or defense-related use unless
+              explicitly contracted.
+            
+          
+
+## Licensing & Restrictions
+
+  
+    
+      Products are licensed, not sold.
+      Clients may not:
+      Reverse-engineer, disassemble, or clone Obrive platforms.
+      Resell or sublicense products without written consent.
+      
+        Use the software in ways that violate laws or intellectual property
+        rights.
+      
+    
+  
+
+## Data & Content Responsibility
+
+  
+    
+      
+        Clients retain ownership of content they upload (3D models, navigation
+        data, designs, etc.).
+      
+      
+        Obrive is not liable for unauthorized or unlawful content uploaded by
+        clients.
+      
+      
+        Obrive provides secure hosting, encryption, and backups but clients must
+        maintain compliance with applicable data regulations.
+      
+    
+  
+
+## Updates & Support
+
+  
+    
+      
+        Obrive will provide software updates, patches, and bug fixes during the
+        license period.
+      
+      
+        Product-specific support levels (response times, SLA commitments) are
+        defined in the Service Agreement or SOW.
+      
+      
+        Major product upgrades may require additional licensing or subscription
+        fees.
+      
+    
+  
+
+## Termination & Suspension
+
+  
+    
+      Obrive may suspend or terminate product access if:
+      Terms are violated.
+      Payments are overdue.
+      The client uses the product in prohibited industries.
+      
+        Upon termination, clients must discontinue use and remove Obrive
+        software from devices/servers.
+      
+    
+  
+
+## Liability & Warranty
+
+  
+    
+      
+        Obrive products are provided “as is” with performance standards defined
+        in specific contracts.
+      
+      
+        Obrive’s liability is limited to amounts paid in the prior 12 months for
+        the specific product.
+      
+      
+        Obrive is not responsible for indirect damages such as business losses,
+        data corruption, or third-party failures.
+      
+    
+  
+
+## Governing Law & Disputes
+
+  
+    
+      
+        This agreement is governed by the jurisdiction of Obrive’s headquarters.
+      
+      
+        Disputes will be resolved through arbitration or courts of law in the
+        governing jurisdiction.
+      
+    
+  
+
+## Contact Information
+
+  
+    For product-specific legal queries, contact:
+    <br />
+    <br />
+    
+      
+        Email:{" "}
+        
+          legal@obrive.com
+        
+      
+      Obrive Industries Pvt. Ltd. — Product Compliance Division

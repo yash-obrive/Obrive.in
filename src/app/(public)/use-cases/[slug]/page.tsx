@@ -34,40 +34,10 @@ export async function generateStaticParams() {
   return getUseCaseSlugs().map((slug: string) => ({ slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: UseCasePageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const useCaseData = getUseCaseData(slug);
+import { resolveUseCaseMetadata } from "@/lib/metadata-resolvers";
 
-  if (!useCaseData) {
-    return {
-      title: "Use Case Not Found",
-    };
-  }
-
-  return {
-    title: `${useCaseData.hero.title} | Obrive Industries`,
-    description: useCaseData.hero.description || `Explore ${useCaseData.hero.title} use cases by Obrive Industries.`,
-    alternates: getAlternates(slug),
-    robots: {
-      index: true,
-      follow: true,
-    },
-    openGraph: {
-      type: "website",
-      url: `https://obrive.com/use-cases/${slug}`,
-      title: `${useCaseData.hero.title} | Obrive Industries`,
-      description: useCaseData.hero.description || `Explore ${useCaseData.hero.title} use cases by Obrive Industries.`,
-      siteName: "Obrive Industries",
-      locale: "en_IN",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${useCaseData.hero.title} | Obrive Industries`,
-      description: useCaseData.hero.description || `Explore ${useCaseData.hero.title} use cases by Obrive Industries.`,
-    },
-  };
+export async function generateMetadata(props: any): Promise<Metadata> {
+  return resolveUseCaseMetadata((await props.params).slug);
 }
 
 export default async function UseCasePage({ params }: UseCasePageProps) {
