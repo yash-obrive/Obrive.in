@@ -1,10 +1,9 @@
 export interface MarketItem {
   flag: string;
   name: string;
-  region: "India" | "Americas" | "Middle East" | "Europe" | "APAC" | "Africa";
+  region: "Americas" | "Middle East" | "Europe" | "APAC" | "Africa";
   code: string;
   href: string;
-  cities: string;
 }
 
 export interface HubItem {
@@ -30,7 +29,6 @@ export const MARKETS_DATA: MarketItem[] = [
     region: "APAC",
     code: "in",
     href: "https://obrive.in",
-    cities: "Bengaluru · Mumbai · Ahmedabad",
   },
   ...(Object.keys(COUNTRIES) as CountryCode[]).map((code) => {
     const country = COUNTRIES[code];
@@ -40,7 +38,6 @@ export const MARKETS_DATA: MarketItem[] = [
       region: country.region,
       code: country.code,
       href: `/${country.code}`,
-      cities: country.offices.join(" · "),
     };
   }),
 ];

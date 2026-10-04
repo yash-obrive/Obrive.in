@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import type { ReactNode } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 interface AnimatedNavLabelProps {
   children: ReactNode;
@@ -22,15 +22,34 @@ export default function AnimatedNavLabel({
   gap = 10,
 }: AnimatedNavLabelProps) {
   const shiftAmount = iconSize + gap;
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const [isRTL, setIsRTL] = useState(false);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const dir = getComputedStyle(containerRef.current).direction;
+      setIsRTL(dir === "rtl");
+    }
+  }, []);
+
+  // In RTL: flip x direction so icon slides in from the right
+  const dir = isRTL ? -1 : 1;
+
+  const DefaultIcon = isRTL ? (
+    <ArrowLeft strokeWidth={3} size={iconSize} color={color} />
+  ) : (
+    <ArrowRight strokeWidth={3} size={iconSize} color={color} />
+  );
 
   return (
     <motion.span
+      ref={containerRef}
       className="relative inline-flex items-center"
       initial="rest"
       animate="rest"
       whileHover="hover"
     >
-      {/* left icon slides */}
+      {/* icon slides in from correct direction */}
       <motion.span
         className="absolute start-0 flex items-center justify-center"
         style={{
@@ -42,22 +61,25 @@ export default function AnimatedNavLabel({
           pointerEvents: "none",
         }}
         variants={{
-          rest: { x: -shiftAmount, opacity: 0 },
+          rest: { x: -shiftAmount * dir, opacity: 0 },
           hover: { x: 0, opacity: 1 },
         }}
         transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
         aria-hidden="true"
       >
-        {icon ?? <ArrowRight strokeWidth={3} size={iconSize} color={color} />}
+        {icon ?? DefaultIcon}
       </motion.span>
 
-      {/* text shifting when icon appears */}
+      {/* text shifts in correct direction when icon appears */}
       <motion.span
         className="relative"
         variants={{
           rest: { x: 0 },
           hover: {
-            x: shiftDirection === "left" ? -shiftAmount : shiftAmount + 4,
+            x:
+              shiftDirection === "left"
+                ? -shiftAmount * dir
+                : (shiftAmount + 4) * dir,
           },
         }}
         transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}

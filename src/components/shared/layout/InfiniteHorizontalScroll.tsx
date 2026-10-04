@@ -9,6 +9,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { useIsRTL } from "@/hooks/useIsRTL";
 
 interface InfiniteHorizontalScrollProps {
   children: React.ReactNode;
@@ -40,6 +41,7 @@ export const InfiniteHorizontalScroll =
       const [api, setApi] = useState<CarouselApi>();
       const [current, setCurrent] = useState(0);
       const [count, setCount] = useState(0);
+      const isRTL = useIsRTL();
 
       // Memoize plugin to prevent recreation on every render
       const plugin = useMemo(
@@ -68,8 +70,9 @@ export const InfiniteHorizontalScroll =
           skipSnaps: false,
           duration: Math.max(10, Math.min(100, 100 - speed)), // Convert speed to duration
           containScroll: "trimSnaps" as const,
+          ...(isRTL ? { direction: "rtl" as const } : {}),
         }),
-        [speed],
+        [speed, isRTL],
       );
 
       // Handle indicator click

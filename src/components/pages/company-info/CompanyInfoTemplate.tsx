@@ -5,7 +5,7 @@ import type { CompanyInfoMetadata } from "@/lib/mdx";
 interface CompanyInfoTemplateProps {
   metadata: CompanyInfoMetadata;
   children: ReactNode;
-  type: "legal" | "support" | "security";
+  type: "legal" | "support" | "security" | "docs";
 }
 
 export default function CompanyInfoTemplate({

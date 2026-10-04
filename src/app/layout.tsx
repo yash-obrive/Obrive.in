@@ -14,19 +14,19 @@ const michroma = Michroma({
 export const metadata: Metadata = {
   metadataBase: new URL("https://obrive.com"),
   title:
-    "Obrive | Global Leader in AR · VR · MR & 3D Design – Enterprise-Grade Immersive Solutions",
+    "Obrive | Top AR & VR Services Company in India & Global – Enterprise Immersive Solutions",
   description:
-    "Obrive Industries delivers cutting-edge AR, VR, MR and spatial computing solutions across industries. From immersive 3D visualisation to bespoke XR applications, we turn ideas into interactive realities.",
+    "Obrive Industries is a leading AR, VR, and MR company delivering enterprise immersive solutions globally and across India. From immersive 3D visualisation to bespoke XR applications, we turn ideas into interactive realities.",
   keywords:
-    "AR development global, VR development global, MR solutions enterprise, spatial computing studio, 3D design services international, immersive technology company, enterprise XR applications global, mixed reality development services, 3D visualization design studio, virtual showroom solutions global, digital twin services, immersive business solutions worldwide",
+    "Top AR services, best virtual reality companies, AR VR development India, augmented reality agency Bangalore, spatial computing solutions, enterprise immersive technology, AR development global, VR development global, MR solutions enterprise, spatial computing studio, 3D design services international, immersive technology company, enterprise XR applications global, mixed reality development services, 3D visualization design studio, virtual showroom solutions global, digital twin services, immersive business solutions worldwide",
 
   openGraph: {
     type: "website",
     url: "https://obrive.com",
     title:
-      "Obrive | AR · VR · MR & 3D Design – Enterprise-Grade Immersive Solutions",
+      "Obrive | Top AR & VR Services Company in India & Global – Enterprise Immersive Solutions",
     description:
-      "Join Obrive in leading the immersive revolution: global solutions in AR, VR, MR, spatial computing and 3D design for enterprises across training, retail, real-estate, manufacturing and more.",
+      "Join Obrive in leading the immersive revolution: top-tier solutions in AR, VR, MR, spatial computing and 3D design for enterprises across India and globally in training, retail, real-estate, manufacturing and more.",
     images: [
       {
         url: "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Faugmented_first.f8b128f2.webp&w=1200&q=75",
@@ -106,6 +106,7 @@ export default async function RootLayout({
                 addressCountry: "India",
                 postalCode: "560078",
               },
+              areaServed: ["IN", "Global"],
               sameAs: [
                 "https://www.youtube.com/@ObriveInc",
                 "https://www.linkedin.com/in/obrive-industries/",

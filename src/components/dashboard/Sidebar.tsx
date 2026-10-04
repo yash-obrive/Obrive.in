@@ -66,7 +66,7 @@ export default function Sidebar({
       ) : null}
 
       <div
-        className={`${mobileOpen ? "translate-x-0" : "-translate-x-full"} fixed inset-y-2 start-2 z-50 w-[min(18rem,calc(100vw-1rem))] transition-transform duration-300 md:hidden`}
+        className={`${mobileOpen ? "translate-x-0 rtl:translate-x-0" : "-translate-x-full rtl:translate-x-full"} fixed inset-y-2 start-2 z-50 w-[min(18rem,calc(100vw-1rem))] transition-transform duration-300 md:hidden`}
       >
         <div className="h-full rounded-lg bg-white border-e border-gray-200 shadow-sm">
           <div className="flex h-full flex-col">

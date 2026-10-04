@@ -28,18 +28,15 @@ export type CountryCode =
   | "id"
   | "th"
   | "za"
-  | "in";
+  | "ru";
 
 export interface CountryConfig {
   code: CountryCode;
   name: string;
   flag: string;
-  region: "India" | "Americas" | "Middle East" | "Europe" | "APAC" | "Africa";
+  region: "Americas" | "Middle East" | "Europe" | "APAC" | "Africa";
   currency: string;
   currencySymbol: string;
-  phone: string;
-  contactEmail: string;
-  offices: string[];
   calendlyUrl?: string;
   hreflang: string;
   defaultLanguage: LanguageCode;
@@ -56,16 +53,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Americas",
     currency: "USD",
     currencySymbol: "$",
-    phone: "+1 (888) 477-4300",
-    contactEmail: "us@obrive.com",
-    offices: [
-      "New York",
-      "San Francisco",
-      "Chicago",
-      "Seattle",
-      "Austin",
-      "Wilmington",
-    ],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=us",
     hreflang: "en-US",
@@ -80,9 +67,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Americas",
     currency: "CAD",
     currencySymbol: "C$",
-    phone: "+1 (888) 477-4300",
-    contactEmail: "ca@obrive.com",
-    offices: ["Toronto", "Vancouver", "Montreal", "Calgary", "Ottawa"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ca",
     hreflang: "en-CA",
@@ -97,9 +81,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Americas",
     currency: "MXN",
     currencySymbol: "$",
-    phone: "+52 55 4160 4300",
-    contactEmail: "mx@obrive.com",
-    offices: ["Mexico City", "Monterrey", "Guadalajara"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=mx",
     hreflang: "es-MX",
@@ -114,9 +95,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Americas",
     currency: "BRL",
     currencySymbol: "R$",
-    phone: "+55 11 3197 4300",
-    contactEmail: "br@obrive.com",
-    offices: ["São Paulo", "Rio de Janeiro", "Brasília"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=br",
     hreflang: "pt-BR",
@@ -133,9 +111,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Middle East",
     currency: "AED",
     currencySymbol: "AED",
-    phone: "+971 4 888 4300",
-    contactEmail: "uae@obrive.com",
-    offices: ["Dubai Internet City", "Abu Dhabi", "Sharjah"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=uae",
     hreflang: "en-AE",
@@ -150,9 +125,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Middle East",
     currency: "SAR",
     currencySymbol: "SAR",
-    phone: "+966 11 888 4300",
-    contactEmail: "ksa@obrive.com",
-    offices: ["Riyadh", "Jeddah", "Dammam", "NEOM"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=sa",
     hreflang: "ar-SA",
@@ -167,9 +139,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Middle East",
     currency: "QAR",
     currencySymbol: "QAR",
-    phone: "+974 4488 4300",
-    contactEmail: "qatar@obrive.com",
-    offices: ["Doha"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=qa",
     hreflang: "ar-QA",
@@ -184,9 +153,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Middle East",
     currency: "BHD",
     currencySymbol: "BD",
-    phone: "+973 1788 4300",
-    contactEmail: "bahrain@obrive.com",
-    offices: ["Manama"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=bh",
     hreflang: "ar-BH",
@@ -203,9 +169,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Europe",
     currency: "GBP",
     currencySymbol: "£",
-    phone: "+44 20 8884 4300",
-    contactEmail: "uk@obrive.com",
-    offices: ["London", "Manchester", "Birmingham", "Edinburgh", "Bristol"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=uk",
     hreflang: "en-GB",
@@ -220,9 +183,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Europe",
     currency: "EUR",
     currencySymbol: "€",
-    phone: "+49 30 8884 4300",
-    contactEmail: "eu@obrive.com",
-    offices: ["Berlin", "Munich", "Frankfurt", "Hamburg", "Stuttgart"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=de",
     hreflang: "de-DE",
@@ -237,9 +197,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Europe",
     currency: "EUR",
     currencySymbol: "€",
-    phone: "+33 1 88 84 43 00",
-    contactEmail: "eu@obrive.com",
-    offices: ["Paris", "Lyon", "Toulouse", "Marseille"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=fr",
     hreflang: "fr-FR",
@@ -254,9 +211,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Europe",
     currency: "EUR",
     currencySymbol: "€",
-    phone: "+31 20 888 4300",
-    contactEmail: "eu@obrive.com",
-    offices: ["Amsterdam", "Rotterdam", "Eindhoven"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=nl",
     hreflang: "nl-NL",
@@ -271,9 +225,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Europe",
     currency: "CHF",
     currencySymbol: "CHF",
-    phone: "+41 22 888 4300",
-    contactEmail: "ch@obrive.com",
-    offices: ["Zurich", "Geneva", "Basel"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ch",
     hreflang: "de-CH",
@@ -288,9 +239,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Europe",
     currency: "SEK",
     currencySymbol: "kr",
-    phone: "+46 8 888 4300",
-    contactEmail: "eu@obrive.com",
-    offices: ["Stockholm", "Gothenburg", "Malmö"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=se",
     hreflang: "sv-SE",
@@ -305,9 +253,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Europe",
     currency: "EUR",
     currencySymbol: "€",
-    phone: "+34 91 888 4300",
-    contactEmail: "es@obrive.com",
-    offices: ["Madrid", "Barcelona", "Valencia"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=es",
     hreflang: "es-ES",
@@ -322,14 +267,25 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Europe",
     currency: "EUR",
     currencySymbol: "€",
-    phone: "+39 02 8884 4300",
-    contactEmail: "it@obrive.com",
-    offices: ["Milan", "Rome", "Turin"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=it",
     hreflang: "it-IT",
     defaultLanguage: "it",
     supportedLanguages: ["it", "en"],
+    isProductionReady: true,
+  },
+  ru: {
+    code: "ru",
+    name: "Russia",
+    flag: "🇷🇺",
+    region: "Europe",
+    currency: "RUB",
+    currencySymbol: "₽",
+    calendlyUrl:
+      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=ru",
+    hreflang: "ru-RU",
+    defaultLanguage: "ru",
+    supportedLanguages: ["ru", "en"],
     isProductionReady: true,
   },
 
@@ -341,9 +297,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "APAC",
     currency: "CNY",
     currencySymbol: "¥",
-    phone: "+86 10 8884 4300",
-    contactEmail: "apac@obrive.com",
-    offices: ["Beijing", "Shanghai", "Shenzhen"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=cn",
     hreflang: "zh-CN",
@@ -358,9 +311,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "APAC",
     currency: "SGD",
     currencySymbol: "S$",
-    phone: "+65 6888 4300",
-    contactEmail: "apac@obrive.com",
-    offices: ["Singapore"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=sg",
     hreflang: "en-SG",
@@ -375,9 +325,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "APAC",
     currency: "AUD",
     currencySymbol: "A$",
-    phone: "+61 2 8884 4300",
-    contactEmail: "apac@obrive.com",
-    offices: ["Sydney", "Melbourne", "Brisbane", "Perth"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=au",
     hreflang: "en-AU",
@@ -392,9 +339,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "APAC",
     currency: "NZD",
     currencySymbol: "NZ$",
-    phone: "+64 9 888 4300",
-    contactEmail: "apac@obrive.com",
-    offices: ["Auckland", "Wellington"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=nz",
     hreflang: "en-NZ",
@@ -409,9 +353,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "APAC",
     currency: "JPY",
     currencySymbol: "¥",
-    phone: "+81 3 8884 4300",
-    contactEmail: "apac@obrive.com",
-    offices: ["Tokyo", "Osaka", "Nagoya"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=jp",
     hreflang: "ja-JP",
@@ -426,9 +367,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "APAC",
     currency: "KRW",
     currencySymbol: "₩",
-    phone: "+82 2 8884 4300",
-    contactEmail: "apac@obrive.com",
-    offices: ["Seoul", "Busan"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=kr",
     hreflang: "ko-KR",
@@ -443,9 +381,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "APAC",
     currency: "MYR",
     currencySymbol: "RM",
-    phone: "+60 3 8884 4300",
-    contactEmail: "apac@obrive.com",
-    offices: ["Kuala Lumpur", "Penang"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=my",
     hreflang: "en-MY",
@@ -460,9 +395,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "APAC",
     currency: "IDR",
     currencySymbol: "Rp",
-    phone: "+62 21 8884 4300",
-    contactEmail: "apac@obrive.com",
-    offices: ["Jakarta", "Bandung", "Surabaya"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=id",
     hreflang: "id-ID",
@@ -477,9 +409,6 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "APAC",
     currency: "THB",
     currencySymbol: "฿",
-    phone: "+66 2 888 4300",
-    contactEmail: "apac@obrive.com",
-    offices: ["Bangkok", "Phuket"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=th",
     hreflang: "th-TH",
@@ -496,31 +425,9 @@ export const COUNTRIES: Record<CountryCode, CountryConfig> = {
     region: "Africa",
     currency: "ZAR",
     currencySymbol: "R",
-    phone: "+27 11 888 4300",
-    contactEmail: "za@obrive.com",
-    offices: ["Johannesburg", "Cape Town", "Durban"],
     calendlyUrl:
       "https://calendly.com/obrive-inc/talk-to-ob-experts?country=za",
     hreflang: "en-ZA",
-    defaultLanguage: "en",
-    supportedLanguages: ["en"],
-    isProductionReady: true,
-  },
-
-  // --- INDIA ---
-  in: {
-    code: "in",
-    name: "India",
-    flag: "🇮🇳",
-    region: "India",
-    currency: "INR",
-    currencySymbol: "₹",
-    phone: "+91 22 6280 0000",
-    contactEmail: "in@obrive.com",
-    offices: ["Mumbai, Maharashtra, India", "Ahmedabad, Gujarat, India"],
-    calendlyUrl:
-      "https://calendly.com/obrive-inc/talk-to-ob-experts?country=in",
-    hreflang: "en-IN",
     defaultLanguage: "en",
     supportedLanguages: ["en"],
     isProductionReady: true,

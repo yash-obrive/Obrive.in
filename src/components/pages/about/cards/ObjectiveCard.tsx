@@ -20,7 +20,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
         ref={ref}
         className={`flex gap-10 transition-transform duration-500 ease-in-out ${className}`}
       >
-        <div className="w-[1238px] border bg-none border-zinc-800 rounded-2xl flex overflow-hidden">
+        <div className="w-full max-w-[1238px] border bg-none border-zinc-800 rounded-2xl flex flex-col md:flex-row overflow-hidden">
           <div className="p-8 flex flex-col gap-4 w-3xl">
             <Image
               src={ICONS.TARGET_ICON}
@@ -58,7 +58,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
             />
           </div>
         </div>
-        <div className="w-[1238px] border bg-none border-zinc-800 rounded-2xl flex overflow-hidden">
+        <div className="w-full max-w-[1238px] border bg-none border-zinc-800 rounded-2xl flex flex-col md:flex-row overflow-hidden">
           <div className="p-8 flex flex-col gap-4 w-3xl">
             <Image
               src={ICONS.TARGET_ICON}
@@ -96,7 +96,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
             />
           </div>
         </div>
-        <div className="w-[1238px] border bg-none border-zinc-800 rounded-2xl flex overflow-hidden">
+        <div className="w-full max-w-[1238px] border bg-none border-zinc-800 rounded-2xl flex flex-col md:flex-row overflow-hidden">
           <div className="p-8 flex flex-col gap-4 w-3xl">
             <Image
               src={ICONS.TARGET_ICON}
@@ -134,7 +134,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
             />
           </div>
         </div>
-        <div className="w-[1238px] border bg-none border-zinc-800 rounded-2xl flex overflow-hidden">
+        <div className="w-full max-w-[1238px] border bg-none border-zinc-800 rounded-2xl flex flex-col md:flex-row overflow-hidden">
           <div className="p-8 flex flex-col gap-4 w-3xl">
             <Image
               src={ICONS.TARGET_ICON}
@@ -172,7 +172,7 @@ const ObjectiveCard = forwardRef<HTMLDivElement, ObjectiveCardProps>(
             />
           </div>
         </div>
-        <div className="w-[1238px] border bg-none border-zinc-800 rounded-2xl flex overflow-hidden">
+        <div className="w-full max-w-[1238px] border bg-none border-zinc-800 rounded-2xl flex flex-col md:flex-row overflow-hidden">
           <div className="p-8 flex flex-col gap-4 w-3xl">
             <Image
               src={ICONS.TARGET_ICON}

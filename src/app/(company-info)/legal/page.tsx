@@ -32,8 +32,13 @@ export const metadata: Metadata = {
   },
 };
 
+import { headers } from "next/headers";
+import { type LanguageCode } from "@/config/languages";
+
 export default async function LegalPage() {
-  const legalDoc = await getCompanyInfoBySlug("index", "legal");
+  const headerList = await headers();
+  const language = (headerList.get("x-obrive-language") as LanguageCode) || "en";
+  const legalDoc = await getCompanyInfoBySlug("index", "legal", language);
 
   if (!legalDoc) {
     notFound();

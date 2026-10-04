@@ -7,9 +7,7 @@ import type { LanguageCode } from "@/config/languages";
 import FONTS from "@/assets/fonts";
 import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
 import BlogCard from "@/components/pages/home/card/BlogCard";
-import GoodByeCard from "@/components/pages/home/card/GoodByeCard";
 import UsecaseCard from "@/components/pages/home/card/UsecaseCard";
-import { HomepageRiveAnimation } from "@/components/pages/home/HomepageRiveAnimation";
 import ObriveVideo from "@/components/pages/home/Videos/ObriveVideo";
 import AnimatedButton from "@/components/shared/buttons/AnimatedButton";
 import SmoothScrollLink from "@/components/shared/buttons/SmoothScrollLink";
@@ -27,18 +25,26 @@ import { HOME_CARD, HOME_CARD_BLOG } from "@/constants/pages/home/home-card";
 import Translate from "@/components/shared/Translate";
 
 // Dynamic imports for performance optimization
-// const HomepageRiveAnimation = dynamic(
-//   () =>
-//     import("@/components/pages/home/HomepageRiveAnimation").then(
-//       (mod) => mod.HomepageRiveAnimation
-//     ),
-//   {
-//     // ssr: false,
-//     loading: () => (
-//       <div className="h-[400px] animate-pulse bg-gray-200 rounded-lg" />
-//     ),
-//   }
-// );
+const HomepageRiveAnimation = dynamic(
+  () =>
+    import("@/components/pages/home/HomepageRiveAnimation").then(
+      (mod) => mod.HomepageRiveAnimation
+    ),
+  {
+    loading: () => (
+      <div className="h-[340px] w-full animate-pulse bg-primary/5 rounded-lg" />
+    ),
+  }
+);
+
+const GoodByeCard = dynamic(
+  () => import("@/components/pages/home/card/GoodByeCard"),
+  {
+    loading: () => (
+      <div className="h-[400px] w-full animate-pulse bg-primary/5 rounded-lg" />
+    ),
+  }
+);
 
 const VideoCardObrive = dynamic(
   () => import("@/components/shared/cards/VideoCardObrive"),
@@ -76,18 +82,22 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL("https://obrive.com"),
 
-    title: t("AR, VR, MR & Spatial Computing Solutions | Obrive"),
+    title: t("Top AR & VR Services Company in India & Global | Obrive"),
 
     description: t(
-      "Leading immersive technology company in Bangalore delivering AR, VR, MR, 3D visualization and spatial computing solutions for enterprise digital transformation."
+      "Obrive is a top immersive technology company delivering AR, VR, MR, 3D visualization and spatial computing solutions for enterprises across India and globally."
     ),
 
     keywords: [
+      "Top AR services",
+      "Best virtual reality companies",
+      "AR VR development India",
+      "augmented reality agency Bangalore",
       "AR development global",
       "VR development enterprise",
       "MR solutions India",
       "spatial computing studio",
-      "3D visualization Bangalore",
+      "3D visualization",
       "augmented reality services",
       "virtual reality applications",
       "mixed reality enterprise solutions",
@@ -162,6 +172,7 @@ export default function Home() {
                 <h1
                   className={`${FONTS.microgrammaBold.className} text-4xl sm:text-5xl md:text-5xl lg:text-6xl text-secondary`}
                 >
+                  <span className="sr-only">Top AR & VR Services Company in India & Global </span>
                   <Translate text="Owning the Future" />
                 </h1>
               </FadeInOnLoad>
@@ -206,7 +217,7 @@ export default function Home() {
           <FullWidthSection backgroundColor="accent" className="py-6">
             <FadeInOnView>
               <div className="flex flex-col sm:flex-row pb-8 border-b-2 border-primary/40 sm:items-center max-sm:items-start justify-between w-full gap-4">
-                <Link href="/resources">
+                <Link href="/resources" aria-label="Read latest news and updates on AR and VR technology">
                   <Button
                     className="uppercase bg-accent cursor-pointer rounded-lg text-xs"
                     variant={"outline"}
@@ -240,7 +251,7 @@ export default function Home() {
                     >
                       <Translate text="THE WORLD IS BECOMING SPATIAL." /> <span className="text-[30px]"><Translate text="Screens are becoming environments. Products are becoming experiences. Buildings are becoming intelligent. Cities are becoming interactive. And businesses are moving beyond the flat digital world." /></span>
                     </h2>
-                    <Link href="/about">
+                    <Link href="/about" aria-label="Learn more about Obrive's enterprise AR and VR services">
                       <Button
                         className="uppercase text-xs cursor-pointer"
                         variant={"outline"}

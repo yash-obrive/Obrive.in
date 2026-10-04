@@ -1,14 +1,14 @@
 {
   "schemaVersion": "6.1",
-  "generatedAt": "2026-10-02T06:56:37.559Z",
+  "generatedAt": "2026-10-02T07:28:36.811Z",
   "entityClassificationReport": {
-    "BUSINESS_PUBLIC": 1094,
+    "BUSINESS_PUBLIC": 1106,
     "DOCUMENT_PUBLIC": 48,
-    "METADATA_ONLY": 24,
+    "METADATA_ONLY": 25,
     "PROVENANCE_ONLY": 1,
     "AMBIGUOUS": 1,
     "LOCALIZED_DOCUMENT": 672,
-    "EXCLUDED_FROM_OBRIVE_COM": 14
+    "EXCLUDED_FROM_OBRIVE_COM": 1
   },
   "entities": [
     {
@@ -4150,6 +4150,110 @@
       "relatedEntities": []
     },
     {
+      "id": "industry:real-estate",
+      "type": "industry",
+      "canonicalUrl": "https://obrive.com/industries/real-estate",
+      "name": "Real Estate Industry Solutions",
+      "description": "Transform property exploration with immersive MR/VR experiences.",
+      "runtimeMetadata": {
+        "title": "Real Estate Industry Solutions | Obrive Industries",
+        "description": "Transform property exploration with immersive MR/VR experiences."
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#industry-real-estate",
+      "relatedEntities": []
+    },
+    {
+      "id": "industry:automotive",
+      "type": "industry",
+      "canonicalUrl": "https://obrive.com/industries/automotive",
+      "name": "Automotive Industry Solutions",
+      "description": "Redefine vehicle showrooms and discovery with immersive technology.",
+      "runtimeMetadata": {
+        "title": "Automotive Industry Solutions | Obrive Industries",
+        "description": "Redefine vehicle showrooms and discovery with immersive technology."
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#industry-automotive",
+      "relatedEntities": []
+    },
+    {
+      "id": "industry:retail",
+      "type": "industry",
+      "canonicalUrl": "https://obrive.com/industries/retail",
+      "name": "Retail Solutions",
+      "description": "Spatial Computing for Immersive Shopping Experiences",
+      "runtimeMetadata": {
+        "title": "Retail Solutions | Obrive Industries",
+        "description": "Spatial Computing for Immersive Shopping Experiences"
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#industry-retail",
+      "relatedEntities": []
+    },
+    {
+      "id": "industry:healthcare",
+      "type": "industry",
+      "canonicalUrl": "https://obrive.com/industries/healthcare",
+      "name": "Healthcare Solutions",
+      "description": "Spatial Computing for Better Care, Training and Outcomes",
+      "runtimeMetadata": {
+        "title": "Healthcare Solutions | Obrive Industries",
+        "description": "Spatial Computing for Better Care, Training and Outcomes"
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#industry-healthcare",
+      "relatedEntities": []
+    },
+    {
+      "id": "industry:manufacturing",
+      "type": "industry",
+      "canonicalUrl": "https://obrive.com/industries/manufacturing",
+      "name": "Manufacturing Solutions",
+      "description": "Spatial Computing for Smarter, More Efficient Operations",
+      "runtimeMetadata": {
+        "title": "Manufacturing Solutions | Obrive Industries",
+        "description": "Spatial Computing for Smarter, More Efficient Operations"
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#industry-manufacturing",
+      "relatedEntities": []
+    },
+    {
+      "id": "industry:architecture-engineering",
+      "type": "industry",
+      "canonicalUrl": "https://obrive.com/industries/architecture-engineering",
+      "name": "Architecture & Engineering Solutions",
+      "description": "Spatial Computing for Design, Collaboration and Construction",
+      "runtimeMetadata": {
+        "title": "Architecture & Engineering Solutions | Obrive Industries",
+        "description": "Spatial Computing for Design, Collaboration and Construction"
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#industry-architecture-engineering",
+      "relatedEntities": []
+    },
+    {
+      "id": "industry:education",
+      "type": "industry",
+      "canonicalUrl": "https://obrive.com/industries/education",
+      "name": "Education Solutions",
+      "description": "Spatial Computing for Immersive Learning Experiences",
+      "runtimeMetadata": {
+        "title": "Education Solutions | Obrive Industries",
+        "description": "Spatial Computing for Immersive Learning Experiences"
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#industry-education",
+      "relatedEntities": []
+    },
+    {
+      "id": "industry:enterprise",
+      "type": "industry",
+      "canonicalUrl": "https://obrive.com/industries/enterprise",
+      "name": "Enterprise Solutions",
+      "description": "Spatial Computing for Smarter Workplaces and Business Growth",
+      "runtimeMetadata": {
+        "title": "Enterprise Solutions | Obrive Industries",
+        "description": "Spatial Computing for Smarter Workplaces and Business Growth"
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#industry-enterprise",
+      "relatedEntities": []
+    },
+    {
       "id": "ar-sector-f09944d4",
       "type": "industry",
       "canonicalUrl": "",
@@ -4535,6 +4639,19 @@
         "description": "Interactive, 3D retail spaces allowing customers to explore products remotely."
       },
       "contentRef": "https://obrive.com/llms-full.txt#use-case-virtual-showrooms",
+      "relatedEntities": []
+    },
+    {
+      "id": "use_case:indoor-navigation",
+      "type": "use_case",
+      "canonicalUrl": "https://obrive.com/use-cases/indoor-navigation",
+      "name": "Indoor Navigation",
+      "description": "AR-powered wayfinding solutions for large complex indoor environments.",
+      "runtimeMetadata": {
+        "title": "Indoor Navigation | Obrive Industries",
+        "description": "AR-powered wayfinding solutions for large complex indoor environments."
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#use-case-indoor-navigation",
       "relatedEntities": []
     },
     {
@@ -18048,6 +18165,19 @@
       "relatedEntities": []
     },
     {
+      "id": "intelligent-customer-assistant",
+      "type": "case_study",
+      "canonicalUrl": "https://obrive.com/case-studies/intelligent-customer-assistant",
+      "name": "Combining AI Guidance With Context-Rich Digital Experiences",
+      "description": null,
+      "runtimeMetadata": {
+        "title": "Combining AI Guidance With Context-Rich Digital Experiences | Obrive Case Study",
+        "description": "Through the implementation of our AI + Immersive Technology, Meridian Automotive was able to completely transform their digital experience, seeing a 2.5x Growth in user adoption."
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#intelligent-customer-assistant",
+      "relatedEntities": []
+    },
+    {
       "id": "immersive-learning-campus",
       "type": "case_study",
       "canonicalUrl": "https://obrive.com/case-studies/immersive-learning-campus",
@@ -18058,6 +18188,19 @@
         "description": "Through the implementation of our Extended Reality, Titan E-commerce was able to completely transform their digital experience, seeing a 3x ROI in user adoption."
       },
       "contentRef": "https://obrive.com/llms-full.txt#immersive-learning-campus",
+      "relatedEntities": []
+    },
+    {
+      "id": "industrial-ar-assist",
+      "type": "case_study",
+      "canonicalUrl": "https://obrive.com/case-studies/industrial-ar-assist",
+      "name": "Putting Critical Instructions Where the Work Happens",
+      "description": null,
+      "runtimeMetadata": {
+        "title": "Putting Critical Instructions Where the Work Happens | Obrive Case Study",
+        "description": "Through the implementation of our Augmented Reality Development, Momentum Sports & Entertainment was able to completely transform their digital experience, seeing a +45% Increase in user adoption."
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#industrial-ar-assist",
       "relatedEntities": []
     },
     {
@@ -19127,6 +19270,19 @@
       "relatedEntities": []
     },
     {
+      "id": "indoor-gps-vs-ar-navigation-what-works-best-inside-large-buildings",
+      "type": "blog",
+      "canonicalUrl": "https://obrive.com/blog/indoor-gps-vs-ar-navigation-what-works-best-inside-large-buildings",
+      "name": "Indoor GPS vs AR Navigation: What Works Best Inside Large Buildings?",
+      "description": null,
+      "runtimeMetadata": {
+        "title": "Indoor GPS vs AR Navigation: What Works Best Inside Large Buildings? | Obrive",
+        "description": "Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Large stores can have thousands of products while customers still struggle to find the right aisle, product, promotion or related item. That gap is exactly where OBNAVI, an AR/MR in-store navigation and discovery concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions."
+      },
+      "contentRef": "https://obrive.com/llms-full.txt#indoor-gps-vs-ar-navigation-what-works-best-inside-large-buildings",
+      "relatedEntities": []
+    },
+    {
       "id": "the-future-of-shopping-when-your-store-becomes-an-intelligent-interface",
       "type": "blog",
       "canonicalUrl": "https://obrive.com/blog/the-future-of-shopping-when-your-store-becomes-an-intelligent-interface",
@@ -19846,7 +20002,7 @@
       "name": "src/content/support/help-center.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/help-center.txt",
+      "contentRef": "https://obrive.com/ai/documents/support-help-center.txt",
       "relatedEntities": []
     },
     {
@@ -19856,7 +20012,7 @@
       "name": "src/content/support/change-log.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/change-log.txt",
+      "contentRef": "https://obrive.com/ai/documents/support-change-log.txt",
       "relatedEntities": []
     },
     {
@@ -19866,7 +20022,7 @@
       "name": "src/content/security/soc-2-type-ii-compliance.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/soc-2-type-ii-compliance.txt",
+      "contentRef": "https://obrive.com/ai/documents/security-soc-2-type-ii-compliance.txt",
       "relatedEntities": []
     },
     {
@@ -19876,7 +20032,7 @@
       "name": "src/content/security/index.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/index.txt",
+      "contentRef": "https://obrive.com/ai/documents/security-index.txt",
       "relatedEntities": []
     },
     {
@@ -19886,7 +20042,7 @@
       "name": "src/content/resources/webar-vs-app-ar-business-solution.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/webar-vs-app-ar-business-solution.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-webar-vs-app-ar-business-solution.txt",
       "relatedEntities": []
     },
     {
@@ -19896,7 +20052,7 @@
       "name": "src/content/resources/web-vr-vs-app-vr-enterprises.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/web-vr-vs-app-vr-enterprises.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-web-vr-vs-app-vr-enterprises.txt",
       "relatedEntities": []
     },
     {
@@ -19906,7 +20062,7 @@
       "name": "src/content/resources/vr-training-workforce-development.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/vr-training-workforce-development.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-vr-training-workforce-development.txt",
       "relatedEntities": []
     },
     {
@@ -19916,7 +20072,7 @@
       "name": "src/content/resources/vr-meetings-events-conferences.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/vr-meetings-events-conferences.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-vr-meetings-events-conferences.txt",
       "relatedEntities": []
     },
     {
@@ -19926,7 +20082,7 @@
       "name": "src/content/resources/spatial-flow.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/spatial-flow.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-spatial-flow.txt",
       "relatedEntities": []
     },
     {
@@ -19936,7 +20092,7 @@
       "name": "src/content/resources/spatial-computing-business-operations-2025.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/spatial-computing-business-operations-2025.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-spatial-computing-business-operations-2025.txt",
       "relatedEntities": []
     },
     {
@@ -19946,7 +20102,7 @@
       "name": "src/content/resources/mixed-reality-use-cases-manufacturing-healthcare-real-estate.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/mixed-reality-use-cases-manufacturing-healthcare-real-estate.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-mixed-reality-use-cases-manufacturing-healthcare-real-estate.txt",
       "relatedEntities": []
     },
     {
@@ -19956,7 +20112,7 @@
       "name": "src/content/resources/mixed-reality-enterprise-productivity-2025.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/mixed-reality-enterprise-productivity-2025.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-mixed-reality-enterprise-productivity-2025.txt",
       "relatedEntities": []
     },
     {
@@ -19966,7 +20122,7 @@
       "name": "src/content/resources/mixed-reality-digital-transformation.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/mixed-reality-digital-transformation.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-mixed-reality-digital-transformation.txt",
       "relatedEntities": []
     },
     {
@@ -19976,7 +20132,7 @@
       "name": "src/content/resources/industries-benefit-ar-development.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/industries-benefit-ar-development.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-industries-benefit-ar-development.txt",
       "relatedEntities": []
     },
     {
@@ -19986,7 +20142,7 @@
       "name": "src/content/resources/future-augmented-reality-business-trends-2025.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/future-augmented-reality-business-trends-2025.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-future-augmented-reality-business-trends-2025.txt",
       "relatedEntities": []
     },
     {
@@ -19996,7 +20152,7 @@
       "name": "src/content/resources/client-immersive-onboarding.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/client-immersive-onboarding.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-client-immersive-onboarding.txt",
       "relatedEntities": []
     },
     {
@@ -20006,7 +20162,7 @@
       "name": "src/content/resources/bringing-onboarding-to-life.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/bringing-onboarding-to-life.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-bringing-onboarding-to-life.txt",
       "relatedEntities": []
     },
     {
@@ -20016,7 +20172,7 @@
       "name": "src/content/resources/ar-vr-mr-differences-business-use-cases-2025.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/ar-vr-mr-differences-business-use-cases-2025.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-ar-vr-mr-differences-business-use-cases-2025.txt",
       "relatedEntities": []
     },
     {
@@ -20026,7 +20182,7 @@
       "name": "src/content/resources/ar-vr-mr-differences-applications.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/ar-vr-mr-differences-applications.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-ar-vr-mr-differences-applications.txt",
       "relatedEntities": []
     },
     {
@@ -20036,7 +20192,7 @@
       "name": "src/content/resources/ar-printing-interactive-experiences.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/ar-printing-interactive-experiences.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-ar-printing-interactive-experiences.txt",
       "relatedEntities": []
     },
     {
@@ -20046,7 +20202,7 @@
       "name": "src/content/resources/ar-presentations-business-pitches.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/ar-presentations-business-pitches.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-ar-presentations-business-pitches.txt",
       "relatedEntities": []
     },
     {
@@ -20056,7 +20212,7 @@
       "name": "src/content/resources/ar-powered-car-parking-systems-urban-mobility-challenges.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/ar-powered-car-parking-systems-urban-mobility-challenges.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-ar-powered-car-parking-systems-urban-mobility-challenges.txt",
       "relatedEntities": []
     },
     {
@@ -20066,7 +20222,7 @@
       "name": "src/content/resources/ar-packaging-immersive-customer-experiences.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/ar-packaging-immersive-customer-experiences.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-ar-packaging-immersive-customer-experiences.txt",
       "relatedEntities": []
     },
     {
@@ -20076,7 +20232,7 @@
       "name": "src/content/resources/ar-onboarding.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/ar-onboarding.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-ar-onboarding.txt",
       "relatedEntities": []
     },
     {
@@ -20086,7 +20242,7 @@
       "name": "src/content/resources/3d-texturing-visualization-customer-engagement.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/3d-texturing-visualization-customer-engagement.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-3d-texturing-visualization-customer-engagement.txt",
       "relatedEntities": []
     },
     {
@@ -20096,7 +20252,7 @@
       "name": "src/content/resources/3d-rendering-real-estate.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/3d-rendering-real-estate.txt",
+      "contentRef": "https://obrive.com/ai/documents/resources-3d-rendering-real-estate.txt",
       "relatedEntities": []
     },
     {
@@ -20106,7 +20262,7 @@
       "name": "src/content/legal/terms-of-service.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/terms-of-service.txt",
+      "contentRef": "https://obrive.com/ai/documents/legal-terms-of-service.txt",
       "relatedEntities": []
     },
     {
@@ -20116,7 +20272,7 @@
       "name": "src/content/legal/terms-of-product-agreement.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/terms-of-product-agreement.txt",
+      "contentRef": "https://obrive.com/ai/documents/legal-terms-of-product-agreement.txt",
       "relatedEntities": []
     },
     {
@@ -20126,7 +20282,7 @@
       "name": "src/content/legal/service-policy.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/service-policy.txt",
+      "contentRef": "https://obrive.com/ai/documents/legal-service-policy.txt",
       "relatedEntities": []
     },
     {
@@ -20136,7 +20292,7 @@
       "name": "src/content/legal/refund-policy.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/refund-policy.txt",
+      "contentRef": "https://obrive.com/ai/documents/legal-refund-policy.txt",
       "relatedEntities": []
     },
     {
@@ -20146,7 +20302,7 @@
       "name": "src/content/legal/privacy-policy.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/privacy-policy.txt",
+      "contentRef": "https://obrive.com/ai/documents/legal-privacy-policy.txt",
       "relatedEntities": []
     },
     {
@@ -20156,7 +20312,7 @@
       "name": "src/content/legal/master-service-agreement.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/master-service-agreement.txt",
+      "contentRef": "https://obrive.com/ai/documents/legal-master-service-agreement.txt",
       "relatedEntities": []
     },
     {
@@ -20166,7 +20322,7 @@
       "name": "src/content/legal/index.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/index.txt",
+      "contentRef": "https://obrive.com/ai/documents/legal-index.txt",
       "relatedEntities": []
     },
     {
@@ -20176,7 +20332,7 @@
       "name": "src/content/legal/gst-taxes-policy.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/gst-taxes-policy.txt",
+      "contentRef": "https://obrive.com/ai/documents/legal-gst-taxes-policy.txt",
       "relatedEntities": []
     },
     {
@@ -20186,7 +20342,7 @@
       "name": "src/content/legal/accessibility.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/accessibility.txt",
+      "contentRef": "https://obrive.com/ai/documents/legal-accessibility.txt",
       "relatedEntities": []
     },
     {
@@ -20196,7 +20352,7 @@
       "name": "src/content/faq/obpark-faq.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/obpark-faq.txt",
+      "contentRef": "https://obrive.com/ai/documents/faq-obpark-faq.txt",
       "relatedEntities": []
     },
     {
@@ -20206,7 +20362,7 @@
       "name": "src/content/faq/obnest-faq.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/obnest-faq.txt",
+      "contentRef": "https://obrive.com/ai/documents/faq-obnest-faq.txt",
       "relatedEntities": []
     },
     {
@@ -20216,7 +20372,7 @@
       "name": "src/content/faq/obnavi-faq.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/obnavi-faq.txt",
+      "contentRef": "https://obrive.com/ai/documents/faq-obnavi-faq.txt",
       "relatedEntities": []
     },
     {
@@ -20226,7 +20382,7 @@
       "name": "src/content/faq/obmove-faq.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/obmove-faq.txt",
+      "contentRef": "https://obrive.com/ai/documents/faq-obmove-faq.txt",
       "relatedEntities": []
     },
     {
@@ -20236,7 +20392,7 @@
       "name": "src/content/faq/ob-services-faq.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/ob-services-faq.txt",
+      "contentRef": "https://obrive.com/ai/documents/faq-ob-services-faq.txt",
       "relatedEntities": []
     },
     {
@@ -20246,7 +20402,7 @@
       "name": "src/content/faq/ob-product-faq.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/ob-product-faq.txt",
+      "contentRef": "https://obrive.com/ai/documents/faq-ob-product-faq.txt",
       "relatedEntities": []
     },
     {
@@ -20256,7 +20412,7 @@
       "name": "src/content/career/product-manager-ar-vr-solutions.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/product-manager-ar-vr-solutions.txt",
+      "contentRef": "https://obrive.com/ai/documents/career-product-manager-ar-vr-solutions.txt",
       "relatedEntities": []
     },
     {
@@ -20266,7 +20422,7 @@
       "name": "src/content/career/motion-graphics-designer.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/motion-graphics-designer.txt",
+      "contentRef": "https://obrive.com/ai/documents/career-motion-graphics-designer.txt",
       "relatedEntities": []
     },
     {
@@ -20276,7 +20432,7 @@
       "name": "src/content/career/marketing-content-specialist-immersive-tech.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/marketing-content-specialist-immersive-tech.txt",
+      "contentRef": "https://obrive.com/ai/documents/career-marketing-content-specialist-immersive-tech.txt",
       "relatedEntities": []
     },
     {
@@ -20286,7 +20442,7 @@
       "name": "src/content/career/full-stack-immersive-developer.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/full-stack-immersive-developer.txt",
+      "contentRef": "https://obrive.com/ai/documents/career-full-stack-immersive-developer.txt",
       "relatedEntities": []
     },
     {
@@ -20296,7 +20452,7 @@
       "name": "src/content/career/business-development-executive.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/business-development-executive.txt",
+      "contentRef": "https://obrive.com/ai/documents/career-business-development-executive.txt",
       "relatedEntities": []
     },
     {
@@ -20306,7 +20462,7 @@
       "name": "src/content/career/ar-vr-mr-developer.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/ar-vr-mr-developer.txt",
+      "contentRef": "https://obrive.com/ai/documents/career-ar-vr-mr-developer.txt",
       "relatedEntities": []
     },
     {
@@ -20316,7 +20472,7 @@
       "name": "src/content/career/3d-visualization-designer.mdx",
       "description": null,
       "runtimeMetadata": null,
-      "contentRef": "https://obrive.com/ai/documents/3d-visualization-designer.txt",
+      "contentRef": "https://obrive.com/ai/documents/career-3d-visualization-designer.txt",
       "relatedEntities": []
     }
   ],

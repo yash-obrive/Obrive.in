@@ -98,7 +98,7 @@ export default function VideoRecord({
       </div>
 
       {/* Video / Placeholder Section */}
-      <div className="relative rounded-xl w-[600px] h-[340px] flex items-center justify-center overflow-hidden mb-6">
+      <div className="relative rounded-xl w-full max-w-[600px] h-[340px] flex items-center justify-center overflow-hidden mb-6">
         {/* Placeholder */}
         {!previewActive && !videoURL && (
           <img

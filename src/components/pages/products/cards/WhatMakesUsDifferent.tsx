@@ -90,7 +90,7 @@ export default function WhatMakesUsDifferent({
             >
               {showGlow && (
                 <motion.div
-                  className={`hidden lg:block absolute start-0 -translate-x-1/2 ${glowClassByIndex(
+                  className={`hidden lg:block absolute start-0 -translate-x-1/2 rtl:translate-x-1/2 ${glowClassByIndex(
                     idx,
                   )} z-10 pointer-events-none`}
                   animate={

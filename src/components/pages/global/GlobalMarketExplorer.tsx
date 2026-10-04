@@ -11,7 +11,6 @@ import Translate from "@/components/shared/Translate";
 
 type RegionFilter =
   | "all"
-  | "India"
   | "Americas"
   | "Middle East"
   | "Europe"
@@ -33,7 +32,7 @@ export default function GlobalMarketExplorer() {
       const matchesQuery =
         !normalizedQuery ||
         market.name.toLowerCase().includes(normalizedQuery) ||
-        market.cities.toLowerCase().includes(normalizedQuery) ||
+        
         market.region.toLowerCase().includes(normalizedQuery) ||
         market.code.toLowerCase().includes(normalizedQuery);
       return matchesRegion && matchesQuery;
@@ -42,7 +41,6 @@ export default function GlobalMarketExplorer() {
 
   const regionOptions: { label: string; value: RegionFilter }[] = [
     { label: "All Regions", value: "all" },
-    { label: "India", value: "India" },
     { label: "Americas", value: "Americas" },
     { label: "Middle East", value: "Middle East" },
     { label: "Europe", value: "Europe" },
@@ -167,9 +165,6 @@ export default function GlobalMarketExplorer() {
                         </span>
                       </div>
 
-                      <p className="text-primary/70 text-xs leading-relaxed line-clamp-3 mb-4">
-                        <Translate text={market.cities} />
-                      </p>
                     </div>
                   </Link>
                 ))

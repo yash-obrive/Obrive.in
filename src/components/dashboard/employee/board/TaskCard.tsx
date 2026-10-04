@@ -205,7 +205,7 @@ export default function TaskCard({
 
       {mode === "notes" && showConfirm ? (
         <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/30">
-          <div className="w-[300px] space-y-3 rounded bg-white p-4">
+          <div className="w-[90%] max-w-[300px] space-y-3 rounded bg-white p-4">
             <div className="space-y-1">
               <h3 className="text-lg font-semibold text-gray-900">
                 Delete note

@@ -37,7 +37,14 @@ export function middleware(req: NextRequest) {
   const firstSegment = segments[0]?.toLowerCase();
   const secondSegment = segments[1]?.toLowerCase();
 
-  // 1. Check if the path starts with a supported country code (e.g. /in, /us/about, /ae/products/obpark)
+  // Redirect /in completely to obrive.in
+  if (firstSegment === "in") {
+    const newPath = pathname.substring(3);
+    const redirectUrl = `https://obrive.in${newPath ? `/${newPath.replace(/^\//, "")}` : ""}${search}`;
+    return NextResponse.redirect(new URL(redirectUrl), { status: 301 });
+  }
+
+  // 1. Check if the path starts with a supported country code (e.g. /us/about, /ae/products/obpark)
   if (isValidCountryCode(firstSegment)) {
     const countryCode = firstSegment as CountryCode;
     const countryConfig = getCountryConfig(countryCode);
@@ -84,13 +91,7 @@ export function middleware(req: NextRequest) {
       requestHeaders.set("x-obrive-language", languageCode);
       requestHeaders.set("x-obrive-pathname", req.nextUrl.pathname);
 
-      // Pass geo-detected country as suggested country if different
-      const rawGeo =
-        req.headers.get("x-vercel-ip-country") || req.headers.get("cf-ipcountry");
-      const detected = mapGeoCountryToSupported(rawGeo);
-      if (detected && detected !== countryCode) {
-        requestHeaders.set("x-obrive-suggested-country", detected);
-      }
+      // Removed x-obrive-suggested-country as we use auto-redirect instead of banner
 
       // Determine the internal underlying path (e.g. /in/en -> /, /in/en/about -> /about)
       const subpath = segments.slice(2).join("/");
@@ -116,23 +117,37 @@ export function middleware(req: NextRequest) {
   }
 
   // 3. Path does NOT have a country prefix (e.g., '/', '/about', '/products/obpark', '/global')
-  // These are INTERNATIONAL pages — always served in English.
-  // Country/language-specific pages live at /{country}/{language}/...
-  // Geo-detection is only used for the CountrySwitcherBanner suggestion, not for content language.
+  // These are INTERNATIONAL pages. We now check the user's IP and automatically redirect them to their region,
+  // unless they have explicitly opted out via the 'obrive-geo-override' cookie, or are a bot.
+
+  const userAgent = req.headers.get("user-agent") || "";
+  const isBot = /bot|googlebot|crawler|spider|robot|crawling/i.test(userAgent);
+  const geoOverrideCookie = req.cookies.get("obrive-geo-override");
+
+  if (!isBot && !geoOverrideCookie) {
+    const rawGeo = req.headers.get("x-vercel-ip-country") || req.headers.get("cf-ipcountry");
+    const detectedGeo = mapGeoCountryToSupported(rawGeo);
+
+    if (detectedGeo && COUNTRIES[detectedGeo]?.isProductionReady) {
+      // Don't redirect US users to /us if the root serves as US/Global,
+      // wait, the prompt asks to redirect China users to /cn. Usually, global handles US natively,
+      // but let's strictly redirect to the country code for any supported non-default country.
+      // Or simply redirect all detected countries (including US if they have /us).
+      // Let's redirect to /country/lang.
+      if (detectedGeo !== DEFAULT_COUNTRY) {
+        const countryConfig = COUNTRIES[detectedGeo];
+        const redirectUrl = req.nextUrl.clone();
+        redirectUrl.pathname = `/${detectedGeo}/${countryConfig.defaultLanguage}${pathname === "/" ? "" : pathname}`;
+        return NextResponse.redirect(redirectUrl, { status: 307 });
+      }
+    }
+  }
 
   // Pass English as the language for all international routes
   const requestHeaders = new Headers(req.headers);
   requestHeaders.set("x-obrive-country", DEFAULT_COUNTRY);
   requestHeaders.set("x-obrive-language", "en");
-  requestHeaders.set("x-obrive-pathname", req.nextUrl.pathname);
-
-  // Still detect geo for the country-switcher banner suggestion
-  const rawGeo2 =
-    req.headers.get("x-vercel-ip-country") || req.headers.get("cf-ipcountry");
-  const detectedGeo2 = mapGeoCountryToSupported(rawGeo2);
-  if (detectedGeo2 && COUNTRIES[detectedGeo2]?.isProductionReady) {
-    requestHeaders.set("x-obrive-suggested-country", detectedGeo2);
-  }
+  requestHeaders.set("x-obrive-pathname", pathname);
 
   const response = NextResponse.next({
     request: {

@@ -5,6 +5,7 @@ import { Calendar, CircleUser } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import FONTS from "@/assets/fonts";
+import { useIsRTL } from "@/hooks/useIsRTL";
 
 // ==========================================
 // 1. PAGE DATA ARRAYS
@@ -207,6 +208,7 @@ const allIsoImages = isoSliderData.sets.flatMap((set) => set.images);
 
 export default function CertificationsPage() {
   const [currentTile, setCurrentTile] = useState(0);
+  const isRTL = useIsRTL();
 
   // Chunk allIsoImages into groups of 4 for desktop
   const desktopTiles = React.useMemo(() => {
@@ -250,6 +252,9 @@ export default function CertificationsPage() {
         }
         .animate-infinite-slider:hover {
           animation-play-state: paused;
+        }
+        html[dir="rtl"] .animate-infinite-slider {
+          animation-direction: reverse;
         }
       `}</style>
 
@@ -373,7 +378,9 @@ export default function CertificationsPage() {
             <div
               className="flex w-full"
               style={{
-                transform: `translateX(-${(currentTile % desktopTiles.length) * 100}%)`,
+                transform: isRTL
+                  ? `translateX(${(currentTile % desktopTiles.length) * 100}%)`
+                  : `translateX(-${(currentTile % desktopTiles.length) * 100}%)`,
                 transition: `transform 0.8s ease-in-out`,
               }}
             >
@@ -409,7 +416,9 @@ export default function CertificationsPage() {
             <div
               className="flex w-full"
               style={{
-                transform: `translateX(-${(currentTile % mobileTiles.length) * 100}%)`,
+                transform: isRTL
+                  ? `translateX(${(currentTile % mobileTiles.length) * 100}%)`
+                  : `translateX(-${(currentTile % mobileTiles.length) * 100}%)`,
                 transition: `transform 0.8s ease-in-out`,
               }}
             >

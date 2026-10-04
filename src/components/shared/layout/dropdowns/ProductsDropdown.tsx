@@ -52,7 +52,7 @@ export function ProductsDropdown() {
           </div>
 
           {/* Divider Line */}
-          <div className="w-[.5px] h-[96%] absolute start-1/2 top-33 -translate-x-1/2 -translate-y-1/2 bg-accent/60 mx-0"></div>
+          <div className="w-[.5px] h-[96%] absolute left-1/2 top-33 -translate-x-1/2 -translate-y-1/2 bg-accent/60 mx-0"></div>
 
           {/* OBNEST */}
           <div className="flex-1 ps-6 flex flex-col gap-3">

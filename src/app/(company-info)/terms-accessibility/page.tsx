@@ -5,6 +5,8 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCompanyInfoMDXComponents } from "@/components/pages/company-info/CompanyInfoMDXComponents";
 import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
 import { getCompanyInfoBySlug, sharedMdxOptions } from "@/lib/mdx";
+import { headers } from "next/headers";
+import { type LanguageCode } from "@/config/languages";
 
 export const metadata: Metadata = {
   title: "Obrive Industries — Accessibility | Terms & Accessibility",
@@ -33,7 +35,10 @@ export const metadata: Metadata = {
 };
 
 export default async function TermsAccessibilityPage() {
-  const legalDoc = await getCompanyInfoBySlug("accessibility", "legal");
+  const headerList = await headers();
+  const language = (headerList.get("x-obrive-language") as LanguageCode) || "en";
+
+  const legalDoc = await getCompanyInfoBySlug("accessibility", "legal", language);
 
   if (!legalDoc) {
     notFound();
