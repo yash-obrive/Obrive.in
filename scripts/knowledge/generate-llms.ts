@@ -171,7 +171,7 @@ async function loadData() {
   };
 
   for (const e of allEntities) {
-    if (e.status === 'excluded_from_obrive_com' || e.id === 'contact_info:in' || (e.canonicalUrl || '').includes('/in')) {
+    if (e.status === 'excluded_from_obrive_com' || e.id === 'contact_info:in' || /\/(in|hi)(\/|$)/.test(e.canonicalUrl || '')) {
       classified.EXCLUDED_FROM_OBRIVE_COM.push(e);
       continue;
     }
@@ -208,14 +208,27 @@ async function loadData() {
               
               // Blogs usually have 'sections' with 'content', case studies have 'overview', 'challenges', etc.
               let text = "";
-              if (item.sections) {
-                text = item.sections.map((s: any) => `## ${s.heading}\n${(s.content||[]).join('\n')}`).join('\n\n');
-              } else if (item.overview || item.challenges) {
-                text = `## Overview\n${item.overview || ''}\n\n## Challenges\n${(item.challenges||[]).join('\n')}\n\n## Solutions\n${(item.solutions||[]).join('\n')}\n\n## Results\n${(item.results||[]).join('\n')}`;
+              if (item.sections && Array.isArray(item.sections)) {
+                // Blog
+                text += `# ${item.title}\n\n`;
+                if (item.description) text += `${item.description}\n\n`;
+                text += item.sections.map((s: any) => `## ${s.title || s.heading}\n${(s.content||[]).join('\n')}`).join('\n\n');
+                if (item.cta) text += `\n\n## CTA\n${item.cta}`;
+              } else if (item.overview || item.challenge || item.approach || item.architecture) {
+                // Case Study
+                text += `# ${item.title}\n\n`;
+                if (item.overview) text += `## Overview\n${item.overview}\n\n`;
+                if (item.challenge) text += `## Challenge\n${item.challenge}\n\n`;
+                if (item.approach && Array.isArray(item.approach)) {
+                  text += `## Approach\n` + item.approach.map((a: any) => `### ${a.title}\n${a.description}`).join('\n\n') + '\n\n';
+                }
+                if (item.architecture && Array.isArray(item.architecture)) {
+                  text += `## Architecture\n` + item.architecture.map((a: any) => `- **${a.layer}**: ${a.delivery} (${a.purpose})`).join('\n') + '\n\n';
+                }
               } else {
                 text = JSON.stringify(item, null, 2);
               }
-              e.content.raw.body = text;
+              e.content.raw.body = text.trim();
             }
           } else {
             const rawMdx = fs.readFileSync(fp, 'utf-8');
@@ -262,7 +275,7 @@ function getRelatedEntities(
   for (const edge of edgesBySource[entityId] || []) {
     if (edge.confidence === 'unresolved') continue;
     const target = entityIndex[edge.to];
-    if (target && (PUBLIC_ENTITY_TYPES.has(target.type) || target.type === 'document') && target.status !== 'excluded_from_obrive_com' && target.id !== 'contact_info:in' && !(target.canonicalUrl || '').includes('/in')) {
+    if (target && (PUBLIC_ENTITY_TYPES.has(target.type) || target.type === 'document') && target.status !== 'excluded_from_obrive_com' && target.id !== 'contact_info:in' && !(/\/(in|hi)(\/|$)/.test(target.canonicalUrl || ''))) {
       results.push({ type: 'outgoing', entity: target, edgeType: edge.type, confidence: edge.confidence });
     }
   }
@@ -270,7 +283,7 @@ function getRelatedEntities(
   for (const edge of edgesByTarget[entityId] || []) {
     if (edge.confidence === 'unresolved') continue;
     const source = entityIndex[edge.from];
-    if (source && (PUBLIC_ENTITY_TYPES.has(source.type) || source.type === 'document') && source.status !== 'excluded_from_obrive_com' && source.id !== 'contact_info:in' && !(source.canonicalUrl || '').includes('/in')) {
+    if (source && (PUBLIC_ENTITY_TYPES.has(source.type) || source.type === 'document') && source.status !== 'excluded_from_obrive_com' && source.id !== 'contact_info:in' && !(/\/(in|hi)(\/|$)/.test(source.canonicalUrl || ''))) {
       results.push({ type: 'incoming', entity: source, edgeType: edge.type, confidence: edge.confidence });
     }
   }
@@ -289,7 +302,8 @@ function generateDocuments(docs: any[]): Record<string, any> {
     const rawBody = doc.content?.raw?.body || '';
     const txt = convertMdxToText(rawBody);
     const slug = shortSlug(doc.slug || doc.id);
-    const filename = `${slug}.txt`;
+    const safeName = (doc.name || slug).replace('src/content/', '').replace(/\//g, '-').replace('.mdx', '');
+    const filename = `${safeName}.txt`;
     const filepath = path.join(DOCS_DIR, filename);
     const url = doc.canonicalUrl || `${BASE_URL}/support/${slug}`; // Fallback approximation
     const title = doc.content?.raw?.frontmatter?.title || doc.name || slug;

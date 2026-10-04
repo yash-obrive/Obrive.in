@@ -1,0 +1,42 @@
+name: AI Knowledge Brain Validation
+
+on:
+  push:
+    branches: [ "main", "naman-feature" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate-knowledge-brain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Regenerate Knowledge Brain
+        run: npx tsx scripts/knowledge/run-generator.ts
+        
+      - name: Check for Uncommitted Changes (Drift Protection)
+        run: |
+          if [[ -n $(git status --porcelain public/llms.txt public/llms-full.txt public/ai/) ]]; then
+            echo "ERROR: Generated AI artifacts are out of sync with the source code."
+            echo "Please run 'npx tsx scripts/knowledge/run-generator.ts' locally and commit the changes."
+            git status --porcelain public/llms.txt public/llms-full.txt public/ai/
+            git diff public/llms.txt public/llms-full.txt public/ai/
+            exit 1
+          fi
+
+      - name: Validate Output
+        run: npx tsx scripts/knowledge/validate-ai-output.ts
+
+      - name: Run Discovery Tests
+        run: npx tsx scripts/knowledge/test-ai-discovery.ts
