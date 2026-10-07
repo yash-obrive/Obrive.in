@@ -8,10 +8,12 @@ import { BACKGROUND_IMAGE, BACKGROUND_IMAGE_META } from "@/assets/images";
 import { Button } from "@/components/ui/button";
 import { objectiveCardsData } from "@/constants/pages/about/object-frame";
 import Translate from "@/components/shared/Translate";
+import { useIsRTL } from "@/hooks/useIsRTL";
 
 export default function ObjectiveCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalCards = objectiveCardsData.length;
+  const isRTL = useIsRTL();
 
   const scrollToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % totalCards);
@@ -34,14 +36,17 @@ export default function ObjectiveCarousel() {
     return () => clearInterval(autoScroll);
   }, [scrollToNext]);
 
+  // In RTL, slide direction is positive to reveal next slide correctly
+  const translateValue = isRTL
+    ? `translateX(${currentIndex * 100}%)`
+    : `translateX(-${currentIndex * 100}%)`;
+
   return (
     <div className="bg-gradient flex gap-8 flex-col items-center max-sm:px-4 justify-center py-16">
       <div className="w-full max-w-[1238px] overflow-hidden relative">
         <div
           className="flex transition-transform duration-1500 ease-in-out"
-          style={{
-            transform: `translateX(-${currentIndex * 100}%)`,
-          }}
+          style={{ transform: translateValue }}
         >
           {objectiveCardsData.map((card) => (
             <div key={card.id} className="w-full flex-shrink-0">
@@ -80,11 +85,13 @@ export default function ObjectiveCarousel() {
       </div>
 
       <div className="flex gap-4">
+        {/* In RTL: ArrowLeft visually means "go forward" (next), ArrowRight means "go back" (prev) */}
         <Button
           variant={"outline"}
           size={"icon"}
           className="rounded-full hover:bg-primary/10 transition-colors"
-          onClick={scrollToPrev}
+          onClick={isRTL ? scrollToNext : scrollToPrev}
+          aria-label="Previous"
         >
           <ArrowLeft />
         </Button>
@@ -92,7 +99,8 @@ export default function ObjectiveCarousel() {
           variant={"outline"}
           size={"icon"}
           className="rounded-full hover:bg-primary/10 transition-colors"
-          onClick={scrollToNext}
+          onClick={isRTL ? scrollToPrev : scrollToNext}
+          aria-label="Next"
         >
           <ArrowRight />
         </Button>

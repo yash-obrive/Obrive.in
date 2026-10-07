@@ -26,17 +26,25 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 
   return {
-    title: `Services & Capabilities (${config.name}) | Obrive Industries`,
-    description: `Explore Obrive Industries' core capabilities including Strategy & Consulting, Immersive Technology, 3D Design, AI, Digital Product Development, and more in ${config.name}.`,
+    title: `Top AR & VR Services (${config.name}) | Obrive Industries`,
+    description: `Explore Obrive Industries' top AR, VR, and immersive technology services including Strategy & Consulting, 3D Design, AI, and Digital Product Development in ${config.name}.`,
     alternates: {
       canonical: "https://obrive.com/services",
       languages: langs,
     },
     openGraph: {
-      title: `Services & Capabilities | Obrive Industries`,
-      description: `Explore Obrive Industries' core capabilities including Strategy & Consulting, Immersive Technology, 3D Design, AI, Digital Product Development, and more.`,
+      title: `Top AR & VR Services | Obrive Industries`,
+      description: `Explore Obrive Industries' top AR, VR, and immersive technology services.`,
       type: "website",
       siteName: "Obrive Industries",
+      images: [
+        {
+          url: `https://obrive.com/api/og?title=Top+AR+and+VR+Services+by+Obrive`,
+          width: 1200,
+          height: 630,
+          alt: "Obrive Top AR and VR Services",
+        },
+      ],
     },
   };
 }

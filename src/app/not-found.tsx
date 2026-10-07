@@ -3,6 +3,15 @@ import FONTS from "@/assets/fonts";
 import Link from "@/components/shared/LocalizedLink";
 import { FadeInOnLoad } from "@/components/shared/motion/GsapMotion";
 import { buttonVariants } from "@/components/ui/button";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Page Not Found | Obrive",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFound() {
   return (

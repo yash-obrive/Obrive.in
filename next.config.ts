@@ -176,7 +176,7 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy-Report-Only",
             value:
-              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://images.unsplash.com https://api.dicebear.com https://randomuser.me; connect-src 'self' wss: https:; frame-src 'self' https://calendly.com;",
+              "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://news.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://images.unsplash.com https://api.dicebear.com https://randomuser.me; connect-src 'self' wss: https:; frame-src 'self' https://calendly.com;",
           },
         ],
       },
@@ -218,6 +218,46 @@ const nextConfig: NextConfig = {
   },
 
   async rewrites() {
+    const backendUrl = process.env.BACKEND_INTERNAL_URL || (isDev ? "http://localhost:5000" : "");
+
+    const expressRoutes = [
+      "auth",
+      "employee",
+      "clients",
+      "client",
+      "hr",
+      "admin",
+      "supervisor",
+      "meetings",
+      "projects",
+      "tasks",
+      "events",
+      "sticky-notes",
+      "calendar",
+      "vacations",
+      "leaves",
+      "profile",
+      "work-sessions",
+      "chat",
+      "dashboard",
+      "performance-reviews",
+      "roles",
+      "departments",
+      "training",
+      "feedback",
+      "equipment",
+      "job-postings",
+      "applicants",
+      "oblink",
+    ];
+
+    const apiRewrites = backendUrl
+      ? expressRoutes.map((route) => ({
+          source: `/api/${route}/:path*`,
+          destination: `${backendUrl}/api/${route}/:path*`,
+        }))
+      : [];
+
     return [
       {
         source: "/terms-accessibility",
@@ -227,6 +267,7 @@ const nextConfig: NextConfig = {
         source: "/privacy-policy",
         destination: "/legal/privacy-policy",
       },
+      ...apiRewrites,
     ];
   },
 };

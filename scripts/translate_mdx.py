@@ -1,125 +1,143 @@
 import os
+import shutil
+import glob
 import re
-import json
+import random
+import html
+import translators as ts
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
-import argparse
-from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor
-from deep_translator import GoogleTranslator
 
-# Ensure pip dependencies
-try:
-    import frontmatter
-except ImportError:
-    import subprocess
-    subprocess.run(["pip", "install", "python-frontmatter"], check=True)
-    import frontmatter
+os.environ["translators_default_region"] = "EN"
+ENGINES = ['google', 'bing', 'alibaba', 'yandex']
 
-LANGUAGE_MAP = {
-    "ar": "ar", "es": "es", "pt": "pt", "fr": "fr", "de": "de",
-    "nl": "nl", "sv": "sv", "it": "it", "zh": "zh-CN", "ja": "ja",
-    "ko": "ko", "ms": "ms", "id": "id", "th": "th"
-}
-
-def translate_markdown(text, target_lang):
+def safe_translate(text, target_lang):
     if not text.strip():
         return text
-    translator = GoogleTranslator(source='en', target=target_lang)
+    engines = list(ENGINES)
+    random.shuffle(engines)
+    for engine in engines:
+        try:
+            res = ts.translate_text(text, translator=engine, from_language='en', to_language=target_lang)
+            if res:
+                res = html.unescape(res)
+                return res
+        except Exception:
+            pass
+    return text
+
+def translate_mdx_content(content, target_lang):
+    # This is a very simplistic translation that just tries to translate text outside of tags and frontmatter.
+    # To do this safely for MDX, we can split by lines and translate text that looks like prose.
+    # Given the complexity of MDX, translating line by line.
     
-    # We translate line by line to somewhat preserve structure
-    lines = text.split('\n')
+    # Extract frontmatter
+    frontmatter = ""
+    body = content
+    if content.startswith("---"):
+        parts = content.split("---", 2)
+        if len(parts) >= 3:
+            frontmatter_content = parts[1]
+            body = parts[2]
+            
+            # translate specific fields in frontmatter (title, description)
+            new_fm_lines = []
+            for line in frontmatter_content.split('\n'):
+                if line.startswith("title:") or line.startswith("description:"):
+                    key, val = line.split(":", 1)
+                    val = val.strip().strip("'").strip('"')
+                    trans_val = safe_translate(val, target_lang)
+                    new_fm_lines.append(f'{key}: "{trans_val}"')
+                else:
+                    new_fm_lines.append(line)
+            frontmatter = "---\n" + "\n".join(new_fm_lines) + "---"
+
+    lines = body.split('\n')
     translated_lines = []
     
+    # A simple block tracking
     in_code_block = False
-    
     for line in lines:
-        if line.startswith('```'):
+        if line.strip().startswith("```"):
             in_code_block = not in_code_block
             translated_lines.append(line)
             continue
             
-        if in_code_block or not line.strip() or line.startswith('<') or line.strip() == '---':
+        if in_code_block or line.strip() == "" or line.strip().startswith("<") or line.strip().startswith("import ") or line.strip().startswith("export "):
+            # We don't translate components directly here unless it's text inside tags, 
+            # but for safety we just skip lines starting with <.
+            # Realistically we should translate text inside <CompanyInfoItem>
+            
+            # Simple regex to translate text inside <CompanyInfoItem>...</CompanyInfoItem>
+            if "<CompanyInfoItem>" in line and "</CompanyInfoItem>" in line:
+                match = re.search(r'<CompanyInfoItem>(.*?)</CompanyInfoItem>', line)
+                if match:
+                    t = safe_translate(match.group(1), target_lang)
+                    line = line.replace(match.group(1), t)
+            elif "<li>" in line and "</li>" in line:
+                match = re.search(r'<li>(.*?)</li>', line)
+                if match:
+                    t = safe_translate(match.group(1), target_lang)
+                    line = line.replace(match.group(1), t)
+            
             translated_lines.append(line)
             continue
             
-        # Very basic markdown link preservation hack (not perfect, but works for simple text)
-        try:
-            # We don't want to translate URLs
-            if re.match(r'^[#\-*>]', line.strip()):
-                # It's a list item or heading, preserve the prefix
-                prefix_match = re.match(r'^([#\-*>\s]+)(.*)', line)
-                if prefix_match:
-                    prefix = prefix_match.group(1)
-                    content = prefix_match.group(2)
-                    if content.strip():
-                        translated = translator.translate(content)
-                        translated_lines.append(f"{prefix}{translated}")
-                    else:
-                        translated_lines.append(line)
-                else:
-                    translated_lines.append(translator.translate(line))
-            else:
-                translated_lines.append(translator.translate(line))
-        except Exception as e:
-            # Fallback to original if translation fails
-            translated_lines.append(line)
+        # If it's a markdown heading
+        if line.startswith("#"):
+            prefix = re.match(r'^#+\s*', line).group(0)
+            text = line[len(prefix):]
+            translated_lines.append(prefix + safe_translate(text, target_lang))
+            continue
             
-    return '\n'.join(translated_lines)
+        # Regular text
+        translated_lines.append(safe_translate(line, target_lang))
 
-def process_file(file_path, target_lang, lang_code, base_content_dir):
-    rel_path = os.path.relpath(file_path, base_content_dir)
-    # Target path: src/content/{lang_code}/{rel_path}
-    target_path = os.path.join(base_content_dir, lang_code, rel_path)
-    
+    return frontmatter + "\n".join(translated_lines)
+
+def translate_file(src_path, target_path, target_lang):
     if os.path.exists(target_path):
-        return  # Skip if already exists
-        
-    os.makedirs(os.path.dirname(target_path), exist_ok=True)
+        return
     
-    try:
-        post = frontmatter.load(file_path)
+    with open(src_path, 'r', encoding='utf-8') as f:
+        content = f.read()
         
-        # Translate frontmatter
-        translator = GoogleTranslator(source='en', target=target_lang)
-        for key in ['title', 'description', 'quote', 'author']:
-            if key in post.metadata and isinstance(post.metadata[key], str) and post.metadata[key].strip():
-                try:
-                    post.metadata[key] = translator.translate(post.metadata[key])
-                except Exception:
-                    pass
-                    
-        # Translate body
-        translated_body = translate_markdown(post.content, target_lang)
-        post.content = translated_body
-        
-        with open(target_path, 'w', encoding='utf-8') as f:
-            f.write(frontmatter.dumps(post))
-            
-    except Exception as e:
-        print(f"Error processing {file_path} for {lang_code}: {e}")
+    translated = translate_mdx_content(content, target_lang)
+    
+    os.makedirs(os.path.dirname(target_path), exist_ok=True)
+    with open(target_path, 'w', encoding='utf-8') as f:
+        f.write(translated)
+    print(f"Translated {src_path} -> {target_lang}")
 
 def main():
-    base_content_dir = 'src/content'
-    mdx_files = []
+    base_dirs = ['career', 'docs', 'faq', 'legal', 'resources', 'security', 'support']
+    langs = ['ar', 'de', 'es', 'fr', 'id', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'sv', 'th', 'zh', 'ru']
     
-    # Collect all root English MDX files (ignoring already created lang folders)
-    for root, dirs, files in os.walk(base_content_dir):
-        # Skip language folders
-        dirs[:] = [d for d in dirs if d not in LANGUAGE_MAP.keys()]
+    tasks = []
+    
+    for bdir in base_dirs:
+        src_dir = os.path.join("src/content", bdir)
+        if not os.path.exists(src_dir):
+            continue
+            
+        files = glob.glob(f"{src_dir}/**/*.mdx", recursive=True)
         
         for file in files:
-            if file.endswith('.mdx'):
-                mdx_files.append(os.path.join(root, file))
-                
-    print(f"Found {len(mdx_files)} MDX files to translate.")
-    
-    for lang_code, target_lang in LANGUAGE_MAP.items():
-        print(f"Translating to {lang_code}...")
-        with ThreadPoolExecutor(max_workers=5) as executor:
-            for mdx_file in mdx_files:
-                executor.submit(process_file, mdx_file, target_lang, lang_code, base_content_dir)
-                
-    print("Done MDX translation!")
+            rel_path = os.path.relpath(file, src_dir)
+            
+            for lang in langs:
+                target_path = os.path.join("src/content", lang, bdir, rel_path)
+                tasks.append((file, target_path, lang))
 
-if __name__ == '__main__':
+    print(f"Total MDX translation tasks: {len(tasks)}")
+    
+    start_time = time.time()
+    with ThreadPoolExecutor(max_workers=20) as executor:
+        futures = [executor.submit(translate_file, src, tgt, lang) for src, tgt, lang in tasks]
+        for _ in as_completed(futures):
+            pass
+            
+    print(f"Finished MDX translation in {time.time() - start_time:.2f} seconds!")
+
+if __name__ == "__main__":
     main()

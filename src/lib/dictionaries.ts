@@ -21,6 +21,7 @@ const dictionaries = {
   ms: () => import("@/dictionaries/ms.json").then((module) => module.default),
   id: () => import("@/dictionaries/id.json").then((module) => module.default),
   th: () => import("@/dictionaries/th.json").then((module) => module.default),
+  ru: () => import("@/dictionaries/ru.json").then((module) => module.default),
 };
 
 export const getDictionary = async (locale: LanguageCode): Promise<Dictionary> => {

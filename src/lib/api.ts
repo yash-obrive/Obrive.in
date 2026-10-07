@@ -1,10 +1,8 @@
 // Base API URL already includes /api
 const BASE_URL =
   typeof window !== "undefined"
-    ? window.location.hostname === "localhost"
-      ? "http://localhost:5000/api"
-      : "/api/proxy"
-    : process.env.NEXT_PUBLIC_API_URL || "https://api.obrive.com/api";
+    ? "/api" // Let Next.js rewrites handle the proxying
+    : process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
 // Export for use in components (already includes /api)
 export const API_BASE_URL = BASE_URL;

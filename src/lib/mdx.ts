@@ -14,6 +14,8 @@ const supportDirectory = path.join(process.cwd(), "src/content/support");
 
 const securityDirectory = path.join(process.cwd(), "src/content/security");
 
+const docsDirectory = path.join(process.cwd(), "src/content/docs");
+
 const faqDirectory = path.join(process.cwd(), "src/content/faq");
 
 const careerDirectory = path.join(process.cwd(), "src/content/career");
@@ -176,7 +178,7 @@ export async function getAllCaseStudies(
 // Company Info functions
 export async function getCompanyInfoBySlug(
   slug: string,
-  type: "legal" | "support" | "security",
+  type: "legal" | "support" | "security" | "docs",
   locale: string = "en",
 ): Promise<CompanyInfoData | null> {
   try {
@@ -185,7 +187,9 @@ export async function getCompanyInfoBySlug(
         ? legalDirectory
         : type === "support"
           ? supportDirectory
-          : securityDirectory;
+          : type === "docs"
+            ? docsDirectory
+            : securityDirectory;
 
     let fullPath = path.join(process.cwd(), "src/content", locale, type, `${slug}.mdx`);
 

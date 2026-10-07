@@ -107,7 +107,7 @@ export function ProductTemplate({
             {/* rive hero animation */}
             <AnimatedRiveSection
               sectionClassName="w-full"
-              riveClassName="max-w-none relative sm:start-1/2 sm:-translate-x-1/2 w-[110vw] max-sm:hidden"
+              riveClassName="max-w-none relative sm:left-1/2 sm:-translate-x-1/2 w-[110vw] max-sm:hidden"
               aspectClassName="aspect-[16/6]"
             />
             {/* what makes us different */}

@@ -27,9 +27,11 @@ export default function FooterContact() {
     }
   }, []);
 
-  const offices = (countryConfig.code === "us" && !isExplicitUS)
-    ? ["Bengaluru, Karnataka, India", "Mumbai, Maharashtra, India", "Ahmedabad, Gujarat, India"]
-    : countryConfig.offices || [];
+  const offices = [
+    "Bengaluru, Karnataka, India",
+    "Mumbai, Maharashtra, India",
+    "Ahmedabad, Gujarat, India"
+  ];
 
   return (
     <div className="flex flex-col">

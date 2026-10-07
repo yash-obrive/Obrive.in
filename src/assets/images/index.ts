@@ -1075,22 +1075,22 @@ export const HOME_IMAGES = {
 
 export const HOME_IMAGES_META = {
   HOME_OBRIVE_INTRO: {
-    alt: "Decorative ball image",
+    alt: "Obrive Spatial Computing and AR VR solutions demonstration",
     width: 1493,
     height: 820,
   },
   AR_VR_IMAGE: {
-    alt: "AR VR Image",
+    alt: "Enterprise AR and VR technology solutions by Obrive",
     width: 425,
     height: 362,
   },
   PARKING_IMAGE: {
-    alt: "Parking Image",
+    alt: "Smart parking management using spatial computing and AR",
     width: 425,
     height: 362,
   },
   VR_TECH_IMAGE: {
-    alt: "VR Tech Image",
+    alt: "Virtual Reality headsets and immersive enterprise applications",
     width: 425,
     height: 362,
   },
@@ -1109,30 +1109,30 @@ export const BACKGROUND_IMAGE = {
 
 export const BACKGROUND_IMAGE_META = {
   CURVED_BG: {
-    alt: "Curved background image",
+    alt: "Immersive digital curved background for Obrive AR solutions",
     width: 1493,
     height: 820,
   },
   PRIMARY_CURVED_BG: {
-    alt: "Primary curved background image",
+    alt: "Primary spatial computing background design",
     width: 2000,
     height: 2000,
   },
   BG_ANIMATE_ACCENT: {
-    alt: "Accent background image",
+    alt: "Animated AR technology accent background",
     width: 1493,
     height: 820,
   },
   BG_ANIMATE_PRIMARY: {
-    alt: "Primary background image",
+    alt: "Animated virtual reality core background",
     width: 600,
     height: 600,
   },
   WAVY_CARDS_PRIMARY_BG: {
-    alt: "Wavy cards primary background image",
+    alt: "Wavy interactive digital layout for 3D visualizations",
   },
   CARD_STACK: {
-    alt: "Card stack",
+    alt: "Obrive technology feature stack representation",
     width: 500,
     height: 500,
   },

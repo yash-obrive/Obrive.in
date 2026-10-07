@@ -377,8 +377,7 @@ function ContactFormContent() {
 }
 
 export default function ContactForm() {
-  const { countryConfig: _ } = useCountry();
-  const defaultCountryConfig = COUNTRIES[DEFAULT_COUNTRY];
+  const { countryConfig } = useCountry();
 
   return (
     <FullWidthSection
@@ -410,48 +409,24 @@ export default function ContactForm() {
                 <h4
                   className={`${FONTS.microgrammaBold.className} text-primary text-lg mb-2`}
                 >
-                  {defaultCountryConfig.code === "in"
-                    ? "Headquarters"
-                    : `${defaultCountryConfig.name} Hub`}
+                  Headquarters
                 </h4>
-                {defaultCountryConfig.code === "in" ? (
-                  <div className="flex flex-col items-start gap-3 mt-1">
-                    <p className="text-primary/70 leading-relaxed">
-                      Obrive Industries Private Limited
-                      <br />
-                      Bangalore, Karnataka, India
-                    </p>
-                    <a 
-                      href="https://www.google.com/maps/search/?api=1&query=Obrive+Industries+Private+Limited,+Sree+Gururaya+Mansion,+JP+Nagar,+Bangalore"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-bold bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors shadow-sm"
-                    >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                      Find on Map
-                    </a>
-                  </div>
-                ) : (
+                <div className="flex flex-col items-start gap-3 mt-1">
                   <p className="text-primary/70 leading-relaxed">
-                    {defaultCountryConfig.offices.join(" · ")}
+                    Obrive Industries Private Limited
+                    <br />
+                    Bangalore, Karnataka, India
                   </p>
-                )}
-                {defaultCountryConfig.code !== "in" && (
-                  <div className="flex flex-col items-start gap-2 mt-2">
-                    <p className="text-primary/50 text-xs">
-                      Global HQ: Bangalore, Karnataka, India
-                    </p>
-                    <a 
-                      href="https://www.google.com/maps/search/?api=1&query=Obrive+Industries+Private+Limited,+Sree+Gururaya+Mansion,+JP+Nagar,+Bangalore"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-[11px] font-bold bg-primary/5 text-primary px-3 py-1.5 rounded-lg hover:bg-primary/10 transition-colors"
-                    >
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                      Find HQ on Map
-                    </a>
-                  </div>
-                )}
+                  <a 
+                    href="https://www.google.com/maps/search/?api=1&query=Obrive+Industries+Private+Limited,+Sree+Gururaya+Mansion,+JP+Nagar,+Bangalore"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors shadow-sm"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Find on Map
+                  </a>
+                </div>
               </div>
 
               <div>
@@ -462,16 +437,16 @@ export default function ContactForm() {
                 </h4>
                 <p className="text-primary/70 flex flex-col gap-1.5">
                   <a
-                    href={`mailto:${defaultCountryConfig.contactEmail}`}
+                    href="mailto:info@obrive.com"
                     className="hover:text-secondary transition-colors font-medium"
                   >
-                    {defaultCountryConfig.contactEmail}
+                    info@obrive.com
                   </a>
                   <a
-                    href={`tel:${defaultCountryConfig.phone}`}
+                    href="tel:+918884774300"
                     className="hover:text-secondary transition-colors"
                   >
-                    {defaultCountryConfig.phone}
+                    +91-888-477-4300
                   </a>
                 </p>
               </div>

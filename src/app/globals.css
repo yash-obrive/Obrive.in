@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+* {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 html {
   scroll-behavior: auto;
 }
@@ -22,6 +27,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .scroll-optimized,
@@ -398,4 +405,9 @@ html[dir="rtl"] .btn.--play:hover .btn__label {
 /* Force SVG flip in RTL for buttons */
 html[dir="rtl"] .btn__icon svg {
   transform: scaleX(-1);
+}
+
+/* RTL: reverse marquee scroll direction so it moves rightward */
+html[dir="rtl"] .animate-scroll {
+  animation-direction: reverse;
 }

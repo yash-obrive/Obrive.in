@@ -161,6 +161,22 @@ export default async function RootLayout({
             gtag('config', 'G-5E05ZH527X');
           `}
         </Script>
+
+        {/*
+          Google Preferred Sources — publisher.js
+          Loaded once globally. Google's script scans the DOM for
+          <div google-add-preferred-source-btn> elements and initialises
+          the Preferred Sources widget on each matching element.
+          strategy="afterInteractive" ensures non-blocking load after hydration.
+          The stable id prevents Next.js from re-injecting this script
+          on client-side navigations.
+          Eligibility at the domain level (obrive.com) is determined by Google.
+        */}
+        <Script
+          id="google-preferred-source-publisher"
+          src="https://news.google.com/swg/js/v1/publisher.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

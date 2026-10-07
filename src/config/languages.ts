@@ -2,7 +2,7 @@
 
 export type LanguageCode = 
   | "en" | "ar" | "es" | "pt" | "fr" | "de" | "nl" 
-  | "sv" | "it" | "zh" | "ja" | "ko" | "ms" | "id" | "th";
+  | "sv" | "it" | "zh" | "ja" | "ko" | "ms" | "id" | "th" | "ru";
 
 export interface LanguageConfig {
   code: LanguageCode;
@@ -27,6 +27,7 @@ export const LANGUAGES: Record<LanguageCode, LanguageConfig> = {
   ms: { code: "ms", name: "Malay", nativeName: "Bahasa Melayu", dir: "ltr" },
   id: { code: "id", name: "Indonesian", nativeName: "Bahasa Indonesia", dir: "ltr" },
   th: { code: "th", name: "Thai", nativeName: "ไทย", dir: "ltr" },
+  ru: { code: "ru", name: "Russian", nativeName: "Русский", dir: "ltr" },
 };
 
 export function isValidLanguageCode(code?: string | null): code is LanguageCode {

@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+require("./config_validation");
 // Fix for BigInt serialization
 BigInt.prototype.toJSON = function () {
   return this.toString();
@@ -44,9 +44,17 @@ app.use(morgan(morganFormat));
 // ============================================
 // ✅ PUBLIC HEALTH CHECK
 // ============================================
-app.get("/api/health", (_req, res) =>
-  res.json({ status: "OK", timestamp: new Date() }),
-);
+app.get("/api/health", async (_req, res) => {
+  try {
+    // Check DB
+    await prisma.$queryRaw`SELECT 1`;
+    // Optional: check queue if initialized. Since we might not have access to boss instance here easily, we'll assume DB is primary dependency for now, or check pg-boss tables.
+    const bossCheck = await prisma.$queryRaw`SELECT count(*) FROM pgboss.job LIMIT 1`;
+    res.json({ status: "OK", db: "CONNECTED", worker: "CHECKED", timestamp: new Date() });
+  } catch (err) {
+    res.status(503).json({ status: "ERROR", error: "Dependencies unavailable", details: err.message });
+  }
+});
 
 // ======================================================================================
 // 🔒 PROTECTED ROUTES (Require Authentication)
@@ -145,6 +153,9 @@ app.use(
 // PAYMENT ROUTES ───────────────────────────────────────────────
 app.use("/api/payments", require("./src/modules/payments/payment.routes"));
 
+// OBLINK AI ROUTES ─────────────────────────────────────────────
+app.use("/api/oblink", require("./src/modules/oblink/routes/dashboard"));
+
 // ── Error handler ─────────────────────────────────────────────
 app.use(require("./src/middleware/errorHandler"));
 
@@ -157,6 +168,10 @@ async function bootstrap() {
       // Start cron jobs
       startWorkSessionCron();
       startAudioRoomCron();
+
+      // Start OBLINK Workers
+      const { startWorkers } = require("./src/modules/oblink/workers/index");
+      await startWorkers();
     } else {
       console.warn(
         "Database not configured; database-dependent modules are unavailable.",

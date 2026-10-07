@@ -1,7 +1,6 @@
 import { headers } from "next/headers";
 import type { ReactNode } from "react";
 import CookiePopup from "@/components/shared/cookies/cookies";
-import CountrySwitcherBanner from "@/components/shared/layout/CountrySwitcherBanner";
 import PublicLayout from "@/components/shared/layout/PublicLayout";
 import {
   type CountryCode,
@@ -52,8 +51,7 @@ export default async function LayoutPublic({
   const country: CountryCode = isValidCountryCode(countryHeader)
     ? (countryHeader as CountryCode)
     : DEFAULT_COUNTRY;
-  const suggestedCountry =
-    (headerList.get("x-obrive-suggested-country") as CountryCode) || null;
+  const suggestedCountry = null;
 
   const languageHeader = headerList.get("x-obrive-language");
   const language: LanguageCode = (languageHeader as LanguageCode) || getCountryConfig(country).defaultLanguage;
@@ -67,7 +65,6 @@ export default async function LayoutPublic({
       initialSuggestedCountry={suggestedCountry}
     >
       <TranslationProvider dictionary={dictionary}>
-        <CountrySwitcherBanner />
         <PublicLayout>{children}</PublicLayout>
         <CookiePopup />
       </TranslationProvider>

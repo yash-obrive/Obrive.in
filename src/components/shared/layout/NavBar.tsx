@@ -315,8 +315,8 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
               className="relative flex items-center justify-between overflow-visible"
               style={{
                 height: isMobile ? "70px" : progressiveValues.height,
-                paddingLeft: isMobile ? "16px" : progressiveValues.paddingX,
-                paddingRight: isMobile ? "56px" : progressiveValues.paddingX,
+                paddingInlineStart: isMobile ? "16px" : progressiveValues.paddingX,
+                paddingInlineEnd: isMobile ? "56px" : progressiveValues.paddingX,
                 zIndex: 20,
               }}
             >
@@ -397,8 +397,8 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
                 className="relative flex items-center justify-between overflow-visible"
                 style={{
                   height: isMobile ? "70px" : progressiveValues.height,
-                  paddingLeft: isMobile ? "16px" : progressiveValues.paddingX,
-                  paddingRight: isMobile ? "56px" : progressiveValues.paddingX,
+                  paddingInlineStart: isMobile ? "16px" : progressiveValues.paddingX,
+                  paddingInlineEnd: isMobile ? "56px" : progressiveValues.paddingX,
                   zIndex: 20,
                 }}
               >

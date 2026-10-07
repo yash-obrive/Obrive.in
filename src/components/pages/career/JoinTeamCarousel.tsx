@@ -5,10 +5,12 @@ import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { JOIN_TEAM_CARD } from "@/constants/pages/career/join-team-card";
 import JoinTeamCards from "./card/JoinTeamCards";
+import { useIsRTL } from "@/hooks/useIsRTL";
 
 export default function JoinTeamCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalCards = JOIN_TEAM_CARD.length;
+  const isRTL = useIsRTL();
 
   const scrollToNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % totalCards);
@@ -31,14 +33,17 @@ export default function JoinTeamCarousel() {
     return () => clearInterval(autoScroll);
   }, [scrollToNext]);
 
+  // In RTL, slide direction is positive (right → left visual = negative logical)
+  const translateValue = isRTL
+    ? `translateX(${currentIndex * 100}%)`
+    : `translateX(-${currentIndex * 100}%)`;
+
   return (
     <div className="flex gap-8 max-sm:px-4 flex-col items-center justify-center py-16">
       <div className="w-full max-w-[1238px] overflow-hidden relative">
         <div
           className="flex transition-transform duration-1500 ease-in-out"
-          style={{
-            transform: `translateX(-${currentIndex * 100}%)`,
-          }}
+          style={{ transform: translateValue }}
         >
           {JOIN_TEAM_CARD.map((card, index) => (
             <div key={index} className="w-full flex-shrink-0">
@@ -51,11 +56,13 @@ export default function JoinTeamCarousel() {
       </div>
 
       <div className="flex gap-4">
+        {/* In RTL: ArrowLeft visually means "go forward" (next), ArrowRight means "go back" (prev) */}
         <Button
           variant={"outline"}
           size={"icon"}
           className="rounded-full hover:bg-primary/10 transition-colors"
-          onClick={scrollToPrev}
+          onClick={isRTL ? scrollToNext : scrollToPrev}
+          aria-label="Previous"
         >
           <ArrowLeft />
         </Button>
@@ -63,7 +70,8 @@ export default function JoinTeamCarousel() {
           variant={"outline"}
           size={"icon"}
           className="rounded-full hover:bg-primary/10 transition-colors"
-          onClick={scrollToNext}
+          onClick={isRTL ? scrollToPrev : scrollToNext}
+          aria-label="Next"
         >
           <ArrowRight />
         </Button>

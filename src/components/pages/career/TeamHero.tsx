@@ -25,8 +25,12 @@ function _Card({ k, className, priority, parallaxSpeed = 1 }: CardProps) {
 
     const element = cardRef.current;
 
-    // images should starts from right
-    const initialOffset = 150 + parallaxSpeed * 180;
+    // Detect RTL to flip animation direction
+    const isRTL = document.documentElement.dir === "rtl";
+    const dirMultiplier = isRTL ? -1 : 1;
+
+    // images should start from right (or left in RTL)
+    const initialOffset = (150 + parallaxSpeed * 180) * dirMultiplier;
 
     gsap.set(element, {
       x: initialOffset,
@@ -42,9 +46,9 @@ function _Card({ k, className, priority, parallaxSpeed = 1 }: CardProps) {
       ease: "power2.out",
     });
 
-    // parallax effect should move left at different speed
+    // parallax effect moves in correct direction
     gsap.to(element, {
-      x: -150 * parallaxSpeed,
+      x: -150 * parallaxSpeed * dirMultiplier,
       scrollTrigger: {
         trigger: element.parentElement,
         start: "top bottom",
@@ -94,6 +98,9 @@ export default function TeamHero() {
     const teamCards = scrollContainer.querySelectorAll(".team-card");
 
     // Create scroll-locked horizontal animation with parallax
+    const isRTL = document.documentElement.dir === "rtl";
+    const dirMultiplier = isRTL ? -1 : 1;
+
     const scrollTrigger = ScrollTrigger.create({
       trigger: scrollContainer,
       start: "top top",
@@ -108,7 +115,8 @@ export default function TeamHero() {
           const parallaxSpeed = parseFloat(
             (card as HTMLElement).getAttribute("data-parallax") || "1",
           );
-          const translateX = -progress * PARALLAX_MULTIPLIER * parallaxSpeed;
+          // Flip direction for RTL
+          const translateX = -progress * PARALLAX_MULTIPLIER * parallaxSpeed * dirMultiplier;
 
           // Use gsap.set for immediate transform without creating tweens
           gsap.set(card, {
@@ -159,7 +167,7 @@ export default function TeamHero() {
         <div className="relative h-[560px] md:h-[620px] lg:h-[680px] overflow-hidden">
           {/* Center: Lord Ganesh */}
           <div
-            className="team-card absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[300px] md:w-[260px] md:h-[360px] lg:w-[400px] lg:h-[520px] z-80"
+            className="team-card absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[300px] md:w-[260px] md:h-[360px] lg:w-[400px] lg:h-[520px] z-80"
             data-parallax="0.5"
           >
             <div className="overflow-hidden rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.25)] ring-1 ring-black/5 bg-white/10 backdrop-blur-sm h-full">

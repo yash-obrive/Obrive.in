@@ -4,6 +4,8 @@ import Script from "next/script";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCompanyInfoMDXComponents } from "@/components/pages/company-info/CompanyInfoMDXComponents";
 import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
+import { headers } from "next/headers";
+import { type LanguageCode } from "@/config/languages";
 import {
   getAllCompanyInfoSlugs,
   getCompanyInfoBySlug,
@@ -27,7 +29,9 @@ export async function generateMetadata({
   params,
 }: SupportPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const supportDoc = await getCompanyInfoBySlug(slug, "support");
+  const headerList = await headers();
+  const language = (headerList.get("x-obrive-language") as LanguageCode) || "en";
+  const supportDoc = await getCompanyInfoBySlug(slug, "support", language);
 
   if (!supportDoc) {
     return {
@@ -73,8 +77,11 @@ export async function generateMetadata({
 }
 
 export default async function SupportPage({ params }: SupportPageProps) {
+  const headerList = await headers();
+  const language = (headerList.get("x-obrive-language") as LanguageCode) || "en";
+
   const { slug } = await params;
-  const supportDoc = await getCompanyInfoBySlug(slug, "support");
+  const supportDoc = await getCompanyInfoBySlug(slug, "support", language);
 
   if (!supportDoc) {
     notFound();

@@ -12,4 +12,16 @@ declare global {
       };
     }
   }
+
+  namespace React {
+    interface HTMLAttributes<T> {
+      /**
+       * Google Preferred Sources publisher attribute.
+       * When present on a <div>, Google's publisher.js initialises the
+       * element into the official Preferred Sources widget.
+       * @see https://developers.google.com/search/docs/appearance/preferred-sources
+       */
+      "google-add-preferred-source-btn"?: string;
+    }
+  }
 }

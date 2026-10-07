@@ -91,7 +91,7 @@ const COUNTRY_LANGUAGE_MAP: Record<string, { country: string; defaultLanguage: L
 const LOCALE_DIRECTION: Record<LanguageCode, 'ltr' | 'rtl'> = {
   en: 'ltr', ar: 'rtl', es: 'ltr', pt: 'ltr', fr: 'ltr',
   de: 'ltr', nl: 'ltr', sv: 'ltr', it: 'ltr', zh: 'ltr',
-  ja: 'ltr', ko: 'ltr', ms: 'ltr', id: 'ltr', th: 'ltr',
+  ja: 'ltr', ko: 'ltr', ms: 'ltr', id: 'ltr', th: 'ltr', ru: 'ltr',
 };
 
 // ─── Dictionary Loader ─────────────────────────────────────────────────────────

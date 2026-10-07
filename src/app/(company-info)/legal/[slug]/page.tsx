@@ -4,6 +4,8 @@ import Script from "next/script";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { createCompanyInfoMDXComponents } from "@/components/pages/company-info/CompanyInfoMDXComponents";
 import CompanyInfoTemplate from "@/components/pages/company-info/CompanyInfoTemplate";
+import { headers } from "next/headers";
+import { type LanguageCode } from "@/config/languages";
 import {
   getAllCompanyInfoSlugs,
   getCompanyInfoBySlug,
@@ -27,7 +29,9 @@ export async function generateMetadata({
   params,
 }: LegalPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const legalDoc = await getCompanyInfoBySlug(slug, "legal");
+  const headerList = await headers();
+  const language = (headerList.get("x-obrive-language") as LanguageCode) || "en";
+  const legalDoc = await getCompanyInfoBySlug(slug, "legal", language);
 
   if (!legalDoc) {
     return {
@@ -189,8 +193,11 @@ export async function generateMetadata({
 }
 
 export default async function LegalPage({ params }: LegalPageProps) {
+  const headerList = await headers();
+  const language = (headerList.get("x-obrive-language") as LanguageCode) || "en";
+
   const { slug } = await params;
-  const legalDoc = await getCompanyInfoBySlug(slug, "legal");
+  const legalDoc = await getCompanyInfoBySlug(slug, "legal", language);
 
   if (!legalDoc) {
     notFound();

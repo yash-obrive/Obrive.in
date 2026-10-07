@@ -66,7 +66,7 @@ export default function Sidebar({
       ) : null}
 
       <div
-        className={`${mobileOpen ? "translate-x-0" : "-translate-x-full"} fixed inset-y-2 start-2 z-50 w-[min(18rem,calc(100vw-1rem))] transition-transform duration-300 md:hidden`}
+        className={`${mobileOpen ? "translate-x-0 rtl:translate-x-0" : "-translate-x-full rtl:translate-x-full"} fixed inset-y-2 start-2 z-50 w-[min(18rem,calc(100vw-1rem))] transition-transform duration-300 md:hidden`}
       >
         <div className="h-full rounded-lg bg-white border-e border-gray-200 shadow-sm">
           <div className="flex h-full flex-col">
@@ -114,6 +114,21 @@ export default function Sidebar({
                 );
               })}
             </nav>
+
+            {canSeeConferences && (
+              <div className="px-4 mb-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    router.push('/dashboard/oblink');
+                    onMobileClose?.();
+                  }}
+                  className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-emerald-700 bg-emerald-50 font-bold transition-all duration-200 hover:bg-emerald-100"
+                >
+                  <span className="text-sm">OBLINK AI</span>
+                </button>
+              </div>
+            )}
 
             <div
               className="mx-4 mb-4 flex h-60 flex-col justify-end rounded-2xl bg-[#D9F2F2] sm:bg-fill  bg-center bg-no-repeat p-3"
@@ -235,13 +250,21 @@ export default function Sidebar({
         </nav>
 
         {!isCollapsed && canSeeConferences && (
-          <div className="px-4 pb-4">
+          <div className="px-4 pb-4 flex flex-col gap-2">
             <button
               type="button"
               onClick={sendTo}
-              className="w-full flex items-center gap-3 px-4 py-3  my-2 rounded-none text-[#073933] font-bold transition-all duration-200 hover:bg-[#0a4a42] hover:text-white hover:border-[#38b4a6] border-b-3 border-[#073933] cursor-pointer"
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-none text-[#073933] font-bold transition-all duration-200 hover:bg-[#0a4a42] hover:text-white hover:border-[#38b4a6] border-b-3 border-[#073933] cursor-pointer"
             >
               <span className="text-sm">Community Rooms</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => router.push('/dashboard/oblink')}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-emerald-700 bg-emerald-50 font-bold transition-all duration-200 hover:bg-emerald-100 cursor-pointer"
+            >
+              <span className="text-sm">OBLINK AI Dashboard</span>
             </button>
           </div>
         )}

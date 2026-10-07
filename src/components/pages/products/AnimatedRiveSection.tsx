@@ -29,11 +29,15 @@ export function AnimatedRiveSection({
 
     if (!sectionEl || !riveEl) return;
 
+    // Detect RTL to flip the start direction
+    const isRTL = document.documentElement.dir === "rtl";
+    const dirMultiplier = isRTL ? -1 : 1;
+
     const ctx = gsap.context(() => {
       gsap.set(riveEl, {
         opacity: 0,
-        xPercent: -160,
-        rotate: -2,
+        xPercent: -160 * dirMultiplier, // Start from right in RTL
+        rotate: -2 * dirMultiplier,
         yPercent: 0,
         scaleX: 0.8,
       });

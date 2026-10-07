@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import * as React from "react";
 
 type AccordionItem = {
@@ -200,7 +200,7 @@ export default function HoverAccordion({
         >
           {autoAdvance?.some((entry) => entry.fromIndex === i) && (
             <span
-              className={`pointer-events-none absolute start-0 bottom-0 h-[0.5px] origin-left bg-primary block ${
+              className={`pointer-events-none absolute start-0 bottom-0 h-[0.5px] origin-left rtl:origin-right bg-primary block ${
                 autoAdvance.find((entry) => entry.fromIndex === i)
                   ?.fillColorClassName ?? ""
               }`}
@@ -220,7 +220,7 @@ export default function HoverAccordion({
             <ArrowRight
               aria-hidden
               strokeWidth={3}
-              className="pointer-events-none absolute -start-2 top-1/2 h-4 w-4 -translate-y-1/2 -translate-x-full text-primary opacity-0 transition-opacity duration-200 group-data-[active=true]/item:opacity-100"
+              className="pointer-events-none absolute -start-2 top-1/2 h-4 w-4 -translate-y-1/2 -translate-x-full rtl:translate-x-full rtl:start-auto rtl:-end-2 text-primary opacity-0 transition-opacity duration-200 group-data-[active=true]/item:opacity-100"
             />
             <div>{React.Children.toArray(item.heading as React.ReactNode)}</div>
           </div>

@@ -14,15 +14,21 @@ export default function UsecaseCard({
   const Icon = icon;
   return (
     <div className="w-full sm:w-[450px] md:w-[550px] lg:w-[580px] py-6 sm:py-6 px-6 sm:px-10 lg:px-8 min-h-[320px] rounded-2xl bg-gradient cursor-default">
-      <div className="flex justify-between">
-        <Icon />
-        <Button
-          className={`${FONTS.microgrammaBold.className} bg-transparent! hover:bg-transparent! text-primary rounded-full`}
-          size={"lg"}
-          variant={"outline"}
-        >
-          <Translate text={use} />
-        </Button>
+      <div className="flex justify-between items-start gap-3 sm:gap-4 w-full">
+        <div className="flex-shrink-0">
+          <Icon />
+        </div>
+        <div className="flex-1 min-w-0 flex justify-end">
+          <Button
+            className={`${FONTS.microgrammaBold.className} bg-transparent! hover:bg-transparent! text-primary rounded-full h-auto py-2 text-[10px] sm:text-xs text-center max-w-full flex-shrink`}
+            size={"lg"}
+            variant={"outline"}
+          >
+            <span className="block whitespace-normal break-words text-wrap max-w-full">
+              <Translate text={use} />
+            </span>
+          </Button>
+        </div>
       </div>
       <div className="flex flex-col gap-4 mt-5 pe-0 sm:pe-6 lg:pe-11">
         <h3

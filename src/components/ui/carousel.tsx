@@ -51,10 +51,18 @@ function Carousel({
   children,
   ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
+  // Detect RTL direction for Embla carousel — must be physical prop, not CSS
+  const [isRTL, setIsRTL] = React.useState(false);
+  React.useEffect(() => {
+    setIsRTL(document.documentElement.dir === "rtl");
+  }, []);
+
   const [carouselRef, api] = useEmblaCarousel(
     {
       ...opts,
       axis: orientation === "horizontal" ? "x" : "y",
+      // Pass direction to Embla so it scrolls correctly in Arabic
+      ...(orientation === "horizontal" && isRTL ? { direction: "rtl" } : {}),
     },
     plugins,
   );
@@ -188,7 +196,7 @@ function CarouselPrevious({
         "absolute size-8 rounded-full",
         orientation === "horizontal"
           ? "top-1/2 -start-12 -translate-y-1/2"
-          : "-top-12 start-1/2 -translate-x-1/2 rotate-90",
+          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className,
       )}
       disabled={!canScrollPrev}
@@ -218,7 +226,7 @@ function CarouselNext({
         "absolute size-8 rounded-full",
         orientation === "horizontal"
           ? "top-1/2 -end-12 -translate-y-1/2"
-          : "-bottom-12 start-1/2 -translate-x-1/2 rotate-90",
+          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
         className,
       )}
       disabled={!canScrollNext}

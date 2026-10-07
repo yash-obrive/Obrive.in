@@ -51,7 +51,7 @@ async function getAllBasePaths(): Promise<BasePath[]> {
   getProductSlugs().forEach(s => basePaths.push({ path: `/products/${s}`, priority: 0.9, changeFreq: "weekly" }));
 
   // Solutions
-  getSolutionSlugs().forEach(s => basePaths.push({ path: `/services/${s}`, priority: 0.9, changeFreq: "weekly" }));
+  getSolutionSlugs().forEach(s => basePaths.push({ path: `/services/${s}`, priority: 1.0, changeFreq: "weekly" }));
 
   // Industries
   getIndustrySlugs().forEach(s => basePaths.push({ path: `/industries/${s}`, priority: 0.9, changeFreq: "weekly" }));
