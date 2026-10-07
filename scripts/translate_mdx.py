@@ -27,10 +27,6 @@ def safe_translate(text, target_lang):
     return text
 
 def translate_mdx_content(content, target_lang):
-    # This is a very simplistic translation that just tries to translate text outside of tags and frontmatter.
-    # To do this safely for MDX, we can split by lines and translate text that looks like prose.
-    # Given the complexity of MDX, translating line by line.
-    
     # Extract frontmatter
     frontmatter = ""
     body = content
@@ -40,14 +36,29 @@ def translate_mdx_content(content, target_lang):
             frontmatter_content = parts[1]
             body = parts[2]
             
-            # translate specific fields in frontmatter (title, description)
+            # translate specific fields in frontmatter
             new_fm_lines = []
             for line in frontmatter_content.split('\n'):
-                if line.startswith("title:") or line.startswith("description:"):
+                if any(line.startswith(p) for p in ["title:", "description:", "seoTitle:", "seoDescription:", "quote:"]):
                     key, val = line.split(":", 1)
-                    val = val.strip().strip("'").strip('"')
+                    val = val.strip()
+                    # Remove surrounding quotes safely
+                    if (val.startswith("'") and val.endswith("'")) or (val.startswith('"') and val.endswith('"')):
+                        val = val[1:-1]
                     trans_val = safe_translate(val, target_lang)
+                    # escape double quotes
+                    trans_val = trans_val.replace('"', '\\"')
                     new_fm_lines.append(f'{key}: "{trans_val}"')
+                elif line.strip().startswith("- benefit:") or line.strip().startswith("description:"):
+                    # For impactMetrics
+                    # e.g. "  - benefit: Process Efficiency"
+                    # e.g. "    description: Workflow completion time reduced by 45%"
+                    prefix, text = line.split(":", 1)
+                    text = text.strip()
+                    if (text.startswith("'") and text.endswith("'")) or (text.startswith('"') and text.endswith('"')):
+                        text = text[1:-1]
+                    trans_val = safe_translate(text, target_lang)
+                    new_fm_lines.append(f'{prefix}: "{trans_val}"')
                 else:
                     new_fm_lines.append(line)
             frontmatter = "---\n" + "\n".join(new_fm_lines) + "---"
@@ -55,42 +66,87 @@ def translate_mdx_content(content, target_lang):
     lines = body.split('\n')
     translated_lines = []
     
-    # A simple block tracking
     in_code_block = False
+    in_jsx_tag = False
+    
+    translatable_attrs = ['title', 'quote', 'content', 'author', 'closingStatement', 'phase']
+
     for line in lines:
-        if line.strip().startswith("```"):
+        stripped = line.strip()
+        
+        if stripped.startswith("```"):
             in_code_block = not in_code_block
             translated_lines.append(line)
             continue
             
-        if in_code_block or line.strip() == "" or line.strip().startswith("<") or line.strip().startswith("import ") or line.strip().startswith("export "):
-            # We don't translate components directly here unless it's text inside tags, 
-            # but for safety we just skip lines starting with <.
-            # Realistically we should translate text inside <CompanyInfoItem>
+        if in_code_block or stripped == "" or stripped.startswith("import ") or stripped.startswith("export "):
+            translated_lines.append(line)
+            continue
             
-            # Simple regex to translate text inside <CompanyInfoItem>...</CompanyInfoItem>
-            if "<CompanyInfoItem>" in line and "</CompanyInfoItem>" in line:
-                match = re.search(r'<CompanyInfoItem>(.*?)</CompanyInfoItem>', line)
-                if match:
-                    t = safe_translate(match.group(1), target_lang)
-                    line = line.replace(match.group(1), t)
-            elif "<li>" in line and "</li>" in line:
-                match = re.search(r'<li>(.*?)</li>', line)
-                if match:
+        if stripped.startswith("</"):
+            translated_lines.append(line)
+            continue
+
+        # If we are inside a multi-line JSX tag (e.g. properties)
+        if in_jsx_tag:
+            for attr in translatable_attrs:
+                pattern = rf'{attr}="(.*?)"'
+                def repl(m):
+                    return f'{attr}="{safe_translate(m.group(1), target_lang)}"'
+                line = re.sub(pattern, repl, line)
+                
+            translated_lines.append(line)
+            if stripped.endswith("/>") or stripped.endswith(">"):
+                in_jsx_tag = False
+            continue
+
+        # If it's the start of a JSX tag
+        if stripped.startswith("<"):
+            # Translate attributes if present on the same line
+            for attr in translatable_attrs:
+                pattern = rf'{attr}="(.*?)"'
+                def repl(m):
+                    return f'{attr}="{safe_translate(m.group(1), target_lang)}"'
+                line = re.sub(pattern, repl, line)
+                
+            # Translate inner text if it's a one-liner like <Tag>Text</Tag>
+            if "</" in line:
+                match = re.search(r'>([^<]+)</', line)
+                if match and match.group(1).strip():
                     t = safe_translate(match.group(1), target_lang)
                     line = line.replace(match.group(1), t)
             
             translated_lines.append(line)
-            continue
             
-        # If it's a markdown heading
-        if line.startswith("#"):
-            prefix = re.match(r'^#+\s*', line).group(0)
-            text = line[len(prefix):]
-            translated_lines.append(prefix + safe_translate(text, target_lang))
+            # If it's NOT a self-closing or complete tag on the same line, we enter in_jsx_tag
+            if not (stripped.endswith("/>") or stripped.endswith(">")):
+                in_jsx_tag = True
+                
             continue
-            
+
         # Regular text
+        if line.startswith("#"):
+            match = re.match(r'^#+\s*', line)
+            if match:
+                prefix = match.group(0)
+                text = line[len(prefix):]
+                translated_lines.append(prefix + safe_translate(text, target_lang))
+            else:
+                translated_lines.append(safe_translate(line, target_lang))
+            continue
+            
+        # Lists
+        match = re.match(r'^(\s*[-*]\s+)(.*)', line)
+        if match:
+            prefix = match.group(1)
+            text = match.group(2)
+            if text.strip() and not text.strip().startswith("<"):
+                translated_lines.append(prefix + safe_translate(text, target_lang))
+            else:
+                translated_lines.append(line)
+            continue
+            
+        # Normal text paragraph
         translated_lines.append(safe_translate(line, target_lang))
 
     return frontmatter + "\n".join(translated_lines)
@@ -111,7 +167,7 @@ def translate_file(src_path, target_path, target_lang):
 
 def main():
     base_dirs = ['career', 'docs', 'faq', 'legal', 'resources', 'security', 'support']
-    langs = ['ar', 'de', 'es', 'fr', 'id', 'it', 'ja', 'ko', 'ms', 'nl', 'pt', 'sv', 'th', 'zh', 'ru']
+    langs = ['de']
     
     tasks = []
     
