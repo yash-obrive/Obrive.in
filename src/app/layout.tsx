@@ -116,26 +116,69 @@ export default async function RootLayout({
             }),
           }}
         />
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-KSCT4R6J');`}
+        </Script>
+        {/* Microsoft Clarity */}
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "yt351ocghm");
+          `}
+        </Script>
       </head>
       <body className={`${michroma.className} antialiased bg-white`}>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KSCT4R6J"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
         <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
         {children}
 
         {/* Google Analytics */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-DC50858P0E"
+          src="https://www.googletagmanager.com/gtag/js?id=G-1N4967K4YQ"
           strategy="afterInteractive"
         />
-
         <Script id="google-analytics" strategy="afterInteractive">
           {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-DC50858P0E');
-        `}
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1N4967K4YQ');
+          `}
         </Script>
+
+        {/*
+          Google Preferred Sources — publisher.js
+          Loaded once globally. Google's script scans the DOM for
+          <div google-add-preferred-source-btn> elements and initialises
+          the Preferred Sources widget on each matching element.
+          strategy="afterInteractive" ensures non-blocking load after hydration.
+          The stable id prevents Next.js from re-injecting this script
+          on client-side navigations.
+          Eligibility at the domain level (obrive.com) is determined by Google.
+        */}
+        <Script
+          id="google-preferred-source-publisher"
+          src="https://news.google.com/swg/js/v1/publisher.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
 }
+

@@ -142,7 +142,6 @@ model users {
   impersonation_started        impersonation_logs[]  @relation("ImpersonationAdmin")
   impersonation_targets        impersonation_logs[]  @relation("ImpersonationTarget")
 
-
   // Chat relations
   created_conversations conversations[]             @relation("CreatedConversations")
   conversations         conversation_participants[]
@@ -633,6 +632,7 @@ model CommunityPostLike {
   user users @relation("CommunityPostLikeUser", fields: [user_id], references: [id])
 
   post CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
   @@unique([user_id, postId])
   @@map("community_post_likes")
 }
@@ -650,6 +650,7 @@ model CommunityCommentLike {
   user users @relation("CommunityCommentLikeUser", fields: [user_id], references: [id])
 
   comment CommunityComment @relation(fields: [commentId], references: [id], onDelete: Cascade)
+
   @@unique([user_id, commentId])
   @@map("community_comment_likes")
 }
@@ -667,6 +668,7 @@ model CommunitySavedPost {
   user users @relation("CommunitySavedPostUser", fields: [user_id], references: [id])
 
   post CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+
   @@unique([user_id, postId])
   @@map("community_saved_posts")
 }
@@ -686,9 +688,9 @@ model employee_locations {
 }
 
 model PaymentOrder {
-  id                  Int       @id @default(autoincrement())
-  packageId           String    @db.VarChar(100)
-  packageName         String    @db.VarChar(255)
+  id          Int    @id @default(autoincrement())
+  packageId   String @db.VarChar(100)
+  packageName String @db.VarChar(255)
 
   // ── Financial breakdown (all values in integer PAISE) ────────────────────
   // Nullable for backward compatibility with orders created before this schema
@@ -698,12 +700,12 @@ model PaymentOrder {
   // gatewayFee and gatewayFeeGst model a customer-facing payment convenience
   // charge. Confirm tax treatment with a qualified advisor before production.
   // Refund treatment of these components requires separate business confirmation.
-  baseAmount          Int?                          // Base service price in paise
-  serviceGst          Int?                          // GST on service (default 18%) in paise
-  gatewayFee          Int?                          // Gateway convenience fee (default 2%) in paise
-  gatewayFeeGst       Int?                          // GST on gateway fee (default 18%) in paise
-  gatewayCharges      Int?                          // gatewayFee + gatewayFeeGst in paise
-  totalAmount         Int?                          // Final customer total in paise (= Razorpay order amount)
+  baseAmount     Int? // Base service price in paise
+  serviceGst     Int? // GST on service (default 18%) in paise
+  gatewayFee     Int? // Gateway convenience fee (default 2%) in paise
+  gatewayFeeGst  Int? // GST on gateway fee (default 18%) in paise
+  gatewayCharges Int? // gatewayFee + gatewayFeeGst in paise
+  totalAmount    Int? // Final customer total in paise (= Razorpay order amount)
 
   // Legacy field kept for backward compatibility. For new records equals totalAmount.
   amount              Int
@@ -738,27 +740,157 @@ model password_resets {
   used_at       DateTime?
   attempt_count Int       @default(0)
   createdAt     DateTime  @default(now())
-  
-  user          users     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+
+  user users @relation(fields: [userId], references: [id], onDelete: Cascade)
+
   @@index([token])
   @@index([userId])
 }
 
 model impersonation_logs {
-  id                 Int       @id @default(autoincrement())
-  original_admin_id  Int
-  target_user_id     Int
-  action             String    @db.VarChar(50) // e.g. 'start', 'exit'
-  start_timestamp    DateTime  @default(now())
-  end_timestamp      DateTime?
-  success            Boolean   @default(true)
-  created_at         DateTime  @default(now())
+  id                Int       @id @default(autoincrement())
+  original_admin_id Int
+  target_user_id    Int
+  action            String    @db.VarChar(50) // e.g. 'start', 'exit'
+  start_timestamp   DateTime  @default(now())
+  end_timestamp     DateTime?
+  success           Boolean   @default(true)
+  created_at        DateTime  @default(now())
 
-  admin              users     @relation("ImpersonationAdmin", fields: [original_admin_id], references: [id], onDelete: Cascade)
-  target             users     @relation("ImpersonationTarget", fields: [target_user_id], references: [id], onDelete: Cascade)
+  admin  users @relation("ImpersonationAdmin", fields: [original_admin_id], references: [id], onDelete: Cascade)
+  target users @relation("ImpersonationTarget", fields: [target_user_id], references: [id], onDelete: Cascade)
 
   @@index([original_admin_id])
   @@index([target_user_id])
 }
 
+//=======================================================================================
+//|| OBLINK AI MODELS
+//=======================================================================================
+
+model oblink_targets {
+  id                Int     @id @default(autoincrement())
+  domain            String  @db.VarChar(255)
+  url               String  @unique @db.Text
+  platform          String  @db.VarChar(100)
+  country           String? @db.VarChar(10)
+  language          String? @db.VarChar(10)
+  topic             String? @db.VarChar(255)
+  opportunity_type  String  @db.VarChar(50)
+  publishing_method String  @db.VarChar(50) // API, BROWSER, OWNED
+
+  api_supported        Boolean @default(false)
+  browser_supported    Boolean @default(false)
+  authorization_status Boolean @default(false)
+
+  login_required Boolean @default(false)
+  account_id     Int?
+  target_page    String? @db.Text
+
+  relevance_score Float?
+  authority_score Float?
+  editorial_score Float?
+  spam_score      Float?
+  overall_score   Float?
+
+  target_status String @default("DISCOVERED") @db.VarChar(50) // DISCOVERED, QUALIFIED, AUTHORIZED, READY, PUBLISHED, VERIFIED, FAILED, BLOCKED, MANUAL_ACTION_REQUIRED, REJECTED
+
+  created_at DateTime @default(now()) @db.Timestamp(6)
+  updated_at DateTime @updatedAt @db.Timestamp(6)
+
+  account   oblink_publishing_accounts? @relation(fields: [account_id], references: [id])
+  links     oblink_links[]
+  events    oblink_publishing_events[]
+  decisions oblink_agent_decisions[]
+
+  @@index([target_status])
+  @@index([domain])
+}
+
+model oblink_publisher_capabilities {
+  id                        Int      @id @default(autoincrement())
+  platform                  String   @unique @db.VarChar(100)
+  api_supported             Boolean  @default(false)
+  api_publish_supported     Boolean  @default(false)
+  browser_publish_supported Boolean  @default(false)
+  authorization_required    Boolean  @default(true)
+  authorization_verified    Boolean  @default(false)
+  automation_allowed        Boolean  @default(false)
+  reason                    String?  @db.Text
+  documentation_url         String?  @db.Text
+  status                    String   @default("NOT_SUPPORTED") @db.VarChar(50) // SUPPORTED, AUTHORIZED, NOT_SUPPORTED, NOT_AUTHORIZED, BLOCKED
+  created_at                DateTime @default(now()) @db.Timestamp(6)
+  updated_at                DateTime @updatedAt @db.Timestamp(6)
+}
+
+model oblink_publishing_accounts {
+  id                    Int       @id @default(autoincrement())
+  platform              String    @db.VarChar(100)
+  domain                String    @db.VarChar(255)
+  account_name          String?   @db.VarChar(255)
+  account_email         String?   @db.VarChar(255)
+  account_type          String    @db.VarChar(50)
+  authorization_status  Boolean   @default(false)
+  status                String    @default("ACTIVE") @db.VarChar(50)
+  encrypted_credentials String?   @db.Text // Encrypted at rest
+  last_used             DateTime? @db.Timestamp(6)
+  created_at            DateTime  @default(now()) @db.Timestamp(6)
+  updated_at            DateTime  @updatedAt @db.Timestamp(6)
+
+  targets oblink_targets[]
+}
+
+model oblink_links {
+  id             Int      @id @default(autoincrement())
+  target_id      Int
+  publisher_url  String   @db.Text
+  obrive_url     String   @db.Text
+  anchor         String?  @db.VarChar(255)
+  context        String?  @db.Text
+  rel_attributes String?  @db.VarChar(255)
+  status         String   @default("PUBLISHED") @db.VarChar(50)
+  external_post_id String? @db.VarChar(255)
+  idempotency_key  String? @db.VarChar(255)
+  first_seen     DateTime @default(now()) @db.Timestamp(6)
+  last_verified  DateTime @default(now()) @db.Timestamp(6)
+  created_at     DateTime @default(now()) @db.Timestamp(6)
+  updated_at     DateTime @updatedAt @db.Timestamp(6)
+
+  target oblink_targets       @relation(fields: [target_id], references: [id], onDelete: Cascade)
+  checks oblink_link_checks[]
+}
+
+model oblink_link_checks {
+  id                Int      @id @default(autoincrement())
+  link_id           Int
+  status            String   @db.VarChar(50) // VERIFIED, REMOVED, BROKEN, NOFOLLOW_ADDED
+  http_status       Int?
+  raw_html_snapshot String?  @db.Text // Optional snippet for debugging
+  checked_at        DateTime @default(now()) @db.Timestamp(6)
+
+  link oblink_links @relation(fields: [link_id], references: [id], onDelete: Cascade)
+}
+
+model oblink_agent_decisions {
+  id              Int      @id @default(autoincrement())
+  target_id       Int
+  agent_name      String   @db.VarChar(50)
+  decision        String   @db.VarChar(50)
+  confidence      Float?
+  reason          String?  @db.Text
+  input_snapshot  Json?
+  output_snapshot Json?
+  created_at      DateTime @default(now()) @db.Timestamp(6)
+
+  target oblink_targets @relation(fields: [target_id], references: [id], onDelete: Cascade)
+}
+
+model oblink_publishing_events {
+  id         Int      @id @default(autoincrement())
+  target_id  Int
+  event_type String   @db.VarChar(50) // CONTENT_GENERATED, PUBLISH_ATTEMPT, PUBLISH_SUCCESS, PUBLISH_FAILED
+  details    String?  @db.Text
+  created_at DateTime @default(now()) @db.Timestamp(6)
+
+  target oblink_targets @relation(fields: [target_id], references: [id], onDelete: Cascade)
+}

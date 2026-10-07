@@ -15,6 +15,8 @@ import BlogRecommendations from "./BlogRecommendations";
 import ResourceBackButton from "./ResourceBackButton";
 import ResourceWorkflowSteps from "./ResourceWorkflowSteps";
 import Translate from "@/components/shared/Translate";
+import GooglePreferredSource from "@/components/shared/GooglePreferredSource";
+
 
 interface ResourceTemplateProps {
   metadata: CaseStudyMetadata;
@@ -137,6 +139,16 @@ export default function ResourceTemplate({
                   </p>
                 </div>
               </div>
+
+              {/*
+                Google Preferred Sources widget — editorial/resource detail placement.
+                Domain-level eligibility (obrive.com) is determined by Google.
+                When Google's script does not render a widget, this collapses to zero height.
+              */}
+              <div className="pt-2">
+                <GooglePreferredSource theme="light" />
+              </div>
+
             </div>
           </div>
         </FullWidthSection>

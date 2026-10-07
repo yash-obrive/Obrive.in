@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import BlogsHero from "@/components/pages/resources/BlogsHero";
 import ResourcesContent from "@/components/pages/resources/ResourcesContent";
 import { BlogCardContent } from "@/constants/pages/resources/blog-card";
+import GooglePreferredSource from "@/components/shared/GooglePreferredSource";
+
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://obrive.com"),
@@ -140,8 +142,19 @@ export default function Blogs() {
       {/* hero section */}
       <BlogsHero />
 
+      {/*
+        Google Preferred Sources widget — editorial/content hub placement.
+        Eligibility is at the domain level (obrive.com), not this subdirectory.
+        When Google's script does not render a widget (e.g. unsupported region,
+        feature unavailable), this container stays empty and occupies no space.
+      */}
+      <div className="flex justify-center py-4">
+        <GooglePreferredSource theme="light" />
+      </div>
+
       {/* main content with client-side filtering */}
       <ResourcesContent />
     </main>
   );
 }
+
