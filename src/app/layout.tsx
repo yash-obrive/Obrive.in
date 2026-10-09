@@ -14,19 +14,19 @@ const michroma = Michroma({
 export const metadata: Metadata = {
   metadataBase: new URL("https://obrive.in"),
   title:
-    "Obrive | Global Leader in AR · VR · MR & 3D Design – Enterprise-Grade Immersive Solutions",
+    "Obrive | AR · VR · MR & 3D Design – Enterprise-Grade Immersive Solutions in India",
   description:
-    "Obrive Industries delivers cutting-edge AR, VR, MR and spatial computing solutions across industries. From immersive 3D visualisation to bespoke XR applications, we turn ideas into interactive realities.",
+    "Obrive Industries delivers cutting-edge AR, VR, MR and spatial computing solutions across India. From immersive 3D visualisation to bespoke XR applications, we turn ideas into interactive realities.",
   keywords:
-    "AR development global, VR development global, MR solutions enterprise, spatial computing studio, 3D design services international, immersive technology company, enterprise XR applications global, mixed reality development services, 3D visualization design studio, virtual showroom solutions global, digital twin services, immersive business solutions worldwide",
+    "AR development India, VR development India, MR solutions enterprise, spatial computing studio, 3D design services India, immersive technology company, enterprise XR applications, mixed reality development services, 3D visualization design studio, virtual showroom solutions India, digital twin services, immersive business solutions India",
 
   openGraph: {
     type: "website",
     url: "https://obrive.in",
     title:
-      "Obrive | AR · VR · MR & 3D Design – Enterprise-Grade Immersive Solutions",
+      "Obrive | AR · VR · MR & 3D Design – Enterprise-Grade Immersive Solutions in India",
     description:
-      "Join Obrive in leading the immersive revolution: global solutions in AR, VR, MR, spatial computing and 3D design for enterprises across training, retail, real-estate, manufacturing and more.",
+      "Join Obrive in leading the immersive revolution: solutions in AR, VR, MR, spatial computing and 3D design for enterprises across India in training, retail, real-estate, manufacturing and more.",
     images: [
       {
         url: "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Faugmented_first.f8b128f2.webp&w=1200&q=75",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
       },
     ],
     siteName: "Obrive",
-    locale: "en_US",
+    locale: "en_IN",
   },
 };
 
