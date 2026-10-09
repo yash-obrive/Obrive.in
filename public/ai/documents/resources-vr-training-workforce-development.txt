@@ -1,6 +1,6 @@
 # src/content/resources/vr-training-workforce-development.mdx
 
-Canonical URL: https://obrive.com/support/vr-training-workforce-development
+Canonical URL: https://obrive.in/support/vr-training-workforce-development
 Source: src/content/resources/vr-training-workforce-development.mdx
 
 ---

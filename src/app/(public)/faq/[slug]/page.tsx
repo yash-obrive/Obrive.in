@@ -40,7 +40,7 @@ export async function generateMetadata({
       title: `${faqData.metadata.title} | Obrive`,
       description: faqData.metadata.description || "",
       alternates: {
-        canonical: `https://obrive.com/faq/${slug}`,
+        canonical: `https://obrive.in/faq/${slug}`,
       },
     }
   );

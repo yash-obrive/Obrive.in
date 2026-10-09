@@ -1,6 +1,6 @@
 # src/content/legal/privacy-policy.mdx
 
-Canonical URL: https://obrive.com/support/privacy-policy
+Canonical URL: https://obrive.in/support/privacy-policy
 Source: src/content/legal/privacy-policy.mdx
 
 ---
@@ -14,7 +14,7 @@ Source: src/content/legal/privacy-policy.mdx
     <br />
     <br />
     This Policy describes the types of information we may collect from you or
-    that you may provide to us when you use our websites at obrive.com (the
+    that you may provide to us when you use our websites at obrive.in (the
     “Site”), our mobile applications, and our AR/VR/MR and spatial computing
     services and solutions (collectively, “Services”). It also explains how we
     collect, use, store, and disclose your information.
@@ -169,7 +169,7 @@ Source: src/content/legal/privacy-policy.mdx
     
     To exercise your rights, please contact us at{" "}
     
-      <StyledText>privacy@obrive.com</StyledText>
+      <StyledText>privacy@obrive.in</StyledText>
     
   
 
@@ -206,7 +206,7 @@ Source: src/content/legal/privacy-policy.mdx
     <br />
     
       
-        Email: privacy@obrive.com
+        Email: privacy@obrive.in
       
       
-        Website: www.obrive.com
+        Website: www.obrive.in

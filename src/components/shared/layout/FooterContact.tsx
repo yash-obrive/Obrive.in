@@ -44,11 +44,11 @@ export default function FooterContact() {
         +91-888-477-4300
       </div>
       <a
-        href="mailto:info@obrive.com"
+        href="mailto:info@obrive.in"
         className={`${contactCellBase} p-3`}
         dir="ltr"
       >
-        info@obrive.com
+        info@obrive.in
       </a>
 
       {/* Display up to 3 offices */}

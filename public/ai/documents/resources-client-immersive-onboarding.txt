@@ -1,6 +1,6 @@
 # src/content/resources/client-immersive-onboarding.mdx
 
-Canonical URL: https://obrive.com/support/client-immersive-onboarding
+Canonical URL: https://obrive.in/support/client-immersive-onboarding
 Source: src/content/resources/client-immersive-onboarding.mdx
 
 ---

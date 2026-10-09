@@ -135,28 +135,28 @@ async function runTest() {
         name: "Rejection: Fabricated Price",
         content: JSON.stringify({
           title: "Test",
-          body: "Here is a price of $1000 for our product. https://obrive.com",
+          body: "Here is a price of $1000 for our product. https://obrive.in",
         }),
       },
       {
         name: "Rejection: Invented Customer",
         content: JSON.stringify({
           title: "Test",
-          body: "We have a new partner Google. https://obrive.com",
+          body: "We have a new partner Google. https://obrive.in",
         }),
       },
       {
         name: "Rejection: Fabricated Certs",
         content: JSON.stringify({
           title: "Test",
-          body: "We are ISO certified. https://obrive.com",
+          body: "We are ISO certified. https://obrive.in",
         }),
       },
       {
         name: "Rejection: Fabricated Metric",
         content: JSON.stringify({
           title: "Test",
-          body: "We improved performance by 99%. https://obrive.com",
+          body: "We improved performance by 99%. https://obrive.in",
         }),
       },
       {
@@ -167,7 +167,7 @@ async function runTest() {
         name: "Valid Multilingual Generation",
         content: JSON.stringify({
           title: "Automatización de IA",
-          body: "Obrive ofrece soluciones de IA excepcionales. Descubre más en https://obrive.com",
+          body: "Obrive ofrece soluciones de IA excepcionales. Descubre más en https://obrive.in",
         }),
       },
     ];
@@ -176,7 +176,7 @@ async function runTest() {
     const originalGetKnowledgeContext = KnowledgeRetrieval.getKnowledgeContext;
     KnowledgeRetrieval.getKnowledgeContext = async () => ({
       contextualServices: [], // Empty to ensure we don't accidentally match
-      approvedUrls: ["https://obrive.com"],
+      approvedUrls: ["https://obrive.in"],
       platform: testTarget.platform,
       opportunityType: testTarget.opportunity_type,
       topic: testTarget.topic,
@@ -269,7 +269,7 @@ async function runTest() {
     agentLive._generateContent = async () => {
       return {
         title: "Test Obrive Knowledge Post",
-        body: "This is a factual test post verifying the integration con Obrive Industries. Check our canonical service at https://obrive.com",
+        body: "This is a factual test post verifying the integration con Obrive Industries. Check our canonical service at https://obrive.in",
       };
     };
 

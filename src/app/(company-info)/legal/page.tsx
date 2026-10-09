@@ -13,11 +13,11 @@ export const metadata: Metadata = {
   keywords:
     "legal compliance AR VR, privacy policy immersive technology, terms of service XR, data security spatial computing, regulatory compliance AR VR company",
   alternates: {
-    canonical: "https://obrive.com/legal",
+    canonical: "https://obrive.in/legal",
   },
   openGraph: {
     type: "website",
-    url: "https://obrive.com/legal",
+    url: "https://obrive.in/legal",
     title: "Obrive Industries — Legal & Compliance",
     description:
       "Review Obrive's legal documents, terms of service, privacy policy, and compliance information for our immersive technology platform.",
@@ -55,8 +55,8 @@ export default async function LegalPage() {
         {JSON.stringify({
           "@context": "https://schema.org/",
           "@type": "WebPage",
-          "@id": "https://obrive.com/legal",
-          url: "https://obrive.com/legal",
+          "@id": "https://obrive.in/legal",
+          url: "https://obrive.in/legal",
           name: "Obrive Industries — Legal & Compliance",
         })}
       </Script>

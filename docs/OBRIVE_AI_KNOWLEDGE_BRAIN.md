@@ -182,7 +182,7 @@ The `.com` commercial language architecture consists of English (`en`) and 14 no
 All entities enforce locale-aware identity references and localized knowledge representation. 
 
 **Strict Exclusion Notice (India / Hindi)**:
-India and Hindi are intentionally excluded from `Obrive.com`. There are absolutely no `/in` routes, `/hi` routes, `hi-IN` exposures, or India contact details in the Knowledge Brain. India traffic is handled through a separate `obrive.in` domain architecture. The generator uses a strict `/\/(in|hi)(\/|$)/` regex constraint to enforce this boundary securely.
+India and Hindi are intentionally excluded from `Obrive.in`. There are absolutely no `/in` routes, `/hi` routes, `hi-IN` exposures, or India contact details in the Knowledge Brain. India traffic is handled through a separate `obrive.in` domain architecture. The generator uses a strict `/\/(in|hi)(\/|$)/` regex constraint to enforce this boundary securely.
 
 ## Security & Data Isolation
 
@@ -266,9 +266,9 @@ For the eventual production deployment, please verify the following:
 - [ ] All regenerated `.txt` and `.json` artifacts are committed to Git
 - [ ] No secrets found in outputs
 - [ ] `robots.txt` configuration reviewed
-- [ ] `https://obrive.com/llms.txt` is accessible
-- [ ] `https://obrive.com/llms-full.txt` is accessible
-- [ ] `https://obrive.com/ai/knowledge.json` is accessible
+- [ ] `https://obrive.in/llms.txt` is accessible
+- [ ] `https://obrive.in/llms-full.txt` is accessible
+- [ ] `https://obrive.in/ai/knowledge.json` is accessible
 - [ ] Production smoke test passes
 - [ ] Canonical and hreflang tag verification
 - [ ] Sitemap accessibility

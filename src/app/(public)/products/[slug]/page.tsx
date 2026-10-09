@@ -10,13 +10,13 @@ function getAlternates(slug: string) {
     (code) => COUNTRIES[code].isProductionReady
   );
   const langs: Record<string, string> = {
-    "x-default": `https://obrive.com/products/${slug}`,
+    "x-default": `https://obrive.in/products/${slug}`,
   };
   for (const code of activeCountries) {
-    langs[COUNTRIES[code].hreflang] = `https://obrive.com/${code}/products/${slug}`;
+    langs[COUNTRIES[code].hreflang] = `https://obrive.in/${code}/products/${slug}`;
   }
   return {
-    canonical: `https://obrive.com/products/${slug}`,
+    canonical: `https://obrive.in/products/${slug}`,
     languages: langs,
   };
 }
@@ -64,9 +64,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
             description:
               "Make parking effortless for your customers with AR wayfinding. Increase in revenues, visits and customer satisfaction guaranteed with OBPARK | Obrive Products",
             image: [
-              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobpark-hero.65e28982.webp&w=1920&q=75",
-              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobpark_3.db8370e2.webp&w=1200&q=75",
-              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstep_6.64adc1fc.webp&w=640&q=75",
+              "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobpark-hero.65e28982.webp&w=1920&q=75",
+              "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobpark_3.db8370e2.webp&w=1200&q=75",
+              "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstep_6.64adc1fc.webp&w=640&q=75",
             ],
             brand: {
               "@type": "Brand",
@@ -81,19 +81,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://obrive.com"
+                "item": "https://obrive.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Products",
-                "item": "https://obrive.com/products"
+                "item": "https://obrive.in/products"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": "OBPARK",
-                "item": `https://obrive.com/products/${slug}`
+                "item": `https://obrive.in/products/${slug}`
               }
             ]
           }
@@ -114,8 +114,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
             description:
               "Shopping just got smarter. Get real-time AR navigation, find products instantly, and get personalized recommendations. OBNAVI guides you everywhere.",
             image: [
-              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnavi-hero.e25a129e.webp&w=1920&q=75",
-              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnavi_3.df52f4da.webp&w=1200&q=75",
+              "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnavi-hero.e25a129e.webp&w=1920&q=75",
+              "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnavi_3.df52f4da.webp&w=1200&q=75",
             ],
             brand: {
               "@type": "Brand",
@@ -130,19 +130,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://obrive.com"
+                "item": "https://obrive.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Products",
-                "item": "https://obrive.com/products"
+                "item": "https://obrive.in/products"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": "OBNAVI",
-                "item": `https://obrive.com/products/${slug}`
+                "item": `https://obrive.in/products/${slug}`
               }
             ]
           }
@@ -163,9 +163,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
             description:
               "Explore, customize, and test drive any vehicle in VR before committing to one product. OBMOVE makes it happen. See how.",
             image: [
-              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove-hero.d1062fdc.webp&w=1920&q=75",
-              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove_3.072acded.webp&w=1200&q=75",
-              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove_1.777137d2.webp&w=1200&q=75",
+              "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove-hero.d1062fdc.webp&w=1920&q=75",
+              "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove_3.072acded.webp&w=1200&q=75",
+              "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobmove_1.777137d2.webp&w=1200&q=75",
             ],
             brand: {
               "@type": "Brand",
@@ -180,19 +180,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://obrive.com"
+                "item": "https://obrive.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Products",
-                "item": "https://obrive.com/products"
+                "item": "https://obrive.in/products"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": "OBMOVE",
-                "item": `https://obrive.com/products/${slug}`
+                "item": `https://obrive.in/products/${slug}`
               }
             ]
           }
@@ -213,9 +213,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
             description:
               "Channeling MR/VR technology to deliver the property of your dreams at your doorstep. Get a Demo Now! | OBNEST",
             image: [
-              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnest-hero.07df667c.webp&w=1920&q=75",
-              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnest_3.acbe931d.webp&w=1200&q=75",
-              "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fauthor.1358b851.webp&w=640&q=75",
+              "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnest-hero.07df667c.webp&w=1920&q=75",
+              "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobnest_3.acbe931d.webp&w=1200&q=75",
+              "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fauthor.1358b851.webp&w=640&q=75",
             ],
             brand: {
               "@type": "Brand",
@@ -230,19 +230,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://obrive.com"
+                "item": "https://obrive.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Products",
-                "item": "https://obrive.com/products"
+                "item": "https://obrive.in/products"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": "OBNEST",
-                "item": `https://obrive.com/products/${slug}`
+                "item": `https://obrive.in/products/${slug}`
               }
             ]
           }

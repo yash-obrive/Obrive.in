@@ -22,7 +22,7 @@
 
 Use this hierarchy for all decisions:
 
-1. **Existing Obrive.com** → primary source of truth for UI/UX, visual design, interactions and user experience.
+1. **Existing Obrive.in** → primary source of truth for UI/UX, visual design, interactions and user experience.
 2. **Existing repository/codebase** → source of truth for architecture, implementation, routes, components, conventions and integrations.
 3. **Supplied Obrive sitemap HTML** → source of truth for sitemap/page-directory structure and requirements represented in that file.
 4. **My explicit instructions** → override assumptions and recommendations.
@@ -34,7 +34,7 @@ Use this hierarchy for all decisions:
 
 **DO NOT REDESIGN OBRIVE.**
 
-The existing Obrive.com UI/UX must remain the design source of truth.
+The existing Obrive.in UI/UX must remain the design source of truth.
 
 Do not introduce a new:
 
@@ -146,7 +146,7 @@ The sitemap page itself is already developed.
 
 Do not assume that the standalone HTML's CSS/design is a replacement for the actual Obrive website design.
 
-The actual existing Obrive.com UI/UX remains the visual source of truth.
+The actual existing Obrive.in UI/UX remains the visual source of truth.
 
 ---
 
@@ -384,7 +384,7 @@ Do not hide uncertainty.
 
 Memorize:
 
-> **OBRIVE.COM IS THE DESIGN SOURCE OF TRUTH.**
+> **OBRIVE.IN IS THE DESIGN SOURCE OF TRUTH.**
 
 The result must visually and behaviorally belong to Obrive.
 

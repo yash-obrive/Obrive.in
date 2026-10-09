@@ -142,7 +142,7 @@ export default function ResourceTemplate({
 
               {/*
                 Google Preferred Sources widget — editorial/resource detail placement.
-                Domain-level eligibility (obrive.com) is determined by Google.
+                Domain-level eligibility (obrive.in) is determined by Google.
                 When Google's script does not render a widget, this collapses to zero height.
               */}
               <div className="pt-2">

@@ -1,6 +1,6 @@
 # src/content/legal/terms-of-service.mdx
 
-Canonical URL: https://obrive.com/support/terms-of-service
+Canonical URL: https://obrive.in/support/terms-of-service
 Source: src/content/legal/terms-of-service.mdx
 
 ---
@@ -188,7 +188,7 @@ Source: src/content/legal/terms-of-service.mdx
       
         Email:{" "}
         
-          legal@obrive.com
+          legal@obrive.in
         
       
     

@@ -197,7 +197,7 @@ class PublisherAgent {
           "VALIDATION_FAILED: Generated content is missing or too short.",
         );
       }
-      if (!body.toLowerCase().includes("obrive.com")) {
+      if (!body.toLowerCase().includes("obrive.in")) {
         throw new Error(
           "VALIDATION_FAILED: Generated content does not contain the required backlink.",
         );
@@ -248,7 +248,7 @@ class PublisherAgent {
         data: {
           target_id: target.id,
           publisher_url: publishResult.externalUrl,
-          obrive_url: target.target_page || "https://obrive.com",
+          obrive_url: target.target_page || "https://obrive.in",
           anchor: "Obrive",
           status: "PUBLISHING",
           external_post_id: publishResult.externalPostId,
@@ -406,14 +406,14 @@ Use ONLY the knowledge provided above. Do not hallucinate capabilities or custom
     const foundUrls = json.body.match(urlRegex) || [];
     for (const foundUrl of foundUrls) {
       const cleanUrl = foundUrl.replace(/[\.,\)]$/, ""); // clean trailing punctuation
-      if (!cleanUrl.startsWith("https://obrive.com")) {
+      if (!cleanUrl.startsWith("https://obrive.in")) {
         throw new Error(
           `CONTENT_VALIDATION_FAILED: Unapproved external domain found: ${cleanUrl}`,
         );
       }
       if (
         !knowledgeContext.approvedUrls.includes(cleanUrl) &&
-        cleanUrl !== "https://obrive.com"
+        cleanUrl !== "https://obrive.in"
       ) {
         throw new Error(
           `CONTENT_VALIDATION_FAILED: Unapproved Obrive URL found: ${cleanUrl}`,

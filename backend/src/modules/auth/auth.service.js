@@ -260,7 +260,7 @@ exports.forgotPassword = async (email) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        sender: { name: "Obrive Security", email: process.env.BREVO_SENDER_EMAIL || "account@obrive.com" },
+        sender: { name: "Obrive Security", email: process.env.BREVO_SENDER_EMAIL || "account@obrive.in" },
         to: [{ email: user.email, name: user.name || "User" }],
         subject: "Your Password Reset OTP",
         htmlContent: `

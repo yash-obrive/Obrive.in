@@ -1,6 +1,6 @@
 # src/content/resources/ar-presentations-business-pitches.mdx
 
-Canonical URL: https://obrive.com/support/ar-presentations-business-pitches
+Canonical URL: https://obrive.in/support/ar-presentations-business-pitches
 Source: src/content/resources/ar-presentations-business-pitches.mdx
 
 ---

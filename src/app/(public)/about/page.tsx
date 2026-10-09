@@ -97,7 +97,7 @@ export default function Products() {
               "url": "https://www.obrive.in",
               "logo": "https://www.obrive.in/_next/static/media/obrive-logo.svg",
               "description": "Obrive is an immersive technology company specializing in AR, VR, spatial computing and 3D visualization solutions.",
-              "email": "info@obrive.com",
+              "email": "info@obrive.in",
               "telephone": "+91 888-477-4300",
               "address": {
                 "@type": "PostalAddress",
@@ -157,7 +157,7 @@ export default function Products() {
                 <Translate text="Immersive Tech Redefining Business" />
               </h1>
               <p className="text-base sm:text-md text-center max-w-3xl px-4 font-medium">
-                <Translate text="At Obrive.com, we empower organizations to transform how they
+                <Translate text="At Obrive.in, we empower organizations to transform how they
                 design, train, and engage—leveraging the full spectrum of AR,
                 VR, MR, 3D design, and Spatial Computing." />
               </p>

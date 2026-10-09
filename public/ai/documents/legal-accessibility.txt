@@ -1,6 +1,6 @@
 # src/content/legal/accessibility.mdx
 
-Canonical URL: https://obrive.com/support/accessibility
+Canonical URL: https://obrive.in/support/accessibility
 Source: src/content/legal/accessibility.mdx
 
 ---
@@ -129,7 +129,7 @@ seriously as we shape the future of immersive technology.
     
       
         
-          accessibility@obrive.com
+          accessibility@obrive.in
         
       
       Obrive Industries Pvt. Ltd. — Accessibility & Compliance Division

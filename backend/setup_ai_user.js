@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const prisma = new PrismaClient();
 
 async function setupAIUser() {
-  const email = 'ai@obrive.com';
+  const email = 'ai@obrive.in';
   // Use the password from the conversation
   const rawPassword = process.env.AI_DASHBOARD_PASSWORD;
   

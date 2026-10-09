@@ -47,11 +47,11 @@ export async function generateMetadata({
       keywords:
         "product changelog AR VR, release notes immersive technology, platform updates XR, feature updates spatial computing, version history AR VR",
       alternates: {
-        canonical: "https://obrive.com/support/change-log",
+        canonical: "https://obrive.in/support/change-log",
       },
       openGraph: {
         type: "website",
-        url: "https://obrive.com/support/change-log",
+        url: "https://obrive.in/support/change-log",
         title: "Obrive Industries — Changelog",
         description:
           "Stay updated with the latest features, improvements, and updates to Obrive's immersive technology platform. View our complete product changelog.",
@@ -71,7 +71,7 @@ export async function generateMetadata({
     title: `${supportDoc.metadata.title} | Obrive`,
     description: supportDoc.metadata.description || "",
     alternates: {
-      canonical: `https://obrive.com/support/${slug}`,
+      canonical: `https://obrive.in/support/${slug}`,
     },
   };
 }
@@ -98,8 +98,8 @@ export default async function SupportPage({ params }: SupportPageProps) {
         {JSON.stringify({
           "@context": "https://schema.org/",
           "@type": "WebPage",
-          "@id": `https://obrive.com/support/${slug}`,
-          url: `https://obrive.com/support/${slug}`,
+          "@id": `https://obrive.in/support/${slug}`,
+          url: `https://obrive.in/support/${slug}`,
           name:
             slug === "change-log"
               ? "Obrive Industries — Changelog"

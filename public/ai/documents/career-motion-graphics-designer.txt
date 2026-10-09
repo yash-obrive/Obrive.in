@@ -1,6 +1,6 @@
 # src/content/career/motion-graphics-designer.mdx
 
-Canonical URL: https://obrive.com/support/motion-graphics-designer
+Canonical URL: https://obrive.in/support/motion-graphics-designer
 Source: src/content/career/motion-graphics-designer.mdx
 
 ---
@@ -107,4 +107,4 @@ Source: src/content/career/motion-graphics-designer.mdx
         </ol></CareerItem>
 </CareerSection>
 
-<CareerButton href="/apply.career.obrive.com/motion-graphics-designer" />
+<CareerButton href="/apply.career.obrive.in/motion-graphics-designer" />

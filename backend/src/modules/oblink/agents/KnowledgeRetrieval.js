@@ -26,11 +26,11 @@ class KnowledgeRetrieval {
       // Extract all canonical URLs for validation
       const approvedUrls = registry.entities
         .map((e) => e.canonicalUrl)
-        .filter((url) => url && url.startsWith("https://obrive.com"));
+        .filter((url) => url && url.startsWith("https://obrive.in"));
 
       // Ensure homepage is always approved
-      if (!approvedUrls.includes("https://obrive.com")) {
-        approvedUrls.push("https://obrive.com");
+      if (!approvedUrls.includes("https://obrive.in")) {
+        approvedUrls.push("https://obrive.in");
       }
 
       // Filter contextual services based on opportunity type, platform, topic, domain, language

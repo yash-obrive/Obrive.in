@@ -1,6 +1,6 @@
 # src/content/career/3d-visualization-designer.mdx
 
-Canonical URL: https://obrive.com/support/3d-visualization-designer
+Canonical URL: https://obrive.in/support/3d-visualization-designer
 Source: src/content/career/3d-visualization-designer.mdx
 
 ---
@@ -99,4 +99,4 @@ Source: src/content/career/3d-visualization-designer.mdx
         </ol></CareerItem>
 </CareerSection>
 
-<CareerButton href="/apply.career.obrive.com/3d-visualization-designer" />
+<CareerButton href="/apply.career.obrive.in/3d-visualization-designer" />

@@ -34,7 +34,7 @@ const DetailsPage = async ({
     const _name = formData.get("name") as string;
     const _email = formData.get("email") as string;
 
-    redirect(`/apply.career.obrive.com/${slug}/more`);
+    redirect(`/apply.career.obrive.in/${slug}/more`);
   }
   return (
     <div className="min-h-screen flex flex-col gap-30 items-center justify-center bg-white px-4">

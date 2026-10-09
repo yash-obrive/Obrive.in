@@ -1,6 +1,6 @@
 # src/content/career/product-manager-ar-vr-solutions.mdx
 
-Canonical URL: https://obrive.com/support/product-manager-ar-vr-solutions
+Canonical URL: https://obrive.in/support/product-manager-ar-vr-solutions
 Source: src/content/career/product-manager-ar-vr-solutions.mdx
 
 ---
@@ -110,4 +110,4 @@ Source: src/content/career/product-manager-ar-vr-solutions.mdx
         </ol></CareerItem>
 </CareerSection>
 
-<CareerButton href="/apply.career.obrive.com/product-manager-ar-vr-solutions" />
+<CareerButton href="/apply.career.obrive.in/product-manager-ar-vr-solutions" />

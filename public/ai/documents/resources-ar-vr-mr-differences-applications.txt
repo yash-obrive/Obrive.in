@@ -1,6 +1,6 @@
 # src/content/resources/ar-vr-mr-differences-applications.mdx
 
-Canonical URL: https://obrive.com/support/ar-vr-mr-differences-applications
+Canonical URL: https://obrive.in/support/ar-vr-mr-differences-applications
 Source: src/content/resources/ar-vr-mr-differences-applications.mdx
 
 ---

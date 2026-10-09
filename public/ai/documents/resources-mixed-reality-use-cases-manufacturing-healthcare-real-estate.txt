@@ -1,6 +1,6 @@
 # src/content/resources/mixed-reality-use-cases-manufacturing-healthcare-real-estate.mdx
 
-Canonical URL: https://obrive.com/support/mixed-reality-use-cases-manufacturing-healthcare-real-estate
+Canonical URL: https://obrive.in/support/mixed-reality-use-cases-manufacturing-healthcare-real-estate
 Source: src/content/resources/mixed-reality-use-cases-manufacturing-healthcare-real-estate.mdx
 
 ---

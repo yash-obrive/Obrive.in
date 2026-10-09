@@ -130,7 +130,7 @@ export default function HRDashboard() {
         }
       } else if (res.status === 403) {
         setLocError(
-          "Access Denied: Please log in with an HR or Admin account (hr@obrive.com).",
+          "Access Denied: Please log in with an HR or Admin account (hr@obrive.in).",
         );
       } else {
         setLocError("Unable to load employee locations.");

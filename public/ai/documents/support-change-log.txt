@@ -1,6 +1,6 @@
 # src/content/support/change-log.mdx
 
-Canonical URL: https://obrive.com/support/change-log
+Canonical URL: https://obrive.in/support/change-log
 Source: src/content/support/change-log.mdx
 
 ---

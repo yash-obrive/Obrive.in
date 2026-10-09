@@ -201,7 +201,7 @@ export default function EmployeeLogin() {
             <span
               className={`${FONTS.microgrammaBold.className} text-primary uppercase flex items-center gap-2 mt-2`}
             >
-              Hr@obrive.com <RightArrowIcon />
+              Hr@obrive.in <RightArrowIcon />
             </span>
           </div>
         </div>

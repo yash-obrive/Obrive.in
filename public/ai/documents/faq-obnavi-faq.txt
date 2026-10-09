@@ -1,6 +1,6 @@
 # src/content/faq/obnavi-faq.mdx
 
-Canonical URL: https://obrive.com/support/obnavi-faq
+Canonical URL: https://obrive.in/support/obnavi-faq
 Source: src/content/faq/obnavi-faq.mdx
 
 ---

@@ -1,6 +1,6 @@
 # src/content/faq/obnest-faq.mdx
 
-Canonical URL: https://obrive.com/support/obnest-faq
+Canonical URL: https://obrive.in/support/obnest-faq
 Source: src/content/faq/obnest-faq.mdx
 
 ---

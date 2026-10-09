@@ -1,6 +1,6 @@
 # src/content/legal/master-service-agreement.mdx
 
-Canonical URL: https://obrive.com/support/master-service-agreement
+Canonical URL: https://obrive.in/support/master-service-agreement
 Source: src/content/legal/master-service-agreement.mdx
 
 ---
@@ -259,7 +259,7 @@ Source: src/content/legal/master-service-agreement.mdx
       
         Email:{" "}
         
-          legal@obrive.com
+          legal@obrive.in
         
       
       Obrive Industries Pvt. Ltd. — Legal & Compliance Department

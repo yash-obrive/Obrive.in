@@ -61,7 +61,7 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
         "@type": "Article",
         headline: jsonCaseStudy.title,
         description: jsonCaseStudy.outcome_snapshot || jsonCaseStudy.overview,
-        image: `https://obrive.com/images/case-studies/${jsonCaseStudy.image}`,
+        image: `https://obrive.in/images/case-studies/${jsonCaseStudy.image}`,
         author: {
           "@type": "Organization",
           name: "Obrive",
@@ -71,7 +71,7 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
           name: "Obrive",
           logo: {
             "@type": "ImageObject",
-            url: "https://obrive.com/images/logo.png",
+            url: "https://obrive.in/images/logo.png",
           },
         },
       };
@@ -102,7 +102,7 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
 
   const imageUrl = heroImageSrc.startsWith("http")
     ? heroImageSrc
-    : `https://obrive.com${heroImageSrc}`;
+    : `https://obrive.in${heroImageSrc}`;
 
   const pageTitle = resource.metadata.seoTitle || resource.metadata.title;
   const pageDescription =
@@ -150,11 +150,11 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": isCaseStudy ? "Article" : "BlogPosting",
-    "@id": `https://obrive.com/resources/${slug}`,
+    "@id": `https://obrive.in/resources/${slug}`,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://obrive.com/resources/${slug}`,
-      url: `https://obrive.com/resources/${slug}`,
+      "@id": `https://obrive.in/resources/${slug}`,
+      url: `https://obrive.in/resources/${slug}`,
     },
     name: csOverride ? csOverride.name : resource.metadata.title,
     headline: csOverride ? csOverride.headline : pageTitle,
@@ -168,10 +168,10 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
     publisher: {
       "@type": "Organization",
       name: "Obrive",
-      url: "https://obrive.com",
+      url: "https://obrive.in",
       logo: {
         "@type": "ImageObject",
-        url: "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-logo.fb3eb1d9.svg&w=256&q=75",
+        url: "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-logo.fb3eb1d9.svg&w=256&q=75",
       },
     },
   };
@@ -184,19 +184,19 @@ export default async function ResourcePage({ params }: ResourcePageProps) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://obrive.com",
+        item: "https://obrive.in",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Resources",
-        item: "https://obrive.com/resources",
+        item: "https://obrive.in/resources",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: resource.metadata.title,
-        item: `https://obrive.com/resources/${slug}`,
+        item: `https://obrive.in/resources/${slug}`,
       },
     ],
   };

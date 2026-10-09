@@ -1,6 +1,6 @@
 # src/content/resources/web-vr-vs-app-vr-enterprises.mdx
 
-Canonical URL: https://obrive.com/support/web-vr-vs-app-vr-enterprises
+Canonical URL: https://obrive.in/support/web-vr-vs-app-vr-enterprises
 Source: src/content/resources/web-vr-vs-app-vr-enterprises.mdx
 
 ---

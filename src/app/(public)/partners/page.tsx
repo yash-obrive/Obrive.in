@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "Obrive white label services",
   ],
   alternates: {
-    canonical: "https://obrive.com/partners",
+    canonical: "https://obrive.in/partners",
   },
   robots: {
     index: true,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://obrive.com/partners",
+    url: "https://obrive.in/partners",
     title: "White Label Technology Partnerships | Obrive",
     description:
       "Extend your capabilities with white-label digital, immersive, and AI development partnerships.",

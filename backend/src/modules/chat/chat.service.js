@@ -362,7 +362,7 @@ exports.seedDummyChats = async (userId) => {
     const karn = await prisma.users.create({
       data: {
         userid: "karn_dummy",
-        email: "karn@obrive.com",
+        email: "karn@obrive.in",
         name: "Karn",
         role: "employee",
         password: "dummy_password",
@@ -374,7 +374,7 @@ exports.seedDummyChats = async (userId) => {
     const yatin = await prisma.users.create({
       data: {
         userid: "yatin_dummy",
-        email: "yatin@obrive.com",
+        email: "yatin@obrive.in",
         name: "Yatin",
         role: "employee",
         password: "dummy_password",

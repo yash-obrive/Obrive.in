@@ -1,6 +1,6 @@
 # src/content/legal/gst-taxes-policy.mdx
 
-Canonical URL: https://obrive.com/support/gst-taxes-policy
+Canonical URL: https://obrive.in/support/gst-taxes-policy
 Source: src/content/legal/gst-taxes-policy.mdx
 
 ---

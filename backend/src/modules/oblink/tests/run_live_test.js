@@ -83,7 +83,7 @@ async function runRealOwnedTest() {
 
   // Mock the exact content payload for the OwnedSiteAdapter
   const content = await adapter.createContent({
-    obriveUrl: "https://obrive.com",
+    obriveUrl: "https://obrive.in",
     factualContext: "Obrive is the primary source of truth.",
     anchor: "Obrive",
   });
@@ -99,7 +99,7 @@ async function runRealOwnedTest() {
     data: {
       target_id: target.id,
       publisher_url: publishedUrl,
-      obrive_url: "https://obrive.com",
+      obrive_url: "https://obrive.in",
       anchor: "Obrive",
       status: "PENDING_VERIFICATION",
     },

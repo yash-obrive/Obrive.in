@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Explore comprehensive frequently asked questions about Obrive's digital product development, web design, web development, AI, AR, VR, MR, 3D design, Spatial Computing, pricing, timelines, and services.",
   alternates: {
-    canonical: "https://obrive.com/faqs",
+    canonical: "https://obrive.in/faqs",
   },
 };
 

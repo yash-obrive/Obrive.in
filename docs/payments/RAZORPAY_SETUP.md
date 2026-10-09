@@ -37,7 +37,7 @@ RAZORPAY_WEBHOOK_SECRET=YOUR_WEBHOOK_SECRET
 BREVO_API_KEY=YOUR_BREVO_KEY
 BREVO_SENDER_EMAIL=no-reply@obrive.in
 BREVO_SENDER_NAME="Obrive Payments"
-PAYMENT_NOTIFICATION_EMAIL=account@obrive.com
+PAYMENT_NOTIFICATION_EMAIL=account@obrive.in
 ```
 *Note: Never expose the Key Secret, Webhook Secret, or Brevo API Key to the frontend. Never commit real credentials to Git.*
 

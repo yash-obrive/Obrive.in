@@ -1,6 +1,6 @@
 # src/content/resources/bringing-onboarding-to-life.mdx
 
-Canonical URL: https://obrive.com/support/bringing-onboarding-to-life
+Canonical URL: https://obrive.in/support/bringing-onboarding-to-life
 Source: src/content/resources/bringing-onboarding-to-life.mdx
 
 ---

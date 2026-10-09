@@ -236,7 +236,7 @@ exports.testEmail = async (req, res) => {
       packageId: "live-testing-100",
       packageName: "Live Testing Package",
       customerName: "Obrive Admin Test",
-      customerEmail: "yashveer@obrive.com", 
+      customerEmail: "yashveer@obrive.in", 
       customerPhone: "8873394750",
     };
 

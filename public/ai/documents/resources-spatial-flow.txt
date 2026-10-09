@@ -1,6 +1,6 @@
 # src/content/resources/spatial-flow.mdx
 
-Canonical URL: https://obrive.com/support/spatial-flow
+Canonical URL: https://obrive.in/support/spatial-flow
 Source: src/content/resources/spatial-flow.mdx
 
 ---

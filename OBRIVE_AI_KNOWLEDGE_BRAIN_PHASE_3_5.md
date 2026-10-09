@@ -4,29 +4,29 @@
 ### 1. RUNTIME METADATA VERIFICATION
 | Route | Metadata Type | Resolution | Title | Description | Canonical | OG | Twitter | Status |
 |---|---|---|---|---|---|---|---|---|
-| / | Static | RUNTIME_RESOLVED | AR, VR, MR &amp; Spatial Computing Solutions | Obrive | Present | https://obrive.com | Unknown | Unknown | VERIFIED |
-| /(public) | Static | RUNTIME_RESOLVED | AR, VR, MR &amp; Spatial Computing Solutions | Obrive | Present | https://obrive.com | Unknown | Unknown | VERIFIED |
+| / | Static | RUNTIME_RESOLVED | AR, VR, MR &amp; Spatial Computing Solutions | Obrive | Present | https://obrive.in | Unknown | Unknown | VERIFIED |
+| /(public) | Static | RUNTIME_RESOLVED | AR, VR, MR &amp; Spatial Computing Solutions | Obrive | Present | https://obrive.in | Unknown | Unknown | VERIFIED |
 | /(public)/use-cases/[slug] | Dynamic (generateMetadata) | UNRESOLVED | Unknown | Unknown | Unknown | Unknown | Unknown | MANUAL_REVIEW_REQUIRED |
 | /(public)/technology/[slug] | Dynamic (generateMetadata) | UNRESOLVED | Unknown | Unknown | Unknown | Unknown | Unknown | MANUAL_REVIEW_REQUIRED |
 | /(public)/site-map | Static | RUNTIME_RESOLVED | Obrive Website Directory | AR, VR, MR, 3D &amp; Spatial Computing | Present | Unknown | Unknown | Unknown | VERIFIED |
 | /(public)/services/[slug] | Dynamic (generateMetadata) | UNRESOLVED | Unknown | Unknown | Unknown | Unknown | Unknown | MANUAL_REVIEW_REQUIRED |
 | /(public)/services/[slug]/faqs | Dynamic (generateMetadata) | UNRESOLVED | Unknown | Unknown | Unknown | Unknown | Unknown | MANUAL_REVIEW_REQUIRED |
 | /(public)/servicecharges | Static | RUNTIME_RESOLVED | Pricing | Premium Digital Development | Obrive | Present | https://www.obrive.in/servicecharges | Unknown | Unknown | VERIFIED |
-| /(public)/resources | Static | RUNTIME_RESOLVED | AR, VR &amp; Spatial Computing Resources | Obrive | Present | https://obrive.com/resources | Unknown | Unknown | VERIFIED |
+| /(public)/resources | Static | RUNTIME_RESOLVED | AR, VR &amp; Spatial Computing Resources | Obrive | Present | https://obrive.in/resources | Unknown | Unknown | VERIFIED |
 | /(public)/resources/[slug] | Dynamic (generateMetadata) | UNRESOLVED | Unknown | Unknown | Unknown | Unknown | Unknown | MANUAL_REVIEW_REQUIRED |
 | /(public)/products/[slug] | Dynamic (generateMetadata) | UNRESOLVED | Unknown | Unknown | Unknown | Unknown | Unknown | MANUAL_REVIEW_REQUIRED |
-| /(public)/partners | Static | RUNTIME_RESOLVED | White Label Technology Partnerships &amp; Development | Obrive | Present | https://obrive.com/partners | Unknown | Unknown | VERIFIED |
+| /(public)/partners | Static | RUNTIME_RESOLVED | White Label Technology Partnerships &amp; Development | Obrive | Present | https://obrive.in/partners | Unknown | Unknown | VERIFIED |
 | /(public)/industries/[slug] | Dynamic (generateMetadata) | UNRESOLVED | Unknown | Unknown | Unknown | Unknown | Unknown | MANUAL_REVIEW_REQUIRED |
-| /(public)/faqs | Static | RUNTIME_RESOLVED | Frequently Asked Questions (FAQs) | Obrive | Present | https://obrive.com/faqs | Unknown | Unknown | VERIFIED |
-| /(public)/faq | Static | RUNTIME_RESOLVED | Frequently Asked Questions (FAQs) | Obrive | Present | https://obrive.com/faqs | Unknown | Unknown | VERIFIED |
+| /(public)/faqs | Static | RUNTIME_RESOLVED | Frequently Asked Questions (FAQs) | Obrive | Present | https://obrive.in/faqs | Unknown | Unknown | VERIFIED |
+| /(public)/faq | Static | RUNTIME_RESOLVED | Frequently Asked Questions (FAQs) | Obrive | Present | https://obrive.in/faqs | Unknown | Unknown | VERIFIED |
 | /(public)/faq/[slug] | Dynamic (generateMetadata) | UNRESOLVED | Unknown | Unknown | Unknown | Unknown | Unknown | MANUAL_REVIEW_REQUIRED |
-| /(public)/contact | Static | RUNTIME_RESOLVED | Contact Us | Discuss Your Project | Obrive | Present | https://obrive.com/contact | Unknown | Unknown | VERIFIED |
+| /(public)/contact | Static | RUNTIME_RESOLVED | Contact Us | Discuss Your Project | Obrive | Present | https://obrive.in/contact | Unknown | Unknown | VERIFIED |
 | /(public)/checkout | Static | RUNTIME_RESOLVED | Secure Checkout | Obrive | Present | https://www.obrive.in/checkout | Unknown | Unknown | VERIFIED |
 | /(public)/career | Static | RUNTIME_RESOLVED | Careers at Obrive | AR, VR &amp; Spatial Computing Jobs in Bangalore | Present | https://www.obrive.in/career | Unknown | Unknown | VERIFIED |
 | /(public)/about | Static | RUNTIME_RESOLVED | About Obrive | AR, VR &amp; Spatial Computing Company in Bangalore, India | Present | https://www.obrive.in/about | Unknown | Unknown | VERIFIED |
-| /(company-info)/terms-accessibility | Static | RUNTIME_RESOLVED | Obrive Industries — Accessibility | Terms &amp; Accessibility | Present | https://obrive.com/terms-accessibility | Unknown | Unknown | VERIFIED |
+| /(company-info)/terms-accessibility | Static | RUNTIME_RESOLVED | Obrive Industries — Accessibility | Terms &amp; Accessibility | Present | https://obrive.in/terms-accessibility | Unknown | Unknown | VERIFIED |
 | /(company-info)/support/[slug] | Dynamic (generateMetadata) | UNRESOLVED | Unknown | Unknown | Unknown | Unknown | Unknown | MANUAL_REVIEW_REQUIRED |
-| /(company-info)/legal | Static | RUNTIME_RESOLVED | Obrive Industries — Legal &amp; Compliance | Terms, Privacy &amp; Policies | Present | https://obrive.com/legal | Unknown | Unknown | VERIFIED |
+| /(company-info)/legal | Static | RUNTIME_RESOLVED | Obrive Industries — Legal &amp; Compliance | Terms, Privacy &amp; Policies | Present | https://obrive.in/legal | Unknown | Unknown | VERIFIED |
 | /(company-info)/legal/[slug] | Dynamic (generateMetadata) | UNRESOLVED | Unknown | Unknown | Unknown | Unknown | Unknown | MANUAL_REVIEW_REQUIRED |
 | /(company-info)/docs | Static | RUNTIME_RESOLVED | Documentation | Obrive Industries Private Limited | Present | Unknown | Unknown | Unknown | VERIFIED |
 
@@ -77,19 +77,19 @@ A manual fetch loop was performed across core routes to capture dynamically inje
 Testing rendering capabilities for Representative Locales (Home page):
 - **/en**: FAILS TO RENDER
 - **/ar**: FAILS TO RENDER
-- **/fr**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.com] -> VERIFIED
-- **/es**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.com] -> VERIFIED
+- **/fr**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.in] -> VERIFIED
+- **/es**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.in] -> VERIFIED
 - **/pt**: FAILS TO RENDER
-- **/de**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.com] -> VERIFIED
-- **/nl**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.com] -> VERIFIED
+- **/de**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.in] -> VERIFIED
+- **/nl**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.in] -> VERIFIED
 - **/sv**: FAILS TO RENDER
-- **/it**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.com] -> VERIFIED
+- **/it**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.in] -> VERIFIED
 - **/zh**: FAILS TO RENDER
 - **/ja**: FAILS TO RENDER
 - **/ko**: FAILS TO RENDER
 - **/ms**: FAILS TO RENDER
-- **/id**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.com] -> VERIFIED
-- **/th**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.com] -> VERIFIED
+- **/id**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.in] -> VERIFIED
+- **/th**: Title [AR, VR, MR &amp; Spatial Computing Solutions | Obrive], Canonical [https://obrive.in] -> VERIFIED
 
 ### 9. INDIA/.COM SCOPE AUDIT
 Verified: `contact_info:in` is marked `excluded_from_obrive_com`. No `/in` or `/hi` routes render localized content on the .com domain.

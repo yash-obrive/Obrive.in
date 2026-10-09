@@ -1,6 +1,6 @@
 # src/content/faq/obpark-faq.mdx
 
-Canonical URL: https://obrive.com/support/obpark-faq
+Canonical URL: https://obrive.in/support/obpark-faq
 Source: src/content/faq/obpark-faq.mdx
 
 ---

@@ -1,6 +1,6 @@
 # src/content/resources/ar-vr-mr-differences-business-use-cases-2025.mdx
 
-Canonical URL: https://obrive.com/support/ar-vr-mr-differences-business-use-cases-2025
+Canonical URL: https://obrive.in/support/ar-vr-mr-differences-business-use-cases-2025
 Source: src/content/resources/ar-vr-mr-differences-business-use-cases-2025.mdx
 
 ---

@@ -104,33 +104,33 @@ All 1859 source records mapped perfectly to 1854 canonical entities.
 
 ### 6. CONTACT + COMPANY VERIFICATION
 **Contact Info (27 Regions):**
-- **contact_info:us**: Extracted from 3 sources. Preserved: email (us@obrive.com), phone (+1 (888) 477-4300), offices.
-- **contact_info:ca**: Extracted from 3 sources. Preserved: email (ca@obrive.com), phone (+1 (888) 477-4300), offices.
-- **contact_info:mx**: Extracted from 3 sources. Preserved: email (mx@obrive.com), phone (+52 55 4160 4300), offices.
-- **contact_info:br**: Extracted from 3 sources. Preserved: email (br@obrive.com), phone (+55 11 3197 4300), offices.
-- **contact_info:uae**: Extracted from 3 sources. Preserved: email (uae@obrive.com), phone (+971 4 888 4300), offices.
-- **contact_info:sa**: Extracted from 3 sources. Preserved: email (ksa@obrive.com), phone (+966 11 888 4300), offices.
-- **contact_info:qa**: Extracted from 3 sources. Preserved: email (qatar@obrive.com), phone (+974 4488 4300), offices.
-- **contact_info:bh**: Extracted from 3 sources. Preserved: email (bahrain@obrive.com), phone (+973 1788 4300), offices.
-- **contact_info:uk**: Extracted from 3 sources. Preserved: email (uk@obrive.com), phone (+44 20 8884 4300), offices.
-- **contact_info:de**: Extracted from 3 sources. Preserved: email (eu@obrive.com), phone (+49 30 8884 4300), offices.
-- **contact_info:fr**: Extracted from 3 sources. Preserved: email (eu@obrive.com), phone (+33 1 88 84 43 00), offices.
-- **contact_info:nl**: Extracted from 3 sources. Preserved: email (eu@obrive.com), phone (+31 20 888 4300), offices.
-- **contact_info:ch**: Extracted from 3 sources. Preserved: email (ch@obrive.com), phone (+41 22 888 4300), offices.
-- **contact_info:se**: Extracted from 3 sources. Preserved: email (eu@obrive.com), phone (+46 8 888 4300), offices.
-- **contact_info:es**: Extracted from 3 sources. Preserved: email (es@obrive.com), phone (+34 91 888 4300), offices.
-- **contact_info:it**: Extracted from 3 sources. Preserved: email (it@obrive.com), phone (+39 02 8884 4300), offices.
-- **contact_info:cn**: Extracted from 3 sources. Preserved: email (apac@obrive.com), phone (+86 10 8884 4300), offices.
-- **contact_info:sg**: Extracted from 3 sources. Preserved: email (apac@obrive.com), phone (+65 6888 4300), offices.
-- **contact_info:au**: Extracted from 3 sources. Preserved: email (apac@obrive.com), phone (+61 2 8884 4300), offices.
-- **contact_info:nz**: Extracted from 3 sources. Preserved: email (apac@obrive.com), phone (+64 9 888 4300), offices.
-- **contact_info:jp**: Extracted from 3 sources. Preserved: email (apac@obrive.com), phone (+81 3 8884 4300), offices.
-- **contact_info:kr**: Extracted from 3 sources. Preserved: email (apac@obrive.com), phone (+82 2 8884 4300), offices.
-- **contact_info:my**: Extracted from 3 sources. Preserved: email (apac@obrive.com), phone (+60 3 8884 4300), offices.
-- **contact_info:id**: Extracted from 3 sources. Preserved: email (apac@obrive.com), phone (+62 21 8884 4300), offices.
-- **contact_info:th**: Extracted from 3 sources. Preserved: email (apac@obrive.com), phone (+66 2 888 4300), offices.
-- **contact_info:za**: Extracted from 3 sources. Preserved: email (za@obrive.com), phone (+27 11 888 4300), offices.
-- **contact_info:in**: Extracted from 3 sources. Preserved: email (in@obrive.com), phone (+91 22 6280 0000), offices.
+- **contact_info:us**: Extracted from 3 sources. Preserved: email (us@obrive.in), phone (+1 (888) 477-4300), offices.
+- **contact_info:ca**: Extracted from 3 sources. Preserved: email (ca@obrive.in), phone (+1 (888) 477-4300), offices.
+- **contact_info:mx**: Extracted from 3 sources. Preserved: email (mx@obrive.in), phone (+52 55 4160 4300), offices.
+- **contact_info:br**: Extracted from 3 sources. Preserved: email (br@obrive.in), phone (+55 11 3197 4300), offices.
+- **contact_info:uae**: Extracted from 3 sources. Preserved: email (uae@obrive.in), phone (+971 4 888 4300), offices.
+- **contact_info:sa**: Extracted from 3 sources. Preserved: email (ksa@obrive.in), phone (+966 11 888 4300), offices.
+- **contact_info:qa**: Extracted from 3 sources. Preserved: email (qatar@obrive.in), phone (+974 4488 4300), offices.
+- **contact_info:bh**: Extracted from 3 sources. Preserved: email (bahrain@obrive.in), phone (+973 1788 4300), offices.
+- **contact_info:uk**: Extracted from 3 sources. Preserved: email (uk@obrive.in), phone (+44 20 8884 4300), offices.
+- **contact_info:de**: Extracted from 3 sources. Preserved: email (eu@obrive.in), phone (+49 30 8884 4300), offices.
+- **contact_info:fr**: Extracted from 3 sources. Preserved: email (eu@obrive.in), phone (+33 1 88 84 43 00), offices.
+- **contact_info:nl**: Extracted from 3 sources. Preserved: email (eu@obrive.in), phone (+31 20 888 4300), offices.
+- **contact_info:ch**: Extracted from 3 sources. Preserved: email (ch@obrive.in), phone (+41 22 888 4300), offices.
+- **contact_info:se**: Extracted from 3 sources. Preserved: email (eu@obrive.in), phone (+46 8 888 4300), offices.
+- **contact_info:es**: Extracted from 3 sources. Preserved: email (es@obrive.in), phone (+34 91 888 4300), offices.
+- **contact_info:it**: Extracted from 3 sources. Preserved: email (it@obrive.in), phone (+39 02 8884 4300), offices.
+- **contact_info:cn**: Extracted from 3 sources. Preserved: email (apac@obrive.in), phone (+86 10 8884 4300), offices.
+- **contact_info:sg**: Extracted from 3 sources. Preserved: email (apac@obrive.in), phone (+65 6888 4300), offices.
+- **contact_info:au**: Extracted from 3 sources. Preserved: email (apac@obrive.in), phone (+61 2 8884 4300), offices.
+- **contact_info:nz**: Extracted from 3 sources. Preserved: email (apac@obrive.in), phone (+64 9 888 4300), offices.
+- **contact_info:jp**: Extracted from 3 sources. Preserved: email (apac@obrive.in), phone (+81 3 8884 4300), offices.
+- **contact_info:kr**: Extracted from 3 sources. Preserved: email (apac@obrive.in), phone (+82 2 8884 4300), offices.
+- **contact_info:my**: Extracted from 3 sources. Preserved: email (apac@obrive.in), phone (+60 3 8884 4300), offices.
+- **contact_info:id**: Extracted from 3 sources. Preserved: email (apac@obrive.in), phone (+62 21 8884 4300), offices.
+- **contact_info:th**: Extracted from 3 sources. Preserved: email (apac@obrive.in), phone (+66 2 888 4300), offices.
+- **contact_info:za**: Extracted from 3 sources. Preserved: email (za@obrive.in), phone (+27 11 888 4300), offices.
+- **contact_info:in**: Extracted from 3 sources. Preserved: email (in@obrive.in), phone (+91 22 6280 0000), offices.
 
 **Company Info (HQ):**
 - **company_info:hq**: Sourced from src/config/countries.ts & src/app/(public)/contact/components/ContactForm.tsx. Content: Sree Gururaya Mansion, JP Nagar, Bangalore, Karnataka, India. Preserved flawlessly.

@@ -10,13 +10,13 @@ function getAlternates(slug: string) {
     (code) => COUNTRIES[code].isProductionReady
   );
   const langs: Record<string, string> = {
-    "x-default": `https://obrive.com/use-cases/${slug}`,
+    "x-default": `https://obrive.in/use-cases/${slug}`,
   };
   for (const code of activeCountries) {
-    langs[COUNTRIES[code].hreflang] = `https://obrive.com/${code}/use-cases/${slug}`;
+    langs[COUNTRIES[code].hreflang] = `https://obrive.in/${code}/use-cases/${slug}`;
   }
   return {
-    canonical: `https://obrive.com/use-cases/${slug}`,
+    canonical: `https://obrive.in/use-cases/${slug}`,
     languages: langs,
   };
 }
@@ -61,14 +61,14 @@ export default async function UseCasePage({ params }: UseCasePageProps) {
           {
             "@context": "https://schema.org/",
             "@type": "WebPage",
-            "@id": `https://obrive.com/use-cases/${slug}`,
-            url: `https://obrive.com/use-cases/${slug}`,
+            "@id": `https://obrive.in/use-cases/${slug}`,
+            url: `https://obrive.in/use-cases/${slug}`,
             name: useCaseData.hero.title,
             description: useCaseData.hero.description,
             provider: {
               "@type": "Organization",
               name: "Obrive Industries",
-              url: "https://obrive.com",
+              url: "https://obrive.in",
             },
           },
           {
@@ -79,19 +79,19 @@ export default async function UseCasePage({ params }: UseCasePageProps) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://obrive.com"
+                "item": "https://obrive.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Use Cases",
-                "item": "https://obrive.com/use-cases"
+                "item": "https://obrive.in/use-cases"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": useCaseData.hero.title,
-                "item": `https://obrive.com/use-cases/${slug}`
+                "item": `https://obrive.in/use-cases/${slug}`
               }
             ]
           }

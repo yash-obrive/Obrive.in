@@ -10,13 +10,13 @@ function getAlternates(slug: string) {
     (code) => COUNTRIES[code].isProductionReady
   );
   const langs: Record<string, string> = {
-    "x-default": `https://obrive.com/industries/${slug}`,
+    "x-default": `https://obrive.in/industries/${slug}`,
   };
   for (const code of activeCountries) {
-    langs[COUNTRIES[code].hreflang] = `https://obrive.com/${code}/industries/${slug}`;
+    langs[COUNTRIES[code].hreflang] = `https://obrive.in/${code}/industries/${slug}`;
   }
   return {
-    canonical: `https://obrive.com/industries/${slug}`,
+    canonical: `https://obrive.in/industries/${slug}`,
     languages: langs,
   };
 }
@@ -61,14 +61,14 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
           {
             "@context": "https://schema.org/",
             "@type": "WebPage",
-            "@id": `https://obrive.com/industries/${slug}`,
-            url: `https://obrive.com/industries/${slug}`,
+            "@id": `https://obrive.in/industries/${slug}`,
+            url: `https://obrive.in/industries/${slug}`,
             name: industryData.hero.title,
             description: industryData.hero.description,
             provider: {
               "@type": "Organization",
               name: "Obrive Industries",
-              url: "https://obrive.com",
+              url: "https://obrive.in",
             },
           },
           {
@@ -79,19 +79,19 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://obrive.com"
+                "item": "https://obrive.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Industries",
-                "item": "https://obrive.com/industries"
+                "item": "https://obrive.in/industries"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": industryData.hero.title,
-                "item": `https://obrive.com/industries/${slug}`
+                "item": `https://obrive.in/industries/${slug}`
               }
             ]
           }

@@ -1,6 +1,6 @@
 # src/content/resources/ar-onboarding.mdx
 
-Canonical URL: https://obrive.com/support/ar-onboarding
+Canonical URL: https://obrive.in/support/ar-onboarding
 Source: src/content/resources/ar-onboarding.mdx
 
 ---

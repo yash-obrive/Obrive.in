@@ -96,7 +96,7 @@ To improve Entity Authority and Search Visibility, the following **non-code** bu
 
 2. **B2B Directory Profiles:**
    - Claim and optimize profiles on Clutch, GoodFirms, and DesignRush.
-   - Ensure service descriptions match the exact terminology used on Obrive.com (e.g., "Enterprise AR Development").
+   - Ensure service descriptions match the exact terminology used on Obrive.in (e.g., "Enterprise AR Development").
 
 3. **Digital PR & Real Case Studies:**
    - Publish detailed, factual case studies of real projects on the Obrive website.

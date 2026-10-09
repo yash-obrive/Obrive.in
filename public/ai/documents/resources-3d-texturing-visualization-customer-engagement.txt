@@ -1,6 +1,6 @@
 # src/content/resources/3d-texturing-visualization-customer-engagement.mdx
 
-Canonical URL: https://obrive.com/support/3d-texturing-visualization-customer-engagement
+Canonical URL: https://obrive.in/support/3d-texturing-visualization-customer-engagement
 Source: src/content/resources/3d-texturing-visualization-customer-engagement.mdx
 
 ---

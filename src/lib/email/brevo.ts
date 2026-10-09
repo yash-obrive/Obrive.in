@@ -25,7 +25,7 @@ export const getSenderConfig = () => {
 
 export const getNotificationConfig = () => {
   return {
-    email: process.env.CONTACT_EMAIL || process.env.PAYMENT_NOTIFICATION_EMAIL || "account@obrive.com",
+    email: process.env.CONTACT_EMAIL || process.env.PAYMENT_NOTIFICATION_EMAIL || "account@obrive.in",
     name: "Obrive Admin",
   };
 };

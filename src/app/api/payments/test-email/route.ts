@@ -84,7 +84,7 @@ export async function GET(req: NextRequest) {
       packageId: "live-testing-90k",
       packageName: "Live Testing Package (₹90,000)",
       customerName: "Obrive Admin Test",
-      customerEmail: "yashveer@obrive.com",
+      customerEmail: "yashveer@obrive.in",
       customerPhone: "8873394750",
       // No GSTIN for this test — normal GST applies
       gstin: undefined,

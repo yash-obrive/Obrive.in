@@ -1,6 +1,6 @@
 # src/content/resources/mixed-reality-enterprise-productivity-2025.mdx
 
-Canonical URL: https://obrive.com/support/mixed-reality-enterprise-productivity-2025
+Canonical URL: https://obrive.in/support/mixed-reality-enterprise-productivity-2025
 Source: src/content/resources/mixed-reality-enterprise-productivity-2025.mdx
 
 ---

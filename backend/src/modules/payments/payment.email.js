@@ -83,7 +83,7 @@ const sendPaymentConfirmationEmails = async (orderData) => {
   const senderEmail = process.env.BREVO_SENDER_EMAIL || "no-reply@obrive.in";
   const senderName = process.env.BREVO_SENDER_NAME || "Obrive Payments";
   const notificationEmail =
-    process.env.PAYMENT_NOTIFICATION_EMAIL || "account@obrive.com";
+    process.env.PAYMENT_NOTIFICATION_EMAIL || "account@obrive.in";
 
   if (!brevoApiKey) {
     console.error(

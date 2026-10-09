@@ -1,6 +1,6 @@
 # src/content/resources/ar-powered-car-parking-systems-urban-mobility-challenges.mdx
 
-Canonical URL: https://obrive.com/support/ar-powered-car-parking-systems-urban-mobility-challenges
+Canonical URL: https://obrive.in/support/ar-powered-car-parking-systems-urban-mobility-challenges
 Source: src/content/resources/ar-powered-car-parking-systems-urban-mobility-challenges.mdx
 
 ---

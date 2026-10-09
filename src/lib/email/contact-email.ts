@@ -100,7 +100,7 @@ export const sendContactEmails = async (data: ContactData) => {
           </p>
           
           <div style="margin: 35px 0; text-align: center;">
-            <a href="https://obrive.com" style="background-color: #073933; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; display: inline-block;">
+            <a href="https://obrive.in" style="background-color: #073933; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px; display: inline-block;">
               Visit Our Website
             </a>
           </div>
@@ -122,7 +122,7 @@ export const sendContactEmails = async (data: ContactData) => {
             <p style="margin: 0 0 5px 0; color: #333333; font-size: 15px;">Connect Me : <a href="tel:+919886944447" style="color: #0056b3; text-decoration: underline;">+91 988-6944-447</a></p>
             <p style="margin: 0 0 15px 0; color: #333333; font-size: 15px;">Connect Us : <a href="tel:+918884774300" style="color: #0056b3; text-decoration: underline;">+91 888-4774-300</a></p>
             
-            <p style="margin: 0 0 15px 0; color: #000000; font-weight: 700; font-size: 15px;">Visit Us at : <a href="http://www.obrive.com" style="color: #0056b3; text-decoration: underline; font-weight: 700;">www.obrive.com</a> / <a href="http://www.obrive.in" style="color: #0056b3; text-decoration: underline; font-weight: 700;">www.obrive.in</a></p>
+            <p style="margin: 0 0 15px 0; color: #000000; font-weight: 700; font-size: 15px;">Visit Us at : <a href="http://www.obrive.in" style="color: #0056b3; text-decoration: underline; font-weight: 700;">www.obrive.in</a> / <a href="http://www.obrive.in" style="color: #0056b3; text-decoration: underline; font-weight: 700;">www.obrive.in</a></p>
             
             <p style="margin: 0 0 0 0; color: #000000; font-weight: 700; font-size: 15px;">Our Brands : <a href="http://www.obnov.in" style="color: #0056b3; text-decoration: underline; font-weight: 700;">www.obnov.in</a> / <a href="http://www.obzor.in" style="color: #0056b3; text-decoration: underline; font-weight: 700;">www.obzor.in</a></p>
           </div>

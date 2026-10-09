@@ -14,9 +14,9 @@ app.use('/api/oblink', oblinkRoutes);
 
 async function runTests() {
   // Create admin token
-  const adminToken = signAccessToken({ id: 1, email: 'ai@obrive.com', role: 'admin' });
+  const adminToken = signAccessToken({ id: 1, email: 'ai@obrive.in', role: 'admin' });
   // Create employee token
-  const employeeToken = signAccessToken({ id: 2, email: 'emp@obrive.com', role: 'employee' });
+  const employeeToken = signAccessToken({ id: 2, email: 'emp@obrive.in', role: 'employee' });
 
   console.log("Testing with Employee (should fail)");
   const resEmp = await request(app)
@@ -49,7 +49,7 @@ async function runTests() {
       console.log(`Testing Add Credentials for target ${targetId}`);
       const credRes = await request(app)
         .post(`/api/oblink/targets/${targetId}/credentials`)
-        .send({ account_name: 'test_wp', account_email: 'test@obrive.com', password: 'secure_app_pass', platform: 'OWNED' })
+        .send({ account_name: 'test_wp', account_email: 'test@obrive.in', password: 'secure_app_pass', platform: 'OWNED' })
         .set('Authorization', `Bearer ${adminToken}`);
       console.log("Credentials status:", credRes.status);
       

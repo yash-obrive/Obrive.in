@@ -184,7 +184,7 @@ class WordpressRestAdapter extends BaseAdapter {
       const res = await axios.get(result.externalUrl, {
         timeout: 10000,
         headers: {
-          "User-Agent": "node-fetch/1.0 OBLINK-Verifier (+https://obrive.com)",
+          "User-Agent": "node-fetch/1.0 OBLINK-Verifier (+https://obrive.in)",
         },
       });
       if (res.status !== 200) {
@@ -212,10 +212,10 @@ class WordpressRestAdapter extends BaseAdapter {
         );
       }
 
-      // If there's an expected anchor/backlink, check if obrive.com is present
-      if (!html.includes("obrive.com")) {
+      // If there's an expected anchor/backlink, check if obrive.in is present
+      if (!html.includes("obrive.in")) {
         throw new Error(
-          "VERIFICATION_FAILED: Expected backlink marker (obrive.com) not found on live page.",
+          "VERIFICATION_FAILED: Expected backlink marker (obrive.in) not found on live page.",
         );
       }
 

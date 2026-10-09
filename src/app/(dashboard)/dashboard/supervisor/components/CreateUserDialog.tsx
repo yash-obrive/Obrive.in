@@ -215,7 +215,7 @@ export default function CreateUserDialog({
                       type="email"
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
-                      placeholder="name@obrive.com"
+                      placeholder="name@obrive.in"
                       className="w-full rounded-2xl border border-[#d8e4e1] px-4 py-3 text-sm text-gray-900 outline-none transition focus:border-[#074139] focus:ring-2 focus:ring-[#074139]/15"
                     />
                   </div>

@@ -6,7 +6,7 @@ import GooglePreferredSource from "@/components/shared/GooglePreferredSource";
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://obrive.com"),
+  metadataBase: new URL("https://obrive.in"),
 
   title: "AR, VR & Spatial Computing Resources | Obrive",
 
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: "https://obrive.com/resources",
+    canonical: "https://obrive.in/resources",
   },
 
   robots: {
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: "https://obrive.com/resources",
+    url: "https://obrive.in/resources",
     title: "AR, VR & Spatial Computing Resources | Obrive",
     description:
       "Browse Obrive's library of AR, VR, MR, 3D and spatial computing articles and case studies for enterprise teams.",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Faugmented_first.f8b128f2.webp&w=1200&q=75",
+        url: "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Faugmented_first.f8b128f2.webp&w=1200&q=75",
         alt: "Obrive AR/VR/MR and Spatial Computing Resource Library",
       },
     ],
@@ -79,14 +79,14 @@ const collectionPageSchema = {
   headline: "AR, VR & Spatial Computing Resources | Obrive",
   description:
     "Browse Obrive's library of AR, VR, MR, 3D and spatial computing articles and case studies for enterprise teams.",
-  url: "https://obrive.com/resources",
+  url: "https://obrive.in/resources",
   publisher: {
     "@type": "Organization",
     name: "Obrive",
-    url: "https://obrive.com",
+    url: "https://obrive.in",
     logo: {
       "@type": "ImageObject",
-      url: "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-logo.fb3eb1d9.svg&w=256&q=75",
+      url: "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-logo.fb3eb1d9.svg&w=256&q=75",
     },
   },
   mainEntity: {
@@ -95,7 +95,7 @@ const collectionPageSchema = {
     itemListElement: BlogCardContent.map((blog, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      url: `https://obrive.com/resources/${blog.slug}`,
+      url: `https://obrive.in/resources/${blog.slug}`,
       name: blog.title,
       description: blog.description,
     })),
@@ -110,13 +110,13 @@ const breadcrumbSchema = {
       "@type": "ListItem",
       position: 1,
       name: "Home",
-      item: "https://obrive.com",
+      item: "https://obrive.in",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "Resources",
-      item: "https://obrive.com/resources",
+      item: "https://obrive.in/resources",
     },
   ],
 };
@@ -144,7 +144,7 @@ export default function Blogs() {
 
       {/*
         Google Preferred Sources widget — editorial/content hub placement.
-        Eligibility is at the domain level (obrive.com), not this subdirectory.
+        Eligibility is at the domain level (obrive.in), not this subdirectory.
         When Google's script does not render a widget (e.g. unsupported region,
         feature unavailable), this container stays empty and occupies no space.
       */}

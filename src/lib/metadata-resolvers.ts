@@ -12,11 +12,11 @@ import { getCaseStudyBySlug } from "@/lib/mdx";
 
 export function getAlternates(basePath: string, slug: string) {
   const activeCountries = SUPPORTED_COUNTRIES.filter((code) => COUNTRIES[code].isProductionReady);
-  const langs: Record<string, string> = { "x-default": `https://obrive.com${basePath}/${slug}` };
+  const langs: Record<string, string> = { "x-default": `https://obrive.in${basePath}/${slug}` };
   for (const code of activeCountries) {
-    langs[COUNTRIES[code].hreflang] = `https://obrive.com/${code}${basePath}/${slug}`;
+    langs[COUNTRIES[code].hreflang] = `https://obrive.in/${code}${basePath}/${slug}`;
   }
-  return { canonical: `https://obrive.com${basePath}/${slug}`, languages: langs };
+  return { canonical: `https://obrive.in${basePath}/${slug}`, languages: langs };
 }
 
 
@@ -56,7 +56,7 @@ export async function resolveServiceMetadata(slug: string, languageCode = "en"):
 
       openGraph: {
         type: "website",
-        url: "https://obrive.com/services/augmented-reality-development",
+        url: "https://obrive.in/services/augmented-reality-development",
         title:
           "Augmented Reality Development FAQs | AR Services & Solutions | Obrive Industries",
         description:
@@ -107,7 +107,7 @@ export async function resolveServiceMetadata(slug: string, languageCode = "en"):
 
       openGraph: {
         type: "website",
-        url: "https://obrive.com/services/virtual-reality-development",
+        url: "https://obrive.in/services/virtual-reality-development",
         title:
           "Virtual Reality Development FAQs | VR Services & Solutions | Obrive Industries",
         description:
@@ -158,7 +158,7 @@ export async function resolveServiceMetadata(slug: string, languageCode = "en"):
 
       openGraph: {
         type: "website",
-        url: "https://obrive.com/services/3d-design-development",
+        url: "https://obrive.in/services/3d-design-development",
         title:
           "3D Design & Development FAQs | 3D Services & Solutions | Obrive Industries",
         description:
@@ -209,7 +209,7 @@ export async function resolveServiceMetadata(slug: string, languageCode = "en"):
 
       openGraph: {
         type: "website",
-        url: "https://obrive.com/services/spatial-computing-app-development",
+        url: "https://obrive.in/services/spatial-computing-app-development",
         title:
           "Spatial Computing App Development FAQs | Spatial Services & Solutions | Obrive Industries",
         description:
@@ -260,7 +260,7 @@ export async function resolveServiceMetadata(slug: string, languageCode = "en"):
 
       openGraph: {
         type: "website",
-        url: "https://obrive.com/services/white-label-technology-partnerships",
+        url: "https://obrive.in/services/white-label-technology-partnerships",
         title:
           "White Label Technology Partnerships | Obrive Industries",
         description:
@@ -295,7 +295,7 @@ export async function resolveServiceMetadata(slug: string, languageCode = "en"):
     },
     openGraph: {
       type: "website",
-      url: `https://obrive.com/services/${slug}`,
+      url: `https://obrive.in/services/${slug}`,
       title: `${solutionData.hero.title} | Obrive Industries`,
       description: solutionData.hero.description || `Professional ${solutionData.hero.title} services provided by Obrive Industries.`,
       siteName: "Obrive Industries",
@@ -313,7 +313,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
   
   if (slug === "obpark") {
     return {
-      metadataBase: new URL("https://obrive.com"),
+      metadataBase: new URL("https://obrive.in"),
 
       title:
         "Obpark – AR Parking Navigation & Smart Parking Solution | Obrive Bangalore",
@@ -339,7 +339,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
 
       openGraph: {
         type: "website",
-        url: "https://obrive.com/products/obpark",
+        url: "https://obrive.in/products/obpark",
         title:
           "Obpark – AR Parking Navigation & Smart Parking Solution | Obrive Bangalore",
         description:
@@ -348,7 +348,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
         locale: "en_IN",
         images: [
           {
-            url: "https://obrive.com/_next/static/media/obpark-hero.webp",
+            url: "https://obrive.in/_next/static/media/obpark-hero.webp",
             alt: "Obpark AR Smart Parking Navigation System",
           },
         ],
@@ -373,7 +373,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
 
   if (slug === "obnest") {
     return {
-      metadataBase: new URL("https://obrive.com"),
+      metadataBase: new URL("https://obrive.in"),
 
       title:
         "Obnest – 3D Property Visualization & Immersive Walkthrough | Obrive Bangalore",
@@ -399,7 +399,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
 
       openGraph: {
         type: "website",
-        url: "https://obrive.com/products/obnest",
+        url: "https://obrive.in/products/obnest",
         title:
           "Obnest – 3D Property Visualization & Immersive Walkthrough | Obrive Bangalore",
         description:
@@ -408,7 +408,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
         locale: "en_IN",
         images: [
           {
-            url: "https://obrive.com/_next/static/media/obnest-hero.webp",
+            url: "https://obrive.in/_next/static/media/obnest-hero.webp",
             alt: "Obnest 3D Property Visualization & Walkthrough",
           },
         ],
@@ -433,7 +433,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
 
   if (slug === "obnavi") {
     return {
-      metadataBase: new URL("https://obrive.com"),
+      metadataBase: new URL("https://obrive.in"),
 
       title: "Obnavi – AR Spatial Navigation & Immersive Wayfinding | Obrive",
 
@@ -458,7 +458,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
 
       openGraph: {
         type: "website",
-        url: "https://obrive.com/products/obnavi",
+        url: "https://obrive.in/products/obnavi",
         title: "Obnavi – AR Spatial Navigation & Immersive Wayfinding",
         description:
           "Immersive AR navigation and spatial wayfinding solution for malls, campuses, airports and smart environments.",
@@ -466,7 +466,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
         locale: "en_IN",
         images: [
           {
-            url: "https://obrive.com/images/obnavi-hero.webp",
+            url: "https://obrive.in/images/obnavi-hero.webp",
             width: 1200,
             height: 630,
             alt: "Obnavi AR Spatial Navigation Solution",
@@ -478,7 +478,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
         card: "summary_large_image",
         title: "Obnavi – AR Spatial Navigation Solution",
         description: "Immersive AR wayfinding and spatial navigation system.",
-        images: ["https://obrive.com/images/obnavi-hero.webp"],
+        images: ["https://obrive.in/images/obnavi-hero.webp"],
       },
 
       other: {
@@ -491,7 +491,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
 
   if (slug === "obmove") {
     return {
-      metadataBase: new URL("https://obrive.com"),
+      metadataBase: new URL("https://obrive.in"),
 
       title:
         "Obmove – AR/VR Car Showroom & Immersive 3D Vehicle Experience | Obrive",
@@ -518,7 +518,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
 
       openGraph: {
         type: "website",
-        url: "https://obrive.com/products/obmove",
+        url: "https://obrive.in/products/obmove",
         title:
           "Obmove – AR/VR Car Showroom & Immersive 3D Vehicle Experience | Obrive",
         description:
@@ -527,7 +527,7 @@ export async function resolveProductMetadata(slug: string, languageCode = "en"):
         locale: "en_IN",
         images: [
           {
-            url: "https://obrive.com/_next/static/media/obmove-hero.webp",
+            url: "https://obrive.in/_next/static/media/obmove-hero.webp",
             alt: "Obmove AR/VR Car Showroom Experience",
           },
         ],
@@ -584,7 +584,7 @@ export async function resolveIndustryMetadata(slug: string, languageCode = "en")
     },
     openGraph: {
       type: "website",
-      url: `https://obrive.com/industries/${slug}`,
+      url: `https://obrive.in/industries/${slug}`,
       title: `${industryData.hero.title} | Obrive Industries`,
       description: industryData.hero.description || `Explore ${industryData.hero.title} solutions by Obrive Industries.`,
       siteName: "Obrive Industries",
@@ -617,7 +617,7 @@ export async function resolveUseCaseMetadata(slug: string, languageCode = "en"):
     },
     openGraph: {
       type: "website",
-      url: `https://obrive.com/use-cases/${slug}`,
+      url: `https://obrive.in/use-cases/${slug}`,
       title: `${useCaseData.hero.title} | Obrive Industries`,
       description: useCaseData.hero.description || `Explore ${useCaseData.hero.title} use cases by Obrive Industries.`,
       siteName: "Obrive Industries",
@@ -650,7 +650,7 @@ export async function resolveTechnologyMetadata(slug: string, languageCode = "en
     },
     openGraph: {
       type: "website",
-      url: `https://obrive.com/technology/${slug}`,
+      url: `https://obrive.in/technology/${slug}`,
       title: `${technologyData.hero.title} | Obrive Industries`,
       description: technologyData.hero.description || `Explore ${technologyData.hero.title} technology by Obrive Industries.`,
       siteName: "Obrive Industries",
@@ -675,9 +675,9 @@ export async function resolveResourceMetadata(slug: string, languageCode = "en")
         title: `${blog.title} | Obrive`,
         description:
           blog.sections[0]?.content[0] || "Read more about this topic.",
-        metadataBase: new URL("https://obrive.com"),
+        metadataBase: new URL("https://obrive.in"),
         alternates: {
-          canonical: `https://obrive.com/resources/${slug}`,
+          canonical: `https://obrive.in/resources/${slug}`,
         },
       };
     }
@@ -691,16 +691,16 @@ export async function resolveResourceMetadata(slug: string, languageCode = "en")
         title,
         description,
         alternates: {
-          canonical: `https://obrive.com/resources/${jsonCaseStudy.slug}`,
+          canonical: `https://obrive.in/resources/${jsonCaseStudy.slug}`,
         },
         openGraph: {
           title,
           description,
           type: "article",
-          url: `https://obrive.com/resources/${jsonCaseStudy.slug}`,
+          url: `https://obrive.in/resources/${jsonCaseStudy.slug}`,
           images: [
             {
-              url: `https://obrive.com/images/case-studies/${jsonCaseStudy.image}`,
+              url: `https://obrive.in/images/case-studies/${jsonCaseStudy.image}`,
               alt: jsonCaseStudy.title,
             },
           ],
@@ -730,7 +730,7 @@ export async function resolveResourceMetadata(slug: string, languageCode = "en")
   // ensure absolute URL for social media images
   const imageUrl = heroImageSrc.startsWith("http")
     ? heroImageSrc
-    : `https://www.obrive.com${heroImageSrc}`;
+    : `https://www.obrive.in${heroImageSrc}`;
 
   // extract tags from postType for better SEO
   const tags = resource.metadata.postType?.split(" ").filter(Boolean) || [];
@@ -751,9 +751,9 @@ export async function resolveResourceMetadata(slug: string, languageCode = "en")
     authors: [{ name: resource.metadata.author }],
     creator: resource.metadata.author,
     publisher: "Obrive",
-    metadataBase: new URL("https://obrive.com"),
+    metadataBase: new URL("https://obrive.in"),
     alternates: {
-      canonical: `https://obrive.com/resources/${slug}`,
+      canonical: `https://obrive.in/resources/${slug}`,
     },
     robots: {
       index: true,
@@ -768,7 +768,7 @@ export async function resolveResourceMetadata(slug: string, languageCode = "en")
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      url: `https://obrive.com/resources/${slug}`,
+      url: `https://obrive.in/resources/${slug}`,
       siteName: "Obrive",
       images: [
         {

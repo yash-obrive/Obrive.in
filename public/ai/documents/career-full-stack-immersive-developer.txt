@@ -1,6 +1,6 @@
 # src/content/career/full-stack-immersive-developer.mdx
 
-Canonical URL: https://obrive.com/support/full-stack-immersive-developer
+Canonical URL: https://obrive.in/support/full-stack-immersive-developer
 Source: src/content/career/full-stack-immersive-developer.mdx
 
 ---
@@ -102,4 +102,4 @@ Source: src/content/career/full-stack-immersive-developer.mdx
         </ol></CareerItem>
 </CareerSection>
 
-<CareerButton href="/apply.career.obrive.com/full-stack-immersive-developer" />
+<CareerButton href="/apply.career.obrive.in/full-stack-immersive-developer" />

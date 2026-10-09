@@ -1,6 +1,6 @@
 # src/content/resources/3d-rendering-real-estate.mdx
 
-Canonical URL: https://obrive.com/support/3d-rendering-real-estate
+Canonical URL: https://obrive.in/support/3d-rendering-real-estate
 Source: src/content/resources/3d-rendering-real-estate.mdx
 
 ---

@@ -1,6 +1,6 @@
 # src/content/security/soc-2-type-ii-compliance.mdx
 
-Canonical URL: https://obrive.com/support/soc-2-type-ii-compliance
+Canonical URL: https://obrive.in/support/soc-2-type-ii-compliance
 Source: src/content/security/soc-2-type-ii-compliance.mdx
 
 ---

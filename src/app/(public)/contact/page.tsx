@@ -5,13 +5,13 @@ export const metadata = {
   description:
     "Get in touch with Obrive to discuss your next AR, VR, digital product, or software engineering project. Let's build what's next.",
   alternates: {
-    canonical: "https://obrive.com/contact",
+    canonical: "https://obrive.in/contact",
   },
   openGraph: {
     title: "Contact Us | Discuss Your Project | Obrive",
     description:
       "Get in touch with Obrive to discuss your next AR, VR, digital product, or software engineering project.",
-    url: "https://obrive.com/contact",
+    url: "https://obrive.in/contact",
   },
   twitter: {
     card: "summary_large_image",
@@ -24,9 +24,9 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Obrive Industries",
-  "image": "https://obrive.com/api/og?title=Obrive+Industries",
-  "@id": "https://obrive.com",
-  "url": "https://obrive.com/contact",
+  "image": "https://obrive.in/api/og?title=Obrive+Industries",
+  "@id": "https://obrive.in",
+  "url": "https://obrive.in/contact",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Sree Gururaya Mansion, JP Nagar",

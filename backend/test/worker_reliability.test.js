@@ -18,12 +18,12 @@ describe('PublisherAgent Reliability', () => {
     const adapter = new WordpressRestAdapter();
     let thrownError = new Error('DUPLICATE_DETECTED: A post with title "Crash Test" already exists');
     thrownError.duplicateId = "999";
-    thrownError.duplicateUrl = "https://obrive.com/wp-json/999";
+    thrownError.duplicateUrl = "https://obrive.in/wp-json/999";
     
     // We expect the agent to catch this error and set publishResult = { externalPostId: '999', ... }
     // As we can't easily unit test the full agent without a mocked prisma, we verify the adapter's behavior.
     try {
-      const searchRes = { data: [{ title: { rendered: 'Crash Test' }, id: 999, link: 'https://obrive.com/999' }] };
+      const searchRes = { data: [{ title: { rendered: 'Crash Test' }, id: 999, link: 'https://obrive.in/999' }] };
       const duplicates = searchRes.data.filter(p => p.title.rendered === 'Crash Test');
       if (duplicates.length > 0) {
         const error = new Error(`DUPLICATE_DETECTED: A post with title "Crash Test" already exists (ID: ${duplicates[0].id}).`);

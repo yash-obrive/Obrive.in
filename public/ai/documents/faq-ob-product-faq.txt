@@ -1,6 +1,6 @@
 # src/content/faq/ob-product-faq.mdx
 
-Canonical URL: https://obrive.com/support/ob-product-faq
+Canonical URL: https://obrive.in/support/ob-product-faq
 Source: src/content/faq/ob-product-faq.mdx
 
 ---

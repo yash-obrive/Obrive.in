@@ -1,6 +1,6 @@
 # src/content/career/marketing-content-specialist-immersive-tech.mdx
 
-Canonical URL: https://obrive.com/support/marketing-content-specialist-immersive-tech
+Canonical URL: https://obrive.in/support/marketing-content-specialist-immersive-tech
 Source: src/content/career/marketing-content-specialist-immersive-tech.mdx
 
 ---
@@ -111,4 +111,4 @@ Source: src/content/career/marketing-content-specialist-immersive-tech.mdx
         </ol></CareerItem>
 </CareerSection>
 
-<CareerButton href="/apply.career.obrive.com/marketing-content-specialist-immersive-tech" />
+<CareerButton href="/apply.career.obrive.in/marketing-content-specialist-immersive-tech" />

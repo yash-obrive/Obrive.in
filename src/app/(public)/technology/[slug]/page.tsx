@@ -10,13 +10,13 @@ function getAlternates(slug: string) {
     (code) => COUNTRIES[code].isProductionReady
   );
   const langs: Record<string, string> = {
-    "x-default": `https://obrive.com/technology/${slug}`,
+    "x-default": `https://obrive.in/technology/${slug}`,
   };
   for (const code of activeCountries) {
-    langs[COUNTRIES[code].hreflang] = `https://obrive.com/${code}/technology/${slug}`;
+    langs[COUNTRIES[code].hreflang] = `https://obrive.in/${code}/technology/${slug}`;
   }
   return {
-    canonical: `https://obrive.com/technology/${slug}`,
+    canonical: `https://obrive.in/technology/${slug}`,
     languages: langs,
   };
 }
@@ -61,14 +61,14 @@ export default async function TechnologyPage({ params }: TechnologyPageProps) {
           {
             "@context": "https://schema.org/",
             "@type": "WebPage",
-            "@id": `https://obrive.com/technology/${slug}`,
-            url: `https://obrive.com/technology/${slug}`,
+            "@id": `https://obrive.in/technology/${slug}`,
+            url: `https://obrive.in/technology/${slug}`,
             name: technologyData.hero.title,
             description: technologyData.hero.description,
             provider: {
               "@type": "Organization",
               name: "Obrive Industries",
-              url: "https://obrive.com",
+              url: "https://obrive.in",
             },
           },
           {
@@ -79,19 +79,19 @@ export default async function TechnologyPage({ params }: TechnologyPageProps) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://obrive.com"
+                "item": "https://obrive.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Technology",
-                "item": "https://obrive.com/technology"
+                "item": "https://obrive.in/technology"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": technologyData.hero.title,
-                "item": `https://obrive.com/technology/${slug}`
+                "item": `https://obrive.in/technology/${slug}`
               }
             ]
           }

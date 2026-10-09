@@ -82,7 +82,7 @@ export default function HRLocationsSection() {
         }
       } else if (res.status === 403) {
         setError(
-          "Access Denied: You are currently logged in with a non-HR account. Please log in with HR credentials (e.g. hr@obrive.com) to manage staff locations.",
+          "Access Denied: You are currently logged in with a non-HR account. Please log in with HR credentials (e.g. hr@obrive.in) to manage staff locations.",
         );
       } else {
         setError(

@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   keywords:
     "accessibility AR VR, inclusive design immersive technology, terms of accessibility XR, ADA compliance spatial computing",
   alternates: {
-    canonical: "https://obrive.com/terms-accessibility",
+    canonical: "https://obrive.in/terms-accessibility",
   },
   openGraph: {
     type: "website",
-    url: "https://obrive.com/terms-accessibility",
+    url: "https://obrive.in/terms-accessibility",
     title: "Obrive Industries — Accessibility",
     description:
       "Review Obrive's commitment to making immersive platforms accessible to everyone, including our inclusive design principles.",
@@ -54,8 +54,8 @@ export default async function TermsAccessibilityPage() {
         {JSON.stringify({
           "@context": "https://schema.org/",
           "@type": "WebPage",
-          "@id": "https://obrive.com/terms-accessibility",
-          url: "https://obrive.com/terms-accessibility",
+          "@id": "https://obrive.in/terms-accessibility",
+          url: "https://obrive.in/terms-accessibility",
           name: "Obrive Industries — Accessibility",
         })}
       </Script>

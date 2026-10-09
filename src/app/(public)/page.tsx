@@ -80,7 +80,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = (key: string) => (dictionary as Record<string, string>)[key] || key;
 
   return {
-    metadataBase: new URL("https://obrive.com"),
+    metadataBase: new URL("https://obrive.in"),
 
     title: t("Top AR & VR Services Company in India & Global | Obrive"),
 
@@ -105,7 +105,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ],
 
     alternates: {
-      canonical: "https://obrive.com/",
+      canonical: "https://obrive.in/",
     },
 
     robots: {
@@ -122,7 +122,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     openGraph: {
       type: "website",
-      url: "https://obrive.com/",
+      url: "https://obrive.in/",
       title: t("Obrive – AR, VR, MR & Spatial Computing Solutions"),
       description: t(
         "Leading immersive technology company in Bangalore delivering AR, VR, MR, 3D visualization and spatial computing solutions for enterprise digital transformation."
@@ -151,7 +151,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Obrive",
-  url: "https://obrive.com/",
+  url: "https://obrive.in/",
   description:
     "Leading immersive technology company delivering AR, VR, MR, 3D visualization and spatial computing solutions for enterprise digital transformation.",
 };

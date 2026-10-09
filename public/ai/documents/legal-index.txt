@@ -1,6 +1,6 @@
 # src/content/legal/index.mdx
 
-Canonical URL: https://obrive.com/support/index
+Canonical URL: https://obrive.in/support/index
 Source: src/content/legal/index.mdx
 
 ---
@@ -73,6 +73,6 @@ continuous monitoring of compliance.
     <br />
     If you have questions about our legal policies or need additional
     information, please reach out to our legal team at{" "}
-    legal@obrive.com. We are here to
+    legal@obrive.in. We are here to
     ensure full transparency, compliance, and support while you use our
     services.

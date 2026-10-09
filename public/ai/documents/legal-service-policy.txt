@@ -1,6 +1,6 @@
 # src/content/legal/service-policy.mdx
 
-Canonical URL: https://obrive.com/support/service-policy
+Canonical URL: https://obrive.in/support/service-policy
 Source: src/content/legal/service-policy.mdx
 
 ---

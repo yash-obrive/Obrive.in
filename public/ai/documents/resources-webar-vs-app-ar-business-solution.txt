@@ -1,6 +1,6 @@
 # src/content/resources/webar-vs-app-ar-business-solution.mdx
 
-Canonical URL: https://obrive.com/support/webar-vs-app-ar-business-solution
+Canonical URL: https://obrive.in/support/webar-vs-app-ar-business-solution
 Source: src/content/resources/webar-vs-app-ar-business-solution.mdx
 
 ---

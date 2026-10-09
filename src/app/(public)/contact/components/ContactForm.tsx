@@ -437,10 +437,10 @@ export default function ContactForm() {
                 </h4>
                 <p className="text-primary/70 flex flex-col gap-1.5">
                   <a
-                    href="mailto:info@obrive.com"
+                    href="mailto:info@obrive.in"
                     className="hover:text-secondary transition-colors font-medium"
                   >
-                    info@obrive.com
+                    info@obrive.in
                   </a>
                   <a
                     href="tel:+918884774300"

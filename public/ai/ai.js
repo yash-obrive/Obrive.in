@@ -34,7 +34,7 @@ const OPEN_IN_NEW_TAB = false; // true = new tab, false = same tab
 const WIDGET_POSITION = "bottom-right"; // 'bottom-right', 'bottom-left', 'top-right', 'top-left'
 
 // OPTIONAL: Base URL for navigation (leave empty for auto-detection)
-const BASE_URL = "https://obrive.com";
+const BASE_URL = "https://obrive.in";
 
 // ============================================================================
 // DON'T CHANGE ANYTHING BELOW THIS LINE

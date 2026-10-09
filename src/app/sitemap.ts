@@ -14,7 +14,7 @@ import { getUseCaseSlugs } from "@/lib/use-cases";
 
 const CHUNK_SIZE = 20;
 
-const baseUrl = "https://obrive.com";
+const baseUrl = "https://obrive.in";
 
 // Filter only production-ready countries
 const activeCountries = SUPPORTED_COUNTRIES.filter(
@@ -106,6 +106,16 @@ export default async function sitemap({ id }: { id: number }): Promise<MetadataR
         priority: priority,
       });
     } else {
+      // Add the global/international route (e.g., https://obrive.in/)
+      pages.push({
+        url: `${baseUrl}${path}`,
+        lastModified: new Date(),
+        changeFrequency: changeFreq,
+        priority: priority,
+        alternates: makeAlternates(path),
+      });
+
+      // Add the localized routes (e.g., https://obrive.in/in/en/)
       for (const country of activeCountries) {
         const countryConf = COUNTRIES[country];
         for (const lang of countryConf.supportedLanguages) {

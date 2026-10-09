@@ -1,6 +1,6 @@
 # src/content/resources/industries-benefit-ar-development.mdx
 
-Canonical URL: https://obrive.com/support/industries-benefit-ar-development
+Canonical URL: https://obrive.in/support/industries-benefit-ar-development
 Source: src/content/resources/industries-benefit-ar-development.mdx
 
 ---

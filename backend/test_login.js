@@ -1,7 +1,7 @@
 const http = require('http');
 
 const loginData = JSON.stringify({
-  email: 'ai@obrive.com',
+  email: 'ai@obrive.in',
   password: process.env.AI_DASHBOARD_PASSWORD,
   role: 'admin'
 });

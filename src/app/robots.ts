@@ -14,6 +14,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: ["/llms.txt", "/llms-full.txt", "/ai/knowledge.json"],
       }
     ],
-    sitemap: "https://obrive.com/sitemap.xml",
+    sitemap: "https://obrive.in/sitemap.xml",
   };
 }

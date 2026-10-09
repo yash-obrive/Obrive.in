@@ -1,6 +1,6 @@
 # src/content/resources/ar-packaging-immersive-customer-experiences.mdx
 
-Canonical URL: https://obrive.com/support/ar-packaging-immersive-customer-experiences
+Canonical URL: https://obrive.in/support/ar-packaging-immersive-customer-experiences
 Source: src/content/resources/ar-packaging-immersive-customer-experiences.mdx
 
 ---

@@ -1,6 +1,6 @@
 # src/content/faq/ob-services-faq.mdx
 
-Canonical URL: https://obrive.com/support/ob-services-faq
+Canonical URL: https://obrive.in/support/ob-services-faq
 Source: src/content/faq/ob-services-faq.mdx
 
 ---

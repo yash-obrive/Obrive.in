@@ -19,17 +19,17 @@ export async function generateMetadata(): Promise<Metadata> {
     (code) => COUNTRIES[code].isProductionReady
   );
   const langs: Record<string, string> = {
-    "x-default": "https://obrive.com/services",
+    "x-default": "https://obrive.in/services",
   };
   for (const code of activeCountries) {
-    langs[COUNTRIES[code].hreflang] = `https://obrive.com/${code}/services`;
+    langs[COUNTRIES[code].hreflang] = `https://obrive.in/${code}/services`;
   }
 
   return {
     title: `Top AR & VR Services (${config.name}) | Obrive Industries`,
     description: `Explore Obrive Industries' top AR, VR, and immersive technology services including Strategy & Consulting, 3D Design, AI, and Digital Product Development in ${config.name}.`,
     alternates: {
-      canonical: "https://obrive.com/services",
+      canonical: "https://obrive.in/services",
       languages: langs,
     },
     openGraph: {
@@ -39,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: "Obrive Industries",
       images: [
         {
-          url: `https://obrive.com/api/og?title=Top+AR+and+VR+Services+by+Obrive`,
+          url: `https://obrive.in/api/og?title=Top+AR+and+VR+Services+by+Obrive`,
           width: 1200,
           height: 630,
           alt: "Obrive Top AR and VR Services",

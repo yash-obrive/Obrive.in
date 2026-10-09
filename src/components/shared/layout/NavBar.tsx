@@ -26,7 +26,7 @@ import { CompanyDropdown } from "./dropdowns/CompanyDropdown";
 import { ProductsDropdown } from "./dropdowns/ProductsDropdown";
 import { ResourcesDropdown } from "./dropdowns/ResourcesDropdown";
 import { SolutionsDropdown } from "./dropdowns/SolutionsDropdown";
-import LanguageSwitcher from "./LanguageSwitcher";
+
 
 // Breakpoint constants
 const BREAKPOINTS = {
@@ -344,7 +344,7 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
               </NavigationMenu>
 
               <div className="hidden md:flex items-center gap-2 lg:gap-4">
-                <LanguageSwitcher />
+
                 <AnimatedButton
                   asChild
                   className="text-xs hidden sm:flex"
@@ -426,7 +426,7 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
                 </NavigationMenu>
 
                 <div className="hidden md:flex items-center gap-2 lg:gap-4">
-                  <LanguageSwitcher />
+
                   <AnimatedButton
                     asChild
                     className="text-xs hidden sm:flex"
@@ -495,7 +495,7 @@ export default function NavBar({ backgroundColor = "white" }: NavBarProps) {
 
             <div className="mt-8 space-y-4 pt-4 border-t border-primary/20">
               <div className="flex justify-start">
-                <LanguageSwitcher />
+
               </div>
               <Link
                 href="/contact"

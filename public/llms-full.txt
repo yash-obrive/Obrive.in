@@ -1,11 +1,11 @@
 # Obrive — Full AI Knowledge Document
-# Generated from verified canonical knowledge. Source: https://obrive.com
-# Note: Individual long-form documents are available at https://obrive.com/ai/documents/
+# Generated from verified canonical knowledge. Source: https://obrive.in
+# Note: Individual long-form documents are available at https://obrive.in/ai/documents/
 
 # SERVICES
 ## Service: Augmented Reality Development Services Across Industries.
 ID: service:augmented-reality-development
-URL: https://obrive.com/services/augmented-reality-development
+URL: https://obrive.in/services/augmented-reality-development
 ### Dynamic Metadata
 Title: Augmented Reality (AR) Development Services in India | AR App Solutions | Obrive Industries
 Description: Obrive Industries offers professional Augmented Reality (AR) development services in India including AR apps, AR solutions for enterprise, retail, real estate & industrial use cases. Build engaging AR experiences with spatial computing expertise.
@@ -587,7 +587,7 @@ Snap AR — Lens Studio: current AR development tooling supports branded AR expe
 
 ## Service: Virtual Reality Development Services Across Industries.
 ID: service:virtual-reality-development
-URL: https://obrive.com/services/virtual-reality-development
+URL: https://obrive.in/services/virtual-reality-development
 ### Dynamic Metadata
 Title: Virtual Reality (VR) Development Services in India | Immersive VR Apps | Obrive Industries
 Description: Obrive Industries offers professional Virtual Reality (VR) development services in India including VR apps, enterprise VR solutions, 360° immersive experiences and interactive 3D simulations for training, marketing, education & industrial use cases.
@@ -991,7 +991,7 @@ Meta Horizon OS Developers — Quest for Business: enterprise-oriented Quest dep
 
 ## Service: 3D Design & Development Services Across Industries.
 ID: service:3d-design-development
-URL: https://obrive.com/services/3d-design-development
+URL: https://obrive.in/services/3d-design-development
 ### Dynamic Metadata
 Title: 3D Design & Visualization Services | Architectural & Product 3D Development | Obrive Industries
 Description: Obrive Industries provides professional 3D design and visualization services including architectural modeling, product 3D rendering, digital twin creation, and immersive 3D experiences for real estate, manufacturing & enterprise projects.
@@ -1364,7 +1364,7 @@ This document preserves and expands the existing Obrive 3D positioning around a 
 
 ## Service: Extend Your Capabilities With Obrive
 ID: service:white-label-technology-partnerships
-URL: https://obrive.com/services/white-label-technology-partnerships
+URL: https://obrive.in/services/white-label-technology-partnerships
 ### Dynamic Metadata
 Title: White Label Technology Partnerships & Development | Obrive Industries
 Description: Partner with Obrive Industries to deliver advanced digital, immersive and AI solutions to your clients under your own brand. Extend your agency capabilities with white-label technology development.
@@ -1400,7 +1400,7 @@ Obrive can structure partner pricing so you can package, mark up and commerciali
 
 ## Service: Spatial Computing App Development Services.
 ID: service:spatial-computing-app-development
-URL: https://obrive.com/services/spatial-computing-app-development
+URL: https://obrive.in/services/spatial-computing-app-development
 ### Dynamic Metadata
 Title: Spatial Computing App Development Services | AR/VR & Immersive Experiences | Obrive Industries
 Description: Obrive Industries offers spatial computing app development services to build immersive applications using AR/VR, 3D spatial interactions and mixed reality for enterprise, retail, real estate, healthcare and industrial solutions.
@@ -1742,7 +1742,7 @@ The content is grounded in Obrive's existing Spatial Computing App Development F
 
 ## Service: Mixed Reality Development Services Across Industries
 ID: service:mixed-reality-development
-URL: https://obrive.com/services/mixed-reality-development
+URL: https://obrive.in/services/mixed-reality-development
 ### Dynamic Metadata
 Title: Mixed Reality Development Services Across Industries | Obrive Industries
 Description: Our Mixed Reality development services combine spatial computing, 3D visualization, spatial UX, software engineering, AI and enterprise integration to create digital experiences that understand and interact with physical environments.
@@ -2079,7 +2079,7 @@ H1: Mixed Reality Development Company for Business & Enterprise
 
 Meta Description: Obrive Industries develops custom Mixed Reality solutions for enterprise, manufacturing, training, engineering, visualization, remote assistance, collaboration, digital twins and immersive business applications.
 
-Canonical: https://obrive.com/services/mixed-reality-development
+Canonical: https://obrive.in/services/mixed-reality-development
 
 Recommended Lead-Generation CTAs
 
@@ -2169,7 +2169,7 @@ The Mixed Reality page should remain distinctly MR-focused rather than becoming 
 
 ## Service: Answer Engine Optimization (AEO) Services Across Industries — For the AI Era
 ID: service:aeo-service
-URL: https://obrive.com/services/aeo-service
+URL: https://obrive.in/services/aeo-service
 ### Dynamic Metadata
 Title: Answer Engine Optimization (AEO) Services Across Industries — For the AI Era | Obrive Industries
 Description: Obrive's Answer Engine Optimization services help organizations structure, clarify and strengthen their digital information for an AI-era discovery environment where users increasingly ask complete questions and receive direct answers through search engines, answer engines and conversational AI interfaces. Our AEO approach combines search intent research, conversational content, technical SEO, entity and knowledge architecture, structured information, internal linking, topical authority, analytics and AI-era content strategy. The goal is to make important business information easier to find, understand and evaluate—not to chase a particular algorithm.
@@ -2492,7 +2492,7 @@ H1: Answer Engine Optimization (AEO) Services for the AI Era
 
 Suggested Image Alt: AI-Era Answer Engine Optimization Services — Obrive Industries
 
-Canonical: https://obrive.com/services/answer-engine-optimization
+Canonical: https://obrive.in/services/answer-engine-optimization
 
 Suggested CTA: Talk to an AEO Expert
 
@@ -2534,7 +2534,7 @@ Keep FAQ answers visible and accessible to users. Use answer-first wording and n
 
 ## Service: AI Consulting Services Across Industries — For the AI Era
 ID: service:ai-consulting
-URL: https://obrive.com/services/ai-consulting
+URL: https://obrive.in/services/ai-consulting
 ### Dynamic Metadata
 Title: AI Consulting Services Across Industries — For the AI Era | Obrive Industries
 Description: Obrive provides AI Consulting Services that help organizations understand where artificial intelligence can create measurable business value, what should be automated, augmented or redesigned, and how AI initiatives can move from strategy to production. In the AI era, consulting is not simply about selecting a model or adding a chatbot. It is about connecting business strategy, data, workflows, people, technology, governance and customer experience into a practical AI roadmap.
@@ -2901,7 +2901,7 @@ H1: AI Consulting Services for the AI Era — FAQs
 
 Suggested Image Alt: AI Consulting Services FAQ — Obrive Industries
 
-Canonical: https://obrive.com/services/ai-consulting
+Canonical: https://obrive.in/services/ai-consulting
 
 Suggested CTA: Talk to an AI Consulting Expert
 
@@ -2925,7 +2925,7 @@ This FAQ document is designed as a developer/content-team master. Intent categor
 
 ## Service: Content Marketing Services Across Industries — For the AI Era
 ID: service:content-marketing-service
-URL: https://obrive.com/services/content-marketing-service
+URL: https://obrive.in/services/content-marketing-service
 ### Dynamic Metadata
 Title: Content Marketing Services Across Industries — For the AI Era | Obrive Industries
 Description: Overview
@@ -3269,7 +3269,7 @@ Primary Keyword: Content Marketing Services
 Suggested URL: /services/content-marketing
 H1: Content Marketing Services for the AI Era
 Suggested Image Alt: AI-Era Content Marketing Services — Obrive Industries
-Canonical: https://obrive.com/services/content-marketing
+Canonical: https://obrive.in/services/content-marketing
 Suggested CTA: Talk to a Content Marketing Expert
 
 Structured Data & On-Page Checklist
@@ -3310,7 +3310,7 @@ Keep FAQ answers visible and accessible to users. Use answer-first wording and n
 
 ## Service: Generative Engine Optimization (GEO) Services Across Industries — For the AI Era
 ID: service:geo-service
-URL: https://obrive.com/services/geo-service
+URL: https://obrive.in/services/geo-service
 ### Dynamic Metadata
 Title: Generative Engine Optimization (GEO) Services Across Industries — For the AI Era | Obrive Industries
 Description: Generative Engine Optimization (GEO) services help organizations prepare their digital presence for AI-assisted discovery, where users increasingly ask complex questions and receive synthesized answers, comparisons, recommendations and summaries from generative search experiences and conversational systems.
@@ -3664,7 +3664,7 @@ H1: Generative Engine Optimization (GEO) Services for the AI Era
 
 Suggested Image Alt: AI-Era Generative Engine Optimization (GEO) Services — Obrive Industries
 
-Canonical: https://obrive.com/services/generative-engine-optimization
+Canonical: https://obrive.in/services/generative-engine-optimization
 
 Suggested CTA: Talk to a GEO Expert
 
@@ -3706,7 +3706,7 @@ Keep FAQ answers visible and accessible to users. Use answer-first wording and n
 
 ## Service: Mobile App Design Services for the AI Era — Across Industries
 ID: service:mobile-app-design-service
-URL: https://obrive.com/services/mobile-app-design-service
+URL: https://obrive.in/services/mobile-app-design-service
 ### Dynamic Metadata
 Title: Mobile App Design Services for the AI Era — Across Industries | Obrive Industries
 Description: Our mobile app design services combine product strategy, user research, UX architecture, UI design, interaction design, design systems, prototyping, accessibility and AI-era experience thinking to create mobile products people can understand, trust and use. From consumer apps and enterprise mobility to commerce, financial services, healthcare, field operations, connected products and AI-powered mobile experiences, Obrive designs applications around business objectives, user needs and the realities of mobile behavior.
@@ -3943,7 +3943,7 @@ H1: Mobile App Design Services for the AI Era
 
 Suggested Image Alt: AI-Ready Mobile App Design — Obrive Industries
 
-Canonical: https://obrive.com/services/mobile-app-design
+Canonical: https://obrive.in/services/mobile-app-design
 
 Recommended Internal Linking
 
@@ -4031,7 +4031,7 @@ The Mobile App Design page should not position Obrive as simply a company that c
 
 ## Service: Mobile App Development Services Across Industries — For the AI Era
 ID: service:mobile-app-development
-URL: https://obrive.com/services/mobile-app-development
+URL: https://obrive.in/services/mobile-app-development
 ### Dynamic Metadata
 Title: Mobile App Development Services Across Industries — For the AI Era | Obrive Industries
 Description: Our mobile app development services combine product strategy, UX/UI collaboration, mobile engineering, cloud services, APIs, data, security, analytics and AI to create mobile products that people can rely on every day. From consumer apps and eCommerce platforms to enterprise mobility, field-service applications, connected-device experiences, financial products, healthcare services, marketplaces and AI-powered mobile products, Obrive develops applications around clear business objectives and real user needs.
@@ -4323,7 +4323,7 @@ H1: Mobile App Development Services for the AI Era
 
 Suggested Image Alt: AI-Ready Mobile App Development — Obrive Industries
 
-Canonical: https://obrive.com/services/mobile-app-development
+Canonical: https://obrive.in/services/mobile-app-development
 
 Recommended Internal Linking
 
@@ -4415,7 +4415,7 @@ The Mobile App Development page should not position Obrive as simply a company t
 
 ## Service: SEO Services Across Industries — For the AI Era
 ID: service:seo-service
-URL: https://obrive.com/services/seo-service
+URL: https://obrive.in/services/seo-service
 ### Dynamic Metadata
 Title: SEO Services Across Industries — For the AI Era | Obrive Industries
 Description: Obrive's SEO services combine search strategy, technical SEO, content architecture, UX, analytics, structured information and AI-era discovery thinking to help organizations become easier to find, understand and evaluate online. From technical SEO audits and website optimization to enterprise SEO, local SEO, eCommerce SEO, content strategy, AEO, GEO, migration support and ongoing optimization, Obrive builds search foundations around real business objectives rather than treating SEO as a keyword-only activity.
@@ -4782,7 +4782,7 @@ H1: SEO Services for the AI Era
 
 Suggested Image Alt: AI-Era SEO Services, AEO & GEO — Obrive Industries
 
-Canonical: https://obrive.com/services/seo-services
+Canonical: https://obrive.in/services/seo-services
 
 Suggested CTA: Talk to an SEO Expert
 
@@ -4824,7 +4824,7 @@ The FAQ content should remain visible and accessible to users, with answer-first
 
 ## Service: Web App & SaaS MVP Development Services Across Industries — For the AI Era
 ID: service:web-app-saas-mvp-development
-URL: https://obrive.com/services/web-app-saas-mvp-development
+URL: https://obrive.in/services/web-app-saas-mvp-development
 ### Dynamic Metadata
 Title: Web App & SaaS MVP Development Services Across Industries — For the AI Era | Obrive Industries
 Description: Our Web App & SaaS MVP Development services combine product strategy, UX/UI collaboration, web engineering, backend architecture, APIs, databases, cloud infrastructure, security, analytics and AI to turn business ideas into usable digital products. From SaaS platforms and B2B applications to marketplaces, customer portals, workflow systems, internal tools, data products and AI-enabled web applications, Obrive helps organizations move from concept to a focused MVP and then toward a scalable production platform.
@@ -5103,7 +5103,7 @@ H1: Web App & SaaS MVP Development Services for the AI Era
 
 Suggested Image Alt: AI-Ready Web App & SaaS MVP Development — Obrive Industries
 
-Canonical: https://obrive.com/services/web-app-saas-mvp-development
+Canonical: https://obrive.in/services/web-app-saas-mvp-development
 
 Recommended Internal Linking
 
@@ -5199,7 +5199,7 @@ The Web App & SaaS MVP page should not position Obrive as simply a prototype or 
 
 ## Service: Website Design Services for the AI Era — Across Industries
 ID: service:website-design-service
-URL: https://obrive.com/services/website-design-service
+URL: https://obrive.in/services/website-design-service
 ### Dynamic Metadata
 Title: Website Design Services for the AI Era — Across Industries | Obrive Industries
 Description: Our website design services combine strategy, UX/UI design, brand expression, content architecture, performance thinking, accessibility and AI-era digital experience design to create websites that do more than look modern—they help organizations communicate, compete and convert.
@@ -5462,7 +5462,7 @@ H1: Website Design Services for the AI Era
 
 Suggested Image Alt: AI-Ready Website Design — Obrive Industries
 
-Canonical: https://obrive.com/services/website-design
+Canonical: https://obrive.in/services/website-design
 
 Recommended Internal Linking
 
@@ -5548,7 +5548,7 @@ The Website Design page should not position Obrive as simply a company that crea
 
 ## Service: Website Development Services for the AI Era — Across Industries
 ID: service:website-development-service
-URL: https://obrive.com/services/website-development-service
+URL: https://obrive.in/services/website-development-service
 ### Dynamic Metadata
 Title: Website Development Services for the AI Era — Across Industries | Obrive Industries
 Description: Our website development services combine business strategy, UX/UI collaboration, front-end engineering, back-end engineering, APIs, databases, cloud infrastructure, security, performance, analytics and AI-ready architecture to create websites that function as serious digital products. From corporate websites and high-conversion marketing platforms to eCommerce, portals, content platforms, customer self-service, enterprise websites and intelligent web experiences, Obrive builds digital foundations around measurable business objectives.
@@ -5802,7 +5802,7 @@ H1: Website Development Services for the AI Era
 
 Suggested Image Alt: AI-Ready Website Development — Obrive Industries
 
-Canonical: https://obrive.com/services/website-development
+Canonical: https://obrive.in/services/website-development
 
 Recommended Internal Linking
 
@@ -5893,7 +5893,7 @@ The Website Development page should not position Obrive as simply a company that
 # PRODUCTS
 ## Product: Obpark
 ID: product:obpark
-URL: https://obrive.com/products/obpark
+URL: https://obrive.in/products/obpark
 ### Dynamic Metadata
 Title: Obpark – AR Parking Navigation & Smart Parking Solution | Obrive Bangalore
 Description: Obpark by Obrive is an AR-powered smart parking navigation system that helps drivers find, navigate, and reserve parking spaces with augmented reality guidance. Ideal for malls, commercial complexes and city parking in Bangalore & beyond.
@@ -5912,7 +5912,7 @@ Seamless Parking. Smarter Navigation. Revolutionizing indoor and outdoor parking
 
 ## Product: Obnest
 ID: product:obnest
-URL: https://obrive.com/products/obnest
+URL: https://obrive.in/products/obnest
 ### Dynamic Metadata
 Title: Obnest – 3D Property Visualization & Immersive Walkthrough | Obrive Bangalore
 Description: Obnest by Obrive is a 3D property visualization and immersive walkthrough solution that enables interactive viewing of real estate, architectural designs, and building layouts. Enhance engagement with photoreal 3D experiences.
@@ -5933,7 +5933,7 @@ Seamless Tours. Effortless Decisions. Revolutionizing property exploration with 
 
 ## Product: Obnavi
 ID: product:obnavi
-URL: https://obrive.com/products/obnavi
+URL: https://obrive.in/products/obnavi
 ### Dynamic Metadata
 Title: Obnavi – AR Spatial Navigation & Immersive Wayfinding | Obrive
 Description: Obnavi by Obrive is an Augmented Reality (AR) spatial navigation and immersive wayfinding solution guiding users through complex environments using AR overlays and 3D spatial cues.
@@ -5953,7 +5953,7 @@ immersive real-time navigation, personalized product discovery, and seamless AR/
 
 ## Product: Obmove
 ID: product:obmove
-URL: https://obrive.com/products/obmove
+URL: https://obrive.in/products/obmove
 ### Dynamic Metadata
 Title: Obmove – AR/VR Car Showroom & Immersive 3D Vehicle Experience | Obrive
 Description: Obmove by Obrive is an immersive AR/VR car showroom and interactive 3D vehicle experience platform. Showcase vehicles with 360° views, AR features, configuration tools and next-gen digital engagement.
@@ -5973,7 +5973,7 @@ Redefining Automotive Showrooms with MR/VR Obmove is a next-generation MR/VR vir
 # INDUSTRIES
 ## Industry: Real Estate Industry Solutions
 ID: industry:real-estate
-URL: https://obrive.com/industries/real-estate
+URL: https://obrive.in/industries/real-estate
 ### Dynamic Metadata
 Title: Real Estate Industry Solutions | Obrive Industries
 Description: Transform property exploration with immersive MR/VR experiences.
@@ -6000,7 +6000,7 @@ Transform property exploration with immersive MR/VR experiences.
 
 ## Industry: Automotive Industry Solutions
 ID: industry:automotive
-URL: https://obrive.com/industries/automotive
+URL: https://obrive.in/industries/automotive
 ### Dynamic Metadata
 Title: Automotive Industry Solutions | Obrive Industries
 Description: Redefine vehicle showrooms and discovery with immersive technology.
@@ -6026,7 +6026,7 @@ Redefine vehicle showrooms and discovery with immersive technology.
 
 ## Industry: Retail Solutions
 ID: industry:retail
-URL: https://obrive.com/industries/retail
+URL: https://obrive.in/industries/retail
 ### Dynamic Metadata
 Title: Retail Solutions | Obrive Industries
 Description: Spatial Computing for Immersive Shopping Experiences
@@ -6053,7 +6053,7 @@ Spatial Computing for Immersive Shopping Experiences
 
 ## Industry: Healthcare Solutions
 ID: industry:healthcare
-URL: https://obrive.com/industries/healthcare
+URL: https://obrive.in/industries/healthcare
 ### Dynamic Metadata
 Title: Healthcare Solutions | Obrive Industries
 Description: Spatial Computing for Better Care, Training and Outcomes
@@ -6080,7 +6080,7 @@ Spatial Computing for Better Care, Training and Outcomes
 
 ## Industry: Manufacturing Solutions
 ID: industry:manufacturing
-URL: https://obrive.com/industries/manufacturing
+URL: https://obrive.in/industries/manufacturing
 ### Dynamic Metadata
 Title: Manufacturing Solutions | Obrive Industries
 Description: Spatial Computing for Smarter, More Efficient Operations
@@ -6107,7 +6107,7 @@ Spatial Computing for Smarter, More Efficient Operations
 
 ## Industry: Architecture & Engineering Solutions
 ID: industry:architecture-engineering
-URL: https://obrive.com/industries/architecture-engineering
+URL: https://obrive.in/industries/architecture-engineering
 ### Dynamic Metadata
 Title: Architecture & Engineering Solutions | Obrive Industries
 Description: Spatial Computing for Design, Collaboration and Construction
@@ -6134,7 +6134,7 @@ Spatial Computing for Design, Collaboration and Construction
 
 ## Industry: Education Solutions
 ID: industry:education
-URL: https://obrive.com/industries/education
+URL: https://obrive.in/industries/education
 ### Dynamic Metadata
 Title: Education Solutions | Obrive Industries
 Description: Spatial Computing for Immersive Learning Experiences
@@ -6161,7 +6161,7 @@ Spatial Computing for Immersive Learning Experiences
 
 ## Industry: Enterprise Solutions
 ID: industry:enterprise
-URL: https://obrive.com/industries/enterprise
+URL: https://obrive.in/industries/enterprise
 ### Dynamic Metadata
 Title: Enterprise Solutions | Obrive Industries
 Description: Spatial Computing for Smarter Workplaces and Business Growth
@@ -6189,7 +6189,7 @@ Spatial Computing for Smarter Workplaces and Business Growth
 # USE CASES & TECHNOLOGIES
 ## Use Case: AR Product Visualization
 ID: use_case:ar-product-visualization
-URL: https://obrive.com/use-cases/ar-product-visualization
+URL: https://obrive.in/use-cases/ar-product-visualization
 ### Dynamic Metadata
 Title: AR Product Visualization | Obrive Industries
 Description: Bring products to life by visualizing them in real-world environments before purchase.
@@ -6218,7 +6218,7 @@ Explore the different scopes of AR product visualization.
 
 ## Use Case: Virtual Training & Simulation
 ID: use_case:virtual-training
-URL: https://obrive.com/use-cases/virtual-training
+URL: https://obrive.in/use-cases/virtual-training
 ### Dynamic Metadata
 Title: Virtual Training & Simulation | Obrive Industries
 Description: Immersive, risk-free training environments for complex scenarios and equipment.
@@ -6247,7 +6247,7 @@ Explore the different scopes of virtual training.
 
 ## Use Case: Digital Twins
 ID: use_case:digital-twins
-URL: https://obrive.com/use-cases/digital-twins
+URL: https://obrive.in/use-cases/digital-twins
 ### Dynamic Metadata
 Title: Digital Twins | Obrive Industries
 Description: Bridge the physical and digital worlds with intelligent 3D replicas.
@@ -6276,7 +6276,7 @@ Explore the different types of digital twins.
 
 ## Use Case: Virtual Showrooms
 ID: use_case:virtual-showrooms
-URL: https://obrive.com/use-cases/virtual-showrooms
+URL: https://obrive.in/use-cases/virtual-showrooms
 ### Dynamic Metadata
 Title: Virtual Showrooms | Obrive Industries
 Description: Interactive, 3D retail spaces allowing customers to explore products remotely.
@@ -6305,7 +6305,7 @@ Explore the different scopes of virtual showrooms.
 
 ## Use Case: Indoor Navigation
 ID: use_case:indoor-navigation
-URL: https://obrive.com/use-cases/indoor-navigation
+URL: https://obrive.in/use-cases/indoor-navigation
 ### Dynamic Metadata
 Title: Indoor Navigation | Obrive Industries
 Description: AR-powered wayfinding solutions for large complex indoor environments.
@@ -6334,7 +6334,7 @@ Explore the different scopes of indoor navigation.
 
 ## Use Case: 3D Product Configuration
 ID: use_case:3d-product-configuration
-URL: https://obrive.com/use-cases/3d-product-configuration
+URL: https://obrive.in/use-cases/3d-product-configuration
 ### Dynamic Metadata
 Title: 3D Product Configuration | Obrive Industries
 Description: Let customers explore, personalize, and buy with confidence in real-time 3D.
@@ -6363,7 +6363,7 @@ Common applications for 3D product configuration.
 
 ## Use Case: Virtual Property Tours
 ID: use_case:virtual-property-tours
-URL: https://obrive.com/use-cases/virtual-property-tours
+URL: https://obrive.in/use-cases/virtual-property-tours
 ### Dynamic Metadata
 Title: Virtual Property Tours | Obrive Industries
 Description: Immersive walkthroughs of real estate properties and architectural designs.
@@ -6393,7 +6393,7 @@ Explore the different scopes of virtual property tours.
 
 ## Use Case: Remote Assistance
 ID: use_case:remote-assistance
-URL: https://obrive.com/use-cases/remote-assistance
+URL: https://obrive.in/use-cases/remote-assistance
 ### Dynamic Metadata
 Title: Remote Assistance | Obrive Industries
 Description: Connect experts and frontline teams in real time—anywhere, anytime.
@@ -6422,7 +6422,7 @@ Common applications for Remote Assistance.
 
 ## Technology: Augmented Reality
 ID: technology:augmented-reality
-URL: https://obrive.com/technologies/augmented-reality
+URL: https://obrive.in/technologies/augmented-reality
 ### Dynamic Metadata
 Title: Augmented Reality | Obrive Industries
 Description: Overlay digital information onto the physical world for enhanced experiences.
@@ -6448,7 +6448,7 @@ Overlay digital information onto the physical world for enhanced experiences.
 
 ## Technology: Virtual Reality
 ID: technology:virtual-reality
-URL: https://obrive.com/technologies/virtual-reality
+URL: https://obrive.in/technologies/virtual-reality
 ### Dynamic Metadata
 Title: Virtual Reality | Obrive Industries
 Description: Immerse users in entirely digital, fully interactive 3D environments.
@@ -6474,7 +6474,7 @@ Immerse users in entirely digital, fully interactive 3D environments.
 
 ## Technology: Mixed Reality
 ID: technology:mixed-reality
-URL: https://obrive.com/technologies/mixed-reality
+URL: https://obrive.in/technologies/mixed-reality
 ### Dynamic Metadata
 Title: Mixed Reality | Obrive Industries
 Description: Blend physical and digital worlds to create complex interactive environments.
@@ -6501,7 +6501,7 @@ Blend physical and digital worlds to create complex interactive environments.
 
 ## Technology: Extended Reality
 ID: technology:extended-reality
-URL: https://obrive.com/technologies/extended-reality
+URL: https://obrive.in/technologies/extended-reality
 ### Dynamic Metadata
 Title: Extended Reality | Obrive Industries
 Description: The overarching umbrella bridging AR, VR, and MR into cohesive spatial systems.
@@ -6528,7 +6528,7 @@ The overarching umbrella bridging AR, VR, and MR into cohesive spatial systems.
 
 ## Technology: Spatial Computing
 ID: technology:spatial-computing
-URL: https://obrive.com/technologies/spatial-computing
+URL: https://obrive.in/technologies/spatial-computing
 ### Dynamic Metadata
 Title: Spatial Computing | Obrive Industries
 Description: Seamlessly map and interact with digital elements in 3D physical space.
@@ -6554,7 +6554,7 @@ Seamlessly map and interact with digital elements in 3D physical space.
 
 ## Technology: Digital Twins
 ID: technology:digital-twins
-URL: https://obrive.com/technologies/digital-twins
+URL: https://obrive.in/technologies/digital-twins
 ### Dynamic Metadata
 Title: Digital Twins | Obrive Industries
 Description: Real-time, interactive virtual replicas for monitoring and simulating physical assets.
@@ -6581,7 +6581,7 @@ Real-time, interactive virtual replicas for monitoring and simulating physical a
 
 ## Technology: 3D Visualization
 ID: technology:3d-visualization
-URL: https://obrive.com/technologies/3d-visualization
+URL: https://obrive.in/technologies/3d-visualization
 ### Dynamic Metadata
 Title: 3D Visualization | Obrive Industries
 Description: High-fidelity rendering and interactive modeling for products and spaces.
@@ -6607,7 +6607,7 @@ High-fidelity rendering and interactive modeling for products and spaces.
 
 ## Technology: AI + Immersive Technology
 ID: technology:ai-immersive-technology
-URL: https://obrive.com/technologies/ai-immersive-technology
+URL: https://obrive.in/technologies/ai-immersive-technology
 ### Dynamic Metadata
 Title: AI + Immersive Technology | Obrive Industries
 Description: Integrating Artificial Intelligence into AR/VR for smarter, adaptive interactions.
@@ -6635,7 +6635,7 @@ Integrating Artificial Intelligence into AR/VR for smarter, adaptive interaction
 # CASE STUDIES
 ## Case Study: Turning Physical Retail Into an Interactive Product Experience
 ID: immersive-retail-launch
-URL: https://obrive.com/case-studies/immersive-retail-launch
+URL: https://obrive.in/case-studies/immersive-retail-launch
 ### Dynamic Metadata
 Title: Turning Physical Retail Into an Interactive Product Experience | Obrive Case Study
 Description: Through the implementation of our Augmented Reality Development, Aura Lifestyle Brands was able to completely transform their digital experience, seeing a -40% Costs in user adoption.
@@ -6672,7 +6672,7 @@ Measure engagement and conversion signals, then refine content and interaction f
 
 ## Case Study: Replacing Passive Training With Hands-On Virtual Practice
 ID: immersive-training-command
-URL: https://obrive.com/case-studies/immersive-training-command
+URL: https://obrive.in/case-studies/immersive-training-command
 ### Dynamic Metadata
 Title: Replacing Passive Training With Hands-On Virtual Practice | Obrive Case Study
 Description: Through the implementation of our Virtual Reality Development, Quantum Data Systems was able to completely transform their digital experience, seeing a +60% Engagement in user adoption.
@@ -6709,7 +6709,7 @@ Pilot with representative users, capture performance data and expand the trainin
 
 ## Case Study: Making Complex Assets Visible, Connected and Actionable
 ID: digital-twin-operations-hub
-URL: https://obrive.com/case-studies/digital-twin-operations-hub
+URL: https://obrive.in/case-studies/digital-twin-operations-hub
 ### Dynamic Metadata
 Title: Making Complex Assets Visible, Connected and Actionable | Obrive Case Study
 Description: Through the implementation of our 3D Design & Development, OmniTech Solutions was able to completely transform their digital experience, seeing a +60% Engagement in user adoption.
@@ -6746,7 +6746,7 @@ Create dashboards, alerts, inspections and scenario views that support daily dec
 
 ## Case Study: Helping People Navigate Complex Physical Environments With Spatial Intelligence
 ID: spatial-workplace-navigator
-URL: https://obrive.com/case-studies/spatial-workplace-navigator
+URL: https://obrive.in/case-studies/spatial-workplace-navigator
 ### Dynamic Metadata
 Title: Helping People Navigate Complex Physical Environments With Spatial Intelligence | Obrive Case Study
 Description: Through the implementation of our Spatial Computing, Stellar Hospitality Group was able to completely transform their digital experience, seeing a -40% Costs in user adoption.
@@ -6783,7 +6783,7 @@ Validate accuracy across real environments and establish a repeatable rollout mo
 
 ## Case Study: Designing a Digital Experience That Makes Enterprise Brands Easier to Understand
 ID: enterprise-brand-experience
-URL: https://obrive.com/case-studies/enterprise-brand-experience
+URL: https://obrive.in/case-studies/enterprise-brand-experience
 ### Dynamic Metadata
 Title: Designing a Digital Experience That Makes Enterprise Brands Easier to Understand | Obrive Case Study
 Description: Through the implementation of our Website Designing, Vertex Financial Services was able to completely transform their digital experience, seeing a -40% Costs in user adoption.
@@ -6820,7 +6820,7 @@ Validate navigation, readability and task completion before development. Obrive 
 
 ## Case Study: Building a Fast, Scalable Website Around the Business—Not a Template
 ID: high-performance-corporate-website
-URL: https://obrive.com/case-studies/high-performance-corporate-website
+URL: https://obrive.in/case-studies/high-performance-corporate-website
 ### Dynamic Metadata
 Title: Building a Fast, Scalable Website Around the Business—Not a Template | Obrive Case Study
 Description: Through the implementation of our Website Development, Echo Telecommunications was able to completely transform their digital experience, seeing a 2.5x Growth in user adoption.
@@ -6857,7 +6857,7 @@ Optimize Core Web Vitals, security, accessibility, monitoring and deployment wor
 
 ## Case Study: Designing Mobile Journeys People Can Understand in Seconds
 ID: mobile-product-experience
-URL: https://obrive.com/case-studies/mobile-product-experience
+URL: https://obrive.in/case-studies/mobile-product-experience
 ### Dynamic Metadata
 Title: Designing Mobile Journeys People Can Understand in Seconds | Obrive Case Study
 Description: Through the implementation of our Mobile Application Design, Global Logistics Corp was able to completely transform their digital experience, seeing a 2.5x Growth in user adoption.
@@ -6894,7 +6894,7 @@ Prototype realistic journeys and validate them before engineering investment. Ob
 
 ## Case Study: Engineering a Mobile Product Built for Real-World Use
 ID: connected-mobile-platform
-URL: https://obrive.com/case-studies/connected-mobile-platform
+URL: https://obrive.in/case-studies/connected-mobile-platform
 ### Dynamic Metadata
 Title: Engineering a Mobile Product Built for Real-World Use | Obrive Case Study
 Description: Through the implementation of our Mobile Application Development, Horizon Healthcare Systems was able to completely transform their digital experience, seeing a 3x ROI in user adoption.
@@ -6931,7 +6931,7 @@ Automate testing, stabilize performance and prepare production releases for both
 
 ## Case Study: Turning Manual Operations Into a Connected Digital Workflow
 ID: customer-operations-portal
-URL: https://obrive.com/case-studies/customer-operations-portal
+URL: https://obrive.in/case-studies/customer-operations-portal
 ### Dynamic Metadata
 Title: Turning Manual Operations Into a Connected Digital Workflow | Obrive Case Study
 Description: Through the implementation of our Web Application Development, Catalyst Consumer Brands was able to completely transform their digital experience, seeing a 2.5x Growth in user adoption.
@@ -6968,7 +6968,7 @@ Automate reporting, audit trails and operational insights so teams can work from
 
 ## Case Study: Building a Digital Growth System Around the Customer Journey
 ID: digital-growth-engine
-URL: https://obrive.com/case-studies/digital-growth-engine
+URL: https://obrive.in/case-studies/digital-growth-engine
 ### Dynamic Metadata
 Title: Building a Digital Growth System Around the Customer Journey | Obrive Case Study
 Description: Through the implementation of our Digital Marketing, Zenith Manufacturing was able to completely transform their digital experience, seeing a 30% Reduction in user adoption.
@@ -7005,7 +7005,7 @@ Track acquisition, engagement, lead quality and conversion signals and continuou
 
 ## Case Study: Turning Search Visibility Into a Structured Growth Program
 ID: search-visibility-program
-URL: https://obrive.com/case-studies/search-visibility-program
+URL: https://obrive.in/case-studies/search-visibility-program
 ### Dynamic Metadata
 Title: Turning Search Visibility Into a Structured Growth Program | Obrive Case Study
 Description: Through the implementation of our SEO Marketing, Synergy Software Corp was able to completely transform their digital experience, seeing a 30% Reduction in user adoption.
@@ -7042,7 +7042,7 @@ Monitor visibility, qualified traffic, engagement and conversion behavior rather
 
 ## Case Study: Preparing Brands for Search Experiences Built Around Answers
 ID: answer-engine-visibility
-URL: https://obrive.com/case-studies/answer-engine-visibility
+URL: https://obrive.in/case-studies/answer-engine-visibility
 ### Dynamic Metadata
 Title: Preparing Brands for Search Experiences Built Around Answers | Obrive Case Study
 Description: Through the implementation of our AEO Marketing, Luminar Real Estate was able to completely transform their digital experience, seeing a +45% Increase in user adoption.
@@ -7079,7 +7079,7 @@ Track branded discovery, query coverage, referrals and qualified conversions as 
 
 ## Case Study: Letting Customers Explore Products Before They Buy
 ID: 3d-product-configurator
-URL: https://obrive.com/case-studies/3d-product-configurator
+URL: https://obrive.in/case-studies/3d-product-configurator
 ### Dynamic Metadata
 Title: Letting Customers Explore Products Before They Buy | Obrive Case Study
 Description: Through the implementation of our 3D Design & Development, Frontier Energy Corp was able to completely transform their digital experience, seeing a -40% Costs in user adoption.
@@ -7116,7 +7116,7 @@ Deliver optimized experiences for web, mobile and immersive channels as required
 
 ## Case Study: Helping Sales Teams Demonstrate Complex Products With Spatial Experiences
 ID: immersive-sales-studio
-URL: https://obrive.com/case-studies/immersive-sales-studio
+URL: https://obrive.in/case-studies/immersive-sales-studio
 ### Dynamic Metadata
 Title: Helping Sales Teams Demonstrate Complex Products With Spatial Experiences | Obrive Case Study
 Description: Through the implementation of our Spatial Computing, Apex Heavy Industries was able to completely transform their digital experience, seeing a 3x ROI in user adoption.
@@ -7153,7 +7153,7 @@ Provide reusable content and workflows so sales teams can update experiences as 
 
 ## Case Study: Designing Commerce Experiences That Connect Discovery to Purchase
 ID: omnichannel-commerce-experience
-URL: https://obrive.com/case-studies/omnichannel-commerce-experience
+URL: https://obrive.in/case-studies/omnichannel-commerce-experience
 ### Dynamic Metadata
 Title: Designing Commerce Experiences That Connect Discovery to Purchase | Obrive Case Study
 Description: Through the implementation of our Website Designing, Vanguard Education Group was able to completely transform their digital experience, seeing a -40% Costs in user adoption.
@@ -7190,7 +7190,7 @@ Build a design system that supports new categories, campaigns and product types.
 
 ## Case Study: Connecting Customers, Providers and Operations in One Platform
 ID: digital-service-marketplace
-URL: https://obrive.com/case-studies/digital-service-marketplace
+URL: https://obrive.in/case-studies/digital-service-marketplace
 ### Dynamic Metadata
 Title: Connecting Customers, Providers and Operations in One Platform | Obrive Case Study
 Description: Through the implementation of our Web Application Development, Genesis BioTech was able to completely transform their digital experience, seeing a -40% Costs in user adoption.
@@ -7227,7 +7227,7 @@ Create operational dashboards and governance tools for platform teams. Obrive ma
 
 ## Case Study: Building a Mobile Community Around Content, Interaction and Retention
 ID: connected-community-app
-URL: https://obrive.com/case-studies/connected-community-app
+URL: https://obrive.in/case-studies/connected-community-app
 ### Dynamic Metadata
 Title: Building a Mobile Community Around Content, Interaction and Retention | Obrive Case Study
 Description: Through the implementation of our Mobile Application Development, Nova Media Networks was able to completely transform their digital experience, seeing a 3x ROI in user adoption.
@@ -7264,7 +7264,7 @@ Use analytics to identify activation and retention opportunities without comprom
 
 ## Case Study: Combining AI Guidance With Context-Rich Digital Experiences
 ID: intelligent-customer-assistant
-URL: https://obrive.com/case-studies/intelligent-customer-assistant
+URL: https://obrive.in/case-studies/intelligent-customer-assistant
 ### Dynamic Metadata
 Title: Combining AI Guidance With Context-Rich Digital Experiences | Obrive Case Study
 Description: Through the implementation of our AI + Immersive Technology, Meridian Automotive was able to completely transform their digital experience, seeing a 2.5x Growth in user adoption.
@@ -7301,7 +7301,7 @@ Monitor accuracy, user feedback, safety and business outcomes and continuously r
 
 ## Case Study: Creating a Flexible Learning Environment Across AR, VR and MR
 ID: immersive-learning-campus
-URL: https://obrive.com/case-studies/immersive-learning-campus
+URL: https://obrive.in/case-studies/immersive-learning-campus
 ### Dynamic Metadata
 Title: Creating a Flexible Learning Environment Across AR, VR and MR | Obrive Case Study
 Description: Through the implementation of our Extended Reality, Titan E-commerce was able to completely transform their digital experience, seeing a 3x ROI in user adoption.
@@ -7338,7 +7338,7 @@ Measure completion, confidence, performance and knowledge transfer. Obrive maint
 
 ## Case Study: Putting Critical Instructions Where the Work Happens
 ID: industrial-ar-assist
-URL: https://obrive.com/case-studies/industrial-ar-assist
+URL: https://obrive.in/case-studies/industrial-ar-assist
 ### Dynamic Metadata
 Title: Putting Critical Instructions Where the Work Happens | Obrive Case Study
 Description: Through the implementation of our Augmented Reality Development, Momentum Sports & Entertainment was able to completely transform their digital experience, seeing a +45% Increase in user adoption.
@@ -7375,7 +7375,7 @@ Pilot with technicians, refine usability and establish governance for enterprise
 
 ## Case Study: Turning Operational Data Into a Decision-Ready Digital Workspace
 ID: executive-digital-command-center
-URL: https://obrive.com/case-studies/executive-digital-command-center
+URL: https://obrive.in/case-studies/executive-digital-command-center
 ### Dynamic Metadata
 Title: Turning Operational Data Into a Decision-Ready Digital Workspace | Obrive Case Study
 Description: Through the implementation of our Web Application Development, Pinnacle Construction was able to completely transform their digital experience, seeing a 3x ROI in user adoption.
@@ -7412,7 +7412,7 @@ Connect insight to action with alerts, assignments, notes and reporting workflow
 
 ## Case Study: Creating a Launch Engine That Turns Attention Into Qualified Demand
 ID: digital-brand-launch-system
-URL: https://obrive.com/case-studies/digital-brand-launch-system
+URL: https://obrive.in/case-studies/digital-brand-launch-system
 ### Dynamic Metadata
 Title: Creating a Launch Engine That Turns Attention Into Qualified Demand | Obrive Case Study
 Description: Through the implementation of our Digital Marketing, Nexus Retail Partners was able to completely transform their digital experience, seeing a 3x ROI in user adoption.
@@ -7449,7 +7449,7 @@ Use campaign data to improve creative, targeting, landing-page performance and l
 
 ## Case Study: Building Search Foundations for Multi-Market Growth
 ID: global-seo-expansion
-URL: https://obrive.com/case-studies/global-seo-expansion
+URL: https://obrive.in/case-studies/global-seo-expansion
 ### Dynamic Metadata
 Title: Building Search Foundations for Multi-Market Growth | Obrive Case Study
 Description: Through the implementation of our SEO Marketing, Orion Aerospace was able to completely transform their digital experience, seeing a -40% Costs in user adoption.
@@ -7486,7 +7486,7 @@ Monitor performance by market and continuously improve pages based on qualified 
 
 ## Case Study: Making Product Knowledge Easier for People and Answer Engines to Understand
 ID: answer-first-product-knowledge-hub
-URL: https://obrive.com/case-studies/answer-first-product-knowledge-hub
+URL: https://obrive.in/case-studies/answer-first-product-knowledge-hub
 ### Dynamic Metadata
 Title: Making Product Knowledge Easier for People and Answer Engines to Understand | Obrive Case Study
 Description: Through the implementation of our AEO Marketing, Helix Smart Cities was able to completely transform their digital experience, seeing a +60% Engagement in user adoption.
@@ -7524,7 +7524,7 @@ Connect product pages, FAQs, glossary, resources and structured data into one co
 # BLOGS
 ## Blog: The Complete Guide to Augmented Reality Development in 2026: From Idea to Enterprise Deployment
 ID: the-complete-guide-to-augmented-reality-development-in-2026-from-idea-to-enterprise-deployment
-URL: https://obrive.com/blog/the-complete-guide-to-augmented-reality-development-in-2026-from-idea-to-enterprise-deployment
+URL: https://obrive.in/blog/the-complete-guide-to-augmented-reality-development-in-2026-from-idea-to-enterprise-deployment
 ### Dynamic Metadata
 Title: The Complete Guide to Augmented Reality Development in 2026: From Idea to Enterprise Deployment | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Businesses often communicate information through flat screens even when the real-world environment is where the decision, task, or purchase actually happens. That gap is exactly where Augmented Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -7589,7 +7589,7 @@ Talk to Obrive about augmented reality development
 
 ## Blog: AR Is Leaving the Screen: How Augmented Reality Is Changing the Way Businesses Work
 ID: ar-is-leaving-the-screen-how-augmented-reality-is-changing-the-way-businesses-work
-URL: https://obrive.com/blog/ar-is-leaving-the-screen-how-augmented-reality-is-changing-the-way-businesses-work
+URL: https://obrive.in/blog/ar-is-leaving-the-screen-how-augmented-reality-is-changing-the-way-businesses-work
 ### Dynamic Metadata
 Title: AR Is Leaving the Screen: How Augmented Reality Is Changing the Way Businesses Work | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Businesses often communicate information through flat screens even when the real-world environment is where the decision, task, or purchase actually happens. That gap is exactly where Augmented Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -7654,7 +7654,7 @@ Talk to Obrive about augmented reality development
 
 ## Blog: AI + Augmented Reality: Why the Next Generation of AR Apps Will Be Intelligent
 ID: ai-augmented-reality-why-the-next-generation-of-ar-apps-will-be-intelligent
-URL: https://obrive.com/blog/ai-augmented-reality-why-the-next-generation-of-ar-apps-will-be-intelligent
+URL: https://obrive.in/blog/ai-augmented-reality-why-the-next-generation-of-ar-apps-will-be-intelligent
 ### Dynamic Metadata
 Title: AI + Augmented Reality: Why the Next Generation of AR Apps Will Be Intelligent | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Businesses often communicate information through flat screens even when the real-world environment is where the decision, task, or purchase actually happens. That gap is exactly where Augmented Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -7719,7 +7719,7 @@ Talk to Obrive about augmented reality development
 
 ## Blog: 10 Powerful Business Use Cases for Augmented Reality That Companies Can Deploy Today
 ID: 10-powerful-business-use-cases-for-augmented-reality-that-companies-can-deploy-today
-URL: https://obrive.com/blog/10-powerful-business-use-cases-for-augmented-reality-that-companies-can-deploy-today
+URL: https://obrive.in/blog/10-powerful-business-use-cases-for-augmented-reality-that-companies-can-deploy-today
 ### Dynamic Metadata
 Title: 10 Powerful Business Use Cases for Augmented Reality That Companies Can Deploy Today | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Businesses often communicate information through flat screens even when the real-world environment is where the decision, task, or purchase actually happens. That gap is exactly where Augmented Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -7784,7 +7784,7 @@ Talk to Obrive about augmented reality development
 
 ## Blog: AR Navigation Is the Next Big Interface: How Businesses Can Turn Physical Spaces Into Digital Experiences
 ID: ar-navigation-is-the-next-big-interface-how-businesses-can-turn-physical-spaces-into-digital-experiences
-URL: https://obrive.com/blog/ar-navigation-is-the-next-big-interface-how-businesses-can-turn-physical-spaces-into-digital-experiences
+URL: https://obrive.in/blog/ar-navigation-is-the-next-big-interface-how-businesses-can-turn-physical-spaces-into-digital-experiences
 ### Dynamic Metadata
 Title: AR Navigation Is the Next Big Interface: How Businesses Can Turn Physical Spaces Into Digital Experiences | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Businesses often communicate information through flat screens even when the real-world environment is where the decision, task, or purchase actually happens. That gap is exactly where Augmented Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -7849,7 +7849,7 @@ Talk to Obrive about augmented reality development
 
 ## Blog: AR Commerce: How Customers Will Shop, Try and Buy Products in the Augmented World
 ID: ar-commerce-how-customers-will-shop-try-and-buy-products-in-the-augmented-world
-URL: https://obrive.com/blog/ar-commerce-how-customers-will-shop-try-and-buy-products-in-the-augmented-world
+URL: https://obrive.in/blog/ar-commerce-how-customers-will-shop-try-and-buy-products-in-the-augmented-world
 ### Dynamic Metadata
 Title: AR Commerce: How Customers Will Shop, Try and Buy Products in the Augmented World | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Businesses often communicate information through flat screens even when the real-world environment is where the decision, task, or purchase actually happens. That gap is exactly where Augmented Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -7914,7 +7914,7 @@ Talk to Obrive about augmented reality development
 
 ## Blog: AR Product Visualization: How 3D + AR Can Change the Customer Buying Journey
 ID: ar-product-visualization-how-3d-ar-can-change-the-customer-buying-journey
-URL: https://obrive.com/blog/ar-product-visualization-how-3d-ar-can-change-the-customer-buying-journey
+URL: https://obrive.in/blog/ar-product-visualization-how-3d-ar-can-change-the-customer-buying-journey
 ### Dynamic Metadata
 Title: AR Product Visualization: How 3D + AR Can Change the Customer Buying Journey | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Businesses often communicate information through flat screens even when the real-world environment is where the decision, task, or purchase actually happens. That gap is exactly where Augmented Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -7979,7 +7979,7 @@ Talk to Obrive about augmented reality development
 
 ## Blog: AR vs VR vs MR vs Spatial Computing: Which Immersive Technology Is Right for Your Business?
 ID: ar-vs-vr-vs-mr-vs-spatial-computing-which-immersive-technology-is-right-for-your-business
-URL: https://obrive.com/blog/ar-vs-vr-vs-mr-vs-spatial-computing-which-immersive-technology-is-right-for-your-business
+URL: https://obrive.in/blog/ar-vs-vr-vs-mr-vs-spatial-computing-which-immersive-technology-is-right-for-your-business
 ### Dynamic Metadata
 Title: AR vs VR vs MR vs Spatial Computing: Which Immersive Technology Is Right for Your Business? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Businesses often communicate information through flat screens even when the real-world environment is where the decision, task, or purchase actually happens. That gap is exactly where Augmented Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8044,7 +8044,7 @@ Talk to Obrive about augmented reality development
 
 ## Blog: How Much Does AR App Development Cost in 2026? A Complete Business Guide
 ID: how-much-does-ar-app-development-cost-in-2026-a-complete-business-guide
-URL: https://obrive.com/blog/how-much-does-ar-app-development-cost-in-2026-a-complete-business-guide
+URL: https://obrive.in/blog/how-much-does-ar-app-development-cost-in-2026-a-complete-business-guide
 ### Dynamic Metadata
 Title: How Much Does AR App Development Cost in 2026? A Complete Business Guide | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Businesses often communicate information through flat screens even when the real-world environment is where the decision, task, or purchase actually happens. That gap is exactly where Augmented Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8109,7 +8109,7 @@ Talk to Obrive about augmented reality development
 
 ## Blog: The Future of Augmented Reality: Smart Glasses, AI Agents and Spatial Experiences
 ID: the-future-of-augmented-reality-smart-glasses-ai-agents-and-spatial-experiences
-URL: https://obrive.com/blog/the-future-of-augmented-reality-smart-glasses-ai-agents-and-spatial-experiences
+URL: https://obrive.in/blog/the-future-of-augmented-reality-smart-glasses-ai-agents-and-spatial-experiences
 ### Dynamic Metadata
 Title: The Future of Augmented Reality: Smart Glasses, AI Agents and Spatial Experiences | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Businesses often communicate information through flat screens even when the real-world environment is where the decision, task, or purchase actually happens. That gap is exactly where Augmented Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8174,7 +8174,7 @@ Talk to Obrive about augmented reality development
 
 ## Blog: The Complete Guide to Virtual Reality Development in 2026
 ID: the-complete-guide-to-virtual-reality-development-in-2026
-URL: https://obrive.com/blog/the-complete-guide-to-virtual-reality-development-in-2026
+URL: https://obrive.in/blog/the-complete-guide-to-virtual-reality-development-in-2026
 ### Dynamic Metadata
 Title: The Complete Guide to Virtual Reality Development in 2026 | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Traditional demonstrations and training can be expensive, difficult to repeat, geographically limited, or unsafe when the real environment is complex. That gap is exactly where Virtual Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8239,7 +8239,7 @@ Talk to Obrive about virtual reality development
 
 ## Blog: VR Is Evolving Beyond Gaming: The Enterprise Revolution Has Started
 ID: vr-is-evolving-beyond-gaming-the-enterprise-revolution-has-started
-URL: https://obrive.com/blog/vr-is-evolving-beyond-gaming-the-enterprise-revolution-has-started
+URL: https://obrive.in/blog/vr-is-evolving-beyond-gaming-the-enterprise-revolution-has-started
 ### Dynamic Metadata
 Title: VR Is Evolving Beyond Gaming: The Enterprise Revolution Has Started | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Traditional demonstrations and training can be expensive, difficult to repeat, geographically limited, or unsafe when the real environment is complex. That gap is exactly where Virtual Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8304,7 +8304,7 @@ Talk to Obrive about virtual reality development
 
 ## Blog: AI + VR: How Artificial Intelligence Is Creating Smarter Virtual Worlds
 ID: ai-vr-how-artificial-intelligence-is-creating-smarter-virtual-worlds
-URL: https://obrive.com/blog/ai-vr-how-artificial-intelligence-is-creating-smarter-virtual-worlds
+URL: https://obrive.in/blog/ai-vr-how-artificial-intelligence-is-creating-smarter-virtual-worlds
 ### Dynamic Metadata
 Title: AI + VR: How Artificial Intelligence Is Creating Smarter Virtual Worlds | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Traditional demonstrations and training can be expensive, difficult to repeat, geographically limited, or unsafe when the real environment is complex. That gap is exactly where Virtual Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8369,7 +8369,7 @@ Talk to Obrive about virtual reality development
 
 ## Blog: 10 Business Problems Virtual Reality Can Solve Better Than Traditional Training
 ID: 10-business-problems-virtual-reality-can-solve-better-than-traditional-training
-URL: https://obrive.com/blog/10-business-problems-virtual-reality-can-solve-better-than-traditional-training
+URL: https://obrive.in/blog/10-business-problems-virtual-reality-can-solve-better-than-traditional-training
 ### Dynamic Metadata
 Title: 10 Business Problems Virtual Reality Can Solve Better Than Traditional Training | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Traditional demonstrations and training can be expensive, difficult to repeat, geographically limited, or unsafe when the real environment is complex. That gap is exactly where Virtual Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8434,7 +8434,7 @@ Talk to Obrive about virtual reality development
 
 ## Blog: The Future of VR Training: Why Companies Are Building Virtual Workplaces
 ID: the-future-of-vr-training-why-companies-are-building-virtual-workplaces
-URL: https://obrive.com/blog/the-future-of-vr-training-why-companies-are-building-virtual-workplaces
+URL: https://obrive.in/blog/the-future-of-vr-training-why-companies-are-building-virtual-workplaces
 ### Dynamic Metadata
 Title: The Future of VR Training: Why Companies Are Building Virtual Workplaces | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Traditional demonstrations and training can be expensive, difficult to repeat, geographically limited, or unsafe when the real environment is complex. That gap is exactly where Virtual Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8499,7 +8499,7 @@ Talk to Obrive about virtual reality development
 
 ## Blog: Virtual Reality for Healthcare: From Medical Training to Patient Experiences
 ID: virtual-reality-for-healthcare-from-medical-training-to-patient-experiences
-URL: https://obrive.com/blog/virtual-reality-for-healthcare-from-medical-training-to-patient-experiences
+URL: https://obrive.in/blog/virtual-reality-for-healthcare-from-medical-training-to-patient-experiences
 ### Dynamic Metadata
 Title: Virtual Reality for Healthcare: From Medical Training to Patient Experiences | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Traditional demonstrations and training can be expensive, difficult to repeat, geographically limited, or unsafe when the real environment is complex. That gap is exactly where Virtual Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8564,7 +8564,7 @@ Talk to Obrive about virtual reality development
 
 ## Blog: Virtual Reality for Manufacturing: How Digital Simulation Can Transform Industrial Operations
 ID: virtual-reality-for-manufacturing-how-digital-simulation-can-transform-industrial-operations
-URL: https://obrive.com/blog/virtual-reality-for-manufacturing-how-digital-simulation-can-transform-industrial-operations
+URL: https://obrive.in/blog/virtual-reality-for-manufacturing-how-digital-simulation-can-transform-industrial-operations
 ### Dynamic Metadata
 Title: Virtual Reality for Manufacturing: How Digital Simulation Can Transform Industrial Operations | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Traditional demonstrations and training can be expensive, difficult to repeat, geographically limited, or unsafe when the real environment is complex. That gap is exactly where Virtual Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8629,7 +8629,7 @@ Talk to Obrive about virtual reality development
 
 ## Blog: VR vs Traditional Training: Where Is the Real Business ROI?
 ID: vr-vs-traditional-training-where-is-the-real-business-roi
-URL: https://obrive.com/blog/vr-vs-traditional-training-where-is-the-real-business-roi
+URL: https://obrive.in/blog/vr-vs-traditional-training-where-is-the-real-business-roi
 ### Dynamic Metadata
 Title: VR vs Traditional Training: Where Is the Real Business ROI? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Traditional demonstrations and training can be expensive, difficult to repeat, geographically limited, or unsafe when the real environment is complex. That gap is exactly where Virtual Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8694,7 +8694,7 @@ Talk to Obrive about virtual reality development
 
 ## Blog: How Much Does VR Development Cost in 2026?
 ID: how-much-does-vr-development-cost-in-2026
-URL: https://obrive.com/blog/how-much-does-vr-development-cost-in-2026
+URL: https://obrive.in/blog/how-much-does-vr-development-cost-in-2026
 ### Dynamic Metadata
 Title: How Much Does VR Development Cost in 2026? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Traditional demonstrations and training can be expensive, difficult to repeat, geographically limited, or unsafe when the real environment is complex. That gap is exactly where Virtual Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8759,7 +8759,7 @@ Talk to Obrive about virtual reality development
 
 ## Blog: What Comes After the Metaverse? The New Era of Intelligent Virtual Reality
 ID: what-comes-after-the-metaverse-the-new-era-of-intelligent-virtual-reality
-URL: https://obrive.com/blog/what-comes-after-the-metaverse-the-new-era-of-intelligent-virtual-reality
+URL: https://obrive.in/blog/what-comes-after-the-metaverse-the-new-era-of-intelligent-virtual-reality
 ### Dynamic Metadata
 Title: What Comes After the Metaverse? The New Era of Intelligent Virtual Reality | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Traditional demonstrations and training can be expensive, difficult to repeat, geographically limited, or unsafe when the real environment is complex. That gap is exactly where Virtual Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8824,7 +8824,7 @@ Talk to Obrive about virtual reality development
 
 ## Blog: The Complete Guide to Mixed Reality Development in 2026
 ID: the-complete-guide-to-mixed-reality-development-in-2026
-URL: https://obrive.com/blog/the-complete-guide-to-mixed-reality-development-in-2026
+URL: https://obrive.in/blog/the-complete-guide-to-mixed-reality-development-in-2026
 ### Dynamic Metadata
 Title: The Complete Guide to Mixed Reality Development in 2026 | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Workers and customers need digital information while remaining aware of and interacting with the physical environment. That gap is exactly where Mixed Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8889,7 +8889,7 @@ Talk to Obrive about mixed reality development
 
 ## Blog: Mixed Reality Is Blurring the Physical and Digital Worlds — Here's What Businesses Need to Know
 ID: mixed-reality-is-blurring-the-physical-and-digital-worlds-here-s-what-businesses-need-to-know
-URL: https://obrive.com/blog/mixed-reality-is-blurring-the-physical-and-digital-worlds-here-s-what-businesses-need-to-know
+URL: https://obrive.in/blog/mixed-reality-is-blurring-the-physical-and-digital-worlds-here-s-what-businesses-need-to-know
 ### Dynamic Metadata
 Title: Mixed Reality Is Blurring the Physical and Digital Worlds — Here's What Businesses Need to Know | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Workers and customers need digital information while remaining aware of and interacting with the physical environment. That gap is exactly where Mixed Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -8954,7 +8954,7 @@ Talk to Obrive about mixed reality development
 
 ## Blog: AI + Mixed Reality: The Rise of Intelligent Spatial Experiences
 ID: ai-mixed-reality-the-rise-of-intelligent-spatial-experiences
-URL: https://obrive.com/blog/ai-mixed-reality-the-rise-of-intelligent-spatial-experiences
+URL: https://obrive.in/blog/ai-mixed-reality-the-rise-of-intelligent-spatial-experiences
 ### Dynamic Metadata
 Title: AI + Mixed Reality: The Rise of Intelligent Spatial Experiences | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Workers and customers need digital information while remaining aware of and interacting with the physical environment. That gap is exactly where Mixed Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9019,7 +9019,7 @@ Talk to Obrive about mixed reality development
 
 ## Blog: 10 Mixed Reality Applications That Could Transform Enterprise Operations
 ID: 10-mixed-reality-applications-that-could-transform-enterprise-operations
-URL: https://obrive.com/blog/10-mixed-reality-applications-that-could-transform-enterprise-operations
+URL: https://obrive.in/blog/10-mixed-reality-applications-that-could-transform-enterprise-operations
 ### Dynamic Metadata
 Title: 10 Mixed Reality Applications That Could Transform Enterprise Operations | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Workers and customers need digital information while remaining aware of and interacting with the physical environment. That gap is exactly where Mixed Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9084,7 +9084,7 @@ Talk to Obrive about mixed reality development
 
 ## Blog: Mixed Reality in Manufacturing: From Digital Instructions to Digital Twins
 ID: mixed-reality-in-manufacturing-from-digital-instructions-to-digital-twins
-URL: https://obrive.com/blog/mixed-reality-in-manufacturing-from-digital-instructions-to-digital-twins
+URL: https://obrive.in/blog/mixed-reality-in-manufacturing-from-digital-instructions-to-digital-twins
 ### Dynamic Metadata
 Title: Mixed Reality in Manufacturing: From Digital Instructions to Digital Twins | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Workers and customers need digital information while remaining aware of and interacting with the physical environment. That gap is exactly where Mixed Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9149,7 +9149,7 @@ Talk to Obrive about mixed reality development
 
 ## Blog: Mixed Reality in Healthcare: How Immersive Technology Is Changing Medical Experiences
 ID: mixed-reality-in-healthcare-how-immersive-technology-is-changing-medical-experiences
-URL: https://obrive.com/blog/mixed-reality-in-healthcare-how-immersive-technology-is-changing-medical-experiences
+URL: https://obrive.in/blog/mixed-reality-in-healthcare-how-immersive-technology-is-changing-medical-experiences
 ### Dynamic Metadata
 Title: Mixed Reality in Healthcare: How Immersive Technology Is Changing Medical Experiences | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Workers and customers need digital information while remaining aware of and interacting with the physical environment. That gap is exactly where Mixed Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9214,7 +9214,7 @@ Talk to Obrive about mixed reality development
 
 ## Blog: Mixed Reality in Retail: Turning Stores Into Intelligent Digital Environments
 ID: mixed-reality-in-retail-turning-stores-into-intelligent-digital-environments
-URL: https://obrive.com/blog/mixed-reality-in-retail-turning-stores-into-intelligent-digital-environments
+URL: https://obrive.in/blog/mixed-reality-in-retail-turning-stores-into-intelligent-digital-environments
 ### Dynamic Metadata
 Title: Mixed Reality in Retail: Turning Stores Into Intelligent Digital Environments | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Workers and customers need digital information while remaining aware of and interacting with the physical environment. That gap is exactly where Mixed Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9279,7 +9279,7 @@ Talk to Obrive about mixed reality development
 
 ## Blog: AR vs MR: What's the Difference and Which One Should Your Business Choose?
 ID: ar-vs-mr-what-s-the-difference-and-which-one-should-your-business-choose
-URL: https://obrive.com/blog/ar-vs-mr-what-s-the-difference-and-which-one-should-your-business-choose
+URL: https://obrive.in/blog/ar-vs-mr-what-s-the-difference-and-which-one-should-your-business-choose
 ### Dynamic Metadata
 Title: AR vs MR: What's the Difference and Which One Should Your Business Choose? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Workers and customers need digital information while remaining aware of and interacting with the physical environment. That gap is exactly where Mixed Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9344,7 +9344,7 @@ Talk to Obrive about mixed reality development
 
 ## Blog: How Much Does Mixed Reality Development Cost in 2026?
 ID: how-much-does-mixed-reality-development-cost-in-2026
-URL: https://obrive.com/blog/how-much-does-mixed-reality-development-cost-in-2026
+URL: https://obrive.in/blog/how-much-does-mixed-reality-development-cost-in-2026
 ### Dynamic Metadata
 Title: How Much Does Mixed Reality Development Cost in 2026? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Workers and customers need digital information while remaining aware of and interacting with the physical environment. That gap is exactly where Mixed Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9409,7 +9409,7 @@ Talk to Obrive about mixed reality development
 
 ## Blog: The Future of Mixed Reality: When Digital Objects Understand the Physical World
 ID: the-future-of-mixed-reality-when-digital-objects-understand-the-physical-world
-URL: https://obrive.com/blog/the-future-of-mixed-reality-when-digital-objects-understand-the-physical-world
+URL: https://obrive.in/blog/the-future-of-mixed-reality-when-digital-objects-understand-the-physical-world
 ### Dynamic Metadata
 Title: The Future of Mixed Reality: When Digital Objects Understand the Physical World | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Workers and customers need digital information while remaining aware of and interacting with the physical environment. That gap is exactly where Mixed Reality development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9474,7 +9474,7 @@ Talk to Obrive about mixed reality development
 
 ## Blog: The Complete Guide to Spatial Computing in 2026
 ID: the-complete-guide-to-spatial-computing-in-2026
-URL: https://obrive.com/blog/the-complete-guide-to-spatial-computing-in-2026
+URL: https://obrive.in/blog/the-complete-guide-to-spatial-computing-in-2026
 ### Dynamic Metadata
 Title: The Complete Guide to Spatial Computing in 2026 | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Conventional software separates digital information from the physical places where people work, move, buy and make decisions. That gap is exactly where Spatial Computing development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9539,7 +9539,7 @@ Talk to Obrive about spatial computing development
 
 ## Blog: Spatial Computing vs Traditional Computing: Why the Interface Is Moving Into the Real World
 ID: spatial-computing-vs-traditional-computing-why-the-interface-is-moving-into-the-real-world
-URL: https://obrive.com/blog/spatial-computing-vs-traditional-computing-why-the-interface-is-moving-into-the-real-world
+URL: https://obrive.in/blog/spatial-computing-vs-traditional-computing-why-the-interface-is-moving-into-the-real-world
 ### Dynamic Metadata
 Title: Spatial Computing vs Traditional Computing: Why the Interface Is Moving Into the Real World | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Conventional software separates digital information from the physical places where people work, move, buy and make decisions. That gap is exactly where Spatial Computing development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9604,7 +9604,7 @@ Talk to Obrive about spatial computing development
 
 ## Blog: Spatial AI: The Next Revolution After Generative AI
 ID: spatial-ai-the-next-revolution-after-generative-ai
-URL: https://obrive.com/blog/spatial-ai-the-next-revolution-after-generative-ai
+URL: https://obrive.in/blog/spatial-ai-the-next-revolution-after-generative-ai
 ### Dynamic Metadata
 Title: Spatial AI: The Next Revolution After Generative AI | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Conventional software separates digital information from the physical places where people work, move, buy and make decisions. That gap is exactly where Spatial Computing development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9669,7 +9669,7 @@ Talk to Obrive about spatial computing development
 
 ## Blog: Why Spatial Computing Could Become the Next Major Business Platform
 ID: why-spatial-computing-could-become-the-next-major-business-platform
-URL: https://obrive.com/blog/why-spatial-computing-could-become-the-next-major-business-platform
+URL: https://obrive.in/blog/why-spatial-computing-could-become-the-next-major-business-platform
 ### Dynamic Metadata
 Title: Why Spatial Computing Could Become the Next Major Business Platform | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Conventional software separates digital information from the physical places where people work, move, buy and make decisions. That gap is exactly where Spatial Computing development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9734,7 +9734,7 @@ Talk to Obrive about spatial computing development
 
 ## Blog: 10 Enterprise Applications of Spatial Computing That Are Changing Industry
 ID: 10-enterprise-applications-of-spatial-computing-that-are-changing-industry
-URL: https://obrive.com/blog/10-enterprise-applications-of-spatial-computing-that-are-changing-industry
+URL: https://obrive.in/blog/10-enterprise-applications-of-spatial-computing-that-are-changing-industry
 ### Dynamic Metadata
 Title: 10 Enterprise Applications of Spatial Computing That Are Changing Industry | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Conventional software separates digital information from the physical places where people work, move, buy and make decisions. That gap is exactly where Spatial Computing development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9799,7 +9799,7 @@ Talk to Obrive about spatial computing development
 
 ## Blog: Spatial Computing + AI + Robotics: The Rise of Intelligent Physical Systems
 ID: spatial-computing-ai-robotics-the-rise-of-intelligent-physical-systems
-URL: https://obrive.com/blog/spatial-computing-ai-robotics-the-rise-of-intelligent-physical-systems
+URL: https://obrive.in/blog/spatial-computing-ai-robotics-the-rise-of-intelligent-physical-systems
 ### Dynamic Metadata
 Title: Spatial Computing + AI + Robotics: The Rise of Intelligent Physical Systems | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Conventional software separates digital information from the physical places where people work, move, buy and make decisions. That gap is exactly where Spatial Computing development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9864,7 +9864,7 @@ Talk to Obrive about spatial computing development
 
 ## Blog: Digital Twins and Spatial Computing: Building a Living Digital Version of the Real World
 ID: digital-twins-and-spatial-computing-building-a-living-digital-version-of-the-real-world
-URL: https://obrive.com/blog/digital-twins-and-spatial-computing-building-a-living-digital-version-of-the-real-world
+URL: https://obrive.in/blog/digital-twins-and-spatial-computing-building-a-living-digital-version-of-the-real-world
 ### Dynamic Metadata
 Title: Digital Twins and Spatial Computing: Building a Living Digital Version of the Real World | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Conventional software separates digital information from the physical places where people work, move, buy and make decisions. That gap is exactly where Spatial Computing development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9929,7 +9929,7 @@ Talk to Obrive about spatial computing development
 
 ## Blog: Spatial Computing in Retail, Healthcare, Automotive, Manufacturing and Real Estate
 ID: spatial-computing-in-retail-healthcare-automotive-manufacturing-and-real-estate
-URL: https://obrive.com/blog/spatial-computing-in-retail-healthcare-automotive-manufacturing-and-real-estate
+URL: https://obrive.in/blog/spatial-computing-in-retail-healthcare-automotive-manufacturing-and-real-estate
 ### Dynamic Metadata
 Title: Spatial Computing in Retail, Healthcare, Automotive, Manufacturing and Real Estate | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Conventional software separates digital information from the physical places where people work, move, buy and make decisions. That gap is exactly where Spatial Computing development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -9994,7 +9994,7 @@ Talk to Obrive about spatial computing development
 
 ## Blog: How Much Does a Spatial Computing Solution Cost?
 ID: how-much-does-a-spatial-computing-solution-cost
-URL: https://obrive.com/blog/how-much-does-a-spatial-computing-solution-cost
+URL: https://obrive.in/blog/how-much-does-a-spatial-computing-solution-cost
 ### Dynamic Metadata
 Title: How Much Does a Spatial Computing Solution Cost? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Conventional software separates digital information from the physical places where people work, move, buy and make decisions. That gap is exactly where Spatial Computing development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10059,7 +10059,7 @@ Talk to Obrive about spatial computing development
 
 ## Blog: The Future of Spatial Computing: From Headsets to AI-Powered Smart Glasses
 ID: the-future-of-spatial-computing-from-headsets-to-ai-powered-smart-glasses
-URL: https://obrive.com/blog/the-future-of-spatial-computing-from-headsets-to-ai-powered-smart-glasses
+URL: https://obrive.in/blog/the-future-of-spatial-computing-from-headsets-to-ai-powered-smart-glasses
 ### Dynamic Metadata
 Title: The Future of Spatial Computing: From Headsets to AI-Powered Smart Glasses | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Conventional software separates digital information from the physical places where people work, move, buy and make decisions. That gap is exactly where Spatial Computing development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10124,7 +10124,7 @@ Talk to Obrive about spatial computing development
 
 ## Blog: The Complete Guide to 3D Design & Development for Modern Businesses
 ID: the-complete-guide-to-3d-design-development-for-modern-businesses
-URL: https://obrive.com/blog/the-complete-guide-to-3d-design-development-for-modern-businesses
+URL: https://obrive.in/blog/the-complete-guide-to-3d-design-development-for-modern-businesses
 ### Dynamic Metadata
 Title: The Complete Guide to 3D Design & Development for Modern Businesses | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Photographs and flat interfaces can struggle to communicate shape, scale, configuration, materials and spatial relationships. That gap is exactly where 3D Design & Development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10189,7 +10189,7 @@ Talk to Obrive about 3d design & development
 
 ## Blog: Why 3D Is Becoming the New Language of Digital Commerce
 ID: why-3d-is-becoming-the-new-language-of-digital-commerce
-URL: https://obrive.com/blog/why-3d-is-becoming-the-new-language-of-digital-commerce
+URL: https://obrive.in/blog/why-3d-is-becoming-the-new-language-of-digital-commerce
 ### Dynamic Metadata
 Title: Why 3D Is Becoming the New Language of Digital Commerce | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Photographs and flat interfaces can struggle to communicate shape, scale, configuration, materials and spatial relationships. That gap is exactly where 3D Design & Development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10254,7 +10254,7 @@ Talk to Obrive about 3d design & development
 
 ## Blog: AI + 3D: How Generative AI Is Changing Product Visualization
 ID: ai-3d-how-generative-ai-is-changing-product-visualization
-URL: https://obrive.com/blog/ai-3d-how-generative-ai-is-changing-product-visualization
+URL: https://obrive.in/blog/ai-3d-how-generative-ai-is-changing-product-visualization
 ### Dynamic Metadata
 Title: AI + 3D: How Generative AI Is Changing Product Visualization | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Photographs and flat interfaces can struggle to communicate shape, scale, configuration, materials and spatial relationships. That gap is exactly where 3D Design & Development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10319,7 +10319,7 @@ Talk to Obrive about 3d design & development
 
 ## Blog: 3D Product Visualization: Why Customers Want to Explore Before They Buy
 ID: 3d-product-visualization-why-customers-want-to-explore-before-they-buy
-URL: https://obrive.com/blog/3d-product-visualization-why-customers-want-to-explore-before-they-buy
+URL: https://obrive.in/blog/3d-product-visualization-why-customers-want-to-explore-before-they-buy
 ### Dynamic Metadata
 Title: 3D Product Visualization: Why Customers Want to Explore Before They Buy | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Photographs and flat interfaces can struggle to communicate shape, scale, configuration, materials and spatial relationships. That gap is exactly where 3D Design & Development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10384,7 +10384,7 @@ Talk to Obrive about 3d design & development
 
 ## Blog: From CAD to the Metaverse: How 3D Assets Are Transforming Product Development
 ID: from-cad-to-the-metaverse-how-3d-assets-are-transforming-product-development
-URL: https://obrive.com/blog/from-cad-to-the-metaverse-how-3d-assets-are-transforming-product-development
+URL: https://obrive.in/blog/from-cad-to-the-metaverse-how-3d-assets-are-transforming-product-development
 ### Dynamic Metadata
 Title: From CAD to the Metaverse: How 3D Assets Are Transforming Product Development | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Photographs and flat interfaces can struggle to communicate shape, scale, configuration, materials and spatial relationships. That gap is exactly where 3D Design & Development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10449,7 +10449,7 @@ Talk to Obrive about 3d design & development
 
 ## Blog: Digital Twins: How 3D Models Are Becoming Intelligent Business Assets
 ID: digital-twins-how-3d-models-are-becoming-intelligent-business-assets
-URL: https://obrive.com/blog/digital-twins-how-3d-models-are-becoming-intelligent-business-assets
+URL: https://obrive.in/blog/digital-twins-how-3d-models-are-becoming-intelligent-business-assets
 ### Dynamic Metadata
 Title: Digital Twins: How 3D Models Are Becoming Intelligent Business Assets | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Photographs and flat interfaces can struggle to communicate shape, scale, configuration, materials and spatial relationships. That gap is exactly where 3D Design & Development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10514,7 +10514,7 @@ Talk to Obrive about 3d design & development
 
 ## Blog: 3D Visualization for Real Estate: Selling Properties Before They Exist
 ID: 3d-visualization-for-real-estate-selling-properties-before-they-exist
-URL: https://obrive.com/blog/3d-visualization-for-real-estate-selling-properties-before-they-exist
+URL: https://obrive.in/blog/3d-visualization-for-real-estate-selling-properties-before-they-exist
 ### Dynamic Metadata
 Title: 3D Visualization for Real Estate: Selling Properties Before They Exist | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Photographs and flat interfaces can struggle to communicate shape, scale, configuration, materials and spatial relationships. That gap is exactly where 3D Design & Development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10579,7 +10579,7 @@ Talk to Obrive about 3d design & development
 
 ## Blog: 3D Visualization for Automotive: The Future of Digital Vehicle Experiences
 ID: 3d-visualization-for-automotive-the-future-of-digital-vehicle-experiences
-URL: https://obrive.com/blog/3d-visualization-for-automotive-the-future-of-digital-vehicle-experiences
+URL: https://obrive.in/blog/3d-visualization-for-automotive-the-future-of-digital-vehicle-experiences
 ### Dynamic Metadata
 Title: 3D Visualization for Automotive: The Future of Digital Vehicle Experiences | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Photographs and flat interfaces can struggle to communicate shape, scale, configuration, materials and spatial relationships. That gap is exactly where 3D Design & Development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10644,7 +10644,7 @@ Talk to Obrive about 3d design & development
 
 ## Blog: 3D vs Photography: Which Creates a Better Product Experience?
 ID: 3d-vs-photography-which-creates-a-better-product-experience
-URL: https://obrive.com/blog/3d-vs-photography-which-creates-a-better-product-experience
+URL: https://obrive.in/blog/3d-vs-photography-which-creates-a-better-product-experience
 ### Dynamic Metadata
 Title: 3D vs Photography: Which Creates a Better Product Experience? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Photographs and flat interfaces can struggle to communicate shape, scale, configuration, materials and spatial relationships. That gap is exactly where 3D Design & Development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10709,7 +10709,7 @@ Talk to Obrive about 3d design & development
 
 ## Blog: The Future of 3D: Real-Time Rendering, AI-Generated Assets and Spatial Experiences
 ID: the-future-of-3d-real-time-rendering-ai-generated-assets-and-spatial-experiences
-URL: https://obrive.com/blog/the-future-of-3d-real-time-rendering-ai-generated-assets-and-spatial-experiences
+URL: https://obrive.in/blog/the-future-of-3d-real-time-rendering-ai-generated-assets-and-spatial-experiences
 ### Dynamic Metadata
 Title: The Future of 3D: Real-Time Rendering, AI-Generated Assets and Spatial Experiences | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Photographs and flat interfaces can struggle to communicate shape, scale, configuration, materials and spatial relationships. That gap is exactly where 3D Design & Development becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10774,7 +10774,7 @@ Talk to Obrive about 3d design & development
 
 ## Blog: The Future of Smart Parking: Why Parking Needs to Become Intelligent
 ID: the-future-of-smart-parking-why-parking-needs-to-become-intelligent
-URL: https://obrive.com/blog/the-future-of-smart-parking-why-parking-needs-to-become-intelligent
+URL: https://obrive.in/blog/the-future-of-smart-parking-why-parking-needs-to-become-intelligent
 ### Dynamic Metadata
 Title: The Future of Smart Parking: Why Parking Needs to Become Intelligent | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Drivers can know that a parking facility exists and still struggle to find an available space, navigate multiple levels, or understand where to go next. That gap is exactly where OBPARK, an AR/MR smart parking and navigation concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10839,7 +10839,7 @@ Talk to Obrive about obpark
 
 ## Blog: AR Parking Navigation: How Augmented Reality Can End the Search for Parking
 ID: ar-parking-navigation-how-augmented-reality-can-end-the-search-for-parking
-URL: https://obrive.com/blog/ar-parking-navigation-how-augmented-reality-can-end-the-search-for-parking
+URL: https://obrive.in/blog/ar-parking-navigation-how-augmented-reality-can-end-the-search-for-parking
 ### Dynamic Metadata
 Title: AR Parking Navigation: How Augmented Reality Can End the Search for Parking | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Drivers can know that a parking facility exists and still struggle to find an available space, navigate multiple levels, or understand where to go next. That gap is exactly where OBPARK, an AR/MR smart parking and navigation concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10904,7 +10904,7 @@ Talk to Obrive about obpark
 
 ## Blog: The Complete Guide to AR Parking Systems for Smart Cities
 ID: the-complete-guide-to-ar-parking-systems-for-smart-cities
-URL: https://obrive.com/blog/the-complete-guide-to-ar-parking-systems-for-smart-cities
+URL: https://obrive.in/blog/the-complete-guide-to-ar-parking-systems-for-smart-cities
 ### Dynamic Metadata
 Title: The Complete Guide to AR Parking Systems for Smart Cities | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Drivers can know that a parking facility exists and still struggle to find an available space, navigate multiple levels, or understand where to go next. That gap is exactly where OBPARK, an AR/MR smart parking and navigation concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -10969,7 +10969,7 @@ Talk to Obrive about obpark
 
 ## Blog: How Airports Can Transform Parking With AR Navigation and Smart Parking
 ID: how-airports-can-transform-parking-with-ar-navigation-and-smart-parking
-URL: https://obrive.com/blog/how-airports-can-transform-parking-with-ar-navigation-and-smart-parking
+URL: https://obrive.in/blog/how-airports-can-transform-parking-with-ar-navigation-and-smart-parking
 ### Dynamic Metadata
 Title: How Airports Can Transform Parking With AR Navigation and Smart Parking | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Drivers can know that a parking facility exists and still struggle to find an available space, navigate multiple levels, or understand where to go next. That gap is exactly where OBPARK, an AR/MR smart parking and navigation concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11034,7 +11034,7 @@ Talk to Obrive about obpark
 
 ## Blog: Smart Parking for Shopping Malls: From Finding a Space to Finding the Right Space
 ID: smart-parking-for-shopping-malls-from-finding-a-space-to-finding-the-right-space
-URL: https://obrive.com/blog/smart-parking-for-shopping-malls-from-finding-a-space-to-finding-the-right-space
+URL: https://obrive.in/blog/smart-parking-for-shopping-malls-from-finding-a-space-to-finding-the-right-space
 ### Dynamic Metadata
 Title: Smart Parking for Shopping Malls: From Finding a Space to Finding the Right Space | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Drivers can know that a parking facility exists and still struggle to find an available space, navigate multiple levels, or understand where to go next. That gap is exactly where OBPARK, an AR/MR smart parking and navigation concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11099,7 +11099,7 @@ Talk to Obrive about obpark
 
 ## Blog: The Future of Indoor Navigation: Why GPS Alone Isn't Enough
 ID: the-future-of-indoor-navigation-why-gps-alone-isn-t-enough
-URL: https://obrive.com/blog/the-future-of-indoor-navigation-why-gps-alone-isn-t-enough
+URL: https://obrive.in/blog/the-future-of-indoor-navigation-why-gps-alone-isn-t-enough
 ### Dynamic Metadata
 Title: The Future of Indoor Navigation: Why GPS Alone Isn't Enough | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Drivers can know that a parking facility exists and still struggle to find an available space, navigate multiple levels, or understand where to go next. That gap is exactly where OBPARK, an AR/MR smart parking and navigation concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11164,7 +11164,7 @@ Talk to Obrive about obpark
 
 ## Blog: AI + IoT + AR: The Technology Stack Behind Next-Generation Smart Parking
 ID: ai-iot-ar-the-technology-stack-behind-next-generation-smart-parking
-URL: https://obrive.com/blog/ai-iot-ar-the-technology-stack-behind-next-generation-smart-parking
+URL: https://obrive.in/blog/ai-iot-ar-the-technology-stack-behind-next-generation-smart-parking
 ### Dynamic Metadata
 Title: AI + IoT + AR: The Technology Stack Behind Next-Generation Smart Parking | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Drivers can know that a parking facility exists and still struggle to find an available space, navigate multiple levels, or understand where to go next. That gap is exactly where OBPARK, an AR/MR smart parking and navigation concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11229,7 +11229,7 @@ Talk to Obrive about obpark
 
 ## Blog: How Smart Parking Can Create New Revenue Streams for Property Owners
 ID: how-smart-parking-can-create-new-revenue-streams-for-property-owners
-URL: https://obrive.com/blog/how-smart-parking-can-create-new-revenue-streams-for-property-owners
+URL: https://obrive.in/blog/how-smart-parking-can-create-new-revenue-streams-for-property-owners
 ### Dynamic Metadata
 Title: How Smart Parking Can Create New Revenue Streams for Property Owners | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Drivers can know that a parking facility exists and still struggle to find an available space, navigate multiple levels, or understand where to go next. That gap is exactly where OBPARK, an AR/MR smart parking and navigation concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11294,7 +11294,7 @@ Talk to Obrive about obpark
 
 ## Blog: Smart Parking vs Traditional Parking Management: What Changes?
 ID: smart-parking-vs-traditional-parking-management-what-changes
-URL: https://obrive.com/blog/smart-parking-vs-traditional-parking-management-what-changes
+URL: https://obrive.in/blog/smart-parking-vs-traditional-parking-management-what-changes
 ### Dynamic Metadata
 Title: Smart Parking vs Traditional Parking Management: What Changes? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Drivers can know that a parking facility exists and still struggle to find an available space, navigate multiple levels, or understand where to go next. That gap is exactly where OBPARK, an AR/MR smart parking and navigation concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11359,7 +11359,7 @@ Talk to Obrive about obpark
 
 ## Blog: The Future of Parking: From Parking Sensors to Spatial Parking Intelligence
 ID: the-future-of-parking-from-parking-sensors-to-spatial-parking-intelligence
-URL: https://obrive.com/blog/the-future-of-parking-from-parking-sensors-to-spatial-parking-intelligence
+URL: https://obrive.in/blog/the-future-of-parking-from-parking-sensors-to-spatial-parking-intelligence
 ### Dynamic Metadata
 Title: The Future of Parking: From Parking Sensors to Spatial Parking Intelligence | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Drivers can know that a parking facility exists and still struggle to find an available space, navigate multiple levels, or understand where to go next. That gap is exactly where OBPARK, an AR/MR smart parking and navigation concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11424,7 +11424,7 @@ Talk to Obrive about obpark
 
 ## Blog: The Future of Real Estate Is Immersive: How VR Is Changing Property Sales
 ID: the-future-of-real-estate-is-immersive-how-vr-is-changing-property-sales
-URL: https://obrive.com/blog/the-future-of-real-estate-is-immersive-how-vr-is-changing-property-sales
+URL: https://obrive.in/blog/the-future-of-real-estate-is-immersive-how-vr-is-changing-property-sales
 ### Dynamic Metadata
 Title: The Future of Real Estate Is Immersive: How VR Is Changing Property Sales | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Buyers often have to interpret floor plans, renders and photographs before they can understand how a property may actually feel. That gap is exactly where OBNEST, an immersive real-estate experience platform becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11489,7 +11489,7 @@ Talk to Obrive about obnest
 
 ## Blog: The Complete Guide to Virtual Reality in Real Estate
 ID: the-complete-guide-to-virtual-reality-in-real-estate
-URL: https://obrive.com/blog/the-complete-guide-to-virtual-reality-in-real-estate
+URL: https://obrive.in/blog/the-complete-guide-to-virtual-reality-in-real-estate
 ### Dynamic Metadata
 Title: The Complete Guide to Virtual Reality in Real Estate | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Buyers often have to interpret floor plans, renders and photographs before they can understand how a property may actually feel. That gap is exactly where OBNEST, an immersive real-estate experience platform becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11554,7 +11554,7 @@ Talk to Obrive about obnest
 
 ## Blog: Buy Before You Visit: How Virtual Property Experiences Are Changing Real Estate
 ID: buy-before-you-visit-how-virtual-property-experiences-are-changing-real-estate
-URL: https://obrive.com/blog/buy-before-you-visit-how-virtual-property-experiences-are-changing-real-estate
+URL: https://obrive.in/blog/buy-before-you-visit-how-virtual-property-experiences-are-changing-real-estate
 ### Dynamic Metadata
 Title: Buy Before You Visit: How Virtual Property Experiences Are Changing Real Estate | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Buyers often have to interpret floor plans, renders and photographs before they can understand how a property may actually feel. That gap is exactly where OBNEST, an immersive real-estate experience platform becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11619,7 +11619,7 @@ Talk to Obrive about obnest
 
 ## Blog: AI + VR Real Estate: The Rise of Intelligent Virtual Property Tours
 ID: ai-vr-real-estate-the-rise-of-intelligent-virtual-property-tours
-URL: https://obrive.com/blog/ai-vr-real-estate-the-rise-of-intelligent-virtual-property-tours
+URL: https://obrive.in/blog/ai-vr-real-estate-the-rise-of-intelligent-virtual-property-tours
 ### Dynamic Metadata
 Title: AI + VR Real Estate: The Rise of Intelligent Virtual Property Tours | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Buyers often have to interpret floor plans, renders and photographs before they can understand how a property may actually feel. That gap is exactly where OBNEST, an immersive real-estate experience platform becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11684,7 +11684,7 @@ Talk to Obrive about obnest
 
 ## Blog: How Developers Can Sell Properties Before Construction Is Complete
 ID: how-developers-can-sell-properties-before-construction-is-complete
-URL: https://obrive.com/blog/how-developers-can-sell-properties-before-construction-is-complete
+URL: https://obrive.in/blog/how-developers-can-sell-properties-before-construction-is-complete
 ### Dynamic Metadata
 Title: How Developers Can Sell Properties Before Construction Is Complete | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Buyers often have to interpret floor plans, renders and photographs before they can understand how a property may actually feel. That gap is exactly where OBNEST, an immersive real-estate experience platform becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11749,7 +11749,7 @@ Talk to Obrive about obnest
 
 ## Blog: Virtual Property Tours vs Traditional Property Visits: Which Wins?
 ID: virtual-property-tours-vs-traditional-property-visits-which-wins
-URL: https://obrive.com/blog/virtual-property-tours-vs-traditional-property-visits-which-wins
+URL: https://obrive.in/blog/virtual-property-tours-vs-traditional-property-visits-which-wins
 ### Dynamic Metadata
 Title: Virtual Property Tours vs Traditional Property Visits: Which Wins? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Buyers often have to interpret floor plans, renders and photographs before they can understand how a property may actually feel. That gap is exactly where OBNEST, an immersive real-estate experience platform becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11814,7 +11814,7 @@ Talk to Obrive about obnest
 
 ## Blog: How 3D + VR Can Transform Real Estate Marketing
 ID: how-3d-vr-can-transform-real-estate-marketing
-URL: https://obrive.com/blog/how-3d-vr-can-transform-real-estate-marketing
+URL: https://obrive.in/blog/how-3d-vr-can-transform-real-estate-marketing
 ### Dynamic Metadata
 Title: How 3D + VR Can Transform Real Estate Marketing | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Buyers often have to interpret floor plans, renders and photographs before they can understand how a property may actually feel. That gap is exactly where OBNEST, an immersive real-estate experience platform becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11879,7 +11879,7 @@ Talk to Obrive about obnest
 
 ## Blog: Spatial Computing in Real Estate: The Next Evolution of Property Discovery
 ID: spatial-computing-in-real-estate-the-next-evolution-of-property-discovery
-URL: https://obrive.com/blog/spatial-computing-in-real-estate-the-next-evolution-of-property-discovery
+URL: https://obrive.in/blog/spatial-computing-in-real-estate-the-next-evolution-of-property-discovery
 ### Dynamic Metadata
 Title: Spatial Computing in Real Estate: The Next Evolution of Property Discovery | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Buyers often have to interpret floor plans, renders and photographs before they can understand how a property may actually feel. That gap is exactly where OBNEST, an immersive real-estate experience platform becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -11944,7 +11944,7 @@ Talk to Obrive about obnest
 
 ## Blog: Digital Twins for Real Estate: Turning Buildings Into Interactive Digital Experiences
 ID: digital-twins-for-real-estate-turning-buildings-into-interactive-digital-experiences
-URL: https://obrive.com/blog/digital-twins-for-real-estate-turning-buildings-into-interactive-digital-experiences
+URL: https://obrive.in/blog/digital-twins-for-real-estate-turning-buildings-into-interactive-digital-experiences
 ### Dynamic Metadata
 Title: Digital Twins for Real Estate: Turning Buildings Into Interactive Digital Experiences | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Buyers often have to interpret floor plans, renders and photographs before they can understand how a property may actually feel. That gap is exactly where OBNEST, an immersive real-estate experience platform becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12009,7 +12009,7 @@ Talk to Obrive about obnest
 
 ## Blog: The Future of Property Buying: From Floor Plans to Immersive Experiences
 ID: the-future-of-property-buying-from-floor-plans-to-immersive-experiences
-URL: https://obrive.com/blog/the-future-of-property-buying-from-floor-plans-to-immersive-experiences
+URL: https://obrive.in/blog/the-future-of-property-buying-from-floor-plans-to-immersive-experiences
 ### Dynamic Metadata
 Title: The Future of Property Buying: From Floor Plans to Immersive Experiences | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Buyers often have to interpret floor plans, renders and photographs before they can understand how a property may actually feel. That gap is exactly where OBNEST, an immersive real-estate experience platform becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12074,7 +12074,7 @@ Talk to Obrive about obnest
 
 ## Blog: The Future of Retail Navigation: Why Stores Need Intelligent Indoor Navigation
 ID: the-future-of-retail-navigation-why-stores-need-intelligent-indoor-navigation
-URL: https://obrive.com/blog/the-future-of-retail-navigation-why-stores-need-intelligent-indoor-navigation
+URL: https://obrive.in/blog/the-future-of-retail-navigation-why-stores-need-intelligent-indoor-navigation
 ### Dynamic Metadata
 Title: The Future of Retail Navigation: Why Stores Need Intelligent Indoor Navigation | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Large stores can have thousands of products while customers still struggle to find the right aisle, product, promotion or related item. That gap is exactly where OBNAVI, an AR/MR in-store navigation and discovery concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12139,7 +12139,7 @@ Talk to Obrive about obnavi
 
 ## Blog: AR Indoor Navigation: How Retailers Can Help Customers Find Products Faster
 ID: ar-indoor-navigation-how-retailers-can-help-customers-find-products-faster
-URL: https://obrive.com/blog/ar-indoor-navigation-how-retailers-can-help-customers-find-products-faster
+URL: https://obrive.in/blog/ar-indoor-navigation-how-retailers-can-help-customers-find-products-faster
 ### Dynamic Metadata
 Title: AR Indoor Navigation: How Retailers Can Help Customers Find Products Faster | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Large stores can have thousands of products while customers still struggle to find the right aisle, product, promotion or related item. That gap is exactly where OBNAVI, an AR/MR in-store navigation and discovery concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12204,7 +12204,7 @@ Talk to Obrive about obnavi
 
 ## Blog: The Complete Guide to AR Navigation for Shopping Malls and Retail Stores
 ID: the-complete-guide-to-ar-navigation-for-shopping-malls-and-retail-stores
-URL: https://obrive.com/blog/the-complete-guide-to-ar-navigation-for-shopping-malls-and-retail-stores
+URL: https://obrive.in/blog/the-complete-guide-to-ar-navigation-for-shopping-malls-and-retail-stores
 ### Dynamic Metadata
 Title: The Complete Guide to AR Navigation for Shopping Malls and Retail Stores | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Large stores can have thousands of products while customers still struggle to find the right aisle, product, promotion or related item. That gap is exactly where OBNAVI, an AR/MR in-store navigation and discovery concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12269,7 +12269,7 @@ Talk to Obrive about obnavi
 
 ## Blog: AI + AR Retail: The Rise of Intelligent Shopping Experiences
 ID: ai-ar-retail-the-rise-of-intelligent-shopping-experiences
-URL: https://obrive.com/blog/ai-ar-retail-the-rise-of-intelligent-shopping-experiences
+URL: https://obrive.in/blog/ai-ar-retail-the-rise-of-intelligent-shopping-experiences
 ### Dynamic Metadata
 Title: AI + AR Retail: The Rise of Intelligent Shopping Experiences | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Large stores can have thousands of products while customers still struggle to find the right aisle, product, promotion or related item. That gap is exactly where OBNAVI, an AR/MR in-store navigation and discovery concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12334,7 +12334,7 @@ Talk to Obrive about obnavi
 
 ## Blog: Why the Future of Retail Is Not Just Omnichannel — It's Spatial
 ID: why-the-future-of-retail-is-not-just-omnichannel-it-s-spatial
-URL: https://obrive.com/blog/why-the-future-of-retail-is-not-just-omnichannel-it-s-spatial
+URL: https://obrive.in/blog/why-the-future-of-retail-is-not-just-omnichannel-it-s-spatial
 ### Dynamic Metadata
 Title: Why the Future of Retail Is Not Just Omnichannel — It's Spatial | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Large stores can have thousands of products while customers still struggle to find the right aisle, product, promotion or related item. That gap is exactly where OBNAVI, an AR/MR in-store navigation and discovery concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12399,7 +12399,7 @@ Talk to Obrive about obnavi
 
 ## Blog: How AR Can Turn a Shopping Mall Into an Interactive Digital Environment
 ID: how-ar-can-turn-a-shopping-mall-into-an-interactive-digital-environment
-URL: https://obrive.com/blog/how-ar-can-turn-a-shopping-mall-into-an-interactive-digital-environment
+URL: https://obrive.in/blog/how-ar-can-turn-a-shopping-mall-into-an-interactive-digital-environment
 ### Dynamic Metadata
 Title: How AR Can Turn a Shopping Mall Into an Interactive Digital Environment | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Large stores can have thousands of products while customers still struggle to find the right aisle, product, promotion or related item. That gap is exactly where OBNAVI, an AR/MR in-store navigation and discovery concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12464,7 +12464,7 @@ Talk to Obrive about obnavi
 
 ## Blog: Smart Store Navigation: From Finding Products to Discovering Experiences
 ID: smart-store-navigation-from-finding-products-to-discovering-experiences
-URL: https://obrive.com/blog/smart-store-navigation-from-finding-products-to-discovering-experiences
+URL: https://obrive.in/blog/smart-store-navigation-from-finding-products-to-discovering-experiences
 ### Dynamic Metadata
 Title: Smart Store Navigation: From Finding Products to Discovering Experiences | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Large stores can have thousands of products while customers still struggle to find the right aisle, product, promotion or related item. That gap is exactly where OBNAVI, an AR/MR in-store navigation and discovery concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12529,7 +12529,7 @@ Talk to Obrive about obnavi
 
 ## Blog: How Retailers Can Use AR to Increase Customer Engagement
 ID: how-retailers-can-use-ar-to-increase-customer-engagement
-URL: https://obrive.com/blog/how-retailers-can-use-ar-to-increase-customer-engagement
+URL: https://obrive.in/blog/how-retailers-can-use-ar-to-increase-customer-engagement
 ### Dynamic Metadata
 Title: How Retailers Can Use AR to Increase Customer Engagement | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Large stores can have thousands of products while customers still struggle to find the right aisle, product, promotion or related item. That gap is exactly where OBNAVI, an AR/MR in-store navigation and discovery concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12594,7 +12594,7 @@ Talk to Obrive about obnavi
 
 ## Blog: Indoor GPS vs AR Navigation: What Works Best Inside Large Buildings?
 ID: indoor-gps-vs-ar-navigation-what-works-best-inside-large-buildings
-URL: https://obrive.com/blog/indoor-gps-vs-ar-navigation-what-works-best-inside-large-buildings
+URL: https://obrive.in/blog/indoor-gps-vs-ar-navigation-what-works-best-inside-large-buildings
 ### Dynamic Metadata
 Title: Indoor GPS vs AR Navigation: What Works Best Inside Large Buildings? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Large stores can have thousands of products while customers still struggle to find the right aisle, product, promotion or related item. That gap is exactly where OBNAVI, an AR/MR in-store navigation and discovery concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12659,7 +12659,7 @@ Talk to Obrive about obnavi
 
 ## Blog: The Future of Shopping: When Your Store Becomes an Intelligent Interface
 ID: the-future-of-shopping-when-your-store-becomes-an-intelligent-interface
-URL: https://obrive.com/blog/the-future-of-shopping-when-your-store-becomes-an-intelligent-interface
+URL: https://obrive.in/blog/the-future-of-shopping-when-your-store-becomes-an-intelligent-interface
 ### Dynamic Metadata
 Title: The Future of Shopping: When Your Store Becomes an Intelligent Interface | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Large stores can have thousands of products while customers still struggle to find the right aisle, product, promotion or related item. That gap is exactly where OBNAVI, an AR/MR in-store navigation and discovery concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12724,7 +12724,7 @@ Talk to Obrive about obnavi
 
 ## Blog: The Future of Car Showrooms Is Immersive: Welcome to the Virtual Showroom
 ID: the-future-of-car-showrooms-is-immersive-welcome-to-the-virtual-showroom
-URL: https://obrive.com/blog/the-future-of-car-showrooms-is-immersive-welcome-to-the-virtual-showroom
+URL: https://obrive.in/blog/the-future-of-car-showrooms-is-immersive-welcome-to-the-virtual-showroom
 ### Dynamic Metadata
 Title: The Future of Car Showrooms Is Immersive: Welcome to the Virtual Showroom | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. A physical showroom can only display a limited number of vehicles, configurations and experiences at one time. That gap is exactly where OBMOVE, an immersive automotive showroom concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12789,7 +12789,7 @@ Talk to Obrive about obmove
 
 ## Blog: The Complete Guide to Virtual Reality Automotive Showrooms
 ID: the-complete-guide-to-virtual-reality-automotive-showrooms
-URL: https://obrive.com/blog/the-complete-guide-to-virtual-reality-automotive-showrooms
+URL: https://obrive.in/blog/the-complete-guide-to-virtual-reality-automotive-showrooms
 ### Dynamic Metadata
 Title: The Complete Guide to Virtual Reality Automotive Showrooms | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. A physical showroom can only display a limited number of vehicles, configurations and experiences at one time. That gap is exactly where OBMOVE, an immersive automotive showroom concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12854,7 +12854,7 @@ Talk to Obrive about obmove
 
 ## Blog: AI + AR + 3D: How Automotive Retail Is Being Rebuilt
 ID: ai-ar-3d-how-automotive-retail-is-being-rebuilt
-URL: https://obrive.com/blog/ai-ar-3d-how-automotive-retail-is-being-rebuilt
+URL: https://obrive.in/blog/ai-ar-3d-how-automotive-retail-is-being-rebuilt
 ### Dynamic Metadata
 Title: AI + AR + 3D: How Automotive Retail Is Being Rebuilt | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. A physical showroom can only display a limited number of vehicles, configurations and experiences at one time. That gap is exactly where OBMOVE, an immersive automotive showroom concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12919,7 +12919,7 @@ Talk to Obrive about obmove
 
 ## Blog: Why Customers Will Experience Cars Before They Visit the Dealership
 ID: why-customers-will-experience-cars-before-they-visit-the-dealership
-URL: https://obrive.com/blog/why-customers-will-experience-cars-before-they-visit-the-dealership
+URL: https://obrive.in/blog/why-customers-will-experience-cars-before-they-visit-the-dealership
 ### Dynamic Metadata
 Title: Why Customers Will Experience Cars Before They Visit the Dealership | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. A physical showroom can only display a limited number of vehicles, configurations and experiences at one time. That gap is exactly where OBMOVE, an immersive automotive showroom concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -12984,7 +12984,7 @@ Talk to Obrive about obmove
 
 ## Blog: Virtual Showroom vs Traditional Dealership: What Will the Future Look Like?
 ID: virtual-showroom-vs-traditional-dealership-what-will-the-future-look-like
-URL: https://obrive.com/blog/virtual-showroom-vs-traditional-dealership-what-will-the-future-look-like
+URL: https://obrive.in/blog/virtual-showroom-vs-traditional-dealership-what-will-the-future-look-like
 ### Dynamic Metadata
 Title: Virtual Showroom vs Traditional Dealership: What Will the Future Look Like? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. A physical showroom can only display a limited number of vehicles, configurations and experiences at one time. That gap is exactly where OBMOVE, an immersive automotive showroom concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13049,7 +13049,7 @@ Talk to Obrive about obmove
 
 ## Blog: How AR Can Let Customers Visualize Cars in Their Own Environment
 ID: how-ar-can-let-customers-visualize-cars-in-their-own-environment
-URL: https://obrive.com/blog/how-ar-can-let-customers-visualize-cars-in-their-own-environment
+URL: https://obrive.in/blog/how-ar-can-let-customers-visualize-cars-in-their-own-environment
 ### Dynamic Metadata
 Title: How AR Can Let Customers Visualize Cars in Their Own Environment | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. A physical showroom can only display a limited number of vehicles, configurations and experiences at one time. That gap is exactly where OBMOVE, an immersive automotive showroom concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13114,7 +13114,7 @@ Talk to Obrive about obmove
 
 ## Blog: 3D Car Configurators: The Next Generation of Automotive Buying
 ID: 3d-car-configurators-the-next-generation-of-automotive-buying
-URL: https://obrive.com/blog/3d-car-configurators-the-next-generation-of-automotive-buying
+URL: https://obrive.in/blog/3d-car-configurators-the-next-generation-of-automotive-buying
 ### Dynamic Metadata
 Title: 3D Car Configurators: The Next Generation of Automotive Buying | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. A physical showroom can only display a limited number of vehicles, configurations and experiences at one time. That gap is exactly where OBMOVE, an immersive automotive showroom concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13179,7 +13179,7 @@ Talk to Obrive about obmove
 
 ## Blog: How Digital Twins Are Transforming Automotive Sales and Marketing
 ID: how-digital-twins-are-transforming-automotive-sales-and-marketing
-URL: https://obrive.com/blog/how-digital-twins-are-transforming-automotive-sales-and-marketing
+URL: https://obrive.in/blog/how-digital-twins-are-transforming-automotive-sales-and-marketing
 ### Dynamic Metadata
 Title: How Digital Twins Are Transforming Automotive Sales and Marketing | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. A physical showroom can only display a limited number of vehicles, configurations and experiences at one time. That gap is exactly where OBMOVE, an immersive automotive showroom concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13244,7 +13244,7 @@ Talk to Obrive about obmove
 
 ## Blog: The Future of Automotive Retail: From Showrooms to Spatial Commerce
 ID: the-future-of-automotive-retail-from-showrooms-to-spatial-commerce
-URL: https://obrive.com/blog/the-future-of-automotive-retail-from-showrooms-to-spatial-commerce
+URL: https://obrive.in/blog/the-future-of-automotive-retail-from-showrooms-to-spatial-commerce
 ### Dynamic Metadata
 Title: The Future of Automotive Retail: From Showrooms to Spatial Commerce | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. A physical showroom can only display a limited number of vehicles, configurations and experiences at one time. That gap is exactly where OBMOVE, an immersive automotive showroom concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13309,7 +13309,7 @@ Talk to Obrive about obmove
 
 ## Blog: How Immersive Technology Can Transform the Entire Car-Buying Journey
 ID: how-immersive-technology-can-transform-the-entire-car-buying-journey
-URL: https://obrive.com/blog/how-immersive-technology-can-transform-the-entire-car-buying-journey
+URL: https://obrive.in/blog/how-immersive-technology-can-transform-the-entire-car-buying-journey
 ### Dynamic Metadata
 Title: How Immersive Technology Can Transform the Entire Car-Buying Journey | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. A physical showroom can only display a limited number of vehicles, configurations and experiences at one time. That gap is exactly where OBMOVE, an immersive automotive showroom concept becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13374,7 +13374,7 @@ Talk to Obrive about obmove
 
 ## Blog: The Complete Guide to Enterprise Immersive Technology in 2026
 ID: the-complete-guide-to-enterprise-immersive-technology-in-2026
-URL: https://obrive.com/blog/the-complete-guide-to-enterprise-immersive-technology-in-2026
+URL: https://obrive.in/blog/the-complete-guide-to-enterprise-immersive-technology-in-2026
 ### Dynamic Metadata
 Title: The Complete Guide to Enterprise Immersive Technology in 2026 | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Many organizations have digital systems full of data but still rely on screens, documents and physical processes to execute spatial work. That gap is exactly where enterprise immersive technology becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13439,7 +13439,7 @@ Talk to Obrive about enterprise immersive technology
 
 ## Blog: Why Enterprises Are Moving From Digital Transformation to Spatial Transformation
 ID: why-enterprises-are-moving-from-digital-transformation-to-spatial-transformation
-URL: https://obrive.com/blog/why-enterprises-are-moving-from-digital-transformation-to-spatial-transformation
+URL: https://obrive.in/blog/why-enterprises-are-moving-from-digital-transformation-to-spatial-transformation
 ### Dynamic Metadata
 Title: Why Enterprises Are Moving From Digital Transformation to Spatial Transformation | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Many organizations have digital systems full of data but still rely on screens, documents and physical processes to execute spatial work. That gap is exactly where enterprise immersive technology becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13504,7 +13504,7 @@ Talk to Obrive about enterprise immersive technology
 
 ## Blog: AI + XR: The Technology Stack Behind the Next Generation of Enterprise
 ID: ai-xr-the-technology-stack-behind-the-next-generation-of-enterprise
-URL: https://obrive.com/blog/ai-xr-the-technology-stack-behind-the-next-generation-of-enterprise
+URL: https://obrive.in/blog/ai-xr-the-technology-stack-behind-the-next-generation-of-enterprise
 ### Dynamic Metadata
 Title: AI + XR: The Technology Stack Behind the Next Generation of Enterprise | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Many organizations have digital systems full of data but still rely on screens, documents and physical processes to execute spatial work. That gap is exactly where enterprise immersive technology becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13569,7 +13569,7 @@ Talk to Obrive about enterprise immersive technology
 
 ## Blog: 10 Enterprise Problems That AR, VR and MR Can Solve
 ID: 10-enterprise-problems-that-ar-vr-and-mr-can-solve
-URL: https://obrive.com/blog/10-enterprise-problems-that-ar-vr-and-mr-can-solve
+URL: https://obrive.in/blog/10-enterprise-problems-that-ar-vr-and-mr-can-solve
 ### Dynamic Metadata
 Title: 10 Enterprise Problems That AR, VR and MR Can Solve | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Many organizations have digital systems full of data but still rely on screens, documents and physical processes to execute spatial work. That gap is exactly where enterprise immersive technology becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13634,7 +13634,7 @@ Talk to Obrive about enterprise immersive technology
 
 ## Blog: How Companies Can Calculate the ROI of Immersive Technology
 ID: how-companies-can-calculate-the-roi-of-immersive-technology
-URL: https://obrive.com/blog/how-companies-can-calculate-the-roi-of-immersive-technology
+URL: https://obrive.in/blog/how-companies-can-calculate-the-roi-of-immersive-technology
 ### Dynamic Metadata
 Title: How Companies Can Calculate the ROI of Immersive Technology | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Many organizations have digital systems full of data but still rely on screens, documents and physical processes to execute spatial work. That gap is exactly where enterprise immersive technology becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13699,7 +13699,7 @@ Talk to Obrive about enterprise immersive technology
 
 ## Blog: Digital Twins + AI + Spatial Computing: The New Enterprise Technology Stack
 ID: digital-twins-ai-spatial-computing-the-new-enterprise-technology-stack
-URL: https://obrive.com/blog/digital-twins-ai-spatial-computing-the-new-enterprise-technology-stack
+URL: https://obrive.in/blog/digital-twins-ai-spatial-computing-the-new-enterprise-technology-stack
 ### Dynamic Metadata
 Title: Digital Twins + AI + Spatial Computing: The New Enterprise Technology Stack | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Many organizations have digital systems full of data but still rely on screens, documents and physical processes to execute spatial work. That gap is exactly where enterprise immersive technology becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13764,7 +13764,7 @@ Talk to Obrive about enterprise immersive technology
 
 ## Blog: How Immersive Technology Is Transforming Manufacturing, Healthcare, Retail and Automotive
 ID: how-immersive-technology-is-transforming-manufacturing-healthcare-retail-and-automotive
-URL: https://obrive.com/blog/how-immersive-technology-is-transforming-manufacturing-healthcare-retail-and-automotive
+URL: https://obrive.in/blog/how-immersive-technology-is-transforming-manufacturing-healthcare-retail-and-automotive
 ### Dynamic Metadata
 Title: How Immersive Technology Is Transforming Manufacturing, Healthcare, Retail and Automotive | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Many organizations have digital systems full of data but still rely on screens, documents and physical processes to execute spatial work. That gap is exactly where enterprise immersive technology becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13829,7 +13829,7 @@ Talk to Obrive about enterprise immersive technology
 
 ## Blog: The Future of Work: Will Spatial Computing Replace Traditional Screens?
 ID: the-future-of-work-will-spatial-computing-replace-traditional-screens
-URL: https://obrive.com/blog/the-future-of-work-will-spatial-computing-replace-traditional-screens
+URL: https://obrive.in/blog/the-future-of-work-will-spatial-computing-replace-traditional-screens
 ### Dynamic Metadata
 Title: The Future of Work: Will Spatial Computing Replace Traditional Screens? | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Many organizations have digital systems full of data but still rely on screens, documents and physical processes to execute spatial work. That gap is exactly where enterprise immersive technology becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13894,7 +13894,7 @@ Talk to Obrive about enterprise immersive technology
 
 ## Blog: How to Build an Enterprise Spatial Computing Strategy in 2026
 ID: how-to-build-an-enterprise-spatial-computing-strategy-in-2026
-URL: https://obrive.com/blog/how-to-build-an-enterprise-spatial-computing-strategy-in-2026
+URL: https://obrive.in/blog/how-to-build-an-enterprise-spatial-computing-strategy-in-2026
 ### Dynamic Metadata
 Title: How to Build an Enterprise Spatial Computing Strategy in 2026 | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Many organizations have digital systems full of data but still rely on screens, documents and physical processes to execute spatial work. That gap is exactly where enterprise immersive technology becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -13959,7 +13959,7 @@ Talk to Obrive about enterprise immersive technology
 
 ## Blog: The Ultimate Guide to Choosing an AR/VR/MR Development Company
 ID: the-ultimate-guide-to-choosing-an-ar-vr-mr-development-company
-URL: https://obrive.com/blog/the-ultimate-guide-to-choosing-an-ar-vr-mr-development-company
+URL: https://obrive.in/blog/the-ultimate-guide-to-choosing-an-ar-vr-mr-development-company
 ### Dynamic Metadata
 Title: The Ultimate Guide to Choosing an AR/VR/MR Development Company | Obrive
 Description: Imagine a customer, employee, driver, designer or decision-maker trying to understand something complex without having the right context at the right moment. Many organizations have digital systems full of data but still rely on screens, documents and physical processes to execute spatial work. That gap is exactly where enterprise immersive technology becomes interesting—not as a futuristic demo, but as a practical way to connect people with information, products, places and decisions.
@@ -14025,53 +14025,53 @@ Talk to Obrive about enterprise immersive technology
 # DOCUMENTS REFERENCE
 The following full-text documents are available at their respective AI URLs:
 
-- **src/content/support/help-center.mdx**: https://obrive.com/ai/documents/support-help-center.txt (Canonical: https://obrive.com/support/help-center)
-- **src/content/support/change-log.mdx**: https://obrive.com/ai/documents/support-change-log.txt (Canonical: https://obrive.com/support/change-log)
-- **src/content/security/soc-2-type-ii-compliance.mdx**: https://obrive.com/ai/documents/security-soc-2-type-ii-compliance.txt (Canonical: https://obrive.com/support/soc-2-type-ii-compliance)
-- **src/content/security/index.mdx**: https://obrive.com/ai/documents/security-index.txt (Canonical: https://obrive.com/support/index)
-- **src/content/resources/webar-vs-app-ar-business-solution.mdx**: https://obrive.com/ai/documents/resources-webar-vs-app-ar-business-solution.txt (Canonical: https://obrive.com/support/webar-vs-app-ar-business-solution)
-- **src/content/resources/web-vr-vs-app-vr-enterprises.mdx**: https://obrive.com/ai/documents/resources-web-vr-vs-app-vr-enterprises.txt (Canonical: https://obrive.com/support/web-vr-vs-app-vr-enterprises)
-- **src/content/resources/vr-training-workforce-development.mdx**: https://obrive.com/ai/documents/resources-vr-training-workforce-development.txt (Canonical: https://obrive.com/support/vr-training-workforce-development)
-- **src/content/resources/vr-meetings-events-conferences.mdx**: https://obrive.com/ai/documents/resources-vr-meetings-events-conferences.txt (Canonical: https://obrive.com/support/vr-meetings-events-conferences)
-- **src/content/resources/spatial-flow.mdx**: https://obrive.com/ai/documents/resources-spatial-flow.txt (Canonical: https://obrive.com/support/spatial-flow)
-- **src/content/resources/spatial-computing-business-operations-2025.mdx**: https://obrive.com/ai/documents/resources-spatial-computing-business-operations-2025.txt (Canonical: https://obrive.com/support/spatial-computing-business-operations-2025)
-- **src/content/resources/mixed-reality-use-cases-manufacturing-healthcare-real-estate.mdx**: https://obrive.com/ai/documents/resources-mixed-reality-use-cases-manufacturing-healthcare-real-estate.txt (Canonical: https://obrive.com/support/mixed-reality-use-cases-manufacturing-healthcare-real-estate)
-- **src/content/resources/mixed-reality-enterprise-productivity-2025.mdx**: https://obrive.com/ai/documents/resources-mixed-reality-enterprise-productivity-2025.txt (Canonical: https://obrive.com/support/mixed-reality-enterprise-productivity-2025)
-- **src/content/resources/mixed-reality-digital-transformation.mdx**: https://obrive.com/ai/documents/resources-mixed-reality-digital-transformation.txt (Canonical: https://obrive.com/support/mixed-reality-digital-transformation)
-- **src/content/resources/industries-benefit-ar-development.mdx**: https://obrive.com/ai/documents/resources-industries-benefit-ar-development.txt (Canonical: https://obrive.com/support/industries-benefit-ar-development)
-- **src/content/resources/future-augmented-reality-business-trends-2025.mdx**: https://obrive.com/ai/documents/resources-future-augmented-reality-business-trends-2025.txt (Canonical: https://obrive.com/support/future-augmented-reality-business-trends-2025)
-- **src/content/resources/client-immersive-onboarding.mdx**: https://obrive.com/ai/documents/resources-client-immersive-onboarding.txt (Canonical: https://obrive.com/support/client-immersive-onboarding)
-- **src/content/resources/bringing-onboarding-to-life.mdx**: https://obrive.com/ai/documents/resources-bringing-onboarding-to-life.txt (Canonical: https://obrive.com/support/bringing-onboarding-to-life)
-- **src/content/resources/ar-vr-mr-differences-business-use-cases-2025.mdx**: https://obrive.com/ai/documents/resources-ar-vr-mr-differences-business-use-cases-2025.txt (Canonical: https://obrive.com/support/ar-vr-mr-differences-business-use-cases-2025)
-- **src/content/resources/ar-vr-mr-differences-applications.mdx**: https://obrive.com/ai/documents/resources-ar-vr-mr-differences-applications.txt (Canonical: https://obrive.com/support/ar-vr-mr-differences-applications)
-- **src/content/resources/ar-printing-interactive-experiences.mdx**: https://obrive.com/ai/documents/resources-ar-printing-interactive-experiences.txt (Canonical: https://obrive.com/support/ar-printing-interactive-experiences)
-- **src/content/resources/ar-presentations-business-pitches.mdx**: https://obrive.com/ai/documents/resources-ar-presentations-business-pitches.txt (Canonical: https://obrive.com/support/ar-presentations-business-pitches)
-- **src/content/resources/ar-powered-car-parking-systems-urban-mobility-challenges.mdx**: https://obrive.com/ai/documents/resources-ar-powered-car-parking-systems-urban-mobility-challenges.txt (Canonical: https://obrive.com/support/ar-powered-car-parking-systems-urban-mobility-challenges)
-- **src/content/resources/ar-packaging-immersive-customer-experiences.mdx**: https://obrive.com/ai/documents/resources-ar-packaging-immersive-customer-experiences.txt (Canonical: https://obrive.com/support/ar-packaging-immersive-customer-experiences)
-- **src/content/resources/ar-onboarding.mdx**: https://obrive.com/ai/documents/resources-ar-onboarding.txt (Canonical: https://obrive.com/support/ar-onboarding)
-- **src/content/resources/3d-texturing-visualization-customer-engagement.mdx**: https://obrive.com/ai/documents/resources-3d-texturing-visualization-customer-engagement.txt (Canonical: https://obrive.com/support/3d-texturing-visualization-customer-engagement)
-- **src/content/resources/3d-rendering-real-estate.mdx**: https://obrive.com/ai/documents/resources-3d-rendering-real-estate.txt (Canonical: https://obrive.com/support/3d-rendering-real-estate)
-- **src/content/legal/terms-of-service.mdx**: https://obrive.com/ai/documents/legal-terms-of-service.txt (Canonical: https://obrive.com/support/terms-of-service)
-- **src/content/legal/terms-of-product-agreement.mdx**: https://obrive.com/ai/documents/legal-terms-of-product-agreement.txt (Canonical: https://obrive.com/support/terms-of-product-agreement)
-- **src/content/legal/service-policy.mdx**: https://obrive.com/ai/documents/legal-service-policy.txt (Canonical: https://obrive.com/support/service-policy)
-- **src/content/legal/refund-policy.mdx**: https://obrive.com/ai/documents/legal-refund-policy.txt (Canonical: https://obrive.com/support/refund-policy)
-- **src/content/legal/privacy-policy.mdx**: https://obrive.com/ai/documents/legal-privacy-policy.txt (Canonical: https://obrive.com/support/privacy-policy)
-- **src/content/legal/master-service-agreement.mdx**: https://obrive.com/ai/documents/legal-master-service-agreement.txt (Canonical: https://obrive.com/support/master-service-agreement)
-- **src/content/legal/index.mdx**: https://obrive.com/ai/documents/legal-index.txt (Canonical: https://obrive.com/support/index)
-- **src/content/legal/gst-taxes-policy.mdx**: https://obrive.com/ai/documents/legal-gst-taxes-policy.txt (Canonical: https://obrive.com/support/gst-taxes-policy)
-- **src/content/legal/accessibility.mdx**: https://obrive.com/ai/documents/legal-accessibility.txt (Canonical: https://obrive.com/support/accessibility)
-- **src/content/faq/obpark-faq.mdx**: https://obrive.com/ai/documents/faq-obpark-faq.txt (Canonical: https://obrive.com/support/obpark-faq)
-- **src/content/faq/obnest-faq.mdx**: https://obrive.com/ai/documents/faq-obnest-faq.txt (Canonical: https://obrive.com/support/obnest-faq)
-- **src/content/faq/obnavi-faq.mdx**: https://obrive.com/ai/documents/faq-obnavi-faq.txt (Canonical: https://obrive.com/support/obnavi-faq)
-- **src/content/faq/obmove-faq.mdx**: https://obrive.com/ai/documents/faq-obmove-faq.txt (Canonical: https://obrive.com/support/obmove-faq)
-- **src/content/faq/ob-services-faq.mdx**: https://obrive.com/ai/documents/faq-ob-services-faq.txt (Canonical: https://obrive.com/support/ob-services-faq)
-- **src/content/faq/ob-product-faq.mdx**: https://obrive.com/ai/documents/faq-ob-product-faq.txt (Canonical: https://obrive.com/support/ob-product-faq)
-- **src/content/career/product-manager-ar-vr-solutions.mdx**: https://obrive.com/ai/documents/career-product-manager-ar-vr-solutions.txt (Canonical: https://obrive.com/support/product-manager-ar-vr-solutions)
-- **src/content/career/motion-graphics-designer.mdx**: https://obrive.com/ai/documents/career-motion-graphics-designer.txt (Canonical: https://obrive.com/support/motion-graphics-designer)
-- **src/content/career/marketing-content-specialist-immersive-tech.mdx**: https://obrive.com/ai/documents/career-marketing-content-specialist-immersive-tech.txt (Canonical: https://obrive.com/support/marketing-content-specialist-immersive-tech)
-- **src/content/career/full-stack-immersive-developer.mdx**: https://obrive.com/ai/documents/career-full-stack-immersive-developer.txt (Canonical: https://obrive.com/support/full-stack-immersive-developer)
-- **src/content/career/business-development-executive.mdx**: https://obrive.com/ai/documents/career-business-development-executive.txt (Canonical: https://obrive.com/support/business-development-executive)
-- **src/content/career/ar-vr-mr-developer.mdx**: https://obrive.com/ai/documents/career-ar-vr-mr-developer.txt (Canonical: https://obrive.com/support/ar-vr-mr-developer)
-- **src/content/career/3d-visualization-designer.mdx**: https://obrive.com/ai/documents/career-3d-visualization-designer.txt (Canonical: https://obrive.com/support/3d-visualization-designer)
+- **src/content/support/help-center.mdx**: https://obrive.in/ai/documents/support-help-center.txt (Canonical: https://obrive.in/support/help-center)
+- **src/content/support/change-log.mdx**: https://obrive.in/ai/documents/support-change-log.txt (Canonical: https://obrive.in/support/change-log)
+- **src/content/security/soc-2-type-ii-compliance.mdx**: https://obrive.in/ai/documents/security-soc-2-type-ii-compliance.txt (Canonical: https://obrive.in/support/soc-2-type-ii-compliance)
+- **src/content/security/index.mdx**: https://obrive.in/ai/documents/security-index.txt (Canonical: https://obrive.in/support/index)
+- **src/content/resources/webar-vs-app-ar-business-solution.mdx**: https://obrive.in/ai/documents/resources-webar-vs-app-ar-business-solution.txt (Canonical: https://obrive.in/support/webar-vs-app-ar-business-solution)
+- **src/content/resources/web-vr-vs-app-vr-enterprises.mdx**: https://obrive.in/ai/documents/resources-web-vr-vs-app-vr-enterprises.txt (Canonical: https://obrive.in/support/web-vr-vs-app-vr-enterprises)
+- **src/content/resources/vr-training-workforce-development.mdx**: https://obrive.in/ai/documents/resources-vr-training-workforce-development.txt (Canonical: https://obrive.in/support/vr-training-workforce-development)
+- **src/content/resources/vr-meetings-events-conferences.mdx**: https://obrive.in/ai/documents/resources-vr-meetings-events-conferences.txt (Canonical: https://obrive.in/support/vr-meetings-events-conferences)
+- **src/content/resources/spatial-flow.mdx**: https://obrive.in/ai/documents/resources-spatial-flow.txt (Canonical: https://obrive.in/support/spatial-flow)
+- **src/content/resources/spatial-computing-business-operations-2025.mdx**: https://obrive.in/ai/documents/resources-spatial-computing-business-operations-2025.txt (Canonical: https://obrive.in/support/spatial-computing-business-operations-2025)
+- **src/content/resources/mixed-reality-use-cases-manufacturing-healthcare-real-estate.mdx**: https://obrive.in/ai/documents/resources-mixed-reality-use-cases-manufacturing-healthcare-real-estate.txt (Canonical: https://obrive.in/support/mixed-reality-use-cases-manufacturing-healthcare-real-estate)
+- **src/content/resources/mixed-reality-enterprise-productivity-2025.mdx**: https://obrive.in/ai/documents/resources-mixed-reality-enterprise-productivity-2025.txt (Canonical: https://obrive.in/support/mixed-reality-enterprise-productivity-2025)
+- **src/content/resources/mixed-reality-digital-transformation.mdx**: https://obrive.in/ai/documents/resources-mixed-reality-digital-transformation.txt (Canonical: https://obrive.in/support/mixed-reality-digital-transformation)
+- **src/content/resources/industries-benefit-ar-development.mdx**: https://obrive.in/ai/documents/resources-industries-benefit-ar-development.txt (Canonical: https://obrive.in/support/industries-benefit-ar-development)
+- **src/content/resources/future-augmented-reality-business-trends-2025.mdx**: https://obrive.in/ai/documents/resources-future-augmented-reality-business-trends-2025.txt (Canonical: https://obrive.in/support/future-augmented-reality-business-trends-2025)
+- **src/content/resources/client-immersive-onboarding.mdx**: https://obrive.in/ai/documents/resources-client-immersive-onboarding.txt (Canonical: https://obrive.in/support/client-immersive-onboarding)
+- **src/content/resources/bringing-onboarding-to-life.mdx**: https://obrive.in/ai/documents/resources-bringing-onboarding-to-life.txt (Canonical: https://obrive.in/support/bringing-onboarding-to-life)
+- **src/content/resources/ar-vr-mr-differences-business-use-cases-2025.mdx**: https://obrive.in/ai/documents/resources-ar-vr-mr-differences-business-use-cases-2025.txt (Canonical: https://obrive.in/support/ar-vr-mr-differences-business-use-cases-2025)
+- **src/content/resources/ar-vr-mr-differences-applications.mdx**: https://obrive.in/ai/documents/resources-ar-vr-mr-differences-applications.txt (Canonical: https://obrive.in/support/ar-vr-mr-differences-applications)
+- **src/content/resources/ar-printing-interactive-experiences.mdx**: https://obrive.in/ai/documents/resources-ar-printing-interactive-experiences.txt (Canonical: https://obrive.in/support/ar-printing-interactive-experiences)
+- **src/content/resources/ar-presentations-business-pitches.mdx**: https://obrive.in/ai/documents/resources-ar-presentations-business-pitches.txt (Canonical: https://obrive.in/support/ar-presentations-business-pitches)
+- **src/content/resources/ar-powered-car-parking-systems-urban-mobility-challenges.mdx**: https://obrive.in/ai/documents/resources-ar-powered-car-parking-systems-urban-mobility-challenges.txt (Canonical: https://obrive.in/support/ar-powered-car-parking-systems-urban-mobility-challenges)
+- **src/content/resources/ar-packaging-immersive-customer-experiences.mdx**: https://obrive.in/ai/documents/resources-ar-packaging-immersive-customer-experiences.txt (Canonical: https://obrive.in/support/ar-packaging-immersive-customer-experiences)
+- **src/content/resources/ar-onboarding.mdx**: https://obrive.in/ai/documents/resources-ar-onboarding.txt (Canonical: https://obrive.in/support/ar-onboarding)
+- **src/content/resources/3d-texturing-visualization-customer-engagement.mdx**: https://obrive.in/ai/documents/resources-3d-texturing-visualization-customer-engagement.txt (Canonical: https://obrive.in/support/3d-texturing-visualization-customer-engagement)
+- **src/content/resources/3d-rendering-real-estate.mdx**: https://obrive.in/ai/documents/resources-3d-rendering-real-estate.txt (Canonical: https://obrive.in/support/3d-rendering-real-estate)
+- **src/content/legal/terms-of-service.mdx**: https://obrive.in/ai/documents/legal-terms-of-service.txt (Canonical: https://obrive.in/support/terms-of-service)
+- **src/content/legal/terms-of-product-agreement.mdx**: https://obrive.in/ai/documents/legal-terms-of-product-agreement.txt (Canonical: https://obrive.in/support/terms-of-product-agreement)
+- **src/content/legal/service-policy.mdx**: https://obrive.in/ai/documents/legal-service-policy.txt (Canonical: https://obrive.in/support/service-policy)
+- **src/content/legal/refund-policy.mdx**: https://obrive.in/ai/documents/legal-refund-policy.txt (Canonical: https://obrive.in/support/refund-policy)
+- **src/content/legal/privacy-policy.mdx**: https://obrive.in/ai/documents/legal-privacy-policy.txt (Canonical: https://obrive.in/support/privacy-policy)
+- **src/content/legal/master-service-agreement.mdx**: https://obrive.in/ai/documents/legal-master-service-agreement.txt (Canonical: https://obrive.in/support/master-service-agreement)
+- **src/content/legal/index.mdx**: https://obrive.in/ai/documents/legal-index.txt (Canonical: https://obrive.in/support/index)
+- **src/content/legal/gst-taxes-policy.mdx**: https://obrive.in/ai/documents/legal-gst-taxes-policy.txt (Canonical: https://obrive.in/support/gst-taxes-policy)
+- **src/content/legal/accessibility.mdx**: https://obrive.in/ai/documents/legal-accessibility.txt (Canonical: https://obrive.in/support/accessibility)
+- **src/content/faq/obpark-faq.mdx**: https://obrive.in/ai/documents/faq-obpark-faq.txt (Canonical: https://obrive.in/support/obpark-faq)
+- **src/content/faq/obnest-faq.mdx**: https://obrive.in/ai/documents/faq-obnest-faq.txt (Canonical: https://obrive.in/support/obnest-faq)
+- **src/content/faq/obnavi-faq.mdx**: https://obrive.in/ai/documents/faq-obnavi-faq.txt (Canonical: https://obrive.in/support/obnavi-faq)
+- **src/content/faq/obmove-faq.mdx**: https://obrive.in/ai/documents/faq-obmove-faq.txt (Canonical: https://obrive.in/support/obmove-faq)
+- **src/content/faq/ob-services-faq.mdx**: https://obrive.in/ai/documents/faq-ob-services-faq.txt (Canonical: https://obrive.in/support/ob-services-faq)
+- **src/content/faq/ob-product-faq.mdx**: https://obrive.in/ai/documents/faq-ob-product-faq.txt (Canonical: https://obrive.in/support/ob-product-faq)
+- **src/content/career/product-manager-ar-vr-solutions.mdx**: https://obrive.in/ai/documents/career-product-manager-ar-vr-solutions.txt (Canonical: https://obrive.in/support/product-manager-ar-vr-solutions)
+- **src/content/career/motion-graphics-designer.mdx**: https://obrive.in/ai/documents/career-motion-graphics-designer.txt (Canonical: https://obrive.in/support/motion-graphics-designer)
+- **src/content/career/marketing-content-specialist-immersive-tech.mdx**: https://obrive.in/ai/documents/career-marketing-content-specialist-immersive-tech.txt (Canonical: https://obrive.in/support/marketing-content-specialist-immersive-tech)
+- **src/content/career/full-stack-immersive-developer.mdx**: https://obrive.in/ai/documents/career-full-stack-immersive-developer.txt (Canonical: https://obrive.in/support/full-stack-immersive-developer)
+- **src/content/career/business-development-executive.mdx**: https://obrive.in/ai/documents/career-business-development-executive.txt (Canonical: https://obrive.in/support/business-development-executive)
+- **src/content/career/ar-vr-mr-developer.mdx**: https://obrive.in/ai/documents/career-ar-vr-mr-developer.txt (Canonical: https://obrive.in/support/ar-vr-mr-developer)
+- **src/content/career/3d-visualization-designer.mdx**: https://obrive.in/ai/documents/career-3d-visualization-designer.txt (Canonical: https://obrive.in/support/3d-visualization-designer)
 
 ---

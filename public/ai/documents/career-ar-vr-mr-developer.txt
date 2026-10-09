@@ -1,6 +1,6 @@
 # src/content/career/ar-vr-mr-developer.mdx
 
-Canonical URL: https://obrive.com/support/ar-vr-mr-developer
+Canonical URL: https://obrive.in/support/ar-vr-mr-developer
 Source: src/content/career/ar-vr-mr-developer.mdx
 
 ---
@@ -117,4 +117,4 @@ Source: src/content/career/ar-vr-mr-developer.mdx
         </ol></CareerItem>
 </CareerSection>
 
-<CareerButton href="/apply.career.obrive.com/ar-vr-mr-developer" />
+<CareerButton href="/apply.career.obrive.in/ar-vr-mr-developer" />

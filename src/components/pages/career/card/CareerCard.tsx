@@ -19,7 +19,7 @@ const CareerCard = ({ title, date, slug }: CAREER_CARD_TYPE) => {
             <h2
               className={`${FONTS.microgrammaBold.className} text-primary text-lg max-md:text-base`}
             >
-               <Translate text="Obrive.com Bangalore, India" /> </h2>
+               <Translate text="Obrive.in Bangalore, India" /> </h2>
             <p className="text-sm mt-1 max-md:text-xs"> <Translate text="Posted on" /> {date}</p>
           </div>
           <div>

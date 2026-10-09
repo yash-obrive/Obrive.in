@@ -1,6 +1,6 @@
 # src/content/support/help-center.mdx
 
-Canonical URL: https://obrive.com/support/help-center
+Canonical URL: https://obrive.in/support/help-center
 Source: src/content/support/help-center.mdx
 
 ---

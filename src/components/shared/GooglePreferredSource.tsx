@@ -17,7 +17,7 @@
  *   omitted and Google falls back to the user's browser language.
  *
  * Eligibility note:
- *   This widget enables users to add obrive.com as a preferred source
+ *   This widget enables users to add obrive.in as a preferred source
  *   at the domain level. Whether Google recognises or displays Obrive
  *   in any experience is determined solely by Google.
  */
@@ -37,24 +37,7 @@ import type { LanguageCode } from "@/config/languages";
  * If a future language code is added to Obrive that is not in this set,
  * the fallback (omitting data-lang) is safe — Google uses browser language.
  */
-const GOOGLE_SUPPORTED_LANG_CODES = new Set<LanguageCode>([
-  "en",
-  "ar",
-  "es",
-  "pt",
-  "fr",
-  "de",
-  "nl",
-  "sv",
-  "it",
-  "zh",
-  "ja",
-  "ko",
-  "ms",
-  "id",
-  "th",
-  "ru",
-]);
+const GOOGLE_SUPPORTED_LANG_CODES = new Set<LanguageCode>(["en"]);
 
 interface GooglePreferredSourceProps {
   /** Override theme for sections with dark backgrounds. Defaults to "light". */

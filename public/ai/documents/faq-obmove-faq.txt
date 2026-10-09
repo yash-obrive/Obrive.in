@@ -1,6 +1,6 @@
 # src/content/faq/obmove-faq.mdx
 
-Canonical URL: https://obrive.com/support/obmove-faq
+Canonical URL: https://obrive.in/support/obmove-faq
 Source: src/content/faq/obmove-faq.mdx
 
 ---

@@ -3,7 +3,7 @@ const { safeFetch } = require("../utils/ssrf");
 
 /**
  * OwnedSiteAdapter
- * Dedicated adapter for strictly controlled Obrive properties (e.g., obrive.com or internal blogs).
+ * Dedicated adapter for strictly controlled Obrive properties (e.g., obrive.in or internal blogs).
  */
 class OwnedSiteAdapter extends PublisherAdapter {
   constructor(accountConfig) {
@@ -77,7 +77,7 @@ class OwnedSiteAdapter extends PublisherAdapter {
     }
 
     const result = await response.json();
-    return result.publishedUrl; // e.g. https://test.obrive.com/posts/123
+    return result.publishedUrl; // e.g. https://test.obrive.in/posts/123
   }
 
   async verify(url, obriveUrl) {

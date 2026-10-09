@@ -10,13 +10,13 @@ function getAlternates(slug: string) {
     (code) => COUNTRIES[code].isProductionReady
   );
   const langs: Record<string, string> = {
-    "x-default": `https://obrive.com/services/${slug}`,
+    "x-default": `https://obrive.in/services/${slug}`,
   };
   for (const code of activeCountries) {
-    langs[COUNTRIES[code].hreflang] = `https://obrive.com/${code}/services/${slug}`;
+    langs[COUNTRIES[code].hreflang] = `https://obrive.in/${code}/services/${slug}`;
   }
   return {
-    canonical: `https://obrive.com/services/${slug}`,
+    canonical: `https://obrive.in/services/${slug}`,
     languages: langs,
   };
 }
@@ -60,8 +60,8 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
           {
             "@context": "https://schema.org/",
             "@type": "Service",
-            "@id": `https://obrive.com/services/${slug}`,
-            url: `https://obrive.com/services/${slug}`,
+            "@id": `https://obrive.in/services/${slug}`,
+            url: `https://obrive.in/services/${slug}`,
             name: (() => {
               switch (slug) {
                 case "augmented-reality-development":
@@ -80,7 +80,7 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
             provider: {
               "@type": "Organization",
               name: "Obrive Industries",
-              url: "https://obrive.com",
+              url: "https://obrive.in",
             },
             serviceType: "Software Development",
             areaServed: "Worldwide",
@@ -93,19 +93,19 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://obrive.com"
+                "item": "https://obrive.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Services",
-                "item": "https://obrive.com/services"
+                "item": "https://obrive.in/services"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": solutionData.hero.title,
-                "item": `https://obrive.com/services/${slug}`
+                "item": `https://obrive.in/services/${slug}`
               }
             ]
           }

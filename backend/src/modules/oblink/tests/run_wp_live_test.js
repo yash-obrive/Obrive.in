@@ -67,7 +67,7 @@ async function runTests() {
     let liveResult;
     let liveContent = {
       title: `[LIVE TEST] OBLINK Automation Pipeline ${Date.now()}`,
-      body: 'OBLINK automatically generated this content to verify the production pipeline for <a href="https://obrive.com">obrive.com</a>. This is a strictly controlled test.',
+      body: 'OBLINK automatically generated this content to verify the production pipeline for <a href="https://obrive.in">obrive.in</a>. This is a strictly controlled test.',
       isDraft: false,
     };
 

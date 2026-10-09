@@ -25,7 +25,7 @@ const SolutionSidebarLayout = ({
   sidebarLinks,
   serviceSections,
   processSteps,
-  serviceLabel = "Our Services",
+  serviceLabel = "Menu",
 }: SolutionSidebarLayoutProps) => {
   const [activeId, setActiveId] = useState<string>(sidebarLinks[0]?.id || "");
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});

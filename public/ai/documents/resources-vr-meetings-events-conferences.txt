@@ -1,6 +1,6 @@
 # src/content/resources/vr-meetings-events-conferences.mdx
 
-Canonical URL: https://obrive.com/support/vr-meetings-events-conferences
+Canonical URL: https://obrive.in/support/vr-meetings-events-conferences
 Source: src/content/resources/vr-meetings-events-conferences.mdx
 
 ---

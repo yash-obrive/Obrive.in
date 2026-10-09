@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 const jwt = require('jsonwebtoken');
 
 async function testAuth() {
-  const user = await prisma.users.findUnique({ where: { email: 'ai@obrive.com' } });
+  const user = await prisma.users.findUnique({ where: { email: 'ai@obrive.in' } });
   
   if (!user) {
     console.log("User not found");

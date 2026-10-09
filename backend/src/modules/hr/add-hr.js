@@ -19,8 +19,8 @@ async function addHR() {
       `
             INSERT INTO users (userid, email, name, role, password, status, created_at, updated_at) 
             VALUES 
-            ('HR001', 'hr@obrive.com', 'HR Manager', 'hr', $1, 'online', NOW(), NOW()),
-            ('HR002', 'hr2@obrive.com', 'Recruitment Specialist', 'hr', $1, 'online', NOW(), NOW())
+            ('HR001', 'hr@obrive.in', 'HR Manager', 'hr', $1, 'online', NOW(), NOW()),
+            ('HR002', 'hr2@obrive.in', 'Recruitment Specialist', 'hr', $1, 'online', NOW(), NOW())
             ON CONFLICT (email) DO UPDATE SET 
                 password = $1,
                 status = 'online',
@@ -30,7 +30,7 @@ async function addHR() {
     );
 
     console.log("✅ HR users added successfully!");
-    console.log("   hr@obrive.com / hr123");
+    console.log("   hr@obrive.in / hr123");
 
     const result = await pool.query(
       `SELECT email, name, role FROM users WHERE role = 'hr'`,

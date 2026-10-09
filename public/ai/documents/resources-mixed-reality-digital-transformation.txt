@@ -1,6 +1,6 @@
 # src/content/resources/mixed-reality-digital-transformation.mdx
 
-Canonical URL: https://obrive.com/support/mixed-reality-digital-transformation
+Canonical URL: https://obrive.in/support/mixed-reality-digital-transformation
 Source: src/content/resources/mixed-reality-digital-transformation.mdx
 
 ---

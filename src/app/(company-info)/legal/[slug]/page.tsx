@@ -48,11 +48,11 @@ export async function generateMetadata({
       keywords:
         "accessibility AR VR, inclusive immersive technology, accessible spatial computing, AR VR accessibility standards, inclusive XR design, accessible 3D visualization",
       alternates: {
-        canonical: "https://obrive.com/legal/accessibility",
+        canonical: "https://obrive.in/legal/accessibility",
       },
       openGraph: {
         type: "website",
-        url: "https://obrive.com/legal/accessibility",
+        url: "https://obrive.in/legal/accessibility",
         title:
           "Accessibility | Making AR/VR Experiences Inclusive for Everyone",
         description:
@@ -78,11 +78,11 @@ export async function generateMetadata({
       keywords:
         "privacy policy AR VR, data protection immersive technology, GDPR compliance XR, privacy security spatial computing, data privacy AR VR company",
       alternates: {
-        canonical: "https://obrive.com/legal/privacy-policy",
+        canonical: "https://obrive.in/legal/privacy-policy",
       },
       openGraph: {
         type: "website",
-        url: "https://obrive.com/legal/privacy-policy",
+        url: "https://obrive.in/legal/privacy-policy",
         title: "Privacy Policy | Obrive Data Protection & Security",
         description:
           "Learn how Obrive collects, uses, and protects your personal data. Transparent, secure, and compliant with global privacy laws.",
@@ -106,11 +106,11 @@ export async function generateMetadata({
       keywords:
         "product terms AR VR, usage agreement immersive technology, product policies XR, terms conditions spatial computing",
       alternates: {
-        canonical: "https://obrive.com/legal/terms-of-product-agreement",
+        canonical: "https://obrive.in/legal/terms-of-product-agreement",
       },
       openGraph: {
         type: "website",
-        url: "https://obrive.com/legal/terms-of-product-agreement",
+        url: "https://obrive.in/legal/terms-of-product-agreement",
         title: "Terms of Product Agreement | Obrive Usage & Policies",
         description:
           "Review the terms and conditions for using Obrive's products. Clear guidelines for secure, fair, and reliable use.",
@@ -134,11 +134,11 @@ export async function generateMetadata({
       keywords:
         "terms of service AR VR, platform rules immersive technology, service agreement XR, user rights spatial computing",
       alternates: {
-        canonical: "https://obrive.com/legal/terms-of-service",
+        canonical: "https://obrive.in/legal/terms-of-service",
       },
       openGraph: {
         type: "website",
-        url: "https://obrive.com/legal/terms-of-service",
+        url: "https://obrive.in/legal/terms-of-service",
         title: "Terms of Service | Obrive Platform Rules & Usage",
         description:
           "Understand Obrive's Terms of Service covering platform usage, responsibilities, and user rights.",
@@ -162,11 +162,11 @@ export async function generateMetadata({
       keywords:
         "master service agreement AR VR, business terms immersive technology, enterprise agreement XR, MSA spatial computing",
       alternates: {
-        canonical: "https://obrive.com/legal/master-service-agreement",
+        canonical: "https://obrive.in/legal/master-service-agreement",
       },
       openGraph: {
         type: "website",
-        url: "https://obrive.com/legal/master-service-agreement",
+        url: "https://obrive.in/legal/master-service-agreement",
         title: "Master Service Agreement | Obrive Business Terms",
         description:
           "Detailed terms of Obrive's Master Service Agreement for enterprises and partners. Clear, transparent, and binding.",
@@ -187,7 +187,7 @@ export async function generateMetadata({
     title: `${legalDoc.metadata.title} | Obrive`,
     description: legalDoc.metadata.description || "",
     alternates: {
-      canonical: `https://obrive.com/legal/${slug}`,
+      canonical: `https://obrive.in/legal/${slug}`,
     },
   };
 }
@@ -208,8 +208,8 @@ export default async function LegalPage({ params }: LegalPageProps) {
     const baseSchema = {
       "@context": "https://schema.org/",
       "@type": "WebPage",
-      "@id": `https://obrive.com/legal/${slug}`,
-      url: `https://obrive.com/legal/${slug}`,
+      "@id": `https://obrive.in/legal/${slug}`,
+      url: `https://obrive.in/legal/${slug}`,
     };
 
     const schemaNames: Record<string, string> = {
@@ -252,13 +252,13 @@ export default async function LegalPage({ params }: LegalPageProps) {
           "@type": "ListItem",
           position: 1,
           name: "Obrive Industries — Legal & Compliance",
-          item: "https://obrive.com/legal",
+          item: "https://obrive.in/legal",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: breadcrumbNames[slug],
-          item: `https://obrive.com/legal/${slug}`,
+          item: `https://obrive.in/legal/${slug}`,
         },
       ],
     };

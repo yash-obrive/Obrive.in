@@ -1,6 +1,6 @@
 # src/content/legal/refund-policy.mdx
 
-Canonical URL: https://obrive.com/support/refund-policy
+Canonical URL: https://obrive.in/support/refund-policy
 Source: src/content/legal/refund-policy.mdx
 
 ---

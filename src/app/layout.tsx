@@ -12,7 +12,7 @@ const michroma = Michroma({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://obrive.com"),
+  metadataBase: new URL("https://obrive.in"),
   title:
     "Obrive | Global Leader in AR · VR · MR & 3D Design – Enterprise-Grade Immersive Solutions",
   description:
@@ -22,14 +22,14 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: "https://obrive.com",
+    url: "https://obrive.in",
     title:
       "Obrive | AR · VR · MR & 3D Design – Enterprise-Grade Immersive Solutions",
     description:
       "Join Obrive in leading the immersive revolution: global solutions in AR, VR, MR, spatial computing and 3D design for enterprises across training, retail, real-estate, manufacturing and more.",
     images: [
       {
-        url: "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Faugmented_first.f8b128f2.webp&w=1200&q=75",
+        url: "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Faugmented_first.f8b128f2.webp&w=1200&q=75",
         alt: "Obrive AR/VR/MR immersive technology solutions",
       },
     ],
@@ -103,36 +103,46 @@ export default async function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org/",
-              "@type": "Organization",
-              "@id": "https://obrive.com/#Organization",
-              url: "https://obrive.com",
-              legalName: "Obrive Industries",
-              name: "Obrive Industries",
-              description:
-                "Obrive Industries delivers cutting-edge AR, VR, MR and spatial computing solutions across industries. From immersive 3D visualisation to bespoke XR applications, we turn ideas into interactive realities.",
-              image:
-                "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-intro-poster.8a0a1b5d.webp&w=1920&q=75",
-              logo: "https://obrive.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-logo.fb3eb1d9.svg&w=256&q=75",
-              telephone: "+91 888-477-4300",
-              email: "info@obrive.com",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress:
-                  "Sree Gururaya Mansion, 3rd Floor, 759, 8th main road KSRTC Layout, JP Nagar III Phase",
-                addressLocality: "Bangalore",
-                addressRegion: "Karnataka",
-                addressCountry: "India",
-                postalCode: "560078",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org/",
+                "@type": "Organization",
+                "@id": "https://obrive.in/#Organization",
+                url: "https://obrive.in",
+                legalName: "Obrive Industries",
+                name: "Obrive Industries",
+                description:
+                  "Obrive Industries delivers cutting-edge AR, VR, MR and spatial computing solutions across industries. From immersive 3D visualisation to bespoke XR applications, we turn ideas into interactive realities.",
+                image:
+                  "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-intro-poster.8a0a1b5d.webp&w=1920&q=75",
+                logo: "https://obrive.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fobrive-logo.fb3eb1d9.svg&w=256&q=75",
+                telephone: "+91 888-477-4300",
+                email: "info@obrive.in",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress:
+                    "Sree Gururaya Mansion, 3rd Floor, 759, 8th main road KSRTC Layout, JP Nagar III Phase",
+                  addressLocality: "Bangalore",
+                  addressRegion: "Karnataka",
+                  addressCountry: "India",
+                  postalCode: "560078",
+                },
+                sameAs: [
+                  "https://www.youtube.com/@ObriveInc",
+                  "https://www.linkedin.com/in/obrive-industries/",
+                  "https://x.com/obriveinc",
+                  "https://www.instagram.com/obrive.inc/",
+                ],
               },
-              sameAs: [
-                "https://www.youtube.com/@ObriveInc",
-                "https://www.linkedin.com/in/obrive-industries/",
-                "https://x.com/obriveinc",
-                "https://www.instagram.com/obrive.inc/",
-              ],
-            }),
+              {
+                "@context": "https://schema.org/",
+                "@type": "WebSite",
+                "@id": "https://obrive.in/#WebSite",
+                url: "https://obrive.in",
+                name: "Obrive",
+                alternateName: "Obrive Industries"
+              }
+            ]),
           }}
         />
       </head>
@@ -170,7 +180,7 @@ export default async function RootLayout({
           strategy="afterInteractive" ensures non-blocking load after hydration.
           The stable id prevents Next.js from re-injecting this script
           on client-side navigations.
-          Eligibility at the domain level (obrive.com) is determined by Google.
+          Eligibility at the domain level (obrive.in) is determined by Google.
         */}
         <Script
           id="google-preferred-source-publisher"

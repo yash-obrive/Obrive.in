@@ -1,6 +1,6 @@
 # src/content/security/index.mdx
 
-Canonical URL: https://obrive.com/support/index
+Canonical URL: https://obrive.in/support/index
 Source: src/content/security/index.mdx
 
 ---

@@ -1,6 +1,6 @@
 # src/content/career/business-development-executive.mdx
 
-Canonical URL: https://obrive.com/support/business-development-executive
+Canonical URL: https://obrive.in/support/business-development-executive
 Source: src/content/career/business-development-executive.mdx
 
 ---
@@ -103,4 +103,4 @@ Source: src/content/career/business-development-executive.mdx
         </ol></CareerItem>
 </CareerSection>
 
-<CareerButton href="/apply.career.obrive.com/business-development-executive" />
+<CareerButton href="/apply.career.obrive.in/business-development-executive" />

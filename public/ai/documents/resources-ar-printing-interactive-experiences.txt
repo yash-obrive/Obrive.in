@@ -1,6 +1,6 @@
 # src/content/resources/ar-printing-interactive-experiences.mdx
 
-Canonical URL: https://obrive.com/support/ar-printing-interactive-experiences
+Canonical URL: https://obrive.in/support/ar-printing-interactive-experiences
 Source: src/content/resources/ar-printing-interactive-experiences.mdx
 
 ---

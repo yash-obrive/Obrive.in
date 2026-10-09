@@ -1,6 +1,6 @@
 # src/content/legal/terms-of-product-agreement.mdx
 
-Canonical URL: https://obrive.com/support/terms-of-product-agreement
+Canonical URL: https://obrive.in/support/terms-of-product-agreement
 Source: src/content/legal/terms-of-product-agreement.mdx
 
 ---
@@ -243,7 +243,7 @@ product-specific terms alongside our Master Service Agreement.
       
         Email:{" "}
         
-          legal@obrive.com
+          legal@obrive.in
         
       
       Obrive Industries Pvt. Ltd. — Product Compliance Division

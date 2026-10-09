@@ -1,6 +1,6 @@
 # src/content/resources/spatial-computing-business-operations-2025.mdx
 
-Canonical URL: https://obrive.com/support/spatial-computing-business-operations-2025
+Canonical URL: https://obrive.in/support/spatial-computing-business-operations-2025
 Source: src/content/resources/spatial-computing-business-operations-2025.mdx
 
 ---

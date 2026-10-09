@@ -27,7 +27,7 @@ class MatchingAgent {
       // const brainContent = await fs.readFile(this.brainPath, 'utf8');
 
       // Simulate matching logic
-      const matchedUrl = "https://obrive.com/solutions/enterprise";
+      const matchedUrl = "https://obrive.in/solutions/enterprise";
 
       const updated = await prisma.oblink_targets.update({
         where: { id: targetId },
