@@ -79,7 +79,7 @@ export const MOBILE_APP_DEVELOPMENT_SIDEBAR_LINKS = [
 export const MOBILE_APP_DEVELOPMENT_SERVICE_SECTIONS = [
   {
     id: "our-services",
-    title: "Our Services",
+    title: "",
     subtitle: "",
     description: "",
     label: "",

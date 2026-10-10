@@ -92,7 +92,7 @@ export const WEB_APP_SAAS_MVP_DEVELOPMENT_SIDEBAR_LINKS = [
 export const WEB_APP_SAAS_MVP_DEVELOPMENT_SERVICE_SECTIONS = [
   {
     id: "our-services",
-    title: "Our Services",
+    title: "",
     subtitle: "",
     description: "",
     label: "",

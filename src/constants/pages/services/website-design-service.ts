@@ -79,7 +79,7 @@ export const WEBSITE_DESIGN_SERVICE_SIDEBAR_LINKS = [
 export const WEBSITE_DESIGN_SERVICE_SERVICE_SECTIONS = [
   {
     id: "our-services",
-    title: "Our Services",
+    title: "",
     subtitle: "",
     description: "",
     label: "",

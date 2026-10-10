@@ -30,11 +30,13 @@ const SolutionServiceSection = ({
   return (
     <div id={id} className="flex flex-col gap-4 md:gap-6 scroll-mt-24">
       {/* Section Title */}
-      <h2
-        className={`${FONTS.microgrammaBold.className} text-primary text-[32px] max-xl:text-3xl max-lg:text-2xl max-md:text-xl`}
-      >
-        <Translate text={title} />
-      </h2>
+      {title && (
+        <h2
+          className={`${FONTS.microgrammaBold.className} text-primary text-[32px] max-xl:text-3xl max-lg:text-2xl max-md:text-xl`}
+        >
+          <Translate text={title} />
+        </h2>
+      )}
 
       <div className="flex flex-col gap-4 md:gap-6">
         {/* Subtitle */}
