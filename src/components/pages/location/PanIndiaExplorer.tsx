@@ -2,16 +2,32 @@
 
 import { ArrowUpRight, MapPin } from "lucide-react";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import FONTS from "@/assets/fonts";
 import FullWidthSection from "@/components/shared/layout/FullWidthSection";
-import { CITIES_DATA } from "./panIndiaData";
+import { CITIES_DATA, getLanguageForCity } from "./panIndiaData";
+import { getDictionary } from "@/lib/dictionaries";
+import type { LanguageCode } from "@/config/languages";
 
 type TierFilter = "all" | "Tier 1" | "Tier 2" | "Tier 3";
 
 export default function PanIndiaExplorer() {
   const [searchQuery, _setSearchQuery] = useState("");
   const [selectedTier, setSelectedTier] = useState<TierFilter>("all");
+
+  // Preload dictionaries for all city languages on mount
+  useEffect(() => {
+    const languagesToPreload = new Set<LanguageCode>();
+    CITIES_DATA.forEach((city) => {
+      const lang = getLanguageForCity(city.slug);
+      if (lang && lang !== "en") {
+        languagesToPreload.add(lang);
+      }
+    });
+    languagesToPreload.forEach((lang) => {
+      getDictionary(lang);
+    });
+  }, []);
 
   const normalizedQuery = searchQuery.toLowerCase().trim();
 
@@ -131,6 +147,14 @@ export default function PanIndiaExplorer() {
                   <Link
                     key={city.slug}
                     href={`/location/${city.slug}`}
+                    onMouseEnter={() => {
+                      const lang = getLanguageForCity(city.slug);
+                      if (lang) getDictionary(lang);
+                    }}
+                    onTouchStart={() => {
+                      const lang = getLanguageForCity(city.slug);
+                      if (lang) getDictionary(lang);
+                    }}
                     className="group flex flex-col justify-between p-5 bg-gradient-to-br from-white to-primary/5 border border-primary/10 rounded-[18px] transition-all duration-200 hover:border-primary/30 hover:-translate-y-1 hover:shadow-md"
                   >
                     <div>

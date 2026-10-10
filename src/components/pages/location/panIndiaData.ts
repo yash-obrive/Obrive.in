@@ -1,8 +1,41 @@
+import type { LanguageCode } from "@/config/languages";
+
 export interface CityItem {
   name: string;
   slug: string;
   tier: "Tier 1" | "Tier 2" | "Tier 3";
   state: string;
+}
+
+export const STATE_LANGUAGE_MAP: Record<string, LanguageCode> = {
+  Maharashtra: "mr",
+  Karnataka: "kn",
+  "Tamil Nadu": "ta",
+  Telangana: "te",
+  "Andhra Pradesh": "te",
+  "West Bengal": "bn",
+  Gujarat: "gu",
+  Punjab: "pa",
+  Chandigarh: "pa",
+  Kerala: "ml",
+  Odisha: "or",
+  Assam: "as",
+  "Uttar Pradesh": "hi",
+  Bihar: "hi",
+  "Madhya Pradesh": "hi",
+  Rajasthan: "hi",
+  Delhi: "hi",
+  Uttarakhand: "hi",
+};
+
+export function getLanguageForCity(citySlug?: string | null): LanguageCode {
+  if (!citySlug) return "en";
+  const normalizedSlug = citySlug.toLowerCase().trim();
+  const city = CITIES_DATA.find((c) => c.slug.toLowerCase() === normalizedSlug);
+  if (city && STATE_LANGUAGE_MAP[city.state]) {
+    return STATE_LANGUAGE_MAP[city.state];
+  }
+  return "en";
 }
 
 export const CITIES_DATA: CityItem[] = [

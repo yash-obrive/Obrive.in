@@ -21,6 +21,7 @@ import {
   isValidLanguageCode,
   getLanguageConfig,
 } from "@/config/languages";
+import { getLanguageForCity } from "@/components/pages/location/panIndiaData";
 
 interface CountryContextType {
   country: CountryCode;
@@ -31,6 +32,7 @@ interface CountryContextType {
   dismissBanner: () => void;
   switchCountry: (newCountry: CountryCode, preservePath?: boolean) => void;
   switchLanguage: (newLanguage: LanguageCode) => void;
+  activeCity: string | null;
 }
 
 const CountryContext = createContext<CountryContextType | undefined>(undefined);
@@ -40,6 +42,7 @@ export interface CountryProviderProps {
   initialCountry?: CountryCode;
   initialLanguage?: LanguageCode;
   initialSuggestedCountry?: CountryCode | null;
+  initialCity?: string | null;
 }
 
 export function CountryProvider({
@@ -47,6 +50,7 @@ export function CountryProvider({
   initialCountry = DEFAULT_COUNTRY,
   initialLanguage,
   initialSuggestedCountry = null,
+  initialCity = null,
 }: CountryProviderProps) {
   const _router = useRouter();
   const pathname = usePathname();
@@ -59,6 +63,7 @@ export function CountryProvider({
     initialSuggestedCountry,
   );
   const [isBannerDismissed, setIsBannerDismissed] = useState<boolean>(false);
+  const [activeCity, setActiveCity] = useState<string | null>(initialCity || null);
 
   useEffect(() => {
     if (isValidCountryCode(initialCountry)) {
@@ -67,18 +72,71 @@ export function CountryProvider({
   }, [initialCountry]);
 
   useEffect(() => {
+    if (initialCity) {
+      setActiveCity(initialCity);
+    }
+  }, [initialCity]);
+
+  useEffect(() => {
     if (isValidLanguageCode(initialLanguage)) {
+      const segments = (pathname || "").split("/").filter(Boolean);
+      // Don't override language when on a city route that already set it
+      if (segments[0] === "location" && segments.length > 1 && activeCity === segments[1]) {
+        return;
+      }
       setLanguage(initialLanguage);
     }
-  }, [initialLanguage]);
+  }, [initialLanguage, pathname, activeCity]);
+
+  // Detect city from pathname and set language accordingly
+  useEffect(() => {
+    if (!pathname) return;
+    const segments = pathname.split("/").filter(Boolean);
+    if (segments[0] === "location" && segments.length > 1) {
+      const city = segments[1];
+      if (city !== activeCity) {
+        setActiveCity(city);
+        if (typeof window !== "undefined") {
+          try {
+            sessionStorage.setItem("obrive_location_city", city);
+          } catch {}
+        }
+        const cityLang = getLanguageForCity(city);
+        setLanguage(cityLang);
+      }
+    } else if (segments[0] === "location" && segments.length === 1) {
+      setActiveCity(null);
+      if (typeof window !== "undefined") {
+        try {
+          sessionStorage.removeItem("obrive_location_city");
+          sessionStorage.removeItem("obrive_location_lang");
+        } catch {}
+      }
+      setLanguage("en");
+    } else if (!isValidCountryCode(segments[0]) && segments[0] !== undefined) {
+      // Non-country, non-location routes: clear city and reset to English
+      setActiveCity(null);
+      if (typeof window !== "undefined") {
+        try {
+          sessionStorage.removeItem("obrive_location_city");
+          sessionStorage.removeItem("obrive_location_lang");
+        } catch {}
+      }
+      if (!activeCity) {
+        setLanguage("en");
+      }
+    }
+  }, [pathname, activeCity]);
 
   useEffect(() => {
     if (typeof document !== "undefined") {
       const langConfig = getLanguageConfig(language);
-      document.documentElement.lang = langConfig.code;
-      document.documentElement.dir = langConfig.dir;
+      if (langConfig) {
+        document.documentElement.lang = langConfig.code;
+        document.documentElement.dir = langConfig.dir;
+      }
     }
-  }, [language]);
+  }, [language, pathname]);
 
   useEffect(() => {
     // Check if user previously dismissed banner
@@ -140,15 +198,28 @@ export function CountryProvider({
 
     setLanguage(newLanguage);
 
-    let currentPath = pathname || "/";
-    const segments = currentPath.split("/").filter(Boolean);
-    if (segments.length >= 2 && isValidCountryCode(segments[0]) && isValidLanguageCode(segments[1])) {
-      currentPath = "/" + segments.slice(2).join("/");
-    } else if (segments.length >= 1 && isValidCountryCode(segments[0])) {
-      currentPath = "/" + segments.slice(1).join("/");
+    if (typeof window !== "undefined") {
+      try {
+        sessionStorage.setItem("obrive_location_lang", newLanguage);
+      } catch {}
     }
 
-    window.location.href = `/${country}/${newLanguage}${currentPath === "/" ? "" : currentPath}`;
+    const currentPath = pathname || "/";
+    const segments = currentPath.split("/").filter(Boolean);
+
+    // On city routes (/location/[city]), stay on the same page and update language state dynamically
+    if (segments[0] === "location" && segments.length > 1) {
+      return;
+    }
+
+    let basePath = currentPath;
+    if (segments.length >= 2 && isValidCountryCode(segments[0]) && isValidLanguageCode(segments[1])) {
+      basePath = "/" + segments.slice(2).join("/");
+    } else if (segments.length >= 1 && isValidCountryCode(segments[0])) {
+      basePath = "/" + segments.slice(1).join("/");
+    }
+
+    window.location.href = `/${country}/${newLanguage}${basePath === "/" ? "" : basePath}`;
   };
 
   const countryConfig = getCountryConfig(country);
@@ -164,6 +235,7 @@ export function CountryProvider({
         dismissBanner,
         switchCountry,
         switchLanguage,
+        activeCity,
       }}
     >
       {children}
@@ -184,6 +256,7 @@ export function useCountry(): CountryContextType {
       dismissBanner: () => {},
       switchCountry: () => {},
       switchLanguage: () => {},
+      activeCity: null,
     };
   }
   return context;
