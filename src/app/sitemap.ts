@@ -10,7 +10,6 @@ import { getSolutionSlugs } from "@/lib/services";
 import { getTechnologySlugs } from "@/lib/technology";
 import { getUseCaseSlugs } from "@/lib/use-cases";
 
-const CHUNK_SIZE = 20;
 
 const baseUrl = "https://obrive.in";
 
@@ -59,27 +58,13 @@ async function getAllBasePaths(): Promise<BasePath[]> {
   return basePaths;
 }
 
-export async function generateSitemaps() {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const allPaths = await getAllBasePaths();
-  const numChunks = Math.ceil(allPaths.length / CHUNK_SIZE);
-  return Array.from({ length: numChunks }, (_, i) => ({ id: i }));
-}
 
-export default async function sitemap({ id }: { id: number }): Promise<MetadataRoute.Sitemap> {
-  const allPaths = await getAllBasePaths();
-  const start = id * CHUNK_SIZE;
-  const chunkPaths = allPaths.slice(start, start + CHUNK_SIZE);
-
-  const pages: MetadataRoute.Sitemap = [];
-
-  for (const { path, priority, changeFreq } of chunkPaths) {
-    pages.push({
-      url: `${baseUrl}${path}`,
-      lastModified: new Date(),
-      changeFrequency: changeFreq,
-      priority: priority,
-    });
-  }
-
-  return pages;
+  return allPaths.map(({ path, priority, changeFreq }) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: changeFreq,
+    priority: priority,
+  }));
 }
