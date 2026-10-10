@@ -1,4 +1,4 @@
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 /**
  * Fetch tasks between an optional start and end date
  * @param {string} startDate - Start date of the calendar view

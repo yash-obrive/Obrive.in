@@ -1,5 +1,5 @@
 // backend/src/modules/client/client.service.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 const jwt = require("jsonwebtoken");
 
 // ========== LOGIN SERVICE (NEW - ADD THIS) ==========

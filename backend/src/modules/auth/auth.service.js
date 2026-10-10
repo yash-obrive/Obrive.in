@@ -1,5 +1,5 @@
 // backend/src/modules/auth/auth.service.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 const bcrypt = require("bcrypt");
 const {
   signAccessToken,

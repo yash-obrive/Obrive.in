@@ -1,5 +1,5 @@
 // backend/src/modules/events/events.service.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 
 class EventsService {
   async getAllEvents() {

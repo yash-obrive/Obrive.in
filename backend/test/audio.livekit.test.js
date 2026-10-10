@@ -4,7 +4,7 @@ const auth = require("../src/middleware/auth");
 const {
   createLiveKitTokenForRoom,
 } = require("../src/modules/AUDIO_ROOM/livekit/services/livekitToken.service");
-const { prisma } = require("../prisma");
+const { prisma } = require("../db");
 
 process.env.LIVEKIT_API_KEY = process.env.LIVEKIT_API_KEY || "test-key";
 process.env.LIVEKIT_API_SECRET =

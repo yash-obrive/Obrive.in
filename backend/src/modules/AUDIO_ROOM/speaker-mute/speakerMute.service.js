@@ -1,4 +1,4 @@
-const { prisma } = require("../../../../prisma");
+const { prisma } = require("../../../../db");
 const { RoomServiceClient } = require("livekit-server-sdk");
 const { canPublishAudio, normalizeRole } = require("../roomRolePolicy");
 const { canModerateTarget } = require("../audioRoomAuthz");

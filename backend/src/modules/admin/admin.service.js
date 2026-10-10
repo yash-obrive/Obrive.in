@@ -1,4 +1,4 @@
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 const { hashPassword } = require("../../utils/bcrypt");
 exports.getAllUsers = async () => {
   const [users, clients] = await Promise.all([

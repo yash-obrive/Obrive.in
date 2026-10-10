@@ -1,4 +1,4 @@
-const { prisma } = require("../../../../prisma");
+const { prisma } = require("../../../../db");
 const getPendingHandRequestsService = async (roomId) => {
   return prisma.room_hand_raises.findMany({
     where: {

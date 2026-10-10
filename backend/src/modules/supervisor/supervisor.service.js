@@ -1,5 +1,5 @@
 // backend/src/modules/supervisor/supervisor.service.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 const bcrypt = require("bcrypt");
 
 class SupervisorService {

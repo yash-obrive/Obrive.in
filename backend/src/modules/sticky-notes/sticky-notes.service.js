@@ -1,4 +1,4 @@
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 // ── Get all sticky notes ──────────────────────────
 exports.getAllStickyNotes = async (_userId) => {
   return await prisma.sticky_notes.findMany({

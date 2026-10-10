@@ -1,5 +1,5 @@
 // backend/src/modules/hr/hr.service.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 
 class HRService {
   // Get HR dashboard statistics (FIXED - removed leave_requests)

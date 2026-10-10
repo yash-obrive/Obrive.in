@@ -1,4 +1,4 @@
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 exports.getMeetings = async (userId, role) => {
   if (role === "EMPLOYEE") {
     const emp = await prisma.employee.findUnique({ where: { userId } });

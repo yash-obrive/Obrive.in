@@ -1,5 +1,5 @@
 // backend/src/modules/projects/projects.service.js
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 
 class ProjectService {
   async getProjectsByRole(userId, role) {

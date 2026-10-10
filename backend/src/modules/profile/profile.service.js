@@ -1,4 +1,4 @@
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 class ProfileService {
   async getProfileById(id) {
     const profile = await prisma.users.findUnique({

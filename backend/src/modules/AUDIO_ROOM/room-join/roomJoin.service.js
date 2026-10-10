@@ -1,4 +1,4 @@
-const { prisma } = require("../../../../prisma");
+const { prisma } = require("../../../../db");
 const {
   getRoomDetailsService,
 } = require("../room-details/roomDetails.service");

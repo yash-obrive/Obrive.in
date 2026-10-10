@@ -1,4 +1,4 @@
-const { prisma } = require("../../../../prisma");
+const { prisma } = require("../../../../db");
 const { resolveConfiguredRoomRole } = require("../roomRolePolicy");
 
 const getRoomDetailsService = async (roomId, userId) => {

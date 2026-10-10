@@ -1,4 +1,4 @@
-const { prisma } = require("../../../prisma");
+const { prisma } = require("../../../db");
 class VacationsService {
   async getAllEmployeesWithLeaves(role, userId) {
     const query = { role: "employee" };
