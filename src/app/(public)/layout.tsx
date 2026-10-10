@@ -55,6 +55,7 @@ export default async function LayoutPublic({
 
   const languageHeader = headerList.get("x-obrive-language");
   const language: LanguageCode = (languageHeader as LanguageCode) || getCountryConfig(country).defaultLanguage;
+  const cityHeader = headerList.get("x-obrive-city") || null;
 
   const dictionary = await getDictionary(language);
 
@@ -63,6 +64,7 @@ export default async function LayoutPublic({
       initialCountry={country}
       initialLanguage={language}
       initialSuggestedCountry={suggestedCountry}
+      initialCity={cityHeader}
     >
       <TranslationProvider dictionary={dictionary}>
         <PublicLayout>{children}</PublicLayout>
